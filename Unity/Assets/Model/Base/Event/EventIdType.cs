@@ -18,8 +18,8 @@
 		public const string MessageDeserializeFinish = "MessageDeserializeFinish";
 		public const string SceneChange = "SceneChange";
 		public const string FrameUpdate = "FrameUpdate";
-		public const string LoadingBegin = "LoadingBegin";
-		public const string LoadingFinish = "LoadingFinish";
+		public const string CheckForUpdateBegin = "CheckForUpdateBegin";
+		public const string CheckForUpdateFinish = "CheckForUpdateFinish";
 		public const string TestHotfixSubscribMonoEvent = "TestHotfixSubscribMonoEvent";
 		public const string MaxModelEvent = "MaxModelEvent";
 	}

@@ -69,6 +69,7 @@ public class ReferenceCollectorEditor: Editor
 		{
 			referenceCollector.Sort();
 		}
+
 		EditorGUILayout.EndHorizontal();
 		EditorGUILayout.BeginHorizontal();
 		searchKey = EditorGUILayout.TextField(searchKey);

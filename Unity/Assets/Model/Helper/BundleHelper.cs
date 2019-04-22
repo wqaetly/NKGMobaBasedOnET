@@ -15,14 +15,14 @@ namespace ETModel
 				{
 					using (BundleDownloaderComponent bundleDownloaderComponent = Game.Scene.AddComponent<BundleDownloaderComponent>())
 					{
+						Game.EventSystem.Run(EventIdType.CheckForUpdateBegin);
+						
 						await bundleDownloaderComponent.StartAsync();
-						
-						Game.EventSystem.Run(EventIdType.LoadingBegin);
-						
+
 						await bundleDownloaderComponent.DownloadAsync();
 					}
 					
-					Game.EventSystem.Run(EventIdType.LoadingFinish);
+					Game.EventSystem.Run(EventIdType.CheckForUpdateFinish);
 					
 					Game.Scene.GetComponent<ResourcesComponent>().LoadOneBundle("StreamingAssets");
 					ResourcesComponent.AssetBundleManifestObject = (AssetBundleManifest)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("StreamingAssets", "AssetBundleManifest");
