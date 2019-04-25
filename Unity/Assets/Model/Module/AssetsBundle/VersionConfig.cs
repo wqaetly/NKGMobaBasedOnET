@@ -15,6 +15,12 @@ namespace ETModel
 		public int Version;
 		
 		public long TotalSize;
+
+		public VersionConfig(int version,long totalSize)
+		{
+			this.Version = version;
+			this.TotalSize = totalSize;
+		}
 		
 		[BsonIgnore]
 		public Dictionary<string, FileVersionInfo> FileInfoDict = new Dictionary<string, FileVersionInfo>();
@@ -23,6 +29,7 @@ namespace ETModel
 		{
 			base.EndInit();
 
+			this.TotalSize = 0;
 			foreach (FileVersionInfo fileVersionInfo in this.FileInfoDict.Values)
 			{
 				this.TotalSize += fileVersionInfo.Size;

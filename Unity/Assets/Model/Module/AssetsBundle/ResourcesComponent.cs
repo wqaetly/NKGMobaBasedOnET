@@ -122,11 +122,9 @@ namespace ETModel
 			{
 				return dependencies;
 			}
-			if (!Define.IsAsync)
+			if (Define.ResModeIsEditor)
 			{
-#if UNITY_EDITOR
 				dependencies = AssetDatabase.GetAssetBundleDependencies(assetBundleName, true);
-#endif
 			}
 			else
 			{
@@ -295,10 +293,10 @@ namespace ETModel
 				return;
 			}
 
-			if (!Define.IsAsync)
+			// 当前资源模式如果是编辑器模式
+			if (Define.ResModeIsEditor)
 			{
 				string[] realPath = null;
-#if UNITY_EDITOR
 				realPath = AssetDatabase.GetAssetPathsFromAssetBundle(assetBundleName);
 				foreach (string s in realPath)
 				{
@@ -310,7 +308,6 @@ namespace ETModel
 				abInfo = new ABInfo(assetBundleName, null);
 				abInfo.Parent = this;
 				this.bundles[assetBundleName] = abInfo;
-#endif
 				return;
 			}
 
@@ -376,10 +373,9 @@ namespace ETModel
 			}
 
             //Log.Debug($"---------------load one bundle {assetBundleName}");
-            if (!Define.IsAsync)
+            if (Define.ResModeIsEditor)
 			{
 				string[] realPath = null;
-#if UNITY_EDITOR
 				realPath = AssetDatabase.GetAssetPathsFromAssetBundle(assetBundleName);
 				foreach (string s in realPath)
 				{
@@ -391,7 +387,6 @@ namespace ETModel
 				abInfo = new ABInfo(assetBundleName, null);
 				abInfo.Parent = this;
 				this.bundles[assetBundleName] = abInfo;
-#endif
 				return;
 			}
 

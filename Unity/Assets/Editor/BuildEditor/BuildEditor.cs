@@ -8,425 +8,628 @@ using Object = UnityEngine.Object;
 
 namespace ETEditor
 {
-	public class BundleInfo
-	{
-		public List<string> ParentPaths = new List<string>();
-	}
+    public class BundleInfo
+    {
+        public List<string> ParentPaths = new List<string>();
+    }
 
-	public enum PlatformType
-	{
-		None,
-		Android,
-		IOS,
-		PC,
-		MacOS,
-	}
-	
-	public enum BuildType
-	{
-		Development,
-		Release,
-	}
+    public enum PlatformType
+    {
+        None,
+        Android,
+        IOS,
+        PC,
+        MacOS,
+    }
 
-	public class BuildEditor : EditorWindow
-	{
-		private readonly Dictionary<string, BundleInfo> dictionary = new Dictionary<string, BundleInfo>();
+    public enum BuildType
+    {
+        Development,
+        Release,
+    }
 
-		private PlatformType platformType;
-		private bool isBuildExe;
-		private bool isContainAB;
-		private BuildType buildType;
-		private BuildOptions buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
-		private BuildAssetBundleOptions buildAssetBundleOptions = BuildAssetBundleOptions.None;
+    public class BuildEditor: EditorWindow
+    {
+        private readonly Dictionary<string, BundleInfo> dictionary = new Dictionary<string, BundleInfo>();
 
-		[MenuItem("Tools/打包工具")]
-		public static void ShowWindow()
-		{
-			GetWindow(typeof(BuildEditor));
-		}
+        string IndependentBundleAndAtlaspath;
+        Rect IndependentBundleAndAtlasrect;
 
-		private void OnGUI() 
-		{
-			this.platformType = (PlatformType)EditorGUILayout.EnumPopup(platformType);
-			this.isBuildExe = EditorGUILayout.Toggle("是否打包EXE: ", this.isBuildExe);
-			this.isContainAB = EditorGUILayout.Toggle("是否同将资源打进EXE: ", this.isContainAB);
-			this.buildType = (BuildType)EditorGUILayout.EnumPopup("BuildType: ", this.buildType);
-			
-			switch (buildType)
-			{
-				case BuildType.Development:
-					this.buildOptions = BuildOptions.Development | BuildOptions.AutoRunPlayer | BuildOptions.ConnectWithProfiler | BuildOptions.AllowDebugging;
-					break;
-				case BuildType.Release:
-					this.buildOptions = BuildOptions.None;
-					break;
-			}
-			
-			this.buildAssetBundleOptions = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions(可多选): ", this.buildAssetBundleOptions);
+        string BundleAndAtlasWithoutSharepath;
+        Rect BundleAndAtlasWithoutSharerect;
 
-			if (GUILayout.Button("开始一键打包"))
-			{
-				if (this.platformType == PlatformType.None)
-				{
-					Log.Error("请选择打包平台!");
-					return;
-				}
-				
-				Log.Info("开始布置标签");
-				this.SetPackingTagAndAssetBundle();
-				
-				//开始打包
-				BuildHelper.Build(this.platformType, this.buildAssetBundleOptions, this.buildOptions, this.isBuildExe, this.isContainAB);
-			}
-		}
+        private Vector2 scoller;
 
-		/// <summary>
-		/// 配置打包tag
-		/// </summary>
-		private void SetPackingTagAndAssetBundle()
-		{
-			ClearPackingTagAndAssetBundle();
+        [SerializeField]
+        public List<string> IndependentBundleAndAtlas = new List<string>();
 
-			SetIndependentBundleAndAtlas("Assets/Bundles/Independent");
+        [SerializeField]
+        public List<string> BundleAndAtlasWithoutShare = new List<string>();
 
-			SetBundleAndAtlasWithoutShare("Assets/Bundles/UI");
+        //序列化对象
+        protected SerializedObject _serializedObject;
 
-			SetRootBundleOnly("Assets/Bundles/Unit");
+        //序列化属性
+        protected SerializedProperty IndependentBundleAndAtlasProperty;
+        protected SerializedProperty BundleAndAtlasWithoutShareProperty;
 
-			AssetDatabase.SaveAssets();
-			AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
-		}
+        private BuildData m_BuildData;
 
-		/// <summary>
-		/// 打没有atlas的包，分析共享资源
-		/// </summary>
-		/// <param name="dir"></param>
-		private static void SetNoAtlas(string dir)
-		{
-			List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+        private PlatformType platformType;
+        private bool isBuildExe;
+        private bool isContainAB;
+        private BuildType buildType;
+        private BuildOptions buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
+        private BuildAssetBundleOptions buildAssetBundleOptions = BuildAssetBundleOptions.None;
 
-			foreach (string path in paths)
-			{
-				List<string> pathes = CollectDependencies(path);
+        /// <summary>
+        /// 上一个版本号
+        /// </summary>
+        private int lastVersion;
 
-				foreach (string pt in pathes)
-				{
-					if (pt == path)
-					{
-						continue;
-					}
+        /// <summary>
+        /// 当前版本号
+        /// </summary>
+        private int currentVersion;
 
-					SetAtlas(pt, "", true);
-				}
-			}
-		}
+        [MenuItem("Tools/打包工具")]
+        public static void ShowWindow()
+        {
+            GetWindow(typeof (BuildEditor));
+        }
 
-		/// <summary>
-		/// 会将目录下的每个prefab引用的资源强制打成一个包，不分析共享资源
-		/// </summary>
-		/// <param name="dir"></param>
-		private static void SetBundles(string dir)
-		{
-			List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
-			foreach (string path in paths)
-			{
-				string path1 = path.Replace('\\', '/');
-				Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
+        private void OnEnable()
+        {
+            this.InitABEditorConfig();
+        }
 
-				SetBundle(path1, go.name);
-			}
-		}
+        private void OnGUI()
+        {
+            scoller = EditorGUILayout.BeginScrollView(scoller);
 
-		/// <summary>
-		/// 会将目录下的每个prefab引用的资源打成一个包,只给顶层prefab打包
-		/// </summary>
-		/// <param name="dir"></param>
-		private static void SetRootBundleOnly(string dir)
-		{
-			List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
-			foreach (string path in paths)
-			{
-				string path1 = path.Replace('\\', '/');
-				Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
+            EditorGUILayout.LabelField("AB包标签设置： ", EditorStyles.boldLabel);
 
-				SetBundle(path1, go.name);
-			}
-		}
+            this.InitABTagList();
 
-		/// <summary>
-		/// 会将目录下的每个prefab引用的资源强制打成一个包，不分析共享资源
-		/// </summary>
-		/// <param name="dir"></param>
-		private static void SetIndependentBundleAndAtlas(string dir)
-		{
-			List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
-			foreach (string path in paths)
-			{
-				string path1 = path.Replace('\\', '/');
-				Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
+            EditorGUILayout.Space();
+            EditorGUILayout.Space();
 
-				AssetImporter importer = AssetImporter.GetAtPath(path1);
-				if (importer == null || go == null)
-				{
-					Log.Error("error: " + path1);
-					continue;
-				}
-				importer.assetBundleName = $"{go.name}.unity3d";
+            EditorGUILayout.LabelField("出包设置： ", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("请选择打包平台： ", EditorStyles.boldLabel);
+            this.platformType = (PlatformType) EditorGUILayout.EnumFlagsField("	", platformType);
+            EditorGUILayout.LabelField("是否打包EXE: ", EditorStyles.boldLabel);
+            this.isBuildExe = EditorGUILayout.Toggle("	", this.isBuildExe);
+            EditorGUILayout.LabelField("是否同将资源（ab包）打进EXE: ", EditorStyles.boldLabel);
+            this.isContainAB = EditorGUILayout.Toggle("	", this.isContainAB);
+            EditorGUILayout.LabelField("版本号: （建议递增版本号打包，上一个版本号是" + this.lastVersion + "）", EditorStyles.boldLabel);
+            this.currentVersion = EditorGUILayout.IntField("	", this.currentVersion);
+            EditorGUILayout.LabelField("BuildType: ", EditorStyles.boldLabel);
+            this.buildType = (BuildType) EditorGUILayout.EnumPopup("	", this.buildType);
 
-				List<string> pathes = CollectDependencies(path1);
+            switch (buildType)
+            {
+                case BuildType.Development:
+                    this.buildOptions = BuildOptions.Development | BuildOptions.AutoRunPlayer | BuildOptions.ConnectWithProfiler |
+                            BuildOptions.AllowDebugging;
+                    break;
+                case BuildType.Release:
+                    this.buildOptions = BuildOptions.None;
+                    break;
+            }
 
-				foreach (string pt in pathes)
-				{
-					if (pt == path1)
-					{
-						continue;
-					}
+            EditorGUILayout.LabelField("BuildAssetBundleOptions(可多选): ", EditorStyles.boldLabel);
+            this.buildAssetBundleOptions = (BuildAssetBundleOptions) EditorGUILayout.EnumFlagsField("	", this.buildAssetBundleOptions);
+            EditorGUILayout.Space();
+            EditorGUILayout.EndScrollView();
+            if (GUILayout.Button("开始一键打包", GUILayout.Height(50)))
+            {
+                if (this.platformType == PlatformType.None)
+                {
+                    this.ShowNotification(new GUIContent("请选择打包平台!"));
+                    return;
+                }
 
-					SetBundleAndAtlas(pt, go.name, true);
-				}
-			}
-		}
+                //开始打包
+                BuildHelper.Build(this.platformType, this.buildAssetBundleOptions, this.buildOptions, this.isBuildExe, this.isContainAB,
+                    this.currentVersion);
+            }
+        }
 
-		/// <summary>
-		/// 配置ab包，不分析共享资源
-		/// </summary>
-		/// <param name="dir"></param>
-		private static void SetBundleAndAtlasWithoutShare(string dir)
-		{
-			List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
-			foreach (string path in paths)
-			{
-				string path1 = path.Replace('\\', '/');
-				Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
+        /// <summary>
+        /// 打没有atlas的包，分析共享资源
+        /// </summary>
+        /// <param name="dir"></param>
+        private static void SetNoAtlas(string dir)
+        {
+            List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
 
-				SetBundle(path1, go.name);
-			}
-		}
+            foreach (string path in paths)
+            {
+                List<string> pathes = CollectDependencies(path);
 
-		/// <summary>
-		/// 收集依赖信息
-		/// </summary>
-		/// <param name="o"></param>
-		/// <returns></returns>
-		private static List<string> CollectDependencies(string o)
-		{
-			string[] paths = AssetDatabase.GetDependencies(o);
-			return paths.ToList();
-		}
+                foreach (string pt in pathes)
+                {
+                    if (pt == path)
+                    {
+                        continue;
+                    }
 
-		/// <summary>
-		/// 设置共享资源的Tag
-		/// </summary>
-		/// <param name="dir"></param>
-		private void SetShareBundleAndAtlas(string dir)
-		{
-			this.dictionary.Clear();
-			List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+                    SetAtlas(pt, "", true);
+                }
+            }
+        }
 
-			foreach (string path in paths)
-			{
-				string path1 = path.Replace('\\', '/');
-				Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
+        /// <summary>
+        /// 会将目录下的每个prefab引用的资源强制打成一个包，不分析共享资源
+        /// </summary>
+        /// <param name="dir"></param>
+        private static void SetBundles(string dir)
+        {
+            List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+            foreach (string path in paths)
+            {
+                string path1 = path.Replace('\\', '/');
+                Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
 
-				SetBundle(path1, go.name);
+                SetBundle(path1, go.name);
+            }
+        }
 
-				List<string> pathes = CollectDependencies(path1);
-				foreach (string pt in pathes)
-				{
-					if (pt == path1)
-					{
-						continue;
-					}
+        /// <summary>
+        /// 会将目录下的每个prefab引用的资源打成一个包,只给顶层prefab打包
+        /// </summary>
+        /// <param name="dir"></param>
+        private static void SetRootBundleOnly(string dir)
+        {
+            List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+            foreach (string path in paths)
+            {
+                string path1 = path.Replace('\\', '/');
+                Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
 
-					// 不存在则记录下来
-					if (!this.dictionary.ContainsKey(pt))
-					{
-						// 如果已经设置了包
-						if (GetBundleName(pt) != "")
-						{
-							continue;
-						}
-						Log.Info($"{path1}----{pt}");
-						BundleInfo bundleInfo = new BundleInfo();
-						bundleInfo.ParentPaths.Add(path1);
-						this.dictionary.Add(pt, bundleInfo);
+                SetBundle(path1, go.name);
+            }
+        }
 
-						SetAtlas(pt, go.name);
+        /// <summary>
+        /// 会将目录下的每个prefab引用的资源强制打成一个包，不分析共享资源
+        /// </summary>
+        /// <param name="dir"></param>
+        private static void SetIndependentBundleAndAtlas(string dir)
+        {
+            List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+            foreach (string path in paths)
+            {
+                string path1 = path.Replace('\\', '/');
+                Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
 
-						continue;
-					}
+                AssetImporter importer = AssetImporter.GetAtPath(path1);
+                if (importer == null || go == null)
+                {
+                    Log.Error("error: " + path1);
+                    continue;
+                }
 
-					// 依赖的父亲不一样
-					BundleInfo info = this.dictionary[pt];
-					if (info.ParentPaths.Contains(path1))
-					{
-						continue;
-					}
-					info.ParentPaths.Add(path1);
+                importer.assetBundleName = $"{go.name}.unity3d";
 
-					DirectoryInfo dirInfo = new DirectoryInfo(dir);
-					string dirName = dirInfo.Name;
+                List<string> pathes = CollectDependencies(path1);
 
-					SetBundleAndAtlas(pt, $"{dirName}-share", true);
-				}
-			}
-		}
+                foreach (string pt in pathes)
+                {
+                    if (pt == path1)
+                    {
+                        continue;
+                    }
 
-		/// <summary>
-		/// 刷新ab配置，都设置为unity3d后缀
-		/// </summary>
-		private static void ClearPackingTagAndAssetBundle()
-		{
-			List<string> bundlePaths = EditorResHelper.GetAllResourcePath("Assets/Bundles/", true);
-			foreach (string bundlePath in bundlePaths)
-			{
-				SetBundle(bundlePath, "", true);
-			}
-		}
+                    SetBundleAndAtlas(pt, go.name, true);
+                }
+            }
+        }
 
-		/// <summary>
-		/// 得到ab名称
-		/// </summary>
-		/// <param name="path"></param>
-		/// <returns></returns>
-		private static string GetBundleName(string path)
-		{
-			string extension = Path.GetExtension(path);
-			if (extension == ".cs" || extension == ".dll" || extension == ".js")
-			{
-				return "";
-			}
-			if (path.Contains("Resources"))
-			{
-				return "";
-			}
+        /// <summary>
+        /// 配置ab包，不分析共享资源
+        /// </summary>
+        /// <param name="dir"></param>
+        private static void SetBundleAndAtlasWithoutShare(string dir)
+        {
+            List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+            foreach (string path in paths)
+            {
+                string path1 = path.Replace('\\', '/');
+                Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
 
-			AssetImporter importer = AssetImporter.GetAtPath(path);
-			if (importer == null)
-			{
-				return "";
-			}
+                SetBundle(path1, go.name);
+            }
+        }
 
-			return importer.assetBundleName;
-		}
+        /// <summary>
+        /// 收集依赖信息
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        private static List<string> CollectDependencies(string o)
+        {
+            string[] paths = AssetDatabase.GetDependencies(o);
+            return paths.ToList();
+        }
 
-		/// <summary>
-		/// 配置ab包，主要是为了增加标签（如果没有配置，则默认为untiy3d）
-		/// </summary>
-		/// <param name="path"></param>
-		/// <param name="name"></param>
-		/// <param name="overwrite"></param>
-		private static void SetBundle(string path, string name, bool overwrite = false)
-		{
-			string extension = Path.GetExtension(path);
-			if (extension == ".cs" || extension == ".dll" || extension == ".js")
-			{
-				return;
-			}
-			if (path.Contains("Resources"))
-			{
-				return;
-			}
+        /// <summary>
+        /// 设置共享资源的Tag
+        /// </summary>
+        /// <param name="dir"></param>
+        private void SetShareBundleAndAtlas(string dir)
+        {
+            this.dictionary.Clear();
+            List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
 
-			AssetImporter importer = AssetImporter.GetAtPath(path);
-			if (importer == null)
-			{
-				return;
-			}
+            foreach (string path in paths)
+            {
+                string path1 = path.Replace('\\', '/');
+                Object go = AssetDatabase.LoadAssetAtPath<Object>(path1);
 
-			if (importer.assetBundleName != "" && overwrite == false)
-			{
-				return;
-			}
+                SetBundle(path1, go.name);
 
-			string bundleName = "";
-			if (name != "")
-			{
-				bundleName = $"{name}.unity3d";
-			}
+                List<string> pathes = CollectDependencies(path1);
+                foreach (string pt in pathes)
+                {
+                    if (pt == path1)
+                    {
+                        continue;
+                    }
 
-			importer.assetBundleName = bundleName;
-		}
+                    // 不存在则记录下来
+                    if (!this.dictionary.ContainsKey(pt))
+                    {
+                        // 如果已经设置了包
+                        if (GetBundleName(pt) != "")
+                        {
+                            continue;
+                        }
 
-		/// <summary>
-		/// 设置纹理包，主要是为了增加标签
-		/// </summary>
-		/// <param name="path"></param>
-		/// <param name="name"></param>
-		/// <param name="overwrite"></param>
-		private static void SetAtlas(string path, string name, bool overwrite = false)
-		{
-			string extension = Path.GetExtension(path);
-			if (extension == ".cs" || extension == ".dll" || extension == ".js")
-			{
-				return;
-			}
-			if (path.Contains("Resources"))
-			{
-				return;
-			}
+                        Log.Info($"{path1}----{pt}");
+                        BundleInfo bundleInfo = new BundleInfo();
+                        bundleInfo.ParentPaths.Add(path1);
+                        this.dictionary.Add(pt, bundleInfo);
 
-			TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
-			if (textureImporter == null)
-			{
-				return;
-			}
+                        SetAtlas(pt, go.name);
 
-			if (textureImporter.spritePackingTag != "" && overwrite == false)
-			{
-				return;
-			}
+                        continue;
+                    }
 
-			textureImporter.spritePackingTag = name;
-			AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
-		}
+                    // 依赖的父亲不一样
+                    BundleInfo info = this.dictionary[pt];
+                    if (info.ParentPaths.Contains(path1))
+                    {
+                        continue;
+                    }
 
-		/// <summary>
-		/// 配置ab包与纹理包（如果存在的话）
-		/// </summary>
-		/// <param name="path"></param>
-		/// <param name="name"></param>
-		/// <param name="overwrite"></param>
-		private static void SetBundleAndAtlas(string path, string name, bool overwrite = false)
-		{
-			string extension = Path.GetExtension(path);
-			if (extension == ".cs" || extension == ".dll" || extension == ".js" || extension == ".mat")
-			{
-				return;
-			}
-			if (path.Contains("Resources"))
-			{
-				return;
-			}
+                    info.ParentPaths.Add(path1);
 
-			AssetImporter importer = AssetImporter.GetAtPath(path);
-			if (importer == null)
-			{
-				return;
-			}
+                    DirectoryInfo dirInfo = new DirectoryInfo(dir);
+                    string dirName = dirInfo.Name;
 
-			if (importer.assetBundleName == "" || overwrite)
-			{
-				string bundleName = "";
-				if (name != "")
-				{
-					bundleName = $"{name}.unity3d";
-				}
+                    SetBundleAndAtlas(pt, $"{dirName}-share", true);
+                }
+            }
+        }
 
-				importer.assetBundleName = bundleName;
-			}
+        /// <summary>
+        /// 刷新重置所有ab标签配置
+        /// </summary>
+        private static void ClearPackingTagAndAssetBundle()
+        {
+            List<string> bundlePaths = EditorResHelper.GetAllResourcePath("Assets/Bundles/", true);
+            foreach (string bundlePath in bundlePaths)
+            {
+                SetBundle(bundlePath, "", true);
+            }
+        }
 
-			TextureImporter textureImporter = importer as TextureImporter;
-			if (textureImporter == null)
-			{
-				return;
-			}
+        /// <summary>
+        /// 得到ab名称
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static string GetBundleName(string path)
+        {
+            string extension = Path.GetExtension(path);
+            if (extension == ".cs" || extension == ".dll" || extension == ".js")
+            {
+                return "";
+            }
 
-			if (textureImporter.spritePackingTag == "" || overwrite)
-			{
-				textureImporter.spritePackingTag = name;
-				AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
-			}
-		}
-	}
+            if (path.Contains("Resources"))
+            {
+                return "";
+            }
+
+            AssetImporter importer = AssetImporter.GetAtPath(path);
+            if (importer == null)
+            {
+                return "";
+            }
+
+            return importer.assetBundleName;
+        }
+
+        /// <summary>
+        /// 配置ab包，主要是为了增加标签（如果没有配置，则默认为untiy3d）
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="name"></param>
+        /// <param name="overwrite"></param>
+        private static void SetBundle(string path, string name, bool overwrite = false)
+        {
+            string extension = Path.GetExtension(path);
+            if (extension == ".cs" || extension == ".dll" || extension == ".js")
+            {
+                return;
+            }
+
+            if (path.Contains("Resources"))
+            {
+                return;
+            }
+
+            AssetImporter importer = AssetImporter.GetAtPath(path);
+            if (importer == null)
+            {
+                return;
+            }
+
+            if (importer.assetBundleName != "" && overwrite == false)
+            {
+                return;
+            }
+
+            string bundleName = "";
+            if (name != "")
+            {
+                bundleName = $"{name}.unity3d";
+            }
+
+            importer.assetBundleName = bundleName;
+        }
+
+        /// <summary>
+        /// 设置纹理包，主要是为了增加标签
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="name"></param>
+        /// <param name="overwrite"></param>
+        private static void SetAtlas(string path, string name, bool overwrite = false)
+        {
+            string extension = Path.GetExtension(path);
+            if (extension == ".cs" || extension == ".dll" || extension == ".js")
+            {
+                return;
+            }
+
+            if (path.Contains("Resources"))
+            {
+                return;
+            }
+
+            TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (textureImporter == null)
+            {
+                return;
+            }
+
+            if (textureImporter.spritePackingTag != "" && overwrite == false)
+            {
+                return;
+            }
+
+            textureImporter.spritePackingTag = name;
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+        }
+
+        /// <summary>
+        /// 配置ab包与纹理包（如果存在的话）
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="name"></param>
+        /// <param name="overwrite"></param>
+        private static void SetBundleAndAtlas(string path, string name, bool overwrite = false)
+        {
+            string extension = Path.GetExtension(path);
+            if (extension == ".cs" || extension == ".dll" || extension == ".js" || extension == ".mat")
+            {
+                return;
+            }
+
+            if (path.Contains("Resources"))
+            {
+                return;
+            }
+
+            AssetImporter importer = AssetImporter.GetAtPath(path);
+            if (importer == null)
+            {
+                return;
+            }
+
+            if (importer.assetBundleName == "" || overwrite)
+            {
+                string bundleName = "";
+                if (name != "")
+                {
+                    bundleName = $"{name}.unity3d";
+                }
+
+                importer.assetBundleName = bundleName;
+            }
+
+            TextureImporter textureImporter = importer as TextureImporter;
+            if (textureImporter == null)
+            {
+                return;
+            }
+
+            if (textureImporter.spritePackingTag == "" || overwrite)
+            {
+                textureImporter.spritePackingTag = name;
+                AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+            }
+        }
+
+        /// <summary>
+        /// 初始化AB包标签数组模块
+        /// </summary>
+        private void InitABTagList()
+        {
+            //更新
+            _serializedObject.Update();
+
+            EditorGUI.BeginChangeCheck();
+
+            #region //IndependentBundleAndAtlasProperty
+
+            //第二个参数必须为true，否则无法显示子节点即List内容
+            EditorGUILayout.PropertyField(this.IndependentBundleAndAtlasProperty, true);
+
+            EditorGUILayout.LabelField("把需要一把梭打包的目录文件夹（每个prefab以及依赖资源都打包）拖到此处：");
+
+            //获得一个长300的框
+            this.IndependentBundleAndAtlasrect = EditorGUILayout.GetControlRect(GUILayout.Width(300));
+
+            //将上面的框作为文本输入框
+            this.IndependentBundleAndAtlaspath = EditorGUI.TextField(IndependentBundleAndAtlasrect, IndependentBundleAndAtlaspath);
+
+            //如果鼠标正在拖拽中或拖拽结束时，并且鼠标所在位置在文本输入框内
+            if ((Event.current.type == EventType.DragUpdated
+                    || Event.current.type == EventType.DragExited)
+                && IndependentBundleAndAtlasrect.Contains(Event.current.mousePosition))
+            {
+                //改变鼠标的外表
+                DragAndDrop.visualMode = DragAndDropVisualMode.Generic;
+                if (DragAndDrop.paths != null && DragAndDrop.paths.Length > 0)
+                {
+                    this.IndependentBundleAndAtlas.Add(DragAndDrop.paths[0]);
+                }
+            }
+
+            #endregion
+
+            #region BundleAndAtlasWithoutShareProperty
+
+            //第二个参数必须为true，否则无法显示子节点即List内容
+            EditorGUILayout.PropertyField(this.BundleAndAtlasWithoutShareProperty, true);
+            EditorGUILayout.LabelField("把不需要分析依赖的目录文件夹（每个prefab都单独打包）拖到此处：");
+            //获得一个长300的框
+            this.BundleAndAtlasWithoutSharerect = EditorGUILayout.GetControlRect(GUILayout.Width(300));
+            //将上面的框作为文本输入框
+            this.BundleAndAtlasWithoutSharepath = EditorGUI.TextField(BundleAndAtlasWithoutSharerect, BundleAndAtlasWithoutSharepath);
+
+            //如果鼠标正在拖拽中或拖拽结束时，并且鼠标所在位置在文本输入框内
+            if ((Event.current.type == EventType.DragUpdated
+                    || Event.current.type == EventType.DragExited)
+                && BundleAndAtlasWithoutSharerect.Contains(Event.current.mousePosition))
+            {
+                //改变鼠标的外表
+                DragAndDrop.visualMode = DragAndDropVisualMode.Generic;
+                if (DragAndDrop.paths != null && DragAndDrop.paths.Length > 0)
+                {
+                    this.BundleAndAtlasWithoutShare.Add(DragAndDrop.paths[0]);
+                }
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                //提交修改
+                _serializedObject.ApplyModifiedProperties();
+            }
+
+            if (GUILayout.Button("整理所有数组，并将数组和版本号写入文件供下次使用"))
+            {
+                SortOutList(this.IndependentBundleAndAtlas);
+                SortOutList(this.BundleAndAtlasWithoutShare);
+                this.m_BuildData.VersionInfo = this.currentVersion;
+                this.m_BuildData.IndependentBundleAndAtlas = this.IndependentBundleAndAtlas;
+                this.m_BuildData.BundleAndAtlasWithoutShare = this.BundleAndAtlasWithoutShare;
+                using (FileStream fileStream = new FileStream("Assets/Res/EditorSaver/List.txt", FileMode.Create))
+                {
+                    byte[] bytes = JsonHelper.ToJson(this.m_BuildData).ToByteArray();
+                    fileStream.Write(bytes, 0, bytes.Length);
+                }
+            }
+
+            if (GUILayout.Button("一键配置AB包标签"))
+            {
+                ClearPackingTagAndAssetBundle();
+
+                foreach (var VARIABLE in this.IndependentBundleAndAtlas)
+                {
+                    SetIndependentBundleAndAtlas(VARIABLE);
+                }
+
+                foreach (var VARIABLE in this.BundleAndAtlasWithoutShare)
+                {
+                    SetBundleAndAtlasWithoutShare(VARIABLE);
+                }
+
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+            }
+
+            #endregion BundleAndAtlasWithoutShareProperty
+        }
+
+        /// <summary>
+        /// 整理数组，排序，去重，去空
+        /// </summary>
+        /// <param name="listToBeSortOut"></param>
+        private void SortOutList(List<string> listToBeSortOut)
+        {
+            listToBeSortOut.Sort();
+            for (int i = listToBeSortOut.Count - 1; i >= 0; i--)
+            {
+                if (listToBeSortOut[i] == null) continue;
+
+                if (listToBeSortOut[i] == "")
+                {
+                    listToBeSortOut.Remove(listToBeSortOut[i]);
+                    continue;
+                }
+
+                if (i - 1 >= 0 && listToBeSortOut[i] == listToBeSortOut[i - 1])
+                {
+                    listToBeSortOut.Remove(listToBeSortOut[i]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 初始化AB工具配置
+        /// </summary>
+        private void InitABEditorConfig()
+        {
+            m_BuildData = new BuildData();
+            //使用当前类初始化
+            _serializedObject = new SerializedObject(this);
+            //获取当前类中可序列化的属性
+            this.IndependentBundleAndAtlasProperty = _serializedObject.FindProperty("IndependentBundleAndAtlas");
+            this.BundleAndAtlasWithoutShareProperty = _serializedObject.FindProperty("BundleAndAtlasWithoutShare");
+
+            if (!Directory.Exists("Assets/Res/EditorSaver/"))
+            {
+                Directory.CreateDirectory("Assets/Res/EditorSaver/");
+            }
+
+            if (!File.Exists("Assets/Res/EditorSaver/List.txt"))
+            {
+                using (FileStream fileStream = new FileStream("Assets/Res/EditorSaver/List.txt", FileMode.Create))
+                {
+                    byte[] bytes = JsonHelper.ToJson(new BuildData()).ToByteArray();
+                    fileStream.Write(bytes, 0, bytes.Length);
+                }
+            }
+
+            BuildData buildData = JsonHelper.FromJson<BuildData>(File.ReadAllText("Assets/Res/EditorSaver/List.txt"));
+            this.lastVersion = buildData.VersionInfo;
+            this.IndependentBundleAndAtlas = buildData.IndependentBundleAndAtlas;
+            this.BundleAndAtlasWithoutShare = buildData.BundleAndAtlasWithoutShare;
+        }
+    }
 }

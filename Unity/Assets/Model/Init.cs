@@ -6,8 +6,11 @@ namespace ETModel
 {
 	public class Init : MonoBehaviour
 	{
+		public bool isEditorMode = false;
+	
 		private void Start()
 		{
+			Define.ResModeIsEditor = this.isEditorMode;
 			this.StartAsync().Coroutine();
 		}
 		
