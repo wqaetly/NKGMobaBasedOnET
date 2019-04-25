@@ -94,8 +94,9 @@ namespace ETEditor
         private static void GenerateVersionInfo(string loaclWebResBuildFolder, string projectResBuildFolder, int version,bool isContainAB)
         {
             //创建版本信息类，并将版本号与资源总大小赋值
-            VersionConfig versionProto = new VersionConfig(version, 0);
-
+            VersionConfig versionProto = new VersionConfig();
+            versionProto.Version = version;
+            versionProto.TotalSize = 0;
             //如果不将AB打入EXE文件，则需要额外生成一个Version.txt文件
             if (!isContainAB)
             {

@@ -16,11 +16,6 @@ namespace ETModel
 		
 		public long TotalSize;
 
-		public VersionConfig(int version,long totalSize)
-		{
-			this.Version = version;
-			this.TotalSize = totalSize;
-		}
 		
 		[BsonIgnore]
 		public Dictionary<string, FileVersionInfo> FileInfoDict = new Dictionary<string, FileVersionInfo>();
