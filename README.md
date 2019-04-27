@@ -1,4 +1,4 @@
-# BattleCityBasedOnET
+# NKGNMobaBasedOnET
 
 #### 介绍
 基于ET框架的Moba游戏，本着学习的原则，所以本仓库可能会为了添加元素而添加元素，见谅。
