@@ -65,7 +65,7 @@ namespace ETEditor
             BuildPipeline.BuildAssetBundles(fold, buildAssetBundleOptions, buildTarget);
 
             Log.Info("生成版本信息");
-            GenerateVersionInfo(fold, ProjectResBuildFolder, version,isContainAB);
+            GenerateVersionInfo(fold, ProjectResBuildFolder, version, isContainAB);
 
             Log.Info("完成资源打包");
 
@@ -91,7 +91,7 @@ namespace ETEditor
         /// <param name="loaclWebResBuildFolder">本地资源服务器测试文件打包路径</param>
         /// <param name="projectResBuildFolder">工程测试文件打包路径</param>
         /// <param name="version">版本号</param>
-        private static void GenerateVersionInfo(string loaclWebResBuildFolder, string projectResBuildFolder, int version,bool isContainAB)
+        public static void GenerateVersionInfo(string loaclWebResBuildFolder, string projectResBuildFolder, int version, bool isContainAB)
         {
             //创建版本信息类，并将版本号与资源总大小赋值
             VersionConfig versionProto = new VersionConfig();
@@ -107,8 +107,6 @@ namespace ETEditor
                 }
             }
 
-            
-            
             GenerateVersionProto(loaclWebResBuildFolder, versionProto, "");
 
             versionProto.EndInit();

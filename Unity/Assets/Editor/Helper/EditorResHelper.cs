@@ -15,7 +15,7 @@ namespace ETModel
         {
             List<string> paths = new List<string>();
             FileHelper.GetAllFiles(paths, srcPath);
-            
+
             List<string> files = new List<string>();
             foreach (string str in paths)
             {
@@ -24,9 +24,10 @@ namespace ETModel
                     files.Add(str);
                 }
             }
+
             return files;
         }
-        
+
         /// <summary>
         /// 获取文件夹内所有资源路径
         /// </summary>
@@ -43,8 +44,10 @@ namespace ETModel
                 {
                     continue;
                 }
+
                 paths.Add(str);
             }
+
             if (subDire)
             {
                 foreach (string subPath in Directory.GetDirectories(srcPath))
@@ -52,6 +55,27 @@ namespace ETModel
                     List<string> subFiles = GetAllResourcePath(subPath, true);
                     paths.AddRange(subFiles);
                 }
+            }
+
+            return paths;
+        }
+
+        /// <summary>
+        /// 获取文件夹内FUI资源
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetFUIResourcePath()
+        {
+            List<string> paths = new List<string>();
+            string[] files = Directory.GetFiles("Assets/Bundles/FUI");
+            foreach (string str in files)
+            {
+                if (str.EndsWith(".meta"))
+                {
+                    continue;
+                }
+
+                paths.Add(str);
             }
             return paths;
         }

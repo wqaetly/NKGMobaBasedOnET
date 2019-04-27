@@ -38,6 +38,8 @@ namespace ETEditor
         string BundleAndAtlasWithoutSharepath;
         Rect BundleAndAtlasWithoutSharerect;
 
+        List<string> FUIRes = new List<string>();
+
         private Vector2 scoller;
 
         [SerializeField]
@@ -198,6 +200,7 @@ namespace ETEditor
         private static void SetIndependentBundleAndAtlas(string dir)
         {
             List<string> paths = EditorResHelper.GetPrefabsAndScenes(dir);
+
             foreach (string path in paths)
             {
                 string path1 = path.Replace('\\', '/');
@@ -541,6 +544,8 @@ namespace ETEditor
                 _serializedObject.ApplyModifiedProperties();
             }
 
+            #endregion BundleAndAtlasWithoutShareProperty
+
             if (GUILayout.Button("整理所有数组，并将数组和版本号写入文件供下次使用"))
             {
                 SortOutList(this.IndependentBundleAndAtlas);
@@ -555,25 +560,58 @@ namespace ETEditor
                 }
             }
 
-            if (GUILayout.Button("一键配置AB包标签"))
+            if (GUILayout.Button("一键配置AB包标签（自动清空所有标签,自动配置FUI包标签）"))
             {
                 ClearPackingTagAndAssetBundle();
 
                 foreach (var VARIABLE in this.IndependentBundleAndAtlas)
                 {
+                    //自动过滤FUI
+                    if (VARIABLE.EndsWith("FUI")) continue;
                     SetIndependentBundleAndAtlas(VARIABLE);
                 }
 
                 foreach (var VARIABLE in this.BundleAndAtlasWithoutShare)
                 {
+                    if (VARIABLE.EndsWith("FUI")) continue;
                     SetBundleAndAtlasWithoutShare(VARIABLE);
+                }
+
+                this.FUIRes = EditorResHelper.GetFUIResourcePath();
+
+                foreach (var VARIABLE in this.FUIRes)
+                {
+                    Object go = AssetDatabase.LoadAssetAtPath<Object>(VARIABLE);
+                    if (VARIABLE.EndsWith("png"))
+                    {
+                        SetBundle(VARIABLE, go.name.Split('_')[0]);
+                        continue;
+                    }
+
+                    SetBundle(VARIABLE, go.name);
                 }
 
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
             }
 
-            #endregion BundleAndAtlasWithoutShareProperty
+            if (GUILayout.Button("清空StreamingAssets目录，并且生成Version.txt文件"))
+            {
+                FileHelper.CleanDirectory("Assets/StreamingAssets");
+                //创建版本信息类，并将版本号与资源总大小赋值
+                VersionConfig versionProto = new VersionConfig();
+                versionProto.Version = 0;
+                versionProto.TotalSize = 0;
+                //如果不将AB打入EXE文件，则需要额外生成一个Version.txt文件
+                if (!isContainAB)
+                {
+                    using (FileStream fileStream = new FileStream("Assets/StreamingAssets/Version.txt", FileMode.Create))
+                    {
+                        byte[] bytes = JsonHelper.ToJson(versionProto).ToByteArray();
+                        fileStream.Write(bytes, 0, bytes.Length);
+                    }
+                }
+            }
         }
 
         /// <summary>
