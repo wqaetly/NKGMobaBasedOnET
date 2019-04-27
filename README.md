@@ -5,7 +5,8 @@
 
 #### 已实现功能列表
 
-开发中
+- 整合FairyGUI，目前已经实现Model层和Hotfix层UI热更
+- 丰富AB编辑器接口，专门为FairyGUI增加了AB标签工具
 
 #### 开发计划
 
