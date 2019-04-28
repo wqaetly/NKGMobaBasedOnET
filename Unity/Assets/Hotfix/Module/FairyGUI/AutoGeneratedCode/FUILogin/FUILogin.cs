@@ -36,6 +36,7 @@ namespace ETHotfix.FUILogin
 		public GTextInput accountText;
 		public GTextInput passwordText;
 		public GGroup n16;
+		public Transition t0;
 
 		private static GObject CreateGObject()
         {
@@ -118,6 +119,7 @@ namespace ETHotfix.FUILogin
 				accountText = (GTextInput)com.GetChild("accountText");
 				passwordText = (GTextInput)com.GetChild("passwordText");
 				n16 = (GGroup)com.GetChild("n16");
+				t0 = com.GetTransition("t0");
 			}
 		}
 		
@@ -144,6 +146,7 @@ namespace ETHotfix.FUILogin
 			accountText = null;
 			passwordText = null;
 			n16 = null;
+			t0 = null;
 		}
 	}
 }

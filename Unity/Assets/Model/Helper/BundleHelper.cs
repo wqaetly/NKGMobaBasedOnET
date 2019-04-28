@@ -13,6 +13,7 @@ namespace ETModel
 			{
 				try
 				{
+					TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
 					using (BundleDownloaderComponent bundleDownloaderComponent = Game.Scene.AddComponent<BundleDownloaderComponent>())
 					{
 						Game.EventSystem.Run(EventIdType.CheckForUpdateBegin);
@@ -22,6 +23,7 @@ namespace ETModel
 						await bundleDownloaderComponent.DownloadAsync();
 					}
 
+					await timerComponent.WaitAsync(1000);
 					Game.EventSystem.Run(EventIdType.CheckForUpdateFinish);
 
 					Game.Scene.GetComponent<ResourcesComponent>().LoadOneBundle("StreamingAssets");

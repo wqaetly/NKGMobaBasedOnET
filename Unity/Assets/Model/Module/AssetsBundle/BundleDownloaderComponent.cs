@@ -29,9 +29,10 @@ namespace ETModel
 
         public long HasCheckResCount;
 
-        public bool CheckResBegin = false;
-        
         public bool CheckResCompleted = false;
+
+
+        public int CheckUpdateResProgress = 0;
 
         public HashSet<string> downloadedBundles;
 
@@ -50,6 +51,7 @@ namespace ETModel
                     versionUrl = GlobalConfigComponent.Instance.GlobalProto.GetUrl() + "StreamingAssets/" + "Version.txt";
                     //Log.Debug(versionUrl);
                     await webRequestAsync.DownloadAsync(versionUrl);
+
                     remoteVersionConfig = JsonHelper.FromJson<VersionConfig>(webRequestAsync.Request.downloadHandler.text);
                     //Log.Debug(JsonHelper.ToJson(this.VersionConfig));
                 }
@@ -59,6 +61,8 @@ namespace ETModel
                 throw new Exception($"url: {versionUrl}", e);
             }
 
+            CheckUpdateResProgress = 20;
+
             // 获取streaming目录的Version.txt
             VersionConfig streamingVersionConfig;
             string versionPath = Path.Combine(PathHelper.AppResPath4Web, "Version.txt");
@@ -67,6 +71,8 @@ namespace ETModel
                 await request.DownloadAsync(versionPath);
                 streamingVersionConfig = JsonHelper.FromJson<VersionConfig>(request.Request.downloadHandler.text);
             }
+
+            CheckUpdateResProgress = 40;
 
             // 删掉远程不存在的文件
             DirectoryInfo directoryInfo = new DirectoryInfo(PathHelper.AppHotfixResPath);
@@ -94,16 +100,16 @@ namespace ETModel
                 directoryInfo.Create();
             }
 
-            // 开始对比文件
-            this.CheckResBegin = true;
+            CheckUpdateResProgress = 60;
+
             // 对比MD5
             foreach (FileVersionInfo fileVersionInfo in remoteVersionConfig.FileInfoDict.Values)
             {
                 // 对比md5
                 string localFileMD5 = BundleHelper.GetBundleMD5(streamingVersionConfig, fileVersionInfo.File);
-                
+
                 this.HasCheckResCount++;
-                
+
                 if (fileVersionInfo.MD5 == localFileMD5)
                 {
                     continue;
@@ -114,15 +120,9 @@ namespace ETModel
             }
 
             this.CheckResCompleted = true;
+            CheckUpdateResProgress = 100;
         }
 
-        public int CheckUpdateResProgress
-        {
-            get
-            {
-                return (int) (this.HasCheckResCount * 100f / this.remoteVersionConfig.FileInfoDict.Count);
-            }
-        }
 
         public int UpdateResProgress
         {

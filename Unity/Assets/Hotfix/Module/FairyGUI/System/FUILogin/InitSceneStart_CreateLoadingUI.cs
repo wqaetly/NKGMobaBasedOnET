@@ -1,10 +1,10 @@
-﻿using ETModel;
+using ETModel;
 
 namespace ETHotfix
 {
     [Event(EventIdType.InitSceneStart)]
-	public class InitSceneStart_CreateLoadingUI : AEvent
-	{
+    public class InitSceneStart_CreateLoadingUI : AEvent
+    {
         public override void Run()
         {
             var hotfixui = FUILogin.FUILogin.CreateInstance();

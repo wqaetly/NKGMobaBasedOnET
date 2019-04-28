@@ -87,6 +87,7 @@ namespace ETModel
 			this.tcs = new ETTaskCompletionSource();
 			
 			url = url.Replace(" ", "%20");
+
 			this.Request = UnityWebRequest.Get(url);
 			this.Request.SendWebRequest();
 			
