@@ -31,7 +31,6 @@ namespace ETModel
 
         public bool CheckResCompleted = false;
 
-
         public int CheckUpdateResProgress = 0;
 
         public HashSet<string> downloadedBundles;
@@ -42,6 +41,7 @@ namespace ETModel
 
         public async ETTask StartAsync()
         {
+            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
             // 获取远程的Version.txt
             string versionUrl = "";
             try
@@ -74,7 +74,7 @@ namespace ETModel
 
             CheckUpdateResProgress = 40;
 
-            // 删掉远程不存在的文件
+            // 对比删掉远程不存在的文件
             DirectoryInfo directoryInfo = new DirectoryInfo(PathHelper.AppHotfixResPath);
 
             if (directoryInfo.Exists)
@@ -119,10 +119,12 @@ namespace ETModel
                 this.TotalSize += fileVersionInfo.Size;
             }
 
-            this.CheckResCompleted = true;
             CheckUpdateResProgress = 100;
-        }
 
+            await timerComponent.WaitAsync(1000);
+
+            this.CheckResCompleted = true;
+        }
 
         public int UpdateResProgress
         {
@@ -156,6 +158,8 @@ namespace ETModel
                 return;
             }
 
+            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
+            
             try
             {
                 while (true)
@@ -197,6 +201,8 @@ namespace ETModel
                     this.downloadingBundle = "";
                     this.webRequest = null;
                 }
+
+                await timerComponent.WaitAsync(1000);
             }
             catch (Exception e)
             {

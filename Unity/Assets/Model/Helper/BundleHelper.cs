@@ -13,17 +13,15 @@ namespace ETModel
 			{
 				try
 				{
-					TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
 					using (BundleDownloaderComponent bundleDownloaderComponent = Game.Scene.AddComponent<BundleDownloaderComponent>())
 					{
 						Game.EventSystem.Run(EventIdType.CheckForUpdateBegin);
 
 						await bundleDownloaderComponent.StartAsync();
-
+						
 						await bundleDownloaderComponent.DownloadAsync();
 					}
-
-					await timerComponent.WaitAsync(1000);
+					
 					Game.EventSystem.Run(EventIdType.CheckForUpdateFinish);
 
 					Game.Scene.GetComponent<ResourcesComponent>().LoadOneBundle("StreamingAssets");
@@ -38,6 +36,12 @@ namespace ETModel
 
 		}
 
+		/// <summary>
+		/// 优先从可读写目录取文件MD5，再从streaming取
+		/// </summary>
+		/// <param name="streamingVersionConfig"></param>
+		/// <param name="bundleName"></param>
+		/// <returns></returns>
 		public static string GetBundleMD5(VersionConfig streamingVersionConfig, string bundleName)
 		{
 			string path = Path.Combine(PathHelper.AppHotfixResPath, bundleName);
