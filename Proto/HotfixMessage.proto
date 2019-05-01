@@ -1,6 +1,7 @@
 syntax = "proto3";
 package ETHotfix;
 
+//登录部分
 message C2R_Login // IRequest
 {
 	int32 RpcId = 90;
@@ -29,6 +30,21 @@ message G2C_LoginGate // IResponse
 	int32 Error = 91;
 	string Message = 92;
 	int64 PlayerId = 1;
+}
+
+//注册部分
+message C2R_Register // IRequest
+{
+	int32 RpcId = 90;
+	string Account = 1;
+	string Password = 2;
+}
+
+message R2C_Register // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
 }
 
 message G2C_TestHotfixMessage // IMessage

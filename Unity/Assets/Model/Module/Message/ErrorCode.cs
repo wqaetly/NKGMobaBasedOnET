@@ -38,7 +38,15 @@ namespace ETModel
 		
 		public const int ERR_NotFoundActor = 200002;
 		
+		//用户账号密码对不上
 		public const int ERR_AccountOrPasswordError = 200102;
+		
+		// 用户已存在
+		public const int ERR_AccountAlreadyRegister = 210001;
+		
+		// 踢下线
+		public const int ERR_LoginError = 210005;
+		
 		//-----------------------------------
 		public static bool IsRpcNeedThrowException(int error)
 		{

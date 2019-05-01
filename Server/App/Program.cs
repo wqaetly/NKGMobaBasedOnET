@@ -101,9 +101,9 @@ namespace App
 						Game.Scene.AddComponent<ActorLocationSenderComponent>();
 						
 						//添加MongoDB组件，处理与服务器的交互
-						//Game.Scene.AddComponent<DBComponent>();
+						Game.Scene.AddComponent<DBComponent>();
 						//添加MongoDB代理组件，代理服务端对数据库的操作
-						//Game.Scene.AddComponent<DBProxyComponent>();
+						Game.Scene.AddComponent<DBProxyComponent>();
 						
 						// location server需要的组件
 						Game.Scene.AddComponent<LocationComponent>();
@@ -138,7 +138,9 @@ namespace App
 						Game.Scene.AddComponent<UnitComponent>();
 
 						Game.Scene.AddComponent<ConsoleComponent>();
-						// Game.Scene.AddComponent<HttpComponent>();
+						
+						//RealmGlobalComponent
+						Game.Scene.AddComponent<OnlineComponent>();
 						break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();

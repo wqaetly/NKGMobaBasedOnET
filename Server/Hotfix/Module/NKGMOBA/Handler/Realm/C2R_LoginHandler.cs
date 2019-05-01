@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
+using ETHotfix.Helper;
 using ETModel;
 
 namespace ETHotfix
@@ -17,13 +19,24 @@ namespace ETHotfix
 			R2C_Login response = new R2C_Login();
 			try
 			{
-				//if (message.Account != "abcdef" || message.Password != "111111")
-				//{
-				//	response.Error = ErrorCode.ERR_AccountOrPasswordError;
-				//	reply(response);
-				//	return;
-				//}
+				//数据库操作对象
+				DBProxyComponent dbProxy = Game.Scene.GetComponent<DBProxyComponent>();
 
+				Log.Info($"登录请求：{{Account:'{message.Account}',Password:'{message.Password}'}}");
+				//验证账号密码是否正确
+				List<ComponentWithId> result = await dbProxy.Query<AccountInfo>(_account => _account.Account == message.Account && _account.Password == message.Password);
+				if (result.Count == 0)
+				{
+					response.Error = ErrorCode.ERR_LoginError;
+					reply(response);
+					return;
+				}
+
+				AccountInfo account = result[0] as AccountInfo;
+
+				//将已在线玩家踢下线
+				await RealmHelper.KickOutPlayer(account.Id);
+				
 				// 随机分配一个Gate
 				StartConfig config = Game.Scene.GetComponent<RealmGateAddressComponent>().GetAddress();
 				//Log.Debug($"gate address: {MongoHelper.ToJson(config)}");

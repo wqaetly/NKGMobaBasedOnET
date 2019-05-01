@@ -69,22 +69,6 @@
             <e p="DBSaveBatchRequestHandler.cs" t="Include" />
             <e p="DBSaveRequestHandler.cs" t="Include" />
           </e>
-          <e p="Demo" t="Include">
-            <e p="Actor_TransferHandler.cs" t="Include" />
-            <e p="C2G_EnterMapHandler.cs" t="Include" />
-            <e p="C2G_LoginGateHandler.cs" t="Include" />
-            <e p="C2M_TestActorRequestHandler.cs" t="Include" />
-            <e p="C2R_LoginHandler.cs" t="Include" />
-            <e p="Frame_ClickMapHandler.cs" t="Include" />
-            <e p="G2M_CreateUnitHandler.cs" t="Include" />
-            <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
-            <e p="M2M_TrasferUnitRequest.cs" t="Include" />
-            <e p="MessageHelper.cs" t="Include" />
-            <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
-            <e p="RealmGateAddressComponentSystem.cs" t="Include" />
-            <e p="SessionPlayerComponentSystem.cs" t="Include" />
-            <e p="UnitPathComponentSystem.cs" t="Include" />
-          </e>
           <e p="Http" t="Include">
             <e p="HttpTest.cs" t="Include" />
           </e>
@@ -93,6 +77,35 @@
             <e p="MessageDispatherComponentSystem.cs" t="Include" />
             <e p="NetInnerComponentSystem.cs" t="Include" />
             <e p="OuterMessageDispatcher.cs" t="Include" />
+          </e>
+          <e p="NKGMOBA" t="Include">
+            <e p="Actor_TransferHandler.cs" t="Include" />
+            <e p="C2G_EnterMapHandler.cs" t="Include" />
+            <e p="C2G_LoginGateHandler.cs" t="Include" />
+            <e p="C2M_TestActorRequestHandler.cs" t="Include" />
+            <e p="Frame_ClickMapHandler.cs" t="Include" />
+            <e p="G2M_CreateUnitHandler.cs" t="Include" />
+            <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
+            <e p="Handler" t="Include">
+              <e p="Gate" t="Include">
+                <e p="R2G_PlayerKickOut_Handler.cs" t="Include" />
+              </e>
+              <e p="Map" t="Include" />
+              <e p="Match" t="Include" />
+              <e p="Realm" t="Include">
+                <e p="C2R_LoginHandler.cs" t="Include" />
+                <e p="C2R_RegisterHandler.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Helper" t="Include">
+              <e p="RealmHelper.cs" t="Include" />
+            </e>
+            <e p="M2M_TrasferUnitRequest.cs" t="Include" />
+            <e p="MessageHelper.cs" t="Include" />
+            <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
+            <e p="RealmGateAddressComponentSystem.cs" t="Include" />
+            <e p="SessionPlayerComponentSystem.cs" t="Include" />
+            <e p="UnitPathComponentSystem.cs" t="Include" />
           </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -190,22 +203,6 @@
             <e p="DBTask.cs" t="Include" />
             <e p="DBTaskQueue.cs" t="Include" />
           </e>
-          <e p="Demo" t="Include">
-            <e p="Config" t="Include">
-              <e p="UnitConfig.cs" t="Include" />
-            </e>
-            <e p="GateSessionKeyComponent.cs" t="Include" />
-            <e p="MoveComponent.cs" t="Include" />
-            <e p="Player.cs" t="Include" />
-            <e p="PlayerComponent.cs" t="Include" />
-            <e p="RealmGateAddressComponent.cs" t="Include" />
-            <e p="SessionInfoComponent.cs" t="Include" />
-            <e p="SessionPlayerComponent.cs" t="Include" />
-            <e p="Unit.cs" t="Include" />
-            <e p="UnitComponent.cs" t="Include" />
-            <e p="UnitGateComponent.cs" t="Include" />
-            <e p="UnitPathComponent.cs" t="Include" />
-          </e>
           <e p="Http" t="Include">
             <e p="Http.cs" t="Include" />
             <e p="HttpComponent.cs" t="Include" />
@@ -228,6 +225,37 @@
               <e p="TCP" t="Include" />
               <e p="WebSocket" t="Include" />
             </e>
+          </e>
+          <e p="NKGMOBA" t="Include">
+            <e p="Component" t="Include">
+              <e p="Gate" t="Include">
+                <e p="UserComponent.cs" t="Include" />
+              </e>
+              <e p="OnlineComponent.cs" t="Include" />
+            </e>
+            <e p="Config" t="Include">
+              <e p="UnitConfig.cs" t="Include" />
+            </e>
+            <e p="Entity" t="Include">
+              <e p="DB" t="Include">
+                <e p="AccountInfo.cs" t="Include" />
+                <e p="UserInfo.cs" t="Include" />
+              </e>
+              <e p="Gate" t="Include">
+                <e p="User.cs" t="Include" />
+              </e>
+            </e>
+            <e p="GateSessionKeyComponent.cs" t="Include" />
+            <e p="MoveComponent.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="PlayerComponent.cs" t="Include" />
+            <e p="RealmGateAddressComponent.cs" t="Include" />
+            <e p="SessionInfoComponent.cs" t="Include" />
+            <e p="SessionPlayerComponent.cs" t="Include" />
+            <e p="Unit.cs" t="Include" />
+            <e p="UnitComponent.cs" t="Include" />
+            <e p="UnitGateComponent.cs" t="Include" />
+            <e p="UnitPathComponent.cs" t="Include" />
           </e>
           <e p="Numeric" t="Include" />
           <e p="Pathfinding" t="Include">

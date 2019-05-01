@@ -378,4 +378,24 @@ namespace ETModel
 
 	}
 
+	[Message(InnerOpcode.R2G_PlayerKickOut)]
+	public partial class R2G_PlayerKickOut: IRequest
+	{
+		public int RpcId { get; set; }
+
+		public long UserID { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2R_PlayerKickOut)]
+	public partial class G2R_PlayerKickOut: IResponse
+	{
+		public int RpcId { get; set; }
+
+		public int Error { get; set; }
+
+		public string Message { get; set; }
+
+	}
+
 }
