@@ -12,8 +12,8 @@ namespace ETModel
         public override void Awake(FUICheckForResUpdateComponent self)
         {
             self.FUICheackForResUpdate =
-                    (FUICheckForResUpdate.FUICheckForResUpdate) Game.Scene.GetComponent<FUIComponent>().Get("CheckForResUpdate").GObject;
-            self.FUICheackForResUpdate.m_bar.value = 0;
+                    (FUICheckForResUpdate.UI_FUICheckForResUpdate) Game.Scene.GetComponent<FUIComponent>().Get("CheckForResUpdate").GObject;
+            self.FUICheackForResUpdate.m_processbar.value = 0;
         }
     }
 }

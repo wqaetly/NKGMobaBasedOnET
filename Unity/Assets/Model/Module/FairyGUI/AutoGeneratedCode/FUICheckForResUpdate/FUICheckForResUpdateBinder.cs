@@ -8,8 +8,8 @@ namespace ETModel.FUICheckForResUpdate
 	{
 		public static void BindAll()
 		{
-			UIObjectFactory.SetPackageItemExtension(CheckForResUpdateBar.URL, typeof(CheckForResUpdateBar));
-			UIObjectFactory.SetPackageItemExtension(FUICheckForResUpdate.URL, typeof(FUICheckForResUpdate));
+			UIObjectFactory.SetPackageItemExtension(UI_FUICheckForResUpdate.URL, typeof(UI_FUICheckForResUpdate));
+			UIObjectFactory.SetPackageItemExtension(UI_CheckForResUpdateBar.URL, typeof(UI_CheckForResUpdateBar));
 		}
 	}
 }

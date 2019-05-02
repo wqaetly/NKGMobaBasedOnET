@@ -13,7 +13,7 @@ namespace ETModel
         public static async ETTask<FUI> Create()
         {
             await ETTask.CompletedTask;
-            FUI fui = ComponentFactory.Create<FUI,GObject>(FUICheckForResUpdate.FUICheckForResUpdate.CreateInstance());
+            FUI fui = ComponentFactory.Create<FUI, GObject>(FUICheckForResUpdate.UI_FUICheckForResUpdate.CreateInstance());
             fui.Name = "CheckForResUpdate";
             fui.MakeFullScreen();
             Log.Info(fui.Name);

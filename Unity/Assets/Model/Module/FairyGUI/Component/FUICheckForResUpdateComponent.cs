@@ -8,6 +8,6 @@ namespace ETModel
 {
     public class FUICheckForResUpdateComponent: Component
     {
-        public FUICheckForResUpdate.FUICheckForResUpdate FUICheackForResUpdate;
+        public FUICheckForResUpdate.UI_FUICheckForResUpdate FUICheackForResUpdate;
     }
 }

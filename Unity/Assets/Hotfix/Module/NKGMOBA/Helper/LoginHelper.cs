@@ -75,8 +75,10 @@ namespace ETHotfix
             {
                 //设置登录处理完成状态
                 isLogining = false;
-                ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).loginBtn.GObject.asButton.visible =
-                        true;
+                if (((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)) != null)
+                    ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).loginBtn.GObject.asButton
+                            .visible =
+                            true;
             }
         }
     }
