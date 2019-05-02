@@ -20,4 +20,6 @@
 #### 开发进度展示
 
 
-![输入图片说明](https://gitee.com/uploads/images/2019/0502/173207_17e8e767_2253805.png "在这里输入图片标题")
+![输入图片说明](https://gitee.com/uploads/images/2019/0502/173207_17e8e767_2253805.png "资源更新界面")
+![输入图片说明](https://gitee.com/uploads/images/2019/0502/173246_f83a8591_2253805.png "登录注册界面")
+![输入图片说明](https://gitee.com/uploads/images/2019/0502/173252_7dbcd604_2253805.png "游戏大厅界面")
