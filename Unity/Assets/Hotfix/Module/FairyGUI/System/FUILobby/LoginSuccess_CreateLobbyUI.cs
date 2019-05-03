@@ -14,14 +14,14 @@ namespace ETHotfix
     [Event(EventIdType.LoginFinish)]
     public class LoginSuccess_CreateLobbyUI: AEvent
     {
-        public override async void Run()
+        public override void Run()
         {
-            await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUILobby.FUILobby.UIPackageName);
             var hotfixui = FUILobby.FUILobby.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = FUILobby.FUILobby.UIResName;
             hotfixui.MakeFullScreen();
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
+            Log.Info("大厅UI出现");
         }
     }
 }

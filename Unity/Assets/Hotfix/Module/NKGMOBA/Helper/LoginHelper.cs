@@ -61,7 +61,11 @@ namespace ETHotfix
                 PlayerComponent playerComponent = ETModel.Game.Scene.GetComponent<PlayerComponent>();
                 playerComponent.MyPlayer = player;
 
+                ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
+                
                 Game.EventSystem.Run(EventIdType.LoginFinish);
+                
+                ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
 
                 // 测试消息有成员是class类型
                 G2C_PlayerInfo g2CPlayerInfo = (G2C_PlayerInfo) await SessionComponent.Instance.Session.Call(new C2G_PlayerInfo());

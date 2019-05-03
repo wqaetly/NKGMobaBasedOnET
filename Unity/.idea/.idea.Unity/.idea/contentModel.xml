@@ -744,9 +744,14 @@
                   <e p="UI_CheckForResUpdateBar.cs" t="Include" />
                   <e p="UI_FUICheckForResUpdate.cs" t="Include" />
                 </e>
+                <e p="FUILoading" t="Include">
+                  <e p="FUILoadingBinder.cs" t="Include" />
+                  <e p="UI_FUILoading.cs" t="Include" />
+                </e>
               </e>
               <e p="Component" t="Include">
                 <e p="FUICheckForResUpdateComponent.cs" t="Include" />
+                <e p="FUILoadingComponent.cs" t="Include" />
               </e>
               <e p="Core" t="Include">
                 <e p="FUI.cs" t="Include" />
@@ -758,11 +763,20 @@
                 <e p="GWindow.cs" t="Include" />
               </e>
               <e p="system" t="Include">
-                <e p="CheckForUpdateBeginEvent_CreateCheckForUpdateUI.cs" t="Include" />
-                <e p="CheckForUpdateFinishEvent_RemoveCheckForUpdateUI.cs" t="Include" />
-                <e p="FUICheckForResUpdateComponentAwakeSystem.cs" t="Include" />
-                <e p="FUICheckForResUpdateComponentStartSystem.cs" t="Include" />
-                <e p="FUICheckForResUpdateFactory.cs" t="Include" />
+                <e p="FUICheckForResUpdate" t="Include">
+                  <e p="CheckForUpdateBeginEvent_CreateCheckForUpdateUI.cs" t="Include" />
+                  <e p="CheckForUpdateFinishEvent_RemoveCheckForUpdateUI.cs" t="Include" />
+                  <e p="FUICheckForResUpdateComponentAwakeSystem.cs" t="Include" />
+                  <e p="FUICheckForResUpdateComponentStartSystem.cs" t="Include" />
+                  <e p="FUICheckForResUpdateFactory.cs" t="Include" />
+                </e>
+                <e p="FUILoading" t="Include">
+                  <e p="CreateLoadingEvent_CreateLoadingUI.cs" t="Include" />
+                  <e p="FUILoadingComponentAwakeSystem.cs" t="Include" />
+                  <e p="FUILoadingFactory.cs" t="Include" />
+                  <e p="RequireCloseLoadingUI_CloseLoadingUI.cs" t="Include" />
+                  <e p="RequireLoadingUIEvent_ShowLoadingUI.cs" t="Include" />
+                </e>
               </e>
             </e>
             <e p="Filter" t="Include">

@@ -37,13 +37,11 @@ namespace ETModel
             packages.Add(type, uiPackage);
         }
 
-        public async Task AddPackageAsync(string type)
+        public async ETTask AddPackageAsync(string type)
         {
             UIPackage uiPackage;
             if (Define.IsEditorMode)
             {
-                await Task.CompletedTask;
-
                 uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
             }
             else
@@ -82,8 +80,8 @@ namespace ETModel
             {
                 string uiBundleDesName = $"{type}_fui".StringToAB();
                 string uiBundleResName = type.StringToAB();
-                ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(uiBundleDesName);
-                ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(uiBundleResName);
+                Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(uiBundleDesName);
+                Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(uiBundleResName);
             }
         }
     }

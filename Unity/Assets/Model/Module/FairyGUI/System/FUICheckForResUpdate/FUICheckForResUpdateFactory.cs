@@ -10,13 +10,11 @@ namespace ETModel
 {
     public static class FUICheckForResUpdateFactory
     {
-        public static async ETTask<FUI> Create()
+        public static FUI Create()
         {
-            await ETTask.CompletedTask;
             FUI fui = ComponentFactory.Create<FUI, GObject>(FUICheckForResUpdate.UI_FUICheckForResUpdate.CreateInstance());
-            fui.Name = "CheckForResUpdate";
+            fui.Name = "FUICheckForResUpdate";
             fui.MakeFullScreen();
-            Log.Info(fui.Name);
             return fui;
         }
     }

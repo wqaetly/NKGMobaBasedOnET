@@ -6,5 +6,6 @@
         public const string LoginFinish = "LoginFinish";
         public const string EnterMapFinish = "EnterMapFinish";
         public const string ShowLoginInfo = "ShowLoginInfo";
+        public const string ShowLoadingProcess = "ShowLoadingPorcess";
     }
 }

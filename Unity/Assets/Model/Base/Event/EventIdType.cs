@@ -18,9 +18,15 @@
 		public const string MessageDeserializeFinish = "MessageDeserializeFinish";
 		public const string SceneChange = "SceneChange";
 		public const string FrameUpdate = "FrameUpdate";
-		public const string CheckForUpdateBegin = "CheckForUpdateBegin";
-		public const string CheckForUpdateFinish = "CheckForUpdateFinish";
+
 		public const string TestHotfixSubscribMonoEvent = "TestHotfixSubscribMonoEvent";
 		public const string MaxModelEvent = "MaxModelEvent";
+		
+		public const string CheckForUpdateBegin = "CheckForUpdateBegin";
+		public const string CheckForUpdateFinish = "CheckForUpdateFinish";
+		
+		public const string ShowLoadingUI = "ShowLoadingUI";
+		public const string CloseLoadingUI = "CloseLoadingUI";
+		public const string CreateLoadingUI = "CreateLoadingUI";
 	}
 }
