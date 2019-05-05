@@ -5,6 +5,7 @@
         public const string InitSceneStart = "InitSceneStart";
         public const string LoginFinish = "LoginFinish";
         public const string EnterMapFinish = "EnterMapFinish";
+        public const string ShowLoginUI = "ShowLoginUI";
         public const string ShowLoginInfo = "ShowLoginInfo";
         public const string ShowLoadingProcess = "ShowLoadingPorcess";
     }

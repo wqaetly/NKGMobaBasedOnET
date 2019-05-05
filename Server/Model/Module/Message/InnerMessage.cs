@@ -378,12 +378,60 @@ namespace ETModel
 
 	}
 
+	[Message(InnerOpcode.G2R_PlayerOnline)]
+	public partial class G2R_PlayerOnline: IRequest
+	{
+		public int RpcId { get; set; }
+
+		public long PlayerId { get; set; }
+
+		public string playerAccount { get; set; }
+
+		public int GateAppID { get; set; }
+
+	}
+
+	[Message(InnerOpcode.R2G_PlayerOnline)]
+	public partial class R2G_PlayerOnline: IResponse
+	{
+		public int RpcId { get; set; }
+
+		public int Error { get; set; }
+
+		public string Message { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2R_PlayerOffline)]
+	public partial class G2R_PlayerOffline: IRequest
+	{
+		public int RpcId { get; set; }
+
+		public long PlayerId { get; set; }
+
+		public string playerAccount { get; set; }
+
+	}
+
+	[Message(InnerOpcode.R2G_PlayerOffline)]
+	public partial class R2G_PlayerOffline: IResponse
+	{
+		public int RpcId { get; set; }
+
+		public int Error { get; set; }
+
+		public string Message { get; set; }
+
+	}
+
 	[Message(InnerOpcode.R2G_PlayerKickOut)]
 	public partial class R2G_PlayerKickOut: IRequest
 	{
 		public int RpcId { get; set; }
 
-		public long UserID { get; set; }
+		public long PlayerId { get; set; }
+
+		public string playerAccount { get; set; }
 
 	}
 

@@ -250,10 +250,40 @@ message G2M_SessionDisconnect // IActorLocationMessage
     int64 ActorId = 94;
 }
 
+message G2R_PlayerOnline // IRequest
+{
+    int32 RpcId = 90;
+    long PlayerId = 1;
+    string playerAccount = 3;
+    int GateAppID = 2;
+}
+
+message R2G_PlayerOnline // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message G2R_PlayerOffline // IRequest
+{
+    int32 RpcId = 90;
+    long PlayerId = 1;
+    string playerAccount = 3;
+}
+
+message R2G_PlayerOffline // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
 message R2G_PlayerKickOut // IRequest
 {
     int32 RpcId = 90;
-    long UserID = 1;
+    long PlayerId = 1;
+    string playerAccount = 3;
 }
 
 message G2R_PlayerKickOut // IResponse
@@ -261,5 +291,4 @@ message G2R_PlayerKickOut // IResponse
     int32 RpcId = 90;
     int32 Error = 91;
     string Message = 92;
-
 }

@@ -17,6 +17,7 @@ namespace ETModel
 			base.Dispose();
 
 			this.DisposeCallback?.Invoke(this.GetParent<Session>());
+			Log.Info("有一说一，确实");
 		}
 	}
 }

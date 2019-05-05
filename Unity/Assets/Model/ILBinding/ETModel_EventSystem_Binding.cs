@@ -25,6 +25,9 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{typeof(System.String), typeof(ETModel.IEvent)};
             method = type.GetMethod("RegisterEvent", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, RegisterEvent_0);
+            args = new Type[]{typeof(System.String)};
+            method = type.GetMethod("Run", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, Run_1);
 
 
         }
@@ -49,6 +52,25 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.RegisterEvent(@eventId, @e);
+
+            return __ret;
+        }
+
+        static StackObject* Run_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.String @type = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            ETModel.EventSystem instance_of_this_method = (ETModel.EventSystem)typeof(ETModel.EventSystem).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.Run(@type);
 
             return __ret;
         }

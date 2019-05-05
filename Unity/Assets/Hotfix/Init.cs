@@ -23,7 +23,7 @@ namespace ETHotfix
             {
                 //显示转圈圈（因为后期要加很多界面，所以要等好几秒）
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
-                
+
                 // 注册热更层回调
                 ETModel.Game.Hotfix.Update = () => { Update(); };
                 ETModel.Game.Hotfix.LateUpdate = () => { LateUpdate(); };
@@ -41,14 +41,16 @@ namespace ETHotfix
                 Log.Debug($"config {JsonHelper.ToJson(unitConfig)}");
 
                 Game.Scene.AddComponent<FUIComponent>();
+                // 添加FGUI的栈组件，用于更好的管理UI
+                Game.Scene.AddComponent<FUIStackComponent>();
 
                 await Game.Scene.AddComponent<FUIInitComponent>().Init();
 
-                Game.EventSystem.Run(EventIdType.InitSceneStart);
+                Game.EventSystem.Run(EventIdType.ShowLoginUI);
 
                 //至此，检查更新界面使命正式结束
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CheckForUpdateFinish);
-                
+
                 //关闭转圈圈
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
             }

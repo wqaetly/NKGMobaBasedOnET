@@ -139,7 +139,7 @@ namespace App
 
 						Game.Scene.AddComponent<ConsoleComponent>();
 						
-						//RealmGlobalComponent
+						//RealmGlobalComponent,增加在线组件，记录在线玩家
 						Game.Scene.AddComponent<OnlineComponent>();
 						break;
 					case AppType.Benchmark:
