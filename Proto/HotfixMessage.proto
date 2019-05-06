@@ -88,3 +88,8 @@ message G2C_PlayerInfo // IResponse
     repeated int32 TestRepeatedInt32 = 4;
     repeated int64 TestRepeatedInt64 = 5;
 }
+
+message G2C_PlayerOffline // IMessage
+{
+	int32 m_playerOfflineType = 1;
+}

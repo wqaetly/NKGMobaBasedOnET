@@ -7,23 +7,23 @@ using System.Linq;
 namespace ETHotfix
 {
     [ObjectSystem]
-	public class FUIAwakeSystem : AwakeSystem<FUI, GObject>
-	{
-		public override void Awake(FUI self, GObject gObject)
-		{
-			self.GObject = gObject;
-		}
-	}
-	
-	public class FUI : Entity
-	{
-		public GObject GObject;
+    public class FUIAwakeSystem: AwakeSystem<FUI, GObject>
+    {
+        public override void Awake(FUI self, GObject gObject)
+        {
+            self.GObject = gObject;
+        }
+    }
+
+    public class FUI: Entity
+    {
+        public GObject GObject;
 
         public string Name
         {
             get
             {
-                if(GObject == null)
+                if (GObject == null)
                 {
                     return string.Empty;
                 }
@@ -41,7 +41,7 @@ namespace ETHotfix
                 GObject.name = value;
             }
         }
-        
+
         public bool Visible
         {
             get
@@ -64,13 +64,13 @@ namespace ETHotfix
             }
         }
 
-		public bool IsWindow
-		{
-			get
-			{
-				return GObject is GWindow;
-			}
-		}
+        public bool IsWindow
+        {
+            get
+            {
+                return GObject is GWindow;
+            }
+        }
 
         public bool IsComponent
         {
@@ -99,26 +99,26 @@ namespace ETHotfix
         private Dictionary<string, FUI> children = new Dictionary<string, FUI>();
 
         protected bool isFromFGUIPool = false;
-		
-		public override void Dispose()
-		{
-			if (IsDisposed)
-			{
-				return;
-			}
-			
-			base.Dispose();
-			
-			// 从父亲中删除自己
-			GetParent<FUI>()?.RemoveNoDispose(Name);
 
-			// 删除所有的孩子
-			foreach (FUI ui in children.Values.ToArray())
-			{
-				ui.Dispose();
-			}
+        public override void Dispose()
+        {
+            if (IsDisposed)
+            {
+                return;
+            }
 
-			children.Clear();
+            base.Dispose();
+
+            // 从父亲中删除自己
+            GetParent<FUI>()?.RemoveNoDispose(Name);
+
+            // 删除所有的孩子
+            foreach (FUI ui in children.Values.ToArray())
+            {
+                ui.Dispose();
+            }
+
+            children.Clear();
 
             // 删除自己的UI
             if (!IsRoot && !isFromFGUIPool)
@@ -130,9 +130,9 @@ namespace ETHotfix
             isFromFGUIPool = false;
         }
 
-		public void Add(FUI ui, bool asChildGObject)
-		{
-            if(ui == null || ui.IsEmpty)
+        public void Add(FUI ui, bool asChildGObject)
+        {
+            if (ui == null || ui.IsEmpty)
             {
                 throw new Exception($"ui can not be empty");
             }
@@ -141,10 +141,11 @@ namespace ETHotfix
             {
                 throw new Exception($"ui.Name can not be empty");
             }
-            
+
             if (children.ContainsKey(ui.Name))
             {
-                throw new Exception($"ui.Name({ui.Name}) already exist");
+                Log.Error($"ui.Name({ui.Name}) already exist");
+                return;
             }
 
             children.Add(ui.Name, ui);
@@ -163,15 +164,15 @@ namespace ETHotfix
         }
 
         public void Remove(string name)
-		{
-			if (IsDisposed)
-			{
-				return;
-			}
+        {
+            if (IsDisposed)
+            {
+                return;
+            }
 
-			FUI ui;
+            FUI ui;
 
-			if (children.TryGetValue(name, out ui))
+            if (children.TryGetValue(name, out ui))
             {
                 children.Remove(name);
 
@@ -186,7 +187,7 @@ namespace ETHotfix
                     ui.Dispose();
                 }
             }
-		}
+        }
 
         /// <summary>
         /// 一般情况不要使用此方法，如需使用，需要自行管理返回值的FUI的释放。
@@ -206,7 +207,7 @@ namespace ETHotfix
 
                 if (ui != null)
                 {
-                    if(IsComponent)
+                    if (IsComponent)
                     {
                         GObject.asCom.RemoveChild(ui.GObject, false);
                     }
@@ -219,26 +220,26 @@ namespace ETHotfix
         }
 
         public void RemoveChildren()
-		{
-			foreach (var child in children.Values.ToArray())
-			{
-				child.Dispose();
-			}
+        {
+            foreach (var child in children.Values.ToArray())
+            {
+                child.Dispose();
+            }
 
-			children.Clear();
-		}
+            children.Clear();
+        }
 
-		public FUI Get(string name)
-		{
-			FUI child;
+        public FUI Get(string name)
+        {
+            FUI child;
 
-			if (children.TryGetValue(name, out child))
-			{
-				return child;
-			}
-			
-			return null;
-		}
+            if (children.TryGetValue(name, out child))
+            {
+                return child;
+            }
+
+            return null;
+        }
 
         public FUI[] GetAll()
         {

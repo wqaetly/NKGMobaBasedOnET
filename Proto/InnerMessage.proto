@@ -283,7 +283,8 @@ message R2G_PlayerKickOut // IRequest
 {
     int32 RpcId = 90;
     long PlayerId = 1;
-    string playerAccount = 3;
+    PlayerOfflineTypes Playerofflinetypes = 2;
+    string PlayerAccount = 3;
 }
 
 message G2R_PlayerKickOut // IResponse

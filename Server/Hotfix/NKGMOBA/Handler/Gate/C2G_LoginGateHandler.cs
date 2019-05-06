@@ -36,15 +36,23 @@ namespace ETHotfix
                 //给这个session安排上Player
                 session.AddComponent<SessionPlayerComponent>().Player = player;
 
+                // 增加掉线组件
+                session.AddComponent<SessionOfflineComponent>();
+                
+                // 增加心跳包
+                session.AddComponent<HeartBeatComponent>().CurrentTime = TimeHelper.ClientNowSeconds();
+
                 //添加邮箱组件表示该session是一个Actor,接收的消息将会队列处理
                 await session.AddComponent<MailBoxComponent, string>(MailboxType.GateSession).AddLocation();
+                
 
                 //向登录服务器发送玩家上线消息
                 StartConfigComponent config = Game.Scene.GetComponent<StartConfigComponent>();
                 IPEndPoint realmIPEndPoint = config.RealmConfig.GetComponent<InnerConfig>().IPEndPoint;
                 Session realmSession = Game.Scene.GetComponent<NetInnerComponent>().Get(realmIPEndPoint);
+
                 await realmSession.Call(
-                    new G2R_PlayerOnline() {playerAccount = account,PlayerId = player.Id, GateAppID = config.StartConfig.AppId });
+                    new G2R_PlayerOnline() { playerAccount = account, PlayerId = player.Id, GateAppID = config.StartConfig.AppId });
 
                 response.PlayerId = player.Id;
 

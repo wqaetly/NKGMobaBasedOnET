@@ -6,12 +6,11 @@
 
 using ETModel;
 using System;
-using ETHotfix.Helper;
 
 namespace ETHotfix
 {
     [MessageHandler(AppType.Realm)]
-    public class G2R_PlayerOnline_ReqHandler: AMRpcHandler<G2R_PlayerOnline, R2G_PlayerOnline>
+    public class G2R_PlayerOnlineHandler: AMRpcHandler<G2R_PlayerOnline, R2G_PlayerOnline>
     {
         protected override async void Run(Session session, G2R_PlayerOnline message, Action<R2G_PlayerOnline> reply)
         {
@@ -21,7 +20,7 @@ namespace ETHotfix
                 OnlineComponent onlineComponent = Game.Scene.GetComponent<OnlineComponent>();
 
                 //将已在线玩家踢下线
-                await RealmHelper.KickOutPlayer(message.playerAccount);
+                await RealmHelper.KickOutPlayer(message.playerAccount, PlayerOfflineTypes.SamePlayerLogin);
 
                 //玩家上线
                 onlineComponent.Add(message.playerAccount, message.PlayerId, message.GateAppID);

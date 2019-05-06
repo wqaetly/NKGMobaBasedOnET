@@ -39,6 +39,9 @@ namespace ETHotfix
 	[Message(HotfixOpcode.G2C_PlayerInfo)]
 	public partial class G2C_PlayerInfo : IResponse {}
 
+	[Message(HotfixOpcode.G2C_PlayerOffline)]
+	public partial class G2C_PlayerOffline : IMessage {}
+
 }
 namespace ETHotfix
 {
@@ -56,5 +59,6 @@ namespace ETHotfix
 		 public const ushort PlayerInfo = 10010;
 		 public const ushort C2G_PlayerInfo = 10011;
 		 public const ushort G2C_PlayerInfo = 10012;
+		 public const ushort G2C_PlayerOffline = 10013;
 	}
 }

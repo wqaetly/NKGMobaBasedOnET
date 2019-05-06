@@ -431,7 +431,9 @@ namespace ETModel
 
 		public long PlayerId { get; set; }
 
-		public string playerAccount { get; set; }
+		public PlayerOfflineTypes Playerofflinetypes { get; set; }
+
+		public string PlayerAccount { get; set; }
 
 	}
 

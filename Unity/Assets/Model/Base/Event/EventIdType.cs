@@ -22,11 +22,16 @@
 		public const string TestHotfixSubscribMonoEvent = "TestHotfixSubscribMonoEvent";
 		public const string MaxModelEvent = "MaxModelEvent";
 		
+		// 检查资源更新
 		public const string CheckForUpdateBegin = "CheckForUpdateBegin";
 		public const string CheckForUpdateFinish = "CheckForUpdateFinish";
 		
+		// 加载UI
 		public const string ShowLoadingUI = "ShowLoadingUI";
 		public const string CloseLoadingUI = "CloseLoadingUI";
 		public const string CreateLoadingUI = "CreateLoadingUI";
+		
+		// 显示热更层对话框
+		public const string ShowOfflineDialogUI_Model = "ShowOfflineDialogUI";
 	}
 }

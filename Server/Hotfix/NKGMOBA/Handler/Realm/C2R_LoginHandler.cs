@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using ETHotfix.Helper;
 using ETModel;
 
 namespace ETHotfix
@@ -22,7 +21,6 @@ namespace ETHotfix
                 //数据库操作对象
                 DBProxyComponent dbProxy = Game.Scene.GetComponent<DBProxyComponent>();
 
-                Log.Info($"登录请求：{{Account:'{message.Account}',Password:'{message.Password}'}}");
                 //验证账号密码是否正确
                 List<ComponentWithId> result =
                         await dbProxy.Query<AccountInfo>(_account => _account.Account == message.Account && _account.Password == message.Password);
@@ -33,7 +31,7 @@ namespace ETHotfix
                     return;
                 }
 
-                // 随机分配一个Gate
+                // 随机分配一个Gate(内部)
                 StartConfig config = Game.Scene.GetComponent<RealmGateAddressComponent>().GetAddress();
                 IPEndPoint innerAddress = config.GetComponent<InnerConfig>().IPEndPoint;
                 Session gateSession = Game.Scene.GetComponent<NetInnerComponent>().Get(innerAddress);

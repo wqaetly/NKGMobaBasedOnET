@@ -81,6 +81,7 @@
         </e>
         <e p="NKGMOBA" t="Include">
           <e p="Actor_TransferHandler.cs" t="Include" />
+          <e p="Base" t="Include" />
           <e p="C2G_EnterMapHandler.cs" t="Include" />
           <e p="C2M_TestActorRequestHandler.cs" t="Include" />
           <e p="Frame_ClickMapHandler.cs" t="Include" />
@@ -88,6 +89,7 @@
           <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
           <e p="Handler" t="Include">
             <e p="Gate" t="Include">
+              <e p="C2G_HeartBeatHandler.cs" t="Include" />
               <e p="C2G_LoginGateHandler.cs" t="Include" />
               <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
               <e p="R2G_PlayerKickOut_Handler.cs" t="Include" />
@@ -132,6 +134,7 @@
             <e p="NLogAdapter.cs" t="Include" />
           </e>
           <e p="LogType.cs" t="Include" />
+          <e p="PlayerOfflineTypes.cs" t="Include" />
           <e p="RecyclableMemoryStream" t="Include" />
           <e p="UnityEngine" t="Include">
             <e p="Mathf.cs" t="Include" />
@@ -241,7 +244,9 @@
         <e p="NKGMOBA" t="Include">
           <e p="Component" t="Include">
             <e p="Gate" t="Include">
+              <e p="HeartBeatComponent.cs" t="Include" />
               <e p="PlayerComponent.cs" t="Include" />
+              <e p="SessionOfflineComponent.cs" t="Include" />
             </e>
             <e p="Realm" t="Include">
               <e p="OnlineComponent.cs" t="Include" />

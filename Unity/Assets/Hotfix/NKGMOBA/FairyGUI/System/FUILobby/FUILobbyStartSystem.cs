@@ -13,11 +13,7 @@ namespace ETHotfix
     {
         public override void Start(FUILobby.FUILobby self)
         {
-            self.shop.self.onClick.Add(() =>
-            {
-                Log.Info("发送了测试消息");
-                Game.Scene.GetComponent<SessionComponent>().Session.Send(new PlayerInfo());
-            });
+
         }
     }
 }

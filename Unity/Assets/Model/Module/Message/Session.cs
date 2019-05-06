@@ -64,6 +64,7 @@ namespace ETModel
 				return;
 			}
 
+			
 			this.Network.Remove(this.Id);
 
 			base.Dispose();

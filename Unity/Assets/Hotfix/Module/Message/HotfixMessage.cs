@@ -1070,6 +1070,51 @@ namespace ETHotfix {
 
   }
 
+  public partial class G2C_PlayerOffline : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_PlayerOffline> _parser = new pb::MessageParser<G2C_PlayerOffline>(() => (G2C_PlayerOffline)MessagePool.Instance.Fetch(typeof(G2C_PlayerOffline)));
+    public static pb::MessageParser<G2C_PlayerOffline> Parser { get { return _parser; } }
+
+    private int mPlayerOfflineType_;
+    public int MPlayerOfflineType {
+      get { return mPlayerOfflineType_; }
+      set {
+        mPlayerOfflineType_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MPlayerOfflineType != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MPlayerOfflineType);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (MPlayerOfflineType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MPlayerOfflineType);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      mPlayerOfflineType_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            MPlayerOfflineType = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   #endregion
 
 }

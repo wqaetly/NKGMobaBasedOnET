@@ -125,3 +125,16 @@ message M2C_Reload // IResponse
 	int32 Error = 91;
 	string Message = 92;
 }
+
+message C2G_HeartBeat // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_HeartBeat // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+

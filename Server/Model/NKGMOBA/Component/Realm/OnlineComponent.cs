@@ -27,7 +27,7 @@ namespace ETModel
         }
 
         /// <summary>
-        /// 获取在线玩家网关服务器ID
+        /// 获取在线玩家ID
         /// </summary>
         /// <param name="playerId"></param>
         /// <returns></returns>
@@ -51,6 +51,7 @@ namespace ETModel
                 this.m_dictionarty.TryGetValue(playerAccount, out temp);
                 return temp.Item2;
             }
+
             return 0;
         }
 
@@ -60,7 +61,10 @@ namespace ETModel
         /// <param name="playerId"></param>
         public void Remove(string playerAccount)
         {
+            Tuple<long, int> temp;
+            if (!this.m_dictionarty.TryGetValue(playerAccount, out temp)) return;
             this.m_dictionarty.Remove(playerAccount);
         }
+
     }
 }

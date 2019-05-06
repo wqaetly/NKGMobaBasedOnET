@@ -19,7 +19,7 @@ namespace ETHotfix
             {
                 //玩家下线
                 Game.Scene.GetComponent<OnlineComponent>().Remove(message.playerAccount);
-                Log.Info($"玩家{message.playerAccount}下线");
+                Console.WriteLine($"玩家{message.playerAccount}下线");
 
                 reply(response);
             }

@@ -18,20 +18,18 @@ namespace ETHotfix
             G2R_PlayerKickOut response = new G2R_PlayerKickOut();
             try
             {
-                //向登录服务器发送玩家上线消息
+                //向登录服务器发送玩家离线消息
                 StartConfigComponent config = Game.Scene.GetComponent<StartConfigComponent>();
                 IPEndPoint realmIPEndPoint = config.RealmConfig.GetComponent<InnerConfig>().IPEndPoint;
                 Session realmSession = Game.Scene.GetComponent<NetInnerComponent>().Get(realmIPEndPoint);
-                
                 // 发送玩家离线消息
-                await realmSession.Call(new G2R_PlayerOffline() { playerAccount = message.playerAccount });
+                await realmSession.Call(new G2R_PlayerOffline() { playerAccount = message.PlayerAccount });
                 
                 Player player = Game.Scene.GetComponent<PlayerComponent>().Get(message.PlayerId);
+                
                 //服务端主动断开客户端连接
                 long playerSessionId = player.GetComponent<UnitGateComponent>().GateSessionActorId;
-                
                 Game.Scene.GetComponent<NetOuterComponent>().Remove(playerSessionId);
-                Log.Info($"将玩家{message.PlayerId}连接断开");
 
                 reply(response);
             }
