@@ -46,8 +46,9 @@ namespace ETHotfix
                         break;
                 }
 
+                // 延时1s，保证消息发送完成
                 TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
-                await timerComponent.WaitAsync(5000);
+                await timerComponent.WaitAsync(1000);
 
                 //服务端主动断开客户端连接
                 await playerGateSession.Call(new R2G_PlayerKickOut() { PlayerAccount = playerAccount, PlayerId = playerId });

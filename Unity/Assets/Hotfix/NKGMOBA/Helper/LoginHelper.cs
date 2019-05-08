@@ -15,6 +15,7 @@ namespace ETHotfix
                 // 如果正在登录，就驳回登录请求，为了双重保险，点下登录按钮后，收到服务端响应之前将不能再点击
                 if (isLogining)
                 {
+                    FinalRun();
                     return;
                 }
 
@@ -23,6 +24,7 @@ namespace ETHotfix
                 if (account == "" || password == "")
                 {
                     Game.EventSystem.Run(EventIdType.ShowLoginInfo, "账号或密码不能为空");
+                    FinalRun();
                     return;
                 }
 
@@ -39,6 +41,7 @@ namespace ETHotfix
                 if (r2CLogin.Error == ErrorCode.ERR_LoginError)
                 {
                     Game.EventSystem.Run(EventIdType.ShowLoginInfo, "登录失败，账号或密码错误");
+                    FinalRun();
                     return;
                 }
 
@@ -77,20 +80,23 @@ namespace ETHotfix
                 // 测试消息有成员是class类型
                 G2C_PlayerInfo g2CPlayerInfo = (G2C_PlayerInfo) await SessionComponent.Instance.Session.Call(new C2G_PlayerInfo());
                 Debug.Log("测试玩家信息为" + g2CPlayerInfo.Message);
+                FinalRun();
             }
             catch (Exception e)
             {
                 Log.Error(e);
+                FinalRun();
             }
-            finally
-            {
-                //设置登录处理完成状态
-                isLogining = false;
-                if (((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)) != null)
-                    ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).loginBtn.GObject.asButton
-                            .visible =
-                            true;
-            }
+        }
+
+        private static void FinalRun()
+        {
+            //设置登录处理完成状态
+            isLogining = false;
+            if (((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)) != null)
+                ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).loginBtn.GObject.asButton
+                        .visible =
+                        true;
         }
     }
 }

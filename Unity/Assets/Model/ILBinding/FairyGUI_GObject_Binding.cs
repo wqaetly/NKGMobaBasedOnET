@@ -62,18 +62,18 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("get_rotation", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_rotation_12);
-            args = new Type[]{};
-            method = type.GetMethod("get_onClick", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, get_onClick_13);
-            args = new Type[]{typeof(System.Single)};
-            method = type.GetMethod("set_alpha", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, set_alpha_14);
-            args = new Type[]{};
-            method = type.GetMethod("get_text", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, get_text_15);
             args = new Type[]{typeof(System.String)};
             method = type.GetMethod("set_text", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, set_text_16);
+            app.RegisterCLRMethodRedirection(method, set_text_13);
+            args = new Type[]{};
+            method = type.GetMethod("get_onClick", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, get_onClick_14);
+            args = new Type[]{typeof(System.Single)};
+            method = type.GetMethod("set_alpha", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, set_alpha_15);
+            args = new Type[]{};
+            method = type.GetMethod("get_text", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, get_text_16);
             args = new Type[]{};
             method = type.GetMethod("get_asButton", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_asButton_17);
@@ -304,7 +304,26 @@ namespace ILRuntime.Runtime.Generated
             return __ret + 1;
         }
 
-        static StackObject* get_onClick_13(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* set_text_13(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.String @value = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            FairyGUI.GObject instance_of_this_method = (FairyGUI.GObject)typeof(FairyGUI.GObject).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.text = value;
+
+            return __ret;
+        }
+
+        static StackObject* get_onClick_14(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -319,7 +338,7 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* set_alpha_14(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* set_alpha_15(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -337,7 +356,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* get_text_15(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* get_text_16(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -350,25 +369,6 @@ namespace ILRuntime.Runtime.Generated
             var result_of_this_method = instance_of_this_method.text;
 
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
-        }
-
-        static StackObject* set_text_16(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.String @value = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            FairyGUI.GObject instance_of_this_method = (FairyGUI.GObject)typeof(FairyGUI.GObject).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            instance_of_this_method.text = value;
-
-            return __ret;
         }
 
         static StackObject* get_asButton_17(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)

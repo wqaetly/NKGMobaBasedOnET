@@ -12,23 +12,25 @@ namespace ETHotfix
     public static class RegisterHelper
     {
         private static bool isRegistering;
+        private static Session realmSession;
 
         public static async ETVoid OnRegisterAsync(string account, string password)
         {
-            Session realmSession = null;
             try
             {
+                Log.Info("注册请求");
+
                 // 如果正在注册，就驳回登录请求，为了双重保险，点下登录按钮后，收到服务端响应之前将不能再点击
                 if (isRegistering) return;
 
                 if (account == "" || password == "")
                 {
                     Game.EventSystem.Run(EventIdType.ShowLoginInfo, "账号或密码不能为空");
+                    Log.Info("信息显示完毕");
+                    FinalRun();
                     return;
                 }
-
                 isRegistering = true;
-
                 // 创建一个ETModel层的Session
                 ETModel.Session session = ETModel.Game.Scene.GetComponent<NetOuterComponent>()
                         .Create(GlobalConfigComponent.Instance.GlobalProto.Address);
@@ -43,25 +45,29 @@ namespace ETHotfix
                 if (r2CRegister.Error == ErrorCode.ERR_AccountAlreadyRegister)
                 {
                     Game.EventSystem.Run(EventIdType.ShowLoginInfo, "注册失败，账号已被注册");
+                    FinalRun();
                     return;
                 }
-
                 LoginHelper.OnLoginAsync(account, password).Coroutine();
+                FinalRun();
             }
             catch (Exception e)
             {
                 Game.EventSystem.Run(EventIdType.ShowLoginInfo, "注册异常");
+                FinalRun();
             }
-            finally
-            {
-                //释放realmSession
-                realmSession?.Dispose();
-                //设置注册处理完成状态
-                isRegistering = false;
-                ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).registBtn.GObject.asButton
-                        .visible =
-                        true;
-            }
+        }
+
+        private static void FinalRun()
+        {
+            Log.Info("注册按钮重新显示");
+            //设置注册处理完成状态
+            isRegistering = false;
+            ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).registBtn.self
+                    .visible =
+                    true;
+            //释放realmSession
+            realmSession?.Dispose();
         }
     }
 }

@@ -13,7 +13,6 @@ namespace ETHotfix
     {
         public override void Start(FUILogin.FUILogin self)
         {
-            ETModel.Log.Info("登录界面的StartSystem正常");
             self.loginInfo.alpha = 0;
             self.loginBtn.self.onClick.Add(() => LoginBtnOnClick(self));
             self.registBtn.self.onClick.Add(() => RegisterBtnOnClick(self));

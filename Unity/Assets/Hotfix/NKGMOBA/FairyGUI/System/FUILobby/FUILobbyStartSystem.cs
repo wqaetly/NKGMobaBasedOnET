@@ -13,7 +13,7 @@ namespace ETHotfix
     {
         public override void Start(FUILobby.FUILobby self)
         {
-
+            //self.nomalpvp.onClick.Add();
         }
     }
 }
