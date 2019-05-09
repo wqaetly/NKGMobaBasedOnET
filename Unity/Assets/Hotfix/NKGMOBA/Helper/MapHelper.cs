@@ -5,7 +5,7 @@ namespace ETHotfix
 {
     public static class MapHelper
     {
-        public static async ETVoid EnterMapAsync()
+        public static async ETTask EnterMapAsync()
         {
             try
             {

@@ -25,6 +25,7 @@ namespace ETHotfix
     }
     
     [Event(EventIdType.CloseLobbyUI)]
+    [Event(EventIdType.EnterMapFinish)]
     public class CloseLobbyUI: AEvent
     {
         public override void Run()
