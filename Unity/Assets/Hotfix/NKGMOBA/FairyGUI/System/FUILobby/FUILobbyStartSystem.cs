@@ -4,6 +4,7 @@
 // Data: 2019年5月2日 17:09:27
 //------------------------------------------------------------
 
+using System;
 using ETModel;
 
 namespace ETHotfix
@@ -13,7 +14,14 @@ namespace ETHotfix
     {
         public override void Start(FUILobby.FUILobby self)
         {
-            //self.nomalpvp.onClick.Add();
+            self.normalPVPBtn.self.onClick.Add(()=>this.EnterMapAsync().Coroutine());
+        }
+        
+        private async ETVoid EnterMapAsync()
+        {
+            ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
+            await MapHelper.EnterMapAsync();
+            ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
         }
     }
 }
