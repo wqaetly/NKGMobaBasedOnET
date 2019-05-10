@@ -8,7 +8,7 @@
 对于想系统学习本项目而无从下手的，推荐去看看本项目的Wiki，里面有运行指南和基础教程以及相关技术点讲解。
 [这是Wiki地址](https://gitee.com/NKG_admin/MKGMobaBasedOnET/wikis)
 
-最后，大家一起加油！ :muscle:  :muscle:  :muscle: ** 
+最后，大家一起加油！  :muscle:  :muscle:  :muscle:** 
 
 #### 已实现功能列表
 
