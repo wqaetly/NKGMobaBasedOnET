@@ -553,7 +553,7 @@ namespace ETEditor
                 this.m_BuildData.VersionInfo = this.currentVersion;
                 this.m_BuildData.IndependentBundleAndAtlas = this.IndependentBundleAndAtlas;
                 this.m_BuildData.BundleAndAtlasWithoutShare = this.BundleAndAtlasWithoutShare;
-                using (FileStream fileStream = new FileStream("Assets/Res/EditorSaver/List.txt", FileMode.Create))
+                using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.txt", FileMode.Create))
                 {
                     byte[] bytes = JsonHelper.ToJson(this.m_BuildData).ToByteArray();
                     fileStream.Write(bytes, 0, bytes.Length);
