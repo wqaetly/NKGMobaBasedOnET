@@ -26,7 +26,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_0;UNITY_2018_3;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;UNITY_POST_PROCESSING_STACK_V2;NET45;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_0;UNITY_2018_3;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;UNITY_POST_PROCESSING_STACK_V2;NET45;ODIN_INSPECTOR;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -57,45 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerActiveWindowType.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.ConsoleWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.ConsoleWindow.LogNode.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.EnvironmentInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.FpsCounter.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.GeneralSettingsWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.GraphicsInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.InputAccelerationInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.InputCompassInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.InputGyroscopeInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.InputLocationInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.InputSummaryInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.InputTouchInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.PathInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.ProfilerInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.QualityInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.QualitySettingsWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.RuntimeMemoryInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.RuntimeMemoryInformationWindow.Sample.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.SceneInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.ScreenInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.SystemInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.TimeInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\DebuggerComponent.WebPlayerInformationWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Component\ScrollableDebuggerWindowBase.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Core\DebuggerManager.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Core\DebuggerManager.DebuggerWindowGroup.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Core\IDebuggerManager.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Core\IDebuggerWindow.cs" />
-    <Compile Include="Assets\GameFrameworkDebugger\Core\IDebuggerWindowGroup.cs" />
-    <None Include="Assets\Res\DynamicFont\NewFightPng\NewFightPng.fnt" />
-    <None Include="Assets\Res\DynamicFont\NewFightPng\NewFightPng\myfront.fnt" />
-    <None Include="Assets\Res\EditorSaver\List.txt" />
+    <None Include="Assets\Res\ABInfoFileSave\List.txt" />
     <None Include="Assets\Res\Config\GlobalProto.txt" />
     <None Include="Assets\Res\Config\BuffConfig.txt" />
     <None Include="Assets\Res\Config\UnitConfig.txt" />
     <None Include="Assets\StreamingAssets\Version.txt" />
-    <None Include="Assets\Res\DynamicFont\RankListFont\RankListFont.fnt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -329,6 +295,33 @@
     </Reference>
     <Reference Include="Pathfinding.Poly2Tri">
       <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
@@ -692,6 +685,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{2662B409-6332-1E56-D797-C9025C53BDD6}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.ThirdParty.csproj">
       <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
       <Name>Unity.ThirdParty</Name>
@@ -700,22 +697,25 @@
       <Project>{CD311104-1830-B119-81B6-5DBEE2467FFB}</Project>
       <Name>Unity.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Hotfix.csproj">
-      <Project>{1066F652-6A89-D1C4-9881-1A19DF7AB80E}</Project>
-      <Name>Unity.Hotfix</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Model.csproj">
-      <Project>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</Project>
-      <Name>Unity.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.FairyGUI.Editor.csproj">
       <Project>{B9342EEA-148A-84E5-7014-C450C7411514}</Project>
       <Name>Unity.FairyGUI.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Hotfix.csproj">
+      <Project>{1066F652-6A89-D1C4-9881-1A19DF7AB80E}</Project>
+      <Name>Unity.Hotfix</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.FairyGUI.Runtime.csproj">
       <Project>{02078D6A-F042-765D-85AD-170AD6896D45}</Project>
       <Name>Unity.FairyGUI.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Model.csproj">
+      <Project>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</Project>
+      <Name>Unity.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Resources" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

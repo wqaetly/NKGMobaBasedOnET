@@ -5,35 +5,44 @@ using UnityEngine;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class OperaComponentAwakeSystem : AwakeSystem<OperaComponent>
+    public class OperaComponentAwakeSystem: AwakeSystem<OperaComponent>
     {
-	    public override void Awake(OperaComponent self)
-	    {
-		    self.Awake();
-	    }
+        public override void Awake(OperaComponent self)
+        {
+            self.Awake();
+        }
     }
 
-	[ObjectSystem]
-	public class OperaComponentUpdateSystem : UpdateSystem<OperaComponent>
-	{
-		public override void Update(OperaComponent self)
-		{
-			self.Update();
-		}
-	}
+    [ObjectSystem]
+    public class OperaComponentUpdateSystem: UpdateSystem<OperaComponent>
+    {
+        public override void Update(OperaComponent self)
+        {
+            self.Update();
+        }
+    }
 
-	public class OperaComponent: Component
+    [Event(ETModel.EventIdType.SmallMapPathFinder)]
+    public class SmallMapPathFinder: AEvent<Vector3>
+    {
+        public override void Run(Vector3 a)
+        {
+            ETModel.SessionComponent.Instance.Session.Send(new Frame_ClickMap() { X = a.x, Y = a.y, Z = a.z });
+        }
+    }
+
+    public class OperaComponent: Component
     {
         public Vector3 ClickPoint;
 
-	    public int mapMask;
+        public int mapMask;
 
-	    public void Awake()
-	    {
-		    this.mapMask = LayerMask.GetMask("Map");
-	    }
+        public void Awake()
+        {
+            this.mapMask = LayerMask.GetMask("Map");
+        }
 
-	    private readonly Frame_ClickMap frameClickMap = new Frame_ClickMap();
+        private readonly Frame_ClickMap frameClickMap = new Frame_ClickMap();
 
         public void Update()
         {
@@ -41,31 +50,31 @@ namespace ETHotfix
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-	            if (Physics.Raycast(ray, out hit, 1000, this.mapMask))
-	            {
-					this.ClickPoint = hit.point;
-		            frameClickMap.X = this.ClickPoint.x;
-		            frameClickMap.Y = this.ClickPoint.y;
-		            frameClickMap.Z = this.ClickPoint.z;
-		            ETModel.SessionComponent.Instance.Session.Send(frameClickMap);
-					// 测试actor rpc消息
-					this.TestActor().Coroutine();
-				}
+                if (Physics.Raycast(ray, out hit, 1000, this.mapMask))
+                {
+                    this.ClickPoint = hit.point;
+                    frameClickMap.X = this.ClickPoint.x;
+                    frameClickMap.Y = this.ClickPoint.y;
+                    frameClickMap.Z = this.ClickPoint.z;
+                    ETModel.SessionComponent.Instance.Session.Send(frameClickMap);
+                    // 测试actor rpc消息
+                    this.TestActor().Coroutine();
+                }
             }
         }
 
-	    public async ETVoid TestActor()
-	    {
-		    try
-		    {
-			    M2C_TestActorResponse response = (M2C_TestActorResponse)await SessionComponent.Instance.Session.Call(
-						new C2M_TestActorRequest() { Info = "actor rpc request" });
-			    Log.Info(response.Info);
-			}
-		    catch (Exception e)
-		    {
-				Log.Error(e);
-		    }
-		}
+        public async ETVoid TestActor()
+        {
+            try
+            {
+                M2C_TestActorResponse response = (M2C_TestActorResponse) await SessionComponent.Instance.Session.Call(
+                    new C2M_TestActorRequest() { Info = "actor rpc request" });
+                Log.Info(response.Info);
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+        }
     }
 }

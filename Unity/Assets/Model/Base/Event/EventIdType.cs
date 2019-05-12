@@ -33,5 +33,8 @@
 		
 		// 显示热更层对话框
 		public const string ShowOfflineDialogUI_Model = "ShowOfflineDialogUI";
+
+		// 小地图寻路事件，用来传递目标点
+		public const string SmallMapPathFinder = "SmallMapPathFinder";
 	}
 }
