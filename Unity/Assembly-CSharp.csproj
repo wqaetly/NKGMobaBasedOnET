@@ -57,11 +57,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\NodeEditor\Node_Editor\Default\Calculation Base\CalculationCanvasType.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Default\Calculation Base\CanvasCalculator.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Default\Calculation Base\FloatCalculation.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Default\IO Formats\XMLImportExport.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Default\Runtime Examples\RTCanvasCalculator.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Default\Runtime Examples\RTNodeEditor.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\ConnectionKnob.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\ConnectionPort.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\ConnectionPortManager.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\Node.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\NodeCanvas.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\NodeCanvasTraversal.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\NodeEditorState.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\NodeGroup.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Core\ValueConnectionKnob.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\CoreExtensions\ConnectionPortStyles.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\CoreExtensions\NodeCanvasTypes.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\CoreExtensions\NodeTypes.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Interface\NodeEditorCallbackReceiver.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Interface\NodeEditorGUI.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Interface\NodeEditorInputControls.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Interface\NodeEditorInputSystem.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\Interface\NodeEditorInterface.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\NodeEditor.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\SaveSystem\ImportExportFormat.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\SaveSystem\ImportExportManager.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\SaveSystem\ImportExportStructure.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\SaveSystem\NodeCanvasSceneSave.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\SaveSystem\NodeEditorSaveManager.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Framework\SaveSystem\NodeEditorUserCache.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\Example\AllAroundNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\Example\ExampleNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\Example\FlowNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\Example\ResizingNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\Example\RootGraphNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\FloatCalc\CalcNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\FloatCalc\DisplayNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Nodes\FloatCalc\InputNode.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Utilities\EditorLoadingControl.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Utilities\GUI\GUIScaleUtility.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Utilities\GUI\OverlayGUI.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Utilities\GUI\RTEditorGUI.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Utilities\ReflectionUtility.cs" />
+    <Compile Include="Assets\NodeEditor\Node_Editor\Utilities\ResourceManager.cs" />
+    <Compile Include="Assets\NodeEditor\SkillDemo\Scripts\Canvas\SkillNodeCanvas.cs" />
     <None Include="Assets\Res\ABInfoFileSave\List.txt" />
+    <None Include="Assets\NodeEditor\Node_Editor\Resources\Shader\LineShader.shader" />
     <None Include="Assets\Res\Config\GlobalProto.txt" />
     <None Include="Assets\Res\Config\BuffConfig.txt" />
     <None Include="Assets\Res\Config\UnitConfig.txt" />
     <None Include="Assets\StreamingAssets\Version.txt" />
+    <None Include="Assets\NodeEditor\Node_Editor\Utilities\link.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -713,9 +760,6 @@
       <Project>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</Project>
       <Name>Unity.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Resources" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

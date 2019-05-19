@@ -78,7 +78,7 @@ namespace Sirenix.OdinInspector.Demos
 
         private static IEnumerable FriendlyTextureSizes = new ValueDropdownList<int>()
         {
-            { "²âÊÔÒ»ÏÂÊý×Ö", 256 },
+            { "æµ‹è¯•ä¸€ä¸‹æ•°å­—", 256 },
             { "Medium", 512 },
             { "Large", 1024 },
         };

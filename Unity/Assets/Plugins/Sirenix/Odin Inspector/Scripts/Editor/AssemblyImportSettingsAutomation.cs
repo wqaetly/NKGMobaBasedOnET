@@ -13,11 +13,11 @@ namespace Sirenix.OdinInspector.Editor
     using Sirenix.Utilities;
     using UnityEditor;
     using UnityEditor.Build;
-
 #if UNITY_2018_1_OR_NEWER
     using UnityEditor.Build.Reporting;
+
 #endif
-    
+
     public class AssemblyImportSettingsAutomation :
 #if UNITY_2018_1_OR_NEWER
         IPreprocessBuildWithReport
@@ -28,11 +28,15 @@ namespace Sirenix.OdinInspector.Editor
         private const string JITAssemblyFolder = "NoEditor";
         private const string AOTAssemblyFolder = "NoEmitAndNoEditor";
 
-        public int callbackOrder { get { return -1500; } }
+        public int callbackOrder
+        {
+            get { return -1500; }
+        }
 
         private static void ConfigureImportSettings()
-        {   
-            if (EditorOnlyModeConfig.Instance.IsEditorOnlyModeEnabled() || ImportSettingsConfig.Instance.AutomateBeforeBuild == false)
+        {
+            if (EditorOnlyModeConfig.Instance.IsEditorOnlyModeEnabled() ||
+                ImportSettingsConfig.Instance.AutomateBeforeBuild == false)
             {
                 return;
             }
@@ -65,7 +69,8 @@ namespace Sirenix.OdinInspector.Editor
             }
         }
 
-        private static void ApplyImportSettings(BuildTarget platform, string[] assemblyPaths, OdinAssemblyImportSettings importSettings)
+        private static void ApplyImportSettings(BuildTarget platform, string[] assemblyPaths,
+            OdinAssemblyImportSettings importSettings)
         {
             for (int i = 0; i < assemblyPaths.Length; i++)
             {
@@ -81,7 +86,6 @@ namespace Sirenix.OdinInspector.Editor
         }
 
 #else
-
         void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path)
         {
             ConfigureImportSettings();

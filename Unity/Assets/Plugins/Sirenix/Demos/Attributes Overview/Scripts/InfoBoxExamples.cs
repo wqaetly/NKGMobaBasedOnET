@@ -32,9 +32,9 @@ namespace Sirenix.OdinInspector.Demos
         [InfoBox("This info box is hideable by a static field.", "ToggleInfoBoxes")]
         public float F;
 
-		[Title("Info box member reference")]
-		[InfoBox("$InfoBoxMessage")]
-		public string InfoBoxMessage = "My dynamic info box message";
+        [Title("Info box member reference")]
+        [InfoBox("$InfoBoxMessage")]
+        public string InfoBoxMessage = "My dynamic info box message";
 
         private static bool IsInEditMode()
         {

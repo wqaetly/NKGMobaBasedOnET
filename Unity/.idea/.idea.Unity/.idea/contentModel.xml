@@ -843,6 +843,51 @@
             <e p="Mono" t="Include">
               <e p="Map.cs" t="Include" />
             </e>
+            <e p="Skill" t="Include">
+              <e p="Core" t="Include">
+                <e p="BaseNodeData.cs" t="Include" />
+                <e p="Bson" t="Include">
+                  <e p="NodeDataSupporter.cs" t="Include" />
+                </e>
+                <e p="NodeDataForCheckSkill.cs" t="Include" />
+                <e p="NodeDataForSkillBuff.cs" t="Include" />
+                <e p="NodeDataForStartSkill.cs" t="Include" />
+                <e p="SkillBuffDatas" t="Include">
+                  <e p="AttackRange.cs" t="Include" />
+                  <e p="AttackSpeed.cs" t="Include" />
+                  <e p="ChangeArmor.cs" t="Include" />
+                  <e p="DeHeroSpeed.cs" t="Include" />
+                  <e p="DelayBuff.cs" t="Include" />
+                  <e p="GuideTime.cs" t="Include" />
+                  <e p="Hp.cs" t="Include" />
+                  <e p="InHeroSpeed.cs" t="Include" />
+                  <e p="MagicDamage.cs" t="Include" />
+                  <e p="PhysicalDamage.cs" t="Include" />
+                  <e p="RealDamage.cs" t="Include" />
+                  <e p="ReduceSkillCD.cs" t="Include" />
+                  <e p="RePluse.cs" t="Include" />
+                  <e p="Shield.cs" t="Include" />
+                  <e p="SkillBuffBase" t="Include">
+                    <e p="SkillBuffBase.cs" t="Include" />
+                  </e>
+                  <e p="SkillRange.cs" t="Include" />
+                  <e p="WorkTime.cs" t="Include" />
+                </e>
+                <e p="SkillEnums" t="Include">
+                  <e p="BuffDamageTypes.cs" t="Include" />
+                  <e p="BuffEffectedTypes.cs" t="Include" />
+                  <e p="BuffTypes.cs" t="Include" />
+                  <e p="BuffWorkTypes.cs" t="Include" />
+                  <e p="SkillCostTypes.cs" t="Include" />
+                  <e p="SkillReleaseMode.cs" t="Include" />
+                  <e p="SkillTarget.cs" t="Include" />
+                  <e p="SkillTypes.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Test_Demo" t="Include">
+                <e p="SkillTest.cs" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="Other" t="Include">
             <e p="AppType.cs" t="Include" />
@@ -855,6 +900,111 @@
             <e p="ReferenceCollector.cs" t="Include" />
           </e>
           <e p="Unity.Model.asmdef" t="Include" />
+        </e>
+        <e p="NodeEditor" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Node_Editor" t="Include">
+              <e p="CanvasInspector.cs" t="Include" />
+              <e p="NodeEditorWindow.cs" t="Include" />
+              <e p="NodeInspector.cs" t="Include" />
+              <e p="RTCanvasCalculatorEditor.cs" t="Include" />
+              <e p="RTNodeEditorInspector.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Node_Editor" t="Include">
+            <e p="Default" t="Include">
+              <e p="Calculation Base" t="Include">
+                <e p="CalculationCanvasType.cs" t="Include" />
+                <e p="CanvasCalculator.cs" t="Include" />
+                <e p="FloatCalculation.cs" t="Include" />
+              </e>
+              <e p="IO Formats" t="Include">
+                <e p="XMLImportExport.cs" t="Include" />
+              </e>
+              <e p="Runtime Examples" t="Include">
+                <e p="RTCanvasCalculator.cs" t="Include" />
+                <e p="RTNodeEditor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Framework" t="Include">
+              <e p="Core" t="Include">
+                <e p="ConnectionKnob.cs" t="Include" />
+                <e p="ConnectionPort.cs" t="Include" />
+                <e p="ConnectionPortManager.cs" t="Include" />
+                <e p="Node.cs" t="Include" />
+                <e p="NodeCanvas.cs" t="Include" />
+                <e p="NodeCanvasTraversal.cs" t="Include" />
+                <e p="NodeEditorState.cs" t="Include" />
+                <e p="NodeGroup.cs" t="Include" />
+                <e p="ValueConnectionKnob.cs" t="Include" />
+              </e>
+              <e p="CoreExtensions" t="Include">
+                <e p="ConnectionPortStyles.cs" t="Include" />
+                <e p="NodeCanvasTypes.cs" t="Include" />
+                <e p="NodeTypes.cs" t="Include" />
+              </e>
+              <e p="Interface" t="Include">
+                <e p="NodeEditorCallbackReceiver.cs" t="Include" />
+                <e p="NodeEditorGUI.cs" t="Include" />
+                <e p="NodeEditorInputControls.cs" t="Include" />
+                <e p="NodeEditorInputSystem.cs" t="Include" />
+                <e p="NodeEditorInterface.cs" t="Include" />
+              </e>
+              <e p="NodeEditor.cs" t="Include" />
+              <e p="SaveSystem" t="Include">
+                <e p="ImportExportFormat.cs" t="Include" />
+                <e p="ImportExportManager.cs" t="Include" />
+                <e p="ImportExportStructure.cs" t="Include" />
+                <e p="NodeCanvasSceneSave.cs" t="Include" />
+                <e p="NodeEditorSaveManager.cs" t="Include" />
+                <e p="NodeEditorUserCache.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Nodes" t="Include">
+              <e p="Example" t="Include">
+                <e p="AllAroundNode.cs" t="Include" />
+                <e p="ExampleNode.cs" t="Include" />
+                <e p="FlowNode.cs" t="Include" />
+                <e p="ResizingNode.cs" t="Include" />
+                <e p="RootGraphNode.cs" t="Include" />
+              </e>
+              <e p="FloatCalc" t="Include">
+                <e p="CalcNode.cs" t="Include" />
+                <e p="DisplayNode.cs" t="Include" />
+                <e p="InputNode.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Resources" t="Include">
+              <e p="Shader" t="Include">
+                <e p="LineShader.shader" t="Include" />
+              </e>
+            </e>
+            <e p="Utilities" t="Include">
+              <e p="EditorLoadingControl.cs" t="Include" />
+              <e p="GUI" t="Include">
+                <e p="GUIScaleUtility.cs" t="Include" />
+                <e p="OverlayGUI.cs" t="Include" />
+                <e p="RTEditorGUI.cs" t="Include" />
+              </e>
+              <e p="link.xml" t="Include" />
+              <e p="ReflectionUtility.cs" t="Include" />
+              <e p="ResourceManager.cs" t="Include" />
+            </e>
+          </e>
+          <e p="NodeEditor.asmdef" t="Include" />
+          <e p="SkillDemo" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Canvas" t="Include">
+                <e p="SkillNodeCanvas.cs" t="Include" />
+              </e>
+              <e p="SkillNodes" t="Include">
+                <e p="CheckSkillNode.cs" t="Include" />
+                <e p="SkillBuffNode.cs" t="Include" />
+                <e p="SkillNodeInputAndOutputTypes.cs" t="Include" />
+                <e p="SkillStartNode.cs" t="Include" />
+              </e>
+            </e>
+          </e>
         </e>
         <e p="Plugins" t="Include">
           <e p="AstarPathfindingProject" t="Include">
@@ -1011,6 +1161,7 @@
                     <e p="CharacterEquipment.cs" t="Include" />
                     <e p="CharacterOverview.cs" t="Include" />
                     <e p="CharacterStats.cs" t="Include" />
+                    <e p="Test.cs" t="Include" />
                   </e>
                   <e p="Editor" t="Include">
                     <e p="CharacterTable.cs" t="Include" />
@@ -2101,6 +2252,7 @@
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
+      <e p="NodeEditor.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Temp" t="ExcludeRecursive">
