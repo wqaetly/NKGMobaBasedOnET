@@ -1,0 +1,7179 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0f589764444867a261df31801b4b22, type: 3}
+  m_Name: XiaopaoSkill
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: c6c1bdaaaef08c74ea0c07000b7a0f72, type: 3}
+    - {fileID: 21300000, guid: a55314411ad3b0449bdacd30606938f0, type: 3}
+    - {fileID: 21300000, guid: d145dc39f7cd59d47b93e5552b98d1fe, type: 3}
+    - {fileID: 21300000, guid: 7db313b4f13ea6d41a0de2300573954c, type: 3}
+    - {fileID: 21300000, guid: 80cf33f9aece3cb4b99c629accf596c3, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Traversal
+      Entry: 6
+      Data: 
+    - Name: m_TestDic
+      Entry: 7
+      Data: 0|SkillDemo.Bson.NodeDataSupporter, Assembly-CSharp
+    - Name: m_DataDic
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillDemo.BaseNodeData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 7
+      Data: 3|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 0
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u6025\u901F\u5C04\u51FB"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u4E3B\u52A8\uFF1A\u63D0\u5347\u5D14\u4E1D\u5854\u5A1C30/50/70/90/110%\u653B\u51FB\u901F\u5EA6\uFF0C\u6301\u7EED7\u79D2\u3002\r\n\r\n\u653B\u901F\u52A0\u6210
+        \uFF1A30/50/70/90/110%\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A20/19/18/17/16"
+    - Name: SkillCD
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 5|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 18
+    - Name: SkillID
+      Entry: 3
+      Data: 1
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 4
+    - Name: SkillTarget
+      Entry: 3
+      Data: 2
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 1
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u7784\u51C6"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u7684\u5C04\u7A0B\u968F\u7B49\u7EA7\u63D0\u5347\u3002"
+    - Name: SkillCD
+      Entry: 7
+      Data: 7|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 8|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 20
+    - Name: SkillID
+      Entry: 3
+      Data: 0
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 4
+    - Name: SkillTarget
+      Entry: 3
+      Data: 2
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 9|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 2
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u7206\u70B8\u706B\u82B1"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u88AB\u52A8\uFF1A\u654C\u4EBA\u5728\u88AB\u5D14\u4E1D\u5854\u5A1C\u51FB\u6740\u65F6\u4F1A\u4EA7\u751F\u7206\u70B8\uFF0C\u5BF9\u9644\u8FD1\u7684\u654C\u4EBA\u9020\u621050/75/100/125/150(+0.25)\u9B54\u6CD5\u4F24\u5BB3\u3002\r\n\r\n\u4E3B\u52A8\uFF1A\u5728\u76EE\u6807\u654C\u4EBA\u6216\u9632\u5FA1\u5854\u4E0A\u653E\u7F6E\u4E00\u4E2A4\u79D2\u540E\u7206\u70B8\u7684\u70B8\u5F39\uFF0C\u7206\u70B8\u65F6\u5BF9\u9644\u8FD1\u7684\u6240\u6709\u654C\u4EBA\u9020\u621060/70/80/90/100(+)(+0.5)\u7269\u7406\u4F24\u5BB3\u3002\u5D14\u4E1D\u5854\u5A1C\u7684\u653B\u51FB\u548C\u6280\u80FD\u4F1A\u4F7F\u7535\u706B\u82B1\u7684\u4F24\u5BB3\u63D0\u534730%\uFF0C\u6700\u591A\u53EF\u53E0\u52A04\u5C42\u3002\r\n\r\n\u88AB\u52A8\u7206\u70B8\u4F24\u5BB3\uFF1A50/75/100/125/150\r\n\r\n\u57FA\u7840\u706B\u82B1\u4F24\u5BB3\uFF1A60/70/80/90/100\r\n\r\n\u6CD5\u529B\u6D88\u8017\uFF1A70/75/80/85/90\r\n\r\n\u989D\u5916\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u6536\u76CA\uFF1A50/60/70/80/90%"
+    - Name: SkillCD
+      Entry: 7
+      Data: 10|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 11|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 22
+    - Name: SkillID
+      Entry: 3
+      Data: 3
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 1
+    - Name: SkillTarget
+      Entry: 3
+      Data: 4
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 76
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 12|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 13|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 14|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 15|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 16|SkillDemo.AttackRange, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_Range
+      Entry: 7
+      Data: 17|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 18|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 18
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 9
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 4
+      Data: 110
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 12
+    - Name: 
+      Entry: 4
+      Data: 120
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 13
+    - Name: 
+      Entry: 4
+      Data: 130
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 4
+      Data: 140
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 15
+    - Name: 
+      Entry: 4
+      Data: 150
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 16
+    - Name: 
+      Entry: 4
+      Data: 160
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 17
+    - Name: 
+      Entry: 4
+      Data: 170
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 18
+    - Name: 
+      Entry: 4
+      Data: 180
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 19|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 20|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 21|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 22|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 23|SkillDemo.AttackSpeed, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_AttackSpeed
+      Entry: 7
+      Data: 24|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 25|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 26|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 27|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 28|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 29|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 30|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 3
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u706B\u7BAD\u8DF3\u8DC3"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u671D\u5730\u9762\u5F00\u706B\uFF0C\u5C06\u81EA\u5DF1\u63A8\u9001\u81F3\u76EE\u6807\u533A\u57DF\uFF0C\u5728\u843D\u5730\u65F6\u9020\u621060/110/160/210/260(+0.5)\u9B54\u6CD5\u4F24\u5BB3\u5E76\u51CF\u901F\u9644\u8FD1\u654C\u4EBA60%\uFF0C\u6301\u7EED1/1.5/2/2.5/3\u79D2\u3002\r\n\r\n\u83B7\u5F97\u51FB\u6740\u6216\u52A9\u653B\u7684\u540C\u65F6\uFF0C\u6216\u8005\u5728\u82F1\u96C4\u8EAB\u4E0A\u53E0\u6EE1\u3010\u7206\u70B8\u706B\u82B1\u3011\u5C42\u6570\u5E76\u5F15\u7206\u65F6\uFF0C\u3010\u706B\u7BAD\u8DF3\u8DC3\u3011\u4F1A\u91CD\u7F6E\u51B7\u5374\u65F6\u95F4\u3002\r\n\r\n\u4F24\u5BB3\uFF1A60/110/160/210/260\r\n\r\n\u51CF\u901F\u65F6\u957F\uFF1A1/1.5/2/2.5/3\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A22/20/18/16/14"
+    - Name: SkillCD
+      Entry: 6
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 10
+    - Name: SkillID
+      Entry: 3
+      Data: 2
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 1
+    - Name: SkillTarget
+      Entry: 3
+      Data: 6
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 9
+    - Name: 
+      Entry: 7
+      Data: 31|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 32|SkillDemo.DelayBuff, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 4
+    - Name: m_GuideTime
+      Entry: 7
+      Data: 33|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 34|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CompleteOrBreak
+      Entry: 7
+      Data: 35|System.Collections.Generic.List`1[[SkillDemo.SkillBuffBase, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 36|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 37|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 38|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 39|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 40|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 38
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 7
+      Data: 41|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 42|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 43|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 7
+      Data: 44|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 45|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.5
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 46|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 47|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 12
+    - Name: 
+      Entry: 7
+      Data: 48|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 49|SkillDemo.DeHeroSpeed, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_DeSpeedValue
+      Entry: 7
+      Data: 50|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 51|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_WorkTime
+      Entry: 7
+      Data: 52|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 51
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 1.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 2.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 13
+    - Name: 
+      Entry: 7
+      Data: 53|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 54|SkillDemo.PhysicalDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.8
+    - Name: m_PhysicalDamage
+      Entry: 7
+      Data: 55|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 56|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 400
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 500
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 7
+      Data: 57|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 58|SkillDemo.RePluse, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_RePluseDistance
+      Entry: 7
+      Data: 59|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 60|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 15
+    - Name: 
+      Entry: 7
+      Data: 61|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 62|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 63|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 16
+    - Name: 
+      Entry: 7
+      Data: 64|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 4
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u6BC1\u706D\u5C04\u51FB"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u88C5\u586B\u5DE8\u578B\u52A0\u519C\u70AE\u5F39\u653B\u51FB\u76EE\u6807\u5355\u4F4D\uFF0C\u9020\u6210300/400/500(+1)\u9B54\u6CD5\u4F24\u5BB3\u5E76\u5C06\u76EE\u6807\u53CA\u76EE\u6807\u5468\u56F4\u7684\u5355\u4F4D\u51FB\u9000600/800/1000\u4E2A\u8DDD\u79BB\u5355\u4F4D\u3002\r\n\r\n\u4F24\u5BB3\uFF1A300/400/500\r\n\r\n\u51FB\u9000\u8DDD\u79BB\uFF1A
+        600/800/1000\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A100/85/70"
+    - Name: SkillCD
+      Entry: 7
+      Data: 65|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 66|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 85
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 18
+    - Name: SkillID
+      Entry: 3
+      Data: 4
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 3
+    - Name: SkillTarget
+      Entry: 3
+      Data: 4
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 36
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_DebugDic
+      Entry: 7
+      Data: 67|SkillDemo.Bson.NodeDataSupporter, Assembly-CSharp
+    - Name: m_DataDic
+      Entry: 7
+      Data: 68|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillDemo.BaseNodeData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 7
+      Data: 69|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 6
+      Data: 
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u6025\u901F\u5C04\u51FB"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u4E3B\u52A8\uFF1A\u63D0\u5347\u5D14\u4E1D\u5854\u5A1C30/50/70/90/110%\u653B\u51FB\u901F\u5EA6\uFF0C\u6301\u7EED7\u79D2\u3002\r\n\r\n\u653B\u901F\u52A0\u6210
+        \uFF1A30/50/70/90/110%\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A20/19/18/17/16"
+    - Name: SkillCD
+      Entry: 7
+      Data: 70|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 18
+    - Name: SkillID
+      Entry: 3
+      Data: 1
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 4
+    - Name: SkillTarget
+      Entry: 3
+      Data: 2
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 71|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 6
+      Data: 
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u7784\u51C6"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u7684\u5C04\u7A0B\u968F\u7B49\u7EA7\u63D0\u5347\u3002"
+    - Name: SkillCD
+      Entry: 7
+      Data: 72|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 20
+    - Name: SkillID
+      Entry: 3
+      Data: 0
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 4
+    - Name: SkillTarget
+      Entry: 3
+      Data: 2
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 73|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 6
+      Data: 
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u7206\u70B8\u706B\u82B1"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u88AB\u52A8\uFF1A\u654C\u4EBA\u5728\u88AB\u5D14\u4E1D\u5854\u5A1C\u51FB\u6740\u65F6\u4F1A\u4EA7\u751F\u7206\u70B8\uFF0C\u5BF9\u9644\u8FD1\u7684\u654C\u4EBA\u9020\u621050/75/100/125/150(+0.25)\u9B54\u6CD5\u4F24\u5BB3\u3002\r\n\r\n\u4E3B\u52A8\uFF1A\u5728\u76EE\u6807\u654C\u4EBA\u6216\u9632\u5FA1\u5854\u4E0A\u653E\u7F6E\u4E00\u4E2A4\u79D2\u540E\u7206\u70B8\u7684\u70B8\u5F39\uFF0C\u7206\u70B8\u65F6\u5BF9\u9644\u8FD1\u7684\u6240\u6709\u654C\u4EBA\u9020\u621060/70/80/90/100(+)(+0.5)\u7269\u7406\u4F24\u5BB3\u3002\u5D14\u4E1D\u5854\u5A1C\u7684\u653B\u51FB\u548C\u6280\u80FD\u4F1A\u4F7F\u7535\u706B\u82B1\u7684\u4F24\u5BB3\u63D0\u534730%\uFF0C\u6700\u591A\u53EF\u53E0\u52A04\u5C42\u3002\r\n\r\n\u88AB\u52A8\u7206\u70B8\u4F24\u5BB3\uFF1A50/75/100/125/150\r\n\r\n\u57FA\u7840\u706B\u82B1\u4F24\u5BB3\uFF1A60/70/80/90/100\r\n\r\n\u6CD5\u529B\u6D88\u8017\uFF1A70/75/80/85/90\r\n\r\n\u989D\u5916\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u6536\u76CA\uFF1A50/60/70/80/90%"
+    - Name: SkillCD
+      Entry: 7
+      Data: 74|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 22
+    - Name: SkillID
+      Entry: 3
+      Data: 3
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 1
+    - Name: SkillTarget
+      Entry: 3
+      Data: 4
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 76
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 75|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 76|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 77|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 78|SkillDemo.AttackRange, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_Range
+      Entry: 7
+      Data: 79|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 18
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 9
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 4
+      Data: 110
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 12
+    - Name: 
+      Entry: 4
+      Data: 120
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 13
+    - Name: 
+      Entry: 4
+      Data: 130
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 4
+      Data: 140
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 15
+    - Name: 
+      Entry: 4
+      Data: 150
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 16
+    - Name: 
+      Entry: 4
+      Data: 160
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 17
+    - Name: 
+      Entry: 4
+      Data: 170
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 18
+    - Name: 
+      Entry: 4
+      Data: 180
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 80|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 81|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 82|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 83|SkillDemo.AttackSpeed, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_AttackSpeed
+      Entry: 7
+      Data: 84|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 85|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 86|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 87|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 88|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 6
+      Data: 
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u706B\u7BAD\u8DF3\u8DC3"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u671D\u5730\u9762\u5F00\u706B\uFF0C\u5C06\u81EA\u5DF1\u63A8\u9001\u81F3\u76EE\u6807\u533A\u57DF\uFF0C\u5728\u843D\u5730\u65F6\u9020\u621060/110/160/210/260(+0.5)\u9B54\u6CD5\u4F24\u5BB3\u5E76\u51CF\u901F\u9644\u8FD1\u654C\u4EBA60%\uFF0C\u6301\u7EED1/1.5/2/2.5/3\u79D2\u3002\r\n\r\n\u83B7\u5F97\u51FB\u6740\u6216\u52A9\u653B\u7684\u540C\u65F6\uFF0C\u6216\u8005\u5728\u82F1\u96C4\u8EAB\u4E0A\u53E0\u6EE1\u3010\u7206\u70B8\u706B\u82B1\u3011\u5C42\u6570\u5E76\u5F15\u7206\u65F6\uFF0C\u3010\u706B\u7BAD\u8DF3\u8DC3\u3011\u4F1A\u91CD\u7F6E\u51B7\u5374\u65F6\u95F4\u3002\r\n\r\n\u4F24\u5BB3\uFF1A60/110/160/210/260\r\n\r\n\u51CF\u901F\u65F6\u957F\uFF1A1/1.5/2/2.5/3\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A22/20/18/16/14"
+    - Name: SkillCD
+      Entry: 6
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 10
+    - Name: SkillID
+      Entry: 3
+      Data: 2
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 1
+    - Name: SkillTarget
+      Entry: 3
+      Data: 6
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 9
+    - Name: 
+      Entry: 7
+      Data: 89|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 90|SkillDemo.DelayBuff, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 4
+    - Name: m_GuideTime
+      Entry: 7
+      Data: 91|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CompleteOrBreak
+      Entry: 7
+      Data: 92|System.Collections.Generic.List`1[[SkillDemo.SkillBuffBase, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 93|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 94|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 95|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 96|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 7
+      Data: 97|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 98|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 7
+      Data: 99|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 100|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.5
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 101|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 12
+    - Name: 
+      Entry: 7
+      Data: 102|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 103|SkillDemo.DeHeroSpeed, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_DeSpeedValue
+      Entry: 7
+      Data: 104|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_WorkTime
+      Entry: 7
+      Data: 105|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 1.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 2.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 13
+    - Name: 
+      Entry: 7
+      Data: 106|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 107|SkillDemo.PhysicalDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.8
+    - Name: m_PhysicalDamage
+      Entry: 7
+      Data: 108|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 400
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 500
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 7
+      Data: 109|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 110|SkillDemo.RePluse, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_RePluseDistance
+      Entry: 7
+      Data: 111|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 15
+    - Name: 
+      Entry: 7
+      Data: 112|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 113|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 16
+    - Name: 
+      Entry: 7
+      Data: 114|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 6
+      Data: 
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u6BC1\u706D\u5C04\u51FB"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u88C5\u586B\u5DE8\u578B\u52A0\u519C\u70AE\u5F39\u653B\u51FB\u76EE\u6807\u5355\u4F4D\uFF0C\u9020\u6210300/400/500(+1)\u9B54\u6CD5\u4F24\u5BB3\u5E76\u5C06\u76EE\u6807\u53CA\u76EE\u6807\u5468\u56F4\u7684\u5355\u4F4D\u51FB\u9000600/800/1000\u4E2A\u8DDD\u79BB\u5355\u4F4D\u3002\r\n\r\n\u4F24\u5BB3\uFF1A300/400/500\r\n\r\n\u51FB\u9000\u8DDD\u79BB\uFF1A
+        600/800/1000\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A100/85/70"
+    - Name: SkillCD
+      Entry: 7
+      Data: 115|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 85
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 18
+    - Name: SkillID
+      Entry: 3
+      Data: 4
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 3
+    - Name: SkillTarget
+      Entry: 3
+      Data: 4
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 36
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  editorStates:
+  - {fileID: 114996877083703234}
+  saveName: Assets\SkillDemo\XiaopaoSkill
+  savePath: Assets\SkillDemo\XiaopaoSkill.asset
+  livesInScene: 0
+  nodes:
+  - {fileID: 114221323967909800}
+  - {fileID: 114463530141959498}
+  - {fileID: 114111753221479472}
+  - {fileID: 114912409939247940}
+  - {fileID: 114366274162101748}
+  - {fileID: 114826538019051330}
+  - {fileID: 114105892602681698}
+  - {fileID: 114461082968708882}
+  - {fileID: 114155278835436422}
+  - {fileID: 114119417117778206}
+  - {fileID: 114594216325466962}
+  - {fileID: 114045333221172052}
+  - {fileID: 114080537387599192}
+  - {fileID: 114064001399541744}
+  - {fileID: 114845766935201862}
+  - {fileID: 114371393873005688}
+  - {fileID: 114278606103854872}
+  groups: []
+  Name: XiaoPaoSkills
+--- !u!114 &114045333221172052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.5
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 250.9, y: 85.39999}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114883259241936236}
+  NextSkill: {fileID: 114376601095601824}
+--- !u!114 &114064001399541744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.PhysicalDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.8
+    - Name: m_PhysicalDamage
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 400
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 500
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 227.59998, y: 610.5999}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114468028890271050}
+  NextSkill: {fileID: 114679640590967710}
+--- !u!114 &114078381469662028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114278606103854872}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections: []
+  side: 4
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114080537387599192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.DeHeroSpeed, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_DeSpeedValue
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_WorkTime
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 3
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 1.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 2.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 528.10004, y: 71.399994}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114566295392136312}
+  NextSkill: {fileID: 114640667835710026}
+--- !u!114 &114105892602681698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.AttackSpeed, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_AttackSpeed
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 255.09999, y: -211.4}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114262952303984884}
+  NextSkill: {fileID: 114133080955137194}
+--- !u!114 &114111753221479472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c3f9e7ed784df08fd51384c6ffc17b, type: 3}
+  m_Name: "\u6280\u80FD\u521D\u59CB\u5316\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: d145dc39f7cd59d47b93e5552b98d1fe, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 0
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u7206\u70B8\u706B\u82B1"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u88AB\u52A8\uFF1A\u654C\u4EBA\u5728\u88AB\u5D14\u4E1D\u5854\u5A1C\u51FB\u6740\u65F6\u4F1A\u4EA7\u751F\u7206\u70B8\uFF0C\u5BF9\u9644\u8FD1\u7684\u654C\u4EBA\u9020\u621050/75/100/125/150(+0.25)\u9B54\u6CD5\u4F24\u5BB3\u3002\r\n\r\n\u4E3B\u52A8\uFF1A\u5728\u76EE\u6807\u654C\u4EBA\u6216\u9632\u5FA1\u5854\u4E0A\u653E\u7F6E\u4E00\u4E2A4\u79D2\u540E\u7206\u70B8\u7684\u70B8\u5F39\uFF0C\u7206\u70B8\u65F6\u5BF9\u9644\u8FD1\u7684\u6240\u6709\u654C\u4EBA\u9020\u621060/70/80/90/100(+)(+0.5)\u7269\u7406\u4F24\u5BB3\u3002\u5D14\u4E1D\u5854\u5A1C\u7684\u653B\u51FB\u548C\u6280\u80FD\u4F1A\u4F7F\u7535\u706B\u82B1\u7684\u4F24\u5BB3\u63D0\u534730%\uFF0C\u6700\u591A\u53EF\u53E0\u52A04\u5C42\u3002\r\n\r\n\u88AB\u52A8\u7206\u70B8\u4F24\u5BB3\uFF1A50/75/100/125/150\r\n\r\n\u57FA\u7840\u706B\u82B1\u4F24\u5BB3\uFF1A60/70/80/90/100\r\n\r\n\u6CD5\u529B\u6D88\u8017\uFF1A70/75/80/85/90\r\n\r\n\u989D\u5916\u653B\u51FB\u529B\u7684\u4F24\u5BB3\u6536\u76CA\uFF1A50/60/70/80/90%"
+    - Name: SkillCD
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 22
+    - Name: SkillID
+      Entry: 3
+      Data: 3
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 1
+    - Name: SkillTarget
+      Entry: 3
+      Data: 4
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 76
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -341.5, y: 360}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NextSkill: {fileID: 114231236275075166}
+  PrevSkill: {fileID: 114778872645467876}
+--- !u!114 &114119417117778206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.DelayBuff, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 4
+    - Name: m_GuideTime
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CompleteOrBreak
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[SkillDemo.SkillBuffBase, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 5|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 30
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 9|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 7
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 248.60002, y: 334.4}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114651020452004342}
+  NextSkill: {fileID: 114929665984918826}
+--- !u!114 &114122439103489594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114463530141959498}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections: []
+  side: 4
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114133080955137194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114105892602681698}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114155278835436422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c3f9e7ed784df08fd51384c6ffc17b, type: 3}
+  m_Name: "\u6280\u80FD\u521D\u59CB\u5316\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 7db313b4f13ea6d41a0de2300573954c, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 0
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u706B\u7BAD\u8DF3\u8DC3"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u671D\u5730\u9762\u5F00\u706B\uFF0C\u5C06\u81EA\u5DF1\u63A8\u9001\u81F3\u76EE\u6807\u533A\u57DF\uFF0C\u5728\u843D\u5730\u65F6\u9020\u621060/110/160/210/260(+0.5)\u9B54\u6CD5\u4F24\u5BB3\u5E76\u51CF\u901F\u9644\u8FD1\u654C\u4EBA60%\uFF0C\u6301\u7EED1/1.5/2/2.5/3\u79D2\u3002\r\n\r\n\u83B7\u5F97\u51FB\u6740\u6216\u52A9\u653B\u7684\u540C\u65F6\uFF0C\u6216\u8005\u5728\u82F1\u96C4\u8EAB\u4E0A\u53E0\u6EE1\u3010\u7206\u70B8\u706B\u82B1\u3011\u5C42\u6570\u5E76\u5F15\u7206\u65F6\uFF0C\u3010\u706B\u7BAD\u8DF3\u8DC3\u3011\u4F1A\u91CD\u7F6E\u51B7\u5374\u65F6\u95F4\u3002\r\n\r\n\u4F24\u5BB3\uFF1A60/110/160/210/260\r\n\r\n\u51CF\u901F\u65F6\u957F\uFF1A1/1.5/2/2.5/3\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A22/20/18/16/14"
+    - Name: SkillCD
+      Entry: 6
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 10
+    - Name: SkillID
+      Entry: 3
+      Data: 2
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 1
+    - Name: SkillTarget
+      Entry: 3
+      Data: 6
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -333.5, y: 82}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NextSkill: {fileID: 114861174425581026}
+  PrevSkill: {fileID: 114371555644619220}
+--- !u!114 &114200809692261964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114366274162101748}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114551416026187310}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114221323967909800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c3f9e7ed784df08fd51384c6ffc17b, type: 3}
+  m_Name: "\u6280\u80FD\u521D\u59CB\u5316\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: c6c1bdaaaef08c74ea0c07000b7a0f72, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 0
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u6025\u901F\u5C04\u51FB"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u4E3B\u52A8\uFF1A\u63D0\u5347\u5D14\u4E1D\u5854\u5A1C30/50/70/90/110%\u653B\u51FB\u901F\u5EA6\uFF0C\u6301\u7EED7\u79D2\u3002\r\n\r\n\u653B\u901F\u52A0\u6210
+        \uFF1A30/50/70/90/110%\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A20/19/18/17/16"
+    - Name: SkillCD
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 18
+    - Name: SkillID
+      Entry: 3
+      Data: 1
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 4
+    - Name: SkillTarget
+      Entry: 3
+      Data: 2
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -338.69998, y: -176.79999}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NextSkill: {fileID: 114513280629466496}
+  PrevSkill: {fileID: 114643335880224456}
+--- !u!114 &114231236275075166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114111753221479472}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114961759664790604}
+  side: 2
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114262952303984884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114105892602681698}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114404903944828570}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114278606103854872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c3f9e7ed784df08fd51384c6ffc17b, type: 3}
+  m_Name: "\u6280\u80FD\u521D\u59CB\u5316\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 80cf33f9aece3cb4b99c629accf596c3, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 0
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u6BC1\u706D\u5C04\u51FB"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u88C5\u586B\u5DE8\u578B\u52A0\u519C\u70AE\u5F39\u653B\u51FB\u76EE\u6807\u5355\u4F4D\uFF0C\u9020\u6210300/400/500(+1)\u9B54\u6CD5\u4F24\u5BB3\u5E76\u5C06\u76EE\u6807\u53CA\u76EE\u6807\u5468\u56F4\u7684\u5355\u4F4D\u51FB\u9000600/800/1000\u4E2A\u8DDD\u79BB\u5355\u4F4D\u3002\r\n\r\n\u4F24\u5BB3\uFF1A300/400/500\r\n\r\n\u51FB\u9000\u8DDD\u79BB\uFF1A
+        600/800/1000\r\n\r\n\u51B7\u5374\u65F6\u95F4\uFF1A100/85/70"
+    - Name: SkillCD
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 85
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 18
+    - Name: SkillID
+      Entry: 3
+      Data: 4
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 3
+    - Name: SkillTarget
+      Entry: 3
+      Data: 4
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 36
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -343.50003, y: 603.39996}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NextSkill: {fileID: 114772236017257254}
+  PrevSkill: {fileID: 114078381469662028}
+--- !u!114 &114294324410518826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114912409939247940}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114651020452004342}
+  - {fileID: 114674064256945754}
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114366274162101748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.AttackRange, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_Range
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 18
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 9
+    - Name: 
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 4
+      Data: 110
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 12
+    - Name: 
+      Entry: 4
+      Data: 120
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 13
+    - Name: 
+      Entry: 4
+      Data: 130
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 4
+      Data: 140
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 15
+    - Name: 
+      Entry: 4
+      Data: 150
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 16
+    - Name: 
+      Entry: 4
+      Data: 160
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 17
+    - Name: 
+      Entry: 4
+      Data: 170
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 18
+    - Name: 
+      Entry: 4
+      Data: 180
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -47.499992, y: -414.4}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114200809692261964}
+  NextSkill: {fileID: 114437936181697746}
+--- !u!114 &114371393873005688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2febf326bd7545f39a64957b7f926a48, type: 3}
+  m_Name: "\u68C0\u67E5\u6280\u80FD\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 4
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -60.100002, y: 610.19995}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114568164748819662}
+  NextSkill: {fileID: 114376739006204734}
+--- !u!114 &114371555644619220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114155278835436422}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections: []
+  side: 4
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114376601095601824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114045333221172052}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114566295392136312}
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114376739006204734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114371393873005688}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114468028890271050}
+  - {fileID: 114596432182017526}
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114404903944828570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114826538019051330}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114262952303984884}
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114428931928869016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114594216325466962}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114861174425581026}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114437936181697746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114366274162101748}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114461082968708882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.MagicDamage, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: MagicAddition
+      Entry: 4
+      Data: 0.1
+    - Name: m_MagicDamage
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 251, y: 465.2}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114674064256945754}
+  NextSkill: {fileID: 114505988055869208}
+--- !u!114 &114463530141959498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c3f9e7ed784df08fd51384c6ffc17b, type: 3}
+  m_Name: "\u6280\u80FD\u521D\u59CB\u5316\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: a55314411ad3b0449bdacd30606938f0, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForStartSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: BelongHero
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C"
+    - Name: SkillSprite
+      Entry: 10
+      Data: 0
+    - Name: SkillABInfo
+      Entry: 6
+      Data: 
+    - Name: SkillName
+      Entry: 1
+      Data: "\u7784\u51C6"
+    - Name: SkillDescribe
+      Entry: 1
+      Data: "\u5D14\u4E1D\u5854\u5A1C\u7684\u5C04\u7A0B\u968F\u7B49\u7EA7\u63D0\u5347\u3002"
+    - Name: SkillCD
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillTypes
+      Entry: 3
+      Data: 20
+    - Name: SkillID
+      Entry: 3
+      Data: 0
+    - Name: SkillReleaseMode
+      Entry: 3
+      Data: 4
+    - Name: SkillTarget
+      Entry: 3
+      Data: 2
+    - Name: BuffDamageTypes
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -337.19998, y: -416.8}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NextSkill: {fileID: 114551416026187310}
+  PrevSkill: {fileID: 114122439103489594}
+--- !u!114 &114468028890271050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114064001399541744}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114376739006204734}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114505988055869208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114461082968708882}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114513280629466496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114221323967909800}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114636484206753162}
+  side: 2
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114551416026187310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114463530141959498}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114200809692261964}
+  side: 2
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114566295392136312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114080537387599192}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114376601095601824}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114568164748819662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114371393873005688}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114772236017257254}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114594216325466962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2febf326bd7545f39a64957b7f926a48, type: 3}
+  m_Name: "\u68C0\u67E5\u6280\u80FD\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 2
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -58.5, y: 88.2}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114428931928869016}
+  NextSkill: {fileID: 114834458754057824}
+--- !u!114 &114596432182017526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114845766935201862}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114376739006204734}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114612462064020754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114845766935201862}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114636484206753162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114826538019051330}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114513280629466496}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114640667835710026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114080537387599192}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114643335880224456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114221323967909800}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections: []
+  side: 4
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114651020452004342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114119417117778206}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114294324410518826}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114674064256945754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114461082968708882}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114294324410518826}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114679640590967710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114064001399541744}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114772236017257254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114278606103854872}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114568164748819662}
+  side: 2
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114778872645467876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114111753221479472}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections: []
+  side: 4
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114826538019051330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2febf326bd7545f39a64957b7f926a48, type: 3}
+  m_Name: "\u68C0\u67E5\u6280\u80FD\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 1
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 30
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -45.9, y: -175.00002}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114636484206753162}
+  NextSkill: {fileID: 114404903944828570}
+--- !u!114 &114834458754057824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114594216325466962}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114883259241936236}
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114845766935201862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForSkillBuff, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 0
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|SkillDemo.RePluse, Assembly-CSharp
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: Base_BuffExtraWork
+      Entry: 3
+      Data: 0
+    - Name: Base_buffSustainTime
+      Entry: 4
+      Data: 0
+    - Name: Base_BuffEffectedTypes
+      Entry: 3
+      Data: 0
+    - Name: Base_BuffTypes
+      Entry: 3
+      Data: 0
+    - Name: m_RePluseDistance
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: 221.19998, y: 743.39996}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114596432182017526}
+  NextSkill: {fileID: 114612462064020754}
+--- !u!114 &114861174425581026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114155278835436422}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114428931928869016}
+  side: 2
+  sidePosition: 28
+  sideOffset: 0
+--- !u!114 &114883259241936236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114045333221172052}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114834458754057824}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114912409939247940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2febf326bd7545f39a64957b7f926a48, type: 3}
+  m_Name: "\u68C0\u67E5\u6280\u80FD\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_SkillData
+      Entry: 7
+      Data: 0|SkillDemo.NodeDataForCheckSkill, Assembly-CSharp
+    - Name: BelongTo
+      Entry: 3
+      Data: 3
+    - Name: SkillCostTypes
+      Entry: 3
+      Data: 2
+    - Name: m_SkillRequestCost
+      Entry: 7
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 4
+      Data: 80
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -56.200005, y: 370.4}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: 114961759664790604}
+  NextSkill: {fileID: 114294324410518826}
+--- !u!114 &114929665984918826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114119417117778206}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextSkill
+  _connections: []
+  side: 2
+  sidePosition: 33
+  sideOffset: 0
+--- !u!114 &114961759664790604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevSkill
+  m_EditorClassIdentifier: 
+  body: {fileID: 114912409939247940}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NextSkill
+  _connections:
+  - {fileID: 114231236275075166}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &114996877083703234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  parentEditor: {fileID: 0}
+  selectedNode: {fileID: 0}
+  panOffset: {x: -374, y: -194.59998}
+  zoom: 1.6

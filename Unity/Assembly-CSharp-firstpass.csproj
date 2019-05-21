@@ -57,6 +57,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Default\Calculation Base\CalculationCanvasType.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Default\Calculation Base\CanvasCalculator.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Default\Calculation Base\FloatCalculation.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Default\IO Formats\XMLImportExport.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Default\Runtime Examples\RTCanvasCalculator.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Default\Runtime Examples\RTNodeEditor.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\ConnectionKnob.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\ConnectionPort.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\ConnectionPortManager.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\Node.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\NodeCanvas.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\NodeCanvasTraversal.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\NodeEditorState.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\NodeGroup.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Core\ValueConnectionKnob.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\CoreExtensions\ConnectionPortStyles.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\CoreExtensions\NodeCanvasTypes.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\CoreExtensions\NodeTypes.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Interface\NodeEditorCallbackReceiver.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Interface\NodeEditorGUI.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Interface\NodeEditorInputControls.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Interface\NodeEditorInputSystem.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\Interface\NodeEditorInterface.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\NodeEditor.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\SaveSystem\ImportExportFormat.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\SaveSystem\ImportExportManager.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\SaveSystem\ImportExportStructure.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\SaveSystem\NodeCanvasSceneSave.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\SaveSystem\NodeEditorSaveManager.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Framework\SaveSystem\NodeEditorUserCache.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\EditorLoadingControl.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\GUI\GUIScaleUtility.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\GUI\OverlayGUI.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\GUI\RTEditorGUI.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\ReflectionUtility.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\ResourceManager.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\AssetListExamples.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\AttributesOnClassesExample.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Demos\Attributes Overview\Scripts\BoxGroupExamples.cs" />
@@ -176,32 +212,34 @@
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.xml" />
     <None Include="Assets\Plugins\AstarPathfindingProject\dependencies.txt" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
+    <None Include="Assets\Plugins\NodeEditor\Node_Editor\Resources\Shader\LineShader.shader" />
     <None Include="Assets\Plugins\Sirenix\Readme.txt" />
     <None Include="Assets\Plugins\AstarPathfindingProject\Clipper\ClipperLicense.txt" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
     <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml" />
     <None Include="Assets\Plugins\Sirenix\Demos\Sample - RPG Editor\Icons\icons_by_ravenmore.txt" />
+    <None Include="Assets\Plugins\NodeEditor\Node_Editor\Utilities\link.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Study/Unity2018.3.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -405,58 +443,58 @@
       <HintPath>D:/Study/Unity2018.3.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.ClipperLib">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Clipper/Pathfinding.ClipperLib.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Clipper/Pathfinding.ClipperLib.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Poly2Tri">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Buffers.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Memory.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/ThirdParty/Box2DSharp/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Study/Unity2018.3.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -828,10 +866,6 @@
     <ProjectReference Include="Unity.Model.csproj">
       <Project>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</Project>
       <Name>Unity.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="NodeEditor.csproj">
-      <Project>{60352778-AB0D-01A7-9972-45991E1527B5}</Project>
-      <Name>NodeEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

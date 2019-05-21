@@ -16,6 +16,8 @@ namespace ETModel
 
         public void AddPackage(string type)
         {
+            if (this.packages.ContainsKey(type)) return;
+            
             UIPackage uiPackage;
             if (Define.IsEditorMode)
             {
@@ -39,6 +41,7 @@ namespace ETModel
 
         public async ETTask AddPackageAsync(string type)
         {
+            if (this.packages.ContainsKey(type)) return;
             UIPackage uiPackage;
             if (Define.IsEditorMode)
             {

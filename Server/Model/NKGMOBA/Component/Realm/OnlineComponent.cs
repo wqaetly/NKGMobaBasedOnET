@@ -49,7 +49,12 @@ namespace ETModel
             {
                 Tuple<long, int> temp = new Tuple<long, int>(0, 0);
                 this.m_dictionarty.TryGetValue(playerAccount, out temp);
-                return temp.Item2;
+                if (temp != null && temp.Item2 != 0 && temp.Item1 != 0)
+                    return temp.Item2;
+                else
+                {
+                    return 0;
+                }
             }
 
             return 0;
@@ -65,6 +70,5 @@ namespace ETModel
             if (!this.m_dictionarty.TryGetValue(playerAccount, out temp)) return;
             this.m_dictionarty.Remove(playerAccount);
         }
-
     }
 }

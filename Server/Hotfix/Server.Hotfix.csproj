@@ -23,6 +23,9 @@
     </Compile>
     <EmbeddedResource Remove="Other\**" />
     <None Remove="Other\**" />
+    <Compile Remove="NKGMOBA\Base\**" />
+    <EmbeddedResource Remove="NKGMOBA\Base\**" />
+    <None Remove="NKGMOBA\Base\**" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Server.Model.csproj" />
@@ -32,6 +35,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Module\Http\" />
-    <Folder Include="NKGMOBA\Base" />
   </ItemGroup>
 </Project>

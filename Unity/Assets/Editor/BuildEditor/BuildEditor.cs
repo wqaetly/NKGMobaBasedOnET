@@ -650,21 +650,21 @@ namespace ETEditor
             this.IndependentBundleAndAtlasProperty = _serializedObject.FindProperty("IndependentBundleAndAtlas");
             this.BundleAndAtlasWithoutShareProperty = _serializedObject.FindProperty("BundleAndAtlasWithoutShare");
 
-            if (!Directory.Exists("Assets/Res/EditorSaver/"))
+            if (!Directory.Exists("Assets/Res/ABInfoFileSave/"))
             {
-                Directory.CreateDirectory("Assets/Res/EditorSaver/");
+                Directory.CreateDirectory("Assets/Res/ABInfoFileSave/");
             }
 
-            if (!File.Exists("Assets/Res/EditorSaver/List.txt"))
+            if (!File.Exists("Assets/Res/ABInfoFileSave/List.txt"))
             {
-                using (FileStream fileStream = new FileStream("Assets/Res/EditorSaver/List.txt", FileMode.Create))
+                using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.txt", FileMode.Create))
                 {
                     byte[] bytes = JsonHelper.ToJson(new BuildData()).ToByteArray();
                     fileStream.Write(bytes, 0, bytes.Length);
                 }
             }
 
-            BuildData buildData = JsonHelper.FromJson<BuildData>(File.ReadAllText("Assets/Res/EditorSaver/List.txt"));
+            BuildData buildData = JsonHelper.FromJson<BuildData>(File.ReadAllText("Assets/Res/ABInfoFileSave/List.txt"));
             this.lastVersion = buildData.VersionInfo;
             this.IndependentBundleAndAtlas = buildData.IndependentBundleAndAtlas;
             this.BundleAndAtlasWithoutShare = buildData.BundleAndAtlasWithoutShare;
