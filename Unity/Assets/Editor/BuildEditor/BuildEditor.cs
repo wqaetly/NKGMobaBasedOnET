@@ -1,7 +1,20 @@
-﻿using System.Collections.Generic;
+//------------------------------------------------------------
+// Author: 烟雨迷离半世殇
+// Mail: 1778139321@qq.com
+// Data: 2019年5月22日 13:08:41
+//------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ETModel;
+using MongoDB.Bson.IO;
+using MongoDB.Bson.Serialization;
+using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
+using Sirenix.Utilities;
+using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -28,113 +41,184 @@ namespace ETEditor
         Release,
     }
 
-    public class BuildEditor: EditorWindow
+    public class BuildEditor: OdinEditorWindow
     {
         private readonly Dictionary<string, BundleInfo> dictionary = new Dictionary<string, BundleInfo>();
-
-        string IndependentBundleAndAtlaspath;
-        Rect IndependentBundleAndAtlasrect;
-
-        string BundleAndAtlasWithoutSharepath;
-        Rect BundleAndAtlasWithoutSharerect;
-
         List<string> FUIRes = new List<string>();
 
-        private Vector2 scoller;
+        [LabelText("平台选择")]
+        public PlatformType platformType;
 
-        [SerializeField]
-        public List<string> IndependentBundleAndAtlas = new List<string>();
+        [LabelText("出包模式")]
+        public BuildType buildType;
 
-        [SerializeField]
-        public List<string> BundleAndAtlasWithoutShare = new List<string>();
+        [LabelText("一把梭打包,自动分析依赖")]
+        [FolderPath]
+        public List<string> IndependentABFolder;
 
-        //序列化对象
-        protected SerializedObject _serializedObject;
+        [LabelText("一把梭打包,不分析依赖")]
+        [FolderPath]
+        public List<string> WithoutShareABFolder;
 
-        //序列化属性
-        protected SerializedProperty IndependentBundleAndAtlasProperty;
-        protected SerializedProperty BundleAndAtlasWithoutShareProperty;
+        [LabelText("一把梭打包,自动分析依赖和共享资源")]
+        [FolderPath]
+        public List<string> ShareABFolder;
 
-        private BuildData m_BuildData;
+        [LabelText("上一版本号")]
+        public int lastVersion;
 
-        private PlatformType platformType;
-        private bool isBuildExe;
-        private bool isContainAB;
-        private BuildType buildType;
-        private BuildOptions buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
+        [LabelText("当前版本号")]
+        public int currentVersion;
+
+        [LabelText("AB包配置文件")]
+        public BuildData m_BuildData = new BuildData();
+
+        [LabelText("是否打Exe包")]
+        public bool isBuildExe;
+
+        [LabelText("Exe是否包含AB包")]
+        public bool isContainAB;
+
         private BuildAssetBundleOptions buildAssetBundleOptions = BuildAssetBundleOptions.None;
-
-        /// <summary>
-        /// 上一个版本号
-        /// </summary>
-        private int lastVersion;
-
-        /// <summary>
-        /// 当前版本号
-        /// </summary>
-        private int currentVersion;
-
-        [MenuItem("Tools/打包工具")]
-        public static void ShowWindow()
-        {
-            GetWindow(typeof (BuildEditor));
-        }
+        private BuildOptions buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
 
         private void OnEnable()
         {
             this.InitABEditorConfig();
         }
 
-        private void OnGUI()
+        [MenuItem("Tools/打包工具")]
+        private static void OpenWindow()
         {
-            scoller = EditorGUILayout.BeginScrollView(scoller);
+            var window = GetWindow<BuildEditor>();
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(600, 600);
+            window.titleContent = new GUIContent("打包工具");
+        }
 
-            EditorGUILayout.LabelField("AB包标签设置： ", EditorStyles.boldLabel);
+        [Button("将所有AB配置保存至文件", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void BuildAB()
+        {
+            this.m_BuildData.VersionInfo = this.currentVersion;
+            this.m_BuildData.IndependentBundleAndAtlas = this.IndependentABFolder;
+            this.m_BuildData.BundleAndAtlasWithoutShare = this.WithoutShareABFolder;
+            using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.bytes", FileMode.Create))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(fileStream), this.m_BuildData);
+            }
+        }
 
-            this.InitABTagList();
+        [Button("清空StreamingAssets目录，并生成新的Version.txt文件", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void CleanStreamingAssets()
+        {
+            FileHelper.CleanDirectory("Assets/StreamingAssets");
+            //创建版本信息类，并将版本号与资源总大小赋值
+            VersionConfig versionProto = new VersionConfig();
+            versionProto.Version = 0;
+            versionProto.TotalSize = 0;
+            //如果不将AB打入EXE文件，则需要额外生成一个Version.txt文件
+            if (!isContainAB)
+            {
+                using (FileStream fileStream = new FileStream("Assets/StreamingAssets/Version.txt", FileMode.Create))
+                {
+                    byte[] bytes = JsonHelper.ToJson(versionProto).ToByteArray();
+                    fileStream.Write(bytes, 0, bytes.Length);
+                }
+            }
+        }
 
-            EditorGUILayout.Space();
-            EditorGUILayout.Space();
+        [Button("一键配置AB包标签（自动清空所有标签,自动配置FUI包标签）", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void MarkAB()
+        {
+            ClearPackingTagAndAssetBundle();
 
-            EditorGUILayout.LabelField("出包设置： ", EditorStyles.boldLabel);
-            EditorGUILayout.LabelField("请选择打包平台： ", EditorStyles.boldLabel);
-            this.platformType = (PlatformType) EditorGUILayout.EnumFlagsField("	", platformType);
-            EditorGUILayout.LabelField("是否打包EXE: ", EditorStyles.boldLabel);
-            this.isBuildExe = EditorGUILayout.Toggle("	", this.isBuildExe);
-            EditorGUILayout.LabelField("是否同将资源（ab包）打进EXE: ", EditorStyles.boldLabel);
-            this.isContainAB = EditorGUILayout.Toggle("	", this.isContainAB);
-            EditorGUILayout.LabelField("版本号: （建议递增版本号打包，上一个版本号是" + this.lastVersion + "）", EditorStyles.boldLabel);
-            this.currentVersion = EditorGUILayout.IntField("	", this.currentVersion);
-            EditorGUILayout.LabelField("BuildType: ", EditorStyles.boldLabel);
-            this.buildType = (BuildType) EditorGUILayout.EnumPopup("	", this.buildType);
+            foreach (var VARIABLE in this.IndependentABFolder)
+            {
+                //自动过滤FUI
+                if (VARIABLE.EndsWith("FUI")) continue;
+                SetIndependentBundleAndAtlas(VARIABLE);
+            }
 
+            foreach (var VARIABLE in this.WithoutShareABFolder)
+            {
+                if (VARIABLE.EndsWith("FUI")) continue;
+                SetBundleAndAtlasWithoutShare(VARIABLE);
+            }
+
+            foreach (var VARIABLE in this.ShareABFolder)
+            {
+                if (VARIABLE.EndsWith("FUI")) continue;
+                this.SetShareBundleAndAtlas(VARIABLE);
+            }
+
+            this.FUIRes = EditorResHelper.GetFUIResourcePath();
+
+            foreach (var VARIABLE in this.FUIRes)
+            {
+                Object go = AssetDatabase.LoadAssetAtPath<Object>(VARIABLE);
+                if (VARIABLE.EndsWith("png"))
+                {
+                    SetBundle(VARIABLE, go.name.Split('_')[0]);
+                    continue;
+                }
+
+                SetBundle(VARIABLE, go.name);
+            }
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+        }
+
+        [Button("开始打包", 35), GUIColor(0.4f, 0.5f, 1)]
+        public void StartBuild()
+        {
             switch (buildType)
             {
                 case BuildType.Development:
-                    this.buildOptions = BuildOptions.Development | BuildOptions.AutoRunPlayer | BuildOptions.ConnectWithProfiler |
+                    buildOptions = BuildOptions.Development | BuildOptions.AutoRunPlayer | BuildOptions.ConnectWithProfiler |
                             BuildOptions.AllowDebugging;
                     break;
                 case BuildType.Release:
-                    this.buildOptions = BuildOptions.None;
+                    buildOptions = BuildOptions.None;
                     break;
             }
 
-            EditorGUILayout.LabelField("BuildAssetBundleOptions(可多选): ", EditorStyles.boldLabel);
-            this.buildAssetBundleOptions = (BuildAssetBundleOptions) EditorGUILayout.EnumFlagsField("	", this.buildAssetBundleOptions);
-            EditorGUILayout.Space();
-            EditorGUILayout.EndScrollView();
-            if (GUILayout.Button("开始一键打包", GUILayout.Height(50)))
+            if (this.platformType == PlatformType.None)
             {
-                if (this.platformType == PlatformType.None)
-                {
-                    this.ShowNotification(new GUIContent("请选择打包平台!"));
-                    return;
-                }
-
-                //开始打包
-                BuildHelper.Build(this.platformType, this.buildAssetBundleOptions, this.buildOptions, this.isBuildExe, this.isContainAB,
-                    this.currentVersion);
+                this.ShowNotification(new GUIContent("请选择打包平台!"));
+                return;
             }
+
+            //开始打包
+            BuildHelper.Build(this.platformType, this.buildAssetBundleOptions, this.buildOptions, this.isBuildExe, this.isContainAB,
+                this.currentVersion);
+        }
+
+        #region 相关函数
+
+        /// <summary>
+        /// 初始化AB工具配置
+        /// </summary>
+        private void InitABEditorConfig()
+        {
+            if (!Directory.Exists("Assets/Res/ABInfoFileSave/"))
+            {
+                Directory.CreateDirectory("Assets/Res/ABInfoFileSave/");
+            }
+
+            if (!File.Exists("Assets/Res/ABInfoFileSave/List.bytes"))
+            {
+                using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.bytes", FileMode.Create))
+                {
+                    BsonSerializer.Serialize(new BsonBinaryWriter(fileStream), this.m_BuildData);
+                }
+            }
+
+            byte[] m_ABConfig = File.ReadAllBytes("Assets/Res/ABInfoFileSave/List.bytes");
+            this.m_BuildData = BsonSerializer.Deserialize<BuildData>(m_ABConfig);
+            this.IndependentABFolder = this.m_BuildData.IndependentBundleAndAtlas;
+            this.WithoutShareABFolder = this.m_BuildData.BundleAndAtlasWithoutShare;
+            this.ShareABFolder = this.m_BuildData.BundleAndAtlasShare;
+            this.lastVersion = this.m_BuildData.VersionInfo;
         }
 
         /// <summary>
@@ -477,197 +561,6 @@ namespace ETEditor
             }
         }
 
-        /// <summary>
-        /// 初始化AB包标签数组模块
-        /// </summary>
-        private void InitABTagList()
-        {
-            //更新
-            _serializedObject.Update();
-
-            EditorGUI.BeginChangeCheck();
-
-            #region //IndependentBundleAndAtlasProperty
-
-            //第二个参数必须为true，否则无法显示子节点即List内容
-            EditorGUILayout.PropertyField(this.IndependentBundleAndAtlasProperty, true);
-
-            EditorGUILayout.LabelField("把需要一把梭打包的目录文件夹（每个prefab以及依赖资源都打包）拖到此处：");
-
-            //获得一个长300的框
-            this.IndependentBundleAndAtlasrect = EditorGUILayout.GetControlRect(GUILayout.Width(300));
-
-            //将上面的框作为文本输入框
-            this.IndependentBundleAndAtlaspath = EditorGUI.TextField(IndependentBundleAndAtlasrect, IndependentBundleAndAtlaspath);
-
-            //如果鼠标正在拖拽中或拖拽结束时，并且鼠标所在位置在文本输入框内
-            if ((Event.current.type == EventType.DragUpdated
-                    || Event.current.type == EventType.DragExited)
-                && IndependentBundleAndAtlasrect.Contains(Event.current.mousePosition))
-            {
-                //改变鼠标的外表
-                DragAndDrop.visualMode = DragAndDropVisualMode.Generic;
-                if (DragAndDrop.paths != null && DragAndDrop.paths.Length > 0)
-                {
-                    this.IndependentBundleAndAtlas.Add(DragAndDrop.paths[0]);
-                }
-            }
-
-            #endregion
-
-            #region BundleAndAtlasWithoutShareProperty
-
-            //第二个参数必须为true，否则无法显示子节点即List内容
-            EditorGUILayout.PropertyField(this.BundleAndAtlasWithoutShareProperty, true);
-            EditorGUILayout.LabelField("把不需要分析依赖的目录文件夹（每个prefab都单独打包）拖到此处：");
-            //获得一个长300的框
-            this.BundleAndAtlasWithoutSharerect = EditorGUILayout.GetControlRect(GUILayout.Width(300));
-            //将上面的框作为文本输入框
-            this.BundleAndAtlasWithoutSharepath = EditorGUI.TextField(BundleAndAtlasWithoutSharerect, BundleAndAtlasWithoutSharepath);
-
-            //如果鼠标正在拖拽中或拖拽结束时，并且鼠标所在位置在文本输入框内
-            if ((Event.current.type == EventType.DragUpdated
-                    || Event.current.type == EventType.DragExited)
-                && BundleAndAtlasWithoutSharerect.Contains(Event.current.mousePosition))
-            {
-                //改变鼠标的外表
-                DragAndDrop.visualMode = DragAndDropVisualMode.Generic;
-                if (DragAndDrop.paths != null && DragAndDrop.paths.Length > 0)
-                {
-                    this.BundleAndAtlasWithoutShare.Add(DragAndDrop.paths[0]);
-                }
-            }
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                //提交修改
-                _serializedObject.ApplyModifiedProperties();
-            }
-
-            #endregion BundleAndAtlasWithoutShareProperty
-
-            if (GUILayout.Button("整理所有数组，并将数组和版本号写入文件供下次使用"))
-            {
-                SortOutList(this.IndependentBundleAndAtlas);
-                SortOutList(this.BundleAndAtlasWithoutShare);
-                this.m_BuildData.VersionInfo = this.currentVersion;
-                this.m_BuildData.IndependentBundleAndAtlas = this.IndependentBundleAndAtlas;
-                this.m_BuildData.BundleAndAtlasWithoutShare = this.BundleAndAtlasWithoutShare;
-                using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.txt", FileMode.Create))
-                {
-                    byte[] bytes = JsonHelper.ToJson(this.m_BuildData).ToByteArray();
-                    fileStream.Write(bytes, 0, bytes.Length);
-                }
-            }
-
-            if (GUILayout.Button("一键配置AB包标签（自动清空所有标签,自动配置FUI包标签）"))
-            {
-                ClearPackingTagAndAssetBundle();
-
-                foreach (var VARIABLE in this.IndependentBundleAndAtlas)
-                {
-                    //自动过滤FUI
-                    if (VARIABLE.EndsWith("FUI")) continue;
-                    SetIndependentBundleAndAtlas(VARIABLE);
-                }
-
-                foreach (var VARIABLE in this.BundleAndAtlasWithoutShare)
-                {
-                    if (VARIABLE.EndsWith("FUI")) continue;
-                    SetBundleAndAtlasWithoutShare(VARIABLE);
-                }
-
-                this.FUIRes = EditorResHelper.GetFUIResourcePath();
-
-                foreach (var VARIABLE in this.FUIRes)
-                {
-                    Object go = AssetDatabase.LoadAssetAtPath<Object>(VARIABLE);
-                    if (VARIABLE.EndsWith("png"))
-                    {
-                        SetBundle(VARIABLE, go.name.Split('_')[0]);
-                        continue;
-                    }
-
-                    SetBundle(VARIABLE, go.name);
-                }
-
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
-            }
-
-            if (GUILayout.Button("清空StreamingAssets目录，并且生成Version.txt文件"))
-            {
-                FileHelper.CleanDirectory("Assets/StreamingAssets");
-                //创建版本信息类，并将版本号与资源总大小赋值
-                VersionConfig versionProto = new VersionConfig();
-                versionProto.Version = 0;
-                versionProto.TotalSize = 0;
-                //如果不将AB打入EXE文件，则需要额外生成一个Version.txt文件
-                if (!isContainAB)
-                {
-                    using (FileStream fileStream = new FileStream("Assets/StreamingAssets/Version.txt", FileMode.Create))
-                    {
-                        byte[] bytes = JsonHelper.ToJson(versionProto).ToByteArray();
-                        fileStream.Write(bytes, 0, bytes.Length);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 整理数组，排序，去重，去空
-        /// </summary>
-        /// <param name="listToBeSortOut"></param>
-        private void SortOutList(List<string> listToBeSortOut)
-        {
-            listToBeSortOut.Sort();
-            for (int i = listToBeSortOut.Count - 1; i >= 0; i--)
-            {
-                if (listToBeSortOut[i] == null) continue;
-
-                if (listToBeSortOut[i] == "")
-                {
-                    listToBeSortOut.Remove(listToBeSortOut[i]);
-                    continue;
-                }
-
-                if (i - 1 >= 0 && listToBeSortOut[i] == listToBeSortOut[i - 1])
-                {
-                    listToBeSortOut.Remove(listToBeSortOut[i]);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 初始化AB工具配置
-        /// </summary>
-        private void InitABEditorConfig()
-        {
-            m_BuildData = new BuildData();
-            //使用当前类初始化
-            _serializedObject = new SerializedObject(this);
-            //获取当前类中可序列化的属性
-            this.IndependentBundleAndAtlasProperty = _serializedObject.FindProperty("IndependentBundleAndAtlas");
-            this.BundleAndAtlasWithoutShareProperty = _serializedObject.FindProperty("BundleAndAtlasWithoutShare");
-
-            if (!Directory.Exists("Assets/Res/ABInfoFileSave/"))
-            {
-                Directory.CreateDirectory("Assets/Res/ABInfoFileSave/");
-            }
-
-            if (!File.Exists("Assets/Res/ABInfoFileSave/List.txt"))
-            {
-                using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.txt", FileMode.Create))
-                {
-                    byte[] bytes = JsonHelper.ToJson(new BuildData()).ToByteArray();
-                    fileStream.Write(bytes, 0, bytes.Length);
-                }
-            }
-
-            BuildData buildData = JsonHelper.FromJson<BuildData>(File.ReadAllText("Assets/Res/ABInfoFileSave/List.txt"));
-            this.lastVersion = buildData.VersionInfo;
-            this.IndependentBundleAndAtlas = buildData.IndependentBundleAndAtlas;
-            this.BundleAndAtlasWithoutShare = buildData.BundleAndAtlasWithoutShare;
-        }
+        #endregion
     }
 }
