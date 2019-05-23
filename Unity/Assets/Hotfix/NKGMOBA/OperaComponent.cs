@@ -4,25 +4,7 @@ using UnityEngine;
 
 namespace ETHotfix
 {
-    [ObjectSystem]
-    public class OperaComponentAwakeSystem: AwakeSystem<OperaComponent>
-    {
-        public override void Awake(OperaComponent self)
-        {
-            self.Awake();
-        }
-    }
-
-    [ObjectSystem]
-    public class OperaComponentUpdateSystem: UpdateSystem<OperaComponent>
-    {
-        public override void Update(OperaComponent self)
-        {
-            self.Update();
-        }
-    }
-
-    [Event(ETModel.EventIdType.SmallMapPathFinder)]
+    [Event(EventIdType.ClickSmallMap)]
     public class SmallMapPathFinder: AEvent<Vector3>
     {
         public override void Run(Vector3 a)
@@ -31,36 +13,27 @@ namespace ETHotfix
         }
     }
 
+    [Event(EventIdType.ClickMap)]
+    public class MapPathFinder: AEvent<Vector3>
+    {
+        public override void Run(Vector3 a)
+        {
+            Game.Scene.GetComponent<OperaComponent>().MapPathFinder(a);
+        }
+    }
+
     public class OperaComponent: Component
     {
-        public Vector3 ClickPoint;
-
-        public int mapMask;
-
-        public void Awake()
-        {
-            this.mapMask = LayerMask.GetMask("Map");
-        }
-
         private readonly Frame_ClickMap frameClickMap = new Frame_ClickMap();
 
-        public void Update()
+        public void MapPathFinder(Vector3 ClickPoint)
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, this.mapMask))
-                {
-                    this.ClickPoint = hit.point;
-                    frameClickMap.X = this.ClickPoint.x;
-                    frameClickMap.Y = this.ClickPoint.y;
-                    frameClickMap.Z = this.ClickPoint.z;
-                    ETModel.SessionComponent.Instance.Session.Send(frameClickMap);
-                    // 测试actor rpc消息
-                    this.TestActor().Coroutine();
-                }
-            }
+            frameClickMap.X = ClickPoint.x;
+            frameClickMap.Y = ClickPoint.y;
+            frameClickMap.Z = ClickPoint.z;
+            ETModel.SessionComponent.Instance.Session.Send(frameClickMap);
+            // 测试actor rpc消息
+            this.TestActor().Coroutine();
         }
 
         public async ETVoid TestActor()

@@ -34,6 +34,9 @@ namespace ETModel
 				Game.Scene.AddComponent<FUIComponent>();
 				Game.Scene.AddComponent<FUIInitComponent>();
 
+				//用户输入管理组件
+				Game.Scene.AddComponent<UserInputComponent>();
+
 				// 下载ab包
 				await BundleHelper.DownloadBundle();
 

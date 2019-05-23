@@ -42,9 +42,10 @@ namespace ETHotfix
                 UnitConfig unitConfig = (UnitConfig) Game.Scene.GetComponent<ConfigComponent>().Get(typeof (UnitConfig), 1001);
                 Log.Debug($"config {JsonHelper.ToJson(unitConfig)}");
 
+                //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
-                // 添加FGUI的栈组件，用于更好的管理UI
-                Game.Scene.AddComponent<FUIStackComponent>();
+
+
 
                 await Game.Scene.AddComponent<FUIInitComponent>().Init();
 

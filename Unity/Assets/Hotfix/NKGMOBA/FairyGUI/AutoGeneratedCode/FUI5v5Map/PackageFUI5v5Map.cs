@@ -20,6 +20,8 @@ namespace ETHotfix
 		public const string FUI5v5Map_Golden = "ui://FUI5v5Map/Golden";
 		public const string FUI5v5Map_Exp = "ui://FUI5v5Map/Exp";
 		public const string FUI5v5Map_Back = "ui://FUI5v5Map/Back";
+		public const string FUI5v5Map_SmallMap = "ui://FUI5v5Map/SmallMap";
+		public const string FUI5v5Map_Clarity_HUDAtlas_8 = "ui://FUI5v5Map/Clarity_HUDAtlas_8";
 		public const string FUI5v5Map_Clarity_HUDAtlas_103 = "ui://FUI5v5Map/Clarity_HUDAtlas_103";
 		public const string FUI5v5Map_PerksAtlas_11 = "ui://FUI5v5Map/PerksAtlas_11";
 		public const string FUI5v5Map_PerksAtlas_15 = "ui://FUI5v5Map/PerksAtlas_15";

@@ -20,18 +20,19 @@ namespace ETHotfix
                 {
                     await sceneChangeComponent.ChangeSceneAsync(SceneType.Map);
                 }
-				
+
                 G2C_EnterMap g2CEnterMap = await ETModel.SessionComponent.Instance.Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
                 PlayerComponent.Instance.MyPlayer.UnitId = g2CEnterMap.UnitId;
-				
+
                 Game.Scene.AddComponent<OperaComponent>();
-				
+                Game.Scene.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());
+
                 Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }
             catch (Exception e)
             {
                 Log.Error(e);
-            }	
+            }
         }
     }
 }

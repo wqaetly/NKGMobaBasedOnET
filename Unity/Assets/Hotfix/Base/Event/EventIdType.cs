@@ -17,5 +17,8 @@
         public const string ShowLoginUI = "ShowLoginUI";
         public const string ShowLoginInfo = "ShowLoginInfo";
         public const string ShowLoadingProcess = "ShowLoadingPorcess";
+
+        public const string ClickSmallMap = "ClickSmallMap";
+        public const string ClickMap = "ClickMap";
     }
 }

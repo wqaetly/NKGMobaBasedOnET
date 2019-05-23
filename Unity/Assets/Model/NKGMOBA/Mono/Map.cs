@@ -17,8 +17,6 @@ namespace ETModel
         private void Awake()
         {
             polygonCollider2D = GetComponent<PolygonCollider2D>();
-            mapSize = new Vector3(100f, 0.01f, 100f); //地图实体大小
-            miniMapSize = new Vector2(300, 300); //小地图大小
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -28,6 +26,7 @@ namespace ETModel
                 return;
             }
 
+            
             this.m_Com.position = eventData.position;
             Debug.Log("点击了地图,点击的点为" + eventData.position);
             SetTargetPosition(this.m_Com.localPosition);

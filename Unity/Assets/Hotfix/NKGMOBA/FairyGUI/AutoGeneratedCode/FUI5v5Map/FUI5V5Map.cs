@@ -108,6 +108,9 @@ namespace ETHotfix.FUI5v5Map
 		public GGroup Bottom;
 		public GList BuffList;
 		public GList DeBuffList;
+		public GLoader SmallMapSprite;
+		public GImage SmallMapFrame;
+		public GGroup SmallMap;
 
 		private static GObject CreateGObject()
         {
@@ -262,6 +265,9 @@ namespace ETHotfix.FUI5v5Map
 				Bottom = (GGroup)com.GetChild("Bottom");
 				BuffList = (GList)com.GetChild("BuffList");
 				DeBuffList = (GList)com.GetChild("DeBuffList");
+				SmallMapSprite = (GLoader)com.GetChild("SmallMapSprite");
+				SmallMapFrame = (GImage)com.GetChild("SmallMapFrame");
+				SmallMap = (GGroup)com.GetChild("SmallMap");
 			}
 		}
 		
@@ -377,6 +383,9 @@ namespace ETHotfix.FUI5v5Map
 			Bottom = null;
 			BuffList = null;
 			DeBuffList = null;
+			SmallMapSprite = null;
+			SmallMapFrame = null;
+			SmallMap = null;
 		}
 	}
 }
