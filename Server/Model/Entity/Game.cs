@@ -41,8 +41,10 @@
 		{
 			scene.Dispose();
 			scene = null;
-			eventSystem = null;
+			//Game.Close中EventSystem要在最后置空，否则Scene Dispose的时候会触发DestroySystem，再次new EventSystem
 			objectPool = null;
+			eventSystem = null;
+
 		}
 	}
 }

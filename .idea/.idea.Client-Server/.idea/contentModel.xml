@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Administrator\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Administrator\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Client-Server.1607134706.00" t="ExcludeRecursive" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\MKGMobaBasedOnET" t="IncludeFlat">
+    <e p="C:\Users\Administrator\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Client-Server.688835938.00" t="ExcludeRecursive" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET" t="IncludeFlat">
       <e p="bin" t="ExcludeRecursive" />
       <e p="Book" t="Include">
         <e p="Example\Example2_1" t="IncludeRecursive">
@@ -102,11 +102,10 @@
         </e>
         <e p="Hotfix" t="IncludeRecursive">
           <e p="Handler" t="Include">
-            <e p="Actor_TestHandler.cs" t="Include" />
+            <e p="C2G_PlayerInfoHandler.cs" t="Include" />
             <e p="C2M_ReloadHandler.cs" t="Include" />
             <e p="C2M_TestRequestHandler.cs" t="Include" />
             <e p="C2R_PingHandler.cs" t="Include" />
-            <e p="G2C_PlayerInfoHandler.cs" t="Include" />
             <e p="G2C_TestHandler.cs" t="Include" />
             <e p="M2A_ReloadHandler.cs" t="Include" />
           </e>
@@ -147,22 +146,6 @@
               <e p="DBSaveBatchRequestHandler.cs" t="Include" />
               <e p="DBSaveRequestHandler.cs" t="Include" />
             </e>
-            <e p="Demo" t="Include">
-              <e p="Actor_TransferHandler.cs" t="Include" />
-              <e p="C2G_EnterMapHandler.cs" t="Include" />
-              <e p="C2G_LoginGateHandler.cs" t="Include" />
-              <e p="C2M_TestActorRequestHandler.cs" t="Include" />
-              <e p="C2R_LoginHandler.cs" t="Include" />
-              <e p="Frame_ClickMapHandler.cs" t="Include" />
-              <e p="G2M_CreateUnitHandler.cs" t="Include" />
-              <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
-              <e p="M2M_TrasferUnitRequest.cs" t="Include" />
-              <e p="MessageHelper.cs" t="Include" />
-              <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
-              <e p="RealmGateAddressComponentSystem.cs" t="Include" />
-              <e p="SessionPlayerComponentSystem.cs" t="Include" />
-              <e p="UnitPathComponentSystem.cs" t="Include" />
-            </e>
             <e p="Http" t="Include">
               <e p="HttpTest.cs" t="Include" />
             </e>
@@ -172,6 +155,36 @@
               <e p="NetInnerComponentSystem.cs" t="Include" />
               <e p="OuterMessageDispatcher.cs" t="Include" />
             </e>
+          </e>
+          <e p="NKGMOBA" t="Include">
+            <e p="Actor_TransferHandler.cs" t="Include" />
+            <e p="C2G_EnterMapHandler.cs" t="Include" />
+            <e p="C2M_TestActorRequestHandler.cs" t="Include" />
+            <e p="Frame_ClickMapHandler.cs" t="Include" />
+            <e p="G2M_CreateUnitHandler.cs" t="Include" />
+            <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
+            <e p="Handler" t="Include">
+              <e p="Gate" t="Include">
+                <e p="C2G_HeartBeatHandler.cs" t="Include" />
+                <e p="C2G_LoginGateHandler.cs" t="Include" />
+                <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
+                <e p="R2G_PlayerKickOut_Handler.cs" t="Include" />
+              </e>
+              <e p="Realm" t="Include">
+                <e p="C2R_LoginHandler.cs" t="Include" />
+                <e p="C2R_RegisterHandler.cs" t="Include" />
+                <e p="G2R_PlayerOfflineHandler.cs" t="Include" />
+                <e p="G2R_PlayerOnlineHandler.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Helper" t="Include">
+              <e p="RealmHelper.cs" t="Include" />
+            </e>
+            <e p="M2M_TrasferUnitRequest.cs" t="Include" />
+            <e p="MessageHelper.cs" t="Include" />
+            <e p="RealmGateAddressComponentSystem.cs" t="Include" />
+            <e p="SessionPlayerComponentSystem.cs" t="Include" />
+            <e p="UnitPathComponentSystem.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -197,6 +210,7 @@
               <e p="NLogAdapter.cs" t="Include" />
             </e>
             <e p="LogType.cs" t="Include" />
+            <e p="PlayerOfflineTypes.cs" t="Include" />
             <e p="RecyclableMemoryStream" t="Include" />
             <e p="UnityEngine" t="Include">
               <e p="Mathf.cs" t="Include" />
@@ -268,22 +282,6 @@
               <e p="DBTask.cs" t="Include" />
               <e p="DBTaskQueue.cs" t="Include" />
             </e>
-            <e p="Demo" t="Include">
-              <e p="Config" t="Include">
-                <e p="UnitConfig.cs" t="Include" />
-              </e>
-              <e p="GateSessionKeyComponent.cs" t="Include" />
-              <e p="MoveComponent.cs" t="Include" />
-              <e p="Player.cs" t="Include" />
-              <e p="PlayerComponent.cs" t="Include" />
-              <e p="RealmGateAddressComponent.cs" t="Include" />
-              <e p="SessionInfoComponent.cs" t="Include" />
-              <e p="SessionPlayerComponent.cs" t="Include" />
-              <e p="Unit.cs" t="Include" />
-              <e p="UnitComponent.cs" t="Include" />
-              <e p="UnitGateComponent.cs" t="Include" />
-              <e p="UnitPathComponent.cs" t="Include" />
-            </e>
             <e p="Http" t="Include">
               <e p="Http.cs" t="Include" />
               <e p="HttpComponent.cs" t="Include" />
@@ -318,6 +316,39 @@
                 <e p="Serialization" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="NKGMOBA" t="Include">
+            <e p="Component" t="Include">
+              <e p="Gate" t="Include">
+                <e p="HeartBeatComponent.cs" t="Include" />
+                <e p="PlayerComponent.cs" t="Include" />
+                <e p="SessionOfflineComponent.cs" t="Include" />
+              </e>
+              <e p="Realm" t="Include">
+                <e p="OnlineComponent.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Config" t="Include">
+              <e p="UnitConfig.cs" t="Include" />
+            </e>
+            <e p="Entity" t="Include">
+              <e p="DB" t="Include">
+                <e p="AccountInfo.cs" t="Include" />
+                <e p="UserInfo.cs" t="Include" />
+              </e>
+              <e p="Gate" t="Include">
+                <e p="Player.cs" t="Include" />
+              </e>
+            </e>
+            <e p="GateSessionKeyComponent.cs" t="Include" />
+            <e p="MoveComponent.cs" t="Include" />
+            <e p="RealmGateAddressComponent.cs" t="Include" />
+            <e p="SessionInfoComponent.cs" t="Include" />
+            <e p="SessionPlayerComponent.cs" t="Include" />
+            <e p="Unit.cs" t="Include" />
+            <e p="UnitComponent.cs" t="Include" />
+            <e p="UnitGateComponent.cs" t="Include" />
+            <e p="UnitPathComponent.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -1878,23 +1909,54 @@
                 <e p="ConfigHelper.cs" t="Include" />
                 <e p="IConfig.cs" t="Include" />
               </e>
-              <e p="Demo" t="Include">
-                <e p="Actor_TestHandler.cs" t="Include" />
-                <e p="Config" t="Include">
-                  <e p="UnitConfig.cs" t="Include" />
-                </e>
-                <e p="G2C_TestHotfixHandler.cs" t="Include" />
-                <e p="Helper" t="Include">
-                  <e p="LoginHelper.cs" t="Include" />
-                  <e p="MapHelper.cs" t="Include" />
-                </e>
-                <e p="M2C_CreateUnitsHandler.cs" t="Include" />
-                <e p="M2C_PathfindingResultHandler.cs" t="Include" />
-                <e p="OperaComponent.cs" t="Include" />
-                <e p="TestHotfixSubscribMonoEvent_LogString.cs" t="Include" />
+              <e p="Message" t="Include">
+                <e p="AMHandler.cs" t="Include" />
+                <e p="HotfixMessage.cs" t="Include" />
+                <e p="HotfixMessageDispatcher.cs" t="Include" />
+                <e p="HotfixOpcode.cs" t="Include" />
+                <e p="IMessage.cs" t="Include" />
+                <e p="IMHandler.cs" t="Include" />
+                <e p="MessageDispatcherComponent.cs" t="Include" />
+                <e p="MessagePool.cs" t="Include" />
+                <e p="OpcodeTypeComponent.cs" t="Include" />
+                <e p="Session.cs" t="Include" />
+                <e p="SessionComponent.cs" t="Include" />
+              </e>
+            </e>
+            <e p="NKGMOBA" t="Include">
+              <e p="Component" t="Include">
+                <e p="MapClickCompoent.cs" t="Include" />
+                <e p="SessionOfflineComponent.cs" t="Include" />
+              </e>
+              <e p="Config" t="Include">
+                <e p="UnitConfig.cs" t="Include" />
               </e>
               <e p="FairyGUI" t="Include">
                 <e p="AutoGeneratedCode" t="Include">
+                  <e p="FUI5v5Map" t="Include">
+                    <e p="BuffProBar.cs" t="Include" />
+                    <e p="FUI5V5Map.cs" t="Include" />
+                    <e p="GoldenToShopBtn.cs" t="Include" />
+                    <e p="HpProcessBar.cs" t="Include" />
+                    <e p="OtherBar.cs" t="Include" />
+                    <e p="PackageFUI5v5Map.cs" t="Include" />
+                    <e p="ProgressBar1.cs" t="Include" />
+                    <e p="SkillProBar.cs" t="Include" />
+                    <e p="SmallSkillProBar.cs" t="Include" />
+                  </e>
+                  <e p="FUIDialog" t="Include">
+                    <e p="FUIDialog.cs" t="Include" />
+                    <e p="one_confirm.cs" t="Include" />
+                    <e p="PackageFUIDialog.cs" t="Include" />
+                    <e p="tow_cancel.cs" t="Include" />
+                  </e>
+                  <e p="FUILobby" t="Include">
+                    <e p="ActityHead.cs" t="Include" />
+                    <e p="BattleBtn.cs" t="Include" />
+                    <e p="BottomBtn.cs" t="Include" />
+                    <e p="FUILobby.cs" t="Include" />
+                    <e p="PackageFUILobby.cs" t="Include" />
+                  </e>
                   <e p="FUILogin" t="Include">
                     <e p="FUILogin.cs" t="Include" />
                     <e p="loginBtn.cs" t="Include" />
@@ -1911,23 +1973,41 @@
                   <e p="GComponentHelper.cs" t="Include" />
                   <e p="GObjectHelper.cs" t="Include" />
                 </e>
+                <e p="system" t="Include">
+                  <e p="FUI5v5Map" t="Include">
+                    <e p="FUI5V5MapController.cs" t="Include" />
+                    <e p="FUI5V5MapStartSystem.cs" t="Include" />
+                  </e>
+                  <e p="FUIDialog" t="Include">
+                    <e p="DialogUIController.cs" t="Include" />
+                    <e p="FUIDialogStartSystem.cs" t="Include" />
+                  </e>
+                  <e p="FUILobby" t="Include">
+                    <e p="FUILobbyStartSystem.cs" t="Include" />
+                    <e p="LobbyUIController.cs" t="Include" />
+                  </e>
+                  <e p="FUILogin" t="Include">
+                    <e p="FUILoginStartSystem.cs" t="Include" />
+                    <e p="LoginUIController.cs" t="Include" />
+                    <e p="ShowLoginInfo.cs" t="Include" />
+                  </e>
+                </e>
               </e>
-              <e p="Message" t="Include">
-                <e p="AMHandler.cs" t="Include" />
-                <e p="HotfixMessage.cs" t="Include" />
-                <e p="HotfixMessageDispatcher.cs" t="Include" />
-                <e p="HotfixOpcode.cs" t="Include" />
-                <e p="IMessage.cs" t="Include" />
-                <e p="IMHandler.cs" t="Include" />
-                <e p="MessageDispatcherComponent.cs" t="Include" />
-                <e p="MessagePool.cs" t="Include" />
-                <e p="OpcodeTypeComponent.cs" t="Include" />
-                <e p="Session.cs" t="Include" />
-                <e p="SessionComponent.cs" t="Include" />
+              <e p="G2C_TestHotfixHandler.cs" t="Include" />
+              <e p="Handler" t="Include">
+                <e p="Gate" t="Include">
+                  <e p="G2C_PlayerOfflineHandler.cs" t="Include" />
+                </e>
               </e>
-              <e p="UI" t="Include">
-                <e p="UIType.cs" t="Include" />
+              <e p="Helper" t="Include">
+                <e p="LoginHelper.cs" t="Include" />
+                <e p="MapHelper.cs" t="Include" />
+                <e p="RegisterHelper.cs" t="Include" />
               </e>
+              <e p="M2C_CreateUnitsHandler.cs" t="Include" />
+              <e p="M2C_PathfindingResultHandler.cs" t="Include" />
+              <e p="OperaComponent.cs" t="Include" />
+              <e p="TestHotfixSubscribMonoEvent_LogString.cs" t="Include" />
             </e>
             <e p="Unity.Hotfix.asmdef" t="Include" />
           </e>
@@ -2047,11 +2127,10 @@
             </e>
             <e p="ILBinding" t="Include">
               <e p="CLRBindings.cs" t="Include" />
-              <e p="ETModel_ActionHelper_Binding.cs" t="Include" />
               <e p="ETModel_Actor_Test_Binding.cs" t="Include" />
               <e p="ETModel_AnimatorComponent_Binding.cs" t="Include" />
               <e p="ETModel_AppTypeHelper_Binding.cs" t="Include" />
-              <e p="ETModel_AssetBundleHelper_Binding.cs" t="Include" />
+              <e p="ETModel_AsyncETTaskMethodBuilder_Binding.cs" t="Include" />
               <e p="ETModel_AsyncETVoidMethodBuilder_Binding.cs" t="Include" />
               <e p="ETModel_ByteHelper_Binding.cs" t="Include" />
               <e p="ETModel_C2G_EnterMap_Binding.cs" t="Include" />
@@ -2075,12 +2154,14 @@
               <e p="ETModel_EventProxy_Binding.cs" t="Include" />
               <e p="ETModel_EventSystem_Binding.cs" t="Include" />
               <e p="ETModel_Frame_ClickMap_Binding.cs" t="Include" />
+              <e p="ETModel_FUIPackageComponent_Binding.cs" t="Include" />
               <e p="ETModel_G2C_EnterMap_Binding.cs" t="Include" />
               <e p="ETModel_Game_Binding.cs" t="Include" />
               <e p="ETModel_GameObjectHelper_Binding.cs" t="Include" />
               <e p="ETModel_GizmosDebug_Binding.cs" t="Include" />
               <e p="ETModel_GlobalConfigComponent_Binding.cs" t="Include" />
               <e p="ETModel_GlobalProto_Binding.cs" t="Include" />
+              <e p="ETModel_GWindow_Binding.cs" t="Include" />
               <e p="ETModel_Hotfix_Binding.cs" t="Include" />
               <e p="ETModel_IdGenerater_Binding.cs" t="Include" />
               <e p="ETModel_IMessagePacker_Binding.cs" t="Include" />
@@ -2111,6 +2192,13 @@
               <e p="ETModel_UnitInfo_Binding.cs" t="Include" />
               <e p="ETModel_UnitPathComponent_Binding.cs" t="Include" />
               <e p="ETModel_UnOrderMultiMap_2_Type_ILTypeInstance_Binding.cs" t="Include" />
+              <e p="FairyGUI_EventListener_Binding.cs" t="Include" />
+              <e p="FairyGUI_GComponent_Binding.cs" t="Include" />
+              <e p="FairyGUI_GObject_Binding.cs" t="Include" />
+              <e p="FairyGUI_GRoot_Binding.cs" t="Include" />
+              <e p="FairyGUI_Transition_Binding.cs" t="Include" />
+              <e p="FairyGUI_UIPackage_Binding.cs" t="Include" />
+              <e p="FairyGUI_Window_Binding.cs" t="Include" />
               <e p="Google_Protobuf_ByteString_Binding.cs" t="Include" />
               <e p="Google_Protobuf_CodedInputStream_Binding.cs" t="Include" />
               <e p="Google_Protobuf_CodedOutputStream_Binding.cs" t="Include" />
@@ -2124,15 +2212,13 @@
               <e p="Google_Protobuf_MessageParser_1_Google_Protobuf_Adapt_IMessage_Binding_Adapto_t.cs" t="Include" />
               <e p="Google_Protobuf_ProtoPreconditions_Binding.cs" t="Include" />
               <e p="LitJson_JsonMapper_Binding.cs" t="Include" />
-              <e p="ReferenceCollector_Binding.cs" t="Include" />
               <e p="System_Action_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.cs" t="Include" />
               <e p="System_Activator_Binding.cs" t="Include" />
               <e p="System_Array_Binding.cs" t="Include" />
+              <e p="System_Collections_Generic_Dictionary_2_GObject_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Collections_Generic_Dictionary_2_Int32_Action_1_Google_Protobuf_Adapt__t.cs" t="Include" />
               <e p="System_Collections_Generic_Dictionary_2_Int64_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding.cs" t="Include" />
-              <e p="System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding_ValueCo_t.cs" t="Include" />
-              <e p="System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding_ValueCo_t_t.cs" t="Include" />
               <e p="System_Collections_Generic_Dictionary_2_String_List_1_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding_Enumerato_t.cs" t="Include" />
@@ -2154,35 +2240,37 @@
               <e p="System_Collections_Generic_Queue_1_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Collections_Generic_Queue_1_Int64_Binding.cs" t="Include" />
               <e p="System_Collections_Generic_Queue_1_Object_Binding.cs" t="Include" />
+              <e p="System_Collections_Generic_Stack_1_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Collections_IDictionary_Binding.cs" t="Include" />
               <e p="System_Collections_IEnumerable_Binding.cs" t="Include" />
               <e p="System_Collections_IEnumerator_Binding.cs" t="Include" />
               <e p="System_Exception_Binding.cs" t="Include" />
               <e p="System_IDisposable_Binding.cs" t="Include" />
+              <e p="System_Int64_Binding.cs" t="Include" />
               <e p="System_Linq_Enumerable_Binding.cs" t="Include" />
               <e p="System_NotImplementedException_Binding.cs" t="Include" />
               <e p="System_Object_Binding.cs" t="Include" />
               <e p="System_Reflection_MemberInfo_Binding.cs" t="Include" />
               <e p="System_Reflection_MethodBase_Binding.cs" t="Include" />
               <e p="System_Reflection_PropertyInfo_Binding.cs" t="Include" />
+              <e p="System_Runtime_CompilerServices_AsyncVoidMethodBuilder_Binding.cs" t="Include" />
               <e p="System_String_Binding.cs" t="Include" />
               <e p="System_Text_StringBuilder_Binding.cs" t="Include" />
               <e p="System_Threading_CancellationToken_Binding.cs" t="Include" />
+              <e p="System_Threading_Tasks_TaskCompletionSource_1_ILTypeInstance_Binding.cs" t="Include" />
               <e p="System_Type_Binding.cs" t="Include" />
               <e p="UnityEngine_Camera_Binding.cs" t="Include" />
-              <e p="UnityEngine_Canvas_Binding.cs" t="Include" />
-              <e p="UnityEngine_Component_Binding.cs" t="Include" />
               <e p="UnityEngine_Debug_Binding.cs" t="Include" />
               <e p="UnityEngine_GameObject_Binding.cs" t="Include" />
               <e p="UnityEngine_Input_Binding.cs" t="Include" />
               <e p="UnityEngine_LayerMask_Binding.cs" t="Include" />
+              <e p="UnityEngine_Mathf_Binding.cs" t="Include" />
               <e p="UnityEngine_Object_Binding.cs" t="Include" />
               <e p="UnityEngine_Physics_Binding.cs" t="Include" />
               <e p="UnityEngine_RaycastHit_Binding.cs" t="Include" />
+              <e p="UnityEngine_Rect_Binding.cs" t="Include" />
               <e p="UnityEngine_TextAsset_Binding.cs" t="Include" />
               <e p="UnityEngine_Transform_Binding.cs" t="Include" />
-              <e p="UnityEngine_UI_Button_Binding.cs" t="Include" />
-              <e p="UnityEngine_UI_InputField_Binding.cs" t="Include" />
               <e p="UnityEngine_Vector3_Binding.cs" t="Include" />
             </e>
             <e p="Init.cs" t="Include" />
@@ -2224,34 +2312,6 @@
                 <e p="UnitComponent.cs" t="Include" />
                 <e p="UnitFactory.cs" t="Include" />
                 <e p="UnitPathComponent.cs" t="Include" />
-              </e>
-              <e p="FairyGUI" t="Include">
-                <e p="AutoGeneratedCode" t="Include">
-                  <e p="FUICheckForResUpdate" t="Include">
-                    <e p="CheckForResUpdateBar.cs" t="Include" />
-                    <e p="Component" t="Include">
-                      <e p="FUICheckForResUpdateComponent.cs" t="Include" />
-                    </e>
-                    <e p="FUICheckForResUpdate.cs" t="Include" />
-                    <e p="FUICheckForResUpdateBinder.cs" t="Include" />
-                    <e p="system" t="Include">
-                      <e p="CheckForUpdateBeginEvent_CreateCheckForUpdateUI.cs" t="Include" />
-                      <e p="CheckForUpdateFinishEvent_RemoveCheckForUpdateUI.cs" t="Include" />
-                      <e p="FUICheckForResUpdateComponentAwakeSystem.cs" t="Include" />
-                      <e p="FUICheckForResUpdateComponentStartSystem.cs" t="Include" />
-                      <e p="FUICheckForResUpdateFactory.cs" t="Include" />
-                    </e>
-                  </e>
-                </e>
-                <e p="Core" t="Include">
-                  <e p="FUI.cs" t="Include" />
-                  <e p="FUIComponent.cs" t="Include" />
-                  <e p="FUIHelper.cs" t="Include" />
-                  <e p="FUIInitComponent.cs" t="Include" />
-                  <e p="FUIPackageComponent.cs" t="Include" />
-                  <e p="FUIStackComponent.cs" t="Include" />
-                  <e p="GWindow.cs" t="Include" />
-                </e>
               </e>
               <e p="Filter" t="Include">
                 <e p="FilterAttribute.cs" t="Include" />
@@ -2494,6 +2554,103 @@
                 <e p="UIType.cs" t="Include" />
               </e>
             </e>
+            <e p="NKGMOBA" t="Include">
+              <e p="Component" t="Include">
+                <e p="Gate" t="Include">
+                  <e p="HeartBeatComponent.cs" t="Include" />
+                </e>
+                <e p="UserInputComponent.cs" t="Include" />
+              </e>
+              <e p="FairyGUI" t="Include">
+                <e p="AutoGeneratedCode" t="Include">
+                  <e p="FUICheckForResUpdate" t="Include">
+                    <e p="FUICheckForResUpdateBinder.cs" t="Include" />
+                    <e p="UI_CheckForResUpdateBar.cs" t="Include" />
+                    <e p="UI_FUICheckForResUpdate.cs" t="Include" />
+                  </e>
+                  <e p="FUILoading" t="Include">
+                    <e p="FUILoadingBinder.cs" t="Include" />
+                    <e p="UI_FUILoading.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Component" t="Include">
+                  <e p="FUICheckForResUpdateComponent.cs" t="Include" />
+                  <e p="FUILoadingComponent.cs" t="Include" />
+                </e>
+                <e p="Core" t="Include">
+                  <e p="FUI.cs" t="Include" />
+                  <e p="FUIComponent.cs" t="Include" />
+                  <e p="FUIHelper.cs" t="Include" />
+                  <e p="FUIInitComponent.cs" t="Include" />
+                  <e p="FUIPackageComponent.cs" t="Include" />
+                  <e p="FUIStackComponent.cs" t="Include" />
+                  <e p="GWindow.cs" t="Include" />
+                </e>
+                <e p="system" t="Include">
+                  <e p="FUICheckForResUpdate" t="Include">
+                    <e p="CheckForUpdateUIController.cs" t="Include" />
+                    <e p="FUICheckForResUpdateComponentAwakeSystem.cs" t="Include" />
+                    <e p="FUICheckForResUpdateComponentStartSystem.cs" t="Include" />
+                    <e p="FUICheckForResUpdateFactory.cs" t="Include" />
+                  </e>
+                  <e p="FUILoading" t="Include">
+                    <e p="FUILoadingComponentAwakeSystem.cs" t="Include" />
+                    <e p="FUILoadingFactory.cs" t="Include" />
+                    <e p="LoadingUIController.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Mono" t="Include">
+                <e p="Map.cs" t="Include" />
+              </e>
+              <e p="SkillDemo" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="Core" t="Include">
+                    <e p="BaseNodeData.cs" t="Include" />
+                    <e p="Bson" t="Include">
+                      <e p="NodeDataSupporter.cs" t="Include" />
+                    </e>
+                    <e p="NodeDataForCheckSkill.cs" t="Include" />
+                    <e p="NodeDataForSkillBuff.cs" t="Include" />
+                    <e p="NodeDataForStartSkill.cs" t="Include" />
+                    <e p="SkillBuffDatas" t="Include">
+                      <e p="AttackRange.cs" t="Include" />
+                      <e p="AttackSpeed.cs" t="Include" />
+                      <e p="ChangeArmor.cs" t="Include" />
+                      <e p="DeHeroSpeed.cs" t="Include" />
+                      <e p="DelayBuff.cs" t="Include" />
+                      <e p="GuideTime.cs" t="Include" />
+                      <e p="Hp.cs" t="Include" />
+                      <e p="InHeroSpeed.cs" t="Include" />
+                      <e p="MagicDamage.cs" t="Include" />
+                      <e p="PhysicalDamage.cs" t="Include" />
+                      <e p="RealDamage.cs" t="Include" />
+                      <e p="ReduceSkillCD.cs" t="Include" />
+                      <e p="RePluse.cs" t="Include" />
+                      <e p="Shield.cs" t="Include" />
+                      <e p="SkillBuffBase" t="Include">
+                        <e p="SkillBuffBase.cs" t="Include" />
+                      </e>
+                      <e p="SkillRange.cs" t="Include" />
+                      <e p="WorkTime.cs" t="Include" />
+                    </e>
+                    <e p="SkillEnums" t="Include">
+                      <e p="BuffDamageTypes.cs" t="Include" />
+                      <e p="BuffEffectedTypes.cs" t="Include" />
+                      <e p="BuffTypes.cs" t="Include" />
+                      <e p="BuffWorkTypes.cs" t="Include" />
+                      <e p="SkillCostTypes.cs" t="Include" />
+                      <e p="SkillReleaseMode.cs" t="Include" />
+                      <e p="SkillTarget.cs" t="Include" />
+                      <e p="SkillTypes.cs" t="Include" />
+                    </e>
+                  </e>
+                  <e p="Test_Demo" t="Include">
+                    <e p="SkillTest.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
             <e p="Other" t="Include">
               <e p="AppType.cs" t="Include" />
               <e p="Define.cs" t="Include" />
@@ -2508,6 +2665,330 @@
           </e>
           <e p="Plugins\x86_64\kcp.dll" t="Include" />
           <e p="ThirdParty" t="Include">
+            <e p="Box2DSharp" t="Include">
+              <e p="Collision" t="Include">
+                <e p="AABB.cs" t="Include" />
+                <e p="BroadPhase.cs" t="Include" />
+                <e p="Collider" t="Include">
+                  <e p="ClipVertex.cs" t="Include" />
+                  <e p="ContactFeature.cs" t="Include" />
+                  <e p="ContactID.cs" t="Include" />
+                  <e p="Manifold.cs" t="Include" />
+                  <e p="ManifoldPoint.cs" t="Include" />
+                  <e p="ManifoldType.cs" t="Include" />
+                  <e p="PointState.cs" t="Include" />
+                  <e p="RayCastInput.cs" t="Include" />
+                  <e p="RayCastOutput.cs" t="Include" />
+                  <e p="WorldManifold.cs" t="Include" />
+                </e>
+                <e p="ColliderCircle.cs" t="Include" />
+                <e p="ColliderEdge.cs" t="Include" />
+                <e p="ColliderPolygon.cs" t="Include" />
+                <e p="CollisionUtils.cs" t="Include" />
+                <e p="DistanceAlgorithm.cs" t="Include" />
+                <e p="DistanceInput.cs" t="Include" />
+                <e p="DistanceOutput.cs" t="Include" />
+                <e p="DistanceProxy.cs" t="Include" />
+                <e p="DynamicTree.cs" t="Include" />
+                <e p="ShapeCastInput.cs" t="Include" />
+                <e p="ShapeCastOutput.cs" t="Include" />
+                <e p="Shapes" t="Include">
+                  <e p="ChainShape.cs" t="Include" />
+                  <e p="CircleShape.cs" t="Include" />
+                  <e p="EdgeShape.cs" t="Include" />
+                  <e p="MassData.cs" t="Include" />
+                  <e p="PolygonShape.cs" t="Include" />
+                  <e p="Shape.cs" t="Include" />
+                  <e p="ShapeType.cs" t="Include" />
+                  <e p="Sweep.cs" t="Include" />
+                </e>
+                <e p="Simplex.cs" t="Include" />
+                <e p="SimplexCache.cs" t="Include" />
+                <e p="SimplexVertex.cs" t="Include" />
+                <e p="TimeOfImpact.cs" t="Include" />
+              </e>
+              <e p="Common" t="Include">
+                <e p="DrawFlag.cs" t="Include" />
+                <e p="DumpLogger.cs" t="Include" />
+                <e p="FixedArray.cs" t="Include" />
+                <e p="LinkedListNodePool.cs" t="Include" />
+                <e p="MathExtensions.cs" t="Include" />
+                <e p="MathUtils.cs" t="Include" />
+                <e p="Matrix2x2.cs" t="Include" />
+                <e p="Matrix3x3.cs" t="Include" />
+                <e p="ObjectPool.cs" t="Include" />
+                <e p="Rotation.cs" t="Include" />
+                <e p="Settings.cs" t="Include" />
+                <e p="Transform.cs" t="Include" />
+              </e>
+              <e p="Dynamics" t="Include">
+                <e p="Body.cs" t="Include" />
+                <e p="BodyFlags.cs" t="Include" />
+                <e p="Callbacks.cs" t="Include" />
+                <e p="ContactManager.cs" t="Include" />
+                <e p="Contacts" t="Include">
+                  <e p="ChainAndCircleContact.cs" t="Include" />
+                  <e p="ChainAndPolygonContact.cs" t="Include" />
+                  <e p="CircleContact.cs" t="Include" />
+                  <e p="Contact.cs" t="Include" />
+                  <e p="ContactEdge.cs" t="Include" />
+                  <e p="ContactImpulse.cs" t="Include" />
+                  <e p="ContactPositionConstraint.cs" t="Include" />
+                  <e p="ContactSolve.cs" t="Include" />
+                  <e p="ContactSolverDef.cs" t="Include" />
+                  <e p="ContactVelocityConstraint.cs" t="Include" />
+                  <e p="EdgeAndCircleContact.cs" t="Include" />
+                  <e p="EdgeAndPolygonContact.cs" t="Include" />
+                  <e p="IContactFactory.cs" t="Include" />
+                  <e p="PolygonAndCircleContact.cs" t="Include" />
+                  <e p="PolygonContact.cs" t="Include" />
+                  <e p="PositionSolverManifold.cs" t="Include" />
+                  <e p="VelocityConstraintPoint.cs" t="Include" />
+                </e>
+                <e p="DefaultContactFilter.cs" t="Include" />
+                <e p="Fixture.cs" t="Include" />
+                <e p="IContactFilter.cs" t="Include" />
+                <e p="IContactListener.cs" t="Include" />
+                <e p="IDestructionListener.cs" t="Include" />
+                <e p="Island.cs" t="Include" />
+                <e p="Joints" t="Include">
+                  <e p="DistanceJoint.cs" t="Include" />
+                  <e p="DistanceJointDef.cs" t="Include" />
+                  <e p="FrictionJoint.cs" t="Include" />
+                  <e p="FrictionJointDef.cs" t="Include" />
+                  <e p="GearJoint.cs" t="Include" />
+                  <e p="GearJointDef.cs" t="Include" />
+                  <e p="Joints.cs" t="Include" />
+                  <e p="MotorJoint.cs" t="Include" />
+                  <e p="MotorJointDef.cs" t="Include" />
+                  <e p="MouseJoint.cs" t="Include" />
+                  <e p="MouseJointDef.cs" t="Include" />
+                  <e p="PrismaticJoint.cs" t="Include" />
+                  <e p="PrismaticJointDef.cs" t="Include" />
+                  <e p="PulleyJoint.cs" t="Include" />
+                  <e p="PulleyJointDef.cs" t="Include" />
+                  <e p="RevoluteJoint.cs" t="Include" />
+                  <e p="RevoluteJointDef.cs" t="Include" />
+                  <e p="RopeJoint.cs" t="Include" />
+                  <e p="RopeJointDef.cs" t="Include" />
+                  <e p="WeldJoint.cs" t="Include" />
+                  <e p="WeldJointDef.cs" t="Include" />
+                  <e p="WheelJoint.cs" t="Include" />
+                  <e p="WheelJointDef.cs" t="Include" />
+                </e>
+                <e p="Position.cs" t="Include" />
+                <e p="Profile.cs" t="Include" />
+                <e p="SolverData.cs" t="Include" />
+                <e p="TimeStep.cs" t="Include" />
+                <e p="Velocity.cs" t="Include" />
+                <e p="World.cs" t="Include" />
+              </e>
+            </e>
+            <e p="FairyGUI" t="Include">
+              <e p="Editor" t="Include">
+                <e p="DisplayObjectEditor.cs" t="Include" />
+                <e p="EditorToolSet.cs" t="Include" />
+                <e p="PackagesWindow.cs" t="Include" />
+                <e p="StageCameraEditor.cs" t="Include" />
+                <e p="UIConfigEditor.cs" t="Include" />
+                <e p="UIContentScalerEditor.cs" t="Include" />
+                <e p="UIPainterEditor.cs" t="Include" />
+                <e p="UIPanelEditor.cs" t="Include" />
+              </e>
+              <e p="Runtime" t="Include">
+                <e p="Resources" t="Include">
+                  <e p="Shaders" t="Include">
+                    <e p="AddOn" t="Include">
+                      <e p="FairyGUI-BlurFilter.shader" t="Include" />
+                    </e>
+                    <e p="FairyGUI-BMFont.shader" t="Include" />
+                    <e p="FairyGUI-Image.shader" t="Include" />
+                    <e p="FairyGUI-Text-Brighter.shader" t="Include" />
+                    <e p="FairyGUI-Text.shader" t="Include" />
+                  </e>
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="Core" t="Include">
+                    <e p="BlendMode.cs" t="Include" />
+                    <e p="CaptureCamera.cs" t="Include" />
+                    <e p="Container.cs" t="Include" />
+                    <e p="DisplayObject.cs" t="Include" />
+                    <e p="DisplayOptions.cs" t="Include" />
+                    <e p="GoWrapper.cs" t="Include" />
+                    <e p="HitTest" t="Include">
+                      <e p="ColliderHitTest.cs" t="Include" />
+                      <e p="HitTestContext.cs" t="Include" />
+                      <e p="IHitTest.cs" t="Include" />
+                      <e p="MeshColliderHitTest.cs" t="Include" />
+                      <e p="PixelHitTest.cs" t="Include" />
+                      <e p="RectHitTest.cs" t="Include" />
+                    </e>
+                    <e p="Image.cs" t="Include" />
+                    <e p="MaterialManager.cs" t="Include" />
+                    <e p="Mesh" t="Include">
+                      <e p="CompositeMesh.cs" t="Include" />
+                      <e p="EllipseMesh.cs" t="Include" />
+                      <e p="FillMesh.cs" t="Include" />
+                      <e p="LineMesh.cs" t="Include" />
+                      <e p="MeshFactory.cs" t="Include" />
+                      <e p="PolygonMesh.cs" t="Include" />
+                      <e p="RectMesh.cs" t="Include" />
+                      <e p="RegularPolygonMesh.cs" t="Include" />
+                      <e p="RoundedRectMesh.cs" t="Include" />
+                      <e p="VertexBuffer.cs" t="Include" />
+                    </e>
+                    <e p="MovieClip.cs" t="Include" />
+                    <e p="NAudioClip.cs" t="Include" />
+                    <e p="NGraphics.cs" t="Include" />
+                    <e p="NMaterial.cs" t="Include" />
+                    <e p="NTexture.cs" t="Include" />
+                    <e p="ShaderConfig.cs" t="Include" />
+                    <e p="Shape.cs" t="Include" />
+                    <e p="Stage.cs" t="Include" />
+                    <e p="StageCamera.cs" t="Include" />
+                    <e p="StageEngine.cs" t="Include" />
+                    <e p="Stats.cs" t="Include" />
+                    <e p="Text" t="Include">
+                      <e p="BaseFont.cs" t="Include" />
+                      <e p="BitmapFont.cs" t="Include" />
+                      <e p="CopyPastePatch.cs" t="Include" />
+                      <e p="DynamicFont.cs" t="Include" />
+                      <e p="Emoji.cs" t="Include" />
+                      <e p="FontManager.cs" t="Include" />
+                      <e p="IKeyboard.cs" t="Include" />
+                      <e p="InputTextField.cs" t="Include" />
+                      <e p="RichTextField.cs" t="Include" />
+                      <e p="RTLSupport.cs" t="Include" />
+                      <e p="SelectionShape.cs" t="Include" />
+                      <e p="TextField.cs" t="Include" />
+                      <e p="TextFormat.cs" t="Include" />
+                      <e p="TouchScreenKeyboard.cs" t="Include" />
+                      <e p="TypingEffect.cs" t="Include" />
+                    </e>
+                    <e p="UpdateContext.cs" t="Include" />
+                  </e>
+                  <e p="Event" t="Include">
+                    <e p="EventBridge.cs" t="Include" />
+                    <e p="EventContext.cs" t="Include" />
+                    <e p="EventDispatcher.cs" t="Include" />
+                    <e p="EventListener.cs" t="Include" />
+                    <e p="IEventDispatcher.cs" t="Include" />
+                    <e p="InputEvent.cs" t="Include" />
+                  </e>
+                  <e p="Filter" t="Include">
+                    <e p="BlurFilter.cs" t="Include" />
+                    <e p="ColorFilter.cs" t="Include" />
+                    <e p="IFilter.cs" t="Include" />
+                  </e>
+                  <e p="Gesture" t="Include">
+                    <e p="LongPressGesture.cs" t="Include" />
+                    <e p="PinchGesture.cs" t="Include" />
+                    <e p="RotationGesture.cs" t="Include" />
+                    <e p="SwipeGesture.cs" t="Include" />
+                  </e>
+                  <e p="Tween" t="Include">
+                    <e p="EaseManager.cs" t="Include" />
+                    <e p="EaseType.cs" t="Include" />
+                    <e p="GPath.cs" t="Include" />
+                    <e p="GTween.cs" t="Include" />
+                    <e p="GTweener.cs" t="Include" />
+                    <e p="TweenManager.cs" t="Include" />
+                    <e p="TweenPropType.cs" t="Include" />
+                    <e p="TweenValue.cs" t="Include" />
+                  </e>
+                  <e p="UI" t="Include">
+                    <e p="Action" t="Include">
+                      <e p="ChangePageAction.cs" t="Include" />
+                      <e p="ControllerAction.cs" t="Include" />
+                      <e p="PlayTransitionAction.cs" t="Include" />
+                    </e>
+                    <e p="AsyncCreationHelper.cs" t="Include" />
+                    <e p="Controller.cs" t="Include" />
+                    <e p="DragDropManager.cs" t="Include" />
+                    <e p="EMRenderSupport.cs" t="Include" />
+                    <e p="FieldTypes.cs" t="Include" />
+                    <e p="GButton.cs" t="Include" />
+                    <e p="GComboBox.cs" t="Include" />
+                    <e p="GComponent.cs" t="Include" />
+                    <e p="Gears" t="Include">
+                      <e p="GearAnimation.cs" t="Include" />
+                      <e p="GearBase.cs" t="Include" />
+                      <e p="GearColor.cs" t="Include" />
+                      <e p="GearDisplay.cs" t="Include" />
+                      <e p="GearIcon.cs" t="Include" />
+                      <e p="GearLook.cs" t="Include" />
+                      <e p="GearSize.cs" t="Include" />
+                      <e p="GearText.cs" t="Include" />
+                      <e p="GearXY.cs" t="Include" />
+                      <e p="IAnimationGear.cs" t="Include" />
+                      <e p="IColorGear.cs" t="Include" />
+                    </e>
+                    <e p="GGraph.cs" t="Include" />
+                    <e p="GGroup.cs" t="Include" />
+                    <e p="GImage.cs" t="Include" />
+                    <e p="GLabel.cs" t="Include" />
+                    <e p="GList.cs" t="Include" />
+                    <e p="GLoader.cs" t="Include" />
+                    <e p="GMovieClip.cs" t="Include" />
+                    <e p="GObject.cs" t="Include" />
+                    <e p="GObjectPool.cs" t="Include" />
+                    <e p="GProgressBar.cs" t="Include" />
+                    <e p="GRichTextField.cs" t="Include" />
+                    <e p="GRoot.cs" t="Include" />
+                    <e p="GScrollBar.cs" t="Include" />
+                    <e p="GSlider.cs" t="Include" />
+                    <e p="GTextField.cs" t="Include" />
+                    <e p="GTextInput.cs" t="Include" />
+                    <e p="IUISource.cs" t="Include" />
+                    <e p="Margin.cs" t="Include" />
+                    <e p="PackageItem.cs" t="Include" />
+                    <e p="PageOption.cs" t="Include" />
+                    <e p="PopupMenu.cs" t="Include" />
+                    <e p="RelationItem.cs" t="Include" />
+                    <e p="Relations.cs" t="Include" />
+                    <e p="ScrollPane.cs" t="Include" />
+                    <e p="Transition.cs" t="Include" />
+                    <e p="TranslationHelper.cs" t="Include" />
+                    <e p="Tree" t="Include">
+                      <e p="TreeNode.cs" t="Include" />
+                      <e p="TreeView.cs" t="Include" />
+                    </e>
+                    <e p="UIConfig.cs" t="Include" />
+                    <e p="UIContentScaler.cs" t="Include" />
+                    <e p="UIObjectFactory.cs" t="Include" />
+                    <e p="UIPackage.cs" t="Include" />
+                    <e p="UIPainter.cs" t="Include" />
+                    <e p="UIPanel.cs" t="Include" />
+                    <e p="Window.cs" t="Include" />
+                  </e>
+                  <e p="Utils" t="Include">
+                    <e p="ByteBuffer.cs" t="Include" />
+                    <e p="Html" t="Include">
+                      <e p="HtmlButton.cs" t="Include" />
+                      <e p="HtmlElement.cs" t="Include" />
+                      <e p="HtmlImage.cs" t="Include" />
+                      <e p="HtmlInput.cs" t="Include" />
+                      <e p="HtmlLink.cs" t="Include" />
+                      <e p="HtmlPageContext.cs" t="Include" />
+                      <e p="HtmlParseOptions.cs" t="Include" />
+                      <e p="HtmlParser.cs" t="Include" />
+                      <e p="HtmlSelect.cs" t="Include" />
+                      <e p="IHtmlObject.cs" t="Include" />
+                      <e p="IHtmlPageContext.cs" t="Include" />
+                    </e>
+                    <e p="LuaUIHelper.cs" t="Include" />
+                    <e p="Timers.cs" t="Include" />
+                    <e p="ToolSet.cs" t="Include" />
+                    <e p="UBBParser.cs" t="Include" />
+                    <e p="XML.cs" t="Include" />
+                    <e p="XMLIterator.cs" t="Include" />
+                    <e p="XMLList.cs" t="Include" />
+                    <e p="XMLUtils.cs" t="Include" />
+                    <e p="ZipReader.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
             <e p="Google.Protobuf" t="Include">
               <e p="AdaptHelper.cs" t="Include" />
               <e p="ByteArray.cs" t="Include" />
