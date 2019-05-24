@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace ETHotfix
+﻿namespace ETHotfix
 {
 	public static class Game
 	{

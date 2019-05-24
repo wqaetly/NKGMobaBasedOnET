@@ -3,7 +3,6 @@
 using System.Threading.Tasks;
 using FairyGUI;
 using ETModel;
-using ETHotfix;
 
 namespace ETHotfix.FUIDialog
 {

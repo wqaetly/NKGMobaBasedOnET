@@ -4,7 +4,6 @@
 // Data: 2019年5月2日 17:09:27
 //------------------------------------------------------------
 
-using System;
 using ETModel;
 
 namespace ETHotfix

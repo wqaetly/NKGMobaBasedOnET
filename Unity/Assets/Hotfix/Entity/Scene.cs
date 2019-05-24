@@ -1,6 +1,4 @@
-﻿using ETModel;
-
-namespace ETHotfix
+﻿namespace ETHotfix
 {
 	public sealed class Scene: Entity
 	{

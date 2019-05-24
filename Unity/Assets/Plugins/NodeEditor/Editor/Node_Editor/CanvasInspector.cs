@@ -12,7 +12,7 @@ namespace NodeEditorFramework.Standard
 
 		public NodeCanvas canvas;
 
-		public void OnEnable()
+		public new void OnEnable()
 		{
 			canvas = (NodeCanvas)target;
 			canvas.Validate();

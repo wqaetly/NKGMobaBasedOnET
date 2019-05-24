@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ETHotfix
+﻿namespace ETHotfix
 {
 #if ILRuntime
 	public interface IEvent

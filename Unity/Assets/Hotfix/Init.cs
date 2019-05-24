@@ -22,7 +22,6 @@ namespace ETHotfix
             try
             {
                 Log.Info("更新Hotfix.dll");
-                ETModel.Log.Info("Test");
                 //显示转圈圈（因为后期要加很多界面，所以要等好几秒）
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
 

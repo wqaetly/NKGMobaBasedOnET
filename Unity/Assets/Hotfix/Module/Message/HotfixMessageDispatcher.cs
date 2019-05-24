@@ -1,7 +1,4 @@
-﻿using System;
-using ETModel;
-
-namespace ETHotfix
+﻿namespace ETHotfix
 {
 	public static class HotfixMessageDispatcher
 	{

@@ -1,10 +1,8 @@
 /** This is an automatically generated class by FairyGUI plugin FGUI2ET. Please do not modify it. **/
 
-using System;
 using System.Threading.Tasks;
 using FairyGUI;
 using ETModel;
-using ETHotfix;
 
 namespace ETHotfix.FUILogin
 {

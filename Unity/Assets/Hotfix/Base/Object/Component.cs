@@ -1,5 +1,4 @@
-﻿using System;
-using ETModel;
+﻿using ETModel;
 using MongoDB.Bson.Serialization.Attributes;
 #if !SERVER
 using UnityEngine;

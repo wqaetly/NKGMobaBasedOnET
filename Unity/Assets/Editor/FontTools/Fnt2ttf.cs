@@ -41,7 +41,7 @@ namespace ETEditor
         }
 
         // add menu
-        [MenuItem("Tools/自定义字体生成工具")]
+        [MenuItem("Tools/其他实用工具/图集导出和字体工具")]
         static void Init()
         {
             EditorWindow.GetWindow(typeof (BMFontEditor));
