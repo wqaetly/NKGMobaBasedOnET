@@ -1,4 +1,6 @@
-﻿namespace ETHotfix
+﻿using System;
+
+namespace ETHotfix
 {
 #if ILRuntime
 	public interface IMHandler

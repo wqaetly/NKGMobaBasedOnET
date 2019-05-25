@@ -52,8 +52,7 @@ namespace ETHotfix
 					createUnits.Units.Add(unitInfo);
 				}
 				//向所有小骷髅广播信息
-				MessageHelper.Broadcast(createUnits); 
-				MessageHelper.Broadcast(new Actor_Test(){Info = "TEST ACTOR"});
+				MessageHelper.Broadcast(createUnits);
 				
 				//广播完回复客户端，这边搞好了
 				reply(response);
