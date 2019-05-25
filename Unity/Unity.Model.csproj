@@ -523,7 +523,9 @@
     <Compile Include="Assets\Model\NKGMOBA\Mono\Map.cs" />
     <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\BaseNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\Bson\NodeDataSupporter.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\HeroDataStructs\BaseDataStruct.cs" />
     <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\NodeDataForCheckSkill.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\NodeDataForHero.cs" />
     <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\NodeDataForSkillBuff.cs" />
     <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\NodeDataForStartSkill.cs" />
     <Compile Include="Assets\Model\NKGMOBA\SkillDemo\Scripts\Core\SkillBuffDatas\AttackRange.cs" />
@@ -807,6 +809,15 @@
     <Reference Include="Pathfinding.Poly2Tri">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
     </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
@@ -860,15 +871,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

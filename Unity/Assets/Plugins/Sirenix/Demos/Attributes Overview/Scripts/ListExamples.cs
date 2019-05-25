@@ -22,7 +22,7 @@ namespace Sirenix.OdinInspector.Demos
 
 #endif
 
-        [Title("Ê¾ÀýÁÐ±í")]
+        [Title("ç¤ºä¾‹åˆ—è¡¨")]
         [InfoBox("List elements can now be dragged around to reorder them and deleted individually, and lists have paging (try adding a lot of elements!). You can still drag many assets at once into lists from the project view - just drag them into the list itself and insert them where you want to add them.")]
         public List<float> FloatList;
 

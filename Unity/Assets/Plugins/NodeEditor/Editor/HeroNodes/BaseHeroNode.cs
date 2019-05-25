@@ -1,36 +1,30 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019年5月14日 15:11:40
+// Data: 2019年5月25日 11:11:47
 //------------------------------------------------------------
 
-#if UNITY_EDITOR
-
-using System;
 using NodeEditorFramework;
-using NodeEditorFramework.Standard;
-using NodeEditorFramework.Utilities;
-using Sirenix.OdinInspector;
-using SkillDemo;
 using UnityEditor;
 using UnityEngine;
 
 namespace SkillDemo
 {
-    [Node(false, "Skill/技能初始化结点", typeof(SkillNodeCanvas))]
-    public class SkillStartNode : Node
+    [Node(false, "Skill/英雄属性结点", typeof (SkillNodeCanvas))]
+    public class BaseHeroNode: Node
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "技能初始化结点";
+        private const string Id = "英雄属性结点";
 
         /// <summary>
+        /// 内部ID
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
 
-        public override Vector2 DefaultSize => new Vector2(200,160);
+        public override Vector2 DefaultSize => new Vector2(200, 160);
 
         [ValueConnectionKnob("NextSkill", Direction.Out, "NextSkill", NodeSide.Right)]
         public ValueConnectionKnob NextSkill;
@@ -41,11 +35,11 @@ namespace SkillDemo
         /// <summary>
         /// 技能数据
         /// </summary>
-        public NodeDataForStartSkill m_SkillData;
+        public NodeDataForHero m_HeroData;
 
         public override BaseNodeData GetNodeData()
         {
-            return m_SkillData;
+            return m_HeroData;
         }
 
         public override void NodeGUI()
@@ -65,13 +59,9 @@ namespace SkillDemo
 
             GUILayout.BeginVertical();
 
-            EditorGUILayout.TextField("技能名称：" + m_SkillData?.SkillName);
-            EditorGUILayout.TextField("技能图标：");
-            EditorGUILayout.ObjectField(m_SkillData?.SkillSprite, typeof(Sprite), false,
-                GUILayout.Width(65f),
-                GUILayout.Height(65f));
+            EditorGUILayout.TextField("英雄名称：" + this.m_HeroData?.HeroName);
+
             GUILayout.EndVertical();
         }
     }
 }
-#endif

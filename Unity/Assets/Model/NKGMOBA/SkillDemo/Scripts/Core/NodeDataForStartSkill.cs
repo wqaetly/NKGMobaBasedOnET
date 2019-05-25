@@ -15,9 +15,6 @@ namespace SkillDemo
     [BsonIgnoreExtraElements]
     public class NodeDataForStartSkill : BaseNodeData
     {
-        [TabGroup("基础信息")] [LabelText("所属英雄")] [GUIColor(1, 0.6f, 0.4f)]
-        public string BelongHero;
-
         [TabGroup("基础信息")] [PreviewField(Height = 50)] [LabelText("技能图标")] [GUIColor(1, 0.6f, 0.4f)] [BsonIgnore]
         public Sprite SkillSprite;
 
