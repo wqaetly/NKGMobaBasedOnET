@@ -27,14 +27,14 @@ namespace ETModel
         public Dictionary<int, CostumNodeData>
                 m_DataDic = new Dictionary<int, CostumNodeData>();
 
-        [LabelText("此数据载体的ID,必填！！！！！！！！"),GUIColor(0.8f,0.8f,1)]
+        [LabelText("此数据载体的ID,必填！！！！！！！！"), GUIColor(0.8f, 0.8f, 1)]
         public int ID;
-        
+
         /// <summary>
         /// 用以承载技能数据的字典
         /// </summary>
         [BsonIgnore]
-        public CostumNodeData TempNodeData = new CostumNodeData();
+        private CostumNodeData TempNodeData = new CostumNodeData();
 
         /// <summary>
         /// 按结点Id获取数据
@@ -47,6 +47,7 @@ namespace ETModel
             {
                 return TempNodeData;
             }
+
             return null;
         }
 

@@ -35,6 +35,22 @@ namespace NodeEditorFramework
             return null;
         }
 
+        /// <summary>
+        /// 设置基本Data数据（ID）
+        /// </summary>
+        public virtual void SetBaseNodeData()
+        {
+            
+        }
+        
+        /// <summary>
+        /// 自动设置每个节点所有相关联ID
+        /// </summary>
+        public virtual void AutoSetNodeNextAndPreIDs()
+        {
+            
+        }
+
         // Static connection ports stored in the actual declaration variables
         [NonSerialized] public List<ConnectionPort> staticConnectionPorts = new List<ConnectionPort>();
 

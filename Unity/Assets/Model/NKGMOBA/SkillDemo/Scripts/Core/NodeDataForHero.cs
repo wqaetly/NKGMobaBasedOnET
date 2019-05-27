@@ -41,7 +41,7 @@ namespace ETModel
             { 16, 4800 }
         };
 
-        [TitleGroup("初始属性"), GUIColor(205 / 255f, 205 / 255f, 180 / 255f)]
+        [TitleGroup("初始属性")]
         [LabelText("初始生命值")]
         public float OriHP;
 
@@ -81,7 +81,7 @@ namespace ETModel
         [LabelText("初始CD")]
         public float OriSkillCD;
 
-        [TitleGroup("成长属性"), GUIColor(84 / 255f, 1f, 159 / 255f)]
+        [TitleGroup("成长属性")]
         [LabelText("成长生命值")]
         public float GroHP;
 
@@ -121,7 +121,7 @@ namespace ETModel
         [LabelText("成长CD")]
         public float GroSkillCD;
 
-        [TitleGroup("额外属性"), GUIColor(1f, 193 / 255f, 37 / 255f)]
+        [TitleGroup("额外属性")]
         [LabelText("额外生命值")]
         public float ExtHP;
 

@@ -18,8 +18,8 @@ using UnityEngine;
 
 namespace SkillDemo
 {
-    [Node(false, "Skill/技能初始化结点", typeof(SkillNodeCanvas))]
-    public class SkillStartNode : Node
+    [Node(false, "Skill/技能初始化结点", typeof (SkillNodeCanvas))]
+    public class SkillStartNode: Node
     {
         /// <summary>
         /// 内部ID
@@ -31,12 +31,12 @@ namespace SkillDemo
         /// </summary>
         public override string GetID => Id;
 
-        public override Vector2 DefaultSize => new Vector2(200,160);
+        public override Vector2 DefaultSize => new Vector2(200, 160);
 
-        [ValueConnectionKnob("NextSkill", Direction.Out, "NextSkill", NodeSide.Right)]
+        [ValueConnectionKnob("NextSkill", Direction.Out, "NextNodeDatas", NodeSide.Right)]
         public ValueConnectionKnob NextSkill;
 
-        [ValueConnectionKnob("PrevSkill", Direction.In, "NextSkill", NodeSide.Left)]
+        [ValueConnectionKnob("PrevSkill", Direction.In, "PrevNodeDatas", NodeSide.Left)]
         public ValueConnectionKnob PrevSkill;
 
         /// <summary>
@@ -47,6 +47,34 @@ namespace SkillDemo
         public override BaseNodeData GetNodeData()
         {
             return m_SkillData;
+        }
+
+        public override void AutoSetNodeNextAndPreIDs()
+        {
+            this.m_SkillData.PreNodeIds.Clear();
+            this.m_SkillData.NextNodeIds.Clear();
+
+            if (this.NextSkill.connected())
+            {
+                foreach (var VARIABLE in this.NextSkill.connections)
+                {
+                    this.m_SkillData?.NextNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                }
+            }
+
+            if (this.PrevSkill.connected())
+            {
+                foreach (var VARIABLE in this.PrevSkill.connections)
+                {
+                    this.m_SkillData?.PreNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                }
+            }
+        }
+
+        public override void SetBaseNodeData()
+        {
+            this.NextSkill.SetValue(this.m_SkillData);
+            this.PrevSkill.SetValue(this.m_SkillData);
         }
 
         public override void NodeGUI()
@@ -68,7 +96,7 @@ namespace SkillDemo
 
             EditorGUILayout.TextField("技能名称：" + m_SkillData?.SkillName);
             EditorGUILayout.TextField("技能图标：");
-            EditorGUILayout.ObjectField(m_SkillData?.SkillSprite, typeof(Sprite), false,
+            EditorGUILayout.ObjectField(m_SkillData?.SkillSprite, typeof (Sprite), false,
                 GUILayout.Width(65f),
                 GUILayout.Height(65f));
             GUILayout.EndVertical();

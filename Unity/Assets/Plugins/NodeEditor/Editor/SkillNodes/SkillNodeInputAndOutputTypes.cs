@@ -6,26 +6,26 @@
 
 using System;
 using System.Drawing;
+using ETModel;
 using NodeEditorFramework;
 using Color = UnityEngine.Color;
 
 namespace SkillDemo
 {
-    public class PrevSkillType : ValueConnectionType //: IConnectionTypeDeclaration
+    public class PrevSkillType: ValueConnectionType //: IConnectionTypeDeclaration
     {
-        public override string Identifier => "PrevSkill";
-        
-        public override Type Type => typeof(float);
+        public override string Identifier => "PrevNodeDatas";
+
+        public override Type Type => typeof (BaseNodeData);
 
         public override Color Color => Color.yellow;
-        
     }
 
-    public class NextSkillType : ValueConnectionType // : IConnectionTypeDeclaration
+    public class NextSkillType: ValueConnectionType // : IConnectionTypeDeclaration
     {
-        public override string Identifier => "NextSkill";
+        public override string Identifier => "NextNodeDatas";
 
-        public override Type Type => typeof(float);
+        public override Type Type => typeof (BaseNodeData);
 
         public override Color Color => Color.cyan;
     }

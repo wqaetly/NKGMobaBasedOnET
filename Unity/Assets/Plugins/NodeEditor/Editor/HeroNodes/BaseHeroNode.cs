@@ -27,10 +27,10 @@ namespace SkillDemo
 
         public override Vector2 DefaultSize => new Vector2(200, 160);
 
-        [ValueConnectionKnob("NextSkill", Direction.Out, "NextSkill", NodeSide.Right)]
+        [ValueConnectionKnob("NextNode", Direction.Out, "NextNodeDatas", NodeSide.Right)]
         public ValueConnectionKnob NextSkill;
 
-        [ValueConnectionKnob("PrevSkill", Direction.In, "NextSkill", NodeSide.Left)]
+        [ValueConnectionKnob("PrevNode", Direction.In, "PrevNodeDatas", NodeSide.Left)]
         public ValueConnectionKnob PrevSkill;
 
         /// <summary>

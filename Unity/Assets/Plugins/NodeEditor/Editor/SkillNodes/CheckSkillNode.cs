@@ -16,8 +16,8 @@ using UnityEngine;
 
 namespace SkillDemo
 {
-    [Node(false, "Skill/检查技能结点", typeof(SkillNodeCanvas))]
-    public class CheckSkillNode : Node
+    [Node(false, "Skill/检查技能结点", typeof (SkillNodeCanvas))]
+    public class CheckSkillNode: Node
     {
         public override Vector2 DefaultSize => new Vector2(200, 160);
 
@@ -30,15 +30,46 @@ namespace SkillDemo
         /// </summary>
         public NodeDataForCheckSkill m_SkillData;
 
-        [ValueConnectionKnob("PrevSkill", Direction.In, "NextSkill", NodeSide.Left, 30f)]
+        [ValueConnectionKnob("PrevSkill", Direction.In, "PrevNodeDatas", NodeSide.Left, 30f)]
         public ValueConnectionKnob PrevSkill;
 
-        [ValueConnectionKnob("NextSkill", Direction.Out, "NextSkill", NodeSide.Right, 33)]
+        [ValueConnectionKnob("NextSkill", Direction.Out, "NextNodeDatas", NodeSide.Right, 33)]
         public ValueConnectionKnob NextSkill;
 
         public override BaseNodeData GetNodeData()
         {
             return m_SkillData;
+        }
+
+        public override void AutoSetNodeNextAndPreIDs()
+        {
+            this.m_SkillData.PreNodeIds.Clear();
+            this.m_SkillData.NextNodeIds.Clear();
+
+            if (this.NextSkill.connected())
+            {
+                foreach (var VARIABLE in this.NextSkill.connections)
+                {
+                    this.m_SkillData?.NextNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                }
+            }
+
+            if (this.PrevSkill.connected())
+            {
+                foreach (var VARIABLE in this.PrevSkill.connections)
+                {
+                    this.m_SkillData.PreNodeIds.Add( VARIABLE.GetValue<BaseNodeData>().NodeID);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设置基本数据（ID）
+        /// </summary>
+        public override void SetBaseNodeData()
+        {
+            this.NextSkill.SetValue(this.m_SkillData);
+            this.PrevSkill.SetValue(this.m_SkillData);
         }
 
         public override void NodeGUI()

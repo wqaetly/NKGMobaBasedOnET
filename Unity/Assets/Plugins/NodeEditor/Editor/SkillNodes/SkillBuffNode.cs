@@ -19,17 +19,17 @@ using UnityEngine;
 
 namespace SkillDemo
 {
-    [Node(false, "Skill/技能所衍生的Buff结点", typeof(SkillNodeCanvas))]
-    public class SkillBuffNode : Node
+    [Node(false, "Skill/技能所衍生的Buff结点", typeof (SkillNodeCanvas))]
+    public class SkillBuffNode: Node
     {
         public override string GetID => Id;
 
         public const string Id = "技能所衍生的Buff结点";
 
-        [ValueConnectionKnob("PrevSkill", Direction.In, "NextSkill", NodeSide.Left, 30f)]
+        [ValueConnectionKnob("PrevSkill", Direction.In, "PrevNodeDatas", NodeSide.Left, 30f)]
         public ValueConnectionKnob PrevSkill;
 
-        [ValueConnectionKnob("NextSkill", Direction.Out, "NextSkill", NodeSide.Right, 33)]
+        [ValueConnectionKnob("NextSkill", Direction.Out, "NextNodeDatas", NodeSide.Right, 33)]
         public ValueConnectionKnob NextSkill;
 
         public NodeDataForSkillBuff SkillBuffBases;
@@ -37,6 +37,34 @@ namespace SkillDemo
         public override BaseNodeData GetNodeData()
         {
             return SkillBuffBases;
+        }
+
+        public override void AutoSetNodeNextAndPreIDs()
+        {
+            this.SkillBuffBases.PreNodeIds.Clear();
+            this.SkillBuffBases.NextNodeIds.Clear();
+
+            if (this.NextSkill.connected())
+            {
+                foreach (var VARIABLE in this.NextSkill.connections)
+                {
+                    this.SkillBuffBases?.NextNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                }
+            }
+
+            if (this.PrevSkill.connected())
+            {
+                foreach (var VARIABLE in this.PrevSkill.connections)
+                {
+                    this.SkillBuffBases?.PreNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                }
+            }
+        }
+
+        public override void SetBaseNodeData()
+        {
+            this.NextSkill.SetValue(this.SkillBuffBases);
+            this.PrevSkill.SetValue(this.SkillBuffBases);
         }
 
         public override void NodeGUI()

@@ -26,10 +26,11 @@ namespace SkillDemo
     {
         public override string canvasName => Name;
 
-        [LabelText("保存文件名")]
+        [Title("本Canvas所有数据整理部分")]
+        [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
         public string Name = "Skill";
 
-        [LabelText("保存路径")]
+        [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
         [FolderPath]
         public string SavePath;
 
@@ -44,6 +45,20 @@ namespace SkillDemo
         public NodeDataSupporter m_DebugDic;
 
         CostumNodeData tempData = new CostumNodeData();
+
+        [Button("自动设置所有Node前后的id", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void AutoSetAllNodeNextAndPreId()
+        {
+            foreach (var VARIABLE in this.nodes)
+            {
+                VARIABLE.SetBaseNodeData();
+            }
+
+            foreach (var VARIABLE in this.nodes)
+            {
+                VARIABLE.AutoSetNodeNextAndPreIDs();
+            }
+        }
 
         [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()

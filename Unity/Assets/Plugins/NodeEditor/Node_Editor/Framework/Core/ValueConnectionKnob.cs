@@ -20,7 +20,7 @@ namespace NodeEditorFramework
 		// Knob Value
 		public Type valueType { get { return ConnectionStyle.Type; } }
 		public bool IsValueNull { get { return value == null; } }
-		[System.NonSerialized]
+		
 		private object _value = null;
 		private object value {
 			get { return _value; }
