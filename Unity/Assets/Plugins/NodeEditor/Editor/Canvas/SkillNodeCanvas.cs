@@ -4,21 +4,16 @@
 // Data: 2019年5月14日 14:47:44
 //------------------------------------------------------------
 
-#if UNITY_EDITOR
-
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using ETModel;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.Options;
 using NodeEditorFramework;
 using Sirenix.OdinInspector;
-using SkillDemo;
-using SkillDemo.Bson;
 using UnityEngine;
 
 namespace SkillDemo
@@ -94,5 +89,3 @@ namespace SkillDemo
         }
     }
 }
-
-#endif

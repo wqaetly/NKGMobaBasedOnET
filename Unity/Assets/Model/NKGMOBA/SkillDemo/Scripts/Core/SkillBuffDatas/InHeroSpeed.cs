@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
-using SkillDemo;
+using ETModel;
 
-namespace SkillDemo
+namespace ETModel
 {
     /// <summary>
     /// 增加英雄移速

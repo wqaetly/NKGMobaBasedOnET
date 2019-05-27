@@ -6,7 +6,7 @@
 
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     public enum SkillReleaseMode
     {

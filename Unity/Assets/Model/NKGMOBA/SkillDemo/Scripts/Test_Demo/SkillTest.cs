@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
-using SkillDemo;
-using SkillDemo.Bson;
+using ETModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,9 +57,9 @@ public class SkillTest : MonoBehaviour
         E.onClick.AddListener(PressE);
         R.onClick.AddListener(PressR);
         
-        AddInfoToLog("被动技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetSkillById(0).NodeDataInnerDic[0]))
+        AddInfoToLog("被动技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(0).NodeDataInnerDic[0]))
                      .SkillName);
-        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetSkillById(0).NodeDataInnerDic)
+        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetNodeById(0).NodeDataInnerDic)
         {
             AddInfoToLog($"ID为{temp.Value.NodeID}的结点名称为{temp.Value.GetType().Name}");
         }
@@ -69,9 +68,9 @@ public class SkillTest : MonoBehaviour
     private void PressQ()
     {
         AddInfoToLog("按下了Q技能");
-        AddInfoToLog("Q技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetSkillById(1).NodeDataInnerDic[0]))
+        AddInfoToLog("Q技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(1).NodeDataInnerDic[0]))
                      .SkillName);
-        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetSkillById(1).NodeDataInnerDic)
+        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetNodeById(1).NodeDataInnerDic)
         {
             AddInfoToLog($"ID为{temp.Value.NodeID}的结点名称为{temp.Value.GetType().Name}");
         }
@@ -80,9 +79,9 @@ public class SkillTest : MonoBehaviour
     private void PressW()
     {
         AddInfoToLog("按下了W技能");
-        AddInfoToLog("W技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetSkillById(2).NodeDataInnerDic[0]))
+        AddInfoToLog("W技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(2).NodeDataInnerDic[0]))
                      .SkillName);
-        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetSkillById(2).NodeDataInnerDic)
+        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetNodeById(2).NodeDataInnerDic)
         {
             AddInfoToLog($"ID为{temp.Value.NodeID}的结点名称为{temp.Value.GetType().Name}");
         }
@@ -91,9 +90,9 @@ public class SkillTest : MonoBehaviour
     private void PressE()
     {
         AddInfoToLog("按下了E技能");
-        AddInfoToLog("E技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetSkillById(3).NodeDataInnerDic[0]))
+        AddInfoToLog("E技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(3).NodeDataInnerDic[0]))
                      .SkillName);
-        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetSkillById(3).NodeDataInnerDic)
+        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetNodeById(3).NodeDataInnerDic)
         {
             AddInfoToLog($"ID为{temp.Value.NodeID}的结点名称为{temp.Value.GetType().Name}");
         }
@@ -102,9 +101,9 @@ public class SkillTest : MonoBehaviour
     private void PressR()
     {
         AddInfoToLog("按下了R技能");
-        AddInfoToLog("R技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetSkillById(4).NodeDataInnerDic[0]))
+        AddInfoToLog("R技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(4).NodeDataInnerDic[0]))
                      .SkillName);
-        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetSkillById(4).NodeDataInnerDic)
+        foreach (KeyValuePair<int, BaseNodeData> temp in m_XiaoPaoSkills.GetNodeById(4).NodeDataInnerDic)
         {
             AddInfoToLog($"ID为{temp.Value.NodeID}的结点名称为{temp.Value.GetType().Name}");
         }

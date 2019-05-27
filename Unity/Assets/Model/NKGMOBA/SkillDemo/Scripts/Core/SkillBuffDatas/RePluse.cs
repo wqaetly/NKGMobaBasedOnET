@@ -9,7 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     /// <summary>
     /// 击退BUFF

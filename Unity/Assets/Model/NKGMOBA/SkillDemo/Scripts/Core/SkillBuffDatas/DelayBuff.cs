@@ -9,7 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     /// <summary>
     /// 延时Buff，多用于处理叠加类型的技能，最经典的，诺克五层血怒

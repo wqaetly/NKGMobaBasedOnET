@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     public class BaseNodeData
     {

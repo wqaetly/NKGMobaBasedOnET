@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using System.IO;
+using ETModel;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;

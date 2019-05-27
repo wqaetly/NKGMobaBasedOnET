@@ -7,9 +7,8 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
-using UnityEngine;
 
-namespace SkillDemo.Bson
+namespace ETModel
 {
     public class CostumNodeData
     {
@@ -25,26 +24,25 @@ namespace SkillDemo.Bson
     {
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<int, CostumNodeData>
-            m_DataDic = new Dictionary<int, CostumNodeData>();
+                m_DataDic = new Dictionary<int, CostumNodeData>();
 
         /// <summary>
         /// 用以承载技能数据的字典
         /// </summary>
-        [BsonIgnore] public CostumNodeData TempNodeData = new CostumNodeData();
+        [BsonIgnore]
+        public CostumNodeData TempNodeData = new CostumNodeData();
 
         /// <summary>
-        /// 按技能Id获取技能
+        /// 按结点Id获取数据
         /// </summary>
         /// <param name="SkillId"></param>
         /// <returns></returns>
-        public CostumNodeData GetSkillById(int SkillId)
+        public CostumNodeData GetNodeById(int SkillId)
         {
             if (m_DataDic.TryGetValue(SkillId, out TempNodeData))
             {
                 return TempNodeData;
             }
-
-            Debug.LogError("要查找的技能不存在！请确认技能ID");
             return null;
         }
 
@@ -56,7 +54,7 @@ namespace SkillDemo.Bson
         /// <returns></returns>
         public BaseNodeData GetNodeDataByPreId(int belongtoId, int preId)
         {
-            return GetSkillById(belongtoId).NodeDataInnerDic[preId];
+            return GetNodeById(belongtoId).NodeDataInnerDic[preId];
         }
 
         /// <summary>
@@ -67,7 +65,7 @@ namespace SkillDemo.Bson
         /// <returns></returns>
         public BaseNodeData GetNodeDataByNextId(int belongtoId, int nextId)
         {
-            return GetSkillById(belongtoId).NodeDataInnerDic[nextId];
+            return GetNodeById(belongtoId).NodeDataInnerDic[nextId];
         }
     }
 }

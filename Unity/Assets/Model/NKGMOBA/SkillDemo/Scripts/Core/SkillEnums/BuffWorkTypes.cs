@@ -6,7 +6,7 @@
 
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     /// <summary>
     /// Buff的奏效的表现

@@ -7,10 +7,10 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
-using SkillDemo;
+using ETModel;
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     /// <summary>
     /// 真实伤害

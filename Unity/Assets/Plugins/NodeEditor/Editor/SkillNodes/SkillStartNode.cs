@@ -7,6 +7,7 @@
 #if UNITY_EDITOR
 
 using System;
+using ETModel;
 using NodeEditorFramework;
 using NodeEditorFramework.Standard;
 using NodeEditorFramework.Utilities;

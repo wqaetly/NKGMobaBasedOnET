@@ -4,6 +4,7 @@
 // Data: 2019年5月25日 11:11:47
 //------------------------------------------------------------
 
+using ETModel;
 using NodeEditorFramework;
 using UnityEditor;
 using UnityEngine;

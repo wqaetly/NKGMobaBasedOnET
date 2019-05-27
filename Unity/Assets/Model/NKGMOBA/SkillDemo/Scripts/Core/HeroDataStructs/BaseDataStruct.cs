@@ -6,7 +6,8 @@
 
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+
+namespace ETModel
 {
     #region 初始值
 

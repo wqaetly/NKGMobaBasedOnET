@@ -7,7 +7,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     [Flags]
     public enum SkillTarget

@@ -2,9 +2,9 @@ using UnityEngine;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using ETModel;
 using NodeEditorFramework.IO;
 using Sirenix.OdinInspector;
-using SkillDemo;
 
 namespace NodeEditorFramework
 {

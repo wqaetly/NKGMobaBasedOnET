@@ -8,6 +8,7 @@
 
 #endif
 using System.Collections.Generic;
+using ETModel;
 using NodeEditorFramework;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;

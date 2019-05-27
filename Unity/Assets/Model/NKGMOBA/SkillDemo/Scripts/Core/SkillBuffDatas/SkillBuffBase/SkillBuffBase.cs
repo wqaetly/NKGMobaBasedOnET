@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace SkillDemo
+namespace ETModel
 {
     [GUIColor(0.4f, 0.8f, 1)]
     public abstract class SkillBuffBase

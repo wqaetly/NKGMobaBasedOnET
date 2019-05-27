@@ -10,7 +10,7 @@ using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace SkillDemo
+namespace ETModel
 {
     [BsonIgnoreExtraElements]
     public class NodeDataForStartSkill : BaseNodeData
