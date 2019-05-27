@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
+using Sirenix.OdinInspector;
 
 namespace ETModel
 {
@@ -26,6 +27,9 @@ namespace ETModel
         public Dictionary<int, CostumNodeData>
                 m_DataDic = new Dictionary<int, CostumNodeData>();
 
+        [LabelText("此数据载体的ID,必填！！！！！！！！"),GUIColor(0.8f,0.8f,1)]
+        public int ID;
+        
         /// <summary>
         /// 用以承载技能数据的字典
         /// </summary>

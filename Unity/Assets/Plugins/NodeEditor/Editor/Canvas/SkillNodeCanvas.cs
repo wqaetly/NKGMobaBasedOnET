@@ -26,8 +26,12 @@ namespace SkillDemo
     {
         public override string canvasName => Name;
 
-        [LabelText("二进制文件名")]
+        [LabelText("保存文件名")]
         public string Name = "Skill";
+
+        [LabelText("保存路径")]
+        [FolderPath]
+        public string SavePath;
 
         /// <summary>
         /// 节点数据载体，用以搜集所有本SO文件的数据
@@ -65,7 +69,7 @@ namespace SkillDemo
         public void Save()
         {
             m_DebugDic.m_DataDic.Clear();
-            using (FileStream file = File.Create($"Assets/Res/Config/{this.Name}.bytes"))
+            using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
             {
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
             }
@@ -76,7 +80,7 @@ namespace SkillDemo
         [Button("测试反序列化", 25), GUIColor(0.4f, 0.8f, 1)]
         public void TestDeserialize()
         {
-            byte[] mfile = File.ReadAllBytes($"Assets/Res/Config/{this.Name}.bytes");
+            byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
 
             if (mfile.Length == 0) Debug.Log("没有读取到文件");
 

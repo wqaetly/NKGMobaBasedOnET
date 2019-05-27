@@ -8,8 +8,10 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NodeDataForSkillBuff : BaseNodeData
+    public class NodeDataForSkillBuff: BaseNodeData
     {
-        [HideLabel] [Title("技能Buff模块")] public SkillBuffBase SkillBuffBases;
+        [HideLabel]
+        [Title("技能Buff模块")]
+        public SkillBuffBase SkillBuffBases;
     }
 }

@@ -11,29 +11,22 @@ namespace ETModel
     [System.Flags]
     public enum SkillCostTypes
     {
-        /// <summary>
-        /// 耗魔
-        /// </summary>
-        [LabelText("耗魔")] MagicValue = 1 << 1,
+#if !SERVER
+        [LabelText("耗魔")]
+        #endif
+        MagicValue = 1 << 1,
+#if !SERVER
+        [LabelText("耗血")]
+#endif
+        HPValue = 1 << 2,
 
-        /// <summary>
-        /// 耗血
-        /// </summary>
-        [LabelText("耗血")]HPValue = 1 << 2,
+        [LabelText("其他")]
+        Other = 1 << 3,
 
-        /// <summary>
-        /// 其他
-        /// </summary>
-        [LabelText("其他")]Other = 1 << 3,
+        [LabelText("耗时")]
+        Time = 1 << 4,
 
-        /// <summary>
-        /// 耗时
-        /// </summary>
-        [LabelText("耗时")] Time = 1 << 4,
-
-        /// <summary>
-        /// 无消耗
-        /// </summary>
-        [LabelText("无消耗")]None = 1 << 5,
+        [LabelText("无消耗")]
+        None = 1 << 5,
     }
 }

@@ -11,9 +11,11 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NodeDataForCheckSkill : BaseNodeData
+    public class NodeDataForCheckSkill: BaseNodeData
     {
-        [HideLabel] [Title("技能消耗类型")] public SkillCostTypes SkillCostTypes = SkillCostTypes.None;
+        [HideLabel]
+        [Title("技能消耗类型")]
+        public SkillCostTypes SkillCostTypes = SkillCostTypes.None;
 
         [DictionaryDrawerSettings(KeyLabel = "等级", ValueLabel = "消耗值")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]

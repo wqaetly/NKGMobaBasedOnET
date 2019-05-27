@@ -141,6 +141,9 @@ namespace App
 						
 						//RealmGlobalComponent,增加在线组件，记录在线玩家
 						Game.Scene.AddComponent<OnlineComponent>();
+
+						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
+						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
 						break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();

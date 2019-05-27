@@ -11,19 +11,13 @@ namespace ETModel
     [System.Flags]
     public enum BuffEffectedTypes
     {
-        /// <summary>
-        /// 来自英雄等级
-        /// </summary>
-        [LabelText("来自英雄等级的加成")] FromHeroLevel = 1 << 1,
+        [LabelText("来自英雄等级的加成")]
+        FromHeroLevel = 1 << 1,
 
-        /// <summary>
-        /// 来自技能等级
-        /// </summary>
-        [LabelText("来自技能等级的加成")] FromSkillLevel = 1 << 2,
+        [LabelText("来自技能等级的加成")]
+        FromSkillLevel = 1 << 2,
 
-        /// <summary>
-        /// 来自英雄等级和技能等级
-        /// </summary>
-        [LabelText("来自英雄和技能等级的加成")] ALL = FromHeroLevel | FromSkillLevel,
+        [LabelText("来自英雄和技能等级的加成")]
+        ALL = FromHeroLevel | FromSkillLevel,
     }
 }
