@@ -12,37 +12,47 @@ namespace NodeEditorFramework
     /// <summary>
     /// Base class for all canvas types
     /// </summary>
-    public abstract class NodeCanvas : SerializedScriptableObject
+    public abstract class NodeCanvas: SerializedScriptableObject
     {
         public virtual string canvasName
         {
-            get { return "DEFAULT"; }
+            get
+            {
+                return "DEFAULT";
+            }
         }
 
         public virtual bool allowSceneSaveOnly
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public virtual bool allowRecursion
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
+        [HideInInspector]
         public NodeCanvasTraversal Traversal;
 
+        [HideInInspector]
         public NodeEditorState[] editorStates = new NodeEditorState[0];
 
         public string saveName;
         public string savePath;
 
+        [HideInInspector]
         public bool livesInScene = false;
 
         public List<Node> nodes = new List<Node>();
 
         public List<NodeGroup> groups = new List<NodeGroup>();
-
-
 
         #region Constructors
 
@@ -51,9 +61,8 @@ namespace NodeEditorFramework
         /// </summary>
         public static T CreateCanvas<T>() where T : NodeCanvas
         {
-            if (typeof(T) == typeof(NodeCanvas))
-                throw new Exception(
-                    "Cannot create canvas of type 'NodeCanvas' as that is only the base class. Please specify a valid subclass!");
+            if (typeof (T) == typeof (NodeCanvas))
+                throw new Exception("Cannot create canvas of type 'NodeCanvas' as that is only the base class. Please specify a valid subclass!");
             T canvas = ScriptableObject.CreateInstance<T>();
             canvas.name = canvas.saveName = "New " + canvas.canvasName;
 
@@ -69,7 +78,7 @@ namespace NodeEditorFramework
         public static NodeCanvas CreateCanvas(Type canvasType)
         {
             NodeCanvas canvas;
-            if (canvasType != null && canvasType.IsSubclassOf(typeof(NodeCanvas)))
+            if (canvasType != null && canvasType.IsSubclassOf(typeof (NodeCanvas)))
                 canvas = ScriptableObject.CreateInstance(canvasType) as NodeCanvas;
             else
                 canvas = ScriptableObject.CreateInstance<NodeEditorFramework.Standard.CalculationCanvasType>();
@@ -191,7 +200,7 @@ namespace NodeEditorFramework
             if (list == null)
             {
                 Debug.LogWarning("NodeCanvas '" + name + "' " + listName +
-                                 " were erased and set to null! Automatically fixed!");
+                    " were erased and set to null! Automatically fixed!");
                 list = new List<T>();
             }
 
@@ -199,7 +208,7 @@ namespace NodeEditorFramework
             list = list.Where((T o) => o != null).ToList();
             if (originalCount != list.Count)
                 Debug.LogWarning("NodeCanvas '" + name + "' contained " + (originalCount - list.Count) +
-                                 " broken (null) " + listName + "! Automatically fixed!");
+                    " broken (null) " + listName + "! Automatically fixed!");
         }
 
         /// <summary>

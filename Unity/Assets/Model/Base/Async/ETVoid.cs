@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace ETModel
 {
+    /// <summary>
+    /// 轻量级async void
+    /// </summary>
     [AsyncMethodBuilder(typeof(AsyncETVoidMethodBuilder))]
     public struct ETVoid
     {

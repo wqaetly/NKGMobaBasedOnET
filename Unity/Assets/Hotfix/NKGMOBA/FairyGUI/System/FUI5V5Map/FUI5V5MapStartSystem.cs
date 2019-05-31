@@ -21,8 +21,6 @@ namespace ETHotfix
 
         void AnyEventHandler(EventContext context)
         {
-            Log.Info("点击了小地图");
-            Log.Info($"在小地图上的坐标为{((GObject) context.sender).GlobalToLocal(context.inputEvent.position)}");
             Vector2 global2Local = ((GObject) context.sender).GlobalToLocal(context.inputEvent.position);
             Vector2 fgui2Unity = new Vector2(global2Local.x, 200 - global2Local.y);
             Vector3 targetPos = new Vector3(-fgui2Unity.x / (200.0f / 100.0f), 0, -fgui2Unity.y / (200.0f / 100.0f));

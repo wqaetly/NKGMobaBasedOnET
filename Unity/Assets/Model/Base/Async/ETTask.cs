@@ -6,11 +6,14 @@ using System.Runtime.CompilerServices;
 namespace ETModel
 {
     /// <summary>
-    /// Lightweight unity specified task-like object.
+    /// 轻量级Task，不带泛型
     /// </summary>
     [AsyncMethodBuilder(typeof (AsyncETTaskMethodBuilder))]
     public partial struct ETTask: IEquatable<ETTask>
     {
+        /// <summary>
+        /// 守护者
+        /// </summary>
         private readonly IAwaiter awaiter;
 
         [DebuggerHidden]
@@ -19,12 +22,21 @@ namespace ETModel
             this.awaiter = awaiter;
         }
 
+        /// <summary>
+        /// 设置状态，如果守护者不存在，那么成功
+        /// </summary>
         [DebuggerHidden]
         public AwaiterStatus Status => awaiter?.Status ?? AwaiterStatus.Succeeded;
 
+        /// <summary>
+        /// 是否成功，值与守护者IsCompleted一致（如果守护者存在的话）
+        /// </summary>
         [DebuggerHidden]
         public bool IsCompleted => awaiter?.IsCompleted ?? true;
 
+        /// <summary>
+        /// 获取守护者状态
+        /// </summary>
         [DebuggerHidden]
         public void GetResult()
         {
@@ -33,17 +45,26 @@ namespace ETModel
                 awaiter.GetResult();
             }
         }
-        
+
         public void Coroutine()
         {
         }
 
+        /// <summary>
+        /// 获取守护者
+        /// </summary>
+        /// <returns></returns>
         [DebuggerHidden]
         public Awaiter GetAwaiter()
         {
             return new Awaiter(this);
         }
 
+        /// <summary>
+        /// 重写比较函数
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(ETTask other)
         {
             if (this.awaiter == null && other.awaiter == null)
@@ -59,6 +80,10 @@ namespace ETModel
             return false;
         }
 
+        /// <summary>
+        /// 重写HashCode
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             if (this.awaiter == null)
@@ -69,6 +94,10 @@ namespace ETModel
             return this.awaiter.GetHashCode();
         }
 
+        /// <summary>
+        /// 重写ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.awaiter == null? "()"
@@ -76,6 +105,9 @@ namespace ETModel
                     : "(" + this.awaiter.Status + ")";
         }
 
+        /// <summary>
+        /// 守护者结构体
+        /// </summary>
         public struct Awaiter: IAwaiter
         {
             private readonly ETTask task;
@@ -127,7 +159,7 @@ namespace ETModel
     }
 
     /// <summary>
-    /// Lightweight unity specified task-like object.
+    /// 轻量级Task，带泛型
     /// </summary>
     [AsyncMethodBuilder(typeof (ETAsyncTaskMethodBuilder<>))]
     public struct ETTask<T>: IEquatable<ETTask<T>>
@@ -168,7 +200,7 @@ namespace ETModel
                 return this.awaiter.GetResult();
             }
         }
-        
+
         public void Coroutine()
         {
         }

@@ -182,7 +182,9 @@
           <e p="NKGMOBA" t="Include">
             <e p="Component" t="Include">
               <e p="HeroBaseDataComponent.cs" t="Include" />
+              <e p="HeroHeadBarComponent.cs" t="Include" />
               <e p="MapClickCompoent.cs" t="Include" />
+              <e p="OperaComponent.cs" t="Include" />
               <e p="SessionOfflineComponent.cs" t="Include" />
             </e>
             <e p="Config" t="Include">
@@ -206,6 +208,11 @@
                   <e p="one_confirm.cs" t="Include" />
                   <e p="PackageFUIDialog.cs" t="Include" />
                   <e p="tow_cancel.cs" t="Include" />
+                </e>
+                <e p="FUIHeadBar" t="Include">
+                  <e p="HeadBar.cs" t="Include" />
+                  <e p="HeadBar_HP.cs" t="Include" />
+                  <e p="PackageFUIHeadBar.cs" t="Include" />
                 </e>
                 <e p="FUILobby" t="Include">
                   <e p="ActityHead.cs" t="Include" />
@@ -239,6 +246,10 @@
                   <e p="DialogUIController.cs" t="Include" />
                   <e p="FUIDialogStartSystem.cs" t="Include" />
                 </e>
+                <e p="FUIHeadBar" t="Include">
+                  <e p="FUI5V5HeadBarStartSystem.cs" t="Include" />
+                  <e p="FUIHeadBarController.cs" t="Include" />
+                </e>
                 <e p="FUILobby" t="Include">
                   <e p="FUILobbyStartSystem.cs" t="Include" />
                   <e p="LobbyUIController.cs" t="Include" />
@@ -250,10 +261,14 @@
                 </e>
               </e>
             </e>
-            <e p="G2C_TestHotfixHandler.cs" t="Include" />
             <e p="Handler" t="Include">
               <e p="Gate" t="Include">
                 <e p="G2C_PlayerOfflineHandler.cs" t="Include" />
+                <e p="G2C_TestHotfixHandler.cs" t="Include" />
+              </e>
+              <e p="Map" t="Include">
+                <e p="M2C_CreateUnitsHandler.cs" t="Include" />
+                <e p="M2C_PathfindingResultHandler.cs" t="Include" />
               </e>
             </e>
             <e p="Helper" t="Include">
@@ -261,9 +276,6 @@
               <e p="MapHelper.cs" t="Include" />
               <e p="RegisterHelper.cs" t="Include" />
             </e>
-            <e p="M2C_CreateUnitsHandler.cs" t="Include" />
-            <e p="M2C_PathfindingResultHandler.cs" t="Include" />
-            <e p="OperaComponent.cs" t="Include" />
             <e p="TestHotfixSubscribMonoEvent_LogString.cs" t="Include" />
           </e>
           <e p="Unity.Hotfix.asmdef" t="Include" />
@@ -866,7 +878,7 @@
             <e p="Mono" t="Include">
               <e p="Map.cs" t="Include" />
             </e>
-            <e p="SkillDemo" t="Include">
+            <e p="Skill" t="Include">
               <e p="Scripts" t="Include">
                 <e p="Core" t="Include">
                   <e p="BaseNodeData.cs" t="Include" />

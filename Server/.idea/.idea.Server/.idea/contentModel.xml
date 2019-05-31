@@ -241,6 +241,8 @@
         </e>
         <e p="NKGMOBA" t="Include">
           <e p="Component" t="Include">
+            <e p="AllHeroBaseDataComponent.cs" t="Include" />
+            <e p="AllHeroSkillDataComponent.cs" t="Include" />
             <e p="Gate" t="Include">
               <e p="HeartBeatComponent.cs" t="Include" />
               <e p="PlayerComponent.cs" t="Include" />
@@ -264,6 +266,9 @@
           </e>
           <e p="GateSessionKeyComponent.cs" t="Include" />
           <e p="MoveComponent.cs" t="Include" />
+          <e p="OdinAttribute" t="Include">
+            <e p="OdinAttr.cs" t="Include" />
+          </e>
           <e p="RealmGateAddressComponent.cs" t="Include" />
           <e p="SessionInfoComponent.cs" t="Include" />
           <e p="SessionPlayerComponent.cs" t="Include" />
@@ -1799,6 +1804,87 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core" t="Include">
+      <e p="BaseNodeData.cs" t="Include" />
+      <e p="BaseNodeData.cs.meta" t="Include" />
+      <e p="Bson" t="Include">
+        <e p="NodeDataSupporter.cs" t="Include" />
+        <e p="NodeDataSupporter.cs.meta" t="Include" />
+      </e>
+      <e p="Bson.meta" t="Include" />
+      <e p="HeroDataStructs" t="Include">
+        <e p="BaseDataStruct.cs" t="Include" />
+        <e p="BaseDataStruct.cs.meta" t="Include" />
+      </e>
+      <e p="HeroDataStructs.meta" t="Include" />
+      <e p="NodeDataForCheckSkill.cs" t="Include" />
+      <e p="NodeDataForCheckSkill.cs.meta" t="Include" />
+      <e p="NodeDataForHero.cs" t="Include" />
+      <e p="NodeDataForHero.cs.meta" t="Include" />
+      <e p="NodeDataForSkillBuff.cs" t="Include" />
+      <e p="NodeDataForSkillBuff.cs.meta" t="Include" />
+      <e p="NodeDataForStartSkill.cs" t="Include" />
+      <e p="NodeDataForStartSkill.cs.meta" t="Include" />
+      <e p="SkillBuffDatas" t="Include">
+        <e p="AttackRange.cs" t="Include" />
+        <e p="AttackRange.cs.meta" t="Include" />
+        <e p="AttackSpeed.cs" t="Include" />
+        <e p="AttackSpeed.cs.meta" t="Include" />
+        <e p="ChangeArmor.cs" t="Include" />
+        <e p="ChangeArmor.cs.meta" t="Include" />
+        <e p="DeHeroSpeed.cs" t="Include" />
+        <e p="DeHeroSpeed.cs.meta" t="Include" />
+        <e p="DelayBuff.cs" t="Include" />
+        <e p="DelayBuff.cs.meta" t="Include" />
+        <e p="GuideTime.cs" t="Include" />
+        <e p="GuideTime.cs.meta" t="Include" />
+        <e p="Hp.cs" t="Include" />
+        <e p="Hp.cs.meta" t="Include" />
+        <e p="InHeroSpeed.cs" t="Include" />
+        <e p="InHeroSpeed.cs.meta" t="Include" />
+        <e p="MagicDamage.cs" t="Include" />
+        <e p="MagicDamage.cs.meta" t="Include" />
+        <e p="PhysicalDamage.cs" t="Include" />
+        <e p="PhysicalDamage.cs.meta" t="Include" />
+        <e p="RealDamage.cs" t="Include" />
+        <e p="RealDamage.cs.meta" t="Include" />
+        <e p="ReduceSkillCD.cs" t="Include" />
+        <e p="ReduceSkillCD.cs.meta" t="Include" />
+        <e p="RePluse.cs" t="Include" />
+        <e p="RePluse.cs.meta" t="Include" />
+        <e p="Shield.cs" t="Include" />
+        <e p="Shield.cs.meta" t="Include" />
+        <e p="SkillBuffBase" t="Include">
+          <e p="SkillBuffBase.cs" t="Include" />
+          <e p="SkillBuffBase.cs.meta" t="Include" />
+        </e>
+        <e p="SkillBuffBase.meta" t="Include" />
+        <e p="SkillRange.cs" t="Include" />
+        <e p="SkillRange.cs.meta" t="Include" />
+        <e p="WorkTime.cs" t="Include" />
+        <e p="WorkTime.cs.meta" t="Include" />
+      </e>
+      <e p="SkillBuffDatas.meta" t="Include" />
+      <e p="SkillEnums" t="Include">
+        <e p="BuffDamageTypes.cs" t="Include" />
+        <e p="BuffDamageTypes.cs.meta" t="Include" />
+        <e p="BuffEffectedTypes.cs" t="Include" />
+        <e p="BuffEffectedTypes.cs.meta" t="Include" />
+        <e p="BuffTypes.cs" t="Include" />
+        <e p="BuffTypes.cs.meta" t="Include" />
+        <e p="BuffWorkTypes.cs" t="Include" />
+        <e p="BuffWorkTypes.cs.meta" t="Include" />
+        <e p="SkillCostTypes.cs" t="Include" />
+        <e p="SkillCostTypes.cs.meta" t="Include" />
+        <e p="SkillReleaseMode.cs" t="Include" />
+        <e p="SkillReleaseMode.cs.meta" t="Include" />
+        <e p="SkillTarget.cs" t="Include" />
+        <e p="SkillTarget.cs.meta" t="Include" />
+        <e p="SkillTypes.cs" t="Include" />
+        <e p="SkillTypes.cs.meta" t="Include" />
+      </e>
+      <e p="SkillEnums.meta" t="Include" />
+    </e>
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Other\AppType.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\x86_64\kcp.dll" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\ByteArray.cs" t="Include" />

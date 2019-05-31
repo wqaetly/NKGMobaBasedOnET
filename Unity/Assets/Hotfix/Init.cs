@@ -44,8 +44,6 @@ namespace ETHotfix
                 //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
 
-
-
                 await Game.Scene.AddComponent<FUIInitComponent>().Init();
 
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);

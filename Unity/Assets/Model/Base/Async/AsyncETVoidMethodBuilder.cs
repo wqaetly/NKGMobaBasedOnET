@@ -7,9 +7,15 @@ namespace ETModel
 {
     public struct AsyncETVoidMethodBuilder
     {
+        /// <summary>
+        /// 转换到下一状态机的方法（委托）
+        /// </summary>
         private Action moveNext;
 
-        // 1. Static Create method.
+        /// <summary>
+        /// 静态方法创建
+        /// </summary>
+        /// <returns></returns>
         [DebuggerHidden]
         public static AsyncETVoidMethodBuilder Create()
         {
@@ -17,45 +23,64 @@ namespace ETModel
             return builder;
         }
 
-        // 2. TaskLike Task property(void)
+        /// <summary>
+        /// 类似Task属性
+        /// </summary>
         public ETVoid Task => default;
 
-        // 3. SetException
+        /// <summary>
+        /// 设置异常
+        /// </summary>
+        /// <param name="exception"></param>
         [DebuggerHidden]
         public void SetException(Exception exception)
         {
             Log.Error(exception);
         }
 
-        // 4. SetResult
+        /// <summary>
+        /// 设置结果
+        /// </summary>
         [DebuggerHidden]
         public void SetResult()
         {
-            // do nothing
+            // TODO ：Nothing
         }
 
-        // 5. AwaitOnCompleted
+        /// <summary>
+        /// 当前任务完成
+        /// </summary>
+        /// <param name="awaiter">当前任务守护者</param>
+        /// <param name="stateMachine">异步方法生成的状态机</param>
+        /// <typeparam name="TAwaiter"></typeparam>
+        /// <typeparam name="TStateMachine"></typeparam>
         [DebuggerHidden]
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
-            where TStateMachine : IAsyncStateMachine
+                where TAwaiter : INotifyCompletion
+                where TStateMachine : IAsyncStateMachine
         {
             if (moveNext == null)
             {
                 var runner = new MoveNextRunner<TStateMachine>();
                 moveNext = runner.Run;
-                runner.StateMachine = stateMachine; // set after create delegate.
+                runner.StateMachine = stateMachine; 
             }
 
             awaiter.OnCompleted(moveNext);
         }
 
-        // 6. AwaitUnsafeOnCompleted
+        /// <summary>
+        /// 当前任务不安全完成
+        /// </summary>
+        /// <param name="awaiter">当前任务守护者</param>
+        /// <param name="stateMachine">异步方法生成的状态机</param>
+        /// <typeparam name="TAwaiter"></typeparam>
+        /// <typeparam name="TStateMachine"></typeparam>
         [DebuggerHidden]
         [SecuritySafeCritical]
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : ICriticalNotifyCompletion
-            where TStateMachine : IAsyncStateMachine
+                where TAwaiter : ICriticalNotifyCompletion
+                where TStateMachine : IAsyncStateMachine
         {
             if (moveNext == null)
             {

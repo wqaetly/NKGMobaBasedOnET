@@ -22,7 +22,17 @@ namespace ETHotfix
                 }
 
                 G2C_EnterMap g2CEnterMap = await ETModel.SessionComponent.Instance.Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
+
                 PlayerComponent.Instance.MyPlayer.UnitId = g2CEnterMap.UnitId;
+                // 给自己的Unit添加引用
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit =
+                        ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
+
+                // 创建血条
+                Game.EventSystem.Run(EventIdType.CreateHeadBar);
+                // 增加头顶Bar
+                Game.Scene.AddComponent<HeroHeadBarComponent, Unit, FUI>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit,
+                    Game.Scene.GetComponent<FUIComponent>().Get(FUIPackage.FUIHeadBar));
 
                 Game.Scene.AddComponent<OperaComponent>();
                 Game.Scene.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());
