@@ -11,14 +11,14 @@ namespace ETHotfix
     public class FUIHeadBarController
     {
         [Event(EventIdType.CreateHeadBar)]
-        public class LoginSuccess_CreateLobbyUI: AEvent
+        public class LoginSuccess_CreateLobbyUI: AEvent<long>
         {
-            public override void Run()
+            public override void Run(long fuiId)
             {
                 ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUIHeadBar);
                 var hotfixui = FUIHeadBar.HeadBar.CreateInstance();
                 //默认将会以Id为Name，也可以自定义Name，方便查询和管理
-                hotfixui.Name = FUIPackage.FUIHeadBar;
+                hotfixui.Name = fuiId.ToString();
                 hotfixui.MakeFullScreen();
                 Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
             }

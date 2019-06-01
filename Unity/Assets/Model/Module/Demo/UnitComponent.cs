@@ -52,8 +52,18 @@ namespace ETModel
 		public Unit Get(long id)
 		{
 			Unit unit;
-			this.idUnits.TryGetValue(id, out unit);
-			return unit;
+			if (this.idUnits.TryGetValue(id, out unit))
+			{
+				if (unit.IsDisposed)
+				{
+					Log.Error("想获得的Unit已经Dispose了");
+					return null;
+				}
+
+				return unit;
+			}
+			Log.Error("想获得的Unit不存在");
+			return null;
 		}
 
 		public void Remove(long id)

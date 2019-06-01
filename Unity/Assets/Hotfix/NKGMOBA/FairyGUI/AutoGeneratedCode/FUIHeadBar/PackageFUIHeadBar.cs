@@ -6,7 +6,7 @@ namespace ETHotfix
 	{
 		public const string FUIHeadBar = "FUIHeadBar";
 		public const string FUIHeadBar_HeadBar_HP = "ui://FUIHeadBar/HeadBar_HP";
-		public const string FUIHeadBar_BarBlank = "ui://FUIHeadBar/BarBlank";
+		public const string FUIHeadBar_BarBlack = "ui://FUIHeadBar/BarBlack";
 		public const string FUIHeadBar_UIMajorCity_23 = "ui://FUIHeadBar/UIMajorCity_23";
 		public const string FUIHeadBar_UIMajorCity_6 = "ui://FUIHeadBar/UIMajorCity_6";
 		public const string FUIHeadBar_UIMajorCity_14 = "ui://FUIHeadBar/UIMajorCity_14";

@@ -19,7 +19,6 @@
         public const string ShowLoadingProcess = "ShowLoadingPorcess";
 
         public const string ClickSmallMap = "ClickSmallMap";
-        public const string ClickMap = "ClickMap";
 
         public const string CreateHeadBar = "CreateHeadBar";
     }

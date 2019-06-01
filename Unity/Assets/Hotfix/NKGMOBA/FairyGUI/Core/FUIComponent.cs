@@ -42,10 +42,25 @@ namespace ETHotfix
 			Root?.Remove(name);
 		}
 		
+		/// <summary>
+		/// 通过名字获得FUI
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
 		public FUI Get(string name)
 		{
 			return Root?.Get(name);
         }
+		
+		/// <summary>
+		/// 通过ID获得FUI
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public FUI Get(long id)
+		{
+			return Root?.Get(id.ToString());
+		}
 
         public FUI[] GetAll()
         {

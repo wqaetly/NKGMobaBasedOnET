@@ -24,8 +24,6 @@ namespace ETHotfix
 	/// </summary>
 	public class Session: Entity
 	{
-		
-		
 		public ETModel.Session session;
 
 		private static int RpcId { get; set; }

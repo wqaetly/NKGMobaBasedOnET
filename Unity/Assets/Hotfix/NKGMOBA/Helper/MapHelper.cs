@@ -21,21 +21,24 @@ namespace ETHotfix
                     await sceneChangeComponent.ChangeSceneAsync(SceneType.Map);
                 }
 
+                // 创建5v5游戏
+                M5V5GameFactory.CreateM5V5Game();
+
+                // 临时引用5v5游戏
+                M5V5Game m5V5Game = Game.Scene.GetComponent<M5V5GameComponent>().m_5V5Game;
+
                 G2C_EnterMap g2CEnterMap = await ETModel.SessionComponent.Instance.Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
 
                 PlayerComponent.Instance.MyPlayer.UnitId = g2CEnterMap.UnitId;
+
                 // 给自己的Unit添加引用
                 ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit =
                         ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
+                        .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
 
-                // 创建血条
-                Game.EventSystem.Run(EventIdType.CreateHeadBar);
-                // 增加头顶Bar
-                Game.Scene.AddComponent<HeroHeadBarComponent, Unit, FUI>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit,
-                    Game.Scene.GetComponent<FUIComponent>().Get(FUIPackage.FUIHeadBar));
-
-                Game.Scene.AddComponent<OperaComponent>();
-                Game.Scene.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());
+                // 添加点击地图寻路组件
+                m5V5Game.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());
 
                 Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }

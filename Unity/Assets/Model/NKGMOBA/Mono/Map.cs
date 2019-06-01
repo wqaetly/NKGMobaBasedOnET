@@ -11,6 +11,7 @@ namespace ETModel
         private Vector3 mapSize;
         private Vector2 miniMapSize;
         private Vector3 target;
+        private NewBehaviourScript m_Mono;
 
         public Transform m_Com;
 
