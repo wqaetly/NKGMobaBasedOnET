@@ -16,6 +16,7 @@ using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
 using SkillDemo;
 using UnityEngine;
+using ContextType = NodeEditorFramework.ContextType;
 
 namespace SkillDemo
 {
@@ -26,7 +27,7 @@ namespace SkillDemo
 
         public const string Id = "技能所衍生的Buff结点";
 
-        [ValueConnectionKnob("PrevSkill", Direction.In, "PrevNodeDatas", NodeSide.Left, 30f)]
+        [ValueConnectionKnob("PrevSkill", Direction.In,"PrevNodeDatas", NodeSide.Left, 30f)]
         public ValueConnectionKnob PrevSkill;
 
         [ValueConnectionKnob("NextSkill", Direction.Out, "NextNodeDatas", NodeSide.Right, 33)]

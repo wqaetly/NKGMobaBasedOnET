@@ -17,13 +17,5 @@ namespace ETModel
     public class DelayBuff : SkillBuffBase
     {
         [LabelText("最大叠加数")] public int MaxOverlay;
-
-        [HideLabel]
-        [Title("每层叠加属性")]
-        [DictionaryDrawerSettings(KeyLabel = "等级", ValueLabel = "每层叠加属性")]
-        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<int, float> m_GuideTime = new Dictionary<int, float>();
-
-        [HideLabel] [Title("叠加完成或中断要做的事")] public List<SkillBuffBase> CompleteOrBreak;
     }
 }

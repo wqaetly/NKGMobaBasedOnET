@@ -45,8 +45,14 @@ namespace ETModel
         [LabelText("初始生命值")]
         public float OriHP;
 
+        [LabelText("初始生命恢复")]
+        public float OriHPRec;
+
         [LabelText("初始魔法值")]
         public float OriMagicValue;
+
+        [LabelText("初始魔法恢复")]
+        public float OriMagicRec;
 
         [LabelText("初始攻击力")]
         public float OriAttackValue;
@@ -85,8 +91,14 @@ namespace ETModel
         [LabelText("成长生命值")]
         public float GroHP;
 
+        [LabelText("成长生命恢复")]
+        public float GroHPRec;
+
         [LabelText("成长魔法值")]
         public float GroMagicValue;
+
+        [LabelText("成长魔法恢复")]
+        public float GroMagicRec;
 
         [LabelText("成长攻击力")]
         public float GroAttackValue;
@@ -125,8 +137,14 @@ namespace ETModel
         [LabelText("额外生命值")]
         public float ExtHP;
 
+        [LabelText("额外魔法恢复")]
+        public float ExtHPRec;
+
         [LabelText("额外魔法值")]
         public float ExtMagicValue;
+
+        [LabelText("额外恢复")]
+        public float ExtMagicRec;
 
         [LabelText("额外攻击力")]
         public float ExtAttackValue;

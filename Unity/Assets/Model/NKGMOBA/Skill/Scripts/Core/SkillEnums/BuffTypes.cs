@@ -72,9 +72,9 @@ namespace ETModel
         HP = 3 << 1,
 
         [LabelText("法强")]
-        Physical = 3 << 2,
+        Physical = 3 << 3,
 
         [LabelText("攻击力")]
-        Magic = 3 << 3,
+        Magic = 3 << 5,
     }
 }

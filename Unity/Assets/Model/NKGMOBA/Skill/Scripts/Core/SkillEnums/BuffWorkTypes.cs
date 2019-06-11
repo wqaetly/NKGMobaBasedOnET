@@ -66,6 +66,24 @@ namespace ETModel
         Blind = 1 << 18,
 
         [LabelText("造成伤害")]
-        Damage = 1 << 19
+        Damage = 1 << 19,
+
+        [LabelText("改变攻击力")]
+        ChangeAttackValue = 1 << 20,
+        
+        [LabelText("改变法强值")]
+        ChangeMagicAttackValue = 1 << 21,
+        
+        [LabelText("改变护盾")]
+        ChangeSheidValue = 1 << 22,
+        
+        [LabelText("改变吟唱时长")]
+        ChangeGuideTime = 1 << 23,
+        
+        [LabelText("改变技能CD")]
+        ChangeSkillCD = 1 << 24,
+        
+        [LabelText("改变技能范围")]
+        ChangeSkillRange = 1 << 25,
     }
 }

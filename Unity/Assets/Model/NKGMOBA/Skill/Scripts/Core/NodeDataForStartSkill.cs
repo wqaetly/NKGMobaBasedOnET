@@ -23,12 +23,6 @@ namespace ETModel
         [BsonIgnore]
         public Sprite SkillSprite;
 #endif
-
-        [TabGroup("基础信息")]
-        [LabelText("技能资源AB名")]
-        [GUIColor(1, 0.6f, 0.4f)]
-        public string SkillABInfo;
-
         [TabGroup("基础信息")]
         [LabelText("技能名称")]
         [GUIColor(1, 0.6f, 0.4f)]
@@ -41,6 +35,11 @@ namespace ETModel
         [GUIColor(1, 0.6f, 0.4f)]
         public string SkillDescribe;
 
+        [TabGroup("基础信息")]
+        [Title("技能资源AB名,第一个是图标")]
+        [GUIColor(1, 0.6f, 0.4f)]
+        public List<string> SkillABInfo;
+        
         [TabGroup("基础信息")]
         [HideLabel]
         [Title("技能CD", Bold = false)]
