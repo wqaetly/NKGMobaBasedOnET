@@ -8,15 +8,15 @@ namespace ETModel
         {
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
             GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            GameObject prefab = bundleGameObject.Get<GameObject>("HuanCi");
+            GameObject prefab = bundleGameObject.Get<GameObject>("NuoKe");
 
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
 
             // GameObject go = UnityEngine.Object.Instantiate(prefab);
             // Unit unit = ComponentFactory.CreateWithId<Unit, GameObject>(id, go);
 
-            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("HuanCi", prefab);
-            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "HuanCi");
+            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("NuoKe", prefab);
+            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "NuoKe");
 
             unit.AddComponent<AnimatorComponent>();
             unit.AddComponent<MoveComponent>();

@@ -84,6 +84,12 @@ namespace ETModel
         /// </summary>
         private void CheckKeyUp()
         {
+            if (Input.GetMouseButtonUp(1))
+            {
+                this.RightMouseDown = false;
+                this.RightMouseUp = true;
+            }
+            
             if (Input.GetKeyUp(KeyCode.A))
             {
                 ADown_long = false;
@@ -123,6 +129,11 @@ namespace ETModel
         /// </summary>
         void CheckKeyDown()
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                this.RightMouseDown = true;
+            }
+            
             if (Input.GetKeyDown(KeyCode.A))
             {
                 this.ADown = true;
