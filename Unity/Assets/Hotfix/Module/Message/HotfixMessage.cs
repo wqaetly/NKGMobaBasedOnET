@@ -123,6 +123,14 @@ namespace ETHotfix {
       }
     }
 
+    private long playerId_;
+    public long PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
     private string message_ = "";
     public string Message {
       get { return message_; }
@@ -168,6 +176,10 @@ namespace ETHotfix {
         output.WriteRawTag(226, 5);
         output.WriteString(Message);
       }
+      if (PlayerId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(PlayerId);
+      }
     }
 
     public int CalculateSize() {
@@ -177,6 +189,9 @@ namespace ETHotfix {
       }
       if (Error != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
+      }
+      if (PlayerId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(PlayerId);
       }
       if (Message.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
@@ -196,6 +211,7 @@ namespace ETHotfix {
       rpcId_ = 0;
       error_ = 0;
       message_ = "";
+      playerId_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -220,6 +236,10 @@ namespace ETHotfix {
           }
           case 738: {
             Message = input.ReadString();
+            break;
+          }
+          case 744: {
+            PlayerId = input.ReadInt64();
             break;
           }
         }
@@ -565,6 +585,302 @@ namespace ETHotfix {
             break;
           }
           case 738: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 获取用户信息
+  /// </summary>
+  public partial class C2G_GetUserInfo : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_GetUserInfo> _parser = new pb::MessageParser<C2G_GetUserInfo>(() => (C2G_GetUserInfo)MessagePool.Instance.Fetch(typeof(C2G_GetUserInfo)));
+    public static pb::MessageParser<C2G_GetUserInfo> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private int error_;
+    public int Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    private long playerId_;
+    public long PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (Error != 0) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt32(Error);
+      }
+      if (PlayerId != 0L) {
+        output.WriteRawTag(224, 5);
+        output.WriteInt64(PlayerId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (Error != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
+      }
+      if (PlayerId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(PlayerId);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      rpcId_ = 0;
+      error_ = 0;
+      playerId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 728: {
+            Error = input.ReadInt32();
+            break;
+          }
+          case 736: {
+            PlayerId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 获取用户信息
+  /// </summary>
+  public partial class G2C_GetUserInfo : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_GetUserInfo> _parser = new pb::MessageParser<G2C_GetUserInfo>(() => (G2C_GetUserInfo)MessagePool.Instance.Fetch(typeof(G2C_GetUserInfo)));
+    public static pb::MessageParser<G2C_GetUserInfo> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private int error_;
+    public int Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    private int playerId_;
+    public int PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    private string userName_ = "";
+    public string UserName {
+      get { return userName_; }
+      set {
+        userName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private string message_ = "";
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private int level_;
+    public int Level {
+      get { return level_; }
+      set {
+        level_ = value;
+      }
+    }
+
+    private int point_;
+    public int Point {
+      get { return point_; }
+      set {
+        point_ = value;
+      }
+    }
+
+    private int diamods_;
+    public int Diamods {
+      get { return diamods_; }
+      set {
+        diamods_ = value;
+      }
+    }
+
+    private int goldens_;
+    public int Goldens {
+      get { return goldens_; }
+      set {
+        goldens_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (Error != 0) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt32(Error);
+      }
+      if (PlayerId != 0) {
+        output.WriteRawTag(224, 5);
+        output.WriteInt32(PlayerId);
+      }
+      if (UserName.Length != 0) {
+        output.WriteRawTag(234, 5);
+        output.WriteString(UserName);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(240, 5);
+        output.WriteInt32(Level);
+      }
+      if (Point != 0) {
+        output.WriteRawTag(248, 5);
+        output.WriteInt32(Point);
+      }
+      if (Diamods != 0) {
+        output.WriteRawTag(128, 6);
+        output.WriteInt32(Diamods);
+      }
+      if (Goldens != 0) {
+        output.WriteRawTag(136, 6);
+        output.WriteInt32(Goldens);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(146, 6);
+        output.WriteString(Message);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (Error != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
+      }
+      if (PlayerId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
+      }
+      if (UserName.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(UserName);
+      }
+      if (Message.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (Level != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Level);
+      }
+      if (Point != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Point);
+      }
+      if (Diamods != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Diamods);
+      }
+      if (Goldens != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Goldens);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      rpcId_ = 0;
+      error_ = 0;
+      playerId_ = 0;
+      userName_ = "";
+      level_ = 0;
+      point_ = 0;
+      diamods_ = 0;
+      goldens_ = 0;
+      message_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 728: {
+            Error = input.ReadInt32();
+            break;
+          }
+          case 736: {
+            PlayerId = input.ReadInt32();
+            break;
+          }
+          case 746: {
+            UserName = input.ReadString();
+            break;
+          }
+          case 752: {
+            Level = input.ReadInt32();
+            break;
+          }
+          case 760: {
+            Point = input.ReadInt32();
+            break;
+          }
+          case 768: {
+            Diamods = input.ReadInt32();
+            break;
+          }
+          case 776: {
+            Goldens = input.ReadInt32();
+            break;
+          }
+          case 786: {
             Message = input.ReadString();
             break;
           }

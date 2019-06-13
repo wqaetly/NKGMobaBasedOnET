@@ -14,6 +14,7 @@ namespace ETModel
         {
             FUI fui = ComponentFactory.Create<FUI, GObject>(FUILoading.UI_FUILoading.CreateInstance());
             fui.Name = "FUILoading";
+            fui.GObject.sortingOrder = 99999;
             fui.MakeFullScreen();
             return fui;
         }

@@ -37,7 +37,6 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Transform_Binding.Register(app);
             UnityEngine_Object_Binding.Register(app);
             ETModel_MongoHelper_Binding.Register(app);
-            ETModel_LayerNames_Binding.Register(app);
             ETModel_ComponentView_Binding.Register(app);
             System_Activator_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding.Register(app);

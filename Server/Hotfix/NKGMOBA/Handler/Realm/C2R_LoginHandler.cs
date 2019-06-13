@@ -44,6 +44,7 @@ namespace ETHotfix
 
                 response.Address = outerAddress;
                 response.Key = g2RGetLoginKey.Key;
+                response.PlayerId = result[0].Id;
                 reply(response);
             }
             catch (Exception e)

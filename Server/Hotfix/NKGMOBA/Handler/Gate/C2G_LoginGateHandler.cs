@@ -54,8 +54,6 @@ namespace ETHotfix
                 await realmSession.Call(
                     new G2R_PlayerOnline() { playerAccount = account, PlayerId = player.Id, GateAppID = config.StartConfig.AppId });
 
-                response.PlayerId = player.Id;
-
                 //回复客户端的连接gate服务器请求
                 reply(response);
 

@@ -21,6 +21,14 @@ namespace ETHotfix
 	[Message(HotfixOpcode.R2C_Register)]
 	public partial class R2C_Register : IResponse {}
 
+// 获取用户信息
+	[Message(HotfixOpcode.C2G_GetUserInfo)]
+	public partial class C2G_GetUserInfo : IRequest {}
+
+// 获取用户信息
+	[Message(HotfixOpcode.G2C_GetUserInfo)]
+	public partial class G2C_GetUserInfo : IResponse {}
+
 	[Message(HotfixOpcode.G2C_TestHotfixMessage)]
 	public partial class G2C_TestHotfixMessage : IMessage {}
 
@@ -53,12 +61,14 @@ namespace ETHotfix
 		 public const ushort G2C_LoginGate = 10004;
 		 public const ushort C2R_Register = 10005;
 		 public const ushort R2C_Register = 10006;
-		 public const ushort G2C_TestHotfixMessage = 10007;
-		 public const ushort C2M_TestActorRequest = 10008;
-		 public const ushort M2C_TestActorResponse = 10009;
-		 public const ushort PlayerInfo = 10010;
-		 public const ushort C2G_PlayerInfo = 10011;
-		 public const ushort G2C_PlayerInfo = 10012;
-		 public const ushort G2C_PlayerOffline = 10013;
+		 public const ushort C2G_GetUserInfo = 10007;
+		 public const ushort G2C_GetUserInfo = 10008;
+		 public const ushort G2C_TestHotfixMessage = 10009;
+		 public const ushort C2M_TestActorRequest = 10010;
+		 public const ushort M2C_TestActorResponse = 10011;
+		 public const ushort PlayerInfo = 10012;
+		 public const ushort C2G_PlayerInfo = 10013;
+		 public const ushort G2C_PlayerInfo = 10014;
+		 public const ushort G2C_PlayerOffline = 10015;
 	}
 }

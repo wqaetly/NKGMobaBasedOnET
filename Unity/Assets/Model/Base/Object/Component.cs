@@ -105,7 +105,6 @@ namespace ETModel
 			{
 				this.GameObject = new GameObject();
 				this.GameObject.name = this.GetType().Name;
-				this.GameObject.layer = LayerNames.GetLayerInt(LayerNames.HIDDEN);
 				this.GameObject.transform.SetParent(Global.transform, false);
 				this.GameObject.AddComponent<ComponentView>().Component = this;
 			}

@@ -12,6 +12,8 @@ namespace ETHotfix
         {
             try
             {
+                // 显示加载UI
+                ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
                 // 如果正在登录，就驳回登录请求，为了双重保险，点下登录按钮后，收到服务端响应之前将不能再点击
                 if (isLogining)
                 {
@@ -64,22 +66,18 @@ namespace ETHotfix
                 G2C_LoginGate g2CLoginGate = (G2C_LoginGate) await SessionComponent.Instance.Session.Call(new C2G_LoginGate() { Key = r2CLogin.Key });
 
                 Game.EventSystem.Run(EventIdType.ShowLoginInfo, "登录成功");
-                Log.Info("登陆成功");
 
-                // 创建Player
-                Player player = ETModel.ComponentFactory.CreateWithId<Player>(g2CLoginGate.PlayerId);
+                // 创建Player(抽象化的玩家)
+                Player player = ETModel.ComponentFactory.CreateWithId<Player>(r2CLogin.PlayerId);
                 PlayerComponent playerComponent = ETModel.Game.Scene.GetComponent<PlayerComponent>();
                 playerComponent.MyPlayer = player;
 
-                ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
-
+                // 登录完成
                 Game.EventSystem.Run(EventIdType.LoginFinish);
 
-                ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
-
                 // 测试消息有成员是class类型
-                G2C_PlayerInfo g2CPlayerInfo = (G2C_PlayerInfo) await SessionComponent.Instance.Session.Call(new C2G_PlayerInfo());
-                Debug.Log("测试玩家信息为" + g2CPlayerInfo.Message);
+                // G2C_PlayerInfo g2CPlayerInfo = (G2C_PlayerInfo) await SessionComponent.Instance.Session.Call(new C2G_PlayerInfo());
+                // Debug.Log("测试玩家信息为" + g2CPlayerInfo.Message);
                 FinalRun();
             }
             catch (Exception e)
@@ -97,6 +95,8 @@ namespace ETHotfix
                 ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).loginBtn.GObject.asButton
                         .visible =
                         true;
+            // 关闭加载UI
+            ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
         }
     }
 }

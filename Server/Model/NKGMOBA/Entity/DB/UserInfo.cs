@@ -17,6 +17,18 @@ namespace ETModel
         // 昵称
         public string NickName { get; set; }
 
+        // 等级
+        public int Level { get; set; }
+
+        // 金币
+        public int Goldens { get; set; }
+
+        // 钻石
+        public int Diamods { get; set; }
+
+        // 点券
+        public int points { get; set; }
+
         // 1v1胜场
         public int _1v1Wins { get; set; }
 
@@ -28,14 +40,5 @@ namespace ETModel
 
         // 5v5负场
         public int _5v5Loses { get; set; }
-
-        // 金币
-        public int Goldens { get; set; }
-
-        // 钻石
-        public int Diamods { get; set; }
-
-        // 点券
-        public int points { get; set; }
     }
 }

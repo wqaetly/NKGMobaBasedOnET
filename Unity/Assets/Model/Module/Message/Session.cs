@@ -182,7 +182,6 @@ namespace ETModel
 
 			this.requestCallback[rpcId] = (response) =>
 			{
-				Console.WriteLine("进入Call的兰布达");
 				try
 				{
 					if (ErrorCode.IsRpcNeedThrowException(response.Error))
@@ -197,7 +196,6 @@ namespace ETModel
 					tcs.SetException(new Exception($"Rpc Error: {request.GetType().FullName}", e));
 				}
 			};
-			Console.WriteLine("退出Call的兰布达");
 			request.RpcId = rpcId;
 			this.Send(request);
 			return tcs.Task;

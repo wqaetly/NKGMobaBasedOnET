@@ -21,7 +21,6 @@ namespace ETHotfix
 
             try
             {
-                Log.Info("更新Hotfix.dll");
                 //显示转圈圈（因为后期要加很多界面，所以要等好几秒）
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
 
@@ -33,7 +32,6 @@ namespace ETHotfix
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
 
-                // 加载热更配置
                 ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
                 Game.Scene.AddComponent<ConfigComponent>();
                 ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");

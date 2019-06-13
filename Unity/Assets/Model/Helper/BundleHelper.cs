@@ -32,6 +32,10 @@ namespace ETModel
                     Log.Error(e);
                 }
             }
+            else
+            {
+                Game.EventSystem.Run(EventIdType.CreateLoadingUI);
+            }
         }
 
         /// <summary>

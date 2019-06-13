@@ -39,6 +39,7 @@ namespace ETHotfix
                 //新建用户信息
                 UserInfo newUser = ComponentFactory.CreateWithId<UserInfo>(newAccount.Id);
                 newUser.NickName = $"召唤师{message.Account}";
+                newUser.Level = 1;
                 newUser.points = 10000;
                 newUser.Diamods = 10000;
                 newUser.Goldens = 10000;
