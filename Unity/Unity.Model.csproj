@@ -859,6 +859,12 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="BehaviorDesignerRuntime">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Behavior Designer/Runtime/Core/BehaviorDesignerRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="BehaviorDesignerEditor">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Behavior Designer/Editor/Core/BehaviorDesignerEditor.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>
@@ -1218,6 +1224,10 @@
     <ProjectReference Include="Unity.ThirdParty.csproj">
       <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
       <Name>Unity.ThirdParty</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.BehaviorDesigner.Runtime.csproj">
+      <Project>{B04BF23E-2EA0-221F-942C-19DFE6549B89}</Project>
+      <Name>Unity.BehaviorDesigner.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
