@@ -19,7 +19,10 @@ namespace ETModel
 				{
 					continue;
 				}
-
+				if (type.IsGenericType)
+				{
+					continue;
+				}
 				BsonClassMap.LookupClassMap(type);
 			}
 		}

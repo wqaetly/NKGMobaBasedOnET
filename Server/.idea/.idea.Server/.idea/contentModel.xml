@@ -273,6 +273,14 @@
           <e p="RealmGateAddressComponent.cs" t="Include" />
           <e p="SessionInfoComponent.cs" t="Include" />
           <e p="SessionPlayerComponent.cs" t="Include" />
+          <e p="Skill" t="Include">
+            <e p="Core" t="Include">
+              <e p="AnimationCore" t="Include" />
+              <e p="Bson" t="Include" />
+              <e p="SkillBuffDatas" t="Include" />
+              <e p="SkillEnums" t="Include" />
+            </e>
+          </e>
           <e p="Unit.cs" t="Include" />
           <e p="UnitComponent.cs" t="Include" />
           <e p="UnitGateComponent.cs" t="Include" />
@@ -1805,44 +1813,24 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\BaseNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\BaseNodeData.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\Bson\NodeDataSupporter.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\Bson\NodeDataSupporter.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\Bson.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForCheckSkill.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForCheckSkill.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForHero.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForHero.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForSkillBuff.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForSkillBuff.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForStartSkill.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\NodeDataForStartSkill.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\DamageBuff.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\DamageBuff.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\DelayBuff.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\DelayBuff.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas\SkillBuffBase.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillBuffDatas.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffDamageTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffDamageTypes.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffEffectedTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffEffectedTypes.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffTypes.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffWorkTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\BuffWorkTypes.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillCostTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillCostTypes.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillReleaseMode.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillReleaseMode.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillTarget.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillTarget.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums\SkillTypes.cs.meta" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Scripts\Core\SkillEnums.meta" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\BaseNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\Bson\NodeDataSupporter.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForCheckSkill.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForHero.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForSkillBuff.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForStartSkill.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffTypes.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffWorkTypes.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillCostTypes.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillReleaseMode.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTarget.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Other\AppType.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\x86_64\kcp.dll" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\ByteArray.cs" t="Include" />

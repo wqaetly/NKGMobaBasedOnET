@@ -38,6 +38,9 @@ namespace ETModel
             }
             
             byte[] mfile = File.ReadAllBytes("../Config/HeroBaseDatas/AllHeroDatas.bytes");
+            
+            
+            
             Console.WriteLine($"所读取的英雄属性大小为:{mfile.Length}");
             this.m_AllHeroBaseDataDic = BsonSerializer.Deserialize<NodeDataSupporter>(mfile);
         }

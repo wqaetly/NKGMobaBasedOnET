@@ -47,8 +47,6 @@ namespace ETHotfix
             this.m_Hero2Screen =
                     Camera.main.WorldToScreenPoint(new Vector3(m_Hero.Position.x, this.m_Hero.Position.y, this.m_Hero.Position.z));
 
-            Log.Info($"人物坐标为{this.m_Hero.Position}屏幕坐标为{this.m_Hero2Screen}");
-
             // 屏幕坐标转FGUI全局坐标
             this.m_HeadBarScreenPos.x = m_Hero2Screen.x;
             this.m_HeadBarScreenPos.y = Screen.height - m_Hero2Screen.y;

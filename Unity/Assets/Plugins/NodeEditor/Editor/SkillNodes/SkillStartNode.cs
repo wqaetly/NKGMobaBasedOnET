@@ -94,7 +94,17 @@ namespace SkillDemo
 
             GUILayout.BeginVertical();
 
-            EditorGUILayout.TextField("技能名称：" + m_SkillData?.SkillName);
+            if (this.m_SkillData != null && this.m_SkillData.m_AnimationData != null)
+            {
+                foreach (var VARIABLE in this.m_SkillData.m_AnimationData)
+                {
+                    VARIABLE.WorkTime = VARIABLE.WorkFrame / 30.0f;
+                    
+                }
+            }
+            
+
+            EditorGUILayout.TextField("技能名称： " + m_SkillData?.SkillName);
             EditorGUILayout.TextField("技能图标：");
             EditorGUILayout.ObjectField(m_SkillData?.SkillSprite, typeof (Sprite), false,
                 GUILayout.Width(65f),

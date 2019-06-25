@@ -134,6 +134,7 @@
             <e p="Helper" t="Include">
               <e p="ArrayHelper.cs" t="Include" />
               <e p="AssetBundleHelper.cs" t="Include" />
+              <e p="ComponentHelper.cs" t="Include" />
               <e p="Dumper.cs" t="Include" />
               <e p="ExceptionHelper.cs" t="Include" />
               <e p="JsonHelper.cs" t="Include" />
@@ -200,6 +201,7 @@
               <e p="SessionOfflineComponent.cs" t="Include" />
             </e>
             <e p="Config" t="Include">
+              <e p="BehaviorTreeConfig.cs" t="Include" />
               <e p="UnitConfig.cs" t="Include" />
             </e>
             <e p="CostumEntity" t="Include">
@@ -591,11 +593,6 @@
               <e p="ConfigHelper.cs" t="Include" />
               <e p="IConfig.cs" t="Include" />
             </e>
-            <e p="Demo" t="Include">
-              <e p="Config" t="Include">
-                <e p="UnitConfig.cs" t="Include" />
-              </e>
-            </e>
             <e p="Filter" t="Include">
               <e p="FilterAttribute.cs" t="Include" />
               <e p="FilterComponent.cs" t="Include" />
@@ -848,6 +845,10 @@
               <e p="UnitPathComponent.cs" t="Include" />
               <e p="UserInputComponent.cs" t="Include" />
             </e>
+            <e p="Config" t="Include">
+              <e p="BehaviorTreeConfig.cs" t="Include" />
+              <e p="UnitConfig.cs" t="Include" />
+            </e>
             <e p="Entity" t="Include">
               <e p="Player.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
@@ -892,37 +893,40 @@
               </e>
             </e>
             <e p="Skill" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="Core" t="Include">
-                  <e p="BaseNodeData.cs" t="Include" />
-                  <e p="Bson" t="Include">
-                    <e p="NodeDataSupporter.cs" t="Include" />
-                  </e>
-                  <e p="NodeDataForCheckSkill.cs" t="Include" />
-                  <e p="NodeDataForHero.cs" t="Include" />
-                  <e p="NodeDataForSkillBuff.cs" t="Include" />
-                  <e p="NodeDataForStartSkill.cs" t="Include" />
-                  <e p="SkillBuffDatas" t="Include">
-                    <e p="DamageBuff.cs" t="Include" />
-                    <e p="DelayBuff.cs" t="Include" />
-                    <e p="SkillBuffBase" t="Include">
-                      <e p="SkillBuffBase.cs" t="Include" />
-                    </e>
-                  </e>
-                  <e p="SkillEnums" t="Include">
-                    <e p="BuffDamageTypes.cs" t="Include" />
-                    <e p="BuffEffectedTypes.cs" t="Include" />
-                    <e p="BuffTypes.cs" t="Include" />
-                    <e p="BuffWorkTypes.cs" t="Include" />
-                    <e p="SkillCostTypes.cs" t="Include" />
-                    <e p="SkillReleaseMode.cs" t="Include" />
-                    <e p="SkillTarget.cs" t="Include" />
-                    <e p="SkillTypes.cs" t="Include" />
+              <e p="Core" t="Include">
+                <e p="AnimationCore" t="Include">
+                  <e p="AnimationData.cs" t="Include" />
+                </e>
+                <e p="BaseNodeData.cs" t="Include" />
+                <e p="Bson" t="Include">
+                  <e p="NodeDataSupporter.cs" t="Include" />
+                </e>
+                <e p="NodeDataForCheckSkill.cs" t="Include" />
+                <e p="NodeDataForHero.cs" t="Include" />
+                <e p="NodeDataForSkillBuff.cs" t="Include" />
+                <e p="NodeDataForStartSkill.cs" t="Include" />
+                <e p="SkillBuffDatas" t="Include">
+                  <e p="DamageBuff.cs" t="Include" />
+                  <e p="DelayBuff.cs" t="Include" />
+                  <e p="SkillBuffBase" t="Include">
+                    <e p="SkillBuffBase.cs" t="Include" />
                   </e>
                 </e>
-                <e p="Test_Demo" t="Include">
-                  <e p="SkillTest.cs" t="Include" />
+                <e p="SkillEnums" t="Include">
+                  <e p="BuffDamageTypes.cs" t="Include" />
+                  <e p="BuffEffectedTypes.cs" t="Include" />
+                  <e p="BuffTypes.cs" t="Include" />
+                  <e p="BuffWorkTypes.cs" t="Include" />
+                  <e p="SkillCostTypes.cs" t="Include" />
+                  <e p="SkillReleaseMode.cs" t="Include" />
+                  <e p="SkillTarget.cs" t="Include" />
+                  <e p="SkillTypes.cs" t="Include" />
                 </e>
+              </e>
+            </e>
+            <e p="SkillTestDemo" t="Include">
+              <e p="Test_Demo" t="Include">
+                <e p="SkillTest.cs" t="Include" />
               </e>
             </e>
             <e p="system" t="Include">
@@ -1092,11 +1096,7 @@
                 <e p="BaseHeroNode.cs" t="Include" />
               </e>
               <e p="Node_Editor" t="Include">
-                <e p="CanvasInspector.cs" t="Include" />
                 <e p="NodeEditorWindow.cs" t="Include" />
-                <e p="NodeInspector.cs" t="Include" />
-                <e p="RTCanvasCalculatorEditor.cs" t="Include" />
-                <e p="RTNodeEditorInspector.cs" t="Include" />
               </e>
               <e p="SkillNodes" t="Include">
                 <e p="CheckSkillNode.cs" t="Include" />

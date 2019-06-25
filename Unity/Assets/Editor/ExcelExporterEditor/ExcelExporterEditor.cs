@@ -61,8 +61,8 @@ public class ExcelExporterEditor : EditorWindow
 				
 				ExportAll(clientPath);
 				
-				ExportAllClass(@"./Assets/Model/Module/Demo/Config", "namespace ETModel\n{\n");
-				ExportAllClass(@"./Assets/Hotfix/Module/Demo/Config", "using ETModel;\n\nnamespace ETHotfix\n{\n");
+				ExportAllClass(@"./Assets/Model/NKGMOBA/Config", "namespace ETModel\n{\n");
+				ExportAllClass(@"./Assets/Hotfix/NKGMOBA/Config", "using ETModel;\n\nnamespace ETHotfix\n{\n");
 				
 				Log.Info($"导出客户端配置完成!");
 			}
@@ -73,7 +73,7 @@ public class ExcelExporterEditor : EditorWindow
 				
 				ExportAll(ServerConfigPath);
 				
-				ExportAllClass(@"../Server/Model/Module/Demo/Config", "namespace ETModel\n{\n");
+				ExportAllClass(@"../Server/Model/MNKGMOBA/Config", "namespace ETModel\n{\n");
 				
 				Log.Info($"导出服务端配置完成!");
 			}

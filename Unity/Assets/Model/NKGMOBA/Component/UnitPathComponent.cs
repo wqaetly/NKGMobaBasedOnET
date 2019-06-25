@@ -49,8 +49,9 @@ namespace ETModel
 				this.Path.Add(new Vector3(message.Xs[i], message.Ys[i], message.Zs[i]));
 			}
 			ServerPos = new Vector3(message.X, message.Y, message.Z);
-			
+			Log.Info("Task上面的语句执行了");
 			await StartMove(this.CancellationTokenSource.Token);
+			Log.Info("Task下面的语句执行了");
 			this.CancellationTokenSource.Dispose();
 			this.CancellationTokenSource = null;
 		}

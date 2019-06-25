@@ -13,10 +13,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</ProjectGuid>
+    <ProjectGuid>{D240D0DC-A42A-C588-8AA8-72C1688AC723}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Unity.Model</AssemblyName>
+    <AssemblyName>Unity.BehaviorDesigner.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -30,7 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,7 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -60,502 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Model\Base\Async\AsyncETTaskMethodBuilder.cs" />
-    <Compile Include="Assets\Model\Base\Async\AsyncETVoidMethodBuilder.cs" />
-    <Compile Include="Assets\Model\Base\Async\AsyncMethodBuilderAttribute.cs" />
-    <Compile Include="Assets\Model\Base\Async\ETCancellationTokenSource.cs" />
-    <Compile Include="Assets\Model\Base\Async\ETTask.cs" />
-    <Compile Include="Assets\Model\Base\Async\ETTaskCompletionSource.cs" />
-    <Compile Include="Assets\Model\Base\Async\ETTaskFactory.cs" />
-    <Compile Include="Assets\Model\Base\Async\ETVoid.cs" />
-    <Compile Include="Assets\Model\Base\Async\IAwaiter.cs" />
-    <Compile Include="Assets\Model\Base\Async\MoveNextRunner.cs" />
-    <Compile Include="Assets\Model\Base\DoubleMap.cs" />
-    <Compile Include="Assets\Model\Base\Event\Env.cs" />
-    <Compile Include="Assets\Model\Base\Event\EnvKey.cs" />
-    <Compile Include="Assets\Model\Base\Event\EventAttribute.cs" />
-    <Compile Include="Assets\Model\Base\Event\EventIdType.cs" />
-    <Compile Include="Assets\Model\Base\Event\IEvent.cs" />
-    <Compile Include="Assets\Model\Base\Helper\ByteHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\Dumper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\EnumHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\FileHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\IdGenerater.cs" />
-    <Compile Include="Assets\Model\Base\Helper\JsonHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\MD5Helper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\MethodInfoHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\MongoHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\NetHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\ObjectHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\RandomHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\StringHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\TimeHelper.cs" />
-    <Compile Include="Assets\Model\Base\Helper\ZipHelper.cs" />
-    <Compile Include="Assets\Model\Base\IL\Adapt_IMessage.cs" />
-    <Compile Include="Assets\Model\Base\IL\IAsyncStateMachineAdaptor.cs" />
-    <Compile Include="Assets\Model\Base\IL\IDisposableAdaptor.cs" />
-    <Compile Include="Assets\Model\Base\IL\ILAdapterAttribute.cs" />
-    <Compile Include="Assets\Model\Base\IL\ILBindingAttribute.cs" />
-    <Compile Include="Assets\Model\Base\Log.cs" />
-    <Compile Include="Assets\Model\Base\LogType.cs" />
-    <Compile Include="Assets\Model\Base\MultiMap.cs" />
-    <Compile Include="Assets\Model\Base\Object\BaseAttribute.cs" />
-    <Compile Include="Assets\Model\Base\Object\Component.cs" />
-    <Compile Include="Assets\Model\Base\Object\ComponentFactory.cs" />
-    <Compile Include="Assets\Model\Base\Object\ComponentView.cs" />
-    <Compile Include="Assets\Model\Base\Object\ComponentWithId.cs" />
-    <Compile Include="Assets\Model\Base\Object\Entity.cs" />
-    <Compile Include="Assets\Model\Base\Object\EntityEventAttribute.cs" />
-    <Compile Include="Assets\Model\Base\Object\EventProxy.cs" />
-    <Compile Include="Assets\Model\Base\Object\EventSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\HideInHierarchy.cs" />
-    <Compile Include="Assets\Model\Base\Object\IAwakeSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\IChangeSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\IDeserializeSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\IDestroySystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\ILateUpdateSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\ILoadSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\ISerializeToEntity.cs" />
-    <Compile Include="Assets\Model\Base\Object\IStartSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\IUpdateSystem.cs" />
-    <Compile Include="Assets\Model\Base\Object\Object.cs" />
-    <Compile Include="Assets\Model\Base\Object\ObjectPool.cs" />
-    <Compile Include="Assets\Model\Base\Object\ObjectSystemAttribute.cs" />
-    <Compile Include="Assets\Model\Base\OneThreadSynchronizationContext.cs" />
-    <Compile Include="Assets\Model\Base\ProcessHelper.cs" />
-    <Compile Include="Assets\Model\Base\QueueDictionary.cs" />
-    <Compile Include="Assets\Model\Base\RecyclableMemoryStream\Events.cs" />
-    <Compile Include="Assets\Model\Base\RecyclableMemoryStream\RecyclableMemoryStream.cs" />
-    <Compile Include="Assets\Model\Base\RecyclableMemoryStream\RecyclableMemoryStreamManager.cs" />
-    <Compile Include="Assets\Model\Base\TryLocker.cs" />
-    <Compile Include="Assets\Model\Base\UnOrderMultiMap.cs" />
-    <Compile Include="Assets\Model\Component\Config\ClientConfig.cs" />
-    <Compile Include="Assets\Model\Component\Config\DBConfig.cs" />
-    <Compile Include="Assets\Model\Component\Config\GlobalProto.cs" />
-    <Compile Include="Assets\Model\Component\Config\HttpConfig.cs" />
-    <Compile Include="Assets\Model\Component\Config\InnerConfig.cs" />
-    <Compile Include="Assets\Model\Component\Config\OuterConfig.cs" />
-    <Compile Include="Assets\Model\Component\Config\RunServerConfig.cs" />
-    <Compile Include="Assets\Model\Component\Config\StartConfig.cs" />
-    <Compile Include="Assets\Model\Component\DebuggerComponent.cs" />
-    <Compile Include="Assets\Model\Component\GlobalConfigComponent.cs" />
-    <Compile Include="Assets\Model\Component\SceneChangeComponent.cs" />
-    <Compile Include="Assets\Model\Component\TimerComponent.cs" />
-    <Compile Include="Assets\Model\Entity\Game.cs" />
-    <Compile Include="Assets\Model\Entity\Hotfix.cs" />
-    <Compile Include="Assets\Model\Entity\Scene.cs" />
-    <Compile Include="Assets\Model\Entity\UnityWebRequestAsync.cs" />
-    <Compile Include="Assets\Model\Helper\ActionHelper.cs" />
-    <Compile Include="Assets\Model\Helper\BundleHelper.cs" />
-    <Compile Include="Assets\Model\Helper\GameObjectHelper.cs" />
-    <Compile Include="Assets\Model\Helper\ILHelper.cs" />
-    <Compile Include="Assets\Model\Helper\PathHelper.cs" />
-    <Compile Include="Assets\Model\Helper\PositionHelper.cs" />
-    <Compile Include="Assets\Model\Helper\ResourcesHelper.cs" />
-    <Compile Include="Assets\Model\ILBinding\CLRBindings.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_AnimatorComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_AppTypeHelper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETTaskMethodBuilder_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETVoidMethodBuilder_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ByteHelper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterMap_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Component_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ComponentFactory_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ComponentView_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ConfigAttribute_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Define_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_DoubleMap_2_UInt16_Type_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Entity_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ErrorCode_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTask_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTask_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding_Await_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTask_1_IResponse_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTask_1_IResponse_Binding_Awaiter_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTask_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTask_Binding_Awaiter_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETTaskCompletionSource_1_Google_Protobuf_Adapt_IMessage_Binding_Adapt_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ETVoid_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_EventAttribute_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_EventProxy_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_EventSystem_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Frame_ClickMap_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_FUIPackageComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_G2C_EnterMap_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Game_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_GameObjectHelper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_GizmosDebug_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_GlobalConfigComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_GlobalProto_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_GWindow_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Hotfix_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_IdGenerater_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_IMessagePacker_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Log_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_M2C_CreateUnits_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_M2C_PathfindingResult_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_MessageAttribute_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_MessageDispatcherComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_MessageInfo_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_MessageProxy_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_MongoHelper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_NetworkComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_OpcodeHelper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_OpcodeTypeComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Player_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_PlayerComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_ResourcesComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_RpcException_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_SceneChangeComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Session_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_SessionCallbackComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_SessionComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_StringHelper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_Unit_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_UnitComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_UnitFactory_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_UnitInfo_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_UnitPathComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_UnOrderMultiMap_2_Type_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_UserInputComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_EventContext_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_EventListener_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_GComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_GObject_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_GRoot_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_InputEvent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_Stage_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_Transition_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_UIPackage_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\FairyGUI_Window_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_ByteString_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_CodedInputStream_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_CodedOutputStream_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Google_Protobuf_Adapt_IMessage_Bi_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Int32_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Int64_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Single_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_String_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_UnitInfo_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_FieldCodec_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_MessageParser_1_Google_Protobuf_Adapt_IMessage_Binding_Adapto_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_ProtoPreconditions_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\LitJson_JsonMapper_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Action_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Activator_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Array_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_GObject_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Int32_Action_1_Google_Protobuf_Adapt__t.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Int64_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_String_List_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding_Enumerato_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding_ValueColl_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding_ValueColl_t_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_Type_Queue_1_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_UInt16_List_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_UInt16_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding_Enumerator_Bindin_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_UnitInfo_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_KeyValuePair_2_Type_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_ILTypeInstance_Binding_Enumerator_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Type_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Type_Binding_Enumerator_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Vector3_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Queue_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Queue_1_Int64_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Queue_1_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Stack_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_IDictionary_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_IEnumerable_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_IEnumerator_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Exception_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_IDisposable_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Int64_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Linq_Enumerable_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_NotImplementedException_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Reflection_MemberInfo_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Reflection_MethodBase_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Reflection_PropertyInfo_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Runtime_CompilerServices_AsyncVoidMethodBuilder_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_String_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Text_StringBuilder_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Threading_CancellationToken_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Threading_Tasks_TaskCompletionSource_1_ILTypeInstance_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Type_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Camera_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Debug_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_GameObject_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Input_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_LayerMask_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Mathf_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Object_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Physics_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_RaycastHit_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Rect_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_TextAsset_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Transform_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Vector2_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\UnityEngine_Vector3_Binding.cs" />
-    <Compile Include="Assets\Model\Init.cs" />
-    <Compile Include="Assets\Model\Module\Actor\IActorMessage.cs" />
-    <Compile Include="Assets\Model\Module\ActorLocation\IActorLocationMessage.cs" />
-    <Compile Include="Assets\Model\Module\AssetsBundle\AssetsBundleLoaderAsync.cs" />
-    <Compile Include="Assets\Model\Module\AssetsBundle\AssetsLoaderAsync.cs" />
-    <Compile Include="Assets\Model\Module\AssetsBundle\BundleDownloaderComponent.cs" />
-    <Compile Include="Assets\Model\Module\AssetsBundle\ResourcesComponent.cs" />
-    <Compile Include="Assets\Model\Module\AssetsBundle\VersionConfig.cs" />
-    <Compile Include="Assets\Model\Module\Config\ACategory.cs" />
-    <Compile Include="Assets\Model\Module\Config\AConfigComponent.cs" />
-    <Compile Include="Assets\Model\Module\Config\ConfigAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Config\ConfigComponent.cs" />
-    <Compile Include="Assets\Model\Module\Config\ConfigHelper.cs" />
-    <Compile Include="Assets\Model\Module\Config\IConfig.cs" />
-    <Compile Include="Assets\Model\Module\Filter\FilterAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Filter\FilterComponent.cs" />
-    <Compile Include="Assets\Model\Module\Filter\FilterEntity.cs" />
-    <Compile Include="Assets\Model\Module\Filter\IFilter.cs" />
-    <Compile Include="Assets\Model\Module\Message\AMHandler.cs" />
-    <Compile Include="Assets\Model\Module\Message\ErrorCode.cs" />
-    <Compile Include="Assets\Model\Module\Message\IMessage.cs" />
-    <Compile Include="Assets\Model\Module\Message\IMessageDispatcher.cs" />
-    <Compile Include="Assets\Model\Module\Message\IMessagePacker.cs" />
-    <Compile Include="Assets\Model\Module\Message\IMHandler.cs" />
-    <Compile Include="Assets\Model\Module\Message\MessageAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Message\MessageDispatcherComponent.cs" />
-    <Compile Include="Assets\Model\Module\Message\MessageHandlerAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Message\MessageInfo.cs" />
-    <Compile Include="Assets\Model\Module\Message\MessagePool.cs" />
-    <Compile Include="Assets\Model\Module\Message\MessageProxy.cs" />
-    <Compile Include="Assets\Model\Module\Message\NetOuterComponent.cs" />
-    <Compile Include="Assets\Model\Module\Message\NetOuterComponentSystem.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\AChannel.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\AService.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\Circularbuffer.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\KCP\KChannel.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\KCP\Kcp.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\KCP\KService.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\NetworkHelper.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\TCP\PacketParser.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\TCP\TChannel.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\TCP\TService.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\WebSocket\WChannel.cs" />
-    <Compile Include="Assets\Model\Module\Message\Network\WebSocket\WService.cs" />
-    <Compile Include="Assets\Model\Module\Message\NetworkComponent.cs" />
-    <Compile Include="Assets\Model\Module\Message\Opcode.cs" />
-    <Compile Include="Assets\Model\Module\Message\OpcodeHelper.cs" />
-    <Compile Include="Assets\Model\Module\Message\OpcodeTypeComponent.cs" />
-    <Compile Include="Assets\Model\Module\Message\OuterMessage.cs" />
-    <Compile Include="Assets\Model\Module\Message\OuterMessageDispatcher.cs" />
-    <Compile Include="Assets\Model\Module\Message\OuterOpcode.cs" />
-    <Compile Include="Assets\Model\Module\Message\ProtobufHelper.cs" />
-    <Compile Include="Assets\Model\Module\Message\ProtobufPacker.cs" />
-    <Compile Include="Assets\Model\Module\Message\RpcException.cs" />
-    <Compile Include="Assets\Model\Module\Message\Session.cs" />
-    <Compile Include="Assets\Model\Module\Message\SessionCallbackComponent.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\INumericWatcher.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\NumericChangeEvent_NotifyWatcher.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\NumericComponent.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\NumericType.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\NumericWatcher_Hp_ShowUI.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\NumericWatcherAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Numeric\NumericWatcherComponent.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Behaviors\AIDestinationSetter.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Behaviors\Patrol.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\changelog.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\AIBase.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\AILerp.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\AIPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\IAstarAI.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\NavmeshController.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\Seeker.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AI\TurnBasedAI.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\astarclasses.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AstarData.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\AstarPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\GraphUpdateScene.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\GraphUpdateShape.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\AstarDebugger.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\Draw.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\EditorResourceHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\GraphEditorBase.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\GraphModifier.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\GraphUpdateProcessor.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\GraphUtilities.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\MovementUtilities.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\NodeLink.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\PathInterpolator.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\StackPool.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\Misc\WorkItemProcessor.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\RVO\RVOAgent.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\RVO\RVOCoreObstacle.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\RVO\RVOCoreSimulator.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\RVO\RVOLine.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Core\RVO\RVOQuadtree.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\Example3_Recast_Navmesh1\MecanimBridge.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\ExampleScripts\MineBotAnimation.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\ExampleScripts\RecastTileUpdate.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\ExampleScripts\RecastTileUpdateHandler.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\ExampleScripts\TargetMover.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\ObjImporter.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\RecastBBTree.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\RecastMeshGatherer.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\RecastMeshObj.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelClasses.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelContour.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelMesh.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelPolygonClipper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelRasterization.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelRegion.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Generators\Utilities\Voxels\VoxelUtility.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\MathHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\AdvancedSmooth.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\AlternativePath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\FunnelModifier.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\Modifiers.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\RadiusModifier.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\RaycastModifier.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\SimpleSmoothModifier.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Modifiers\StartEndModifier.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Navmesh\RelevantGraphSurface.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\PackageTools\EnumFlagAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\PackageTools\UniqueComponentAttribute.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\PackageTools\VersionedMonoBehaviour.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\RVO\RVOController.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\RVO\RVONavmesh.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\RVO\RVOObstacle.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\RVO\RVOSimulator.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\RVO\RVOSquareObstacle.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\TurnBased\BlockManager.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\TurnBased\SingleNodeBlocker.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\UnityHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\AstarParallel.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\AstarProfiler.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\GraphGizmoHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\GraphUpdateUtilities.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\PathUtilities.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\ArrayPool.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\AstarChecksum.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\AStarConfig.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\AstarDeserializer.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\AstarMath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\AstarMemory.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\BBTree.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\BinaryHeap.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\EuclideanEmbedding.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Funnel.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\GraphNode.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\GraphTransform.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Guid.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\INavmesh.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Int3.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\IntRect.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\ListPool.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\NavGraph.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\NavmeshBase.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\NavmeshTile.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\NN.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\ObjectPool.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Path.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\ABPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\ConstantPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\FleePath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\FloodPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\FloodPathTracer.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\MultiTargetPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\RandomPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Pathfinders\XPath.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\PathFindHelper.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\PathHandler.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\PathPool.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\PathProcessor.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\PathReturnQueue.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\RecastGenerator.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Serialization\JsonSerializer.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Serialization\SimpleZipReplacement.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\Serialization\TinyJson.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" />
-    <Compile Include="Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\AnimatorComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\CameraComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\GameObjectPool.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\Gate\HeartBeatComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\MoveComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\PlayerComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\SessionComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\TurnComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\UnitComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\UnitPathComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\UserInputComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Config\BehaviorTreeConfig.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Config\UnitConfig.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Entity\Player.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Entity\Unit.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\AutoGeneratedCode\FUICheckForResUpdate\FUICheckForResUpdateBinder.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\AutoGeneratedCode\FUICheckForResUpdate\UI_CheckForResUpdateBar.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\AutoGeneratedCode\FUICheckForResUpdate\UI_FUICheckForResUpdate.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\AutoGeneratedCode\FUILoading\FUILoadingBinder.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\AutoGeneratedCode\FUILoading\UI_FUILoading.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Component\FUICheckForResUpdateComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Component\FUILoadingComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\FUI.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\FUIComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\FUIHelper.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\FUIInitComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\FUIPackageComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\FUIStackComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\GWindow.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUICheckForResUpdate\CheckForUpdateUIController.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUICheckForResUpdate\FUICheckForResUpdateComponentAwakeSystem.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUICheckForResUpdate\FUICheckForResUpdateComponentStartSystem.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUICheckForResUpdate\FUICheckForResUpdateFactory.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUILoading\FUILoadingComponentAwakeSystem.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUILoading\FUILoadingFactory.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\FairyGUI\System\FUILoading\LoadingUIController.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\BaseNodeData.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\Bson\NodeDataSupporter.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\NodeDataForCheckSkill.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\NodeDataForHero.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\NodeDataForSkillBuff.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\NodeDataForStartSkill.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffWorkTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillCostTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillReleaseMode.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTarget.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\SkillTestDemo\Test_Demo\SkillTest.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\System\Player\PlayerFactory.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\System\Unit\UnitFactory.cs" />
-    <Compile Include="Assets\Model\Other\AppType.cs" />
-    <Compile Include="Assets\Model\Other\Define.cs" />
-    <Compile Include="Assets\Model\Other\GizmosDebug.cs" />
-    <Compile Include="Assets\Model\Other\IInstanceMethod.cs" />
-    <Compile Include="Assets\Model\Other\ILStaticMethod.cs" />
-    <Compile Include="Assets\Model\Other\MonoStaticMethod.cs" />
-    <Compile Include="Assets\Model\Other\MotionType.cs" />
-    <Compile Include="Assets\Model\Other\ReferenceCollector.cs" />
-    <None Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
-    <None Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
-    <None Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Readme_upgrading.txt" />
-    <None Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
-    <None Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\Readme.txt" />
-    <None Include="Assets\Model\Unity.Model.asmdef" />
-    <None Include="Assets\Model\Module\Pathfinding\AstarPathfindingProject\link.xml" />
+    <Compile Include="Assets\Packages\Behavior Designer\Editor\Unity\BehaviorTreeInspector.cs" />
+    <Compile Include="Assets\Packages\Behavior Designer\Editor\Unity\ExternalBehaviorTreeInspector.cs" />
+    <None Include="Assets\Packages\Behavior Designer\Editor\Shader\GridShader.shader" />
+    <None Include="Assets\Packages\Behavior Designer\Editor\Unity.BehaviorDesigner.Editor.asmdef" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -642,6 +150,9 @@
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTrackingModule">
+      <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpatialTrackingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteMaskModule">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
@@ -858,6 +369,12 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="BehaviorDesignerRuntime">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Packages/Behavior Designer/Runtime/Core/BehaviorDesignerRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="BehaviorDesignerEditor">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Packages/Behavior Designer/Editor/Core/BehaviorDesignerEditor.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -1215,9 +732,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.ThirdParty.csproj">
-      <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
-      <Name>Unity.ThirdParty</Name>
+    <ProjectReference Include="Unity.BehaviorDesigner.Runtime.csproj">
+      <Project>{B04BF23E-2EA0-221F-942C-19DFE6549B89}</Project>
+      <Name>Unity.BehaviorDesigner.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

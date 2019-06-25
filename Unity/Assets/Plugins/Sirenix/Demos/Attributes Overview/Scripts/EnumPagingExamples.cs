@@ -21,6 +21,8 @@ namespace Sirenix.OdinInspector.Demos
         [InfoBox("Example of using EnumPaging together with OnValueChanged.")]
         private UnityEditor.Tool sceneTool;
 
+
+
         private void SetCurrentTool()
         {
             UnityEditor.Tools.current = this.sceneTool;
