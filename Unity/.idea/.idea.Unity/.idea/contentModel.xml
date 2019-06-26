@@ -193,6 +193,21 @@
             </e>
           </e>
           <e p="NKGMOBA" t="Include">
+            <e p="BehaviorTree" t="Include">
+              <e p="BehaviorTree.cs" t="Include" />
+              <e p="BehaviorTreeComponent.cs" t="Include" />
+              <e p="BehaviorTreeFactory.cs" t="Include" />
+              <e p="BehaviorTreeHelper.cs" t="Include" />
+              <e p="BehaviorTreeVariableComponent.cs" t="Include" />
+              <e p="Demo" t="Include">
+                <e p="LogActionComponent.cs" t="Include" />
+                <e p="PatrolActionComponent.cs" t="Include" />
+                <e p="PlaySkillActionComponent.cs" t="Include" />
+                <e p="SeekActionComponent.cs" t="Include" />
+                <e p="WithInRoomActionComponent.cs" t="Include" />
+              </e>
+              <e p="GameObjectHelper.cs" t="Include" />
+            </e>
             <e p="Component" t="Include">
               <e p="HeroBaseDataComponent.cs" t="Include" />
               <e p="HeroHeadBarComponent.cs" t="Include" />
@@ -961,6 +976,60 @@
             </e>
             <e p="Poly2Tri" t="Include">
               <e p="Poly2TriLicense.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Behavior Designer" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Shader" t="Include">
+                <e p="GridShader.shader" t="Include" />
+              </e>
+              <e p="Unity" t="Include">
+                <e p="BehaviorTreeInspector.cs" t="Include" />
+                <e p="ExternalBehaviorTreeInspector.cs" t="Include" />
+              </e>
+              <e p="Unity.BehaviorDesigner.Editor.asmdef" t="Include" />
+            </e>
+            <e p="Runtime" t="Include">
+              <e p="Actions" t="Include">
+                <e p="HotfixAction.cs" t="Include" />
+              </e>
+              <e p="Base" t="Include">
+                <e p="EntryTask.cs" t="Include" />
+              </e>
+              <e p="Composites" t="Include">
+                <e p="HotfixComposite.cs" t="Include" />
+                <e p="Parallel.cs" t="Include" />
+                <e p="ParallelComplete.cs" t="Include" />
+                <e p="ParallelSelector.cs" t="Include" />
+                <e p="PrioritySelector.cs" t="Include" />
+                <e p="RandomSelector.cs" t="Include" />
+                <e p="RandomSequence.cs" t="Include" />
+                <e p="Selector.cs" t="Include" />
+                <e p="SelectorEvaluator.cs" t="Include" />
+                <e p="Sequence.cs" t="Include" />
+                <e p="UtilitySelector.cs" t="Include" />
+              </e>
+              <e p="Conditionals" t="Include">
+                <e p="HotfixConditional.cs" t="Include" />
+              </e>
+              <e p="Decorators" t="Include">
+                <e p="ConditionalEvaluator.cs" t="Include" />
+                <e p="HotfixDecorator.cs" t="Include" />
+                <e p="Interrupt.cs" t="Include" />
+                <e p="Inverter.cs" t="Include" />
+                <e p="Repeater.cs" t="Include" />
+                <e p="ReturnFailure.cs" t="Include" />
+                <e p="ReturnSuccess.cs" t="Include" />
+                <e p="TaskGuard.cs" t="Include" />
+                <e p="UntilFailure.cs" t="Include" />
+                <e p="UntilSuccess.cs" t="Include" />
+              </e>
+              <e p="Unity" t="Include">
+                <e p="BehaviorTree.cs" t="Include" />
+                <e p="BehaviorTreeController.cs" t="Include" />
+                <e p="ExternalBehaviorTree.cs" t="Include" />
+              </e>
+              <e p="Unity.BehaviorDesigner.Runtime.asmdef" t="Include" />
             </e>
           </e>
           <e p="Box2D" t="Include">
@@ -2239,6 +2308,8 @@
       <e p="Temp" t="ExcludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
       </e>
+      <e p="Unity.BehaviorDesigner.Editor.csproj" t="IncludeRecursive" />
+      <e p="Unity.BehaviorDesigner.Runtime.csproj" t="IncludeRecursive" />
       <e p="Unity.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.Hotfix.csproj" t="IncludeRecursive" />
       <e p="Unity.Model.csproj" t="IncludeRecursive" />

@@ -12,7 +12,7 @@ namespace ETEditor
 
 	public class Proto2CSEditor: EditorWindow
 	{
-		[MenuItem("Tools/Proto2CS")]
+		[MenuItem("Tools/一键生成类工具/Proto2CS")]
 		public static void AllProto2CS()
 		{
 			Process process = ProcessHelper.Run("dotnet", "Proto2CS.dll", "../Proto/", true);

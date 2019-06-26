@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if !SERVER
+using UnityEngine;
+#endif
 using System.Collections.Generic;
 
 namespace BehaviorDesigner.Runtime.Tasks

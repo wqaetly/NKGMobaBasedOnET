@@ -8,10 +8,12 @@
     ".NETCoreApp,Version=v2.2": {
       "Hotfix/1.0.0": {
         "dependencies": {
+          "BehaviorDesigner.Runtime": "1.0.0",
           "Model": "1.0.0",
           "MongoDB.Bson": "0.0.0-local",
           "MongoDB.Driver": "0.0.0-local",
-          "MongoDB.Driver.Core": "0.0.0-local"
+          "MongoDB.Driver.Core": "0.0.0-local",
+          "BehaviorDesignerRuntime": "0.0.0.0"
         },
         "runtime": {
           "Hotfix.dll": {}
@@ -1284,6 +1286,11 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
+      "BehaviorDesigner.Runtime/1.0.0": {
+        "runtime": {
+          "BehaviorDesigner.Runtime.dll": {}
+        }
+      },
       "Google.Protobuf/1.0.0": {
         "dependencies": {
           "MongoDB.Bson": "0.0.0-local"
@@ -1299,6 +1306,7 @@
       },
       "Model/1.0.0": {
         "dependencies": {
+          "BehaviorDesigner.Runtime": "1.0.0",
           "CommandLineParser": "2.2.1",
           "Google.Protobuf": "1.0.0",
           "KcpLib": "1.0.0",
@@ -1335,6 +1343,14 @@
         },
         "runtime": {
           "MongoDB.Driver.Core.dll": {}
+        }
+      },
+      "BehaviorDesignerRuntime/0.0.0.0": {
+        "runtime": {
+          "BehaviorDesignerRuntime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Pathfinding.Ionic.Zip.Reduced.Reference/1.9.1.9000": {
@@ -2018,6 +2034,11 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
+    "BehaviorDesigner.Runtime/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Google.Protobuf/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -2045,6 +2066,11 @@
     },
     "MongoDB.Driver.Core/0.0.0-local": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BehaviorDesignerRuntime/0.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

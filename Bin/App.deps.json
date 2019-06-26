@@ -1282,6 +1282,11 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
+      "BehaviorDesigner.Runtime/1.0.0": {
+        "runtime": {
+          "BehaviorDesigner.Runtime.dll": {}
+        }
+      },
       "Google.Protobuf/1.0.0": {
         "dependencies": {
           "MongoDB.Bson": "0.0.0-local"
@@ -1297,6 +1302,7 @@
       },
       "Model/1.0.0": {
         "dependencies": {
+          "BehaviorDesigner.Runtime": "1.0.0",
           "CommandLineParser": "2.2.1",
           "Google.Protobuf": "1.0.0",
           "KcpLib": "1.0.0",
@@ -1306,7 +1312,8 @@
           "MongoDB.Driver.Core": "0.0.0-local",
           "NLog": "4.5.4",
           "SharpZipLib": "1.0.0-alpha2",
-          "Pathfinding.Ionic.Zip.Reduced": "1.9.1.9000"
+          "Pathfinding.Ionic.Zip.Reduced": "1.9.1.9000",
+          "BehaviorDesignerRuntime": "0.0.0.0"
         },
         "runtime": {
           "Model.dll": {}
@@ -1340,6 +1347,14 @@
           "Pathfinding.Ionic.Zip.Reduced.dll": {
             "assemblyVersion": "1.9.1.9000",
             "fileVersion": "1.9.1.9000"
+          }
+        }
+      },
+      "BehaviorDesignerRuntime.Reference/0.0.0.0": {
+        "runtime": {
+          "BehaviorDesignerRuntime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -2016,6 +2031,11 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
+    "BehaviorDesigner.Runtime/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Google.Protobuf/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -2047,6 +2067,11 @@
       "sha512": ""
     },
     "Pathfinding.Ionic.Zip.Reduced.Reference/1.9.1.9000": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BehaviorDesignerRuntime.Reference/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

@@ -80,6 +80,16 @@
         </e>
         <e p="NKGMOBA" t="Include">
           <e p="Actor_TransferHandler.cs" t="Include" />
+          <e p="BehaviorTree" t="Include">
+            <e p="BehaviorManagerSystem.cs" t="Include" />
+            <e p="BehaviorTreeComponentFactory.cs" t="Include" />
+            <e p="BehaviorTreeFactory.cs" t="Include" />
+            <e p="BehaviorTreeSystem.cs" t="Include" />
+            <e p="BehaviorTreeVariableComponentHelper.cs" t="Include" />
+            <e p="Demo" t="Include">
+              <e p="TestBehavior_RunHandler.cs" t="Include" />
+            </e>
+          </e>
           <e p="C2G_EnterMapHandler.cs" t="Include" />
           <e p="C2M_TestActorRequestHandler.cs" t="Include" />
           <e p="Frame_ClickMapHandler.cs" t="Include" />
@@ -241,6 +251,11 @@
           </e>
         </e>
         <e p="NKGMOBA" t="Include">
+          <e p="BehaviorTree" t="Include">
+            <e p="BehaviorManagerComponent.cs" t="Include" />
+            <e p="BehaviorTree.cs" t="Include" />
+            <e p="BehaviorTreeVariableComponent.cs" t="Include" />
+          </e>
           <e p="Component" t="Include">
             <e p="AllHeroBaseDataComponent.cs" t="Include" />
             <e p="AllHeroSkillDataComponent.cs" t="Include" />
@@ -254,6 +269,7 @@
             </e>
           </e>
           <e p="Config" t="Include">
+            <e p="BehaviorTreeConfig.cs" t="Include" />
             <e p="UnitConfig.cs" t="Include" />
           </e>
           <e p="Entity" t="Include">
@@ -299,6 +315,26 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="Server.sln" t="IncludeFlat" />
       <e p="ThirdParty" t="Include">
+        <e p="BehaviorDesigner.Runtime" t="IncludeRecursive">
+          <e p="Actions" t="Include" />
+          <e p="Base" t="Include" />
+          <e p="BehaviorDesigner.Runtime.csproj" t="IncludeRecursive" />
+          <e p="Bin" t="ExcludeRecursive" />
+          <e p="Composites" t="Include" />
+          <e p="Conditionals" t="Include" />
+          <e p="Core" t="Include">
+            <e p="BehaviorDesignerRuntime.dll" t="Include" />
+            <e p="BehaviorDesignerRuntime.pdb" t="Include" />
+          </e>
+          <e p="Decorators" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="BehaviorDesigner.Runtime.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Google.Protobuf" t="IncludeRecursive">
           <e p="Google.Protobuf.csproj" t="IncludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
@@ -1832,6 +1868,30 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTarget.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\Other\AppType.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Actions\HotfixAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Base\EntryTask.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\HotfixComposite.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\Parallel.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\ParallelComplete.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\ParallelSelector.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\PrioritySelector.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\RandomSelector.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\RandomSequence.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\Selector.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\SelectorEvaluator.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\Sequence.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Composites\UtilitySelector.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Conditionals\HotfixConditional.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\ConditionalEvaluator.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\HotfixDecorator.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\Interrupt.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\Inverter.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\Repeater.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\ReturnFailure.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\ReturnSuccess.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\TaskGuard.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\UntilFailure.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\Behavior Designer\Runtime\Decorators\UntilSuccess.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Plugins\x86_64\kcp.dll" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\ByteArray.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\ByteString.cs" t="Include" />
