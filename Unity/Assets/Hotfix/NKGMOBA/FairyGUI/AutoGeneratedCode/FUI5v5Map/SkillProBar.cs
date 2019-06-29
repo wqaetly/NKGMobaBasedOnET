@@ -3,6 +3,7 @@
 using System.Threading.Tasks;
 using FairyGUI;
 using ETModel;
+using ETHotfix;
 
 namespace ETHotfix.FUI5v5Map
 {
@@ -25,9 +26,8 @@ namespace ETHotfix.FUI5v5Map
         /// </summary>
 		public GProgressBar self;
 		
-		public GImage n0;
+		public GImage barhjg;
 		public GImage bar;
-		public GTextField CDInfo;
 
 		private static GObject CreateGObject()
         {
@@ -100,9 +100,8 @@ namespace ETHotfix.FUI5v5Map
 				
 			if(com != null)
 			{	
-				n0 = (GImage)com.GetChild("n0");
+				barhjg = (GImage)com.GetChild("barhjg");
 				bar = (GImage)com.GetChild("bar");
-				CDInfo = (GTextField)com.GetChild("CDInfo");
 			}
 		}
 		
@@ -117,9 +116,8 @@ namespace ETHotfix.FUI5v5Map
 			
 			self.Remove();
 			self = null;
-			n0 = null;
+			barhjg = null;
 			bar = null;
-			CDInfo = null;
 		}
 	}
 }

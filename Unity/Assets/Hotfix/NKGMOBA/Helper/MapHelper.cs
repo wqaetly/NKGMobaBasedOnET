@@ -15,6 +15,11 @@ namespace ETHotfix
 
                 // 加载场景资源
                 await ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundleAsync("map.unity3d");
+                // 加载战斗图片资源（英雄头像）
+                await ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundleAsync("heroavatars.unity3d");
+                // 加载战斗图片资源（英雄技能图标）
+                await ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundleAsync("heroskillicons.unity3d");
+
                 // 切换到map场景
                 using (SceneChangeComponent sceneChangeComponent = ETModel.Game.Scene.AddComponent<SceneChangeComponent>())
                 {

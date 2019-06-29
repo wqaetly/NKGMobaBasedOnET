@@ -17,6 +17,18 @@ namespace ETHotfix
         public override void Start(FUI5V5Map self)
         {
             self.SmallMapSprite.onRightClick.Add(this.AnyEventHandler);
+            GameObject HeroAvatars =
+                    (GameObject) ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroavatars.unity3d", "HeroAvatars");
+            GameObject HeroSkillIcons =
+                    (GameObject) ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroskillicons.unity3d", "HeroSkillIcons");
+
+            self.HeroAvatarLoader.texture = new NTexture(HeroAvatars.Get<Sprite>("Darius_Circle_8").texture);
+            self.SkillTalent_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>("Darius_PassiveBuff").texture);
+            self.SkillQ_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>("Darius_Icon_Decimate").texture);
+            self.SkillW_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>("Darius_Icon_Hamstring").texture);
+            self.SkillE_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>("Darius_Icon_Axe_Grab").texture);
+            self.SkillR_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>("Darius_Icon_Sudden_Death").texture);
+
         }
 
         void AnyEventHandler(EventContext context)

@@ -7,10 +7,10 @@ namespace ETHotfix
 		public const string FUI5v5Map = "FUI5v5Map";
 		public const string FUI5v5Map_HpProcessBar = "ui://FUI5v5Map/HpProcessBar";
 		public const string FUI5v5Map_OtherBar = "ui://FUI5v5Map/OtherBar";
+		public const string FUI5v5Map_SkillSmallProBar = "ui://FUI5v5Map/SkillSmallProBar";
 		public const string FUI5v5Map_GoldenToShopBtn = "ui://FUI5v5Map/GoldenToShopBtn";
 		public const string FUI5v5Map_BuffProBar = "ui://FUI5v5Map/BuffProBar";
 		public const string FUI5v5Map_SkillProBar = "ui://FUI5v5Map/SkillProBar";
-		public const string FUI5v5Map_SmallSkillProBar = "ui://FUI5v5Map/SmallSkillProBar";
 		public const string FUI5v5Map_ProgressBar1 = "ui://FUI5v5Map/ProgressBar1";
 		public const string FUI5v5Map_Avatar = "ui://FUI5v5Map/Avatar";
 		public const string FUI5v5Map_Skill = "ui://FUI5v5Map/Skill";
@@ -22,7 +22,11 @@ namespace ETHotfix
 		public const string FUI5v5Map_Back = "ui://FUI5v5Map/Back";
 		public const string FUI5v5Map_SmallMap = "ui://FUI5v5Map/SmallMap";
 		public const string FUI5v5Map_Clarity_HUDAtlas_8 = "ui://FUI5v5Map/Clarity_HUDAtlas_8";
+		public const string FUI5v5Map_QQJieTu20190629224514 = "ui://FUI5v5Map/QQ截图20190629224514";
+		public const string FUI5v5Map_QQJieTu20190629231944 = "ui://FUI5v5Map/QQ截图20190629231944";
+		public const string FUI5v5Map_QQJieTu20190629232108 = "ui://FUI5v5Map/QQ截图20190629232108";
 		public const string FUI5v5Map_Clarity_HUDAtlas_103 = "ui://FUI5v5Map/Clarity_HUDAtlas_103";
+		public const string FUI5v5Map_ReplayAtlas_118 = "ui://FUI5v5Map/ReplayAtlas_118";
 		public const string FUI5v5Map_PerksAtlas_11 = "ui://FUI5v5Map/PerksAtlas_11";
 		public const string FUI5v5Map_PerksAtlas_15 = "ui://FUI5v5Map/PerksAtlas_15";
 		public const string FUI5v5Map_PerksAtlas_16 = "ui://FUI5v5Map/PerksAtlas_16";

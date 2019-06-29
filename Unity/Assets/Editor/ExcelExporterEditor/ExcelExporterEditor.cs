@@ -199,10 +199,7 @@ public class ExcelExporterEditor: OdinEditorWindow
             string oldMD5 = md5Info.Get(fileName);
             string md5 = MD5Helper.FileMD5(filePath);
             md5Info.Add(fileName, md5);
-            if (md5 == oldMD5)
-            {
-                continue;
-            }
+
 
             Export(filePath, exportDir);
         }

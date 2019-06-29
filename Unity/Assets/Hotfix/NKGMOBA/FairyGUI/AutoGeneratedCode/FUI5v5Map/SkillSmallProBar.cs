@@ -3,31 +3,31 @@
 using System.Threading.Tasks;
 using FairyGUI;
 using ETModel;
+using ETHotfix;
 
 namespace ETHotfix.FUI5v5Map
 {
     [ObjectSystem]
-    public class SmallSkillProBarAwakeSystem : AwakeSystem<SmallSkillProBar, GObject>
+    public class SkillSmallProBarAwakeSystem : AwakeSystem<SkillSmallProBar, GObject>
     {
-        public override void Awake(SmallSkillProBar self, GObject go)
+        public override void Awake(SkillSmallProBar self, GObject go)
         {
             self.Awake(go);
         }
     }
 	
-	public sealed class SmallSkillProBar : FUI
+	public sealed class SkillSmallProBar : FUI
 	{	
 		public const string UIPackageName = "FUI5v5Map";
-		public const string UIResName = "SmallSkillProBar";
+		public const string UIResName = "SkillSmallProBar";
 		
 		/// <summary>
-        /// SmallSkillProBar的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
+        /// SkillSmallProBar的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
         /// </summary>
 		public GProgressBar self;
 		
-		public GImage n0;
+		public GImage n3;
 		public GImage bar;
-		public GTextField CDInfo;
 
 		private static GObject CreateGObject()
         {
@@ -39,34 +39,34 @@ namespace ETHotfix.FUI5v5Map
             UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
         }
 
-        public static SmallSkillProBar CreateInstance()
+        public static SkillSmallProBar CreateInstance()
 		{			
-			return ComponentFactory.Create<SmallSkillProBar, GObject>(CreateGObject());
+			return ComponentFactory.Create<SkillSmallProBar, GObject>(CreateGObject());
 		}
 
-        public static Task<SmallSkillProBar> CreateInstanceAsync()
+        public static Task<SkillSmallProBar> CreateInstanceAsync()
         {
-            TaskCompletionSource<SmallSkillProBar> tcs = new TaskCompletionSource<SmallSkillProBar>();
+            TaskCompletionSource<SkillSmallProBar> tcs = new TaskCompletionSource<SkillSmallProBar>();
 
             CreateGObjectAsync((go) =>
             {
-                tcs.SetResult(ComponentFactory.Create<SmallSkillProBar, GObject>(go));
+                tcs.SetResult(ComponentFactory.Create<SkillSmallProBar, GObject>(go));
             });
 
             return tcs.Task;
         }
 
-        public static SmallSkillProBar Create(GObject go)
+        public static SkillSmallProBar Create(GObject go)
 		{
-			return ComponentFactory.Create<SmallSkillProBar, GObject>(go);
+			return ComponentFactory.Create<SkillSmallProBar, GObject>(go);
 		}
 		
         /// <summary>
         /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
         /// </summary>
-        public static SmallSkillProBar GetFormPool(GObject go)
+        public static SkillSmallProBar GetFormPool(GObject go)
         {
-            var fui = go.Get<SmallSkillProBar>();
+            var fui = go.Get<SkillSmallProBar>();
 
             if(fui == null)
             {
@@ -100,9 +100,8 @@ namespace ETHotfix.FUI5v5Map
 				
 			if(com != null)
 			{	
-				n0 = (GImage)com.GetChild("n0");
+				n3 = (GImage)com.GetChild("n3");
 				bar = (GImage)com.GetChild("bar");
-				CDInfo = (GTextField)com.GetChild("CDInfo");
 			}
 		}
 		
@@ -117,9 +116,8 @@ namespace ETHotfix.FUI5v5Map
 			
 			self.Remove();
 			self = null;
-			n0 = null;
+			n3 = null;
 			bar = null;
-			CDInfo = null;
 		}
 	}
 }
