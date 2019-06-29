@@ -18,7 +18,6 @@ namespace ETHotfix
             R2C_Login response = new R2C_Login();
             try
             {
-                Console.WriteLine("开始查询数据库");
                 //数据库操作对象
                 DBProxyComponent dbProxy = Game.Scene.GetComponent<DBProxyComponent>();
 

@@ -4,6 +4,7 @@
 // Data: 2019年4月27日 17:35:10
 //------------------------------------------------------------
 
+using ETHotfix.FUILogin;
 using ETModel;
 
 namespace ETHotfix
@@ -16,6 +17,7 @@ namespace ETHotfix
             self.loginInfo.alpha = 0;
             self.loginBtn.self.onClick.Add(() => LoginBtnOnClick(self));
             self.registBtn.self.onClick.Add(() => RegisterBtnOnClick(self));
+            self.ToTestSceneBtn.self.onClick.Add(() => ToTestSceneBtnBtnOnClick(self));
         }
 
         private void RegisterBtnOnClick(FUILogin.FUILogin self)
@@ -28,6 +30,16 @@ namespace ETHotfix
         {
             self.loginBtn.self.visible = false;
             LoginHelper.OnLoginAsync(self.accountText.text, self.passwordText.text).Coroutine();
+        }
+        
+        /// <summary>
+        /// 前往训练营
+        /// </summary>
+        /// <param name="self"></param>
+        public void ToTestSceneBtnBtnOnClick(FUILogin.FUILogin self)
+        {
+            self.loginBtn.self.visible = false;
+            LoginHelper.OnLoginAsync("123", "123").Coroutine();
         }
     }
 }

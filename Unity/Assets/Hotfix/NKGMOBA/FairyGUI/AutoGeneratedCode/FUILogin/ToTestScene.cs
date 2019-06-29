@@ -8,21 +8,21 @@ using ETHotfix;
 namespace ETHotfix.FUILogin
 {
     [ObjectSystem]
-    public class RegistBtnAwakeSystem : AwakeSystem<RegistBtn, GObject>
+    public class ToTestSceneAwakeSystem : AwakeSystem<ToTestScene, GObject>
     {
-        public override void Awake(RegistBtn self, GObject go)
+        public override void Awake(ToTestScene self, GObject go)
         {
             self.Awake(go);
         }
     }
 	
-	public sealed class RegistBtn : FUI
+	public sealed class ToTestScene : FUI
 	{	
 		public const string UIPackageName = "FUILogin";
-		public const string UIResName = "RegistBtn";
+		public const string UIResName = "ToTestScene";
 		
 		/// <summary>
-        /// RegistBtn的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
+        /// ToTestScene的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
         /// </summary>
 		public GButton self;
 		
@@ -41,34 +41,34 @@ namespace ETHotfix.FUILogin
             UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
         }
 
-        public static RegistBtn CreateInstance()
+        public static ToTestScene CreateInstance()
 		{			
-			return ComponentFactory.Create<RegistBtn, GObject>(CreateGObject());
+			return ComponentFactory.Create<ToTestScene, GObject>(CreateGObject());
 		}
 
-        public static Task<RegistBtn> CreateInstanceAsync()
+        public static Task<ToTestScene> CreateInstanceAsync()
         {
-            TaskCompletionSource<RegistBtn> tcs = new TaskCompletionSource<RegistBtn>();
+            TaskCompletionSource<ToTestScene> tcs = new TaskCompletionSource<ToTestScene>();
 
             CreateGObjectAsync((go) =>
             {
-                tcs.SetResult(ComponentFactory.Create<RegistBtn, GObject>(go));
+                tcs.SetResult(ComponentFactory.Create<ToTestScene, GObject>(go));
             });
 
             return tcs.Task;
         }
 
-        public static RegistBtn Create(GObject go)
+        public static ToTestScene Create(GObject go)
 		{
-			return ComponentFactory.Create<RegistBtn, GObject>(go);
+			return ComponentFactory.Create<ToTestScene, GObject>(go);
 		}
 		
         /// <summary>
         /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
         /// </summary>
-        public static RegistBtn GetFormPool(GObject go)
+        public static ToTestScene GetFormPool(GObject go)
         {
-            var fui = go.Get<RegistBtn>();
+            var fui = go.Get<ToTestScene>();
 
             if(fui == null)
             {

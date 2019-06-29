@@ -59,9 +59,11 @@ namespace ETModel
             }
         }
 
+
         private void Update()
         {
             OneThreadSynchronizationContext.Instance.Update();
+
             Game.Hotfix.Update?.Invoke();
             Game.EventSystem.Update();
         }

@@ -158,6 +158,16 @@
           </e>
           <e p="NKGMOBA" t="Include">
             <e p="Actor_TransferHandler.cs" t="Include" />
+            <e p="BehaviorTree" t="Include">
+              <e p="BehaviorManagerSystem.cs" t="Include" />
+              <e p="BehaviorTreeComponentFactory.cs" t="Include" />
+              <e p="BehaviorTreeFactory.cs" t="Include" />
+              <e p="BehaviorTreeSystem.cs" t="Include" />
+              <e p="BehaviorTreeVariableComponentHelper.cs" t="Include" />
+              <e p="Demo" t="Include">
+                <e p="TestBehavior_RunHandler.cs" t="Include" />
+              </e>
+            </e>
             <e p="C2G_EnterMapHandler.cs" t="Include" />
             <e p="C2M_TestActorRequestHandler.cs" t="Include" />
             <e p="Frame_ClickMapHandler.cs" t="Include" />
@@ -337,6 +347,7 @@
               </e>
             </e>
             <e p="Config" t="Include">
+              <e p="BehaviorTreeConfig.cs" t="Include" />
               <e p="UnitConfig.cs" t="Include" />
             </e>
             <e p="Entity" t="Include">
@@ -356,6 +367,14 @@
             <e p="RealmGateAddressComponent.cs" t="Include" />
             <e p="SessionInfoComponent.cs" t="Include" />
             <e p="SessionPlayerComponent.cs" t="Include" />
+            <e p="Skill" t="Include">
+              <e p="Core" t="Include">
+                <e p="AnimationCore" t="Include" />
+                <e p="Bson" t="Include" />
+                <e p="SkillBuffDatas" t="Include" />
+                <e p="SkillEnums" t="Include" />
+              </e>
+            </e>
             <e p="Unit.cs" t="Include" />
             <e p="UnitComponent.cs" t="Include" />
             <e p="UnitGateComponent.cs" t="Include" />
@@ -373,8 +392,17 @@
         </e>
         <e p="ThirdParty" t="Include">
           <e p="BehaviorDesigner.Runtime" t="IncludeRecursive">
+            <e p="Actions" t="Include" />
+            <e p="Base" t="Include" />
             <e p="BehaviorDesigner.Runtime.csproj" t="IncludeRecursive" />
             <e p="bin" t="ExcludeRecursive" />
+            <e p="Composites" t="Include" />
+            <e p="Conditionals" t="Include" />
+            <e p="Core" t="Include">
+              <e p="BehaviorDesignerRuntime.dll" t="Include" />
+              <e p="BehaviorDesignerRuntime.pdb" t="Include" />
+            </e>
+            <e p="Decorators" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
                 <e p="netstandard2.0" t="Include">
@@ -1926,21 +1954,6 @@
                 <e p="ObjectPool.cs" t="Include" />
               </e>
             </e>
-            <e p="BehaviorTree" t="Include">
-              <e p="BehaviorTree.cs" t="Include" />
-              <e p="BehaviorTreeComponent.cs" t="Include" />
-              <e p="BehaviorTreeFactory.cs" t="Include" />
-              <e p="BehaviorTreeHelper.cs" t="Include" />
-              <e p="BehaviorTreeVariableComponent.cs" t="Include" />
-              <e p="Demo" t="Include">
-                <e p="LogActionComponent.cs" t="Include" />
-                <e p="PatrolActionComponent.cs" t="Include" />
-                <e p="PlaySkillActionComponent.cs" t="Include" />
-                <e p="SeekActionComponent.cs" t="Include" />
-                <e p="WithInRoomActionComponent.cs" t="Include" />
-              </e>
-              <e p="GameObjectHelper.cs" t="Include" />
-            </e>
             <e p="Entity" t="Include">
               <e p="Game.cs" t="Include" />
               <e p="Scene.cs" t="Include" />
@@ -1974,6 +1987,21 @@
               </e>
             </e>
             <e p="NKGMOBA" t="Include">
+              <e p="BehaviorTree" t="Include">
+                <e p="BehaviorTree.cs" t="Include" />
+                <e p="BehaviorTreeComponent.cs" t="Include" />
+                <e p="BehaviorTreeFactory.cs" t="Include" />
+                <e p="BehaviorTreeHelper.cs" t="Include" />
+                <e p="BehaviorTreeVariableComponent.cs" t="Include" />
+                <e p="Demo" t="Include">
+                  <e p="LogActionComponent.cs" t="Include" />
+                  <e p="PatrolActionComponent.cs" t="Include" />
+                  <e p="PlaySkillActionComponent.cs" t="Include" />
+                  <e p="SeekActionComponent.cs" t="Include" />
+                  <e p="WithInRoomActionComponent.cs" t="Include" />
+                </e>
+                <e p="GameObjectHelper.cs" t="Include" />
+              </e>
               <e p="Component" t="Include">
                 <e p="HeroBaseDataComponent.cs" t="Include" />
                 <e p="HeroHeadBarComponent.cs" t="Include" />
@@ -2677,12 +2705,10 @@
                 <e p="Core" t="Include">
                   <e p="AnimationCore" t="Include">
                     <e p="AnimationData.cs" t="Include" />
-                    <e p="AnimationData.cs.meta" t="Include" />
                   </e>
                   <e p="BaseNodeData.cs" t="Include" />
                   <e p="Bson" t="Include">
                     <e p="NodeDataSupporter.cs" t="Include" />
-                    <e p="NodeDataSupporter.cs.meta" t="Include" />
                   </e>
                   <e p="NodeDataForCheckSkill.cs" t="Include" />
                   <e p="NodeDataForHero.cs" t="Include" />
@@ -2690,32 +2716,20 @@
                   <e p="NodeDataForStartSkill.cs" t="Include" />
                   <e p="SkillBuffDatas" t="Include">
                     <e p="DamageBuff.cs" t="Include" />
-                    <e p="DamageBuff.cs.meta" t="Include" />
                     <e p="DelayBuff.cs" t="Include" />
-                    <e p="DelayBuff.cs.meta" t="Include" />
                     <e p="SkillBuffBase" t="Include">
                       <e p="SkillBuffBase.cs" t="Include" />
-                      <e p="SkillBuffBase.cs.meta" t="Include" />
                     </e>
-                    <e p="SkillBuffBase.meta" t="Include" />
                   </e>
                   <e p="SkillEnums" t="Include">
                     <e p="BuffDamageTypes.cs" t="Include" />
-                    <e p="BuffDamageTypes.cs.meta" t="Include" />
                     <e p="BuffEffectedTypes.cs" t="Include" />
-                    <e p="BuffEffectedTypes.cs.meta" t="Include" />
                     <e p="BuffTypes.cs" t="Include" />
-                    <e p="BuffTypes.cs.meta" t="Include" />
                     <e p="BuffWorkTypes.cs" t="Include" />
-                    <e p="BuffWorkTypes.cs.meta" t="Include" />
                     <e p="SkillCostTypes.cs" t="Include" />
-                    <e p="SkillCostTypes.cs.meta" t="Include" />
                     <e p="SkillReleaseMode.cs" t="Include" />
-                    <e p="SkillReleaseMode.cs.meta" t="Include" />
                     <e p="SkillTarget.cs" t="Include" />
-                    <e p="SkillTarget.cs.meta" t="Include" />
                     <e p="SkillTypes.cs" t="Include" />
-                    <e p="SkillTypes.cs.meta" t="Include" />
                   </e>
                 </e>
               </e>
@@ -2745,72 +2759,30 @@
             </e>
             <e p="Unity.Model.asmdef" t="Include" />
           </e>
-          <e p="Plugins\Behavior Designer\Runtime\Actions" t="Include">
-            <e p="HotfixAction.cs" t="Include" />
-            <e p="HotfixAction.cs.meta" t="Include" />
-          </e>
-          <e p="Plugins\Behavior Designer\Runtime\Base" t="Include">
-            <e p="EntryTask.cs" t="Include" />
-            <e p="EntryTask.cs.meta" t="Include" />
-          </e>
-          <e p="Plugins\Behavior Designer\Runtime\Composites" t="Include">
-            <e p="HotfixComposite.cs" t="Include" />
-            <e p="HotfixComposite.cs.meta" t="Include" />
-            <e p="Parallel.cs" t="Include" />
-            <e p="Parallel.cs.meta" t="Include" />
-            <e p="ParallelComplete.cs" t="Include" />
-            <e p="ParallelComplete.cs.meta" t="Include" />
-            <e p="ParallelSelector.cs" t="Include" />
-            <e p="ParallelSelector.cs.meta" t="Include" />
-            <e p="PrioritySelector.cs" t="Include" />
-            <e p="PrioritySelector.cs.meta" t="Include" />
-            <e p="RandomSelector.cs" t="Include" />
-            <e p="RandomSelector.cs.meta" t="Include" />
-            <e p="RandomSequence.cs" t="Include" />
-            <e p="RandomSequence.cs.meta" t="Include" />
-            <e p="Selector.cs" t="Include" />
-            <e p="Selector.cs.meta" t="Include" />
-            <e p="SelectorEvaluator.cs" t="Include" />
-            <e p="SelectorEvaluator.cs.meta" t="Include" />
-            <e p="Sequence.cs" t="Include" />
-            <e p="Sequence.cs.meta" t="Include" />
-            <e p="UtilitySelector.cs" t="Include" />
-            <e p="UtilitySelector.cs.meta" t="Include" />
-          </e>
-          <e p="Plugins\Behavior Designer\Runtime\Conditionals" t="Include">
-            <e p="HotfixConditional.cs" t="Include" />
-            <e p="HotfixConditional.cs.meta" t="Include" />
-          </e>
-          <e p="Plugins\Behavior Designer\Runtime\Core" t="Include">
-            <e p="BehaviorDesignerRuntime.dll" t="Include" />
-            <e p="BehaviorDesignerRuntime.dll.mdb" t="Include" />
-            <e p="BehaviorDesignerRuntime.dll.mdb.meta" t="Include" />
-            <e p="BehaviorDesignerRuntime.dll.meta" t="Include" />
-            <e p="BehaviorDesignerRuntime.pdb" t="Include" />
-            <e p="BehaviorDesignerRuntime.pdb.meta" t="Include" />
-          </e>
-          <e p="Plugins\Behavior Designer\Runtime\Decorators" t="Include">
-            <e p="ConditionalEvaluator.cs" t="Include" />
-            <e p="ConditionalEvaluator.cs.meta" t="Include" />
-            <e p="HotfixDecorator.cs" t="Include" />
-            <e p="HotfixDecorator.cs.meta" t="Include" />
-            <e p="Interrupt.cs" t="Include" />
-            <e p="Interrupt.cs.meta" t="Include" />
-            <e p="Inverter.cs" t="Include" />
-            <e p="Inverter.cs.meta" t="Include" />
-            <e p="Repeater.cs" t="Include" />
-            <e p="Repeater.cs.meta" t="Include" />
-            <e p="ReturnFailure.cs" t="Include" />
-            <e p="ReturnFailure.cs.meta" t="Include" />
-            <e p="ReturnSuccess.cs" t="Include" />
-            <e p="ReturnSuccess.cs.meta" t="Include" />
-            <e p="TaskGuard.cs" t="Include" />
-            <e p="TaskGuard.cs.meta" t="Include" />
-            <e p="UntilFailure.cs" t="Include" />
-            <e p="UntilFailure.cs.meta" t="Include" />
-            <e p="UntilSuccess.cs" t="Include" />
-            <e p="UntilSuccess.cs.meta" t="Include" />
-          </e>
+          <e p="Plugins\Behavior Designer\Runtime\Actions\HotfixAction.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Base\EntryTask.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\HotfixComposite.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\Parallel.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\ParallelComplete.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\ParallelSelector.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\PrioritySelector.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\RandomSelector.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\RandomSequence.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\Selector.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\SelectorEvaluator.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\Sequence.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Composites\UtilitySelector.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Conditionals\HotfixConditional.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\ConditionalEvaluator.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\HotfixDecorator.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\Interrupt.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\Inverter.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\Repeater.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\ReturnFailure.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\ReturnSuccess.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\TaskGuard.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\UntilFailure.cs" t="Include" />
+          <e p="Plugins\Behavior Designer\Runtime\Decorators\UntilSuccess.cs" t="Include" />
           <e p="Plugins\x86_64\kcp.dll" t="Include" />
           <e p="ThirdParty" t="Include">
             <e p="FairyGUI" t="Include">

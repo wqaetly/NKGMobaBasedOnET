@@ -5,6 +5,7 @@ namespace ETHotfix
 	public static partial class FUIPackage
 	{
 		public const string FUILogin = "FUILogin";
+		public const string FUILogin_ToTestScene = "ui://FUILogin/ToTestScene";
 		public const string FUILogin_RegistBtn = "ui://FUILogin/RegistBtn";
 		public const string FUILogin_loginBtn = "ui://FUILogin/loginBtn";
 		public const string FUILogin_Login = "ui://FUILogin/Login";
