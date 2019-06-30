@@ -34,13 +34,6 @@ namespace ETModel
 			{
 				return;
 			}
-
-			if (Game.Scene.GetComponent<UserInputComponent>().ADown)
-			{
-				ETTaskCompletionSource tcs = this.moveTcs;
-				this.moveTcs = null;
-				tcs.TrySetCanceled();
-			}
 			
 			Unit unit = this.GetParent<Unit>();
 			long timeNow = TimeHelper.Now();
@@ -85,6 +78,8 @@ namespace ETModel
 			cancellationToken.Register(() =>
 			{
 				this.moveTcs = null;
+				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",true);
+				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",false);
 			});
 			return this.moveTcs.Task;
 		}

@@ -22,6 +22,7 @@ namespace ETModel
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
+            unit.AddComponent<HeroSkillAnimPlayComponent>();
 
             unitComponent.Add(unit);
             return unit;

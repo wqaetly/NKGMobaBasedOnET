@@ -34,6 +34,8 @@ namespace ETModel
 
 				this.Entity.GetComponent<TurnComponent>().Turn(v);
 				await this.Entity.GetComponent<MoveComponent>().MoveToAsync(v, speed, cancellationToken);
+				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",true);
+				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",false);
 			}
 		}
 
@@ -42,16 +44,16 @@ namespace ETModel
 			// 取消之前的移动协程
 			this.CancellationTokenSource?.Cancel();
 			this.CancellationTokenSource = new CancellationTokenSource();
-
+			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",false);
+			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",true);
+			
 			this.Path.Clear();
 			for (int i = 0; i < message.Xs.Count; ++i)
 			{
 				this.Path.Add(new Vector3(message.Xs[i], message.Ys[i], message.Zs[i]));
 			}
 			ServerPos = new Vector3(message.X, message.Y, message.Z);
-			Log.Info("Task上面的语句执行了");
 			await StartMove(this.CancellationTokenSource.Token);
-			Log.Info("Task下面的语句执行了");
 			this.CancellationTokenSource.Dispose();
 			this.CancellationTokenSource = null;
 		}

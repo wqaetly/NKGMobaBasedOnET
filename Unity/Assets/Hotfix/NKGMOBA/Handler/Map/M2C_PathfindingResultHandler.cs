@@ -8,11 +8,7 @@ namespace ETHotfix
 	{
 		protected override void Run(ETModel.Session session, M2C_PathfindingResult message)
 		{
-			Log.Info("收到服务端的寻路结果！！！！！！！！！！！");
 			Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
-			
-			
-			unit.GetComponent<AnimatorComponent>().SetFloatValue("Speed", 5f);
 			UnitPathComponent unitPathComponent = unit.GetComponent<UnitPathComponent>();
 
 			unitPathComponent.StartMove(message).Coroutine();

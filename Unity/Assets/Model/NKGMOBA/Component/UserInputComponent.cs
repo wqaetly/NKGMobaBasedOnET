@@ -46,18 +46,38 @@ namespace ETModel
         public bool DDouble { get; set; }
         public bool DDown_long { get; set; }
 
+        public double QLastClickTime { get; set; }
+        public bool QDown { get; set; }
+        public bool QUp { get; set; }
+
+        public bool QDouble { get; set; }
+        public bool QDown_long { get; set; }
+        
+        public bool WDown_long { get; set; }
+        public bool WDown { get; set; }
+        public bool WUp { get; set; }
+        public bool WDouble { get; set; }
+        public double WLastClickTime { get; set; }
+        
+        public bool EDown_long { get; set; }
+        public bool EDown { get; set; }
+        public bool EUp { get; set; }
+        public bool EDouble { get; set; }
+        public double ELastClickTime { get; set; }
+
+        public bool RDown_long { get; set; }
+        public bool RDown { get; set; }
+        public bool RUp { get; set; }
+        public bool RDouble { get; set; }
+        public double RLastClickTime { get; set; }
+        
         public bool JDown_long { get; set; }
         public bool JDown { get; set; }
         public bool JUp { get; set; }
         public bool JDouble { get; set; }
         public double JLastClickTime { get; set; }
 
-        public bool WDown_long { get; set; }
-        public bool WDown { get; set; }
-        public bool WUp { get; set; }
 
-        public bool WDouble { get; set; }
-        public double WLastClickTime { get; set; }
 
         public bool SpaceDown_long { get; set; }
         public bool SpaceDown { get; set; }
@@ -122,6 +142,22 @@ namespace ETModel
                 this.WDown_long = false;
                 this.WUp = true;
             }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                this.QDown_long = false;
+                this.QUp = true;
+            }
+            
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                this.EDown_long = false;
+                this.EUp = true;
+            }
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                this.RDown_long = false;
+                this.RUp = true;
+            }
         }
 
         /// <summary>
@@ -166,6 +202,52 @@ namespace ETModel
                 this.WLastClickTime = this.currentTime;
             }
 
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                this.QDown = true;
+
+                if ((this.currentTime - this.QLastClickTime) / 1000f <= 0.5f)
+                {
+                    this.QDouble = true;
+                }
+                else
+                {
+                    this.QDouble = false;
+                }
+
+                this.QLastClickTime = this.currentTime;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                this.EDown = true;
+
+                if ((this.currentTime - this.ELastClickTime) / 1000f <= 0.5f)
+                {
+                    this.EDouble = true;
+                }
+                else
+                {
+                    this.EDouble = false;
+                }
+
+                this.ELastClickTime = this.currentTime;
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                this.RDown = true;
+
+                if ((this.currentTime - this.RLastClickTime) / 1000f <= 0.5f)
+                {
+                    this.RDouble = true;
+                }
+                else
+                {
+                    this.RDouble = false;
+                }
+
+                this.RLastClickTime = this.currentTime;
+            }
+            
             if (Input.GetKeyDown(KeyCode.D))
             {
                 this.DDown = true;
@@ -181,37 +263,20 @@ namespace ETModel
 
                 this.DLastClickTime = this.currentTime;
             }
-
             if (Input.GetKeyDown(KeyCode.J))
             {
                 this.JDown = true;
 
                 if ((this.currentTime - this.JLastClickTime) / 1000f <= 0.5f)
                 {
-                    Log.Info("A双击");
+                    this.JDouble = true;
                 }
                 else
                 {
-                    Log.Info("未双击");
+                    this.JDouble = false;
                 }
 
                 this.JLastClickTime = this.currentTime;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                this.SpaceDown = true;
-
-                if ((this.currentTime - this.SpaceLastClickTime) / 1000f <= 0.5f)
-                {
-                    Log.Info("A双击");
-                }
-                else
-                {
-                    Log.Info("未双击");
-                }
-
-                this.SpaceLastClickTime = this.currentTime;
             }
         }
 
@@ -235,14 +300,29 @@ namespace ETModel
                 JDown_long = true;
             }
 
+            if (Input.GetKey(KeyCode.Q))
+            {
+                QDown_long = true;
+            }
+
             if (Input.GetKey(KeyCode.Space))
             {
                 SpaceDown_long = true;
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.W))
             {
                 WDown_long = true;
+            }
+            
+            if (Input.GetKey(KeyCode.E))
+            {
+                EDown_long = true;
+            }
+            
+            if (Input.GetKey(KeyCode.R))
+            {
+                RDown_long = true;
             }
         }
 
@@ -265,6 +345,15 @@ namespace ETModel
 
             this.SpaceUp = false;
             this.SpaceDown = false;
+            
+            this.QUp = false;
+            this.QDown = false;
+            
+            this.EUp = false;
+            this.EDown = false;
+            
+            this.RUp = false;
+            this.RDown = false;
         }
 
         public void Start()
