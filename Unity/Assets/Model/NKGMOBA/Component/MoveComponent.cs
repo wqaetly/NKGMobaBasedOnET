@@ -78,8 +78,6 @@ namespace ETModel
 			cancellationToken.Register(() =>
 			{
 				this.moveTcs = null;
-				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",true);
-				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",false);
 			});
 			return this.moveTcs.Task;
 		}

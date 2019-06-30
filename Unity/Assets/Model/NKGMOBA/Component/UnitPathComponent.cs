@@ -34,9 +34,9 @@ namespace ETModel
 
 				this.Entity.GetComponent<TurnComponent>().Turn(v);
 				await this.Entity.GetComponent<MoveComponent>().MoveToAsync(v, speed, cancellationToken);
-				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",true);
-				this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",false);
 			}
+			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",true);
+			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",false);
 		}
 
 		public async ETVoid StartMove(M2C_PathfindingResult message)

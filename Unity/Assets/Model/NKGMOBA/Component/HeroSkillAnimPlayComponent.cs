@@ -45,6 +45,8 @@ namespace ETModel
             if (this.userInputComponent.WDown)
             {
                 this.animatorComponent.SetTrigger("ToSpell2");
+                this.animatorComponent.SetBoolValue("ToIdel",false);
+                this.animatorComponent.SetBoolValue("ToRun",false);
             }
             
             if (this.userInputComponent.EDown)
