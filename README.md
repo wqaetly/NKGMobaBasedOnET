@@ -34,4 +34,4 @@
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173246_f83a8591_2253805.png "登录注册界面")
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173252_7dbcd604_2253805.png "游戏大厅界面")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0626/082316_bde401fd_2253805.png "可视化技能编辑器以及行为树界面")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0521/212543_8f75e0d5_2253805.png "战斗界面第一版")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0630/130133_d3559984_2253805.png "战斗界面第二版")
