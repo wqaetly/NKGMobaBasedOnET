@@ -61,6 +61,32 @@ namespace ETModel
         }
 
         /// <summary>
+        /// 获取文件夹内所有dds资源路径(包含子文件夹)
+        /// </summary>
+        /// <param name="srcPath">源文件夹</param>
+        /// <returns></returns>
+        public static List<string> GetAllDDSFilePath(string srcPath)
+        {
+            List<string> paths = new List<string>();
+            string[] files = Directory.GetFiles(srcPath);
+            foreach (string str in files)
+            {
+                if (str.EndsWith(".dds"))
+                {
+                    paths.Add(str);
+                }
+            }
+
+            foreach (string subPath in Directory.GetDirectories(srcPath))
+            {
+                List<string> subFiles = GetAllResourcePath(subPath, true);
+                paths.AddRange(subFiles);
+            }
+
+            return paths;
+        }
+
+        /// <summary>
         /// 获取文件夹内FUI资源
         /// </summary>
         /// <returns></returns>
@@ -77,6 +103,7 @@ namespace ETModel
 
                 paths.Add(str);
             }
+
             return paths;
         }
     }

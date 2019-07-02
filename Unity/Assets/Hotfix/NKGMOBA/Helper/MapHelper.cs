@@ -41,6 +41,8 @@ namespace ETHotfix
                         ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
                 ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
                         .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
+                        .AddComponent<HeroSkillAnimPlayComponent>();
 
                 // 添加点击地图寻路组件
                 m5V5Game.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());

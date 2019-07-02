@@ -12,9 +12,6 @@ namespace ETModel
 
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
 
-            // GameObject go = UnityEngine.Object.Instantiate(prefab);
-            // Unit unit = ComponentFactory.CreateWithId<Unit, GameObject>(id, go);
-
             Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("NuoKe", prefab);
             Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "NuoKe");
 
@@ -22,7 +19,6 @@ namespace ETModel
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
-            unit.AddComponent<HeroSkillAnimPlayComponent>();
 
             unitComponent.Add(unit);
             return unit;

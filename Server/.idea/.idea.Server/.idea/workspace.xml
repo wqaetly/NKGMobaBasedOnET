@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f788b6a9-6e63-4302-bf26-4eaa873e1f77" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Component/HeroSkillAnimPlayComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Component/HeroSkillAnimPlayComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Component/MoveComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Component/MoveComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Component/UnitPathComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Component/UnitPathComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Hotfix/NKGMOBA/Handler/Map/M2C_CreateUnitsHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Hotfix/NKGMOBA/Handler/Map/M2C_CreateUnitsHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Hotfix/NKGMOBA/Helper/MapHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Hotfix/NKGMOBA/Helper/MapHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Mono.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/System/Unit/UnitFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/System/Unit/UnitFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.dll.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.dll.bytes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.pdb.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.pdb.bytes" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -644,11 +646,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-84" />
-    <option name="y" value="165" />
-    <option name="width" value="1815" />
-    <option name="height" value="972" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="327" />
+    <option name="width" value="1629" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -656,6 +657,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -663,12 +665,42 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
             </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Hotfix" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
+              <item name=".NETCoreApp 2.2" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
+              <item name=".NETCoreApp 2.2" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Assemblies" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer">
         <subPane>
           <expand>
@@ -890,12 +922,13 @@
       <workItem from="1561504921901" duration="2620000" />
       <workItem from="1561709623342" duration="3681000" />
       <workItem from="1561800457796" duration="4032000" />
-      <workItem from="1561855623295" duration="1033000" />
+      <workItem from="1561855623295" duration="1264000" />
+      <workItem from="1561971768846" duration="638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123238000" />
+    <option name="totallyTimeSpent" value="124107000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -907,17 +940,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23454158" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23720682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.42427617" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2037862" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2037862" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

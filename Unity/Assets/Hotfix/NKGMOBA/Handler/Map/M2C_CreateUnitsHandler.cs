@@ -9,7 +9,6 @@ namespace ETHotfix
         protected override void Run(ETModel.Session session, M2C_CreateUnits message)
         {
             UnitComponent unitComponent = ETModel.Game.Scene.GetComponent<UnitComponent>();
-            M5V5Game m5V5Game = Game.Scene.GetComponent<M5V5GameComponent>().m_5V5Game;
 
             foreach (UnitInfo unitInfo in message.Units)
             {

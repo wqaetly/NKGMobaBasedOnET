@@ -114,7 +114,7 @@ namespace ETEditor
                 }
                 var pngData = myimage.EncodeToPNG();
     			
-                File.WriteAllBytes(rootPath + "/" + image.name + "/" + metaData.name + ".PNG", pngData);
+                File.WriteAllBytes(rootPath + "/" + image.name + "/" + metaData.name + ".png", pngData);
                 // 刷新资源窗口界面
                 AssetDatabase.Refresh();
             }
