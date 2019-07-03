@@ -79,7 +79,6 @@
           </e>
         </e>
         <e p="NKGMOBA" t="Include">
-          <e p="Actor_TransferHandler.cs" t="Include" />
           <e p="BehaviorTree" t="Include">
             <e p="BehaviorManagerSystem.cs" t="Include" />
             <e p="BehaviorTreeComponentFactory.cs" t="Include" />
@@ -91,11 +90,19 @@
             </e>
           </e>
           <e p="C2G_EnterMapHandler.cs" t="Include" />
-          <e p="C2M_TestActorRequestHandler.cs" t="Include" />
-          <e p="Frame_ClickMapHandler.cs" t="Include" />
           <e p="G2M_CreateUnitHandler.cs" t="Include" />
           <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
           <e p="Handler" t="Include">
+            <e p="ActorHandler" t="Include">
+              <e p="GlobalActorHandler" t="Include">
+                <e p="Actor_TransferHandler.cs" t="Include" />
+                <e p="Frame_ClickMapHandler.cs" t="Include" />
+                <e p="UserInput_SkillCmdHandler.cs" t="Include" />
+              </e>
+              <e p="Map" t="Include">
+                <e p="C2M_TestActorRequestHandler.cs" t="Include" />
+              </e>
+            </e>
             <e p="Gate" t="Include">
               <e p="C2G_GetUserInfoHandler.cs" t="Include" />
               <e p="C2G_HeartBeatHandler.cs" t="Include" />
@@ -117,6 +124,9 @@
           <e p="MessageHelper.cs" t="Include" />
           <e p="RealmGateAddressComponentSystem.cs" t="Include" />
           <e p="SessionPlayerComponentSystem.cs" t="Include" />
+          <e p="system" t="Include">
+            <e p="PlayerInput_SkillCmdSystem.cs" t="Include" />
+          </e>
           <e p="UnitPathComponentSystem.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

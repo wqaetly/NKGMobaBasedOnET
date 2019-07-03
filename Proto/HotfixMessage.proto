@@ -90,6 +90,22 @@ message M2C_TestActorResponse // IActorLocationResponse
     string Info = 1;
 }
 
+message UserInput_SkillCmd // IActorLocationMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 Id = 94;
+    string Message = 95;
+}
+
+message M2C_UserInput_SkillCmd // IActorMessage
+{
+    int64 ActorId = 93;
+    int64 Id = 1;
+    string Message = 94;
+}
+
+
 message PlayerInfo // IMessage
 {
     int32 RpcId = 90;

@@ -12,9 +12,6 @@ namespace ETHotfix
                 // 加载Unit资源
                 ResourcesComponent resourcesComponent = ETModel.Game.Scene.GetComponent<ResourcesComponent>();
                 await resourcesComponent.LoadBundleAsync($"unit.unity3d");
-
-                // 加载场景资源
-                await ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundleAsync("map.unity3d");
                 // 加载战斗图片资源（英雄头像）
                 await ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundleAsync("heroavatars.unity3d");
                 // 加载战斗图片资源（英雄技能图标）
@@ -41,8 +38,6 @@ namespace ETHotfix
                         ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
                 ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
                         .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
-                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
-                        .AddComponent<HeroSkillAnimPlayComponent>();
 
                 // 添加点击地图寻路组件
                 m5V5Game.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());

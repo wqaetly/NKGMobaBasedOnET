@@ -55,6 +55,8 @@ namespace ETEditor
             if (GUILayout.Button("在Project视图选中要导出文件的图集，然后点击此按钮"))
             {
                 this.ProcessToSprite();
+                // 刷新资源窗口界面
+                AssetDatabase.Refresh();
             }
             EditorGUILayout.Space();
             EditorGUILayout.Space();
@@ -115,8 +117,6 @@ namespace ETEditor
                 var pngData = myimage.EncodeToPNG();
     			
                 File.WriteAllBytes(rootPath + "/" + image.name + "/" + metaData.name + ".png", pngData);
-                // 刷新资源窗口界面
-                AssetDatabase.Refresh();
             }
         }
         

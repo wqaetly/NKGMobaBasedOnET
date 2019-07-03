@@ -38,6 +38,12 @@ namespace ETHotfix
 	[Message(HotfixOpcode.M2C_TestActorResponse)]
 	public partial class M2C_TestActorResponse : IActorLocationResponse {}
 
+	[Message(HotfixOpcode.UserInput_SkillCmd)]
+	public partial class UserInput_SkillCmd : IActorLocationMessage {}
+
+	[Message(HotfixOpcode.M2C_UserInput_SkillCmd)]
+	public partial class M2C_UserInput_SkillCmd : IActorMessage {}
+
 	[Message(HotfixOpcode.PlayerInfo)]
 	public partial class PlayerInfo : IMessage {}
 
@@ -66,9 +72,11 @@ namespace ETHotfix
 		 public const ushort G2C_TestHotfixMessage = 10009;
 		 public const ushort C2M_TestActorRequest = 10010;
 		 public const ushort M2C_TestActorResponse = 10011;
-		 public const ushort PlayerInfo = 10012;
-		 public const ushort C2G_PlayerInfo = 10013;
-		 public const ushort G2C_PlayerInfo = 10014;
-		 public const ushort G2C_PlayerOffline = 10015;
+		 public const ushort UserInput_SkillCmd = 10012;
+		 public const ushort M2C_UserInput_SkillCmd = 10013;
+		 public const ushort PlayerInfo = 10014;
+		 public const ushort C2G_PlayerInfo = 10015;
+		 public const ushort G2C_PlayerInfo = 10016;
+		 public const ushort G2C_PlayerOffline = 10017;
 	}
 }

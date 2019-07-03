@@ -19,6 +19,7 @@ namespace ETModel
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
+            unit.AddComponent<HeroSkillBehaveComponent>();
 
             unitComponent.Add(unit);
             return unit;

@@ -62,7 +62,6 @@ namespace ETModel
 
 				return unit;
 			}
-			Log.Error("想获得的Unit不存在");
 			return null;
 		}
 
