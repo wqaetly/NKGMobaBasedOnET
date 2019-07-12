@@ -101,7 +101,7 @@ namespace ETEditor
             this.m_BuildData.VersionInfo = this.currentVersion;
             this.m_BuildData.IndependentBundleAndAtlas = this.IndependentABFolder;
             this.m_BuildData.BundleAndAtlasWithoutShare = this.WithoutShareABFolder;
-            using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.bytes", FileMode.Create))
+            using (FileStream fileStream = new FileStream("Assets/Res/EditorExtensionInfoSave/MyABInfo.bytes", FileMode.Create))
             {
                 BsonSerializer.Serialize(new BsonBinaryWriter(fileStream), this.m_BuildData);
             }
@@ -200,20 +200,20 @@ namespace ETEditor
         /// </summary>
         private void InitABEditorConfig()
         {
-            if (!Directory.Exists("Assets/Res/ABInfoFileSave/"))
+            if (!Directory.Exists("Assets/Res/EditorExtensionInfoSave/"))
             {
-                Directory.CreateDirectory("Assets/Res/ABInfoFileSave/");
+                Directory.CreateDirectory("Assets/Res/EditorExtensionInfoSave/");
             }
 
-            if (!File.Exists("Assets/Res/ABInfoFileSave/List.bytes"))
+            if (!File.Exists("Assets/Res/EditorExtensionInfoSave/MyABInfo.bytes"))
             {
-                using (FileStream fileStream = new FileStream("Assets/Res/ABInfoFileSave/List.bytes", FileMode.Create))
+                using (FileStream fileStream = new FileStream("Assets/Res/EditorExtensionInfoSave/MyABInfo.bytes", FileMode.Create))
                 {
                     BsonSerializer.Serialize(new BsonBinaryWriter(fileStream), this.m_BuildData);
                 }
             }
 
-            byte[] m_ABConfig = File.ReadAllBytes("Assets/Res/ABInfoFileSave/List.bytes");
+            byte[] m_ABConfig = File.ReadAllBytes("Assets/Res/EditorExtensionInfoSave/MyABInfo.bytes");
             this.m_BuildData = BsonSerializer.Deserialize<BuildData>(m_ABConfig);
             this.IndependentABFolder = this.m_BuildData.IndependentBundleAndAtlas;
             this.WithoutShareABFolder = this.m_BuildData.BundleAndAtlasWithoutShare;

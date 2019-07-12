@@ -35,7 +35,7 @@ namespace ETEditor
         public HashSet<Texture> FinalFiles = new HashSet<Texture>();
 
         [InfoBox("这里的Shader选择将决定你材质球最终效果")]
-        [LabelText("这里是dds文件夹列表")]
+        [HideLabel]
         public Shader ShaderSetting;
 
         [MenuItem("Tools/其他实用工具/贴图工作流/依据dds文件自动生成Material")]
@@ -68,7 +68,7 @@ namespace ETEditor
             //正式生成
             foreach (var VARIABLE in FinalFiles)
             {
-                Material materialData = new Material(Shader.Find(this.ShaderSetting.name));
+                Material materialData = new Material(this.ShaderSetting);
                 materialData.mainTexture = VARIABLE;
 
                 string fileFullPath = AssetDatabase.GetAssetPath(VARIABLE);

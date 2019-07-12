@@ -27,7 +27,7 @@ namespace Sirenix.OdinInspector.Demos
 
         [TabGroup("New Group", "Tab A")]
         public int A;
-
+        
         [TabGroup("New Group", "Tab A")]
         public int B;
 
