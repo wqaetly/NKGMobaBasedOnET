@@ -86,26 +86,30 @@ namespace ETEditor
         private void OnEnable()
         {
             this.ReadcolliderNameAndIdInflect();
+            this.ReadcolliderData();
             this.MB2SDebuggerHandler = GameObject.Find("Box2DDebuggerHandler").GetComponent<B2S_DebuggerHandler>();
 
-            this.MB2SBoxColliderVisualHelper = new B2S_BoxColliderVisualHelper(this.BoxColliderNameAndIdInflectSupporter);
-            this.MB2SCircleColliderVisualHelper = new B2S_CircleColliderVisualHelper(this.CircleColliderNameAndIdInflectSupporter);
-            this.MB2SPolygonColliderVisualHelper = new B2S_PolygonColliderVisualHelper(this.PolygonColliderNameAndIdInflectSupporter);
+            this.MB2SBoxColliderVisualHelper =
+                    new B2S_BoxColliderVisualHelper(this.BoxColliderNameAndIdInflectSupporter, this.BoxColliderDataSupporter);
+            this.MB2SCircleColliderVisualHelper =
+                    new B2S_CircleColliderVisualHelper(this.CircleColliderNameAndIdInflectSupporter, this.CircleColliderDataSupporter);
+            this.MB2SPolygonColliderVisualHelper =
+                    new B2S_PolygonColliderVisualHelper(this.PolygonColliderNameAndIdInflectSupporter, this.PolygonColliderDataSupporter);
 
             this.MB2SBoxColliderVisualHelper.InitColliderBaseInfo();
             this.MB2SCircleColliderVisualHelper.InitColliderBaseInfo();
             this.MB2SPolygonColliderVisualHelper.InitColliderBaseInfo();
 
-            this.MB2SDebuggerHandler.MB2SColliderVisualHelperBases.Add(this.MB2SBoxColliderVisualHelper);
-            this.MB2SDebuggerHandler.MB2SColliderVisualHelperBases.Add(this.MB2SCircleColliderVisualHelper);
-            this.MB2SDebuggerHandler.MB2SColliderVisualHelperBases.Add(this.MB2SPolygonColliderVisualHelper);
+            this.MB2SDebuggerHandler.MB2SColliderVisualHelpers.Add(this.MB2SBoxColliderVisualHelper);
+            this.MB2SDebuggerHandler.MB2SColliderVisualHelpers.Add(this.MB2SCircleColliderVisualHelper);
+            this.MB2SDebuggerHandler.MB2SColliderVisualHelpers.Add(this.MB2SPolygonColliderVisualHelper);
         }
 
         private void OnDisable()
         {
             MB2SDebuggerHandler.CleanCollider();
             this.MB2SDebuggerHandler = null;
-            MB2SBoxColliderVisualHelper = null;
+            this.MB2SBoxColliderVisualHelper = null;
             this.MB2SCircleColliderVisualHelper = null;
             this.MB2SPolygonColliderVisualHelper = null;
         }
@@ -138,6 +142,37 @@ namespace ETEditor
                 if (mfile2.Length > 0)
                     this.PolygonColliderNameAndIdInflectSupporter =
                             BsonSerializer.Deserialize<ColliderNameAndIdInflectSupporter>(mfile2);
+            }
+        }
+
+        /// <summary>
+        /// 读取所有碰撞数据
+        /// </summary>
+        private void ReadcolliderData()
+        {
+            if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes"))
+            {
+                byte[] mfile0 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes");
+                //这里不进行长度判断会报错，正在试图访问一个已经关闭的流，咱也不懂，咱也不敢问
+                if (mfile0.Length > 0)
+                    this.BoxColliderDataSupporter =
+                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile0);
+            }
+
+            if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[1]}.bytes"))
+            {
+                byte[] mfile1 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[1]}.bytes");
+                if (mfile1.Length > 0)
+                    this.CircleColliderDataSupporter =
+                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile1);
+            }
+
+            if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[2]}.bytes"))
+            {
+                byte[] mfile2 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[2]}.bytes");
+                if (mfile2.Length > 0)
+                    this.PolygonColliderDataSupporter =
+                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile2);
             }
         }
 

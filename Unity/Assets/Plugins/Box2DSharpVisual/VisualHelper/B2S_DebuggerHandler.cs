@@ -13,12 +13,12 @@ namespace ETModel
 {
     public class B2S_DebuggerHandler: MonoBehaviour
     {
-        public List<B2S_ColliderVisualHelperBase> MB2SColliderVisualHelperBases = new List<B2S_ColliderVisualHelperBase>();
+        public List<B2S_ColliderVisualHelperBase> MB2SColliderVisualHelpers = new List<B2S_ColliderVisualHelperBase>();
 
 
         private void OnDrawGizmos()
         {
-            foreach (var VARIABLE in this.MB2SColliderVisualHelperBases)
+            foreach (var VARIABLE in this.MB2SColliderVisualHelpers)
             {
                 VARIABLE.OnUpdate();
                 if (VARIABLE.canDraw)
@@ -28,7 +28,7 @@ namespace ETModel
 
         public void CleanCollider()
         {
-            MB2SColliderVisualHelperBases.Clear();
+            MB2SColliderVisualHelpers.Clear();
         }
     }
 }

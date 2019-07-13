@@ -5,6 +5,8 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.Options;
 
 namespace ETModel
 {
@@ -21,6 +23,7 @@ namespace ETModel
     /// </summary>
     public class ColliderDataSupporter
     {
-        public Dictionary<long, B2S_ColliderVisualHelperBase> colliderDataDic = new Dictionary<long, B2S_ColliderVisualHelperBase>();
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<long, B2S_ColliderDataStructureBase> colliderDataDic = new Dictionary<long, B2S_ColliderDataStructureBase>();
     }
 }
