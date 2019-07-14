@@ -4,6 +4,7 @@
 // Data: 2019年7月10日 21:01:06
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.IO;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
@@ -35,6 +36,8 @@ namespace ETModel
         [LabelText("矩形碰撞体数据")]
         public B2S_BoxColliderDataStructure MB2S_BoxColliderDataStructure = new B2S_BoxColliderDataStructure();
 
+        private List<Vector2> points = new List<Vector2>();
+
         public override void InitColliderBaseInfo()
         {
             this.MB2S_BoxColliderDataStructure.b2SColliderType = B2S_ColliderType.BoxColllider;
@@ -43,23 +46,24 @@ namespace ETModel
         [Button("重新绘制矩形碰撞体", 25), GUIColor(0.2f, 0.9f, 1.0f)]
         public override void InitPointInfo()
         {
-            this.MB2S_BoxColliderDataStructure.points.Clear();
             BoxCollider2D tempBox2D = this.mCollider2D;
-            Vector2 box2DSize = new Vector2(1 / this.theObjectWillBeEdited.transform.parent.localScale.x,
-                1 / this.theObjectWillBeEdited.transform.parent.localScale.y);
-            this.MB2S_BoxColliderDataStructure.points.Add(new CostumVector2(-tempBox2D.bounds.size.x * box2DSize.x / 2 + tempBox2D.offset.x,
-                -tempBox2D.bounds.size.y * box2DSize.y / 2 + tempBox2D.offset.y));
-            this.MB2S_BoxColliderDataStructure.points.Add(new CostumVector2(-tempBox2D.bounds.size.x * box2DSize.x / 2 + tempBox2D.offset.x,
-                tempBox2D.bounds.size.y * box2DSize.y / 2 + tempBox2D.offset.y));
-            this.MB2S_BoxColliderDataStructure.points.Add(new CostumVector2(tempBox2D.bounds.size.x * box2DSize.x / 2 + tempBox2D.offset.x,
-                tempBox2D.bounds.size.y * box2DSize.y / 2 + tempBox2D.offset.y));
-            this.MB2S_BoxColliderDataStructure.points.Add(new CostumVector2(tempBox2D.bounds.size.x * box2DSize.x / 2 + tempBox2D.offset.x,
-                -tempBox2D.bounds.size.y * box2DSize.y / 2 + tempBox2D.offset.y));
+            this.MB2S_BoxColliderDataStructure.hx = this.mCollider2D.bounds.size.x / 2;
+            this.MB2S_BoxColliderDataStructure.hy = this.mCollider2D.bounds.size.y / 2;
+            MB2S_BoxColliderDataStructure.offset.Fill(this.mCollider2D.offset);
+            this.points.Clear();
+
+            this.points.Add(new Vector2(-tempBox2D.bounds.size.x + tempBox2D.offset.x,
+                -tempBox2D.bounds.size.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(-tempBox2D.bounds.size.x + tempBox2D.offset.x,
+                tempBox2D.bounds.size.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(tempBox2D.bounds.size.x + tempBox2D.offset.x,
+                tempBox2D.bounds.size.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(tempBox2D.bounds.size.x + tempBox2D.offset.x,
+                -tempBox2D.bounds.size.y + tempBox2D.offset.y));
 
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);
-            this.MB2S_BoxColliderDataStructure.pointCount = this.MB2S_BoxColliderDataStructure.points.Count;
-            MB2S_BoxColliderDataStructure.offset.Fill(this.mCollider2D.offset);
+
             this.canDraw = true;
         }
 
@@ -67,19 +71,19 @@ namespace ETModel
         {
             if (this.mCollider2D is BoxCollider2D)
 
-                for (int i = 0; i < MB2S_BoxColliderDataStructure.pointCount; i++)
+                for (int i = 0; i < this.points.Count; i++)
                 {
-                    if (i < MB2S_BoxColliderDataStructure.pointCount - 1)
-                        Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(MB2S_BoxColliderDataStructure.points[i].x, 0,
-                                MB2S_BoxColliderDataStructure.points[i].y)),
-                            matrix4X4.MultiplyPoint(new Vector3(MB2S_BoxColliderDataStructure.points[i + 1].x, 0,
-                                MB2S_BoxColliderDataStructure.points[i + 1].y)));
+                    if (i < this.points.Count - 1)
+                        Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(points[i].x, 0,
+                                points[i].y)),
+                            matrix4X4.MultiplyPoint(new Vector3(points[i + 1].x, 0,
+                                points[i + 1].y)));
                     else
                     {
-                        Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(MB2S_BoxColliderDataStructure.points[i].x, 0,
-                                MB2S_BoxColliderDataStructure.points[i].y)),
-                            matrix4X4.MultiplyPoint(new Vector3(MB2S_BoxColliderDataStructure.points[0].x, 0,
-                                MB2S_BoxColliderDataStructure.points[0].y)));
+                        Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(points[i].x, 0,
+                                points[i].y)),
+                            matrix4X4.MultiplyPoint(new Vector3(points[0].x, 0,
+                                points[0].y)));
                     }
                 }
         }
@@ -134,8 +138,7 @@ namespace ETModel
                 mCollider2D = null;
                 this.canDraw = false;
                 this.MB2S_BoxColliderDataStructure.id = 0;
-                this.MB2S_BoxColliderDataStructure.points.Clear();
-                this.MB2S_BoxColliderDataStructure.pointCount = 0;
+                this.points.Clear();
                 this.MB2S_BoxColliderDataStructure.isSensor = false;
                 MB2S_BoxColliderDataStructure.offset.Clean();
                 return;

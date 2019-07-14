@@ -12,11 +12,12 @@ namespace ETModel
 {
     public class B2S_BoxColliderDataStructure:B2S_ColliderDataStructureBase
     {
-        [LabelText("碰撞体所包含的顶点信息(顺时针)")]
+        [LabelText("x轴方向上的一半长度")]
         [DisableInEditorMode]
-        public List<CostumVector2> points = new List<CostumVector2>();
+        public float hx;
         
-        [HideInEditorMode]
-        public int pointCount;
+        [LabelText("y轴方向上的一半长度")]
+        [DisableInEditorMode]
+        public float hy;
     }
 }

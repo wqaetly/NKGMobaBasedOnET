@@ -50,6 +50,7 @@ namespace ETModel
         {
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);
+            this.MB2S_CircleColliderDataStructure.radius = this.mCollider2D.radius;
             MB2S_CircleColliderDataStructure.offset.Fill(this.mCollider2D.offset);
             this.canDraw = true;
         }
@@ -141,7 +142,7 @@ namespace ETModel
                 {
                     Debug.Log($"自动设置圆形碰撞体ID成功，ID为{MB2S_CircleColliderDataStructure.id}");
                 }
-                
+
                 if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_CircleColliderDataStructure.id))
                 {
                     this.MB2S_CircleColliderDataStructure =

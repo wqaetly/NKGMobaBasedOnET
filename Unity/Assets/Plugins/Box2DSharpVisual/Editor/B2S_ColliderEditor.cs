@@ -15,12 +15,13 @@ using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace ETEditor
 {
     public class B2S_ColliderEditor: OdinEditorWindow
     {
-        [Required("需要一个画线驱动者，请场景中创建一个空物体，并挂载B2S_DebuggerHandler.cs脚本")]
+        [Required("需要一个画线驱动者，请场景中创建一个空物体，命名为Box2DDebuggerHandler，并挂载B2S_DebuggerHandler.cs脚本")]
         [LabelText("画线管理者")]
         [TabGroup("Special", "主持人")]
         public B2S_DebuggerHandler MB2SDebuggerHandler;
@@ -103,10 +104,13 @@ namespace ETEditor
             this.MB2SDebuggerHandler.MB2SColliderVisualHelpers.Add(this.MB2SBoxColliderVisualHelper);
             this.MB2SDebuggerHandler.MB2SColliderVisualHelpers.Add(this.MB2SCircleColliderVisualHelper);
             this.MB2SDebuggerHandler.MB2SColliderVisualHelpers.Add(this.MB2SPolygonColliderVisualHelper);
+            EditorApplication.update += this.MB2SDebuggerHandler.OnUpdate;
         }
 
+        
         private void OnDisable()
         {
+            EditorApplication.update -= this.MB2SDebuggerHandler.OnUpdate;
             MB2SDebuggerHandler.CleanCollider();
             this.MB2SDebuggerHandler = null;
             this.MB2SBoxColliderVisualHelper = null;
@@ -150,6 +154,17 @@ namespace ETEditor
         /// </summary>
         private void ReadcolliderData()
         {
+            Type[] types = typeof (ColliderDataSupporter).Assembly.GetTypes();
+            foreach (Type type in types)
+            {
+                if (!type.IsSubclassOf(typeof (B2S_ColliderDataStructureBase)))
+                {
+                    continue;
+                }
+
+                BsonClassMap.LookupClassMap(type);
+            }
+
             if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes"))
             {
                 byte[] mfile0 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes");
@@ -171,8 +186,11 @@ namespace ETEditor
             {
                 byte[] mfile2 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[2]}.bytes");
                 if (mfile2.Length > 0)
+                {
                     this.PolygonColliderDataSupporter =
                             BsonSerializer.Deserialize<ColliderDataSupporter>(mfile2);
+                    Debug.Log("读取多边形数据成功");
+                }
             }
         }
 

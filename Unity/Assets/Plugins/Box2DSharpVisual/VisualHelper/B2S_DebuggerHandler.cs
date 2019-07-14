@@ -6,7 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using ETEditor;
+using UnityEditor;
 using UnityEngine;
 
 namespace ETModel
@@ -15,12 +15,10 @@ namespace ETModel
     {
         public List<B2S_ColliderVisualHelperBase> MB2SColliderVisualHelpers = new List<B2S_ColliderVisualHelperBase>();
 
-
         private void OnDrawGizmos()
         {
             foreach (var VARIABLE in this.MB2SColliderVisualHelpers)
             {
-                VARIABLE.OnUpdate();
                 if (VARIABLE.canDraw)
                     VARIABLE.OnDrawGizmos();
             }
@@ -29,6 +27,14 @@ namespace ETModel
         public void CleanCollider()
         {
             MB2SColliderVisualHelpers.Clear();
+        }
+
+        public void OnUpdate()
+        {
+            foreach (var VARIABLE in this.MB2SColliderVisualHelpers)
+            {
+                VARIABLE.OnUpdate();
+            }
         }
     }
 }
