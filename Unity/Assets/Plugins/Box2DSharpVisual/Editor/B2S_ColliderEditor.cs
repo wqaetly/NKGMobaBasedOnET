@@ -7,8 +7,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using ETModel;
+using MongoDB.Bson;
+using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -107,7 +111,6 @@ namespace ETEditor
             EditorApplication.update += this.MB2SDebuggerHandler.OnUpdate;
         }
 
-        
         private void OnDisable()
         {
             EditorApplication.update -= this.MB2SDebuggerHandler.OnUpdate;
@@ -189,7 +192,6 @@ namespace ETEditor
                 {
                     this.PolygonColliderDataSupporter =
                             BsonSerializer.Deserialize<ColliderDataSupporter>(mfile2);
-                    Debug.Log("读取多边形数据成功");
                 }
             }
         }
