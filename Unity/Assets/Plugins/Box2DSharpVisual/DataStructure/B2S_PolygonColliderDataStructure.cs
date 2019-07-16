@@ -11,13 +11,14 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class B2S_PolygonColliderDataStructure:B2S_ColliderDataStructureBase
+    public class B2S_PolygonColliderDataStructure: B2S_ColliderDataStructureBase
     {
-        [LabelText("碰撞体所包含的顶点信息(顺时针)")]
+        [LabelText("碰撞体所包含的顶点信息(顺时针),可能由多个多边形组成")]
         [DisableInEditorMode]
-        public List<CostumVector2> points = new List<CostumVector2>();
-        
-        [HideInEditorMode]
+        public List<List<CostumVector2>> points = new List<List<CostumVector2>>();
+
+        [LabelText("总顶点数")]
+        [DisableInEditorMode]
         public int pointCount;
     }
 }

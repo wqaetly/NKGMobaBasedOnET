@@ -4,6 +4,7 @@
 // Data: 2019年7月10日 21:02:18
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using DefaultNamespace;
@@ -14,6 +15,7 @@ using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEngine;
 using UnityEditor;
+using Vector2 = System.Numerics.Vector2;
 
 namespace ETModel
 {
@@ -48,14 +50,11 @@ namespace ETModel
         public override void InitPointInfo()
         {
             this.MB2S_PolygonColliderDataStructure.points.Clear();
-            
+
+            CheckPolygon();
+
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);
-
-            for (int i = 0; i < mCollider2D.points.Length; i++)
-            {
-                this.MB2S_PolygonColliderDataStructure.points.Add(mCollider2D.points[i].UnityVector2ToCoustumVector2());
-            }
 
             MB2S_PolygonColliderDataStructure.pointCount = mCollider2D.GetTotalPointCount();
             MB2S_PolygonColliderDataStructure.offset.Fill(this.mCollider2D.offset);
@@ -64,19 +63,24 @@ namespace ETModel
 
         public override void DrawCollider()
         {
-            for (int i = 0; i < MB2S_PolygonColliderDataStructure.pointCount; i++)
+            foreach (var VARIABLE in this.MB2S_PolygonColliderDataStructure.points)
             {
-                if (i < MB2S_PolygonColliderDataStructure.pointCount - 1)
-                    Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(MB2S_PolygonColliderDataStructure.points[i].x + this.mCollider2D.offset.x, 0,
-                            MB2S_PolygonColliderDataStructure.points[i].y + this.mCollider2D.offset.y)),
-                        matrix4X4.MultiplyPoint(new Vector3(MB2S_PolygonColliderDataStructure.points[i + 1].x + this.mCollider2D.offset.x, 0,
-                            MB2S_PolygonColliderDataStructure.points[i + 1].y + this.mCollider2D.offset.y)));
-                else
+                for (int i = 0; i < VARIABLE.Count; i++)
                 {
-                    Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(MB2S_PolygonColliderDataStructure.points[i].x + this.mCollider2D.offset.x, 0,
-                            MB2S_PolygonColliderDataStructure.points[i].y + this.mCollider2D.offset.y)),
-                        matrix4X4.MultiplyPoint(new Vector3(MB2S_PolygonColliderDataStructure.points[0].x + this.mCollider2D.offset.x, 0,
-                            MB2S_PolygonColliderDataStructure.points[0].y + this.mCollider2D.offset.y)));
+                    if (i < VARIABLE.Count - 1)
+                        Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(VARIABLE[i].x + this.mCollider2D.offset.x,
+                                0,
+                                VARIABLE[i].y + this.mCollider2D.offset.y)),
+                            matrix4X4.MultiplyPoint(new Vector3(VARIABLE[i + 1].x + this.mCollider2D.offset.x, 0,
+                                VARIABLE[i + 1].y + this.mCollider2D.offset.y)));
+                    else
+                    {
+                        Gizmos.DrawLine(matrix4X4.MultiplyPoint(new Vector3(VARIABLE[i].x + this.mCollider2D.offset.x,
+                                0,
+                                VARIABLE[i].y + this.mCollider2D.offset.y)),
+                            matrix4X4.MultiplyPoint(new Vector3(VARIABLE[0].x + this.mCollider2D.offset.x, 0,
+                                VARIABLE[0].y + this.mCollider2D.offset.y)));
+                    }
                 }
             }
         }
@@ -98,6 +102,33 @@ namespace ETModel
             using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
             {
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderNameAndIdInflectSupporter);
+            }
+        }
+
+        public void CheckPolygon()
+        {
+            MB2S_PolygonColliderDataStructure.pointCount = 0;
+            //对多边形进行分割操作
+            List<Vector2> tempPoints = new List<Vector2>();
+            foreach (var VARIABLE in this.mCollider2D.points)
+            {
+                Vector2 tempVector2 = new Vector2(VARIABLE.x, VARIABLE.y);
+                tempPoints.Add(tempVector2);
+            }
+
+            List<List<Vector2>> tempFinalPolygons = Separator.CalcShapes(tempPoints);
+
+            int x = 0;
+            for (int i = 0; i < tempFinalPolygons.Count; i++)
+            {
+                this.MB2S_PolygonColliderDataStructure.points.Add(new List<CostumVector2>());
+                Debug.Log($"第{x++}个多边形：");
+                for (int j = 0; j < tempFinalPolygons[i].Count; j++)
+                {
+                    MB2S_PolygonColliderDataStructure.pointCount++;
+                    this.MB2S_PolygonColliderDataStructure.points[i].Add(new CostumVector2(tempFinalPolygons[i][j].X, tempFinalPolygons[i][j].Y));
+                    Debug.Log(this.MB2S_PolygonColliderDataStructure.points[i][j].ToUnityVector2());
+                }
             }
         }
 
@@ -145,7 +176,7 @@ namespace ETModel
                 {
                     Debug.Log($"自动设置圆形碰撞体ID成功，ID为{MB2S_PolygonColliderDataStructure.id}");
                 }
-                
+
                 if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_PolygonColliderDataStructure.id))
                 {
                     this.MB2S_PolygonColliderDataStructure =

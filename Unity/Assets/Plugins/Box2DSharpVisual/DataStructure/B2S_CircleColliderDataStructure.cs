@@ -4,6 +4,7 @@
 // Data: 2019年7月13日 21:31:05
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using ETModel;
 using Sirenix.OdinInspector;
 
