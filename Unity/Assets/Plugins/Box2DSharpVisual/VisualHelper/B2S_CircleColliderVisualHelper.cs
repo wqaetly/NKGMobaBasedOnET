@@ -5,7 +5,6 @@
 //------------------------------------------------------------
 
 using System.IO;
-using DefaultNamespace;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;

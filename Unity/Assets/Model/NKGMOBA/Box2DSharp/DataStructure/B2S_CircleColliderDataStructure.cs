@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using ETModel;
 using Sirenix.OdinInspector;
 
-namespace DefaultNamespace
+namespace ETModel
 {
     public class B2S_CircleColliderDataStructure: B2S_ColliderDataStructureBase
     {

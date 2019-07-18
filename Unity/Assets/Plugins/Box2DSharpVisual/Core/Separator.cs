@@ -42,6 +42,67 @@ namespace ETModel
         }
 
         /// <summary>
+        /// 单一多边形最大支持顶点数,此方法应在凹凸多边形转换之后调用，确保不会出现多余的凹多边形
+        /// </summary>
+        /// <param name="maxLimit"></param>
+        public static List<List<Vector2>> SplitPolygonUntilLessX(int maxLimit, List<List<Vector2>> orinPolygonInfos)
+        {
+            List<List<Vector2>> mytempPolygonInfos = new List<List<Vector2>>();
+            for (int i = 0; i < orinPolygonInfos.Count; i++)
+            {
+                if (orinPolygonInfos[i].Count > maxLimit)
+                {
+                    int lastPos = 0;
+
+                    while (lastPos < orinPolygonInfos[i].Count && orinPolygonInfos[i].Count - lastPos + 1 >= 3)
+                    {
+                        var newPolygonInfo = new List<Vector2>();
+                        if (lastPos == 0)
+                        {
+                            for (int j = lastPos;
+                                j <= lastPos + maxLimit - 1; j++)
+                            {
+                                newPolygonInfo.Add(orinPolygonInfos[i][j]);
+                            }
+
+                            lastPos += maxLimit - 1;
+                        }
+                        else
+                        {
+                            newPolygonInfo.Add(orinPolygonInfos[i][0]);
+                            if (lastPos + maxLimit - 2 < orinPolygonInfos[i].Count)
+                            {
+                                for (int j = lastPos;
+                                    j <= lastPos + maxLimit - 2; j++)
+                                {
+                                    newPolygonInfo.Add(orinPolygonInfos[i][j]);
+                                }
+                            }
+                            else
+                            {
+                                for (int j = lastPos;
+                                    j < orinPolygonInfos[i].Count; j++)
+                                {
+                                    newPolygonInfo.Add(orinPolygonInfos[i][j]);
+                                }
+                            }
+
+                            lastPos += maxLimit - 2;
+                        }
+
+                        mytempPolygonInfos.Add(newPolygonInfo);
+                    }
+                }
+                else
+                {
+                    mytempPolygonInfos.Add(orinPolygonInfos[i]);
+                }
+            }
+
+            return mytempPolygonInfos;
+        }
+
+        /// <summary>
         /// Checks whether the vertices in <code>verticesVec</code> can be properly distributed into the new fixtures (more specifically, it makes sure there are no overlapping segments and the vertices are in clockwise order). 
         /// It is recommended that you use this method for debugging only, because it may cost more CPU usage.
         /// <para>0 if the vertices can be properly processed.</para>
@@ -59,8 +120,8 @@ namespace ETModel
 
             for (var i = 0; i < n; i++)
             {
-                var i2 = (i < n - 1 ? i + 1 : 0);
-                var i3 = (i > 0 ? i - 1 : n - 1);
+                var i2 = (i < n - 1? i + 1 : 0);
+                var i3 = (i > 0? i - 1 : n - 1);
 
                 var fl = false;
                 int j;
@@ -73,8 +134,7 @@ namespace ETModel
 
                     if (!fl)
                     {
-                        var d = Det(
-                            verticesVec[i].X,
+                        var d = Det(verticesVec[i].X,
                             verticesVec[i].Y,
                             verticesVec[i2].X,
                             verticesVec[i2].Y,
@@ -91,9 +151,8 @@ namespace ETModel
                         continue;
                     }
 
-                    var j2 = (j < n - 1 ? j + 1 : 0);
-                    if (HitSegment(
-                            verticesVec[i].X,
+                    var j2 = (j < n - 1? j + 1 : 0);
+                    if (HitSegment(verticesVec[i].X,
                             verticesVec[i].Y,
                             verticesVec[i2].X,
                             verticesVec[i2].Y,
@@ -101,7 +160,7 @@ namespace ETModel
                             verticesVec[j].Y,
                             verticesVec[j2].X,
                             verticesVec[j2].Y)
-                     != null)
+                        != null)
                     {
                         ret = 1;
                     }
@@ -115,7 +174,7 @@ namespace ETModel
 
             if (fl2)
             {
-                ret = ret == 1 ? 3 : 2;
+                ret = ret == 1? 3 : 2;
             }
 
             return ret;
@@ -127,7 +186,7 @@ namespace ETModel
             var h = -1;
             var hitV = new Vector2();
             var figsVec = new List<List<Vector2>>();
-            var queue = new List<List<Vector2>> {verticesVec};
+            var queue = new List<List<Vector2>> { verticesVec };
 
             while (queue.Count > 0)
             {
@@ -139,8 +198,8 @@ namespace ETModel
                 for (i = 0; i < n; i++)
                 {
                     var i1 = i;
-                    var i2 = (i < n - 1 ? i + 1 : i + 1 - n);
-                    var i3 = (i < n - 2 ? i + 2 : i + 2 - n);
+                    var i2 = (i < n - 1? i + 1 : i + 1 - n);
+                    var i3 = (i < n - 2? i + 2 : i + 2 - n);
 
                     var p1 = vec[i1];
                     var p2 = vec[i2];
@@ -165,13 +224,12 @@ namespace ETModel
                         if (j != i1 && j != i2)
                         {
                             j1 = j;
-                            j2 = (j < n - 1 ? j + 1 : 0);
+                            j2 = (j < n - 1? j + 1 : 0);
 
                             v1 = vec[j1];
                             v2 = vec[j2];
 
-                            var v = HitRay(
-                                p1.X,
+                            var v = HitRay(p1.X,
                                 p1.Y,
                                 p2.X,
                                 p2.Y,
@@ -272,7 +330,7 @@ namespace ETModel
                             }
 
                             if (k == j1
-                             && !IsOnSegment(v1.X, v1.Y, vec[h].X, vec[h].Y, p2.X, p2.Y))
+                                && !IsOnSegment(v1.X, v1.Y, vec[h].X, vec[h].Y, p2.X, p2.Y))
                             {
                                 vec2.Add(vec[k]);
                             }
@@ -309,23 +367,23 @@ namespace ETModel
         }
 
         private static Vector2? HitRay(
-            float x1,
-            float y1,
-            float x2,
-            float y2,
-            float x3,
-            float y3,
-            float x4,
-            float y4)
+        float x1,
+        float y1,
+        float x2,
+        float y2,
+        float x3,
+        float y3,
+        float x4,
+        float y4)
         {
             float t1 = x3 - x1,
-                  t2 = y3 - y1,
-                  t3 = x2 - x1,
-                  t4 = y2 - y1,
-                  t5 = x4 - x3,
-                  t6 = y4 - y3,
-                  t7 = t4 * t5 - t3 * t6,
-                  a;
+                    t2 = y3 - y1,
+                    t3 = x2 - x1,
+                    t4 = y2 - y1,
+                    t5 = x4 - x3,
+                    t6 = y4 - y3,
+                    t7 = t4 * t5 - t3 * t6,
+                    a;
             if (Math.Abs(t7) > 0)
             {
                 a = (t5 * t2 - t6 * t1) / t7;
@@ -348,22 +406,22 @@ namespace ETModel
         }
 
         private static Vector2? HitSegment(
-            float x1,
-            float y1,
-            float x2,
-            float y2,
-            float x3,
-            float y3,
-            float x4,
-            float y4)
+        float x1,
+        float y1,
+        float x2,
+        float y2,
+        float x3,
+        float y3,
+        float x4,
+        float y4)
         {
             float t1 = x3 - x1,
-                  t2 = y3 - y1,
-                  t3 = x2 - x1,
-                  t4 = y2 - y1,
-                  t5 = x4 - x3,
-                  t6 = y4 - y3,
-                  t7 = t4 * t5 - t3 * t6;
+                    t2 = y3 - y1,
+                    t3 = x2 - x1,
+                    t4 = y2 - y1,
+                    t5 = x4 - x3,
+                    t6 = y4 - y3,
+                    t7 = t4 * t5 - t3 * t6;
 
             var a = (t5 * t2 - t6 * t1) / t7;
             float px = x1 + a * t3, py = y1 + a * t4;
@@ -387,7 +445,7 @@ namespace ETModel
 
         private static bool PointsMatch(float x1, float y1, float x2, float y2)
         {
-            float dx = (x2 >= x1 ? x2 - x1 : x1 - x2), dy = (y2 >= y1 ? y2 - y1 : y1 - y2);
+            float dx = (x2 >= x1? x2 - x1 : x1 - x2), dy = (y2 >= y1? y2 - y1 : y1 - y2);
             return (dx < 0.1 && dy < 0.1);
         }
 
@@ -396,8 +454,8 @@ namespace ETModel
             if (x2 - x1 > 0.1 || x1 - x2 > 0.1)
             {
                 float a = (y2 - y1) / (x2 - x1),
-                      possibleY = a * (px - x1) + y1,
-                      diff = (possibleY > py ? possibleY - py : py - possibleY);
+                        possibleY = a * (px - x1) + y1,
+                        diff = (possibleY > py? possibleY - py : py - possibleY);
                 return (diff < 0.1);
             }
 

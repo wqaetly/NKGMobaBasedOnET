@@ -7,7 +7,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using DefaultNamespace;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
@@ -31,6 +30,10 @@ namespace ETModel
         [DisableInEditorMode]
         [LabelText("碰撞数据文件名称")]
         public string ColliderDataFileName = "PolygonColliderData";
+
+        [LabelText("请设置每个多边形最大顶点数")]
+        [Range(3,8)]
+        public int MaxPointLimit;
 
         [InlineEditor]
         [Required("需要至少一个Unity2D多边形碰撞器")]
@@ -117,16 +120,17 @@ namespace ETModel
             }
 
             List<List<Vector2>> tempFinalPolygons = Separator.CalcShapes(tempPoints);
+            List<List<Vector2>> FinalPolygons = Separator.SplitPolygonUntilLessX(this.MaxPointLimit, tempFinalPolygons);
 
             int x = 0;
-            for (int i = 0; i < tempFinalPolygons.Count; i++)
+            for (int i = 0; i < FinalPolygons.Count; i++)
             {
                 this.MB2S_PolygonColliderDataStructure.points.Add(new List<CostumVector2>());
                 Debug.Log($"第{x++}个多边形：");
-                for (int j = 0; j < tempFinalPolygons[i].Count; j++)
+                for (int j = 0; j < FinalPolygons[i].Count; j++)
                 {
                     MB2S_PolygonColliderDataStructure.pointCount++;
-                    this.MB2S_PolygonColliderDataStructure.points[i].Add(new CostumVector2(tempFinalPolygons[i][j].X, tempFinalPolygons[i][j].Y));
+                    this.MB2S_PolygonColliderDataStructure.points[i].Add(new CostumVector2(FinalPolygons[i][j].X, FinalPolygons[i][j].Y));
                     Debug.Log(this.MB2S_PolygonColliderDataStructure.points[i][j].ToUnityVector2());
                 }
             }

@@ -9,7 +9,7 @@ using ETModel;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace ETModel
 {
     public class B2S_PolygonColliderDataStructure: B2S_ColliderDataStructureBase
     {
