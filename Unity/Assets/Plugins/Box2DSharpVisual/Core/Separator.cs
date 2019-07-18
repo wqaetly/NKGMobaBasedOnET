@@ -44,21 +44,28 @@ namespace ETModel
         /// <summary>
         /// 单一多边形最大支持顶点数,此方法应在凹凸多边形转换之后调用，确保不会出现多余的凹多边形
         /// </summary>
-        /// <param name="maxLimit"></param>
+        /// <param name="maxLimit">单多边形最大限制顶点数</param>
+        /// <param name="orinPolygonInfos">CalcShapes之后的嵌套数组</param>
+        /// <returns></returns>
         public static List<List<Vector2>> SplitPolygonUntilLessX(int maxLimit, List<List<Vector2>> orinPolygonInfos)
         {
+            //数据载体
             List<List<Vector2>> mytempPolygonInfos = new List<List<Vector2>>();
+            //记录上一个顶点序号
+            int lastPos = 0;
             for (int i = 0; i < orinPolygonInfos.Count; i++)
             {
+                //如果当前多边形顶点数大于限制顶点数，进行分割运算
                 if (orinPolygonInfos[i].Count > maxLimit)
                 {
-                    int lastPos = 0;
-
-                    while (lastPos < orinPolygonInfos[i].Count && orinPolygonInfos[i].Count - lastPos + 1 >= 3)
+                    lastPos = 0;
+                    while (lastPos < orinPolygonInfos[i].Count && orinPolygonInfos[i].Count - lastPos + 1 >= 3) //至少3个顶点才能构成一个多边形
                     {
                         var newPolygonInfo = new List<Vector2>();
+                        //如果是第一个顶点
                         if (lastPos == 0)
                         {
+                            //因为第一个顶点算一个点了，所以要-1
                             for (int j = lastPos;
                                 j <= lastPos + maxLimit - 1; j++)
                             {
@@ -70,14 +77,17 @@ namespace ETModel
                         else
                         {
                             newPolygonInfo.Add(orinPolygonInfos[i][0]);
+                            //如果不是第一个也不是最后一个顶点
                             if (lastPos + maxLimit - 2 < orinPolygonInfos[i].Count)
                             {
+                                //因为第一个顶点和lastPos算两个点了，所以要-2
                                 for (int j = lastPos;
                                     j <= lastPos + maxLimit - 2; j++)
                                 {
                                     newPolygonInfo.Add(orinPolygonInfos[i][j]);
                                 }
                             }
+                            //如果是最后一个顶点，把剩余的全加进来即可
                             else
                             {
                                 for (int j = lastPos;
@@ -93,6 +103,7 @@ namespace ETModel
                         mytempPolygonInfos.Add(newPolygonInfo);
                     }
                 }
+                //否则直接加入List
                 else
                 {
                     mytempPolygonInfos.Add(orinPolygonInfos[i]);

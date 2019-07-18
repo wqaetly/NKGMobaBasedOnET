@@ -32,7 +32,7 @@ namespace ETModel
         public string ColliderDataFileName = "PolygonColliderData";
 
         [LabelText("请设置每个多边形最大顶点数")]
-        [Range(3,8)]
+        [Range(3, 8)]
         public int MaxPointLimit;
 
         [InlineEditor]
@@ -113,13 +113,23 @@ namespace ETModel
             MB2S_PolygonColliderDataStructure.pointCount = 0;
             //对多边形进行分割操作
             List<Vector2> tempPoints = new List<Vector2>();
+            //必须进行放缩操作，不然在很近的时候运算误差会导致出错
             foreach (var VARIABLE in this.mCollider2D.points)
             {
-                Vector2 tempVector2 = new Vector2(VARIABLE.x, VARIABLE.y);
+                Vector2 tempVector2 = new Vector2(VARIABLE.x * 30, VARIABLE.y * 30);
                 tempPoints.Add(tempVector2);
             }
 
             List<List<Vector2>> tempFinalPolygons = Separator.CalcShapes(tempPoints);
+
+            foreach (var VARIABLE in tempFinalPolygons)
+            {
+                for (int i = 0; i < VARIABLE.Count; i++)
+                {
+                    VARIABLE[i] = new Vector2(VARIABLE[i].X / 30, VARIABLE[i].Y / 30);
+                }
+            }
+
             List<List<Vector2>> FinalPolygons = Separator.SplitPolygonUntilLessX(this.MaxPointLimit, tempFinalPolygons);
 
             int x = 0;
@@ -131,7 +141,6 @@ namespace ETModel
                 {
                     MB2S_PolygonColliderDataStructure.pointCount++;
                     this.MB2S_PolygonColliderDataStructure.points[i].Add(new CostumVector2(FinalPolygons[i][j].X, FinalPolygons[i][j].Y));
-                    Debug.Log(this.MB2S_PolygonColliderDataStructure.points[i][j].ToUnityVector2());
                 }
             }
         }
