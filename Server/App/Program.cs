@@ -142,6 +142,9 @@ namespace App
 						//RealmGlobalComponent,增加在线组件，记录在线玩家
 						Game.Scene.AddComponent<OnlineComponent>();
 
+						//添加物理世界
+						Game.Scene.AddComponent<B2S_WorldComponent>();
+
 						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
 						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
 						break;
@@ -160,6 +163,8 @@ namespace App
 						throw new Exception($"命令行参数没有设置正确的AppType: {startConfig.AppType}");
 				}
 				
+				long fixedUpdateInterval = (long)(EventSystem.FixedUpdateTimeDelta * 1000);
+				long timing = TimeHelper.ClientNow();
 				while (true)
 				{
 					try
@@ -167,6 +172,12 @@ namespace App
 						Thread.Sleep(1);
 						OneThreadSynchronizationContext.Instance.Update();
 						Game.EventSystem.Update();
+						
+						if (TimeHelper.ClientNow() - timing >= fixedUpdateInterval)
+						{
+							timing += fixedUpdateInterval;
+							Game.EventSystem.FixedUpdate();
+						}
 					}
 					catch (Exception e)
 					{

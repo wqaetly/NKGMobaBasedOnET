@@ -53,6 +53,9 @@
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\IDeserializeSystem.cs">
       <Link>Base\Base\IDeserializeSystem.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Base\Object\IFixedUpdateSystem.cs">
+      <Link>Base\Base\IFixedUpdateSystem.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\Base\ProcessHelper.cs">
       <Link>Base/ProcessHelper.cs</Link>
     </Compile>
@@ -304,6 +307,21 @@
     <Compile Include="..\..\Unity\Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs">
       <Link>Module\Pathfinding\Recast\WindowsStoreCompatibility.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_BoxColliderDataStructure.cs">
+      <Link>NKGMOBA\Box2D\ColliderData\B2S_BoxColliderDataStructure.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_CircleColliderDataStructure.cs">
+      <Link>NKGMOBA\Box2D\ColliderData\B2S_CircleColliderDataStructure.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_ColliderDataStructureBase.cs">
+      <Link>NKGMOBA\Box2D\ColliderData\B2S_ColliderDataStructureBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_DataSupporter.cs">
+      <Link>NKGMOBA\Box2D\ColliderData\B2S_DataSupporter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs">
+      <Link>NKGMOBA\Box2D\ColliderData\B2S_PolygonColliderDataStructure.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs">
       <Link>NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs</Link>
     </Compile>
@@ -369,6 +387,7 @@
     <PackageReference Include="SharpZipLib" Version="1.0.0-alpha2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ThirdParty\Box2D\Box2D.csproj" />
     <ProjectReference Include="..\ThirdParty\Google.Protobuf\Google.Protobuf.csproj" />
     <ProjectReference Include="..\ThirdParty\KcpLib\KcpLib.csproj" />
     <ProjectReference Include="..\ThirdParty\BehaviorDesigner.Runtime\BehaviorDesigner.Runtime.csproj" />

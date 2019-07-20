@@ -1287,6 +1287,11 @@
           "BehaviorDesigner.Runtime.dll": {}
         }
       },
+      "Box2D/1.0.0": {
+        "runtime": {
+          "Box2D.dll": {}
+        }
+      },
       "Google.Protobuf/1.0.0": {
         "dependencies": {
           "MongoDB.Bson": "0.0.0-local"
@@ -1303,6 +1308,7 @@
       "Model/1.0.0": {
         "dependencies": {
           "BehaviorDesigner.Runtime": "1.0.0",
+          "Box2D": "1.0.0",
           "CommandLineParser": "2.2.1",
           "Google.Protobuf": "1.0.0",
           "KcpLib": "1.0.0",
@@ -2032,6 +2038,11 @@
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
     "BehaviorDesigner.Runtime/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Box2D/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

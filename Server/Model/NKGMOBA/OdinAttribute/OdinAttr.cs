@@ -140,4 +140,9 @@ namespace Sirenix.OdinInspector
         {
         }
     }
+    
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public class DisableInEditorModeAttribute: System.Attribute
+    {
+    }
 }
