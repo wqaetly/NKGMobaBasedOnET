@@ -19,7 +19,7 @@ namespace ETModel
         public static void Info(string message)
         {
             globalLog.Info(message);
-            Console.WriteLine(string.Concat("信息", message));
+            Console.WriteLine(string.Concat("信息:", message));
         }
 
         public static void Debug(string message)

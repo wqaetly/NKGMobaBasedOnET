@@ -43,7 +43,6 @@ namespace ETHotfix
 				}
 				case IActorMessage iactorMessage:
 				{
-					Console.WriteLine("确实收到了Actor Test信息，并转入相应的处理者");
 					Entity entity = (Entity)Game.EventSystem.Get(iactorMessage.ActorId);
 					if (entity == null)
 					{

@@ -64,7 +64,6 @@ namespace ETHotfix
 				}
 
 				Type messageType = imHandler.GetMessageType();
-				Console.WriteLine(messageType+"   "+imHandler+"均已注册");
 				self.ActorMessageHandlers.Add(messageType, imHandler);
 			}
 		}

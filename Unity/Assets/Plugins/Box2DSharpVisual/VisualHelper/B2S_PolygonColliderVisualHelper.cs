@@ -11,9 +11,7 @@ using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
 using UnityEngine;
-using UnityEditor;
 using Vector2 = System.Numerics.Vector2;
 
 namespace ETModel

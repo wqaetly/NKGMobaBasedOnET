@@ -144,6 +144,8 @@ namespace App
 
 						//添加物理世界
 						Game.Scene.AddComponent<B2S_WorldComponent>();
+						//增加碰撞体数据仓库
+						Game.Scene.AddComponent<B2S_ColliderDataRepositoryComponent>();
 
 						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
 						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
