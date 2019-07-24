@@ -12,26 +12,19 @@ namespace ETHotfix
     [MessageHandler(AppType.Realm)]
     public class G2R_PlayerOnlineHandler: AMRpcHandler<G2R_PlayerOnline, R2G_PlayerOnline>
     {
-        protected override async void Run(Session session, G2R_PlayerOnline message, Action<R2G_PlayerOnline> reply)
+        protected override async ETTask Run(Session session, G2R_PlayerOnline message, R2G_PlayerOnline response, Action reply)
         {
-            R2G_PlayerOnline response = new R2G_PlayerOnline();
-            try
-            {
-                OnlineComponent onlineComponent = Game.Scene.GetComponent<OnlineComponent>();
+            OnlineComponent onlineComponent = Game.Scene.GetComponent<OnlineComponent>();
 
-                //将已在线玩家踢下线
-                await RealmHelper.KickOutPlayer(message.playerAccount, PlayerOfflineTypes.SamePlayerLogin);
+            //将已在线玩家踢下线
+            await RealmHelper.KickOutPlayer(message.playerAccount, PlayerOfflineTypes.SamePlayerLogin);
 
-                //玩家上线
-                onlineComponent.Add(message.playerAccount, message.PlayerId, message.GateAppID);
-                Log.Info($"玩家{message.playerAccount}上线");
+            //玩家上线
+            onlineComponent.Add(message.playerAccount, message.PlayerId, message.GateAppID);
+            Log.Info($"玩家{message.playerAccount}上线");
 
-                reply(response);
-            }
-            catch (Exception e)
-            {
-                ReplyError(response, e, reply);
-            }
+            reply();
+            await ETTask.CompletedTask;
         }
     }
 }

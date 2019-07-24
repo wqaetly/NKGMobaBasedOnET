@@ -11,9 +11,10 @@ namespace ETHotfix
     [ActorMessageHandler(AppType.Map)]
     public class UserInput_SkillCmdHandler: AMActorLocationHandler<Unit, UserInput_SkillCmd>
     {
-        protected override void Run(Unit entity, UserInput_SkillCmd message)
+        protected override async ETTask Run(Unit entity, UserInput_SkillCmd message)
         {
             PlayerInput_SkillCmdSystem.BroadcastPath(entity, message.Message);
+            await ETTask.CompletedTask;
         }
     }
 }

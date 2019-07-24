@@ -13,30 +13,23 @@ namespace ETHotfix
     [MessageHandler(AppType.Gate)]
     public class R2G_PlayerKickOut_ReqHandler: AMRpcHandler<R2G_PlayerKickOut, G2R_PlayerKickOut>
     {
-        protected override async void Run(Session session, R2G_PlayerKickOut message, Action<G2R_PlayerKickOut> reply)
+        protected override async ETTask Run(Session session, R2G_PlayerKickOut message, G2R_PlayerKickOut response, Action reply)
         {
-            G2R_PlayerKickOut response = new G2R_PlayerKickOut();
-            try
-            {
-                //向登录服务器发送玩家离线消息
-                StartConfigComponent config = Game.Scene.GetComponent<StartConfigComponent>();
-                IPEndPoint realmIPEndPoint = config.RealmConfig.GetComponent<InnerConfig>().IPEndPoint;
-                Session realmSession = Game.Scene.GetComponent<NetInnerComponent>().Get(realmIPEndPoint);
-                // 发送玩家离线消息
-                await realmSession.Call(new G2R_PlayerOffline() { playerAccount = message.PlayerAccount });
-                
-                Player player = Game.Scene.GetComponent<PlayerComponent>().Get(message.PlayerId);
-                
-                //服务端主动断开客户端连接
-                long playerSessionId = player.GetComponent<UnitGateComponent>().GateSessionActorId;
-                Game.Scene.GetComponent<NetOuterComponent>().Remove(playerSessionId);
+            //向登录服务器发送玩家离线消息
+            StartConfigComponent config = Game.Scene.GetComponent<StartConfigComponent>();
+            IPEndPoint realmIPEndPoint = config.RealmConfig.GetComponent<InnerConfig>().IPEndPoint;
+            Session realmSession = Game.Scene.GetComponent<NetInnerComponent>().Get(realmIPEndPoint);
+            // 发送玩家离线消息
+            await realmSession.Call(new G2R_PlayerOffline() { playerAccount = message.PlayerAccount });
 
-                reply(response);
-            }
-            catch (Exception e)
-            {
-                ReplyError(response, e, reply);
-            }
+            Player player = Game.Scene.GetComponent<PlayerComponent>().Get(message.PlayerId);
+
+            //服务端主动断开客户端连接
+            long playerSessionId = player.GetComponent<UnitGateComponent>().GateSessionActorId;
+            Game.Scene.GetComponent<NetOuterComponent>().Remove(playerSessionId);
+
+            reply();
+            await ETTask.CompletedTask;
         }
     }
 }

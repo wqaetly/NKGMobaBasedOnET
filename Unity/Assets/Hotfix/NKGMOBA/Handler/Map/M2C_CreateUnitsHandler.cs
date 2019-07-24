@@ -6,7 +6,7 @@ namespace ETHotfix
     [MessageHandler]
     public class M2C_CreateUnitsHandler: AMHandler<M2C_CreateUnits>
     {
-        protected override void Run(ETModel.Session session, M2C_CreateUnits message)
+        protected override async ETTask Run(ETModel.Session session, M2C_CreateUnits message)
         {
             UnitComponent unitComponent = ETModel.Game.Scene.GetComponent<UnitComponent>();
 
@@ -31,6 +31,7 @@ namespace ETHotfix
                 hotfixUnit.AddComponent<HeroHeadBarComponent, Unit, FUI>(unit,
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
             }
+            await ETTask.CompletedTask;
         }
     }
 }

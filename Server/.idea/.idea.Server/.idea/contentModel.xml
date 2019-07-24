@@ -4,7 +4,7 @@
     <e p="C:\Users\Administrator\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Administrator\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Server.354355289.00" t="ExcludeRecursive" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Bin" t="ExcludeRecursive">
-      <e p="netcoreapp2.1" t="ExcludeRecursive" />
+      <e p="netcoreapp2.2" t="ExcludeRecursive" />
     </e>
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Server" t="IncludeFlat">
       <e p="App" t="IncludeRecursive">
@@ -89,9 +89,6 @@
               <e p="TestBehavior_RunHandler.cs" t="Include" />
             </e>
           </e>
-          <e p="C2G_EnterMapHandler.cs" t="Include" />
-          <e p="G2M_CreateUnitHandler.cs" t="Include" />
-          <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
           <e p="Handler" t="Include">
             <e p="ActorHandler" t="Include">
               <e p="GlobalActorHandler" t="Include">
@@ -104,11 +101,17 @@
               </e>
             </e>
             <e p="Gate" t="Include">
+              <e p="C2G_EnterMapHandler.cs" t="Include" />
               <e p="C2G_GetUserInfoHandler.cs" t="Include" />
               <e p="C2G_HeartBeatHandler.cs" t="Include" />
               <e p="C2G_LoginGateHandler.cs" t="Include" />
               <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
               <e p="R2G_PlayerKickOut_Handler.cs" t="Include" />
+            </e>
+            <e p="Map" t="Include">
+              <e p="G2M_CreateUnitHandler.cs" t="Include" />
+              <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
+              <e p="M2M_TrasferUnitRequest.cs" t="Include" />
             </e>
             <e p="Realm" t="Include">
               <e p="C2R_LoginHandler.cs" t="Include" />
@@ -118,16 +121,15 @@
             </e>
           </e>
           <e p="Helper" t="Include">
+            <e p="MessageHelper.cs" t="Include" />
             <e p="RealmHelper.cs" t="Include" />
           </e>
-          <e p="M2M_TrasferUnitRequest.cs" t="Include" />
-          <e p="MessageHelper.cs" t="Include" />
-          <e p="RealmGateAddressComponentSystem.cs" t="Include" />
-          <e p="SessionPlayerComponentSystem.cs" t="Include" />
           <e p="system" t="Include">
             <e p="PlayerInput_SkillCmdSystem.cs" t="Include" />
+            <e p="RealmGateAddressComponentSystem.cs" t="Include" />
+            <e p="SessionPlayerComponentSystem.cs" t="Include" />
+            <e p="UnitPathComponentSystem.cs" t="Include" />
           </e>
-          <e p="UnitPathComponentSystem.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -710,7 +712,7 @@
             <e p="MongoDB.Bson.csproj" t="IncludeRecursive" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.1" t="Include">
+                <e p="netcoreapp2.2" t="Include">
                   <e p="MongoDB.Bson.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1357,7 +1359,7 @@
             <e p="MongoX509Identity.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.1" t="Include">
+                <e p="netcoreapp2.2" t="Include">
                   <e p="MongoDB.Driver.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1894,7 +1896,7 @@
             <e p="MongoWriteConcernException.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.1" t="Include">
+                <e p="netcoreapp2.2" t="Include">
                   <e p="MongoDB.Driver.Core.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1949,7 +1951,7 @@
             <e p="MongoDB.Driver.GridFS.csproj" t="IncludeRecursive" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.1" t="Include">
+                <e p="netcoreapp2.2" t="Include">
                   <e p="MongoDB.Driver.GridFS.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>

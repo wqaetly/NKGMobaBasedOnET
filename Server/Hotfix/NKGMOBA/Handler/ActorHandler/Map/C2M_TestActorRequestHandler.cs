@@ -3,13 +3,14 @@ using ETModel;
 
 namespace ETHotfix
 {
-	[ActorMessageHandler(AppType.Map)]
-	public class C2M_TestActorRequestHandler : AMActorLocationRpcHandler<Unit, C2M_TestActorRequest, M2C_TestActorResponse>
-	{
-		protected override async ETTask Run(Unit unit, C2M_TestActorRequest message, Action<M2C_TestActorResponse> reply)
-		{
-			reply(new M2C_TestActorResponse(){Info = "actor rpc response"});
-			await ETTask.CompletedTask;
-		}
-	}
+    [ActorMessageHandler(AppType.Map)]
+    public class C2M_TestActorRequestHandler: AMActorLocationRpcHandler<Unit, C2M_TestActorRequest, M2C_TestActorResponse>
+    {
+        protected override async ETTask Run(Unit unit, C2M_TestActorRequest message, M2C_TestActorResponse response, Action reply)
+        {
+            response.Info = "actor rpc response";
+            reply();
+            await ETTask.CompletedTask;
+        }
+    }
 }

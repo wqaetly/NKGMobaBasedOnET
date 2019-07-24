@@ -5,7 +5,7 @@ namespace ETHotfix
 #if ILRuntime
 	public interface IMHandler
 	{
-		void Handle(ETModel.Session session, object message);
+		ETVoid Handle(ETModel.Session session, object message);
 		Type GetMessageType();
 	}
 #else

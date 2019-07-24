@@ -11,7 +11,7 @@ namespace ETHotfix
     [MessageHandler]
     public class G2C_PlayerOfflineHandler: AMHandler<G2C_PlayerOffline>
     {
-        protected override void Run(ETModel.Session session, G2C_PlayerOffline message)
+        protected override async ETTask Run(ETModel.Session session, G2C_PlayerOffline message)
         {
             Log.Info("收到了服务端的下线指令");
             switch (message.MPlayerOfflineType)
@@ -24,6 +24,8 @@ namespace ETHotfix
                     Game.EventSystem.Run(EventIdType.ShowOfflineDialogUI, 1, "提示", "很抱歉，由于您的账号在别处登录，您和服务器的连接已断开");
                     break;
             }
+
+            await ETTask.CompletedTask;
         }
     }
 }

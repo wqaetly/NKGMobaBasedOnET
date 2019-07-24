@@ -62,7 +62,7 @@ namespace ETModel
             B2S_FixtureUserData aUserData = (B2S_FixtureUserData) contact.FixtureA.UserData;
             B2S_FixtureUserData bUserData = (B2S_FixtureUserData) contact.FixtureB.UserData;
 
-            this.collisionRecorder.Add((aUserData.Entity.InstanceId, bUserData.Entity.InstanceId), false);
+            this.collisionRecorder[(aUserData.Entity.InstanceId, bUserData.Entity.InstanceId)] = false;
 
             aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(bUserData);
             bUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(aUserData);

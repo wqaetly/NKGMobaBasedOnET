@@ -12,32 +12,19 @@ namespace ETHotfix
     [MessageHandler(AppType.Gate)]
     public class C2G_GetUserInfoHandler: AMRpcHandler<C2G_GetUserInfo, G2C_GetUserInfo>
     {
-        protected override void Run(Session session, C2G_GetUserInfo message, Action<G2C_GetUserInfo> reply)
+        protected override async ETTask Run(Session session, C2G_GetUserInfo message, G2C_GetUserInfo response, Action reply)
         {
-            GetUserInfo(session, message, reply).Coroutine();
-        }
+            //查询用户信息
+            DBProxyComponent dbProxyComponent = Game.Scene.GetComponent<DBProxyComponent>();
+            UserInfo userInfo = await dbProxyComponent.Query<UserInfo>(message.PlayerId);
 
-        private async ETVoid GetUserInfo(Session session, C2G_GetUserInfo message, Action<G2C_GetUserInfo> reply)
-        {
-            G2C_GetUserInfo response = new G2C_GetUserInfo();
-            try
-            {
-                //查询用户信息
-                DBProxyComponent dbProxyComponent = Game.Scene.GetComponent<DBProxyComponent>();
-                UserInfo userInfo = await dbProxyComponent.Query<UserInfo>(message.PlayerId);
+            response.UserName = userInfo.NickName;
+            response.Level = userInfo.Level;
+            response.Point = userInfo.points;
+            response.Goldens = userInfo.Goldens;
+            response.Diamods = userInfo.Diamods;
 
-                response.UserName = userInfo.NickName;
-                response.Level = userInfo.Level;
-                response.Point = userInfo.points;
-                response.Goldens = userInfo.Goldens;
-                response.Diamods = userInfo.Diamods;
-
-                reply(response);
-            }
-            catch (Exception e)
-            {
-                ReplyError(response, e, reply);
-            }
+            reply();
         }
     }
 }

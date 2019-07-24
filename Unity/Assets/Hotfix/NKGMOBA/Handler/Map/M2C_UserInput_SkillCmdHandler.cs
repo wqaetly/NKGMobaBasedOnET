@@ -11,11 +11,12 @@ namespace ETHotfix
     [MessageHandler]
     public class M2C_UserInput_SkillCmdHandler: AMHandler<M2C_UserInput_SkillCmd>
     {
-        protected override void Run(ETModel.Session session, M2C_UserInput_SkillCmd message)
+        protected override async ETTask Run(ETModel.Session session, M2C_UserInput_SkillCmd message)
         {
             Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
             if (message.Message == "Q")
                 unit.GetComponent<HeroSkillBehaveComponent>().OnQSkillPressed();
+            await ETTask.CompletedTask;
         }
     }
 }
