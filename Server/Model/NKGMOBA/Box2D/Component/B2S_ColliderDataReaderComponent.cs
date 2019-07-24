@@ -59,7 +59,7 @@ namespace ETModel
                 if (mfile0.Length > 0)
                     this.BoxColliderDatas =
                             BsonSerializer.Deserialize<ColliderDataSupporter>(mfile0);
-                Log.Info($"已经读取矩形数据，数据大小为{mfile0.Length}");
+                //Log.Info($"已经读取矩形数据，数据大小为{mfile0.Length}");
             }
 
             if (File.Exists($"{this.colliderDataPath}/{this.colliderDataName[1]}.bytes"))
@@ -68,7 +68,7 @@ namespace ETModel
                 if (mfile1.Length > 0)
                     this.CircleColliderDatas =
                             BsonSerializer.Deserialize<ColliderDataSupporter>(mfile1);
-                Log.Info($"已经读取圆形数据，数据大小为{mfile1.Length}");
+                //Log.Info($"已经读取圆形数据，数据大小为{mfile1.Length}");
             }
 
             if (File.Exists($"{this.colliderDataPath}/{this.colliderDataName[2]}.bytes"))
@@ -80,7 +80,7 @@ namespace ETModel
                             BsonSerializer.Deserialize<ColliderDataSupporter>(mfile2);
                 }
 
-                Log.Info($"已经读取多边形数据，数据大小为{mfile2.Length}");
+                //Log.Info($"已经读取多边形数据，数据大小为{mfile2.Length}");
             }
         }
     }

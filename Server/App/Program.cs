@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using ETModel;
 using NLog;
 
 namespace App
 {
 	internal static class Program
-	{
+	{	
 		private static void Main(string[] args)
 		{
 			// 异步方法全部会回掉到主线程
 			SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
-			
 			try
 			{			
 				//添加Model.dll到字典维护
@@ -167,6 +167,7 @@ namespace App
 				
 				long fixedUpdateInterval = (long)(EventSystem.FixedUpdateTimeDelta * 1000);
 				long timing = TimeHelper.ClientNow();
+				
 				while (true)
 				{
 					try

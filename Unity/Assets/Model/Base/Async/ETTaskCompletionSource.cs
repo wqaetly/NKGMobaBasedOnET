@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
+using System.Threading;
 
 namespace ETModel
 {
@@ -86,7 +87,6 @@ namespace ETModel
             }
 
             this.state = Succeeded;
-
             this.TryInvokeContinuation();
             return true;
 

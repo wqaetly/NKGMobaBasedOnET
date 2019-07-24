@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ETModel
@@ -19,11 +20,11 @@ namespace ETModel
             try
             {
                 SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
-
                 DontDestroyOnLoad(gameObject);
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
 
                 Game.Scene.AddComponent<TimerComponent>();
+
                 Game.Scene.AddComponent<GlobalConfigComponent>();
                 Game.Scene.AddComponent<NetOuterComponent>();
                 Game.Scene.AddComponent<ResourcesComponent>();
@@ -58,6 +59,7 @@ namespace ETModel
                 Log.Error(e);
             }
         }
+
 
 
         private void Update()

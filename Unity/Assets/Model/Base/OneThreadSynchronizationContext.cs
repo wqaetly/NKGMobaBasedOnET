@@ -34,7 +34,6 @@ namespace ETModel
 				callback(state);
 				return;
 			}
-			
 			this.queue.Enqueue(() => { callback(state); });
 		}
 	}

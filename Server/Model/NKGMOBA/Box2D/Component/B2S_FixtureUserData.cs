@@ -11,5 +11,9 @@ namespace ETModel
     /// </summary>
     public class B2S_FixtureUserData: Entity
     {
+        /// <summary>
+        /// 碰撞体ID
+        /// </summary>
+        public long CollisionId;
     }
 }

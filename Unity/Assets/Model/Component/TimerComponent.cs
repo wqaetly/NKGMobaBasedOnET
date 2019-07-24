@@ -125,6 +125,7 @@ namespace ETModel
 			{
 				this.minTime = timer.Time;
 			}
+
 			cancellationToken.Register(() => { this.Remove(timer.Id); });
 			return tcs.Task;
 		}
