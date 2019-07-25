@@ -44,7 +44,7 @@ namespace SkillDemo
         /// </summary>
         public NodeDataForStartSkill m_SkillData;
 
-        public override BaseNodeData GetNodeData()
+        public override SkillBaseNodeData Skill_GetNodeData()
         {
             return m_SkillData;
         }
@@ -58,7 +58,7 @@ namespace SkillDemo
             {
                 foreach (var VARIABLE in this.NextSkill.connections)
                 {
-                    this.m_SkillData?.NextNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                    this.m_SkillData?.NextNodeIds.Add(VARIABLE.GetValue<SkillBaseNodeData>().NodeID);
                 }
             }
 
@@ -66,7 +66,7 @@ namespace SkillDemo
             {
                 foreach (var VARIABLE in this.PrevSkill.connections)
                 {
-                    this.m_SkillData?.PreNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                    this.m_SkillData?.PreNodeIds.Add(VARIABLE.GetValue<SkillBaseNodeData>().NodeID);
                 }
             }
         }

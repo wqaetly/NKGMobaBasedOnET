@@ -13,7 +13,7 @@ using UnityEngine;
 namespace ETModel
 {
     [BsonIgnoreExtraElements]
-    public class NodeDataForStartSkill: BaseNodeData
+    public class NodeDataForStartSkill: SkillBaseNodeData
     {
 #if !SERVER
         [TabGroup("基础信息")]

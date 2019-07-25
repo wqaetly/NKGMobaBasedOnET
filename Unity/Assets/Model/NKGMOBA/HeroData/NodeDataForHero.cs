@@ -11,8 +11,11 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NodeDataForHero: BaseNodeData
+    public class NodeDataForHero
     {
+        [LabelText("此结点(英雄数据结点)ID为")]
+        public long HeroID;
+
         [LabelText("英雄名称")]
         public string HeroName;
 

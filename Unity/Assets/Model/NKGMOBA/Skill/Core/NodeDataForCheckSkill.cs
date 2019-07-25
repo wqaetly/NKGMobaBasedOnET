@@ -11,7 +11,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NodeDataForCheckSkill: BaseNodeData
+    public class NodeDataForCheckSkill: SkillBaseNodeData
     {
         [HideLabel]
         [Title("技能消耗类型")]

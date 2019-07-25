@@ -21,7 +21,7 @@ namespace SkillDemo
     /// <summary>
     /// 技能结点（绘图用）
     /// </summary>
-    [NodeCanvasType("SkillNodeCanvas")]
+    [NodeCanvasType("技能Canvas")]
     public class SkillNodeCanvas: NodeCanvas
     {
         public override string canvasName => Name;
@@ -37,12 +37,12 @@ namespace SkillDemo
         /// <summary>
         /// 节点数据载体，用以搜集所有本SO文件的数据
         /// </summary>
-        public NodeDataSupporter m_TestDic;
+        public NodeDataSupporter m_TestDic = new NodeDataSupporter();
 
         /// <summary>
         /// 节点数据载体，测试用
         /// </summary>
-        public NodeDataSupporter m_DebugDic;
+        public NodeDataSupporter m_DebugDic =new NodeDataSupporter();
 
         CostumNodeData tempData = new CostumNodeData();
 
@@ -66,15 +66,15 @@ namespace SkillDemo
             m_TestDic.m_DataDic.Clear();
             foreach (var VARIABLE in nodes)
             {
-                if (m_TestDic.m_DataDic.TryGetValue(VARIABLE.GetNodeData().BelongToSkillId, out tempData))
+                if (m_TestDic.m_DataDic.TryGetValue(VARIABLE.Skill_GetNodeData().BelongToSkillId, out tempData))
                 {
-                    tempData.NodeDataInnerDic.Add(VARIABLE.GetNodeData().NodeID, VARIABLE.GetNodeData());
+                    tempData.NodeDataInnerDic.Add(VARIABLE.Skill_GetNodeData().NodeID, VARIABLE.Skill_GetNodeData());
                 }
                 else
                 {
                     tempData = new CostumNodeData();
-                    tempData.NodeDataInnerDic.Add(VARIABLE.GetNodeData().NodeID, VARIABLE.GetNodeData());
-                    m_TestDic.m_DataDic.Add(VARIABLE.GetNodeData().BelongToSkillId,
+                    tempData.NodeDataInnerDic.Add(VARIABLE.Skill_GetNodeData().NodeID, VARIABLE.Skill_GetNodeData());
+                    m_TestDic.m_DataDic.Add(VARIABLE.Skill_GetNodeData().BelongToSkillId,
                         tempData);
                 }
             }
@@ -100,11 +100,6 @@ namespace SkillDemo
             if (mfile.Length == 0) Debug.Log("没有读取到文件");
 
             m_DebugDic = BsonSerializer.Deserialize<NodeDataSupporter>(mfile);
-
-            foreach (KeyValuePair<int, CostumNodeData> kvp in m_DebugDic.m_DataDic)
-            {
-                Debug.Log($"key为{kvp.Key},Value为{kvp.Value}");
-            }
         }
     }
 }

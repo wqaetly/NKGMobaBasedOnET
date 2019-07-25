@@ -1,47 +1,48 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019年7月25日 16:45:46
+// Data: 2019年7月25日 18:27:44
 //------------------------------------------------------------
 
 using System.IO;
 using ETMode;
+using ETModel;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NodeEditorFramework;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace B2S_CollisionRelation
+namespace Plugins.NodeEditor.Editor.Canvas
 {
-    [NodeCanvasType("包含一个英雄所有相关的碰撞关系的Canvas")]
-    public class B2S_CollisionRelationCanvas: NodeCanvas
+    [NodeCanvasType("包含一个英雄所有数据的Canvas")]
+    public class HeroDataNodeCanvas: NodeCanvas
     {
         public override string canvasName => Name;
 
         [Title("本Canvas所有数据整理部分")]
         [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
-        public string Name = "CollisionRelation";
+        public string Name = "HeroData";
 
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
         [FolderPath]
         public string SavePath;
-        
+
         /// <summary>
         /// 节点数据载体，用以搜集所有本SO文件的数据
         /// </summary>
-        public B2S_CollisionsRelationSupport m_TestDic = new B2S_CollisionsRelationSupport();
-        
+        public HeroDataSupportor m_TestDic=new HeroDataSupportor();
+
         [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
-            m_TestDic.B2S_CollisionsRelationDic.Clear();
+            m_TestDic.MHeroDataSupportorDic.Clear();
             foreach (var VARIABLE in nodes)
             {
-                m_TestDic.B2S_CollisionsRelationDic.Add(VARIABLE.B2SCollisionRelation_GetNodeData().collisionId, VARIABLE.B2SCollisionRelation_GetNodeData());
+                m_TestDic.MHeroDataSupportorDic.Add(VARIABLE.HeroData_GetNodeData().HeroID, VARIABLE.HeroData_GetNodeData());
             }
         }
-        
+
         [Button("保存技能信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Save()
         {
@@ -51,6 +52,5 @@ namespace B2S_CollisionRelation
             }
             Debug.Log("保存成功");
         }
-
     }
 }

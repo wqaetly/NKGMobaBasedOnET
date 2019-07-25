@@ -16,7 +16,7 @@ namespace SkillDemo
     {
         public override string Identifier => "PrevNodeDatas";
 
-        public override Type Type => typeof (BaseNodeData);
+        public override Type Type => typeof (SkillBaseNodeData);
 
         public override Color Color => Color.yellow;
     }
@@ -25,7 +25,7 @@ namespace SkillDemo
     {
         public override string Identifier => "NextNodeDatas";
 
-        public override Type Type => typeof (BaseNodeData);
+        public override Type Type => typeof (SkillBaseNodeData);
 
         public override Color Color => Color.cyan;
     }

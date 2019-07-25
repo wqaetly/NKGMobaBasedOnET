@@ -35,7 +35,7 @@ namespace SkillDemo
 
         public NodeDataForSkillBuff SkillBuffBases;
 
-        public override BaseNodeData GetNodeData()
+        public override SkillBaseNodeData Skill_GetNodeData()
         {
             return SkillBuffBases;
         }
@@ -49,7 +49,7 @@ namespace SkillDemo
             {
                 foreach (var VARIABLE in this.NextSkill.connections)
                 {
-                    this.SkillBuffBases?.NextNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                    this.SkillBuffBases?.NextNodeIds.Add(VARIABLE.GetValue<SkillBaseNodeData>().NodeID);
                 }
             }
 
@@ -57,7 +57,7 @@ namespace SkillDemo
             {
                 foreach (var VARIABLE in this.PrevSkill.connections)
                 {
-                    this.SkillBuffBases?.PreNodeIds.Add(VARIABLE.GetValue<BaseNodeData>().NodeID);
+                    this.SkillBuffBases?.PreNodeIds.Add(VARIABLE.GetValue<SkillBaseNodeData>().NodeID);
                 }
             }
         }

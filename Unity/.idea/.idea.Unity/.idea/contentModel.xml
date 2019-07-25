@@ -934,19 +934,22 @@
                 </e>
               </e>
             </e>
+            <e p="HeroData" t="Include">
+              <e p="HeroDataSupportor.cs" t="Include" />
+              <e p="NodeDataForHero.cs" t="Include" />
+            </e>
             <e p="Skill" t="Include">
               <e p="Core" t="Include">
                 <e p="AnimationCore" t="Include">
                   <e p="AnimationData.cs" t="Include" />
                 </e>
-                <e p="BaseNodeData.cs" t="Include" />
                 <e p="Bson" t="Include">
                   <e p="NodeDataSupporter.cs" t="Include" />
                 </e>
                 <e p="NodeDataForCheckSkill.cs" t="Include" />
-                <e p="NodeDataForHero.cs" t="Include" />
                 <e p="NodeDataForSkillBuff.cs" t="Include" />
                 <e p="NodeDataForStartSkill.cs" t="Include" />
+                <e p="SkillBaseNodeData.cs" t="Include" />
                 <e p="SkillBuffDatas" t="Include">
                   <e p="DamageBuff.cs" t="Include" />
                   <e p="DelayBuff.cs" t="Include" />
@@ -1204,10 +1207,11 @@
               </e>
               <e p="Canvas" t="Include">
                 <e p="B2S_CollisionRelationCanvas.cs" t="Include" />
+                <e p="HeroDataNodeCanvas.cs" t="Include" />
                 <e p="SkillNodeCanvas.cs" t="Include" />
               </e>
               <e p="HeroNodes" t="Include">
-                <e p="BaseHeroNode.cs" t="Include" />
+                <e p="HeroDataNode.cs" t="Include" />
               </e>
               <e p="Node_Editor" t="Include">
                 <e p="NodeEditorWindow.cs" t="Include" />
@@ -1243,6 +1247,12 @@
                   <e p="NodeCanvas.cs" t="Include" />
                   <e p="NodeCanvasTraversal.cs" t="Include" />
                   <e p="NodeEditorState.cs" t="Include" />
+                  <e p="NodeExtension" t="Include">
+                    <e p="Node.CollisionRelation.cs" t="Include" />
+                    <e p="Node.GeneralExtension.cs" t="Include" />
+                    <e p="Node.HeroData.cs" t="Include" />
+                    <e p="Node.Skill.cs" t="Include" />
+                  </e>
                   <e p="NodeGroup.cs" t="Include" />
                   <e p="ValueConnectionKnob.cs" t="Include" />
                 </e>

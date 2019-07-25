@@ -10,18 +10,18 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class BaseNodeData
+    public class SkillBaseNodeData
     {
         [LabelText("此节点所归属的技能ID")]
-        public int BelongToSkillId;
+        public long BelongToSkillId;
 
         [LabelText("此节点ID为")]
-        public int NodeID;
+        public long NodeID;
 
         [LabelText("此节点前结点ID为")]
-        public List<int> PreNodeIds = new List<int>();
+        public List<long> PreNodeIds = new List<long>();
 
         [LabelText("此节点后结点ID为")]
-        public List<int> NextNodeIds = new List<int>();
+        public List<long> NextNodeIds = new List<long>();
     }
 }
