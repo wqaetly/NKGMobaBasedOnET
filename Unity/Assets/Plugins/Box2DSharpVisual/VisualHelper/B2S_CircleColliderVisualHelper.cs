@@ -28,15 +28,18 @@ namespace ETModel
 
         [InlineEditor]
         [Required("需要至少一个Unity2D圆形碰撞器")]
+        [TabGroup("绘图相关内容")]
         [HideLabel]
         [BsonIgnore]
         public CircleCollider2D mCollider2D;
 
         [LabelText("圆形碰撞体数据")]
+        [TabGroup("碰撞体数据")]
         public B2S_CircleColliderDataStructure MB2S_CircleColliderDataStructure = new B2S_CircleColliderDataStructure();
 
         [BsonIgnore]
         [LabelText("圆线段数")]
+        [TabGroup("碰撞体数据")]
         public int Segments;
 
         public override void InitColliderBaseInfo()

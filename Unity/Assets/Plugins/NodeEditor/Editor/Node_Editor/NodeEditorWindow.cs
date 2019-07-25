@@ -27,7 +27,7 @@ namespace NodeEditorFramework.Standard
 		/// <summary>
 		/// Opens the Node Editor window and loads the last session
 		/// </summary>
-		[MenuItem("Tools/其他实用工具/可视化技能结点编辑器")]
+		[MenuItem("Tools/其他实用工具/多功能可视化结点编辑器")]
 		public static NodeEditorWindow OpenNodeEditor () 
 		{
 			_editor = GetWindow<NodeEditorWindow>();

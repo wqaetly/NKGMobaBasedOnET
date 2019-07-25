@@ -1,0 +1,35 @@
+//------------------------------------------------------------
+// Author: 烟雨迷离半世殇
+// Mail: 1778139321@qq.com
+// Data: 2019年7月25日 16:52:27
+//------------------------------------------------------------
+
+using B2S_CollisionRelation;
+using ETMode;
+using NodeEditorFramework;
+using UnityEngine;
+
+namespace ETModel
+{
+    [Node(false, "Box2DSharp/碰撞关系图", typeof (B2S_CollisionRelationCanvas))]
+    public class B2S_CollisionRelationForOneHero:Node
+    {
+        /// <summary>
+        /// 内部ID
+        /// </summary>
+        private const string Id = "碰撞关系结点";
+
+        /// <summary>
+        /// 内部ID
+        /// 内部ID
+        /// </summary>
+        public override string GetID => Id;
+
+        public override Vector2 DefaultSize => new Vector2(200, 160);
+        
+        /// <summary>
+        /// 碰撞关系数据
+        /// </summary>
+        public B2S_CollisionInstance MB2SCollisionInstance = new B2S_CollisionInstance();
+    }
+}

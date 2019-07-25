@@ -25,6 +25,7 @@ namespace ETModel
 
         [ColorPalette]
         [Title("绘制线条颜色")]
+        [TabGroup("绘图相关内容")]
         [HideLabel]
         [BsonIgnore]
         public Color mDrawColor = Color.red;

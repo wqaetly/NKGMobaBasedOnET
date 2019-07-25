@@ -105,6 +105,7 @@ namespace SkillDemo
             
 
             EditorGUILayout.TextField("技能名称： " + m_SkillData?.SkillName);
+            EditorGUILayout.TextField("技能ID： " + m_SkillData?.BelongToSkillId);
             EditorGUILayout.TextField("技能图标：");
             EditorGUILayout.ObjectField(m_SkillData?.SkillSprite, typeof (Sprite), false,
                 GUILayout.Width(65f),

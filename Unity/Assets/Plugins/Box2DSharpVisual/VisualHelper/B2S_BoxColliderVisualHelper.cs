@@ -31,9 +31,11 @@ namespace ETModel
         [InlineEditor]
         [Required("需要至少一个Unity2D矩形碰撞器")]
         [BsonIgnore]
+        [TabGroup("绘图相关内容")]
         public BoxCollider2D mCollider2D;
 
         [LabelText("矩形碰撞体数据")]
+        [TabGroup("碰撞体数据")]
         public B2S_BoxColliderDataStructure MB2S_BoxColliderDataStructure = new B2S_BoxColliderDataStructure();
 
         private List<Vector2> points = new List<Vector2>();

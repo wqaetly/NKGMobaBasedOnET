@@ -30,16 +30,18 @@ namespace ETModel
         public string ColliderDataFileName = "PolygonColliderData";
 
         [LabelText("请设置每个多边形最大顶点数")]
+        [TabGroup("绘图相关内容")]
         [Range(3, 8)]
         public int MaxPointLimit;
 
         [InlineEditor]
         [Required("需要至少一个Unity2D多边形碰撞器")]
+        [TabGroup("绘图相关内容")]
         [HideLabel]
         [BsonIgnore]
         public PolygonCollider2D mCollider2D;
 
-        [LabelText("多边形碰撞体数据")]
+        [TabGroup("碰撞体数据")]
         public B2S_PolygonColliderDataStructure MB2S_PolygonColliderDataStructure = new B2S_PolygonColliderDataStructure();
 
         public override void InitColliderBaseInfo()

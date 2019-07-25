@@ -44,13 +44,13 @@ namespace ETModel
         {
             B2S_FixtureUserData aUserData = (B2S_FixtureUserData) contact.FixtureA.UserData;
             B2S_FixtureUserData bUserData = (B2S_FixtureUserData) contact.FixtureB.UserData;
-            if (this.collisionRecorder.ContainsKey((aUserData.Entity.InstanceId, bUserData.Entity.InstanceId)))
+            if (this.collisionRecorder.ContainsKey((aUserData.UnitId, bUserData.UnitId)))
             {
-                this.collisionRecorder[(aUserData.Entity.InstanceId, bUserData.Entity.InstanceId)] = true;
+                this.collisionRecorder[(aUserData.UnitId, bUserData.UnitId)] = true;
             }
             else
             {
-                this.collisionRecorder.Add((aUserData.Entity.InstanceId, bUserData.Entity.InstanceId), true);
+                this.collisionRecorder.Add((aUserData.UnitId, bUserData.UnitId), true);
             }
 
             aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(bUserData);
@@ -62,7 +62,7 @@ namespace ETModel
             B2S_FixtureUserData aUserData = (B2S_FixtureUserData) contact.FixtureA.UserData;
             B2S_FixtureUserData bUserData = (B2S_FixtureUserData) contact.FixtureB.UserData;
 
-            this.collisionRecorder[(aUserData.Entity.InstanceId, bUserData.Entity.InstanceId)] = false;
+            this.collisionRecorder[(aUserData.UnitId, bUserData.UnitId)] = false;
 
             aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(bUserData);
             bUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(aUserData);
@@ -88,6 +88,14 @@ namespace ETModel
                     b.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(a.GetComponent<B2S_FixtureUserData>());
                 }
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            if(this.IsDisposed)
+                return;
+            this.collisionRecorder.Clear();
         }
     }
 }

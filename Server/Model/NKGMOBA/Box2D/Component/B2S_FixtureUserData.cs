@@ -6,14 +6,22 @@
 
 namespace ETModel
 {
+    [ObjectSystem]
+    public class B2S_FixtureUserDataAwake: AwakeSystem<B2S_FixtureUserData>
+    {
+        public override void Awake(B2S_FixtureUserData self)
+        {
+            self.UnitId = self.Entity.Id;
+        }
+    }
     /// <summary>
     /// 碰撞信息的Entity，方便挂载Component来拓展信息
     /// </summary>
     public class B2S_FixtureUserData: Entity
     {
         /// <summary>
-        /// 碰撞体ID
+        /// 归属Unit的ID
         /// </summary>
-        public long CollisionId;
+        public long UnitId;
     }
 }
