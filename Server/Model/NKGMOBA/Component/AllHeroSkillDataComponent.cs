@@ -22,16 +22,16 @@ namespace ETModel
 
     public class AllHeroSkillDataComponent: Component
     {
-        public Dictionary<int, NodeDataSupporter> m_AllHeroSkillDataDic = new Dictionary<int, NodeDataSupporter>();
+        public Dictionary<int, SkillNodeDataSupporter> m_AllHeroSkillDataDic = new Dictionary<int, SkillNodeDataSupporter>();
 
-        public NodeDataSupporter TempDataSupporter;
+        public SkillNodeDataSupporter TempDataSupporter;
 
         public void Awake()
         {
             Type[] types = typeof (AllHeroSkillDataComponent).Assembly.GetTypes();
             foreach (Type type in types)
             {
-                if (!type.IsSubclassOf(typeof (BaseNodeData)) && !type.IsSubclassOf(typeof (SkillBuffBase)))
+                if (!type.IsSubclassOf(typeof (SkillBaseNodeData)) && !type.IsSubclassOf(typeof (SkillBuffBase)))
                 {
                     continue;
                 }
@@ -43,11 +43,11 @@ namespace ETModel
             m_SkillInfos = Directory.GetFiles("../Config/HeroSkillDatas/");
             foreach (var VARIABLE in m_SkillInfos)
             {
-                this.TempDataSupporter = new NodeDataSupporter();
+                this.TempDataSupporter = new SkillNodeDataSupporter();
                 byte[] mfile = File.ReadAllBytes(VARIABLE);
                 Console.WriteLine($"所读取的英雄技能大小为:{mfile.Length}");
-                this.TempDataSupporter = BsonSerializer.Deserialize<NodeDataSupporter>(mfile);
-                this.m_AllHeroSkillDataDic.Add(this.TempDataSupporter.ID, TempDataSupporter);
+                this.TempDataSupporter = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
+                this.m_AllHeroSkillDataDic.Add(this.TempDataSupporter.SupportId, TempDataSupporter);
             }
         }
     }

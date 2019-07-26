@@ -72,6 +72,15 @@ namespace Sirenix.OdinInspector
         public InfoBoxAttribute(string value)
         {
         }
+        
+        public InfoBoxAttribute(string value,InfoMessageType infoMessageType)
+        {
+        }
+    }
+
+    public enum InfoMessageType
+    {
+        Error
     }
 
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
@@ -143,6 +152,11 @@ namespace Sirenix.OdinInspector
     
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public class DisableInEditorModeAttribute: System.Attribute
+    {
+    }
+    
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public class EnumToggleButtonsAttribute: System.Attribute
     {
     }
 }

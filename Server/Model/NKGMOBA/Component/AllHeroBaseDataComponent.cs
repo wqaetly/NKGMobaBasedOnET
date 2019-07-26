@@ -22,18 +22,13 @@ namespace ETModel
 
     public class AllHeroBaseDataComponent: Component
     {
-        public NodeDataSupporter m_AllHeroBaseDataDic;
+        public HeroDataSupportor m_AllHeroBaseDataDic;
 
         public void Awake()
         {
             Type[] types = typeof (AllHeroBaseDataComponent).Assembly.GetTypes();
             foreach (Type type in types)
             {
-                if (!type.IsSubclassOf(typeof (BaseNodeData)) && !type.IsSubclassOf(typeof (SkillBuffBase)))
-                {
-                    continue;
-                }
-
                 BsonClassMap.LookupClassMap(type);
             }
             
@@ -42,7 +37,7 @@ namespace ETModel
             
             
             Console.WriteLine($"所读取的英雄属性大小为:{mfile.Length}");
-            this.m_AllHeroBaseDataDic = BsonSerializer.Deserialize<NodeDataSupporter>(mfile);
+            this.m_AllHeroBaseDataDic = BsonSerializer.Deserialize<HeroDataSupportor>(mfile);
         }
     }
 }

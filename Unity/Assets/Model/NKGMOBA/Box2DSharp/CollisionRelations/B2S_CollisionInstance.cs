@@ -4,7 +4,7 @@
 // Data: 2019年7月25日 16:38:32
 //------------------------------------------------------------
 
-using Boo.Lang;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
 namespace ETMode

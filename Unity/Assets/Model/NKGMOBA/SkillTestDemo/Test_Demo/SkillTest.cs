@@ -27,7 +27,7 @@ public class SkillTest : MonoBehaviour
     private const string SkillBytesPath = "Assets/SkillDemo/SkillBytes/XiaoPaoSkills.bytes";
 
 
-    private NodeDataSupporter m_XiaoPaoSkills = new NodeDataSupporter();
+    private SkillNodeDataSupporter m_XiaoPaoSkills = new SkillNodeDataSupporter();
 
 
     private void Awake()
@@ -50,7 +50,7 @@ public class SkillTest : MonoBehaviour
 
         if (mfile.Length == 0) Debug.Log("没有读取到文件");
 
-        m_XiaoPaoSkills = BsonSerializer.Deserialize<NodeDataSupporter>(mfile);
+        m_XiaoPaoSkills = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
 
         /*Q.onClick.AddListener(PressQ);
         W.onClick.AddListener(PressW);

@@ -24,8 +24,11 @@ namespace ETModel
     /// 节点数据载体，用以导出读取二进制数据
     /// </summary>
     [BsonIgnoreExtraElements]
-    public class NodeDataSupporter
+    public class SkillNodeDataSupporter
     {
+        [LabelText("此数据载体ID")]
+        public int SupportId;
+        
         /// <summary>
         /// 表示一个英雄所有技能
         /// </summary>

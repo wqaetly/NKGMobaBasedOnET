@@ -37,12 +37,12 @@ namespace SkillDemo
         /// <summary>
         /// 节点数据载体，用以搜集所有本SO文件的数据
         /// </summary>
-        public NodeDataSupporter m_TestDic = new NodeDataSupporter();
+        public SkillNodeDataSupporter m_TestDic = new SkillNodeDataSupporter();
 
         /// <summary>
         /// 节点数据载体，测试用
         /// </summary>
-        public NodeDataSupporter m_DebugDic =new NodeDataSupporter();
+        public SkillNodeDataSupporter m_DebugDic =new SkillNodeDataSupporter();
 
         CostumNodeData tempData = new CostumNodeData();
 
@@ -99,7 +99,7 @@ namespace SkillDemo
 
             if (mfile.Length == 0) Debug.Log("没有读取到文件");
 
-            m_DebugDic = BsonSerializer.Deserialize<NodeDataSupporter>(mfile);
+            m_DebugDic = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
         }
     }
 }

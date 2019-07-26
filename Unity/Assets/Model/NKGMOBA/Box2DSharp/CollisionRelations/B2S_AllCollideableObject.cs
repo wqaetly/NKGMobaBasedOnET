@@ -6,7 +6,6 @@
 
 using System;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor.Drawers;
 
 namespace ETMode
 {
