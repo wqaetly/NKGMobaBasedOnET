@@ -21,10 +21,6 @@ namespace Plugins.NodeEditor
         /// </summary>
         private const string Id = "碰撞关系结点";
 
-        /// <summary>
-        /// 内部ID
-        /// 内部ID
-        /// </summary>
         public override string GetID => Id;
 
         public override Vector2 DefaultSize => new Vector2(100, 60);

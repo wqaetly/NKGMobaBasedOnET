@@ -51,17 +51,19 @@ namespace ETModel
             BoxCollider2D tempBox2D = this.mCollider2D;
             this.MB2S_BoxColliderDataStructure.hx = this.mCollider2D.bounds.size.x / 2;
             this.MB2S_BoxColliderDataStructure.hy = this.mCollider2D.bounds.size.y / 2;
+            var conversion = new Vector3(this.theObjectWillBeEdited.transform.parent.localScale.x,
+                this.theObjectWillBeEdited.transform.parent.localScale.y, this.theObjectWillBeEdited.transform.parent.localScale.z);
             MB2S_BoxColliderDataStructure.offset.Fill(this.mCollider2D.offset);
             this.points.Clear();
 
-            this.points.Add(new Vector2(-tempBox2D.bounds.size.x + tempBox2D.offset.x,
-                -tempBox2D.bounds.size.y + tempBox2D.offset.y));
-            this.points.Add(new Vector2(-tempBox2D.bounds.size.x + tempBox2D.offset.x,
-                tempBox2D.bounds.size.y + tempBox2D.offset.y));
-            this.points.Add(new Vector2(tempBox2D.bounds.size.x + tempBox2D.offset.x,
-                tempBox2D.bounds.size.y + tempBox2D.offset.y));
-            this.points.Add(new Vector2(tempBox2D.bounds.size.x + tempBox2D.offset.x,
-                -tempBox2D.bounds.size.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(-tempBox2D.bounds.size.x / 2 / conversion.x + tempBox2D.offset.x,
+                -tempBox2D.bounds.size.y / 2 / conversion.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(-tempBox2D.bounds.size.x / 2 / conversion.x + tempBox2D.offset.x,
+                tempBox2D.bounds.size.y / 2 / conversion.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(tempBox2D.bounds.size.x / 2 / conversion.x + tempBox2D.offset.x,
+                tempBox2D.bounds.size.y / 2 / conversion.y + tempBox2D.offset.y));
+            this.points.Add(new Vector2(tempBox2D.bounds.size.x / 2 / conversion.x + tempBox2D.offset.x,
+                -tempBox2D.bounds.size.y / 2 / conversion.y + tempBox2D.offset.y));
 
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);

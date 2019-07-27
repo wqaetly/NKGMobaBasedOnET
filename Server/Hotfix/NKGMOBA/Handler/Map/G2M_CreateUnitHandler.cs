@@ -25,6 +25,7 @@ namespace ETHotfix
 
             //添加同gate服务器通信基础组件，主要是赋予ID
             unit.AddComponent<UnitGateComponent, long>(request.GateSessionId);
+
             //将这个小骷髅维护在Unit组件里
             Game.Scene.GetComponent<UnitComponent>().Add(unit);
 
