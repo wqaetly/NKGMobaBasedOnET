@@ -78,10 +78,12 @@ namespace App
 						Game.Scene.AddComponent<ActorMessageSenderComponent>();
 						Game.Scene.AddComponent<ActorLocationSenderComponent>();
 						Game.Scene.AddComponent<GateSessionKeyComponent>();
+						Game.Scene.AddComponent<CoroutineLockComponent>();
 						break;
 					case AppType.Location:
 						Game.Scene.AddComponent<NetInnerComponent, string>(innerConfig.Address);
 						Game.Scene.AddComponent<LocationComponent>();
+						Game.Scene.AddComponent<CoroutineLockComponent>();
 						break;
 					case AppType.Map:
 						Game.Scene.AddComponent<NetInnerComponent, string>(innerConfig.Address);
@@ -92,6 +94,7 @@ namespace App
 						Game.Scene.AddComponent<MailboxDispatcherComponent>();
 						Game.Scene.AddComponent<ActorMessageDispatcherComponent>();
 						Game.Scene.AddComponent<PathfindingComponent>();
+						Game.Scene.AddComponent<CoroutineLockComponent>();
 						break;
 					case AppType.AllServer:
 						// 发送普通actor消息
@@ -149,6 +152,7 @@ namespace App
 
 						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
 						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
+						Game.Scene.AddComponent<CoroutineLockComponent>();
 						break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();

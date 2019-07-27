@@ -44,6 +44,7 @@ namespace ETHotfix
 
                 await Game.Scene.AddComponent<FUIInitComponent>().Init();
 
+                
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);
 
                 //至此，检查更新界面使命正式结束
