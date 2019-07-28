@@ -13,20 +13,33 @@ using UnityEngine;
 
 namespace Plugins.NodeEditor
 {
-    [Node(false, "Box2DSharp/碰撞关系图", typeof (B2S_CollisionRelationCanvas))]
+    [Node(false, "Box2DSharp/碰撞数据结点", typeof (B2S_CollisionRelationCanvas))]
     public class B2S_CollisionRelationForOneHero: Node
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "碰撞关系结点";
+        private const string Id = "碰撞数据结点";
 
         public override string GetID => Id;
 
         public override Vector2 DefaultSize => new Vector2(100, 60);
 
-        [LabelText("为这个节点设置一个标识吧！")]
-        public string Flag;
+        [ValueConnectionKnob("PrevB2S", Direction.In, "PrevB2SDatas", ConnectionCount.Multi, NodeSide.Left, 30f)]
+        [LabelText("左边的输入端")]
+        public ValueConnectionKnob PrevSkill;
+
+        [LabelText("右边的输出端")]
+        [ValueConnectionKnob("NextB2S", Direction.Out, "NextB2SDatas", ConnectionCount.Multi, NodeSide.Right, 30f)]
+        public ValueConnectionKnob NextSkill;
+
+        [LabelText("上边的输入端")]
+        [ValueConnectionKnob("PrevB2Sl", Direction.In, "PrevB2SDatas", ConnectionCount.Multi, NodeSide.Top, 50f)]
+        public ValueConnectionKnob PrevSkill1;
+
+        [LabelText("下边的输出端")]
+        [ValueConnectionKnob("NextB2S1", Direction.Out, "NextB2SDatas", ConnectionCount.Multi, NodeSide.Bottom, 50f)]
+        public ValueConnectionKnob NextSkill1;
 
         /// <summary>
         /// 碰撞关系数据
@@ -40,7 +53,7 @@ namespace Plugins.NodeEditor
 
         public override void NodeGUI()
         {
-            RTEditorGUI.TextField("标识：" + Flag);
+            RTEditorGUI.TextField("标识：" + MB2SCollisionInstance.Flag);
         }
     }
 }

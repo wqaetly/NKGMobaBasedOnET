@@ -52,6 +52,7 @@ namespace NodeEditorFramework
 
         public List<Node> nodes = new List<Node>();
 
+        [LabelText("右击Group的顶部标题即可弹出删除选项")]
         public List<NodeGroup> groups = new List<NodeGroup>();
 
         #region Constructors

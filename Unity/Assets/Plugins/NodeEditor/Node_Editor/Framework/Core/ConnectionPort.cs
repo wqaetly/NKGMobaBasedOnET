@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using NodeEditorFramework.Utilities;
+using Sirenix.OdinInspector;
 
 namespace NodeEditorFramework 
 {
@@ -12,8 +13,7 @@ namespace NodeEditorFramework
 	public enum ConnectionShape { Line, Bezier }
 	public enum ConnectionCount { Single, Multi, Max }
 
-	[System.Serializable]
-	public class ConnectionPort : ScriptableObject
+	public class ConnectionPort : SerializedScriptableObject
 	{
 		// Properties
 		public Node body;

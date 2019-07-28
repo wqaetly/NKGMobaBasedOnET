@@ -36,6 +36,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
+            
             m_TestDic.MHeroDataSupportorDic.Clear();
             foreach (var VARIABLE in nodes)
             {

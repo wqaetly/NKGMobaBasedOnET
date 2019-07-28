@@ -7,8 +7,7 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework 
 {
-	[System.Serializable]
-	public class ValueConnectionKnob : ConnectionKnob
+	public partial class ValueConnectionKnob : ConnectionKnob
 	{
 		// Connections
 		new public List<ValueConnectionKnob> connections { get { return _connections.OfType<ValueConnectionKnob> ().ToList (); } }

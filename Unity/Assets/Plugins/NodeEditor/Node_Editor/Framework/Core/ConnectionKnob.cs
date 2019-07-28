@@ -7,7 +7,6 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework 
 {
-	[System.Serializable]
 	public class ConnectionKnob : ConnectionPort
 	{
 		// Properties
