@@ -61,7 +61,7 @@ namespace ETEditor
         public ColliderDataSupporter PolygonColliderDataSupporter = new ColliderDataSupporter();
 
         [TabGroup("Test", "使用视频教程地址")]
-        public string Teach;
+        public string Teach = "https://www.bilibili.com/video/av61062760";
 
         /// <summary>
         /// 名称ID保存地址

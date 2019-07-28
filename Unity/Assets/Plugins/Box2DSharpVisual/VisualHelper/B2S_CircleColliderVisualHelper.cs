@@ -39,7 +39,7 @@ namespace ETModel
 
         [BsonIgnore]
         [LabelText("圆线段数")]
-        [TabGroup("碰撞体数据")]
+        [TabGroup("绘图相关内容")]
         public int Segments;
 
         public override void InitColliderBaseInfo()
