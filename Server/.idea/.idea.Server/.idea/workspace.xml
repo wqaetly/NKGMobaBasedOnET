@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f788b6a9-6e63-4302-bf26-4eaa873e1f77" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/App/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bin/App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Bin/App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bin/Model.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Bin/Model.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Editor/Node_Editor/LastSession.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Editor/Node_Editor/LastSession.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Node_Editor/Resources/Saves/B2S_Collision.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Node_Editor/Resources/Saves/B2S_Collision.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.dll.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.dll.bytes" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,94 +18,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionListenerComponent.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="48" column="56" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="56" />
+              <folding>
+                <marker date="1564037166996" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564037166996" expanded="false" signature="208:349" ph="..." />
+                <marker date="1564037166996" expanded="true" signature="368:3730" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="487:814" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="565:808" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="944:1086" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="1028:1080" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="1092:1157" ph="/// 某一物理世界所有碰撞的监听者，负责碰撞事件的分发 ... " />
+                <marker date="1564037166996" expanded="true" signature="1234:3728" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="1439:2188" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="1725:1838" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="1855:1971" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="2237:2735" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="2807:2827" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="2902:2922" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="2957:3534" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="3028:3524" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="3078:3510" ph="{...}" />
+                <marker date="1564037166996" expanded="true" signature="3574:3722" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-352">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+              <folding>
+                <marker date="1564040265037" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564040265037" expanded="true" signature="234:2421" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="241:295" ph="/// 碰撞响应组件，用来响应碰撞 ... " />
+                <marker date="1564040265037" expanded="true" signature="354:2419" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="369:424" ph="/// 碰撞开始事件 ... " />
+                <marker date="1564040265037" expanded="true" signature="505:560" ph="/// 碰撞结束事件 ... " />
+                <marker date="1564040265037" expanded="true" signature="642:697" ph="/// 碰撞持续事件 ... " />
+                <marker date="1564040265037" expanded="true" signature="780:887" ph="/// 碰撞开始 ... " />
+                <marker date="1564040265037" expanded="true" signature="962:1049" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="1059:1166" ph="/// 碰撞结束 ... " />
+                <marker date="1564040265037" expanded="true" signature="1242:1330" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="1340:1447" ph="/// 碰撞持续 ... " />
+                <marker date="1564040265037" expanded="true" signature="1524:1613" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="1653:2413" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="1724:1776" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="1884:1994" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="2092:2203" ph="{...}" />
+                <marker date="1564040265037" expanded="true" signature="2290:2402" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Model/Module/ActorLocation/LocationComponent.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="72" column="48" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
-              <folding>
-                <marker date="1564243677325" expanded="true" signature="52:3193" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="149:337" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="246:334" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="373:553" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="481:550" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="599:3191" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="815:1045" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="843:865" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="976:1010" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1099:1305" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1186:1301" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1345:1523" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1432:1519" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1566:1804" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1653:1799" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1873:2700" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1943:2031" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2072:2211" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2571:2696" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2772:3188" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2840:2862" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2911:3021" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/CoroutineLockComponent.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
-              <folding>
-                <marker date="1564243512809" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
-                <marker date="1564243512809" expanded="true" signature="253:3742" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="350:476" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="421:470" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="523:915" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="613:661" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="701:909" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="744:796" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="958:1716" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1134:1325" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1177:1229" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1397:1454" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1518:1579" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1605:1710" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1631:1700" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1828:1976" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1898:1970" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2032:3740" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2256:2594" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2299:2351" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2453:2517" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2653:3103" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2739:2921" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="3149:3734" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="3235:3371" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="3422:3556" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Program.cs">
+        <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="154" column="53" selection-start-line="154" selection-start-column="53" selection-end-line="154" selection-end-column="53" />
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding>
-                <marker date="1564244375614" expanded="false" signature="6:94" ph="..." />
-                <marker date="1564244375614" expanded="true" signature="109:7279" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="142:7277" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="188:7274" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="314:7219" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="837:900" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="1918:6692" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="6841:7214" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="6856:7149" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="7049:7142" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="7174:7208" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="7242:7270" ph="{...}" />
+                <marker date="1564037676668" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564037676668" expanded="true" signature="219:681" ph="{...}" />
+                <marker date="1564037676668" expanded="true" signature="316:451" ph="{...}" />
+                <marker date="1564037676668" expanded="true" signature="383:445" ph="{...}" />
+                <marker date="1564037676668" expanded="true" signature="456:527" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
+                <marker date="1564037676668" expanded="true" signature="572:679" ph="{...}" />
+                <marker date="1564037676668" expanded="true" signature="587:645" ph="/// 归属Unit的ID ... " />
               </folding>
             </state>
           </provider>
@@ -108,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/Message/InnerMessageDispatcher.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="61" column="9" lean-forward="true" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+            <state relative-caret-position="986">
+              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
               <folding>
                 <marker date="1564243875123" expanded="true" signature="34:2204" ph="{...}" />
                 <marker date="1564243875123" expanded="true" signature="93:2202" ph="{...}" />
@@ -133,7 +123,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectUnLockRequestHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="119">
               <caret line="10" column="120" selection-start-line="10" selection-start-column="120" selection-end-line="10" selection-end-column="120" />
               <folding>
                 <marker date="1564243904130" expanded="false" signature="6:28" ph="..." />
@@ -148,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectGetRequestHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+            <state relative-caret-position="221">
+              <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
               <folding>
                 <marker date="1564243941668" expanded="false" signature="6:28" ph="..." />
                 <marker date="1564243941668" expanded="true" signature="48:642" ph="{...}" />
@@ -164,7 +154,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectAddRequestHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="119">
               <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
               <folding>
                 <marker date="1564243972662" expanded="false" signature="6:28" ph="..." />
@@ -179,8 +169,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailboxDispatcherComponentSystem.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="289">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <marker date="1564244003259" expanded="false" signature="6:62" ph="..." />
                 <marker date="1564244003259" expanded="true" signature="82:2023" ph="{...}" />
@@ -206,7 +196,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailBoxComponentSystem.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
+            <state relative-caret-position="595">
               <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
               <folding>
                 <marker date="1564244029254" expanded="false" signature="6:28" ph="..." />
@@ -228,7 +218,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectRemoveRequestHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="119">
               <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
               <folding>
                 <marker date="1564243931502" expanded="false" signature="6:28" ph="..." />
@@ -631,7 +621,28 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Server.App" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Component" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -811,11 +822,12 @@
       <workItem from="1564131414381" duration="1240000" />
       <workItem from="1564148337734" duration="744000" />
       <workItem from="1564228933336" duration="9643000" />
+      <workItem from="1564375212324" duration="1866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191348000" />
+    <option name="totallyTimeSpent" value="193214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -830,14 +842,14 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18496802" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.42427617" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39257592" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39198217" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -850,7 +862,7 @@
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" weight="0.32962137" />
-      <window_info anchor="bottom" id="Build" order="15" weight="0.28458944" />
+      <window_info anchor="bottom" id="Build" order="15" weight="0.28396437" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -876,29 +888,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_WorldComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding>
-            <marker date="1563627947579" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1563627947579" expanded="false" signature="208:251" ph="..." />
-            <marker date="1563627947579" expanded="true" signature="270:1561" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="371:489" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="437:483" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="601:731" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="673:725" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="737:793" ph="/// 物理世界组件，代表一个物理世界 ... " />
-            <marker date="1563627947579" expanded="true" signature="840:1559" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="1004:1100" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="1135:1258" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="1291:1344" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="1384:1553" ph="{...}" />
-            <marker date="1563627947579" expanded="true" signature="1427:1479" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/System/B2S_FixtureUserDataFactory.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -908,50 +897,6 @@
             <marker date="1563626802570" expanded="true" signature="219:425" ph="{...}" />
             <marker date="1563626802570" expanded="true" signature="265:423" ph="{...}" />
             <marker date="1563626802570" expanded="true" signature="330:417" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-          <folding>
-            <marker date="1564037676668" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564037676668" expanded="true" signature="219:681" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="316:451" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="383:445" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="456:527" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
-            <marker date="1564037676668" expanded="true" signature="572:679" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="587:645" ph="/// 归属Unit的ID ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionListenerComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-          <folding>
-            <marker date="1564037166996" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564037166996" expanded="false" signature="208:349" ph="..." />
-            <marker date="1564037166996" expanded="true" signature="368:3730" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="487:814" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="565:808" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="944:1086" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1028:1080" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1092:1157" ph="/// 某一物理世界所有碰撞的监听者，负责碰撞事件的分发 ... " />
-            <marker date="1564037166996" expanded="true" signature="1234:3728" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1439:2188" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1725:1838" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1855:1971" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2237:2735" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2807:2827" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2902:2922" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2957:3534" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="3028:3524" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="3078:3510" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="3574:3722" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1028,13 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="50" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="50" />
-          <folding>
-            <marker date="1564100913221" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564100913221" expanded="false" signature="208:264" ph="..." />
-            <marker date="1564100913221" expanded="true" signature="282:1076" ph="{...}" />
-            <marker date="1564100913221" expanded="true" signature="289:334" ph="/// 碰撞实例 ... " />
-            <marker date="1564100913221" expanded="true" signature="373:1074" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1225,7 +1163,6 @@
           <folding>
             <marker date="1564100606321" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
             <marker date="1564100606321" expanded="false" signature="208:244" ph="..." />
-            <marker date="1564100606321" expanded="true" signature="262:1089" ph="{...}" />
             <marker date="1564100606321" expanded="true" signature="317:1087" ph="{...}" />
           </folding>
         </state>
@@ -1984,151 +1921,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/Message/InnerMessageDispatcher.cs">
+    <entry file="file://$PROJECT_DIR$/Model/Module/ActorLocation/LocationComponent.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="61" column="9" lean-forward="true" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+        <state relative-caret-position="15">
+          <caret line="72" column="91" selection-start-line="72" selection-start-column="91" selection-end-line="72" selection-end-column="91" />
           <folding>
-            <marker date="1564243875123" expanded="true" signature="34:2204" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="93:2202" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="167:626" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="217:622" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="710:1585" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="785:1581" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="881:1119" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="990:1069" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="1236:1521" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="1296:1385" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="1669:2199" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="1744:2195" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="1840:1912" ph="{...}" />
-            <marker date="1564243875123" expanded="true" signature="2029:2140" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectUnLockRequestHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="120" selection-start-line="10" selection-start-column="120" selection-end-line="10" selection-end-column="120" />
-          <folding>
-            <marker date="1564243904130" expanded="false" signature="6:28" ph="..." />
-            <marker date="1564243904130" expanded="true" signature="48:485" ph="{...}" />
-            <marker date="1564243904130" expanded="true" signature="185:483" ph="{...}" />
-            <marker date="1564243904130" expanded="true" signature="317:480" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectRemoveRequestHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
-          <folding>
-            <marker date="1564243931502" expanded="false" signature="6:28" ph="..." />
-            <marker date="1564243931502" expanded="true" signature="48:448" ph="{...}" />
-            <marker date="1564243931502" expanded="true" signature="185:446" ph="{...}" />
-            <marker date="1564243931502" expanded="true" signature="317:443" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectGetRequestHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding>
-            <marker date="1564243941668" expanded="false" signature="6:28" ph="..." />
-            <marker date="1564243941668" expanded="true" signature="48:642" ph="{...}" />
-            <marker date="1564243941668" expanded="true" signature="181:640" ph="{...}" />
-            <marker date="1564243941668" expanded="true" signature="316:634" ph="{...}" />
-            <marker date="1564243941668" expanded="true" signature="458:556" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectAddRequestHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
-          <folding>
-            <marker date="1564243972662" expanded="false" signature="6:28" ph="..." />
-            <marker date="1564243972662" expanded="true" signature="48:419" ph="{...}" />
-            <marker date="1564243972662" expanded="true" signature="176:417" ph="{...}" />
-            <marker date="1564243972662" expanded="true" signature="302:414" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailboxDispatcherComponentSystem.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <marker date="1564244003259" expanded="false" signature="6:62" ph="..." />
-            <marker date="1564244003259" expanded="true" signature="82:2023" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="193:286" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="258:283" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="394:485" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="458:482" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="540:2021" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="608:632" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="697:1592" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="923:1588" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="1042:1069" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="1211:1238" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="1384:1498" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="1596:1650" ph="/// 根据mailbox类型做不同的处理 ... " />
-            <marker date="1564244003259" expanded="true" signature="1795:2018" ph="{...}" />
-            <marker date="1564244003259" expanded="true" signature="1927:2014" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailBoxComponentSystem.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-          <folding>
-            <marker date="1564244029254" expanded="false" signature="6:28" ph="..." />
-            <marker date="1564244029254" expanded="true" signature="48:1236" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="140:259" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="195:256" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="359:480" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="434:477" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="483:554" ph="/// 挂上这个组件表示该Entity是一个Actor, 接收的消息将会队列处理 ... " />
-            <marker date="1564244029254" expanded="true" signature="598:1234" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="670:782" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="855:946" ph="{...}" />
-            <marker date="1564244029254" expanded="true" signature="1041:1231" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Program.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="154" column="53" selection-start-line="154" selection-start-column="53" selection-end-line="154" selection-end-column="53" />
-          <folding>
-            <marker date="1564244375614" expanded="false" signature="6:94" ph="..." />
-            <marker date="1564244375614" expanded="true" signature="109:7279" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="142:7277" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="188:7274" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="314:7219" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="837:900" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="1918:6692" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="6841:7214" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="6856:7149" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="7049:7142" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="7174:7208" ph="{...}" />
-            <marker date="1564244375614" expanded="true" signature="7242:7270" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="52:3193" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="149:337" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="246:334" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="373:553" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="481:550" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="599:3191" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="815:1045" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="843:865" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="976:1010" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1099:1305" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1186:1301" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1345:1523" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1432:1519" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1566:1804" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1653:1799" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1873:2700" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="1943:2031" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="2072:2211" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="2571:2696" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="2772:3188" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="2840:2862" ph="{...}" />
+            <marker date="1564243677325" expanded="true" signature="2911:3021" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/CoroutineLockComponent.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="1207">
           <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
           <folding>
             <marker date="1564243512809" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
@@ -2161,33 +1987,215 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Module/ActorLocation/LocationComponent.cs">
+    <entry file="file://$PROJECT_DIR$/App/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="72" column="48" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+        <state relative-caret-position="2516">
+          <caret line="154" column="53" selection-start-line="154" selection-start-column="53" selection-end-line="154" selection-end-column="53" />
           <folding>
-            <marker date="1564243677325" expanded="true" signature="52:3193" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="149:337" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="246:334" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="373:553" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="481:550" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="599:3191" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="815:1045" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="843:865" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="976:1010" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1099:1305" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1186:1301" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1345:1523" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1432:1519" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1566:1804" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1653:1799" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1873:2700" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="1943:2031" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="2072:2211" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="2571:2696" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="2772:3188" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="2840:2862" ph="{...}" />
-            <marker date="1564243677325" expanded="true" signature="2911:3021" ph="{...}" />
+            <marker date="1564244375614" expanded="false" signature="6:94" ph="..." />
+            <marker date="1564244375614" expanded="true" signature="109:7279" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="142:7277" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="188:7274" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="314:7219" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="837:900" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="1918:6692" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="6841:7214" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="6856:7149" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="7049:7142" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="7174:7208" ph="{...}" />
+            <marker date="1564244375614" expanded="true" signature="7242:7270" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/Message/InnerMessageDispatcher.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+          <folding>
+            <marker date="1564243875123" expanded="true" signature="34:2204" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="93:2202" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="167:626" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="217:622" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="710:1585" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="785:1581" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="881:1119" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="990:1069" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="1236:1521" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="1296:1385" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="1669:2199" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="1744:2195" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="1840:1912" ph="{...}" />
+            <marker date="1564243875123" expanded="true" signature="2029:2140" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectUnLockRequestHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="120" selection-start-line="10" selection-start-column="120" selection-end-line="10" selection-end-column="120" />
+          <folding>
+            <marker date="1564243904130" expanded="false" signature="6:28" ph="..." />
+            <marker date="1564243904130" expanded="true" signature="48:485" ph="{...}" />
+            <marker date="1564243904130" expanded="true" signature="185:483" ph="{...}" />
+            <marker date="1564243904130" expanded="true" signature="317:480" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectGetRequestHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <marker date="1564243941668" expanded="false" signature="6:28" ph="..." />
+            <marker date="1564243941668" expanded="true" signature="48:642" ph="{...}" />
+            <marker date="1564243941668" expanded="true" signature="181:640" ph="{...}" />
+            <marker date="1564243941668" expanded="true" signature="316:634" ph="{...}" />
+            <marker date="1564243941668" expanded="true" signature="458:556" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectAddRequestHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
+          <folding>
+            <marker date="1564243972662" expanded="false" signature="6:28" ph="..." />
+            <marker date="1564243972662" expanded="true" signature="48:419" ph="{...}" />
+            <marker date="1564243972662" expanded="true" signature="176:417" ph="{...}" />
+            <marker date="1564243972662" expanded="true" signature="302:414" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailboxDispatcherComponentSystem.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <marker date="1564244003259" expanded="false" signature="6:62" ph="..." />
+            <marker date="1564244003259" expanded="true" signature="82:2023" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="193:286" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="258:283" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="394:485" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="458:482" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="540:2021" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="608:632" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="697:1592" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="923:1588" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="1042:1069" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="1211:1238" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="1384:1498" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="1596:1650" ph="/// 根据mailbox类型做不同的处理 ... " />
+            <marker date="1564244003259" expanded="true" signature="1795:2018" ph="{...}" />
+            <marker date="1564244003259" expanded="true" signature="1927:2014" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailBoxComponentSystem.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+          <folding>
+            <marker date="1564244029254" expanded="false" signature="6:28" ph="..." />
+            <marker date="1564244029254" expanded="true" signature="48:1236" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="140:259" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="195:256" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="359:480" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="434:477" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="483:554" ph="/// 挂上这个组件表示该Entity是一个Actor, 接收的消息将会队列处理 ... " />
+            <marker date="1564244029254" expanded="true" signature="598:1234" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="670:782" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="855:946" ph="{...}" />
+            <marker date="1564244029254" expanded="true" signature="1041:1231" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectRemoveRequestHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
+          <folding>
+            <marker date="1564243931502" expanded="false" signature="6:28" ph="..." />
+            <marker date="1564243931502" expanded="true" signature="48:448" ph="{...}" />
+            <marker date="1564243931502" expanded="true" signature="185:446" ph="{...}" />
+            <marker date="1564243931502" expanded="true" signature="317:443" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-352">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <marker date="1564040265037" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564040265037" expanded="true" signature="234:2421" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="241:295" ph="/// 碰撞响应组件，用来响应碰撞 ... " />
+            <marker date="1564040265037" expanded="true" signature="354:2419" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="369:424" ph="/// 碰撞开始事件 ... " />
+            <marker date="1564040265037" expanded="true" signature="505:560" ph="/// 碰撞结束事件 ... " />
+            <marker date="1564040265037" expanded="true" signature="642:697" ph="/// 碰撞持续事件 ... " />
+            <marker date="1564040265037" expanded="true" signature="780:887" ph="/// 碰撞开始 ... " />
+            <marker date="1564040265037" expanded="true" signature="962:1049" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="1059:1166" ph="/// 碰撞结束 ... " />
+            <marker date="1564040265037" expanded="true" signature="1242:1330" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="1340:1447" ph="/// 碰撞持续 ... " />
+            <marker date="1564040265037" expanded="true" signature="1524:1613" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="1653:2413" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="1724:1776" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="1884:1994" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="2092:2203" ph="{...}" />
+            <marker date="1564040265037" expanded="true" signature="2290:2402" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionListenerComponent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="48" column="56" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="56" />
+          <folding>
+            <marker date="1564037166996" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564037166996" expanded="false" signature="208:349" ph="..." />
+            <marker date="1564037166996" expanded="true" signature="368:3730" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="487:814" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="565:808" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="944:1086" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1028:1080" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1092:1157" ph="/// 某一物理世界所有碰撞的监听者，负责碰撞事件的分发 ... " />
+            <marker date="1564037166996" expanded="true" signature="1234:3728" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1439:2188" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1725:1838" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1855:1971" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2237:2735" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2807:2827" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2902:2922" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2957:3534" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="3028:3524" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="3078:3510" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="3574:3722" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <marker date="1564037676668" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564037676668" expanded="true" signature="219:681" ph="{...}" />
+            <marker date="1564037676668" expanded="true" signature="316:451" ph="{...}" />
+            <marker date="1564037676668" expanded="true" signature="383:445" ph="{...}" />
+            <marker date="1564037676668" expanded="true" signature="456:527" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
+            <marker date="1564037676668" expanded="true" signature="572:679" ph="{...}" />
+            <marker date="1564037676668" expanded="true" signature="587:645" ph="/// 归属Unit的ID ... " />
           </folding>
         </state>
       </provider>

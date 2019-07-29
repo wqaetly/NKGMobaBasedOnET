@@ -23,7 +23,7 @@ namespace Plugins.NodeEditor
 
         public override string GetID => Id;
 
-        public override Vector2 DefaultSize => new Vector2(100, 60);
+        public override Vector2 DefaultSize => new Vector2(150, 60);
 
         [ValueConnectionKnob("PrevB2S", Direction.In, "PrevB2SDatas", ConnectionCount.Multi, NodeSide.Left, 30f)]
         [LabelText("左边的输入端")]
@@ -34,11 +34,11 @@ namespace Plugins.NodeEditor
         public ValueConnectionKnob NextSkill;
 
         [LabelText("上边的输入端")]
-        [ValueConnectionKnob("PrevB2Sl", Direction.In, "PrevB2SDatas", ConnectionCount.Multi, NodeSide.Top, 50f)]
+        [ValueConnectionKnob("PrevB2Sl", Direction.In, "PrevB2SDatas", ConnectionCount.Multi, NodeSide.Top, 75f)]
         public ValueConnectionKnob PrevSkill1;
 
         [LabelText("下边的输出端")]
-        [ValueConnectionKnob("NextB2S1", Direction.Out, "NextB2SDatas", ConnectionCount.Multi, NodeSide.Bottom, 50f)]
+        [ValueConnectionKnob("NextB2S1", Direction.Out, "NextB2SDatas", ConnectionCount.Multi, NodeSide.Bottom, 75f)]
         public ValueConnectionKnob NextSkill1;
 
         /// <summary>

@@ -29,6 +29,6 @@ namespace Plugins.NodeEditor
 
         public override Type Type => typeof (B2S_CollisionInstance);
 
-        public override Color Color => Color.magenta;
+        public override Color Color => Color.cyan;
     }
 }
