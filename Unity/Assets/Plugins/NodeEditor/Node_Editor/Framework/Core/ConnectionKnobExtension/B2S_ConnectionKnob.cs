@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using ETHotfix.FUILogin;
 using ETMode;
 using ETModel;
 using Sirenix.OdinInspector;
@@ -15,31 +16,37 @@ namespace NodeEditorFramework
     {
         public string Flag;
 
+        private string ConnectedFlag;
+
         public ValueConnectionKnob connectionInfo;
 
         [Button("移除这条连接"), GUIColor(0.4f, 0.8f, 1)]
         public void RemoveTheConnection()
         {
-            int theIndexWillBeRemove_theNodeValue = -1;
             int theIndexWillBeRemove_theConnectedValue = -1;
-            for (int i = 0; i < connectionInfo.connections.Count; i++)
+
+            for (int j = 0; j < connectionInfo.connections.Count; j++)
             {
-                for (int j = 0; j < connectionInfo.connections[i].connections.Count; j++)
+                if (connectionInfo.connections[j].body.B2SCollisionRelation_GetNodeData().Flag == this.ConnectedFlag)
                 {
-                    if (connectionInfo.connections[i].connections[j].body.B2SCollisionRelation_GetNodeData().Flag == this.Flag)
-                    {
-                        theIndexWillBeRemove_theNodeValue = i;
-                        theIndexWillBeRemove_theConnectedValue = j;
-                        Log.Info("成功移除");
-                        break;
-                    }
+                    theIndexWillBeRemove_theConnectedValue = j;
+                    break;
                 }
 
                 if (theIndexWillBeRemove_theConnectedValue != -1) break;
             }
 
-            this.connectionInfo.connections[theIndexWillBeRemove_theNodeValue].RemoveConnection(this.connectionInfo
-                    .connections[theIndexWillBeRemove_theNodeValue].connections[theIndexWillBeRemove_theConnectedValue]);
+            if (theIndexWillBeRemove_theConnectedValue == -1)
+            {
+                Log.Error("删除失败，请检查问题");
+            }
+            else
+            {
+                this.connectionInfo
+                        .connections[theIndexWillBeRemove_theConnectedValue].Remove(this);
+                this.connectionInfo.RemoveConnection(this.connectionInfo
+                        .connections[theIndexWillBeRemove_theConnectedValue]);
+            }
         }
 
         public void SetconnectionInfo(ValueConnectionKnob valueConnectionKnob)
@@ -47,9 +54,10 @@ namespace NodeEditorFramework
             this.connectionInfo = valueConnectionKnob;
         }
 
-        public InfoWithDeleteBtn(string flag)
+        public InfoWithDeleteBtn(string flag, string ConnectedFlag)
         {
             this.Flag = flag;
+            this.ConnectedFlag = ConnectedFlag;
         }
     }
 
@@ -59,14 +67,21 @@ namespace NodeEditorFramework
         public List<InfoWithDeleteBtn> b2sInfo = new List<InfoWithDeleteBtn>();
 
         [Button("尝试自动读取所连接结点信息", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void AddAllNodeData()
+        public void TryToAutoReadAllConnectedNode()
         {
             b2sInfo.Clear();
-            foreach (var VARIABLE in this.connections)
+            for (int i = 0; i < connections.Count; i++)
             {
-                this.b2sInfo.Add(new InfoWithDeleteBtn(VARIABLE.body.B2SCollisionRelation_GetNodeData().Flag));
-                this.b2sInfo[this.b2sInfo.Count - 1].SetconnectionInfo(VARIABLE);
+                Log.Info(b2sInfo.Count.ToString());
+                this.b2sInfo.Add(new InfoWithDeleteBtn(this.connections[i].body.B2SCollisionRelation_GetNodeData().Flag,
+                    this.body.B2SCollisionRelation_GetNodeData().Flag));
+                this.b2sInfo[i].SetconnectionInfo(connections[i]);
             }
+        }
+
+        public void Remove(InfoWithDeleteBtn infoWithDeleteBtn)
+        {
+            b2sInfo.Remove(infoWithDeleteBtn);
         }
     }
 }
