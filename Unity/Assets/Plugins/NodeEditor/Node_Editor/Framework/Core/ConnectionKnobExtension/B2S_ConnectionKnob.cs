@@ -72,7 +72,6 @@ namespace NodeEditorFramework
             b2sInfo.Clear();
             for (int i = 0; i < connections.Count; i++)
             {
-                Log.Info(b2sInfo.Count.ToString());
                 this.b2sInfo.Add(new InfoWithDeleteBtn(this.connections[i].body.B2SCollisionRelation_GetNodeData().Flag,
                     this.body.B2SCollisionRelation_GetNodeData().Flag));
                 this.b2sInfo[i].SetconnectionInfo(connections[i]);

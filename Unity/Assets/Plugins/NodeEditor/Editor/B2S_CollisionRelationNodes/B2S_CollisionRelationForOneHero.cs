@@ -4,6 +4,7 @@
 // Data: 2019年7月25日 16:52:27
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using B2S_CollisionRelation;
 using ETMode;
 using NodeEditorFramework;
@@ -49,6 +50,32 @@ namespace Plugins.NodeEditor
         public override B2S_CollisionInstance B2SCollisionRelation_GetNodeData()
         {
             return this.MB2SCollisionInstance;
+        }
+
+        [Button("自动配置此Node数据", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void AutoSetCollisionRelations()
+        {
+            if (this.NextSkill.connections.Count > 0)
+                foreach (var VARIABLE in this.NextSkill.connections)
+                {
+                    if (this.MB2SCollisionInstance.CollisionRelations == null)
+                    {
+                        this.MB2SCollisionInstance.CollisionRelations = new List<long>();
+                    }
+
+                    this.MB2SCollisionInstance.CollisionRelations.Add(VARIABLE.body.B2SCollisionRelation_GetNodeData().nodeDataId);
+                }
+
+            if (this.NextSkill1.connections.Count > 0)
+                foreach (var VARIABLE in this.NextSkill1.connections)
+                {
+                    if (this.MB2SCollisionInstance.CollisionRelations == null)
+                    {
+                        this.MB2SCollisionInstance.CollisionRelations = new List<long>();
+                    }
+
+                    this.MB2SCollisionInstance.CollisionRelations.Add(VARIABLE.body.B2SCollisionRelation_GetNodeData().nodeDataId);
+                }
         }
 
         public override void NodeGUI()

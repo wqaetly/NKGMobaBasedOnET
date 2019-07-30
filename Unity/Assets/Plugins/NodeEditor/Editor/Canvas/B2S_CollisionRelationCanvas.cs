@@ -9,6 +9,7 @@ using ETMode;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NodeEditorFramework;
+using Plugins.NodeEditor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -31,6 +32,15 @@ namespace B2S_CollisionRelation
         /// 节点数据载体，用以搜集所有本SO文件的数据
         /// </summary>
         public B2S_CollisionsRelationSupport m_TestDic = new B2S_CollisionsRelationSupport();
+
+        [Button("自动配置所有Node数据", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void AutoSetNodeData()
+        {
+            foreach (var VARIABLE in nodes)
+            {
+                 ((B2S_CollisionRelationForOneHero)VARIABLE).AutoSetCollisionRelations();
+            }
+        }
         
         [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()

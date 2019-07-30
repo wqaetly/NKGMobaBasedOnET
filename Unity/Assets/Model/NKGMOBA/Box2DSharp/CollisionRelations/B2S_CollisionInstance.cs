@@ -15,24 +15,27 @@ namespace ETMode
     /// </summary>
     public class B2S_CollisionInstance
     {
-        [Title("为这个节点设置一个标识吧！")]
+        [LabelText("此结点标识")]
         [BsonIgnore]
         public string Flag;
 
-        [InfoBox("在这里需要细分敌我", InfoMessageType.Error)]
-        [InfoBox(
-            "FriendSoldier:己方小兵\nEnemySoldier:敌方小兵\nSelf:自己\nTeammate:队友\nEnemyHeros:敌方英雄\nMonsters:中立生物\nBuildings:建筑物\nBarrier:地形\nOtherHeroCreateCollision:其他英雄的技能所创造的碰撞体")]
-        [LabelText("此碰撞体类型")]
+        [LabelText("此结点ID")]
+        public long nodeDataId;
+
+        [LabelText("此结点所使用的碰撞体ID")]
+        public long collisionId;
+
+        [InfoBox("此设置在碰撞事件分发那作为大分类依据")]
+        [LabelText("此结点归属Group")]
+        public string BelongGroup;
+
+        [InfoBox("此设置在碰撞事件分发那作为小分类依据")]
+        [LabelText("此结点类型")]
         [EnumToggleButtons]
         public B2S_AllCollideableObject MB2SAllCollideableObject;
 
-        [Title("此碰撞体ID,需要打开Box2D可视化编辑器查看")]
-        [HideLabel]
-        public long collisionId;
-
-        [InfoBox("为了应对特殊情况，比如杰斯强化Q，亚索风墙，输入碰撞体ID即可\n(需要勾选“可碰撞对象中的”OtherHeroCreateCollision)")]
-        [LabelText("可碰撞对象拓展")]
-        [EnumToggleButtons]
-        public List<long> extensionCollisionRelation = new List<long>();
+        [LabelText("与此结点有碰撞关系的结点ID")]
+        [DisableInEditorMode]
+        public List<long> CollisionRelations = new List<long>();
     }
 }

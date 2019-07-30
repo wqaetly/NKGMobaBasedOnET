@@ -17,9 +17,9 @@ namespace ETMode
 
         [LabelText("敌方小兵")]
         EnemySoldier = 1 << 2,
-        
+
         [LabelText("小兵")]
-        Soldier = FirendSoldier|EnemySoldier,
+        Soldier = FirendSoldier | EnemySoldier,
 
         [LabelText("自己")]
         Self = 1 << 3,
@@ -29,22 +29,28 @@ namespace ETMode
 
         [LabelText("敌人（英雄）")]
         EnemyHeros = 1 << 5,
-        
+
         [LabelText("英雄")]
-        Hero = Self|Teammate|EnemyHeros,
+        Hero = Self | Teammate | EnemyHeros,
 
         [LabelText("野怪（中立生物）")]
         Monsters = 1 << 6,
-        
+
+        [LabelText("友方建筑")]
+        FriendBuildings = 1 << 7,
+
+        [LabelText("敌方建筑")]
+        EnemyBuildings = 1 << 9,
+
         [LabelText("建筑")]
-        Buildings = 1 << 7,
-        
+        Buildings = FriendBuildings | EnemyBuildings,
+
         [LabelText("地形")]
         Barrier = 1 << 8,
-        
+
         [LabelText("其他英雄的技能所创造的碰撞体")]
-        OtherHeroCreateCollision = 1 << 9,
-                
+        OtherHeroCreateCollision = 1 << 15,
+
         //TODO:新增碰撞类型
     }
 }
