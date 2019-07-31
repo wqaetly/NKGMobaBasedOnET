@@ -28,18 +28,15 @@ namespace ETModel
 
         [InlineEditor]
         [Required("需要至少一个Unity2D圆形碰撞器")]
-        [TabGroup("绘图相关内容")]
         [HideLabel]
         [BsonIgnore]
         public CircleCollider2D mCollider2D;
 
         [LabelText("圆形碰撞体数据")]
-        [TabGroup("碰撞体数据")]
         public B2S_CircleColliderDataStructure MB2S_CircleColliderDataStructure = new B2S_CircleColliderDataStructure();
 
         [BsonIgnore]
         [LabelText("圆线段数")]
-        [TabGroup("绘图相关内容")]
         public int Segments;
 
         public override void InitColliderBaseInfo()
@@ -108,8 +105,10 @@ namespace ETModel
             {
                 if (!this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_CircleColliderDataStructure.id))
                 {
+                    B2S_CircleColliderDataStructure b2SCircleColliderDataStructure = new B2S_CircleColliderDataStructure();
+                    b2SCircleColliderDataStructure.radius = MB2S_CircleColliderDataStructure.radius;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_CircleColliderDataStructure.id,
-                        this.MB2S_CircleColliderDataStructure);
+                        b2SCircleColliderDataStructure);
                 }
                 else
                 {
@@ -123,6 +122,7 @@ namespace ETModel
                 }
             }
         }
+
         [Button("清除所有圆形碰撞体信息", 25), GUIColor(1.0f, 20 / 255f, 147 / 255f)]
         public override void DeleteAllcolliderData()
         {
@@ -169,14 +169,17 @@ namespace ETModel
 
         public override void OnUpdate()
         {
+            if (CachedGameObject != theObjectWillBeEdited)
+            {
+                if (theObjectWillBeEdited != null)
+                    CachedGameObject = theObjectWillBeEdited;
+                this.ResetData();
+                return;
+            }
+
             if (theObjectWillBeEdited == null)
             {
-                mCollider2D = null;
-                this.canDraw = false;
-                this.MB2S_CircleColliderDataStructure.id = 0;
-                this.MB2S_CircleColliderDataStructure.radius = 0;
-                MB2S_CircleColliderDataStructure.offset.Clean();
-                this.MB2S_CircleColliderDataStructure.isSensor = false;
+                this.ResetData();
                 return;
             }
 
@@ -203,6 +206,16 @@ namespace ETModel
                     this.canDraw = false;
                 }
             }
+        }
+
+        private void ResetData()
+        {
+            mCollider2D = null;
+            this.canDraw = false;
+            this.MB2S_CircleColliderDataStructure.id = 0;
+            this.MB2S_CircleColliderDataStructure.radius = 0;
+            MB2S_CircleColliderDataStructure.offset.Clean();
+            this.MB2S_CircleColliderDataStructure.isSensor = false;
         }
 
         public B2S_CircleColliderVisualHelper(ColliderNameAndIdInflectSupporter colliderNameAndIdInflectSupporter,

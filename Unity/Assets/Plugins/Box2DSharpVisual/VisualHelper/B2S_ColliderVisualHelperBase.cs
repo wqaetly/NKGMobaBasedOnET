@@ -19,13 +19,18 @@ namespace ETModel
         [BsonIgnore]
         public GameObject theObjectWillBeEdited;
 
+        /// <summary>
+        /// 缓存的游戏对象，用于对比更新
+        /// </summary>
+        [HideInEditorMode]
+        public GameObject CachedGameObject;
+
         [BsonIgnore]
         [HideInEditorMode]
         public Matrix4x4 matrix4X4;
 
         [ColorPalette]
         [Title("绘制线条颜色")]
-        [TabGroup("绘图相关内容")]
         [HideLabel]
         [BsonIgnore]
         public Color mDrawColor = Color.red;
@@ -37,7 +42,7 @@ namespace ETModel
         [DisableInEditorMode]
         [LabelText("映射文件保存路径")]
         public string NameAndIdInflectSavePath = "Assets/Res/EditorExtensionInfoSave/";
-        
+
         [DisableInEditorMode]
         [LabelText("碰撞数据文件保存路径")]
         public string ColliderDataSavePath = "../Config/ColliderDatas/";
@@ -48,13 +53,13 @@ namespace ETModel
         [HideInEditorMode]
         public ColliderDataSupporter MColliderDataSupporter;
 
-
-        public B2S_ColliderVisualHelperBase(ColliderNameAndIdInflectSupporter colliderNameAndIdInflectSupporter,ColliderDataSupporter colliderDataSupporter)
+        public B2S_ColliderVisualHelperBase(ColliderNameAndIdInflectSupporter colliderNameAndIdInflectSupporter,
+        ColliderDataSupporter colliderDataSupporter)
         {
             this.MColliderNameAndIdInflectSupporter = colliderNameAndIdInflectSupporter;
             this.MColliderDataSupporter = colliderDataSupporter;
         }
-        
+
         /// <summary>
         /// 设置碰撞体基础信息
         /// </summary>
@@ -92,7 +97,7 @@ namespace ETModel
         /// 删除此碰撞体相关所有信息
         /// </summary>
         public abstract void DeletecolliderData();
-        
+
         /// <summary>
         /// 删除此类型碰撞体相关所有信息
         /// </summary>

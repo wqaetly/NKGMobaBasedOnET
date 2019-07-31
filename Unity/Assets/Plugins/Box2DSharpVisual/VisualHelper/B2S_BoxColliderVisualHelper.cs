@@ -31,11 +31,9 @@ namespace ETModel
         [InlineEditor]
         [Required("需要至少一个Unity2D矩形碰撞器")]
         [BsonIgnore]
-        [TabGroup("绘图相关内容")]
         public BoxCollider2D mCollider2D;
 
         [LabelText("矩形碰撞体数据")]
-        [TabGroup("碰撞体数据")]
         public B2S_BoxColliderDataStructure MB2S_BoxColliderDataStructure = new B2S_BoxColliderDataStructure();
 
         private List<Vector2> points = new List<Vector2>();
@@ -119,8 +117,11 @@ namespace ETModel
             {
                 if (!this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_BoxColliderDataStructure.id))
                 {
+                    B2S_BoxColliderDataStructure b2SBoxColliderDataStructure = new B2S_BoxColliderDataStructure();
+                    b2SBoxColliderDataStructure.hx = MB2S_BoxColliderDataStructure.hx;
+                    b2SBoxColliderDataStructure.hy = this.MB2S_BoxColliderDataStructure.hy;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_BoxColliderDataStructure.id,
-                        this.MB2S_BoxColliderDataStructure);
+                        b2SBoxColliderDataStructure);
                 }
                 else
                 {
@@ -181,30 +182,18 @@ namespace ETModel
 
         public override void OnUpdate()
         {
-            if (theObjectWillBeEdited == null)
+            if (CachedGameObject != theObjectWillBeEdited)
             {
-                mCollider2D = null;
-                this.canDraw = false;
-                this.MB2S_BoxColliderDataStructure.id = 0;
-                this.points.Clear();
-                this.MB2S_BoxColliderDataStructure.isSensor = false;
-                MB2S_BoxColliderDataStructure.offset.Clean();
+                if (theObjectWillBeEdited != null)
+                    CachedGameObject = theObjectWillBeEdited;
+                ResetData();
                 return;
             }
-
-            if (this.MB2S_BoxColliderDataStructure.id == 0)
+            
+            if (theObjectWillBeEdited == null)
             {
-                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.TryGetValue(this.theObjectWillBeEdited.transform.parent.name,
-                    out this.MB2S_BoxColliderDataStructure.id))
-                {
-                    Debug.Log($"自动设置矩形碰撞体ID成功，ID为{MB2S_BoxColliderDataStructure.id}");
-                }
-
-                if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_BoxColliderDataStructure.id))
-                {
-                    this.MB2S_BoxColliderDataStructure =
-                            (B2S_BoxColliderDataStructure) this.MColliderDataSupporter.colliderDataDic[this.MB2S_BoxColliderDataStructure.id];
-                }
+                ResetData();
+                return;
             }
 
             if (mCollider2D == null)
@@ -215,8 +204,30 @@ namespace ETModel
                     this.canDraw = false;
                 }
             }
+            
+            if (this.MB2S_BoxColliderDataStructure.id == 0)
+            {
+                this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.TryGetValue(this.theObjectWillBeEdited.transform.parent.name,
+                    out this.MB2S_BoxColliderDataStructure.id);
+                if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_BoxColliderDataStructure.id))
+                {
+                    this.MB2S_BoxColliderDataStructure =
+                            (B2S_BoxColliderDataStructure) this.MColliderDataSupporter.colliderDataDic[this.MB2S_BoxColliderDataStructure.id];
+                }
+            }
         }
 
+        private void ResetData()
+        {
+            mCollider2D = null;
+            this.canDraw = false;
+            this.MB2S_BoxColliderDataStructure.id = 0;
+            this.points.Clear();
+            this.MB2S_BoxColliderDataStructure.isSensor = false;
+            MB2S_BoxColliderDataStructure.offset.Clean();
+        }
+        
+        
         public B2S_BoxColliderVisualHelper(ColliderNameAndIdInflectSupporter colliderNameAndIdInflectSupporter,
         ColliderDataSupporter colliderDataSupporter): base(colliderNameAndIdInflectSupporter, colliderDataSupporter)
         {

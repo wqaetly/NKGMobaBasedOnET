@@ -30,18 +30,14 @@ namespace ETModel
         public string ColliderDataFileName = "PolygonColliderData";
 
         [LabelText("请设置每个多边形最大顶点数")]
-        [TabGroup("绘图相关内容")]
         [Range(3, 8)]
         public int MaxPointLimit;
 
         [InlineEditor]
         [Required("需要至少一个Unity2D多边形碰撞器")]
-        [TabGroup("绘图相关内容")]
         [HideLabel]
-        [BsonIgnore]
         public PolygonCollider2D mCollider2D;
 
-        [TabGroup("碰撞体数据")]
         public B2S_PolygonColliderDataStructure MB2S_PolygonColliderDataStructure = new B2S_PolygonColliderDataStructure();
 
         public override void InitColliderBaseInfo()
@@ -52,8 +48,6 @@ namespace ETModel
         [Button("重新绘制多边形碰撞体", 25), GUIColor(0.2f, 0.9f, 1.0f)]
         public override void InitPointInfo()
         {
-            this.MB2S_PolygonColliderDataStructure.points.Clear();
-
             CheckPolygon();
 
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
@@ -111,6 +105,8 @@ namespace ETModel
         public void CheckPolygon()
         {
             MB2S_PolygonColliderDataStructure.pointCount = 0;
+            this.MB2S_PolygonColliderDataStructure.points.Clear();
+
             //对多边形进行分割操作
             List<Vector2> tempPoints = new List<Vector2>();
             //必须进行放缩操作，不然在很近的时候运算误差会导致出错
@@ -132,14 +128,11 @@ namespace ETModel
 
             List<List<Vector2>> FinalPolygons = Separator.SplitPolygonUntilLessX(this.MaxPointLimit, tempFinalPolygons);
 
-            int x = 0;
             for (int i = 0; i < FinalPolygons.Count; i++)
             {
                 this.MB2S_PolygonColliderDataStructure.points.Add(new List<CostumVector2>());
-                Debug.Log($"第{x++}个多边形：");
                 for (int j = 0; j < FinalPolygons[i].Count; j++)
                 {
-                    MB2S_PolygonColliderDataStructure.pointCount++;
                     this.MB2S_PolygonColliderDataStructure.points[i].Add(new CostumVector2(FinalPolygons[i][j].X, FinalPolygons[i][j].Y));
                 }
             }
@@ -152,8 +145,20 @@ namespace ETModel
             {
                 if (!this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_PolygonColliderDataStructure.id))
                 {
+                    B2S_PolygonColliderDataStructure temp = new B2S_PolygonColliderDataStructure();
+                    for (int i = 0; i < this.MB2S_PolygonColliderDataStructure.points.Count; i++)
+                    {
+                        temp.points.Add(new List<CostumVector2>());
+                        for (int j = 0; j < this.MB2S_PolygonColliderDataStructure.points[i].Count; j++)
+                        {
+                            CostumVector2 costumVector2 = new CostumVector2(this.MB2S_PolygonColliderDataStructure.points[i][j].x,
+                                this.MB2S_PolygonColliderDataStructure.points[i][j].y);
+                            temp.points[i].Add(costumVector2);
+                        }
+                    }
+                    temp.pointCount = this.MB2S_PolygonColliderDataStructure.pointCount;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_PolygonColliderDataStructure.id,
-                        this.MB2S_PolygonColliderDataStructure);
+                        temp);
                 }
                 else
                 {
@@ -214,31 +219,19 @@ namespace ETModel
 
         public override void OnUpdate()
         {
-            if (theObjectWillBeEdited == null)
+            if (CachedGameObject != theObjectWillBeEdited)
             {
-                mCollider2D = null;
-                this.canDraw = false;
-                this.MB2S_PolygonColliderDataStructure.id = 0;
-                this.MB2S_PolygonColliderDataStructure.points.Clear();
-                this.MB2S_PolygonColliderDataStructure.pointCount = 0;
-                this.MB2S_PolygonColliderDataStructure.isSensor = false;
-                this.MB2S_PolygonColliderDataStructure.offset.Clean();
+                if (theObjectWillBeEdited != null)
+                    CachedGameObject = theObjectWillBeEdited;
+                ResetData();
                 return;
             }
 
-            if (this.MB2S_PolygonColliderDataStructure.id == 0)
+            if (theObjectWillBeEdited == null)
             {
-                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.TryGetValue(this.theObjectWillBeEdited.transform.parent.name,
-                    out this.MB2S_PolygonColliderDataStructure.id))
-                {
-                    Debug.Log($"自动设置圆形碰撞体ID成功，ID为{MB2S_PolygonColliderDataStructure.id}");
-                }
-
-                if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_PolygonColliderDataStructure.id))
-                {
-                    this.MB2S_PolygonColliderDataStructure =
-                            (B2S_PolygonColliderDataStructure) this.MColliderDataSupporter.colliderDataDic[this.MB2S_PolygonColliderDataStructure.id];
-                }
+                ResetData();
+                CachedGameObject = null;
+                return;
             }
 
             if (mCollider2D == null)
@@ -249,8 +242,29 @@ namespace ETModel
                     this.canDraw = false;
                 }
             }
+
+            if (this.MB2S_PolygonColliderDataStructure.id == 0)
+            {
+                this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.TryGetValue(this.theObjectWillBeEdited.transform.parent.name,
+                    out this.MB2S_PolygonColliderDataStructure.id);
+
+                if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_PolygonColliderDataStructure.id))
+                {
+                    this.MB2S_PolygonColliderDataStructure =
+                            (B2S_PolygonColliderDataStructure) this.MColliderDataSupporter.colliderDataDic[this.MB2S_PolygonColliderDataStructure.id];
+                }
+            }
         }
 
+        private void ResetData()
+        {
+            mCollider2D = null;
+            this.canDraw = false;
+            this.MB2S_PolygonColliderDataStructure.id = 0;
+            this.MB2S_PolygonColliderDataStructure.isSensor = false;
+            this.MB2S_PolygonColliderDataStructure.offset.Clean();
+        }
+        
         public B2S_PolygonColliderVisualHelper(ColliderNameAndIdInflectSupporter colliderNameAndIdInflectSupporter,
         ColliderDataSupporter colliderDataSupporter): base(colliderNameAndIdInflectSupporter, colliderDataSupporter)
         {
