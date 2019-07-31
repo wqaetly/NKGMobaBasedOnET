@@ -27,31 +27,47 @@ namespace B2S_CollisionRelation
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
         [FolderPath]
         public string SavePath;
-        
+
         /// <summary>
         /// 节点数据载体，用以搜集所有本SO文件的数据
         /// </summary>
         public B2S_CollisionsRelationSupport m_TestDic = new B2S_CollisionsRelationSupport();
 
-        [Button("自动配置所有Node数据", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("自动配置所有Node所有数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AutoSetNodeData()
         {
             foreach (var VARIABLE in nodes)
             {
-                 ((B2S_CollisionRelationForOneHero)VARIABLE).AutoSetCollisionRelations();
+                if (VARIABLE is B2S_CollisionRelationForOneHero)
+                {
+                    ((B2S_CollisionRelationForOneHero) VARIABLE).AutoSetCollisionRelations();
+                }
+            }
+
+            foreach (var VARIABLE in this.groups)
+            {
+                foreach (var VARIABLE1 in VARIABLE.pinnedNodes)
+                {
+                    VARIABLE1.B2SCollisionRelation_GetNodeData().BelongGroup = VARIABLE.title;
+                }
             }
         }
-        
-        [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
+
+        [Button("自动扫描所需Node并添加到字典", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
             m_TestDic.B2S_CollisionsRelationDic.Clear();
-            foreach (var VARIABLE in nodes)
+            foreach (var VARIABLE in this.groups)
             {
-                m_TestDic.B2S_CollisionsRelationDic.Add(VARIABLE.B2SCollisionRelation_GetNodeData().collisionId, VARIABLE.B2SCollisionRelation_GetNodeData());
+                if (VARIABLE.title == "GenerateCollision" || VARIABLE.title == "NoGenerateCollision")
+                    foreach (var VARIABLE1 in VARIABLE.pinnedNodes)
+                    {
+                        m_TestDic.B2S_CollisionsRelationDic.Add(VARIABLE1.B2SCollisionRelation_GetNodeData().collisionId,
+                            VARIABLE1.B2SCollisionRelation_GetNodeData());
+                    }
             }
         }
-        
+
         [Button("保存技能信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Save()
         {
@@ -59,8 +75,8 @@ namespace B2S_CollisionRelation
             {
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
             }
+
             Debug.Log("保存成功");
         }
-
     }
 }

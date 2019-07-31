@@ -14,7 +14,7 @@ namespace ETMode
     /// 碰撞实例
     /// </summary>
     public class B2S_CollisionInstance
-    {
+    {        
         [LabelText("此结点标识")]
         [BsonIgnore]
         public string Flag;
@@ -25,8 +25,9 @@ namespace ETMode
         [LabelText("此结点所使用的碰撞体ID")]
         public long collisionId;
 
-        [InfoBox("此设置在碰撞事件分发那作为大分类依据")]
+        [InfoBox("此设置在碰撞事件分发那作为大分类依据（请前往Canvas处点击“自动配置所有Node数据”）")]
         [LabelText("此结点归属Group")]
+        [DisableInEditorMode]
         public string BelongGroup;
 
         [InfoBox("此设置在碰撞事件分发那作为小分类依据")]

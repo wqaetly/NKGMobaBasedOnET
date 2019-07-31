@@ -36,20 +36,26 @@ namespace ETMode
         [LabelText("野怪（中立生物）")]
         Monsters = 1 << 6,
 
-        [LabelText("友方建筑")]
-        FriendBuildings = 1 << 7,
+        [LabelText("友方水晶")]
+        FriendCrystal = 1 << 7,
 
-        [LabelText("敌方建筑")]
-        EnemyBuildings = 1 << 9,
+        [LabelText("敌方水晶")]
+        EnemyCrystal = 1 << 9,
+
+        [LabelText("友方水晶")]
+        FriendDefendBuilding = 1 << 10,
+
+        [LabelText("敌方水晶")]
+        EnemyDefendBuilding = 1 << 11,
 
         [LabelText("建筑")]
-        Buildings = FriendBuildings | EnemyBuildings,
+        Buildings = FriendCrystal | EnemyCrystal | FriendDefendBuilding | EnemyDefendBuilding,
 
         [LabelText("地形")]
         Barrier = 1 << 8,
 
-        [LabelText("其他英雄的技能所创造的碰撞体")]
-        OtherHeroCreateCollision = 1 << 15,
+        [LabelText("英雄的技能所创造的碰撞体")]
+        HeroCreateCollision = 1 << 15,
 
         //TODO:新增碰撞类型
     }

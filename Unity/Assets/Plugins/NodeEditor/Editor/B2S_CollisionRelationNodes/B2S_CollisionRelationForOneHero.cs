@@ -14,13 +14,13 @@ using UnityEngine;
 
 namespace Plugins.NodeEditor
 {
-    [Node(false, "Box2DSharp/碰撞数据结点", typeof (B2S_CollisionRelationCanvas))]
+    [Node(false, "Box2DSharp/英雄碰撞数据结点", typeof (B2S_CollisionRelationCanvas))]
     public class B2S_CollisionRelationForOneHero: Node
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "碰撞数据结点";
+        private const string Id = "英雄碰撞数据结点";
 
         public override string GetID => Id;
 
@@ -52,9 +52,10 @@ namespace Plugins.NodeEditor
             return this.MB2SCollisionInstance;
         }
 
-        [Button("自动配置此Node数据", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("自动配置此Node碰撞关系", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AutoSetCollisionRelations()
         {
+            this.MB2SCollisionInstance.CollisionRelations.Clear();
             if (this.NextSkill.connections.Count > 0)
                 foreach (var VARIABLE in this.NextSkill.connections)
                 {
