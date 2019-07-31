@@ -46,7 +46,7 @@ namespace Plugins.NodeEditor
         private void OnEnable()
         {
             this.MB2SCollisionInstance.Flag = "敌方水晶";
-            this.MB2SCollisionInstance.nodeDataId = 20001;
+            this.MB2SCollisionInstance.nodeDataId = B2S_PrefabIDDefine.EnemyCrystal;
             this.MB2SCollisionInstance.MB2SAllCollideableObject = B2S_AllCollideableObject.EnemyCrystal;
         }
 

@@ -45,7 +45,7 @@ namespace Plugins.NodeEditor
         private void OnEnable()
         {
             this.MB2SCollisionInstance.Flag = "友方士兵";
-            this.MB2SCollisionInstance.nodeDataId = 30004;
+            this.MB2SCollisionInstance.nodeDataId = B2S_PrefabIDDefine.FriendSoldier;
             this.MB2SCollisionInstance.MB2SAllCollideableObject = B2S_AllCollideableObject.FirendSoldier;
         }
         public override void NodeGUI()

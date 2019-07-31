@@ -62,7 +62,7 @@ namespace B2S_CollisionRelation
                 if (VARIABLE.title == "GenerateCollision" || VARIABLE.title == "NoGenerateCollision")
                     foreach (var VARIABLE1 in VARIABLE.pinnedNodes)
                     {
-                        m_TestDic.B2S_CollisionsRelationDic.Add(VARIABLE1.B2SCollisionRelation_GetNodeData().collisionId,
+                        m_TestDic.B2S_CollisionsRelationDic.Add(VARIABLE1.B2SCollisionRelation_GetNodeData().nodeDataId,
                             VARIABLE1.B2SCollisionRelation_GetNodeData());
                     }
             }

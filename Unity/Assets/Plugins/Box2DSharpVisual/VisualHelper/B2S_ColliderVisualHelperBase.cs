@@ -87,5 +87,15 @@ namespace ETModel
             Gizmos.color = this.mDrawColor;
             DrawCollider();
         }
+
+        /// <summary>
+        /// 删除此碰撞体相关所有信息
+        /// </summary>
+        public abstract void DeletecolliderData();
+        
+        /// <summary>
+        /// 删除此类型碰撞体相关所有信息
+        /// </summary>
+        public abstract void DeleteAllcolliderData();
     }
 }

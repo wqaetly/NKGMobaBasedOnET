@@ -123,6 +123,49 @@ namespace ETModel
                 }
             }
         }
+        [Button("清除所有圆形碰撞体信息", 25), GUIColor(1.0f, 20 / 255f, 147 / 255f)]
+        public override void DeleteAllcolliderData()
+        {
+            this.MColliderDataSupporter.colliderDataDic.Clear();
+            this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Clear();
+
+            using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderNameAndIdInflectSupporter);
+            }
+
+            using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
+            }
+        }
+
+        [Button("清除此圆形碰撞体信息", 25), GUIColor(1.0f, 20 / 255f, 147 / 255f)]
+        public override void DeletecolliderData()
+        {
+            if (this.theObjectWillBeEdited != null && this.mCollider2D != null)
+            {
+                if (this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_CircleColliderDataStructure.id))
+                {
+                    this.MColliderDataSupporter.colliderDataDic.Remove(this.MB2S_CircleColliderDataStructure.id);
+                }
+
+                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.ContainsKey(this.theObjectWillBeEdited.transform.parent.name))
+                {
+                    this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Remove(this.theObjectWillBeEdited.transform.parent.name);
+                }
+
+                using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
+                {
+                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderNameAndIdInflectSupporter);
+                }
+
+                using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
+                {
+                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
+                }
+            }
+        }
 
         public override void OnUpdate()
         {

@@ -47,7 +47,7 @@ namespace Plugins.NodeEditor
         private void OnEnable()
         {
             this.MB2SCollisionInstance.Flag = "友方水晶";
-            this.MB2SCollisionInstance.nodeDataId = 30001;
+            this.MB2SCollisionInstance.nodeDataId = B2S_PrefabIDDefine.FriendCrystal;
             this.MB2SCollisionInstance.MB2SAllCollideableObject = B2S_AllCollideableObject.FriendCrystal;
         }
         public override void NodeGUI()
