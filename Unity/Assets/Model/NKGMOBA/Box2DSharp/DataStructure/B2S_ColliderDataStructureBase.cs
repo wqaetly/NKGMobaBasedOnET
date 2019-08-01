@@ -75,9 +75,6 @@ namespace ETModel
         [EnumToggleButtons]
         public B2S_AllCollideableObject B2SAllCollideableObject;
         
-        [LabelText("归属技能ID,需要打开技能编辑器查看")]
-        public long skillId;
-
         [LabelText("碰撞体偏移信息")]
         public CostumVector2 offset = new CostumVector2(0, 0);
     }

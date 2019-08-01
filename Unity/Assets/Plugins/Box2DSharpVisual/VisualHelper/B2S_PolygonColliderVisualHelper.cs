@@ -150,7 +150,6 @@ namespace ETModel
                     temp.offset.x = MB2S_PolygonColliderDataStructure.offset.x;
                     temp.offset.y = MB2S_PolygonColliderDataStructure.offset.y;
                     temp.isSensor = MB2S_PolygonColliderDataStructure.isSensor;
-                    temp.skillId = MB2S_PolygonColliderDataStructure.skillId;
                     temp.b2SColliderType = MB2S_PolygonColliderDataStructure.b2SColliderType;
                     temp.B2SAllCollideableObject = MB2S_PolygonColliderDataStructure.B2SAllCollideableObject;
                     for (int i = 0; i < this.MB2S_PolygonColliderDataStructure.points.Count; i++)

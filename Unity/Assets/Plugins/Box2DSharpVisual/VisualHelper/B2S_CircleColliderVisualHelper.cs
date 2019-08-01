@@ -110,7 +110,6 @@ namespace ETModel
                     b2SCircleColliderDataStructure.offset.x = MB2S_CircleColliderDataStructure.offset.x;
                     b2SCircleColliderDataStructure.offset.y = MB2S_CircleColliderDataStructure.offset.y;
                     b2SCircleColliderDataStructure.isSensor = MB2S_CircleColliderDataStructure.isSensor;
-                    b2SCircleColliderDataStructure.skillId = MB2S_CircleColliderDataStructure.skillId;
                     b2SCircleColliderDataStructure.b2SColliderType = MB2S_CircleColliderDataStructure.b2SColliderType;
                     b2SCircleColliderDataStructure.B2SAllCollideableObject = MB2S_CircleColliderDataStructure.B2SAllCollideableObject;
                     b2SCircleColliderDataStructure.radius = MB2S_CircleColliderDataStructure.radius;
