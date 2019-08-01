@@ -81,14 +81,14 @@ namespace ETModel
         [Button("保存所有圆形碰撞体名称与ID映射信息", 25), GUIColor(0.2f, 0.9f, 1.0f)]
         public override void SavecolliderNameAndIdInflect()
         {
-            if (!this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.ContainsKey(this.theObjectWillBeEdited.transform.parent.name))
+            if (!this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.ContainsKey(this.theObjectWillBeEdited.name))
             {
-                MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Add(this.theObjectWillBeEdited.transform.parent.name,
+                MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Add(this.theObjectWillBeEdited.name,
                     this.MB2S_CircleColliderDataStructure.id);
             }
             else
             {
-                MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic[this.theObjectWillBeEdited.transform.parent.name] =
+                MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic[this.theObjectWillBeEdited.name] =
                         this.MB2S_CircleColliderDataStructure.id;
             }
 
@@ -150,9 +150,9 @@ namespace ETModel
                     this.MColliderDataSupporter.colliderDataDic.Remove(this.MB2S_CircleColliderDataStructure.id);
                 }
 
-                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.ContainsKey(this.theObjectWillBeEdited.transform.parent.name))
+                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.ContainsKey(this.theObjectWillBeEdited.name))
                 {
-                    this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Remove(this.theObjectWillBeEdited.transform.parent.name);
+                    this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Remove(this.theObjectWillBeEdited.name);
                 }
 
                 using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
@@ -185,7 +185,7 @@ namespace ETModel
 
             if (this.MB2S_CircleColliderDataStructure.id == 0)
             {
-                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.TryGetValue(this.theObjectWillBeEdited.transform.parent.name,
+                if (this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.TryGetValue(this.theObjectWillBeEdited.name,
                     out this.MB2S_CircleColliderDataStructure.id))
                 {
                     Debug.Log($"自动设置圆形碰撞体ID成功，ID为{MB2S_CircleColliderDataStructure.id}");
