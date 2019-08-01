@@ -118,6 +118,13 @@ namespace ETModel
                 if (!this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_BoxColliderDataStructure.id))
                 {
                     B2S_BoxColliderDataStructure b2SBoxColliderDataStructure = new B2S_BoxColliderDataStructure();
+                    b2SBoxColliderDataStructure.id = MB2S_BoxColliderDataStructure.id;
+                    b2SBoxColliderDataStructure.offset.x = MB2S_BoxColliderDataStructure.offset.x;
+                    b2SBoxColliderDataStructure.offset.y = MB2S_BoxColliderDataStructure.offset.y;
+                    b2SBoxColliderDataStructure.isSensor = MB2S_BoxColliderDataStructure.isSensor;
+                    b2SBoxColliderDataStructure.skillId = MB2S_BoxColliderDataStructure.skillId;
+                    b2SBoxColliderDataStructure.b2SColliderType = MB2S_BoxColliderDataStructure.b2SColliderType;
+                    b2SBoxColliderDataStructure.B2SAllCollideableObject = MB2S_BoxColliderDataStructure.B2SAllCollideableObject;
                     b2SBoxColliderDataStructure.hx = MB2S_BoxColliderDataStructure.hx;
                     b2SBoxColliderDataStructure.hy = this.MB2S_BoxColliderDataStructure.hy;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_BoxColliderDataStructure.id,
@@ -128,11 +135,10 @@ namespace ETModel
                     this.MColliderDataSupporter.colliderDataDic[this.MB2S_BoxColliderDataStructure.id] =
                             this.MB2S_BoxColliderDataStructure;
                 }
-
-                using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
-                {
-                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
-                }
+            }
+            using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
             }
         }
 

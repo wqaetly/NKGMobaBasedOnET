@@ -106,6 +106,13 @@ namespace ETModel
                 if (!this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_CircleColliderDataStructure.id))
                 {
                     B2S_CircleColliderDataStructure b2SCircleColliderDataStructure = new B2S_CircleColliderDataStructure();
+                    b2SCircleColliderDataStructure.id = MB2S_CircleColliderDataStructure.id;
+                    b2SCircleColliderDataStructure.offset.x = MB2S_CircleColliderDataStructure.offset.x;
+                    b2SCircleColliderDataStructure.offset.y = MB2S_CircleColliderDataStructure.offset.y;
+                    b2SCircleColliderDataStructure.isSensor = MB2S_CircleColliderDataStructure.isSensor;
+                    b2SCircleColliderDataStructure.skillId = MB2S_CircleColliderDataStructure.skillId;
+                    b2SCircleColliderDataStructure.b2SColliderType = MB2S_CircleColliderDataStructure.b2SColliderType;
+                    b2SCircleColliderDataStructure.B2SAllCollideableObject = MB2S_CircleColliderDataStructure.B2SAllCollideableObject;
                     b2SCircleColliderDataStructure.radius = MB2S_CircleColliderDataStructure.radius;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_CircleColliderDataStructure.id,
                         b2SCircleColliderDataStructure);
@@ -115,11 +122,10 @@ namespace ETModel
                     this.MColliderDataSupporter.colliderDataDic[this.MB2S_CircleColliderDataStructure.id] =
                             this.MB2S_CircleColliderDataStructure;
                 }
-
-                using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
-                {
-                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
-                }
+            }
+            using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
             }
         }
 

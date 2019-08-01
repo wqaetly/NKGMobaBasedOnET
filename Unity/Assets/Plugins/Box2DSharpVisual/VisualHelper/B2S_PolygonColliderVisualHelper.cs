@@ -146,6 +146,13 @@ namespace ETModel
                 if (!this.MColliderDataSupporter.colliderDataDic.ContainsKey(this.MB2S_PolygonColliderDataStructure.id))
                 {
                     B2S_PolygonColliderDataStructure temp = new B2S_PolygonColliderDataStructure();
+                    temp.id = MB2S_PolygonColliderDataStructure.id;
+                    temp.offset.x = MB2S_PolygonColliderDataStructure.offset.x;
+                    temp.offset.y = MB2S_PolygonColliderDataStructure.offset.y;
+                    temp.isSensor = MB2S_PolygonColliderDataStructure.isSensor;
+                    temp.skillId = MB2S_PolygonColliderDataStructure.skillId;
+                    temp.b2SColliderType = MB2S_PolygonColliderDataStructure.b2SColliderType;
+                    temp.B2SAllCollideableObject = MB2S_PolygonColliderDataStructure.B2SAllCollideableObject;
                     for (int i = 0; i < this.MB2S_PolygonColliderDataStructure.points.Count; i++)
                     {
                         temp.points.Add(new List<CostumVector2>());
@@ -165,11 +172,10 @@ namespace ETModel
                     this.MColliderDataSupporter.colliderDataDic[this.MB2S_PolygonColliderDataStructure.id] =
                             this.MB2S_PolygonColliderDataStructure;
                 }
-
-                using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
-                {
-                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
-                }
+            }
+            using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
             }
         }
 
