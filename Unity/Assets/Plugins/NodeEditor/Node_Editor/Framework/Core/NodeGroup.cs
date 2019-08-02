@@ -4,7 +4,6 @@ using System.Linq;
 using System.Collections.Generic;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
 
 namespace NodeEditorFramework
 {

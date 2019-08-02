@@ -68,7 +68,7 @@ namespace B2S_CollisionRelation
             }
         }
 
-        [Button("保存技能信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("保存碰撞信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Save()
         {
             using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))

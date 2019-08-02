@@ -5,8 +5,6 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using ETHotfix.FUILogin;
-using ETMode;
 using ETModel;
 using Sirenix.OdinInspector;
 
