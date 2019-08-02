@@ -25,7 +25,7 @@ namespace ETModel
 
         /// <summary>
         /// 碰撞持续事件
-        /// </summary>
+        /// </summary>,
         public event Action<B2S_FixtureUserData> OnCollideSustainAction;
 
         /// <summary>
@@ -57,12 +57,13 @@ namespace ETModel
 
         public override void Dispose()
         {
-            base.Dispose();
             if (this.IsDisposed)
             {
                 return;
             }
 
+            base.Dispose();
+            
             //清理已注册的委托
             foreach (var VARIABLE in this.OnCollideStartAction.GetInvocationList())
             {

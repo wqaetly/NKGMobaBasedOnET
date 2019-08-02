@@ -4,6 +4,8 @@
 // Data: 2019年7月20日 20:42:58
 //------------------------------------------------------------
 
+using ETMode;
+
 namespace ETModel
 {
     [ObjectSystem]
@@ -23,5 +25,10 @@ namespace ETModel
         /// 归属Unit的ID
         /// </summary>
         public long UnitId;
+
+        /// <summary>
+        /// 碰撞数据
+        /// </summary>
+        public B2S_CollisionInstance m_B2S_CollisionInstance;
     }
 }

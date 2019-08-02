@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f788b6a9-6e63-4302-bf26-4eaa873e1f77" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Server/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Server/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/Box2DSharpVisual/VisualHelper/B2S_ColliderVisualHelperBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/Box2DSharpVisual/VisualHelper/B2S_ColliderVisualHelperBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/Box2DSharpVisual/VisualHelper/B2S_PolygonColliderVisualHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/Box2DSharpVisual/VisualHelper/B2S_PolygonColliderVisualHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotfix/Server.Hotfix.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Hotfix/Server.Hotfix.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FlyToolComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_StableToolComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_BoxColliderDataStructure.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_BoxColliderDataStructure.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/Editor/JetBrains.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/Editor/JetBrains.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Editor/Canvas/B2S_CollisionRelationCanvas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Editor/Canvas/B2S_CollisionRelationCanvas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Editor/Node_Editor/LastSession.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Editor/Node_Editor/LastSession.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Node_Editor/Resources/Saves/B2S_DariusCollisionRelation.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Plugins/NodeEditor/Node_Editor/Resources/Saves/B2S_DariusCollisionRelation.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.dll.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Res/Code/Hotfix.dll.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Unity/Assets/Scenes/Init.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Unity/Assets/Scenes/Init.unity" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,222 +28,163 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+            <state relative-caret-position="493">
+              <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
               <folding>
-                <marker date="1564037676668" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-                <marker date="1564037676668" expanded="true" signature="219:681" ph="{...}" />
-                <marker date="1564037676668" expanded="true" signature="316:451" ph="{...}" />
-                <marker date="1564037676668" expanded="true" signature="383:445" ph="{...}" />
-                <marker date="1564037676668" expanded="true" signature="456:527" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
-                <marker date="1564037676668" expanded="true" signature="572:679" ph="{...}" />
-                <marker date="1564037676668" expanded="true" signature="587:645" ph="/// 归属Unit的ID ... " />
+                <marker date="1564739434582" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564739434582" expanded="true" signature="234:821" ph="{...}" />
+                <marker date="1564739434582" expanded="true" signature="331:466" ph="{...}" />
+                <marker date="1564739434582" expanded="true" signature="398:460" ph="{...}" />
+                <marker date="1564739434582" expanded="true" signature="471:542" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
+                <marker date="1564739434582" expanded="true" signature="587:819" ph="{...}" />
+                <marker date="1564739434582" expanded="true" signature="602:660" ph="/// 归属Unit的ID ... " />
+                <marker date="1564739434582" expanded="true" signature="698:751" ph="///  ... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_AllCollideableObject.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="73">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+              <folding>
+                <marker date="1564559192491" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564559192491" expanded="false" signature="208:244" ph="..." />
+                <marker date="1564559192491" expanded="true" signature="262:1358" ph="{...}" />
+                <marker date="1564559192491" expanded="true" signature="317:1356" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionInstance.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <marker date="1564756761503" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564756761503" expanded="false" signature="208:309" ph="..." />
+                <marker date="1564756761503" expanded="true" signature="327:1122" ph="{...}" />
+                <marker date="1564756761503" expanded="true" signature="334:379" ph="/// 碰撞实例 ... " />
+                <marker date="1564756761503" expanded="true" signature="418:1120" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionRelationSupport.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1564058934579" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564058934579" expanded="false" signature="208:322" ph="..." />
+                <marker date="1564058934579" expanded="true" signature="340:604" ph="{...}" />
+                <marker date="1564058934579" expanded="true" signature="389:602" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_BoxColliderDataStructure.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+              <folding>
+                <marker date="1564737711910" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564737711910" expanded="false" signature="208:283" ph="..." />
+                <marker date="1564737711910" expanded="true" signature="302:574" ph="{...}" />
+                <marker date="1564737711910" expanded="true" signature="381:572" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/CoroutineLockComponent.cs">
+        <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_RFare_CRS.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+            <state relative-caret-position="442">
+              <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
               <folding>
-                <marker date="1564243512809" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
-                <marker date="1564243512809" expanded="true" signature="253:3742" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="350:476" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="421:470" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="523:915" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="613:661" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="701:909" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="744:796" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="958:1716" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1134:1325" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1177:1229" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1397:1454" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1518:1579" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1605:1710" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1631:1700" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1828:1976" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="1898:1970" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2032:3740" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2256:2594" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2299:2351" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2453:2517" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2653:3103" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="2739:2921" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="3149:3734" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="3235:3371" ph="{...}" />
-                <marker date="1564243512809" expanded="true" signature="3422:3556" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="0:245" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564759794577" expanded="true" signature="281:1160" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="333:1158" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="414:955" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="500:945" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="626:904" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="1033:1054" ph="{...}" />
+                <marker date="1564759794577" expanded="true" signature="1131:1152" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8D38E42A-49C1-41F8-B6C5-121BEDF29781/88/0f08c931/Queue`1.cs">
+        <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_Q_CRS.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2975">
-              <caret line="177" column="13" selection-start-line="177" selection-start-column="13" selection-end-line="177" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Module/ActorLocation/LocationComponent.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="54" column="57" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
+            <state relative-caret-position="187">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding>
-                <marker date="1564243677325" expanded="true" signature="52:3193" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="149:337" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="246:334" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="373:553" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="481:550" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="599:3191" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="815:1045" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="843:865" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="976:1010" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1099:1305" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1186:1301" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1345:1523" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1432:1519" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1566:1804" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1653:1799" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1873:2700" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="1943:2031" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2072:2211" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2571:2696" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2772:3188" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2840:2862" ph="{...}" />
-                <marker date="1564243677325" expanded="true" signature="2911:3021" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="0:245" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564759794557" expanded="true" signature="281:1156" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="329:1154" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="410:951" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="496:941" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="622:900" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="1029:1050" ph="{...}" />
+                <marker date="1564759794557" expanded="true" signature="1127:1148" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotfix/Module/Message/InnerMessageDispatcher.cs">
+        <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_E_CRS.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+            <state relative-caret-position="340">
+              <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="34" />
               <folding>
-                <marker date="1564243875123" expanded="true" signature="34:2204" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="93:2202" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="167:626" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="217:622" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="710:1585" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="785:1581" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="881:1119" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="990:1069" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="1236:1521" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="1296:1385" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="1669:2199" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="1744:2195" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="1840:1912" ph="{...}" />
-                <marker date="1564243875123" expanded="true" signature="2029:2140" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="0:245" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564759794568" expanded="true" signature="281:1156" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="329:1154" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="410:951" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="496:941" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="622:900" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="1029:1050" ph="{...}" />
+                <marker date="1564759794568" expanded="true" signature="1127:1148" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Program.cs">
+        <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2516">
-              <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
+            <state relative-caret-position="306">
+              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="63" />
               <folding>
-                <marker date="1564244375614" expanded="false" signature="6:94" ph="..." />
-                <marker date="1564244375614" expanded="true" signature="109:7279" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="142:7277" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="188:7274" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="314:7219" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="837:900" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="1918:6692" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="6841:7214" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="6856:7149" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="7049:7142" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="7174:7208" ph="{...}" />
-                <marker date="1564244375614" expanded="true" signature="7242:7270" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectAddRequestHandler.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
-              <folding>
-                <marker date="1564243972662" expanded="false" signature="6:28" ph="..." />
-                <marker date="1564243972662" expanded="true" signature="48:419" ph="{...}" />
-                <marker date="1564243972662" expanded="true" signature="176:417" ph="{...}" />
-                <marker date="1564243972662" expanded="true" signature="302:414" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailboxDispatcherComponentSystem.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <marker date="1564244003259" expanded="false" signature="6:62" ph="..." />
-                <marker date="1564244003259" expanded="true" signature="82:2023" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="193:286" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="258:283" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="394:485" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="458:482" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="540:2021" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="608:632" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="697:1592" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="923:1588" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="1042:1069" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="1211:1238" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="1384:1498" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="1596:1650" ph="/// 根据mailbox类型做不同的处理 ... " />
-                <marker date="1564244003259" expanded="true" signature="1795:2018" ph="{...}" />
-                <marker date="1564244003259" expanded="true" signature="1927:2014" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotfix/Module/Actor/MailBoxComponentSystem.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-              <folding>
-                <marker date="1564244029254" expanded="false" signature="6:28" ph="..." />
-                <marker date="1564244029254" expanded="true" signature="48:1236" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="140:259" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="195:256" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="359:480" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="434:477" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="483:554" ph="/// 挂上这个组件表示该Entity是一个Actor, 接收的消息将会队列处理 ... " />
-                <marker date="1564244029254" expanded="true" signature="598:1234" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="670:782" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="855:946" ph="{...}" />
-                <marker date="1564244029254" expanded="true" signature="1041:1231" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectRemoveRequestHandler.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
-              <folding>
-                <marker date="1564243931502" expanded="false" signature="6:28" ph="..." />
-                <marker date="1564243931502" expanded="true" signature="48:448" ph="{...}" />
-                <marker date="1564243931502" expanded="true" signature="185:446" ph="{...}" />
-                <marker date="1564243931502" expanded="true" signature="317:443" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+                <marker date="1564738717802" expanded="true" signature="234:2435" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="241:295" ph="/// 碰撞响应组件，用来响应碰撞 ... " />
+                <marker date="1564738717802" expanded="true" signature="354:2433" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="369:424" ph="/// 碰撞开始事件 ... " />
+                <marker date="1564738717802" expanded="true" signature="505:560" ph="/// 碰撞结束事件 ... " />
+                <marker date="1564738717802" expanded="true" signature="642:698" ph="/// 碰撞持续事件 ... " />
+                <marker date="1564738717802" expanded="true" signature="781:888" ph="/// 碰撞开始 ... " />
+                <marker date="1564738717802" expanded="true" signature="963:1050" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="1060:1167" ph="/// 碰撞结束 ... " />
+                <marker date="1564738717802" expanded="true" signature="1243:1331" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="1341:1448" ph="/// 碰撞持续 ... " />
+                <marker date="1564738717802" expanded="true" signature="1525:1614" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="1654:2427" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="1697:1749" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="1898:2008" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="2106:2217" ph="{...}" />
+                <marker date="1564738717802" expanded="true" signature="2304:2416" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -438,7 +388,6 @@
     <setting file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Realm/C2R_RegisterHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Component/AllHeroSkillDataComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_AllCollideableObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_StableToolComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/Network/TCP/PacketParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_PolygonColliderUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/Network/TCP/TChannel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -446,12 +395,15 @@
     <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_BodyUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_WorldUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/468A3C3F-6BB5-4C43-93A1-C302265EEC56/16/d44ef080/INotifyCompletion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_Q_CRS.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Object/ComponentWithId.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/468A3C3F-6BB5-4C43-93A1-C302265EEC56/42/3f959b86/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/Network/TCP/TService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_BoxColliderUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/Network/AChannel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_RFare_CRS.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/Network/AService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_E_CRS.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/HeroData/HeroDataSupportor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/NetworkComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/MessageAttribute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -499,7 +451,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7767021C-0BC4-4CC7-B22C-2BBD75629CBD/04/47586d0a/BehaviorManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ThirdParty/Box2D/Box2D/Dynamics/Contacts/Contact.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Async/ETCancellationTokenSource.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FlyToolComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Async/ETTask.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Async/IAwaiter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Async/AsyncETTaskMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
@@ -511,9 +462,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectLockRequestHandler.cs" />
-        <option value="$PROJECT_DIR$/Hotfix/Module/DB/DBQueryBatchRequestHandler.cs" />
-        <option value="$PROJECT_DIR$/Hotfix/Module/DB/DBQueryJsonRequestHandler.cs" />
         <option value="$PROJECT_DIR$/Hotfix/Module/DB/DBQueryRequestHandler.cs" />
         <option value="$PROJECT_DIR$/Hotfix/Module/DB/DBSaveBatchRequestHandler.cs" />
         <option value="$PROJECT_DIR$/Hotfix/Module/DB/DBSaveRequestHandler.cs" />
@@ -541,10 +489,8 @@
         <option value="$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Realm/G2R_PlayerOfflineHandler.cs" />
         <option value="$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Realm/G2R_PlayerOnlineHandler.cs" />
         <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionListenerComponent.cs" />
-        <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs" />
         <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FlyToolComponent.cs" />
         <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_StableToolComponent.cs" />
-        <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs" />
         <option value="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_AllCollideableObject.cs" />
         <option value="$PROJECT_DIR$/Model/NKGMOBA/Component/AllHeroSkillDataComponent.cs" />
         <option value="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Skill/Core/Bson/NodeDataSupporter.cs" />
@@ -562,13 +508,17 @@
         <option value="$PROJECT_DIR$/Hotfix/Module/Actor/MailboxDispatcherComponentSystem.cs" />
         <option value="$PROJECT_DIR$/Hotfix/Module/Actor/MailBoxComponentSystem.cs" />
         <option value="$PROJECT_DIR$/App/Program.cs" />
+        <option value="$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_BoxColliderDataStructure.cs" />
+        <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs" />
+        <option value="$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs" />
+        <option value="$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_CollisionRelationTemplate.cs" />
+        <option value="$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_E_CRS.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="716" />
-    <option name="y" value="38" />
-    <option name="width" value="1115" />
+    <option name="x" value="-7" />
+    <option name="width" value="968" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -577,6 +527,103 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Hotfix" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Hotfix" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Hotfix" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Hotfix" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="System" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="ColliderData" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CollisionRelations" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Component" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="System" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Box2D" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Utility" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer">
         <subPane>
           <expand>
@@ -620,30 +667,6 @@
           </expand>
           <select />
         </subPane>
-      </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="SolutionExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Server" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Server.Model" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="NKGMOBA" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="show-all-files" value="false" />
       </pane>
     </panes>
   </component>
@@ -821,11 +844,12 @@
       <workItem from="1564375212324" duration="1866000" />
       <workItem from="1564473329458" duration="1915000" />
       <workItem from="1564569944354" duration="1229000" />
+      <workItem from="1564737549081" duration="11394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196358000" />
+    <option name="totallyTimeSpent" value="207752000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -838,8 +862,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15511727" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23187633" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -885,490 +910,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_StableToolComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <marker date="1564039668300" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564039668300" expanded="true" signature="219:398" ph="{...}" />
-            <marker date="1564039668300" expanded="true" signature="226:323" ph="/// 较为稳定的道具，例如莫甘娜W，火男W，诺克E，巨型九头蛇，或者日炎之类的光环效果，特征多为释放后比较稳定，变数少 ... " />
-            <marker date="1564039668300" expanded="true" signature="375:396" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Skill/Core/NodeDataForCheckSkill.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <marker date="1564053377952" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564053377952" expanded="false" signature="208:351" ph="..." />
-            <marker date="1564053377952" expanded="true" signature="370:809" ph="{...}" />
-            <marker date="1564053377952" expanded="true" signature="430:807" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Skill/Core/NodeDataForSkillBuff.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <marker date="1564053377905" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564053377905" expanded="true" signature="249:415" ph="{...}" />
-            <marker date="1564053377905" expanded="true" signature="308:413" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_ColliderDataStructureBase.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionRelationSupport.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1564058934579" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564058934579" expanded="true" signature="389:602" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionInstance.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="50" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/OdinAttribute/OdinAttr.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
-          <folding>
-            <marker date="1564101009418" expanded="false" signature="6:81" ph="..." />
-            <marker date="1564101009418" expanded="true" signature="114:3913" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="235:315" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="289:309" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="435:503" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="477:497" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="619:722" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="696:716" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="848:989" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="963:983" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1101:1173" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1147:1167" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1294:1372" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1346:1366" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1489:1566" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1540:1560" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1684:1869" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1736:1756" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1843:1863" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="1902:1928" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2047:2126" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2100:2120" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2253:2328" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2302:2322" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2457:2607" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2581:2601" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2726:2818" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2792:2812" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2937:3004" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="2978:2998" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3132:3217" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3191:3211" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3343:3417" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3391:3411" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3534:3621" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3595:3615" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3755:3767" ph="{...}" />
-            <marker date="1564101009418" expanded="true" signature="3899:3911" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Skill/Core/Bson/NodeDataSupporter.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <marker date="1564100831969" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564100831969" expanded="false" signature="208:351" ph="..." />
-            <marker date="1564100831969" expanded="true" signature="370:1135" ph="{...}" />
-            <marker date="1564100831969" expanded="true" signature="377:431" ph="/// 表示一个技能完整的数据结构 ... " />
-            <marker date="1564100831969" expanded="true" signature="463:660" ph="{...}" />
-            <marker date="1564100831969" expanded="true" signature="666:725" ph="/// 节点数据载体，用以导出读取二进制数据 ... " />
-            <marker date="1564100831969" expanded="true" signature="795:1133" ph="{...}" />
-            <marker date="1564100831969" expanded="true" signature="880:939" ph="/// 表示一个英雄所有技能 ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Skill/Core/SkillBaseNodeData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="34" />
-          <folding>
-            <marker date="1564054718649" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564054718649" expanded="false" signature="208:300" ph="..." />
-            <marker date="1564054718649" expanded="true" signature="319:684" ph="{...}" />
-            <marker date="1564054718649" expanded="true" signature="356:682" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Component/AllHeroSkillDataComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding>
-            <marker date="1564100831976" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564100831976" expanded="false" signature="208:300" ph="..." />
-            <marker date="1564100831976" expanded="true" signature="319:1834" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="434:559" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="507:553" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="614:1832" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="833:1826" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="967:1227" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="1095:1161" ph="{...}" />
-            <marker date="1564100831976" expanded="true" signature="1390:1816" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Component/AllHeroBaseDataComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding>
-            <marker date="1564100886306" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564100886306" expanded="false" signature="208:300" ph="..." />
-            <marker date="1564100886306" expanded="true" signature="319:1230" ph="{...}" />
-            <marker date="1564100886306" expanded="true" signature="432:556" ph="{...}" />
-            <marker date="1564100886306" expanded="true" signature="504:550" ph="{...}" />
-            <marker date="1564100886306" expanded="true" signature="610:1228" ph="{...}" />
-            <marker date="1564100886306" expanded="true" signature="700:1222" ph="{...}" />
-            <marker date="1564100886306" expanded="true" signature="833:912" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_ColliderDataRepositoryComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-          <folding>
-            <marker date="1563961747038" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1563961747038" expanded="false" signature="208:300" ph="..." />
-            <marker date="1563961747038" expanded="true" signature="319:3249" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="454:589" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="537:583" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="595:654" ph="/// 碰撞体数据仓库，从二进制文件读取数据 ... " />
-            <marker date="1563961747038" expanded="true" signature="718:3247" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="1220:1277" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="1287:1344" ph="/// 读取所有碰撞数据 ... " />
-            <marker date="1563961747038" expanded="true" signature="1384:3241" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="1514:1740" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="1608:1674" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="1831:2260" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="2351:2726" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="2817:3231" ph="{...}" />
-            <marker date="1563961747038" expanded="true" signature="2982:3153" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/HeroData/HeroDataSupportor.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1564058947013" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564058947013" expanded="false" signature="208:322" ph="..." />
-            <marker date="1564058947013" expanded="true" signature="341:577" ph="{...}" />
-            <marker date="1564058947013" expanded="true" signature="378:575" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/HeroData/NodeDataForHero.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1564054680158" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564054680158" expanded="false" signature="208:351" ph="..." />
-            <marker date="1564054680158" expanded="true" signature="370:4318" ph="{...}" />
-            <marker date="1564054680158" expanded="true" signature="405:4316" ph="{...}" />
-            <marker date="1564054680158" expanded="true" signature="795:1206" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Helper/RealmHelper.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="33" column="80" selection-start-line="33" selection-start-column="80" selection-end-line="33" selection-end-column="80" />
-          <folding>
-            <marker date="1558435610426" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1558435610426" expanded="false" signature="207:247" ph="..." />
-            <marker date="1558435610426" expanded="true" signature="267:2549" ph="{...}" />
-            <marker date="1558435610426" expanded="true" signature="305:2547" ph="{...}" />
-            <marker date="1558435610426" expanded="true" signature="320:451" ph="/// 将玩家踢下线 ... " />
-            <marker date="1558435610426" expanded="true" signature="560:2541" ph="{...}" />
-            <marker date="1558435610426" expanded="true" signature="732:2531" ph="{...}" />
-            <marker date="1558435610426" expanded="true" signature="1626:2122" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_AllCollideableObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Module/Message/Session.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <marker date="1563980105565" expanded="false" signature="6:155" ph="..." />
-            <marker date="1563980105565" expanded="true" signature="174:9415" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="263:383" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="330:377" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="424:9413" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="732:855" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="758:845" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="881:1076" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="907:978" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="994:1066" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="1122:1378" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="1418:2089" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="1461:1513" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="1674:1775" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="1789:1999" ph="/* int error = this.channel.Error; ... */" />
-            <marker date="1563980105565" expanded="true" signature="2118:2172" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2213:2328" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2239:2318" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2368:2481" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2394:2471" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2517:2625" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2543:2615" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2680:2874" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2706:2774" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2806:2864" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="2927:4728" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="3395:3846" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="3758:3832" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="3878:4188" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="4239:4371" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="4489:4629" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="4801:5395" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="4964:5288" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="5039:5232" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="5505:6182" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="5668:5992" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="5743:5936" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="6239:6828" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="6402:6721" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="6487:6665" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="6922:7565" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="7085:7376" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="7170:7320" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="7611:7784" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="7654:7741" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="7828:8073" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="8130:9306" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="8173:8260" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="8321:8563" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="9084:9232" ph="{...}" />
-            <marker date="1563980105565" expanded="true" signature="9353:9407" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Realm/C2R_LoginHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <marker date="1563978468815" expanded="false" signature="6:80" ph="..." />
-            <marker date="1563978468815" expanded="true" signature="100:1594" ph="{...}" />
-            <marker date="1563978468815" expanded="true" signature="208:1592" ph="{...}" />
-            <marker date="1563978468815" expanded="true" signature="328:1586" ph="{...}" />
-            <marker date="1563978468815" expanded="true" signature="692:828" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Realm/C2R_RegisterHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <marker date="1563980672739" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1563980672739" expanded="false" signature="207:263" ph="..." />
-            <marker date="1563980672739" expanded="true" signature="283:1836" ph="{...}" />
-            <marker date="1563980672739" expanded="true" signature="400:1834" ph="{...}" />
-            <marker date="1563980672739" expanded="true" signature="526:1828" ph="{...}" />
-            <marker date="1563980672739" expanded="true" signature="845:993" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Gate/R2G_PlayerKickOut_Handler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="81" selection-start-line="28" selection-start-column="81" selection-end-line="28" selection-end-column="81" />
-          <folding>
-            <marker date="1563980627241" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1563980627241" expanded="false" signature="207:247" ph="..." />
-            <marker date="1563980627241" expanded="true" signature="267:1379" ph="{...}" />
-            <marker date="1563980627241" expanded="true" signature="402:1377" ph="{...}" />
-            <marker date="1563980627241" expanded="true" signature="538:1371" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Gate/R2G_GetLoginKeyHandler.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding>
-            <marker date="1563978730576" expanded="false" signature="6:28" ph="..." />
-            <marker date="1563978730576" expanded="true" signature="48:565" ph="{...}" />
-            <marker date="1563978730576" expanded="true" signature="173:563" ph="{...}" />
-            <marker date="1563978730576" expanded="true" signature="305:557" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/LocationProxyComponentSystem.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <marker date="1558435610417" expanded="true" signature="34:2074" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="133:222" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="194:219" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="269:2072" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="333:564" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="659:846" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="959:1160" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="1278:1498" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="1579:1744" ph="{...}" />
-            <marker date="1558435610417" expanded="true" signature="1828:2069" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Object/Component.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="95" column="40" selection-start-line="95" selection-start-column="40" selection-end-line="95" selection-end-column="40" />
-          <folding>
-            <marker date="1560326774922" expanded="false" signature="6:73" ph="..." />
-            <marker date="1560326774922" expanded="true" signature="130:2526" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="214:2524" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="531:782" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="542:580" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="587:778" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="648:673" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="704:773" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="823:881" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="834:877" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="954:1349" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="965:999" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1006:1345" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1396:1432" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1471:1530" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1482:1526" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1557:1936" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1970:2357" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="1998:2020" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="2176:2221" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="2229:2353" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="2391:2438" ph="{...}" />
-            <marker date="1560326774922" expanded="true" signature="2477:2521" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Object/ComponentWithId.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding>
-            <marker date="1558435610963" expanded="true" signature="101:536" ph="{...}" />
-            <marker date="1558435610963" expanded="true" signature="181:534" ph="{...}" />
-            <marker date="1558435610963" expanded="true" signature="322:360" ph="{...}" />
-            <marker date="1558435610963" expanded="true" signature="398:423" ph="{...}" />
-            <marker date="1558435610963" expanded="true" signature="457:531" ph="{...}" />
-            <marker date="1558435610963" expanded="true" signature="485:507" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Object/Entity.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
-          <folding>
-            <marker date="1558435610960" expanded="false" signature="6:111" ph="..." />
-            <marker date="1558435610960" expanded="true" signature="130:5434" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="198:5432" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="435:443" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="482:490" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="524:841" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="552:574" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="663:774" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="676:714" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="738:769" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="905:1299" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="990:1106" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="1224:1270" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="1351:1770" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="1400:1516" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="1695:1741" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="1835:2275" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="1911:2032" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="2200:2246" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="2349:2800" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="2425:2546" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="2725:2771" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="2885:3344" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="2961:3082" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="3269:3315" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="3440:3907" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="3516:3637" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="3832:3878" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="3971:4259" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="3999:4021" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4133:4155" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4309:4570" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4337:4359" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4444:4466" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4620:4775" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4714:4747" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4819:4960" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4908:4935" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="4998:5053" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="5089:5429" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="5100:5374" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="5196:5369" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="5256:5363" ph="{...}" />
-            <marker date="1558435610960" expanded="true" signature="5397:5425" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Gate/C2G_LoginGateHandler.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
@@ -1887,61 +1428,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionListenerComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="48" column="56" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="56" />
-          <folding>
-            <marker date="1564037166996" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564037166996" expanded="false" signature="208:349" ph="..." />
-            <marker date="1564037166996" expanded="true" signature="368:3730" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="487:814" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="565:808" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="944:1086" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1028:1080" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1092:1157" ph="/// 某一物理世界所有碰撞的监听者，负责碰撞事件的分发 ... " />
-            <marker date="1564037166996" expanded="true" signature="1234:3728" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1439:2188" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1725:1838" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="1855:1971" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2237:2735" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2807:2827" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2902:2922" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="2957:3534" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="3028:3524" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="3078:3510" ph="{...}" />
-            <marker date="1564037166996" expanded="true" signature="3574:3722" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <marker date="1564040265037" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564040265037" expanded="true" signature="234:2421" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="241:295" ph="/// 碰撞响应组件，用来响应碰撞 ... " />
-            <marker date="1564040265037" expanded="true" signature="354:2419" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="369:424" ph="/// 碰撞开始事件 ... " />
-            <marker date="1564040265037" expanded="true" signature="505:560" ph="/// 碰撞结束事件 ... " />
-            <marker date="1564040265037" expanded="true" signature="642:697" ph="/// 碰撞持续事件 ... " />
-            <marker date="1564040265037" expanded="true" signature="780:887" ph="/// 碰撞开始 ... " />
-            <marker date="1564040265037" expanded="true" signature="962:1049" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="1059:1166" ph="/// 碰撞结束 ... " />
-            <marker date="1564040265037" expanded="true" signature="1242:1330" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="1340:1447" ph="/// 碰撞持续 ... " />
-            <marker date="1564040265037" expanded="true" signature="1524:1613" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="1653:2413" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="1724:1776" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="1884:1994" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="2092:2203" ph="{...}" />
-            <marker date="1564040265037" expanded="true" signature="2290:2402" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Hotfix/Module/ActorLocation/ObjectUnLockRequestHandler.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1968,22 +1454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-          <folding>
-            <marker date="1564037676668" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
-            <marker date="1564037676668" expanded="true" signature="219:681" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="316:451" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="383:445" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="456:527" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
-            <marker date="1564037676668" expanded="true" signature="572:679" ph="{...}" />
-            <marker date="1564037676668" expanded="true" signature="587:645" ph="/// 归属Unit的ID ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8D38E42A-49C1-41F8-B6C5-121BEDF29781/88/0f08c931/Queue`1.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2975">
@@ -1996,7 +1466,6 @@
         <state relative-caret-position="799">
           <caret line="54" column="57" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
           <folding>
-            <marker date="1564243677325" expanded="true" signature="52:3193" ph="{...}" />
             <marker date="1564243677325" expanded="true" signature="149:337" ph="{...}" />
             <marker date="1564243677325" expanded="true" signature="246:334" ph="{...}" />
             <marker date="1564243677325" expanded="true" signature="373:553" ph="{...}" />
@@ -2072,7 +1541,6 @@
           <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
           <folding>
             <marker date="1564243972662" expanded="false" signature="6:28" ph="..." />
-            <marker date="1564243972662" expanded="true" signature="48:419" ph="{...}" />
             <marker date="1564243972662" expanded="true" signature="176:417" ph="{...}" />
             <marker date="1564243972662" expanded="true" signature="302:414" ph="{...}" />
           </folding>
@@ -2139,7 +1607,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/CoroutineLockComponent.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="125">
           <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
           <folding>
             <marker date="1564243512809" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
@@ -2168,6 +1636,450 @@
             <marker date="1564243512809" expanded="true" signature="3149:3734" ph="{...}" />
             <marker date="1564243512809" expanded="true" signature="3235:3371" ph="{...}" />
             <marker date="1564243512809" expanded="true" signature="3422:3556" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Entity/Gate/Player.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <marker date="1558435610453" expanded="true" signature="17:488" ph="{...}" />
+            <marker date="1558435610453" expanded="true" signature="92:176" ph="{...}" />
+            <marker date="1558435610453" expanded="true" signature="147:173" ph="{...}" />
+            <marker date="1558435610453" expanded="true" signature="214:486" ph="{...}" />
+            <marker date="1558435610453" expanded="true" signature="338:373" ph="{...}" />
+            <marker date="1558435610453" expanded="true" signature="409:483" ph="{...}" />
+            <marker date="1558435610453" expanded="true" signature="437:459" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Unit.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <marker date="1558435610454" expanded="false" signature="6:28" ph="..." />
+            <marker date="1558435610454" expanded="true" signature="47:574" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="71:91" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="168:252" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="223:249" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="287:572" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="424:461" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="495:569" ph="{...}" />
+            <marker date="1558435610454" expanded="true" signature="523:545" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/Base/Object/Entity.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="231" column="38" lean-forward="true" selection-start-line="231" selection-start-column="38" selection-end-line="231" selection-end-column="38" />
+          <folding>
+            <marker date="1558435610960" expanded="false" signature="6:111" ph="..." />
+            <marker date="1558435610960" expanded="true" signature="130:5434" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="198:5432" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="435:443" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="482:490" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="524:841" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="552:574" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="663:774" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="676:714" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="738:769" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="905:1299" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="990:1106" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="1224:1270" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="1351:1770" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="1400:1516" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="1695:1741" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="1835:2275" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="1911:2032" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="2200:2246" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="2349:2800" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="2425:2546" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="2725:2771" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="2885:3344" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="2961:3082" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="3269:3315" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="3440:3907" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="3516:3637" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="3832:3878" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="3971:4259" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="3999:4021" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4133:4155" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4309:4570" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4337:4359" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4444:4466" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4620:4775" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4714:4747" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4819:4960" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4908:4935" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="4998:5053" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="5089:5429" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="5100:5374" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="5196:5369" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="5256:5363" ph="{...}" />
+            <marker date="1558435610960" expanded="true" signature="5397:5425" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Handler/Realm/C2R_RegisterHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" column="70" lean-forward="true" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+          <folding>
+            <marker date="1563980672739" expanded="true" signature="0:199" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563980672739" expanded="false" signature="207:263" ph="..." />
+            <marker date="1563980672739" expanded="true" signature="283:1836" ph="{...}" />
+            <marker date="1563980672739" expanded="true" signature="400:1834" ph="{...}" />
+            <marker date="1563980672739" expanded="true" signature="526:1828" ph="{...}" />
+            <marker date="1563980672739" expanded="true" signature="845:993" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionListenerComponent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
+          <folding>
+            <marker date="1564037166996" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564037166996" expanded="false" signature="208:349" ph="..." />
+            <marker date="1564037166996" expanded="true" signature="368:3730" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="487:814" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="565:808" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="944:1086" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1028:1080" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1092:1157" ph="/// 某一物理世界所有碰撞的监听者，负责碰撞事件的分发 ... " />
+            <marker date="1564037166996" expanded="true" signature="1234:3728" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1439:2188" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1725:1838" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="1855:1971" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2237:2735" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2807:2827" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2902:2922" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="2957:3534" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="3028:3524" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="3078:3510" ph="{...}" />
+            <marker date="1564037166996" expanded="true" signature="3574:3722" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FlyToolComponent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/System/B2S_FixtureUserDataFactory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1563626802570" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563626802570" expanded="true" signature="219:425" ph="{...}" />
+            <marker date="1563626802570" expanded="true" signature="265:423" ph="{...}" />
+            <marker date="1563626802570" expanded="true" signature="330:417" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_CircleColliderUtility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1563619610567" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563619610567" expanded="true" signature="219:287" ph="{...}" />
+            <marker date="1563619610567" expanded="true" signature="264:285" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_PolygonColliderUtility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1563619622138" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563619622138" expanded="true" signature="219:288" ph="{...}" />
+            <marker date="1563619622138" expanded="true" signature="265:286" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_WorldUtility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <marker date="1563622189008" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563622189008" expanded="false" signature="208:251" ph="..." />
+            <marker date="1563622189008" expanded="true" signature="270:582" ph="{...}" />
+            <marker date="1563622189008" expanded="true" signature="306:580" ph="{...}" />
+            <marker date="1563622189008" expanded="true" signature="321:458" ph="/// 创造一个物理世界 ... " />
+            <marker date="1563622189008" expanded="true" signature="515:574" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_BoxColliderUtility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1563619622133" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563619622133" expanded="true" signature="219:284" ph="{...}" />
+            <marker date="1563619622133" expanded="true" signature="261:282" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Utility/B2S_BodyUtility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1563619677956" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563619677956" expanded="true" signature="219:277" ph="{...}" />
+            <marker date="1563619677956" expanded="true" signature="254:275" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_CircleColliderDataStructure.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding>
+            <marker date="1563435770317" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563435770317" expanded="false" signature="208:279" ph="..." />
+            <marker date="1563435770317" expanded="true" signature="298:449" ph="{...}" />
+            <marker date="1563435770317" expanded="true" signature="380:447" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_ColliderDataStructureBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <folding>
+            <marker date="1564666064300" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564666064300" expanded="false" signature="208:263" ph="..." />
+            <marker date="1564666064300" expanded="true" signature="282:1865" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="317:490" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="522:1043" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="624:692" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="721:789" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="844:928" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="969:1037" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="1088:1315" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="1197:1309" ph="{...}" />
+            <marker date="1564666064300" expanded="true" signature="1363:1863" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_DataSupporter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <marker date="1563152028743" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563152028743" expanded="false" signature="208:484" ph="..." />
+            <marker date="1563152028743" expanded="true" signature="503:1040" ph="{...}" />
+            <marker date="1563152028743" expanded="true" signature="510:560" ph="/// 名称与id映射字典 ... " />
+            <marker date="1563152028743" expanded="true" signature="611:725" ph="{...}" />
+            <marker date="1563152028743" expanded="true" signature="731:779" ph="/// 碰撞体数据字典 ... " />
+            <marker date="1563152028743" expanded="true" signature="818:1038" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_PolygonColliderDataStructure.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <marker date="1563459830737" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1563459830737" expanded="false" signature="208:298" ph="..." />
+            <marker date="1563459830737" expanded="true" signature="317:668" ph="{...}" />
+            <marker date="1563459830737" expanded="true" signature="400:666" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionInstance.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <marker date="1564756761503" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564756761503" expanded="false" signature="208:309" ph="..." />
+            <marker date="1564756761503" expanded="true" signature="327:1122" ph="{...}" />
+            <marker date="1564756761503" expanded="true" signature="334:379" ph="/// 碰撞实例 ... " />
+            <marker date="1564756761503" expanded="true" signature="418:1120" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_AllCollideableObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+          <folding>
+            <marker date="1564559192491" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564559192491" expanded="false" signature="208:244" ph="..." />
+            <marker date="1564559192491" expanded="true" signature="262:1358" ph="{...}" />
+            <marker date="1564559192491" expanded="true" signature="317:1356" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/CollisionRelations/B2S_CollisionRelationSupport.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1564058934579" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564058934579" expanded="false" signature="208:322" ph="..." />
+            <marker date="1564058934579" expanded="true" signature="340:604" ph="{...}" />
+            <marker date="1564058934579" expanded="true" signature="389:602" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_CollisionResponseComponent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="63" />
+          <folding>
+            <marker date="1564738717802" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564738717802" expanded="true" signature="234:2435" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="241:295" ph="/// 碰撞响应组件，用来响应碰撞 ... " />
+            <marker date="1564738717802" expanded="true" signature="354:2433" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="369:424" ph="/// 碰撞开始事件 ... " />
+            <marker date="1564738717802" expanded="true" signature="505:560" ph="/// 碰撞结束事件 ... " />
+            <marker date="1564738717802" expanded="true" signature="642:698" ph="/// 碰撞持续事件 ... " />
+            <marker date="1564738717802" expanded="true" signature="781:888" ph="/// 碰撞开始 ... " />
+            <marker date="1564738717802" expanded="true" signature="963:1050" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="1060:1167" ph="/// 碰撞结束 ... " />
+            <marker date="1564738717802" expanded="true" signature="1243:1331" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="1341:1448" ph="/// 碰撞持续 ... " />
+            <marker date="1564738717802" expanded="true" signature="1525:1614" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="1654:2427" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="1697:1749" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="1898:2008" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="2106:2217" ph="{...}" />
+            <marker date="1564738717802" expanded="true" signature="2304:2416" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/NKGMOBA/Box2D/Component/B2S_FixtureUserData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding>
+            <marker date="1564739434582" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564739434582" expanded="true" signature="234:821" ph="{...}" />
+            <marker date="1564739434582" expanded="true" signature="331:466" ph="{...}" />
+            <marker date="1564739434582" expanded="true" signature="398:460" ph="{...}" />
+            <marker date="1564739434582" expanded="true" signature="471:542" ph="/// 碰撞信息的Entity，方便挂载Component来拓展信息 ... " />
+            <marker date="1564739434582" expanded="true" signature="587:819" ph="{...}" />
+            <marker date="1564739434582" expanded="true" signature="602:660" ph="/// 归属Unit的ID ... " />
+            <marker date="1564739434582" expanded="true" signature="698:751" ph="///  ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/Test.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/kongju.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_CollisionRelationTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Unity/Assets/Model/NKGMOBA/Box2DSharp/DataStructure/B2S_BoxColliderDataStructure.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <marker date="1564737711910" expanded="true" signature="0:200" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564737711910" expanded="false" signature="208:283" ph="..." />
+            <marker date="1564737711910" expanded="true" signature="302:574" ph="{...}" />
+            <marker date="1564737711910" expanded="true" signature="381:572" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_E_CRS.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <marker date="1564759794568" expanded="true" signature="0:245" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564759794568" expanded="true" signature="281:1156" ph="{...}" />
+            <marker date="1564759794568" expanded="true" signature="329:1154" ph="{...}" />
+            <marker date="1564759794568" expanded="true" signature="410:951" ph="{...}" />
+            <marker date="1564759794568" expanded="true" signature="496:941" ph="{...}" />
+            <marker date="1564759794568" expanded="true" signature="622:900" ph="{...}" />
+            <marker date="1564759794568" expanded="true" signature="1029:1050" ph="{...}" />
+            <marker date="1564759794568" expanded="true" signature="1127:1148" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_Q_CRS.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <marker date="1564759794557" expanded="true" signature="0:245" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564759794557" expanded="true" signature="281:1156" ph="{...}" />
+            <marker date="1564759794557" expanded="true" signature="329:1154" ph="{...}" />
+            <marker date="1564759794557" expanded="true" signature="410:951" ph="{...}" />
+            <marker date="1564759794557" expanded="true" signature="496:941" ph="{...}" />
+            <marker date="1564759794557" expanded="true" signature="622:900" ph="{...}" />
+            <marker date="1564759794557" expanded="true" signature="1029:1050" ph="{...}" />
+            <marker date="1564759794557" expanded="true" signature="1127:1148" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotfix/NKGMOBA/Box2D/System/B2S_Darius_RFare_CRS.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding>
+            <marker date="1564759794577" expanded="true" signature="0:245" ph="/* ------------------------------------------------------------ ... */" />
+            <marker date="1564759794577" expanded="true" signature="281:1160" ph="{...}" />
+            <marker date="1564759794577" expanded="true" signature="333:1158" ph="{...}" />
+            <marker date="1564759794577" expanded="true" signature="414:955" ph="{...}" />
+            <marker date="1564759794577" expanded="true" signature="500:945" ph="{...}" />
+            <marker date="1564759794577" expanded="true" signature="626:904" ph="{...}" />
+            <marker date="1564759794577" expanded="true" signature="1033:1054" ph="{...}" />
+            <marker date="1564759794577" expanded="true" signature="1131:1152" ph="{...}" />
           </folding>
         </state>
       </provider>
