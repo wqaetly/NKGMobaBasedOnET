@@ -71,7 +71,6 @@ namespace ETModel
         [LabelText("Box2D碰撞体类型")]
         public B2S_ColliderType b2SColliderType;
 
-
         [LabelText("碰撞体偏移信息")]
         public CostumVector2 offset = new CostumVector2(0, 0);
     }

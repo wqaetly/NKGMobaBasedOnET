@@ -31,6 +31,7 @@ namespace ETMode
         public string BelongGroup;
 
         [LabelText("与此结点有碰撞关系的结点ID")]
+        [BsonIgnore]
         [DisableInEditorMode]
         public List<long> CollisionRelations = new List<long>();
     }
