@@ -47,7 +47,6 @@ namespace Plugins.NodeEditor
         {
             this.MB2SCollisionInstance.Flag = "友方英雄";
             this.MB2SCollisionInstance.nodeDataId = B2S_PrefabIDDefine.FriendHero;
-            this.MB2SCollisionInstance.MB2SAllCollideableObject = B2S_AllCollideableObject.Teammate;
         }
 
         public override void NodeGUI()

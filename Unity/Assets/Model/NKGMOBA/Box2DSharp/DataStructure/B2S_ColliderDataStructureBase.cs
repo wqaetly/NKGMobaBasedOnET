@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using ETMode;
+using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -69,12 +70,8 @@ namespace ETModel
 
         [LabelText("Box2D碰撞体类型")]
         public B2S_ColliderType b2SColliderType;
-        
-        [Title("游戏中碰撞体类型,在这里不分敌我，直接选择大种类即可，例如此碰撞体为英雄，那么就直接选英雄")]
-        [HideLabel]
-        [EnumToggleButtons]
-        public B2S_AllCollideableObject B2SAllCollideableObject;
-        
+
+
         [LabelText("碰撞体偏移信息")]
         public CostumVector2 offset = new CostumVector2(0, 0);
     }

@@ -47,7 +47,6 @@ namespace Plugins.NodeEditor
         {
             this.MB2SCollisionInstance.Flag = "敌方防御塔";
             this.MB2SCollisionInstance.nodeDataId = B2S_PrefabIDDefine.EnemyDefendBuilding;
-            this.MB2SCollisionInstance.MB2SAllCollideableObject = B2S_AllCollideableObject.EnemyDefendBuilding;
         }
 
         public override void NodeGUI()

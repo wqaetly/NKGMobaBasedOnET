@@ -30,11 +30,6 @@ namespace ETMode
         [DisableInEditorMode]
         public string BelongGroup;
 
-        [InfoBox("此设置在碰撞事件分发那作为小分类依据")]
-        [LabelText("此结点类型")]
-        [EnumToggleButtons]
-        public B2S_AllCollideableObject MB2SAllCollideableObject;
-
         [LabelText("与此结点有碰撞关系的结点ID")]
         [DisableInEditorMode]
         public List<long> CollisionRelations = new List<long>();

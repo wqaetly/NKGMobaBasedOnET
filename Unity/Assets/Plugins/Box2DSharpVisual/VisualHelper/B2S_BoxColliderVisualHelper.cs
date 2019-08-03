@@ -123,7 +123,6 @@ namespace ETModel
                     b2SBoxColliderDataStructure.offset.y = MB2S_BoxColliderDataStructure.offset.y;
                     b2SBoxColliderDataStructure.isSensor = MB2S_BoxColliderDataStructure.isSensor;
                     b2SBoxColliderDataStructure.b2SColliderType = MB2S_BoxColliderDataStructure.b2SColliderType;
-                    b2SBoxColliderDataStructure.B2SAllCollideableObject = MB2S_BoxColliderDataStructure.B2SAllCollideableObject;
                     b2SBoxColliderDataStructure.hx = MB2S_BoxColliderDataStructure.hx;
                     b2SBoxColliderDataStructure.hy = this.MB2S_BoxColliderDataStructure.hy;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_BoxColliderDataStructure.id,

@@ -111,7 +111,6 @@ namespace ETModel
                     b2SCircleColliderDataStructure.offset.y = MB2S_CircleColliderDataStructure.offset.y;
                     b2SCircleColliderDataStructure.isSensor = MB2S_CircleColliderDataStructure.isSensor;
                     b2SCircleColliderDataStructure.b2SColliderType = MB2S_CircleColliderDataStructure.b2SColliderType;
-                    b2SCircleColliderDataStructure.B2SAllCollideableObject = MB2S_CircleColliderDataStructure.B2SAllCollideableObject;
                     b2SCircleColliderDataStructure.radius = MB2S_CircleColliderDataStructure.radius;
                     this.MColliderDataSupporter.colliderDataDic.Add(this.MB2S_CircleColliderDataStructure.id,
                         b2SCircleColliderDataStructure);

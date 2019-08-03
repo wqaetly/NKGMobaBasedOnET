@@ -47,7 +47,6 @@ namespace Plugins.NodeEditor
         {
             this.MB2SCollisionInstance.Flag = "中立生物";
             this.MB2SCollisionInstance.nodeDataId = B2S_PrefabIDDefine.Monster;
-            this.MB2SCollisionInstance.MB2SAllCollideableObject = B2S_AllCollideableObject.Monsters;
         }
 
         public override void NodeGUI()
