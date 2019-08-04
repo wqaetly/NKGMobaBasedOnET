@@ -50,6 +50,11 @@ namespace ETModel
         {
             return new Vector2(this.x, this.y);
         }
+
+        public System.Numerics.Vector2 ToSystemVector2()
+        {
+            return new System.Numerics.Vector2(this.x, this.y);
+        }
     }
 
     public static class CostumVector2Helper

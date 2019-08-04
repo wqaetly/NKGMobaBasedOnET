@@ -22,6 +22,7 @@ namespace Box2DSharp.Collision.Shapes
             Radius = 0.0f;
             Position.SetZero();
         }
+        
 
         /// Implement b2Shape.
         public override Shape Clone()

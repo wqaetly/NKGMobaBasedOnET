@@ -83,5 +83,22 @@ namespace ETModel
                 //Log.Info($"已经读取多边形数据，数据大小为{mfile2.Length}");
             }
         }
+
+        public B2S_ColliderDataStructureBase GetDataById(long id)
+        {
+            long flag = id / 10000;
+            switch (flag)
+            {
+                case 1:
+                    return this.BoxColliderDatas.colliderDataDic[id];
+                case 2:
+                    return this.CircleColliderDatas.colliderDataDic[id];
+                case 3:
+                    return this.PolygonColliderDatas.colliderDataDic[id];
+            }
+
+            Log.Error($"未找到碰撞体数据，所查找的ID：{id}");
+            return null;
+        }
     }
 }
