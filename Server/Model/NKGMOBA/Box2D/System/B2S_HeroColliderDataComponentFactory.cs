@@ -4,13 +4,9 @@
 // Data: 2019年8月5日 19:43:34
 //------------------------------------------------------------
 
+using ETMode;
+
 namespace ETModel
 {
-    public static class B2S_HeroColliderDataComponentFactory
-    {
-        public static B2S_HeroColliderDataComponent CreateHeroColliderData()
-        {
-            
-        }
-    }
+
 }

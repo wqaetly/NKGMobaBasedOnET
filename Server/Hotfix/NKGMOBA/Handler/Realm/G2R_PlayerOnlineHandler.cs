@@ -21,7 +21,7 @@ namespace ETHotfix
 
             //玩家上线
             onlineComponent.Add(message.playerAccount, message.PlayerId, message.GateAppID);
-            Log.Info($"玩家{message.playerAccount}上线");
+            //Log.Info($"玩家{message.playerAccount}上线");
 
             reply();
             await ETTask.CompletedTask;

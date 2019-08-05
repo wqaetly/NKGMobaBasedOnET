@@ -15,5 +15,15 @@ namespace ETModel
     public class B2S_HeroColliderDataManagerComponent:Component
     {
         public Dictionary<long,B2S_HeroColliderDataComponent> AllColliderData = new Dictionary<long, B2S_HeroColliderDataComponent>();
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+            base.Dispose();
+            this.AllColliderData.Clear();
+        }
     }
 }

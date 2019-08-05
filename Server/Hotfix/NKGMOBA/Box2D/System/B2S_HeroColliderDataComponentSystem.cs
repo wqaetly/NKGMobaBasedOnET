@@ -12,11 +12,12 @@ using ETModel;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_HeroColliderDataComponentAwakeSystem: AwakeSystem<B2S_HeroColliderDataComponent, long>
+    public class B2S_HeroColliderDataComponentAwakeSystem: AwakeSystem<B2S_HeroColliderDataComponent, B2S_CollisionInstance, long>
     {
-        public override void Awake(B2S_HeroColliderDataComponent self, long id)
+        public override void Awake(B2S_HeroColliderDataComponent self, B2S_CollisionInstance b2SCollisionInstance, long id)
         {
             self.ID = id;
+            self.m_B2S_CollisionInstance = b2SCollisionInstance;
             self.m_Unit = (Unit) self.Entity;
             LoadDependenceRes(self);
         }
@@ -59,9 +60,12 @@ namespace ETHotfix
                             m_PolygonShape.Set(VARIABLE1.ToArray());
                             self.m_Body.CreateFixture(m_PolygonShape, 0);
                         }
+
                         break;
                 }
             }
+            
+            Log.Info("FixTureList大小为"+self.m_Body.FixtureList.Count.ToString());
         }
     }
 }

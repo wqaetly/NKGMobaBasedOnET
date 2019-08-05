@@ -25,7 +25,7 @@ namespace ETModel
         /// <summary>
         /// 碰撞关系数据载体
         /// </summary>
-        public Dictionary<long, B2S_CollisionsRelationSupport> m_B2S_CollisionsRelationSupportDic;
+        public Dictionary<long, B2S_CollisionsRelationSupport> m_B2S_CollisionsRelationSupportDic = new Dictionary<long, B2S_CollisionsRelationSupport>();
 
         /// <summary>
         /// 数据所处路径
@@ -43,10 +43,23 @@ namespace ETModel
             foreach (var VARIABLE in filePaths)
             {
                 byte[] mfile0 = File.ReadAllBytes(VARIABLE);
+
                 if (mfile0.Length > 0)
-                    this.BoxColliderDatas =
-                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile0);
+                {
+                    B2S_CollisionsRelationSupport temp = BsonSerializer.Deserialize<B2S_CollisionsRelationSupport>(mfile0);
+                    this.m_B2S_CollisionsRelationSupportDic.Add(temp.SupportId, temp);
+                    //Log.Info($"加载碰撞关系数据成功，ID为{temp.SupportId}");
+                }
             }
+        }
+
+        /// <summary>
+        /// 通过ID获取碰撞关系数据载体
+        /// </summary>
+        /// <returns></returns>
+        public B2S_CollisionsRelationSupport GetB2S_CollisionsRelationSupportById(long id)
+        {
+            return m_B2S_CollisionsRelationSupportDic[id];
         }
     }
 }

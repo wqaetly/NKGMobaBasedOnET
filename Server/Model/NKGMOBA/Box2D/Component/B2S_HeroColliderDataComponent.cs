@@ -38,6 +38,18 @@ namespace ETModel
         /// <summary>
         /// 碰撞体数据实例,因为一个Body可能有多个fixture
         /// </summary>
-        public List<B2S_ColliderDataStructureBase> m_B2S_ColliderDataStructureBase;
+        public List<B2S_ColliderDataStructureBase> m_B2S_ColliderDataStructureBase = new List<B2S_ColliderDataStructureBase>();
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+            base.Dispose();
+            this.m_Body.Dispose();
+            m_B2S_CollisionInstance = null;
+            this.m_B2S_ColliderDataStructureBase.Clear();
+        }
     }
 }

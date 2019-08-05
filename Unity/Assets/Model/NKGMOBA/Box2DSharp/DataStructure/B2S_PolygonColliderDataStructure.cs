@@ -47,7 +47,7 @@ namespace ETModel
                 for (int j = 0; j < points[i].Count; j++)
                 {
                     this.finalPoints[i].Add(this.points[i][j].ToSystemVector2());
-                    Log.Info($"反序列化完成,值为{this.finalPoints[i][j]}");
+                    //Log.Info($"反序列化完成,值为{this.finalPoints[i][j]}");
                 }
             }
         }

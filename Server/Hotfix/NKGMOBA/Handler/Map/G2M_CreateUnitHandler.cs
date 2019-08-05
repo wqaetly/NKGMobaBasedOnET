@@ -17,6 +17,10 @@ namespace ETHotfix
             unit.AddComponent<MoveComponent>();
             //增加寻路相关组件
             unit.AddComponent<UnitPathComponent>();
+
+            //增加碰撞体管理组件
+            unit.AddComponent<B2S_HeroColliderDataManagerComponent>();
+            
             //设置小骷髅位置
             unit.Position = new Vector3(-10, 0, -10);
 

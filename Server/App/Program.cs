@@ -150,6 +150,8 @@ namespace App
 						//增加碰撞体数据仓库
 						Game.Scene.AddComponent<B2S_ColliderDataRepositoryComponent>();
 
+						Game.Scene.AddComponent<B2S_CollisionRelationRepositoryComponent>();
+
 						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
 						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
 						Game.Scene.AddComponent<CoroutineLockComponent>();

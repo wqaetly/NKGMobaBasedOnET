@@ -13,6 +13,8 @@ namespace ETHotfix
     {
         protected override async ETTask Run(Unit entity, UserInput_SkillCmd message)
         {
+            entity.GetComponent<B2S_HeroColliderDataManagerComponent>().CreateHeroColliderData(10001, 10001);
+            Log.Info("创建碰撞体完成");
             PlayerInput_SkillCmdSystem.BroadcastPath(entity, message.Message);
             await ETTask.CompletedTask;
         }

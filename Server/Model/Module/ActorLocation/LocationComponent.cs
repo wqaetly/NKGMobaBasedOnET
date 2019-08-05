@@ -55,7 +55,7 @@ namespace ETModel
 			using (await CoroutineLockComponent.Instance.Wait(key + (int)AppType.Location))
 			{
 				this.locations[key] = instanceId;
-				Log.Info($"location add key: {key} instanceId: {instanceId}");
+				//Log.Info($"location add key: {key} instanceId: {instanceId}");
 			}
 		}
 
@@ -64,7 +64,7 @@ namespace ETModel
 			using (await CoroutineLockComponent.Instance.Wait(key + (int)AppType.Location))
 			{
 				this.locations.Remove(key);
-				Log.Info($"location remove key: {key}");
+				//Log.Info($"location remove key: {key}");
 			}
 		}
 
@@ -73,7 +73,7 @@ namespace ETModel
 			using (await CoroutineLockComponent.Instance.Wait(key + (int)AppType.Location))
 			{
 				this.locations.TryGetValue(key, out long instanceId);
-				Log.Info($"location get key: {key} {instanceId}");
+				//Log.Info($"location get key: {key} {instanceId}");
 				return instanceId;
 			}
 
