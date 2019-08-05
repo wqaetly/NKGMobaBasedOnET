@@ -12,12 +12,11 @@ using ETModel;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_HeroColliderDataComponentAwakeSystem: AwakeSystem<B2S_HeroColliderDataComponent, B2S_CollisionInstance>
+    public class B2S_HeroColliderDataComponentAwakeSystem: AwakeSystem<B2S_HeroColliderDataComponent, long>
     {
-        public override void Awake(B2S_HeroColliderDataComponent self, B2S_CollisionInstance a)
+        public override void Awake(B2S_HeroColliderDataComponent self, long id)
         {
-            self.m_B2S_CollisionInstance = a;
-            self.ID = a.nodeDataId;
+            self.ID = id;
             self.m_Unit = (Unit) self.Entity;
             LoadDependenceRes(self);
         }

@@ -1,16 +1,16 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019年7月20日 20:45:46
+// Data: 2019年8月5日 19:43:34
 //------------------------------------------------------------
 
 namespace ETModel
 {
-    public class B2S_FixtureUserDataFactory
+    public static class B2S_HeroColliderDataComponentFactory
     {
-        public static B2S_FixtureUserData CreateFixtureUserData()
+        public static B2S_HeroColliderDataComponent CreateHeroColliderData()
         {
-            return ComponentFactory.Create<B2S_FixtureUserData>();
+            
         }
     }
 }

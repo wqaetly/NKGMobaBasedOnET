@@ -43,6 +43,7 @@ namespace B2S_CollisionRelation
         /// 预制数据结点载体
         /// </summary>
         [TabGroup("数据部分")]
+        [DisableInEditorMode]
         public B2S_CollisionsRelationSupport m_PrefabDic = new B2S_CollisionsRelationSupport();
 
         [TabGroup("数据部分")]
