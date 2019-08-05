@@ -4,7 +4,9 @@
 // Data: 2019年8月4日 16:31:14
 //------------------------------------------------------------
 
+using System.Numerics;
 using Box2DSharp.Collision.Shapes;
+using Box2DSharp.Common;
 using Box2DSharp.Dynamics;
 using ETMode;
 using ETModel;
@@ -58,14 +60,61 @@ namespace ETHotfix
                         {
                             PolygonShape m_PolygonShape = new PolygonShape();
                             m_PolygonShape.Set(VARIABLE1.ToArray());
-                            self.m_Body.CreateFixture(m_PolygonShape, 0);
+                            self.m_Body.CreateFixture(m_PolygonShape, 0).UserData = self;
                         }
 
                         break;
                 }
             }
-            
-            Log.Info("FixTureList大小为"+self.m_Body.FixtureList.Count.ToString());
+
+            //Log.Info("FixTureList大小为"+self.m_Body.FixtureList.Count.ToString());
+        }
+    }
+
+    [ObjectSystem]
+    public class B2S_HeroColliderDataComponentFixedUpdateSystem: FixedUpdateSystem<B2S_HeroColliderDataComponent>
+    {
+        public override void FixedUpdate(B2S_HeroColliderDataComponent self)
+        {
+            //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
+            if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit)
+            {
+                self.SetColliderBodyPos(new Vector2(self.m_Unit.Position.x, self.m_Unit.Position.z));
+                self.SetColliderBodyAngle(-UnityEngine.Quaternion.QuaternionToEuler(self.m_Unit.Rotation).y * Settings.Pi / 100);
+            }
+        }
+    }
+
+    public static class B2S_HeroColliderDataComponentHelper
+    {
+        /// <summary>
+        /// 设置刚体位置
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="pos"></param>
+        public static void SetColliderBodyPos(this B2S_HeroColliderDataComponent self, Vector2 pos)
+        {
+            self.m_Body.SetTransform(pos, self.m_Body.GetAngle());
+        }
+
+        /// <summary>
+        /// 设置刚体角度
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="pos"></param>
+        public static void SetColliderBodyAngle(this B2S_HeroColliderDataComponent self, float angle)
+        {
+            self.m_Body.SetTransform(self.m_Body.GetPosition(), angle);
+        }
+
+        /// <summary>
+        /// 设置刚体状态
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="pos"></param>
+        public static void SetColliderBodyState(this B2S_HeroColliderDataComponent self, bool state)
+        {
+            self.m_Body.IsActive = state;
         }
     }
 }

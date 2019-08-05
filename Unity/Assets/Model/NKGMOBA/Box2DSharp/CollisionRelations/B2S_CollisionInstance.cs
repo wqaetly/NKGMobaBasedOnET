@@ -25,6 +25,9 @@ namespace ETMode
         [LabelText("此结点所使用的碰撞体ID")]
         public List<long> collisionId;
 
+        [LabelText("是否跟随Unit进行位置移动")]
+        public bool FollowUnit;
+
         [InfoBox("此设置在碰撞事件分发那作为大分类依据（请前往Canvas处点击“自动配置所有Node数据”）")]
         [LabelText("此结点归属Group")]
         [DisableInEditorMode]
