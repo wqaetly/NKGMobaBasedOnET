@@ -109,9 +109,14 @@ namespace B2S_CollisionRelation
         public Dictionary<(string, B2S_CollisionInstance), string> className = new Dictionary<(string, B2S_CollisionInstance), string>();
 
         [TabGroup("自动生成代码部分")]
-        [LabelText("保存路径")]
+        [LabelText("碰撞关系代码保存路径")]
         [FolderPath]
-        public string thePathWillBeSaved;
+        public string theCollisionPathWillBeSaved;
+
+        [TabGroup("自动生成代码部分")]
+        [LabelText("用于添加碰撞关系组件EventID保存路径")]
+        [FolderPath]
+        public string theEventIdPathWillBeSaved;
 
         [TabGroup("自动生成代码部分")]
         [Button("读取所有结点flag信息(配置保存类名用)", 25), GUIColor(0.4f, 0.8f, 1)]
@@ -144,6 +149,33 @@ namespace B2S_CollisionRelation
         [Button("开始自动生成代码", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AutoGenerateCollisionCode()
         {
+            #region
+
+            StringBuilder sb1 = new StringBuilder();
+            sb1.AppendLine("//------------------------------------------------------------");
+            sb1.AppendLine("// Author: 烟雨迷离半世殇");
+            sb1.AppendLine("// Mail: 1778139321@qq.com");
+            sb1.AppendLine($"// Data: {DateTime.Now}");
+            sb1.AppendLine("// Description: 此代码switch case部分由工具生成，请勿进行增减操作");
+            sb1.AppendLine("//------------------------------------------------------------");
+            sb1.AppendLine();
+            sb1.AppendLine("namespace ETHotfix");
+            sb1.AppendLine("{");
+            sb1.AppendLine("    public static class EventIdType_Collision");
+            sb1.AppendLine("    {");
+            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in this.className)
+            {
+                if (VARIABLE.Value == "") continue;
+                sb1.AppendLine($"        public const string {VARIABLE.Value} = \"{VARIABLE.Key.Item2.nodeDataId}\";");
+            }
+
+            sb1.AppendLine("    }");
+            sb1.AppendLine("}");
+            File.WriteAllText($"{this.theEventIdPathWillBeSaved}/EventIdType_Collision.cs", sb1.ToString());
+
+            #endregion 添加碰撞组件ID部分
+
+            //碰撞关系代码部分
             foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in this.className)
             {
                 if (VARIABLE.Value == "") continue;
@@ -162,6 +194,16 @@ namespace B2S_CollisionRelation
                 sb.AppendLine();
                 sb.AppendLine("namespace ETHotfix");
                 sb.AppendLine("{");
+                
+                sb.AppendLine($"    [Event(EventIdType_Collision.{VARIABLE.Value})]");
+                sb.AppendLine($"    public class Add{VARIABLE.Value}System: AEvent<Unit>");
+                sb.AppendLine("    {");
+                sb.AppendLine("        public override void Run(Unit a)");
+                sb.AppendLine("        {");
+                sb.AppendLine($"            a.AddComponent<{VARIABLE.Value}>();");
+                sb.AppendLine("        }");
+                sb.AppendLine("    }");
+
                 sb.AppendLine($"    public class {VARIABLE.Value} : Component");
                 sb.AppendLine("    {");
                 sb.AppendLine("        public void OnCollideStart(B2S_FixtureUserData b2SFixtureUserData)");
@@ -209,12 +251,8 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("        }");
                 sb.AppendLine("    }");
                 sb.AppendLine("}");
-                File.WriteAllText($"{this.thePathWillBeSaved}/{VARIABLE.Value}.cs", sb.ToString());
+                File.WriteAllText($"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}.cs", sb.ToString());
             }
-        }
-
-        private void GenerateBasedOnGroupInfo(StringBuilder stringBuilder)
-        {
         }
 
         /// <summary>

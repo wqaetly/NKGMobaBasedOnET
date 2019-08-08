@@ -41,6 +41,7 @@ namespace ETHotfix
             BodyDef bodyDef = new BodyDef();
             self.m_Body = Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().CreateBody(bodyDef);
 
+            //根据数据加载具体的碰撞体，有的技能可能会产生多个碰撞体
             foreach (var VARIABLE in self.m_B2S_ColliderDataStructureBase)
             {
                 switch (VARIABLE.b2SColliderType)
@@ -67,6 +68,8 @@ namespace ETHotfix
                 }
             }
 
+            //根据ID添加对应的碰撞处理组件
+            Game.EventSystem.Run(self.m_B2S_CollisionInstance.collisionId.ToString(), self);
             //Log.Info("FixTureList大小为"+self.m_Body.FixtureList.Count.ToString());
         }
     }

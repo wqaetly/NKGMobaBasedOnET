@@ -1,7 +1,7 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019/8/2 23:29:54
+// Data: 2019/8/8 13:46:17
 // Description: 此代码switch case部分由工具生成，请勿进行增减操作
 //------------------------------------------------------------
 
@@ -9,6 +9,14 @@ using ETModel;
 
 namespace ETHotfix
 {
+    [Event(EventIdType_Collision.B2S_Darius_E_CRS)]
+    public class AddB2S_Darius_E_CRSSystem: AEvent<Unit>
+    {
+        public override void Run(Unit a)
+        {
+            a.AddComponent<B2S_Darius_E_CRS>();
+        }
+    }
     public class B2S_Darius_E_CRS : Component
     {
         public void OnCollideStart(B2S_FixtureUserData b2SFixtureUserData)
