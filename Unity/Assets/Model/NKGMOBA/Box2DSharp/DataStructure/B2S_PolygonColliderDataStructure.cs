@@ -50,6 +50,8 @@ namespace ETModel
                     //Log.Info($"反序列化完成,值为{this.finalPoints[i][j]}");
                 }
             }
+            
+            this.finalOffset = new Vector2(this.offset.x,this.offset.y);
         }
 #endif
     }

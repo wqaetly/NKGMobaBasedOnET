@@ -16,43 +16,43 @@ namespace ETModel
         /// <summary>
         /// 碰撞开始事件
         /// </summary>
-        public event Action<B2S_FixtureUserData> OnCollideStartAction;
+        public event Action<B2S_HeroColliderData> OnCollideStartAction;
 
         /// <summary>
         /// 碰撞结束事件
         /// </summary>
-        public event Action<B2S_FixtureUserData> OnCollideFinishAction;
+        public event Action<B2S_HeroColliderData> OnCollideFinishAction;
 
         /// <summary>
         /// 碰撞持续事件
         /// </summary>,
-        public event Action<B2S_FixtureUserData> OnCollideSustainAction;
+        public event Action<B2S_HeroColliderData> OnCollideSustainAction;
 
         /// <summary>
         /// 碰撞开始
         /// </summary>
         /// <param name="b2SFixtureUserData"></param>
-        public void OnCollideStart(B2S_FixtureUserData b2SFixtureUserData)
+        public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
         {
-            this.OnCollideStartAction?.Invoke(b2SFixtureUserData);
+            this.OnCollideStartAction?.Invoke(b2SHeroColliderData);
         }
 
         /// <summary>
         /// 碰撞结束
         /// </summary>
         /// <param name="b2SFixtureUserData"></param>
-        public void OnCollideFinish(B2S_FixtureUserData b2SFixtureUserData)
+        public void OnCollideFinish(B2S_HeroColliderData b2SHeroColliderData)
         {
-            this.OnCollideFinishAction?.Invoke(b2SFixtureUserData);
+            this.OnCollideFinishAction?.Invoke(b2SHeroColliderData);
         }
 
         /// <summary>
         /// 碰撞持续
         /// </summary>
         /// <param name="b2SFixtureUserData"></param>
-        public void OnCollideSustain(B2S_FixtureUserData b2SFixtureUserData)
+        public void OnCollideSustain(B2S_HeroColliderData b2SHeroColliderData)
         {
-            this.OnCollideSustainAction?.Invoke(b2SFixtureUserData);
+            this.OnCollideSustainAction?.Invoke(b2SHeroColliderData);
         }
 
         public override void Dispose()
@@ -67,17 +67,17 @@ namespace ETModel
             //清理已注册的委托
             foreach (var VARIABLE in this.OnCollideStartAction.GetInvocationList())
             {
-                OnCollideStartAction -= VARIABLE as Action<B2S_FixtureUserData>; 
+                OnCollideStartAction -= VARIABLE as Action<B2S_HeroColliderData>; 
             }
             
             foreach (var VARIABLE in this.OnCollideFinishAction.GetInvocationList())
             {
-                OnCollideFinishAction -= VARIABLE as Action<B2S_FixtureUserData>; 
+                OnCollideFinishAction -= VARIABLE as Action<B2S_HeroColliderData>; 
             }
 
             foreach (var VARIABLE in this.OnCollideSustainAction.GetInvocationList())
             {
-                OnCollideSustainAction -= VARIABLE as Action<B2S_FixtureUserData>; 
+                OnCollideSustainAction -= VARIABLE as Action<B2S_HeroColliderData>; 
             }
 
         }

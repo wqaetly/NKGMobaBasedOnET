@@ -42,15 +42,15 @@ namespace ETModel
 
         public void BeginContact(Contact contact)
         {
-            B2S_FixtureUserData aUserData = (B2S_FixtureUserData) contact.FixtureA.UserData;
-            B2S_FixtureUserData bUserData = (B2S_FixtureUserData) contact.FixtureB.UserData;
-            if (this.collisionRecorder.ContainsKey((aUserData.UnitId, bUserData.UnitId)))
+            B2S_HeroColliderData aUserData = (B2S_HeroColliderData) contact.FixtureA.UserData;
+            B2S_HeroColliderData bUserData = (B2S_HeroColliderData) contact.FixtureB.UserData;
+            if (this.collisionRecorder.ContainsKey((aUserData.Id, bUserData.Id)))
             {
-                this.collisionRecorder[(aUserData.UnitId, bUserData.UnitId)] = true;
+                this.collisionRecorder[(aUserData.Id, bUserData.Id)] = true;
             }
             else
             {
-                this.collisionRecorder.Add((aUserData.UnitId, bUserData.UnitId), true);
+                this.collisionRecorder.Add((aUserData.Id, bUserData.Id), true);
             }
 
             aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(bUserData);
@@ -59,10 +59,10 @@ namespace ETModel
 
         public void EndContact(Contact contact)
         {
-            B2S_FixtureUserData aUserData = (B2S_FixtureUserData) contact.FixtureA.UserData;
-            B2S_FixtureUserData bUserData = (B2S_FixtureUserData) contact.FixtureB.UserData;
+            B2S_HeroColliderData aUserData = (B2S_HeroColliderData) contact.FixtureA.UserData;
+            B2S_HeroColliderData bUserData = (B2S_HeroColliderData) contact.FixtureB.UserData;
 
-            this.collisionRecorder[(aUserData.UnitId, bUserData.UnitId)] = false;
+            this.collisionRecorder[(aUserData.Id, bUserData.Id)] = false;
 
             aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(bUserData);
             bUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(aUserData);
@@ -84,8 +84,8 @@ namespace ETModel
                 {
                     var a = this.UnitComponent.Get(VARIABLE.Key.Item1);
                     var b = this.UnitComponent.Get(VARIABLE.Key.Item2);
-                    a.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(b.GetComponent<B2S_FixtureUserData>());
-                    b.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(a.GetComponent<B2S_FixtureUserData>());
+                    a.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(b.GetComponent<B2S_HeroColliderData>());
+                    b.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(a.GetComponent<B2S_HeroColliderData>());
                 }
             }
         }

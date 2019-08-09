@@ -11,15 +11,15 @@ using ETMode;
 namespace ETModel
 {
     /// <summary>
-    /// 一个碰撞体数据结点
+    /// 一个碰撞体数据结点,一个碰撞体结点即为一个实体
     /// </summary>
-    public class B2S_HeroColliderDataComponent:Component
+    public class B2S_HeroColliderData: Entity
     {
         /// <summary>
         /// 此数据结点ID
         /// </summary>
         public long ID;
-        
+
         /// <summary>
         /// Box2D世界中的刚体
         /// </summary>
@@ -46,6 +46,7 @@ namespace ETModel
             {
                 return;
             }
+
             base.Dispose();
             this.m_Body.Dispose();
             m_B2S_CollisionInstance = null;

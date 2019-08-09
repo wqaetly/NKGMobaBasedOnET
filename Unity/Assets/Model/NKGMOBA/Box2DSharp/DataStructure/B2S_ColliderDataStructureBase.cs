@@ -78,5 +78,9 @@ namespace ETModel
 
         [LabelText("碰撞体偏移信息")]
         public CostumVector2 offset = new CostumVector2(0, 0);
+
+#if SERVER
+        public System.Numerics.Vector2 finalOffset = System.Numerics.Vector2.One;
+#endif
     }
 }

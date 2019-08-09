@@ -187,35 +187,48 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("// Author: 烟雨迷离半世殇");
                 sb.AppendLine("// Mail: 1778139321@qq.com");
                 sb.AppendLine($"// Data: {DateTime.Now}");
-                sb.AppendLine("// Description: 此代码switch case部分由工具生成，请勿进行增减操作");
+                sb.AppendLine("// Description: 此代码switch case与System部分由工具生成，请勿进行增减操作");
                 sb.AppendLine("//------------------------------------------------------------");
                 sb.AppendLine();
                 sb.AppendLine("using ETModel;");
                 sb.AppendLine();
                 sb.AppendLine("namespace ETHotfix");
                 sb.AppendLine("{");
-                
+
                 sb.AppendLine($"    [Event(EventIdType_Collision.{VARIABLE.Value})]");
-                sb.AppendLine($"    public class Add{VARIABLE.Value}System: AEvent<Unit>");
+                sb.AppendLine($"    public class Add{VARIABLE.Value}System: AEvent<Entity>");
                 sb.AppendLine("    {");
-                sb.AppendLine("        public override void Run(Unit a)");
+                sb.AppendLine("        public override void Run(Entity a)");
                 sb.AppendLine("        {");
                 sb.AppendLine($"            a.AddComponent<{VARIABLE.Value}>();");
                 sb.AppendLine("        }");
                 sb.AppendLine("    }");
 
+                sb.AppendLine($"    [ObjectSystem]");
+                sb.AppendLine($"    public class {VARIABLE.Value}AwakeSystem: AwakeSystem<{VARIABLE.Value}>");
+                sb.AppendLine("    {");
+                sb.AppendLine($"        public override void Awake({VARIABLE.Value} self)");
+                sb.AppendLine("        {");
+                sb.AppendLine("            self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStartAction += self.OnCollideStart;");
+                sb.AppendLine(
+                    "            self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustainAction += self.OnCollideSustain;");
+                sb.AppendLine(
+                    "            self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinishAction += self.OnCollideFinish;");
+                sb.AppendLine("        }");
+                sb.AppendLine("    }");
+
                 sb.AppendLine($"    public class {VARIABLE.Value} : Component");
                 sb.AppendLine("    {");
-                sb.AppendLine("        public void OnCollideStart(B2S_FixtureUserData b2SFixtureUserData)");
+                sb.AppendLine("        public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)");
                 sb.AppendLine("        {");
 
-                sb.AppendLine($"            switch (b2SFixtureUserData.m_B2S_CollisionInstance.BelongGroup)");
+                sb.AppendLine($"            switch (b2SHeroColliderData.m_B2S_CollisionInstance.BelongGroup)");
                 sb.AppendLine("            {");
                 foreach (var VARIABLE1 in GroupInfo)
                 {
                     sb.AppendLine($"                case \"{VARIABLE1}\":");
 
-                    sb.AppendLine("                    switch (b2SFixtureUserData.m_B2S_CollisionInstance.nodeDataId)");
+                    sb.AppendLine("                    switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)");
                     sb.AppendLine("                    {");
                     foreach (var VARIABLE2 in Group_IDInfo)
                     {
@@ -240,12 +253,12 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("            }");
                 sb.AppendLine("        }");
                 sb.AppendLine();
-                sb.AppendLine("        public void OnCollideSustain(B2S_FixtureUserData b2SFixtureUserData)");
+                sb.AppendLine("        public void OnCollideSustain(B2S_HeroColliderData b2SHeroColliderData)");
                 sb.AppendLine("        {");
                 sb.AppendLine();
                 sb.AppendLine("        }");
                 sb.AppendLine();
-                sb.AppendLine("        public void OnCollideFinish(B2S_FixtureUserData b2SFixtureUserData)");
+                sb.AppendLine("        public void OnCollideFinish(B2S_HeroColliderData b2SHeroColliderData)");
                 sb.AppendLine("        {");
                 sb.AppendLine();
                 sb.AppendLine("        }");

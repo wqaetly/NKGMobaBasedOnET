@@ -44,6 +44,18 @@ namespace ETHotfix
 	[Message(HotfixOpcode.M2C_UserInput_SkillCmd)]
 	public partial class M2C_UserInput_SkillCmd : IActorMessage {}
 
+	[Message(HotfixOpcode.M2C_B2S_VectorBase)]
+	public partial class M2C_B2S_VectorBase : IMessage {}
+
+	[Message(HotfixOpcode.M2C_B2S_Debugger_Box)]
+	public partial class M2C_B2S_Debugger_Box : IActorMessage {}
+
+	[Message(HotfixOpcode.M2C_B2S_Debugger_Circle)]
+	public partial class M2C_B2S_Debugger_Circle : IActorMessage {}
+
+	[Message(HotfixOpcode.M2C_B2S_Debugger_Polygon)]
+	public partial class M2C_B2S_Debugger_Polygon : IActorMessage {}
+
 	[Message(HotfixOpcode.PlayerInfo)]
 	public partial class PlayerInfo : IMessage {}
 
@@ -74,9 +86,13 @@ namespace ETHotfix
 		 public const ushort M2C_TestActorResponse = 10011;
 		 public const ushort UserInput_SkillCmd = 10012;
 		 public const ushort M2C_UserInput_SkillCmd = 10013;
-		 public const ushort PlayerInfo = 10014;
-		 public const ushort C2G_PlayerInfo = 10015;
-		 public const ushort G2C_PlayerInfo = 10016;
-		 public const ushort G2C_PlayerOffline = 10017;
+		 public const ushort M2C_B2S_VectorBase = 10014;
+		 public const ushort M2C_B2S_Debugger_Box = 10015;
+		 public const ushort M2C_B2S_Debugger_Circle = 10016;
+		 public const ushort M2C_B2S_Debugger_Polygon = 10017;
+		 public const ushort PlayerInfo = 10018;
+		 public const ushort C2G_PlayerInfo = 10019;
+		 public const ushort G2C_PlayerInfo = 10020;
+		 public const ushort G2C_PlayerOffline = 10021;
 	}
 }

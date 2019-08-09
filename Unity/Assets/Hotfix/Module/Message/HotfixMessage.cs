@@ -1315,6 +1315,569 @@ namespace ETHotfix {
 
   }
 
+  public partial class M2C_B2S_VectorBase : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_B2S_VectorBase> _parser = new pb::MessageParser<M2C_B2S_VectorBase>(() => (M2C_B2S_VectorBase)MessagePool.Instance.Fetch(typeof(M2C_B2S_VectorBase)));
+    public static pb::MessageParser<M2C_B2S_VectorBase> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private float x_;
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    private float y_;
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (X != 0F) {
+        output.WriteRawTag(221, 5);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(229, 5);
+        output.WriteFloat(Y);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (X != 0F) {
+        size += 2 + 4;
+      }
+      if (Y != 0F) {
+        size += 2 + 4;
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      rpcId_ = 0;
+      x_ = 0f;
+      y_ = 0f;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 733: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 741: {
+            Y = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class M2C_B2S_Debugger_Box : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_B2S_Debugger_Box> _parser = new pb::MessageParser<M2C_B2S_Debugger_Box>(() => (M2C_B2S_Debugger_Box)MessagePool.Instance.Fetch(typeof(M2C_B2S_Debugger_Box)));
+    public static pb::MessageParser<M2C_B2S_Debugger_Box> Parser { get { return _parser; } }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long id_;
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    private float hx_;
+    public float Hx {
+      get { return hx_; }
+      set {
+        hx_ = value;
+      }
+    }
+
+    private float hy_;
+    public float Hy {
+      get { return hy_; }
+      set {
+        hy_ = value;
+      }
+    }
+
+    private global::ETHotfix.M2C_B2S_VectorBase offsetInfo_;
+    public global::ETHotfix.M2C_B2S_VectorBase OffsetInfo {
+      get { return offsetInfo_; }
+      set {
+        offsetInfo_ = value;
+      }
+    }
+
+    private float sustainTime_;
+    /// <summary>
+    ///持续时间
+    /// </summary>
+    public float SustainTime {
+      get { return sustainTime_; }
+      set {
+        sustainTime_ = value;
+      }
+    }
+
+    private global::ETHotfix.M2C_B2S_VectorBase pos_;
+    public global::ETHotfix.M2C_B2S_VectorBase Pos {
+      get { return pos_; }
+      set {
+        pos_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Id);
+      }
+      if (offsetInfo_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OffsetInfo);
+      }
+      if (pos_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Pos);
+      }
+      if (SustainTime != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(SustainTime);
+      }
+      if (Hx != 0F) {
+        output.WriteRawTag(213, 5);
+        output.WriteFloat(Hx);
+      }
+      if (Hy != 0F) {
+        output.WriteRawTag(229, 5);
+        output.WriteFloat(Hy);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      if (Hx != 0F) {
+        size += 2 + 4;
+      }
+      if (Hy != 0F) {
+        size += 2 + 4;
+      }
+      if (offsetInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OffsetInfo);
+      }
+      if (SustainTime != 0F) {
+        size += 1 + 4;
+      }
+      if (pos_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pos);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      id_ = 0;
+      if (offsetInfo_ != null) MessagePool.Instance.Recycle(offsetInfo_); offsetInfo_ = null;
+      if (pos_ != null) MessagePool.Instance.Recycle(pos_); pos_ = null;
+      sustainTime_ = 0f;
+      hx_ = 0f;
+      hy_ = 0f;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt64();
+            break;
+          }
+          case 26: {
+            if (offsetInfo_ == null) {
+              offsetInfo_ = new global::ETHotfix.M2C_B2S_VectorBase();
+            }
+            input.ReadMessage(offsetInfo_);
+            break;
+          }
+          case 34: {
+            if (pos_ == null) {
+              pos_ = new global::ETHotfix.M2C_B2S_VectorBase();
+            }
+            input.ReadMessage(pos_);
+            break;
+          }
+          case 45: {
+            SustainTime = input.ReadFloat();
+            break;
+          }
+          case 725: {
+            Hx = input.ReadFloat();
+            break;
+          }
+          case 741: {
+            Hy = input.ReadFloat();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class M2C_B2S_Debugger_Circle : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_B2S_Debugger_Circle> _parser = new pb::MessageParser<M2C_B2S_Debugger_Circle>(() => (M2C_B2S_Debugger_Circle)MessagePool.Instance.Fetch(typeof(M2C_B2S_Debugger_Circle)));
+    public static pb::MessageParser<M2C_B2S_Debugger_Circle> Parser { get { return _parser; } }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long id_;
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    private float radius_;
+    public float Radius {
+      get { return radius_; }
+      set {
+        radius_ = value;
+      }
+    }
+
+    private float sustainTime_;
+    /// <summary>
+    ///持续时间
+    /// </summary>
+    public float SustainTime {
+      get { return sustainTime_; }
+      set {
+        sustainTime_ = value;
+      }
+    }
+
+    private global::ETHotfix.M2C_B2S_VectorBase offsetInfo_;
+    public global::ETHotfix.M2C_B2S_VectorBase OffsetInfo {
+      get { return offsetInfo_; }
+      set {
+        offsetInfo_ = value;
+      }
+    }
+
+    private global::ETHotfix.M2C_B2S_VectorBase pos_;
+    public global::ETHotfix.M2C_B2S_VectorBase Pos {
+      get { return pos_; }
+      set {
+        pos_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Id);
+      }
+      if (offsetInfo_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OffsetInfo);
+      }
+      if (pos_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Pos);
+      }
+      if (SustainTime != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(SustainTime);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+      if (Radius != 0F) {
+        output.WriteRawTag(245, 5);
+        output.WriteFloat(Radius);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      if (Radius != 0F) {
+        size += 2 + 4;
+      }
+      if (SustainTime != 0F) {
+        size += 1 + 4;
+      }
+      if (offsetInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OffsetInfo);
+      }
+      if (pos_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pos);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      id_ = 0;
+      if (offsetInfo_ != null) MessagePool.Instance.Recycle(offsetInfo_); offsetInfo_ = null;
+      if (pos_ != null) MessagePool.Instance.Recycle(pos_); pos_ = null;
+      sustainTime_ = 0f;
+      actorId_ = 0;
+      radius_ = 0f;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt64();
+            break;
+          }
+          case 26: {
+            if (offsetInfo_ == null) {
+              offsetInfo_ = new global::ETHotfix.M2C_B2S_VectorBase();
+            }
+            input.ReadMessage(offsetInfo_);
+            break;
+          }
+          case 34: {
+            if (pos_ == null) {
+              pos_ = new global::ETHotfix.M2C_B2S_VectorBase();
+            }
+            input.ReadMessage(pos_);
+            break;
+          }
+          case 45: {
+            SustainTime = input.ReadFloat();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+          case 757: {
+            Radius = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class M2C_B2S_Debugger_Polygon : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_B2S_Debugger_Polygon> _parser = new pb::MessageParser<M2C_B2S_Debugger_Polygon>(() => (M2C_B2S_Debugger_Polygon)MessagePool.Instance.Fetch(typeof(M2C_B2S_Debugger_Polygon)));
+    public static pb::MessageParser<M2C_B2S_Debugger_Polygon> Parser { get { return _parser; } }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long id_;
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    private global::ETHotfix.M2C_B2S_VectorBase offsetInfo_;
+    public global::ETHotfix.M2C_B2S_VectorBase OffsetInfo {
+      get { return offsetInfo_; }
+      set {
+        offsetInfo_ = value;
+      }
+    }
+
+    private global::ETHotfix.M2C_B2S_VectorBase pos_;
+    public global::ETHotfix.M2C_B2S_VectorBase Pos {
+      get { return pos_; }
+      set {
+        pos_ = value;
+      }
+    }
+
+    private float sustainTime_;
+    /// <summary>
+    ///持续时间
+    /// </summary>
+    public float SustainTime {
+      get { return sustainTime_; }
+      set {
+        sustainTime_ = value;
+      }
+    }
+
+    private static readonly pb::FieldCodec<global::ETHotfix.M2C_B2S_VectorBase> _repeated_vects_codec
+        = pb::FieldCodec.ForMessage(18, global::ETHotfix.M2C_B2S_VectorBase.Parser);
+    private pbc::RepeatedField<global::ETHotfix.M2C_B2S_VectorBase> vects_ = new pbc::RepeatedField<global::ETHotfix.M2C_B2S_VectorBase>();
+    public pbc::RepeatedField<global::ETHotfix.M2C_B2S_VectorBase> Vects {
+      get { return vects_; }
+      set { vects_ = value; }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Id);
+      }
+      vects_.WriteTo(output, _repeated_vects_codec);
+      if (offsetInfo_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OffsetInfo);
+      }
+      if (pos_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Pos);
+      }
+      if (SustainTime != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(SustainTime);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      if (offsetInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OffsetInfo);
+      }
+      if (pos_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pos);
+      }
+      if (SustainTime != 0F) {
+        size += 1 + 4;
+      }
+      size += vects_.CalculateSize(_repeated_vects_codec);
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      id_ = 0;
+      for (int i = 0; i < vects_.Count; i++) { MessagePool.Instance.Recycle(vects_[i]); }
+      vects_.Clear();
+      if (offsetInfo_ != null) MessagePool.Instance.Recycle(offsetInfo_); offsetInfo_ = null;
+      if (pos_ != null) MessagePool.Instance.Recycle(pos_); pos_ = null;
+      sustainTime_ = 0f;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            vects_.AddEntriesFrom(input, _repeated_vects_codec);
+            break;
+          }
+          case 26: {
+            if (offsetInfo_ == null) {
+              offsetInfo_ = new global::ETHotfix.M2C_B2S_VectorBase();
+            }
+            input.ReadMessage(offsetInfo_);
+            break;
+          }
+          case 34: {
+            if (pos_ == null) {
+              pos_ = new global::ETHotfix.M2C_B2S_VectorBase();
+            }
+            input.ReadMessage(pos_);
+            break;
+          }
+          case 45: {
+            SustainTime = input.ReadFloat();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public partial class PlayerInfo : pb::IMessage {
     private static readonly pb::MessageParser<PlayerInfo> _parser = new pb::MessageParser<PlayerInfo>(() => (PlayerInfo)MessagePool.Instance.Fetch(typeof(PlayerInfo)));
     public static pb::MessageParser<PlayerInfo> Parser { get { return _parser; } }

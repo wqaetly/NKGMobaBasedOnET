@@ -105,6 +105,43 @@ message M2C_UserInput_SkillCmd // IActorMessage
     string Message = 94;
 }
 
+message M2C_B2S_VectorBase // IMessage
+{
+    int32 RpcId = 90;
+    float x = 91;
+    float y = 92;
+}
+
+message M2C_B2S_Debugger_Box // IActorMessage
+{
+    int64 ActorId = 93;
+    int64 Id = 1;
+    float hx = 90;
+    float hy = 92;
+    M2C_B2S_VectorBase offsetInfo = 3;
+    float sustainTime = 5;    //持续时间
+    M2C_B2S_VectorBase Pos = 4;
+}
+
+message M2C_B2S_Debugger_Circle // IActorMessage
+{
+    int64 ActorId = 93;
+    int64 Id = 1;
+    float radius = 94;
+    float sustainTime = 5;    //持续时间
+    M2C_B2S_VectorBase offsetInfo = 3;
+    M2C_B2S_VectorBase Pos = 4;
+}
+
+message M2C_B2S_Debugger_Polygon // IActorMessage
+{
+    int64 ActorId = 93;
+    int64 Id = 1;
+    M2C_B2S_VectorBase offsetInfo = 3;
+    M2C_B2S_VectorBase Pos = 4;
+    float sustainTime = 5;    //持续时间
+    repeated M2C_B2S_VectorBase vects = 2;
+}
 
 message PlayerInfo // IMessage
 {

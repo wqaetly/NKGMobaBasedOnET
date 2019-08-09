@@ -45,7 +45,7 @@ namespace ETModel
             {
                 this.TempDataSupporter = new SkillNodeDataSupporter();
                 byte[] mfile = File.ReadAllBytes(VARIABLE);
-                Console.WriteLine($"所读取的英雄技能大小为:{mfile.Length}");
+                //Log.Info($"所读取的英雄技能大小为:{mfile.Length}");
                 this.TempDataSupporter = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
                 this.m_AllHeroSkillDataDic.Add(this.TempDataSupporter.SupportId, TempDataSupporter);
             }

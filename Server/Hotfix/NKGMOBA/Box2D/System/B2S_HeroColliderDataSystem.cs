@@ -14,9 +14,9 @@ using ETModel;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_HeroColliderDataComponentAwakeSystem: AwakeSystem<B2S_HeroColliderDataComponent, B2S_CollisionInstance, long>
+    public class B2S_HeroColliderDataAwakeSystem: AwakeSystem<B2S_HeroColliderData, B2S_CollisionInstance, long>
     {
-        public override void Awake(B2S_HeroColliderDataComponent self, B2S_CollisionInstance b2SCollisionInstance, long id)
+        public override void Awake(B2S_HeroColliderData self, B2S_CollisionInstance b2SCollisionInstance, long id)
         {
             self.ID = id;
             self.m_B2S_CollisionInstance = b2SCollisionInstance;
@@ -28,7 +28,7 @@ namespace ETHotfix
         /// 加载依赖数据
         /// </summary>
         /// <param name="self"></param>
-        private void LoadDependenceRes(B2S_HeroColliderDataComponent self)
+        private void LoadDependenceRes(B2S_HeroColliderData self)
         {
             B2S_ColliderDataRepositoryComponent b2SColliderDataRepositoryComponent =
                     Game.Scene.GetComponent<B2S_ColliderDataRepositoryComponent>();
@@ -48,22 +48,35 @@ namespace ETHotfix
                 {
                     case B2S_ColliderType.BoxColllider:
                         PolygonShape m_BoxShape = new PolygonShape();
-                        m_BoxShape.SetAsBox(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy);
-                        self.m_Body.CreateFixture(m_BoxShape, 0);
+                        m_BoxShape.SetAsBox(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy,
+                            VARIABLE.finalOffset, 0);
+                        FixtureDef fixtureDef1 = new FixtureDef();
+                        fixtureDef1.IsSensor = VARIABLE.isSensor;
+                        fixtureDef1.Shape = m_BoxShape;
+                        fixtureDef1.UserData = self;
+                        self.m_Body.CreateFixture(fixtureDef1);
                         break;
                     case B2S_ColliderType.CircleCollider:
                         CircleShape m_CircleShape = new CircleShape();
                         m_CircleShape.Radius = ((B2S_CircleColliderDataStructure) VARIABLE).radius;
-                        self.m_Body.CreateFixture(m_CircleShape, 0);
+                        m_CircleShape.Position = VARIABLE.finalOffset;
+                        FixtureDef fixtureDef2 = new FixtureDef();
+                        fixtureDef2.IsSensor = VARIABLE.isSensor;
+                        fixtureDef2.Shape = m_CircleShape;
+                        fixtureDef2.UserData = self;
+                        self.m_Body.CreateFixture(fixtureDef2);
                         break;
                     case B2S_ColliderType.PolygonCollider:
                         foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).finalPoints)
                         {
                             PolygonShape m_PolygonShape = new PolygonShape();
                             m_PolygonShape.Set(VARIABLE1.ToArray());
-                            self.m_Body.CreateFixture(m_PolygonShape, 0).UserData = self;
+                            FixtureDef fixtureDef3 = new FixtureDef();
+                            fixtureDef3.IsSensor = VARIABLE.isSensor;
+                            fixtureDef3.Shape = m_PolygonShape;
+                            fixtureDef3.UserData = self;
+                            self.m_Body.CreateFixture(fixtureDef3);
                         }
-
                         break;
                 }
             }
@@ -75,9 +88,9 @@ namespace ETHotfix
     }
 
     [ObjectSystem]
-    public class B2S_HeroColliderDataComponentFixedUpdateSystem: FixedUpdateSystem<B2S_HeroColliderDataComponent>
+    public class B2S_HeroColliderDataFixedUpdateSystem: FixedUpdateSystem<B2S_HeroColliderData>
     {
-        public override void FixedUpdate(B2S_HeroColliderDataComponent self)
+        public override void FixedUpdate(B2S_HeroColliderData self)
         {
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
             if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit)
@@ -88,14 +101,14 @@ namespace ETHotfix
         }
     }
 
-    public static class B2S_HeroColliderDataComponentHelper
+    public static class B2S_HeroColliderComponentHelper
     {
         /// <summary>
         /// 设置刚体位置
         /// </summary>
         /// <param name="self"></param>
         /// <param name="pos"></param>
-        public static void SetColliderBodyPos(this B2S_HeroColliderDataComponent self, Vector2 pos)
+        public static void SetColliderBodyPos(this B2S_HeroColliderData self, Vector2 pos)
         {
             self.m_Body.SetTransform(pos, self.m_Body.GetAngle());
         }
@@ -104,8 +117,8 @@ namespace ETHotfix
         /// 设置刚体角度
         /// </summary>
         /// <param name="self"></param>
-        /// <param name="pos"></param>
-        public static void SetColliderBodyAngle(this B2S_HeroColliderDataComponent self, float angle)
+        /// <param name="angle"></param>
+        public static void SetColliderBodyAngle(this B2S_HeroColliderData self, float angle)
         {
             self.m_Body.SetTransform(self.m_Body.GetPosition(), angle);
         }
@@ -114,8 +127,8 @@ namespace ETHotfix
         /// 设置刚体状态
         /// </summary>
         /// <param name="self"></param>
-        /// <param name="pos"></param>
-        public static void SetColliderBodyState(this B2S_HeroColliderDataComponent self, bool state)
+        /// <param name="state"></param>
+        public static void SetColliderBodyState(this B2S_HeroColliderData self, bool state)
         {
             self.m_Body.IsActive = state;
         }
