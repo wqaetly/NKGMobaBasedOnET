@@ -48,6 +48,11 @@ namespace ETHotfix
                 //TODO 检测技能（行为树）
                 SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "Q" });
             }
+
+            if (this.userInputComponent.EDown)
+            {
+                SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "E" });
+            }
         }
     }
 }

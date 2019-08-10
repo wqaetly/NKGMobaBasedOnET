@@ -41,7 +41,7 @@ namespace ETHotfix
                 switch (VARIABLE.ShapeType)
                 {
                     case ShapeType.Polygon: //多边形
-                        M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 1, };
+                        M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 2000, };
                         foreach (var VARIABLE1 in ((PolygonShape) VARIABLE.Shape).Vertices)
                         {
                             Vector2 worldPoint = heroColliderData.m_Body.GetWorldPoint(VARIABLE1);
