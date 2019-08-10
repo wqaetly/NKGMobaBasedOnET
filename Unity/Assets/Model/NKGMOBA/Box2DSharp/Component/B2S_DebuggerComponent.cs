@@ -19,53 +19,23 @@ namespace ETModel
         /// </summary>
         public Dictionary<(int, GameObject), bool> m_LinerRenderersDic = new Dictionary<(int, GameObject), bool>();
 
-        /// <summary>
-        /// 设置圆形信息
-        /// </summary>
-        /// <param name="center">中心点</param>
-        /// <param name="offset">偏移信息</param>
-        /// <param name="radius">半径</param>
-        /// <param name="sustainTime"></param>
-        public void SetCircle(Vector2 center, Vector2 offset, float radius, long sustainTime)
-        {
-            (int, GameObject) keyPair = this.SelectTargetGO();
-            SetDeadLineTime(sustainTime, keyPair.Item1, keyPair.Item2).Coroutine();
-            //TODO:转换为顶点数组
-            //keyPair.Item2.GetComponent<B2S_Debugger>().Draw(31, vector2s);
-        }
+        private GameObject targetGo; 
 
         /// <summary>
-        /// 设置矩形信息
-        /// </summary>
-        /// <param name="center">中心点</param>
-        /// <param name="offset">偏移信息</param>
-        /// <param name="hx">半宽</param>
-        /// <param name="hy">半高</param>
-        /// <param name="sustainTime"></param>
-        public void SetBoxInfo(Vector2 center, Vector2 offset, float hx, float hy, long sustainTime)
-        {
-            (int, GameObject) keyPair = this.SelectTargetGO();
-            SetDeadLineTime(sustainTime, keyPair.Item1, keyPair.Item2).Coroutine();
-            //TODO：转换为顶点数组
-            //keyPair.Item2.GetComponent<B2S_Debugger>().Draw(5, vector2s);
-        }
-
-        /// <summary>
-        /// 设置多边形信息
+        /// 设置图形信息
         /// </summary>
         /// <param name="vector2s">顶点数组</param>
         /// <param name="sustainTime"></param>
-        public void SetPolygon(Vector2[] vector2s, long sustainTime)
+        public void SetColliderInfo(Vector2[] vector2s, long sustainTime)
         {
             (int, GameObject) keyPair = this.SelectTargetGO();
             SetDeadLineTime(sustainTime, keyPair.Item1, keyPair.Item2).Coroutine();
-            keyPair.Item2.GetComponent<B2S_Debugger>().Draw(vector2s.Length + 1, vector2s);
+            keyPair.Item2.GetComponent<B2S_Debugger>().Draw(vector2s.Length, vector2s);
         }
 
         private (int, GameObject) SelectTargetGO()
         {
             bool hasHandle = false;
-            GameObject targetGo = new GameObject();
             int m_id = 0;
             foreach (KeyValuePair<(int, GameObject), bool> myKeyValuePair in this.m_LinerRenderersDic)
             {
@@ -79,10 +49,11 @@ namespace ETModel
                 }
             }
 
+            
             if (!hasHandle)
             {
                 int id = this.m_LinerRenderersDic.Count;
-                GameObject newLineRenderer = GameObject.Instantiate(Resources.Load<GameObject>("B2S_Debugger"));
+                GameObject newLineRenderer = GameObject.Instantiate(Resources.Load<GameObject>("Box2DDebuggerHandler"));
                 this.m_LinerRenderersDic.Add((id, newLineRenderer), false);
                 targetGo = newLineRenderer;
                 m_id = id;

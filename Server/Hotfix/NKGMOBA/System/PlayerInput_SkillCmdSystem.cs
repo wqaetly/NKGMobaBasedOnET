@@ -5,6 +5,8 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Numerics;
+using Box2DSharp.Collision.Shapes;
 using ETModel;
 
 namespace ETHotfix
@@ -28,60 +30,41 @@ namespace ETHotfix
         {
             M2C_UserInput_SkillCmd m2CUserInputSkillCmd = new M2C_UserInput_SkillCmd() { Message = skillCmd, Id = unit.Id };
 
+            //广播技能指令
             MessageHelper.Broadcast(m2CUserInputSkillCmd);
+            
+            heroColliderData.m_Body.SetTransform(new Vector2(unit.Position.x,unit.Position.z), 0);
 
-            foreach (var VARIABLE in heroColliderData.m_B2S_ColliderDataStructureBase)
+            //广播碰撞体信息
+            foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
             {
-                switch (VARIABLE.b2SColliderType)
+                switch (VARIABLE.ShapeType)
                 {
-                    case B2S_ColliderType.BoxColllider:
-                        MessageHelper.Broadcast(new M2C_B2S_Debugger_Box()
+                    case ShapeType.Polygon: //多边形
+                        M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 1, };
+                        foreach (var VARIABLE1 in ((PolygonShape) VARIABLE.Shape).Vertices)
                         {
-                            Hx = ((B2S_BoxColliderDataStructure) VARIABLE).hx,
-                            Hy = ((B2S_BoxColliderDataStructure) VARIABLE).hy,
-                            Pos = new M2C_B2S_VectorBase()
-                            {
-                                X = heroColliderData.m_Body.GetWorldCenter().X, Y = heroColliderData.m_Body.GetWorldCenter().Y
-                            },
-                            OffsetInfo = new M2C_B2S_VectorBase() { X = VARIABLE.finalOffset.X, Y = VARIABLE.finalOffset.Y },
-                            Id = unit.Id,
-                            SustainTime = 1,
-                        });
-                        break;
-                    case B2S_ColliderType.CircleCollider:
-                        MessageHelper.Broadcast(new M2C_B2S_Debugger_Circle()
-                        {
-                            Radius = ((B2S_CircleColliderDataStructure) VARIABLE).radius,
-                            Id = unit.Id,
-                            Pos = new M2C_B2S_VectorBase()
-                            {
-                                X = heroColliderData.m_Body.GetWorldCenter().X, Y = heroColliderData.m_Body.GetWorldCenter().Y
-                            },
-                            OffsetInfo = new M2C_B2S_VectorBase() { X = VARIABLE.finalOffset.X, Y = VARIABLE.finalOffset.Y },
-                            SustainTime = 1,
-                        });
-                        break;
-                    case B2S_ColliderType.PolygonCollider:
-                        foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).points)
-                        {
-                            M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon()
-                            {
-                                Id = unit.Id,
-                                OffsetInfo = new M2C_B2S_VectorBase() { X = VARIABLE.finalOffset.X, Y = VARIABLE.finalOffset.Y },
-                                Pos = new M2C_B2S_VectorBase()
-                                {
-                                    X = heroColliderData.m_Body.GetWorldCenter().X, Y = heroColliderData.m_Body.GetWorldCenter().Y
-                                },
-                                SustainTime = 1,
-                            };
-                            foreach (var VARIABLE2 in VARIABLE1)
-                            {
-                                test.Vects.Add(new M2C_B2S_VectorBase() { X = VARIABLE2.x, Y = VARIABLE2.y });
-                            }
-
-                            MessageHelper.Broadcast(test);
+                            Vector2 worldPoint = heroColliderData.m_Body.GetWorldPoint(VARIABLE1);
+                            test.Vects.Add(new M2C_B2S_VectorBase() { X = worldPoint.X, Y = worldPoint.Y });
                         }
 
+                        MessageHelper.Broadcast(test);
+                        break;
+                    case ShapeType.Circle: //圆形
+                        CircleShape myShape = (CircleShape) VARIABLE.Shape;
+                        M2C_B2S_Debugger_Circle test1 = new M2C_B2S_Debugger_Circle()
+                        {
+                            Id = unit.Id,
+                            SustainTime = 2000,
+                            Radius = myShape.Radius,
+                            Pos = new M2C_B2S_VectorBase()
+                            {
+                                X = heroColliderData.m_Body.GetWorldPoint(myShape.Position).X,
+                                Y = heroColliderData.m_Body.GetWorldPoint(myShape.Position).Y
+                            },
+                        };
+                        MessageHelper.Broadcast(test1);
+                        Log.Info($"是圆形，并且已经朝客户端发送绘制数据,半径为{myShape.Radius}");
                         break;
                 }
             }

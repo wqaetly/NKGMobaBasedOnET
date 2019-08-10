@@ -1400,180 +1400,6 @@ namespace ETHotfix {
 
   }
 
-  public partial class M2C_B2S_Debugger_Box : pb::IMessage {
-    private static readonly pb::MessageParser<M2C_B2S_Debugger_Box> _parser = new pb::MessageParser<M2C_B2S_Debugger_Box>(() => (M2C_B2S_Debugger_Box)MessagePool.Instance.Fetch(typeof(M2C_B2S_Debugger_Box)));
-    public static pb::MessageParser<M2C_B2S_Debugger_Box> Parser { get { return _parser; } }
-
-    private long actorId_;
-    public long ActorId {
-      get { return actorId_; }
-      set {
-        actorId_ = value;
-      }
-    }
-
-    private long id_;
-    public long Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    private float hx_;
-    public float Hx {
-      get { return hx_; }
-      set {
-        hx_ = value;
-      }
-    }
-
-    private float hy_;
-    public float Hy {
-      get { return hy_; }
-      set {
-        hy_ = value;
-      }
-    }
-
-    private global::ETHotfix.M2C_B2S_VectorBase offsetInfo_;
-    public global::ETHotfix.M2C_B2S_VectorBase OffsetInfo {
-      get { return offsetInfo_; }
-      set {
-        offsetInfo_ = value;
-      }
-    }
-
-    private float sustainTime_;
-    /// <summary>
-    ///持续时间
-    /// </summary>
-    public float SustainTime {
-      get { return sustainTime_; }
-      set {
-        sustainTime_ = value;
-      }
-    }
-
-    private global::ETHotfix.M2C_B2S_VectorBase pos_;
-    public global::ETHotfix.M2C_B2S_VectorBase Pos {
-      get { return pos_; }
-      set {
-        pos_ = value;
-      }
-    }
-
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(Id);
-      }
-      if (offsetInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(OffsetInfo);
-      }
-      if (pos_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Pos);
-      }
-      if (SustainTime != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(SustainTime);
-      }
-      if (Hx != 0F) {
-        output.WriteRawTag(213, 5);
-        output.WriteFloat(Hx);
-      }
-      if (Hy != 0F) {
-        output.WriteRawTag(229, 5);
-        output.WriteFloat(Hy);
-      }
-      if (ActorId != 0L) {
-        output.WriteRawTag(232, 5);
-        output.WriteInt64(ActorId);
-      }
-    }
-
-    public int CalculateSize() {
-      int size = 0;
-      if (ActorId != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
-      }
-      if (Id != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
-      }
-      if (Hx != 0F) {
-        size += 2 + 4;
-      }
-      if (Hy != 0F) {
-        size += 2 + 4;
-      }
-      if (offsetInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OffsetInfo);
-      }
-      if (SustainTime != 0F) {
-        size += 1 + 4;
-      }
-      if (pos_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pos);
-      }
-      return size;
-    }
-
-    public void MergeFrom(pb::CodedInputStream input) {
-      id_ = 0;
-      if (offsetInfo_ != null) MessagePool.Instance.Recycle(offsetInfo_); offsetInfo_ = null;
-      if (pos_ != null) MessagePool.Instance.Recycle(pos_); pos_ = null;
-      sustainTime_ = 0f;
-      hx_ = 0f;
-      hy_ = 0f;
-      actorId_ = 0;
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt64();
-            break;
-          }
-          case 26: {
-            if (offsetInfo_ == null) {
-              offsetInfo_ = new global::ETHotfix.M2C_B2S_VectorBase();
-            }
-            input.ReadMessage(offsetInfo_);
-            break;
-          }
-          case 34: {
-            if (pos_ == null) {
-              pos_ = new global::ETHotfix.M2C_B2S_VectorBase();
-            }
-            input.ReadMessage(pos_);
-            break;
-          }
-          case 45: {
-            SustainTime = input.ReadFloat();
-            break;
-          }
-          case 725: {
-            Hx = input.ReadFloat();
-            break;
-          }
-          case 741: {
-            Hy = input.ReadFloat();
-            break;
-          }
-          case 744: {
-            ActorId = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public partial class M2C_B2S_Debugger_Circle : pb::IMessage {
     private static readonly pb::MessageParser<M2C_B2S_Debugger_Circle> _parser = new pb::MessageParser<M2C_B2S_Debugger_Circle>(() => (M2C_B2S_Debugger_Circle)MessagePool.Instance.Fetch(typeof(M2C_B2S_Debugger_Circle)));
     public static pb::MessageParser<M2C_B2S_Debugger_Circle> Parser { get { return _parser; } }
@@ -1602,22 +1428,14 @@ namespace ETHotfix {
       }
     }
 
-    private float sustainTime_;
+    private long sustainTime_;
     /// <summary>
     ///持续时间
     /// </summary>
-    public float SustainTime {
+    public long SustainTime {
       get { return sustainTime_; }
       set {
         sustainTime_ = value;
-      }
-    }
-
-    private global::ETHotfix.M2C_B2S_VectorBase offsetInfo_;
-    public global::ETHotfix.M2C_B2S_VectorBase OffsetInfo {
-      get { return offsetInfo_; }
-      set {
-        offsetInfo_ = value;
       }
     }
 
@@ -1634,17 +1452,13 @@ namespace ETHotfix {
         output.WriteRawTag(8);
         output.WriteInt64(Id);
       }
-      if (offsetInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(OffsetInfo);
-      }
       if (pos_ != null) {
         output.WriteRawTag(34);
         output.WriteMessage(Pos);
       }
-      if (SustainTime != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(SustainTime);
+      if (SustainTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(SustainTime);
       }
       if (ActorId != 0L) {
         output.WriteRawTag(232, 5);
@@ -1667,11 +1481,8 @@ namespace ETHotfix {
       if (Radius != 0F) {
         size += 2 + 4;
       }
-      if (SustainTime != 0F) {
-        size += 1 + 4;
-      }
-      if (offsetInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OffsetInfo);
+      if (SustainTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(SustainTime);
       }
       if (pos_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pos);
@@ -1681,9 +1492,8 @@ namespace ETHotfix {
 
     public void MergeFrom(pb::CodedInputStream input) {
       id_ = 0;
-      if (offsetInfo_ != null) MessagePool.Instance.Recycle(offsetInfo_); offsetInfo_ = null;
       if (pos_ != null) MessagePool.Instance.Recycle(pos_); pos_ = null;
-      sustainTime_ = 0f;
+      sustainTime_ = 0;
       actorId_ = 0;
       radius_ = 0f;
       uint tag;
@@ -1696,13 +1506,6 @@ namespace ETHotfix {
             Id = input.ReadInt64();
             break;
           }
-          case 26: {
-            if (offsetInfo_ == null) {
-              offsetInfo_ = new global::ETHotfix.M2C_B2S_VectorBase();
-            }
-            input.ReadMessage(offsetInfo_);
-            break;
-          }
           case 34: {
             if (pos_ == null) {
               pos_ = new global::ETHotfix.M2C_B2S_VectorBase();
@@ -1710,8 +1513,8 @@ namespace ETHotfix {
             input.ReadMessage(pos_);
             break;
           }
-          case 45: {
-            SustainTime = input.ReadFloat();
+          case 40: {
+            SustainTime = input.ReadInt64();
             break;
           }
           case 744: {
@@ -1748,27 +1551,11 @@ namespace ETHotfix {
       }
     }
 
-    private global::ETHotfix.M2C_B2S_VectorBase offsetInfo_;
-    public global::ETHotfix.M2C_B2S_VectorBase OffsetInfo {
-      get { return offsetInfo_; }
-      set {
-        offsetInfo_ = value;
-      }
-    }
-
-    private global::ETHotfix.M2C_B2S_VectorBase pos_;
-    public global::ETHotfix.M2C_B2S_VectorBase Pos {
-      get { return pos_; }
-      set {
-        pos_ = value;
-      }
-    }
-
-    private float sustainTime_;
+    private long sustainTime_;
     /// <summary>
     ///持续时间
     /// </summary>
-    public float SustainTime {
+    public long SustainTime {
       get { return sustainTime_; }
       set {
         sustainTime_ = value;
@@ -1789,17 +1576,9 @@ namespace ETHotfix {
         output.WriteInt64(Id);
       }
       vects_.WriteTo(output, _repeated_vects_codec);
-      if (offsetInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(OffsetInfo);
-      }
-      if (pos_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Pos);
-      }
-      if (SustainTime != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(SustainTime);
+      if (SustainTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(SustainTime);
       }
       if (ActorId != 0L) {
         output.WriteRawTag(232, 5);
@@ -1815,14 +1594,8 @@ namespace ETHotfix {
       if (Id != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
       }
-      if (offsetInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OffsetInfo);
-      }
-      if (pos_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pos);
-      }
-      if (SustainTime != 0F) {
-        size += 1 + 4;
+      if (SustainTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(SustainTime);
       }
       size += vects_.CalculateSize(_repeated_vects_codec);
       return size;
@@ -1832,9 +1605,7 @@ namespace ETHotfix {
       id_ = 0;
       for (int i = 0; i < vects_.Count; i++) { MessagePool.Instance.Recycle(vects_[i]); }
       vects_.Clear();
-      if (offsetInfo_ != null) MessagePool.Instance.Recycle(offsetInfo_); offsetInfo_ = null;
-      if (pos_ != null) MessagePool.Instance.Recycle(pos_); pos_ = null;
-      sustainTime_ = 0f;
+      sustainTime_ = 0;
       actorId_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -1850,22 +1621,8 @@ namespace ETHotfix {
             vects_.AddEntriesFrom(input, _repeated_vects_codec);
             break;
           }
-          case 26: {
-            if (offsetInfo_ == null) {
-              offsetInfo_ = new global::ETHotfix.M2C_B2S_VectorBase();
-            }
-            input.ReadMessage(offsetInfo_);
-            break;
-          }
-          case 34: {
-            if (pos_ == null) {
-              pos_ = new global::ETHotfix.M2C_B2S_VectorBase();
-            }
-            input.ReadMessage(pos_);
-            break;
-          }
-          case 45: {
-            SustainTime = input.ReadFloat();
+          case 40: {
+            SustainTime = input.ReadInt64();
             break;
           }
           case 744: {

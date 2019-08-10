@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -13,20 +14,22 @@ namespace ETModel
     public class B2S_Debugger: SerializedMonoBehaviour
     {
         //线段渲染器  
-        private LineRenderer lineRenderer;
+        public LineRenderer lineRenderer;
 
         public Shader m_shader;
 
-        public Vector3[] mVexs;
+        public List<Vector3> mVexs = new List<Vector3>();
 
         public bool canDraw;
 
-        void Start()
+        private void Awake()
         {
             //通过游戏对象，GetComponent方法 传入LineRenderer  
             //就是之前给line游戏对象添加的渲染器属性  
             //有了这个对象才可以为游戏世界渲染线段  
             lineRenderer = this.transform.GetComponent<LineRenderer>();
+
+            this.canDraw = false;
 
             this.lineRenderer.SetWidth(0.05f, 0.05f);
 
@@ -39,7 +42,7 @@ namespace ETModel
         {
             if (this.canDraw)
             {
-                this.lineRenderer.SetPositions(this.mVexs);
+                this.lineRenderer.SetPositions(this.mVexs.ToArray());
             }
         }
 
@@ -54,16 +57,14 @@ namespace ETModel
             //否则会抛异常～～  
             lineRenderer.SetVertexCount(pointCount);
 
-            List<Vector3> mVector3s = new List<Vector3>();
+            this.mVexs.Clear();
 
             foreach (var VARIABLE in vexs)
             {
-                mVector3s.Add(new Vector3(VARIABLE.x, 0, VARIABLE.y));
+                mVexs.Add(new Vector3(VARIABLE.x, 1.0f, VARIABLE.y));
             }
 
-            mVector3s.Add(mVector3s[0]);
-            
-            this.mVexs = mVector3s.ToArray();
+            mVexs.Add(mVexs[0]);
 
             this.canDraw = true;
         }

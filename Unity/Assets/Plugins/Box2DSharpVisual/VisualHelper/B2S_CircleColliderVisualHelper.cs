@@ -49,7 +49,7 @@ namespace ETModel
         {
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);
-            this.MB2S_CircleColliderDataStructure.radius = this.mCollider2D.radius;
+            this.MB2S_CircleColliderDataStructure.radius = this.mCollider2D.radius * this.theObjectWillBeEdited.transform.parent.localScale.x;
             MB2S_CircleColliderDataStructure.offset.Fill(this.mCollider2D.offset);
             this.canDraw = true;
         }
@@ -121,6 +121,7 @@ namespace ETModel
                             this.MB2S_CircleColliderDataStructure;
                 }
             }
+
             using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
             {
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
