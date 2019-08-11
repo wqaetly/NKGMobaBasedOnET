@@ -18,7 +18,7 @@ namespace ETModel
 
         // 当前的移动速度
         public float Speed = 5;
-        
+
         // 开启协程移动,每100毫秒移动一次，并且协程取消的时候会计算玩家真实移动
         // 比方说玩家移动了2500毫秒,玩家有新的目标,这时旧的移动协程结束,将计算250毫秒移动的位置，而不是300毫秒移动的位置
         public async ETTask StartMove(CancellationToken cancellationToken)
@@ -31,11 +31,11 @@ namespace ETModel
             {
                 return;
             }
-            
-            this.needTime = (long)(distance / this.Speed * 1000);
-            
+
+            this.needTime = (long) (distance / this.Speed * 1000);
+
             TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
-            
+
             // 协程如果取消，将算出玩家的真实位置，赋值给玩家
             cancellationToken.Register(() =>
             {
@@ -54,9 +54,9 @@ namespace ETModel
             while (true)
             {
                 await timerComponent.WaitAsync(50, cancellationToken);
-                
+
                 long timeNow = TimeHelper.Now();
-                
+
                 if (timeNow - this.StartTime >= this.needTime)
                 {
                     unit.Position = this.Target;
@@ -67,7 +67,7 @@ namespace ETModel
                 unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
             }
         }
-        
+
         public async ETTask MoveToAsync(Vector3 target, CancellationToken cancellationToken)
         {
             // 新目标点离旧目标点太近，不设置新的
@@ -81,9 +81,11 @@ namespace ETModel
             {
                 return;
             }
-            
+
             this.Target = target;
-            
+            Unit unit = this.GetParent<Unit>();
+            unit.Rotation = Quaternion.LookRotation(target - unit.Position, Vector3.up);//同步旋转信息
+            //Log.Info($"当前旋转值为{Quaternion.QuaternionToEuler(unit.Rotation)}");
             // 开启协程移动
             await StartMove(cancellationToken);
         }

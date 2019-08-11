@@ -20,7 +20,8 @@ namespace ETHotfix
         {
             self.ID = id;
             self.m_B2S_CollisionInstance = b2SCollisionInstance;
-            self.m_Unit = (Unit) self.Entity;
+            self.m_Unit = ComponentFactory.Create<Unit>();
+            self.m_BelongUnit = (Unit) self.Entity;
             LoadDependenceRes(self);
         }
 
@@ -95,14 +96,25 @@ namespace ETHotfix
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
             if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit)
             {
-                self.SetColliderBodyPos(new Vector2(self.m_Unit.Position.x, self.m_Unit.Position.z));
-                self.SetColliderBodyAngle(-UnityEngine.Quaternion.QuaternionToEuler(self.m_Unit.Rotation).y * Settings.Pi / 100);
+                self.SetColliderBodyTransform();
+                //Log.Info($"进行了位置移动，数据结点为{self.ID}");
             }
         }
     }
 
     public static class B2S_HeroColliderComponentHelper
     {
+        /// <summary>
+        /// 设置刚体位置
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="pos"></param>
+        public static void SetColliderBodyTransform(this B2S_HeroColliderData self)
+        {
+            self.SetColliderBodyPos(new Vector2(self.m_Unit.Position.x, self.m_Unit.Position.z));
+            self.SetColliderBodyAngle(-UnityEngine.Quaternion.QuaternionToEuler(self.m_Unit.Rotation).y * Settings.Pi / 180);
+        }
+        
         /// <summary>
         /// 设置刚体位置
         /// </summary>

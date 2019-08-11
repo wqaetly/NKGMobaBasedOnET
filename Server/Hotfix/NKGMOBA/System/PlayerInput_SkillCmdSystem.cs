@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using Box2DSharp.Collision.Shapes;
+using Box2DSharp.Common;
 using ETModel;
 
 namespace ETHotfix
@@ -21,7 +22,7 @@ namespace ETHotfix
         }
 
         /// <summary>
-        /// 广播碰撞体数据（Debug用，正式上线后请使用上面那个）
+        /// 广播指令和碰撞体数据（Debug用，正式上线后请使用上面那个）
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="heroColliderData"></param>
@@ -32,8 +33,10 @@ namespace ETHotfix
 
             //广播技能指令
             MessageHelper.Broadcast(m2CUserInputSkillCmd);
-            
-            heroColliderData.m_Body.SetTransform(new Vector2(unit.Position.x,unit.Position.z), 0);
+
+            heroColliderData.m_Unit.Position = unit.Position;
+            heroColliderData.m_Unit.Rotation = unit.Rotation;
+            heroColliderData.SetColliderBodyTransform();
 
             //广播碰撞体信息
             foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
@@ -64,7 +67,7 @@ namespace ETHotfix
                             },
                         };
                         MessageHelper.Broadcast(test1);
-                        Log.Info($"是圆形，并且已经朝客户端发送绘制数据,半径为{myShape.Radius}");
+                        //Log.Info($"是圆形，并且已经朝客户端发送绘制数据,半径为{myShape.Radius}");
                         break;
                 }
             }

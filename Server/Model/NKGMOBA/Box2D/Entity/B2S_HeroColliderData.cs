@@ -26,9 +26,14 @@ namespace ETModel
         public Body m_Body;
 
         /// <summary>
-        /// 所归属的Unit
+        /// 此结点的Unit
         /// </summary>
         public Unit m_Unit;
+        
+        /// <summary>
+        /// 所归属的Unit
+        /// </summary>
+        public Unit m_BelongUnit;
 
         /// <summary>
         /// 碰撞关系数据实例，依靠此实例来决定加载的碰撞体数据
