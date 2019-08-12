@@ -46,6 +46,13 @@ namespace B2S_CollisionRelation
         [DisableInEditorMode]
         public B2S_CollisionsRelationSupport m_PrefabDic = new B2S_CollisionsRelationSupport();
 
+        /// <summary>
+        /// 预制数据结点载体,long为结点id，list为结点所包含的数据
+        /// </summary>
+        [TabGroup("数据部分")]
+        [DisableInEditorMode]
+        public Dictionary<long, List<long>> m_PrefabDataDic = new Dictionary<long, List<long>>();
+
         [TabGroup("数据部分")]
         [Button("自动配置所有Node所有数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AutoSetNodeData()
@@ -73,6 +80,7 @@ namespace B2S_CollisionRelation
         {
             this.m_MainDataDic.B2S_CollisionsRelationDic.Clear();
             this.m_PrefabDic.B2S_CollisionsRelationDic.Clear();
+            this.m_PrefabDataDic.Clear();
             foreach (var VARIABLE in this.groups)
             {
                 if (VARIABLE.title == "GenerateCollision" || VARIABLE.title == "NoGenerateCollision")
@@ -87,6 +95,8 @@ namespace B2S_CollisionRelation
                     {
                         this.m_PrefabDic.B2S_CollisionsRelationDic.Add(VARIABLE2.B2SCollisionRelation_GetNodeData().nodeDataId,
                             VARIABLE2.B2SCollisionRelation_GetNodeData());
+                        this.m_PrefabDataDic.Add(VARIABLE2.B2SCollisionRelation_GetNodeData().nodeDataId,
+                            VARIABLE2.Prefab_GetNodeData().colliderNodeIDs);
                     }
                 }
             }
@@ -117,6 +127,9 @@ namespace B2S_CollisionRelation
         [LabelText("用于添加碰撞关系组件EventID保存路径")]
         [FolderPath]
         public string theEventIdPathWillBeSaved;
+
+        //用来记录已经生成过的id
+        public List<long> hasRegisterIDs = new List<long>();
 
         [TabGroup("自动生成代码部分")]
         [Button("读取所有结点flag信息(配置保存类名用)", 25), GUIColor(0.4f, 0.8f, 1)]
@@ -179,7 +192,9 @@ namespace B2S_CollisionRelation
             foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in this.className)
             {
                 if (VARIABLE.Value == "") continue;
+                hasRegisterIDs.Clear();
                 List<string> GroupInfo = new List<string>();
+                //string为group名称，List为group中结点id
                 Dictionary<string, List<long>> Group_IDInfo = new Dictionary<string, List<long>>();
                 this.CollectGroupInfos(VARIABLE.Key.Item2, GroupInfo, Group_IDInfo);
                 StringBuilder sb = new StringBuilder();
@@ -234,13 +249,35 @@ namespace B2S_CollisionRelation
                     {
                         if (VARIABLE2.Key == VARIABLE1)
                         {
+                            //对于此Group中的每个预制数据结点
                             foreach (var VARIABLE3 in VARIABLE2.Value)
                             {
+                                //如果有联系
                                 if (VARIABLE.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE3))
                                 {
-                                    sb.AppendLine(
-                                        $"                        case {VARIABLE3}: //{this.m_PrefabDic.B2S_CollisionsRelationDic[VARIABLE3].Flag}");
-                                    sb.AppendLine("                            break;");
+                                    //对于此预制数据结点所包含的所有node信息
+                                    foreach (var VARIABLE4 in this.m_PrefabDataDic[VARIABLE3])
+                                    {
+                                        //如果已经注册过就不用再注册了
+                                        if (this.hasRegisterIDs.Exists(t => t == VARIABLE4))
+                                        {
+                                            continue;
+                                        }
+
+                                        this.hasRegisterIDs.Add(VARIABLE4);
+                                        sb.AppendLine($"                        case {VARIABLE4}:");
+                                        foreach (var VARIABLE6 in VARIABLE2.Value)
+                                        {
+                                            if (VARIABLE.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE6) &&
+                                                this.m_PrefabDataDic[VARIABLE6].Exists(t => t == VARIABLE4))
+                                            {
+                                                sb.AppendLine(
+                                                    $"                        //{this.m_PrefabDic.B2S_CollisionsRelationDic[VARIABLE6].Flag}");
+                                            }
+                                        }
+
+                                        sb.AppendLine("                            break;");
+                                    }
                                 }
                             }
                         }

@@ -37,7 +37,13 @@ namespace Plugins.NodeEditor
         /// 碰撞关系数据
         /// </summary>
         public B2S_CollisionInstance MB2SCollisionInstance = new B2S_CollisionInstance();
-
+        
+        [LabelText("相关碰撞数据信息")]
+        public B2S_PrefabData mPrefabdata = new B2S_PrefabData();
+        public override B2S_PrefabData Prefab_GetNodeData()
+        {
+            return this.mPrefabdata;
+        }
         public override B2S_CollisionInstance B2SCollisionRelation_GetNodeData()
         {
             return this.MB2SCollisionInstance;

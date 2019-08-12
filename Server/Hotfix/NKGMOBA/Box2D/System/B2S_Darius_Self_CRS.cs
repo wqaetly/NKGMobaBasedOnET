@@ -9,35 +9,30 @@ using ETModel;
 
 namespace ETHotfix
 {
-    [Event(EventIdType_Collision.B2S_Darius_RFare_CRS)]
-    public class AddB2S_Darius_RFare_CRSSystem: AEvent<Entity>
+    [Event(EventIdType_Collision.B2S_Darius_Self_CRS)]
+    public class AddB2S_Darius_Self_CRSSystem: AEvent<Entity>
     {
         public override void Run(Entity a)
         {
-            a.AddComponent<B2S_Darius_RFare_CRS>();
+            a.AddComponent<B2S_Darius_Self_CRS>();
         }
     }
     [ObjectSystem]
-    public class B2S_Darius_RFare_CRSAwakeSystem: AwakeSystem<B2S_Darius_RFare_CRS>
+    public class B2S_Darius_Self_CRSAwakeSystem: AwakeSystem<B2S_Darius_Self_CRS>
     {
-        public override void Awake(B2S_Darius_RFare_CRS self)
+        public override void Awake(B2S_Darius_Self_CRS self)
         {
             self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStartAction += self.OnCollideStart;
             self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustainAction += self.OnCollideSustain;
             self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinishAction += self.OnCollideFinish;
         }
     }
-    public class B2S_Darius_RFare_CRS : Component
+    public class B2S_Darius_Self_CRS : Component
     {
         public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
         {
             switch (b2SHeroColliderData.m_B2S_CollisionInstance.BelongGroup)
             {
-                case "生命单位":
-                    switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)
-                    {
-                    }
-                    break;
             }
         }
 

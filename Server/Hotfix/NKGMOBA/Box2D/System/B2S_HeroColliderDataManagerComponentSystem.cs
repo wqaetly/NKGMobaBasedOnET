@@ -32,7 +32,7 @@ namespace ETHotfix
                     if (VARIABLE.Value)
                     {
                         self.AllColliderData[VARIABLE.Key] = false;
-                        //Log.Info("复用的碰撞数据");
+                        Log.Info($"复用的碰撞数据,ID为{nodeDataId}");
                         return VARIABLE.Key.Item3;
                     }
                     flag++;
@@ -54,11 +54,9 @@ namespace ETHotfix
                         b2SCollisionsRelationSupport.B2S_CollisionsRelationDic[nodeDataId],
                         nodeDataId);
 
-            b2SHeroColliderData.AddComponent<B2S_CollisionResponseComponent>();
-
             self.AllColliderData
                     .Add((b2SHeroColliderData.ID, flag, b2SHeroColliderData), false);
-            //Log.Info("新建的碰撞数据");
+            Log.Info($"新建的碰撞数据.ID为{nodeDataId}");
             return b2SHeroColliderData;
         }
     }

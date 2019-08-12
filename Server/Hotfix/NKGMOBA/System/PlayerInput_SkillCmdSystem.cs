@@ -38,6 +38,7 @@ namespace ETHotfix
             heroColliderData.m_Unit.Rotation = unit.Rotation;
             heroColliderData.SetColliderBodyTransform();
 
+            
             //广播碰撞体信息
             foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
             {

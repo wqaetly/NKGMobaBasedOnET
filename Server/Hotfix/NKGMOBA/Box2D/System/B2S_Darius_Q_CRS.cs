@@ -1,7 +1,7 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019/8/8 16:39:19
+// Data: 2019/8/12 20:06:09
 // Description: 此代码switch case与System部分由工具生成，请勿进行增减操作
 //------------------------------------------------------------
 
@@ -22,25 +22,26 @@ namespace ETHotfix
     {
         public override void Awake(B2S_Darius_Q_CRS self)
         {
+
             self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStartAction += self.OnCollideStart;
             self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustainAction += self.OnCollideSustain;
             self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinishAction += self.OnCollideFinish;
+            Log.Info("Q技能洛基配置完成");
         }
     }
     public class B2S_Darius_Q_CRS : Component
     {
         public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
         {
+            Log.Info("执行到Q的碰撞逻辑");
             switch (b2SHeroColliderData.m_B2S_CollisionInstance.BelongGroup)
             {
-                case "生命单位":
+                case "GenerateCollision":
                     switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)
                     {
-                        case 40001: //中立生物
-                            break;
-                        case 20004: //敌方士兵
-                            break;
-                        case 20003: //敌方英雄
+                        case 10006:
+                            Log.Info("碰到了诺克");
+                        //敌方英雄
                             break;
                     }
                     break;

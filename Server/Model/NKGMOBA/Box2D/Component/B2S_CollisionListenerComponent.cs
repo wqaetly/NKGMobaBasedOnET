@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using Box2DSharp.Collision.Collider;
+using Box2DSharp.Collision.Shapes;
 using Box2DSharp.Dynamics;
 using Box2DSharp.Dynamics.Contacts;
 
@@ -19,7 +20,10 @@ namespace ETModel
         {
             self.UnitComponent = Game.Scene.GetComponent<UnitComponent>();
             //绑定指定的物理世界，正常来说一个房间一个物理世界,这里是Demo，直接获取了
+            
             Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().SetContactListener(self);
+            //self.TestCollision();
+            
         }
     }
 
@@ -53,8 +57,8 @@ namespace ETModel
                 this.collisionRecorder.Add((aUserData.Id, bUserData.Id), true);
             }
 
-            aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(bUserData);
-            bUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(aUserData);
+            aUserData.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(bUserData);
+            bUserData.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(aUserData);
         }
 
         public void EndContact(Contact contact)
@@ -64,8 +68,8 @@ namespace ETModel
 
             this.collisionRecorder[(aUserData.Id, bUserData.Id)] = false;
 
-            aUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(bUserData);
-            bUserData.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(aUserData);
+            aUserData.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(bUserData);
+            bUserData.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(aUserData);
         }
 
         public void PreSolve(Contact contact, in Manifold oldManifold)
@@ -93,9 +97,28 @@ namespace ETModel
         public override void Dispose()
         {
             base.Dispose();
-            if(this.IsDisposed)
+            if (this.IsDisposed)
                 return;
             this.collisionRecorder.Clear();
+        }
+
+        /// <summary>
+        /// 测试碰撞
+        /// </summary>
+        public void TestCollision()
+        {
+            BodyDef bodyDef = new BodyDef{BodyType = BodyType.DynamicBody};
+            Body m_Body = Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().CreateBody(bodyDef);
+            CircleShape m_CircleShape = new CircleShape();
+            m_CircleShape.Radius = 5;
+            m_Body.CreateFixture(m_CircleShape, 5);
+            
+            BodyDef bodyDef1 = new BodyDef{BodyType = BodyType.DynamicBody};
+            Body m_Body1 = Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().CreateBody(bodyDef1);
+            CircleShape m_CircleShape1 = new CircleShape();
+            m_CircleShape1.Radius = 5;
+            m_Body1.CreateFixture(m_CircleShape1, 5);
+            Log.Info("创建完毕");
         }
     }
 }

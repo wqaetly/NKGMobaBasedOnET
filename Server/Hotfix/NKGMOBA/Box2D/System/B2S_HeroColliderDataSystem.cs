@@ -34,12 +34,14 @@ namespace ETHotfix
             B2S_ColliderDataRepositoryComponent b2SColliderDataRepositoryComponent =
                     Game.Scene.GetComponent<B2S_ColliderDataRepositoryComponent>();
 
+            self.AddComponent<B2S_CollisionResponseComponent>();
+
             foreach (var VARIABLE in self.m_B2S_CollisionInstance.collisionId)
             {
                 self.m_B2S_ColliderDataStructureBase.Add(b2SColliderDataRepositoryComponent.GetDataById(VARIABLE));
             }
 
-            BodyDef bodyDef = new BodyDef();
+            BodyDef bodyDef = new BodyDef { BodyType = BodyType.DynamicBody };
             self.m_Body = Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().CreateBody(bodyDef);
 
             //根据数据加载具体的碰撞体，有的技能可能会产生多个碰撞体
@@ -78,12 +80,14 @@ namespace ETHotfix
                             fixtureDef3.UserData = self;
                             self.m_Body.CreateFixture(fixtureDef3);
                         }
+
                         break;
                 }
             }
 
             //根据ID添加对应的碰撞处理组件
-            Game.EventSystem.Run(self.m_B2S_CollisionInstance.collisionId.ToString(), self);
+            Game.EventSystem.Run(self.m_B2S_CollisionInstance.nodeDataId.ToString(), self);
+            //Log.Info($"已经分发{self.m_B2S_CollisionInstance.nodeDataId}技能组装事件");
             //Log.Info("FixTureList大小为"+self.m_Body.FixtureList.Count.ToString());
         }
     }
@@ -94,7 +98,7 @@ namespace ETHotfix
         public override void FixedUpdate(B2S_HeroColliderData self)
         {
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
-            if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit)
+            if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit && !Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().IsLocked)
             {
                 self.SetColliderBodyTransform();
                 //Log.Info($"进行了位置移动，数据结点为{self.ID}");
@@ -114,7 +118,7 @@ namespace ETHotfix
             self.SetColliderBodyPos(new Vector2(self.m_Unit.Position.x, self.m_Unit.Position.z));
             self.SetColliderBodyAngle(-UnityEngine.Quaternion.QuaternionToEuler(self.m_Unit.Rotation).y * Settings.Pi / 180);
         }
-        
+
         /// <summary>
         /// 设置刚体位置
         /// </summary>

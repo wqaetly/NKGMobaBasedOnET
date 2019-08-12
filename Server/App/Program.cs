@@ -147,10 +147,15 @@ namespace App
 
 						//添加物理世界
 						Game.Scene.AddComponent<B2S_WorldComponent>();
+
+						Game.Scene.AddComponent<B2S_CollisionListenerComponent>();
+						
 						//增加碰撞体数据仓库
 						Game.Scene.AddComponent<B2S_ColliderDataRepositoryComponent>();
 
 						Game.Scene.AddComponent<B2S_CollisionRelationRepositoryComponent>();
+						
+						
 
 						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
 						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
