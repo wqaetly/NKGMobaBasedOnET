@@ -35,6 +35,7 @@ namespace ETHotfix
             {
                 case 10006://诺克：自身
                     //敌方英雄
+                    Log.Info("Q技能打到了诺克");
                     break;
             }
         }

@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Plugins.NodeEditor.Editor.Canvas
 {
-    [NodeCanvasType("包含一个英雄所有数据的Canvas")]
+    [NodeCanvasType("英雄数据Canvas")]
     public class HeroDataNodeCanvas: NodeCanvas
     {
         public override string canvasName => Name;
@@ -36,7 +36,6 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
-            
             m_TestDic.MHeroDataSupportorDic.Clear();
             foreach (var VARIABLE in nodes)
             {

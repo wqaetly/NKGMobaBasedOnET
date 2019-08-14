@@ -35,6 +35,8 @@ namespace ETHotfix
             {
                 case 10006://诺克：自身
                     //敌方英雄
+                    //TODO:此技能Enity与碰撞物的敌友关系判断
+                    Log.Info("E技能打到了诺克");
                     break;
             }
         }

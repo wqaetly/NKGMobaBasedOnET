@@ -41,8 +41,7 @@ namespace ETHotfix
                 self.m_B2S_ColliderDataStructureBase.Add(b2SColliderDataRepositoryComponent.GetDataById(VARIABLE));
             }
 
-            BodyDef bodyDef = new BodyDef { BodyType = BodyType.DynamicBody };
-            self.m_Body = Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().CreateBody(bodyDef);
+            self.m_Body = B2S_BodyUtility.CreateDynamicBody();
 
             //根据数据加载具体的碰撞体，有的技能可能会产生多个碰撞体
             foreach (var VARIABLE in self.m_B2S_ColliderDataStructureBase)
@@ -50,37 +49,18 @@ namespace ETHotfix
                 switch (VARIABLE.b2SColliderType)
                 {
                     case B2S_ColliderType.BoxColllider:
-                        PolygonShape m_BoxShape = new PolygonShape();
-                        m_BoxShape.SetAsBox(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy,
-                            VARIABLE.finalOffset, 0);
-                        FixtureDef fixtureDef1 = new FixtureDef();
-                        fixtureDef1.IsSensor = VARIABLE.isSensor;
-                        fixtureDef1.Shape = m_BoxShape;
-                        fixtureDef1.UserData = self;
-                        self.m_Body.CreateFixture(fixtureDef1);
+                        self.m_Body.CreateBoxFixture(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy,
+                            VARIABLE.finalOffset, 0, VARIABLE.isSensor, self);
                         break;
                     case B2S_ColliderType.CircleCollider:
-                        CircleShape m_CircleShape = new CircleShape();
-                        m_CircleShape.Radius = ((B2S_CircleColliderDataStructure) VARIABLE).radius;
-                        m_CircleShape.Position = VARIABLE.finalOffset;
-                        FixtureDef fixtureDef2 = new FixtureDef();
-                        fixtureDef2.IsSensor = VARIABLE.isSensor;
-                        fixtureDef2.Shape = m_CircleShape;
-                        fixtureDef2.UserData = self;
-                        self.m_Body.CreateFixture(fixtureDef2);
+                        self.m_Body.CreateCircleFixture(((B2S_CircleColliderDataStructure) VARIABLE).radius, VARIABLE.finalOffset, VARIABLE.isSensor,
+                            self);
                         break;
                     case B2S_ColliderType.PolygonCollider:
                         foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).finalPoints)
                         {
-                            PolygonShape m_PolygonShape = new PolygonShape();
-                            m_PolygonShape.Set(VARIABLE1.ToArray());
-                            FixtureDef fixtureDef3 = new FixtureDef();
-                            fixtureDef3.IsSensor = VARIABLE.isSensor;
-                            fixtureDef3.Shape = m_PolygonShape;
-                            fixtureDef3.UserData = self;
-                            self.m_Body.CreateFixture(fixtureDef3);
+                            self.m_Body.CreatePolygonFixture(VARIABLE1,VARIABLE.isSensor,self);
                         }
-
                         break;
                 }
             }

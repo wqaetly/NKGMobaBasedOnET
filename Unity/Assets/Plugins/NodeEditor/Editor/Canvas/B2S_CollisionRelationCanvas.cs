@@ -260,7 +260,6 @@ namespace B2S_CollisionRelation
                                             continue;
                                         }
 
-                                        this.hasRegisterIDs.Add(VARIABLE4);
                                         sb.AppendLine($"                case {VARIABLE4}://{this.m_MainDataDic.B2S_CollisionsRelationDic[VARIABLE4].Flag}");
                                         foreach (var VARIABLE6 in VARIABLE2.Value)
                                         {
@@ -273,6 +272,9 @@ namespace B2S_CollisionRelation
                                         }
 
                                         sb.AppendLine("                    break;");
+                                        
+                                        //添加已注册信息
+                                        this.hasRegisterIDs.Add(VARIABLE4);
                                     }
                                 }
                             }
@@ -299,7 +301,6 @@ namespace B2S_CollisionRelation
                 Log.Info(tempFileInfo);
                 while (File.Exists(tempFileInfo))
                 {
-                    Log.Info("已经有了此文件");
                     GS++;
                     tempFileInfo=$"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}_{GS}.cs";
                 }
@@ -319,7 +320,6 @@ namespace B2S_CollisionRelation
             foreach (var VARIABLE in b2SCollisionInstance.CollisionRelations)
             {
                 var b2stemp = new B2S_CollisionInstance();
-                Debug.Log(VARIABLE);
                 this.m_PrefabDic.B2S_CollisionsRelationDic.TryGetValue(VARIABLE, out b2stemp);
                 if (!groupInfo.Exists(t => t == b2stemp.BelongGroup))
                     groupInfo.Add(b2stemp.BelongGroup);
