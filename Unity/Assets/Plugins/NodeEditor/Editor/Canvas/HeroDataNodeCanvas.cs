@@ -33,6 +33,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// </summary>
         public HeroDataSupportor m_TestDic=new HeroDataSupportor();
 
+        
         [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {

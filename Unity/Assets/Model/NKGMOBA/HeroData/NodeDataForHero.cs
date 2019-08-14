@@ -4,6 +4,7 @@
 // Data: 2019年5月25日 10:36:46
 //------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
@@ -11,6 +12,10 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    /// <summary>
+    /// 英雄基本数据，实现Serializable是为了迎合深Copy
+    /// </summary>
+    [Serializable]
     public class NodeDataForHero
     {
         [LabelText("此结点(英雄数据结点)ID为")]

@@ -12,15 +12,15 @@ using MongoDB.Bson.Serialization;
 namespace ETModel
 {
     [ObjectSystem]
-    public class AllHeroSkillDataComponentAwakeSystem: AwakeSystem<AllHeroSkillDataComponent>
+    public class AllHeroSkillDataComponentAwakeSystem: AwakeSystem<HeroSkillDataRepositoryComponent>
     {
-        public override void Awake(AllHeroSkillDataComponent self)
+        public override void Awake(HeroSkillDataRepositoryComponent self)
         {
             self.Awake();
         }
     }
 
-    public class AllHeroSkillDataComponent: Component
+    public class HeroSkillDataRepositoryComponent: Component
     {
         public Dictionary<int, SkillNodeDataSupporter> m_AllHeroSkillDataDic = new Dictionary<int, SkillNodeDataSupporter>();
 
@@ -28,7 +28,7 @@ namespace ETModel
 
         public void Awake()
         {
-            Type[] types = typeof (AllHeroSkillDataComponent).Assembly.GetTypes();
+            Type[] types = typeof (HeroSkillDataRepositoryComponent).Assembly.GetTypes();
             foreach (Type type in types)
             {
                 if (!type.IsSubclassOf(typeof (SkillBaseNodeData)) && !type.IsSubclassOf(typeof (SkillBuffBase)))

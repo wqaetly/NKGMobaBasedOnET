@@ -62,6 +62,7 @@ namespace ETEditor
             }
 
             Log.Info("开始资源打包");
+            
             BuildPipeline.BuildAssetBundles(fold, buildAssetBundleOptions, buildTarget);
 
             Log.Info("生成版本信息");

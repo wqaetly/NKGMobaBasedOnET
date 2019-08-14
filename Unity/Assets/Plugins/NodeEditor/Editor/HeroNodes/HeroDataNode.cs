@@ -26,8 +26,7 @@ namespace SkillDemo
         /// </summary>
         public override string GetID => Id;
 
-        public override Vector2 DefaultSize => new Vector2(100, 60);
-
+        public override Vector2 DefaultSize => new Vector2(150, 60);
 
         /// <summary>
         /// 英雄数据

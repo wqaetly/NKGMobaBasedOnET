@@ -13,6 +13,6 @@ namespace ETModel
     public class HeroDataSupportor
     {
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<long,NodeDataForHero> MHeroDataSupportorDic = new Dictionary<long, NodeDataForHero>();
+        public Dictionary<long, NodeDataForHero> MHeroDataSupportorDic = new Dictionary<long, NodeDataForHero>();
     }
 }

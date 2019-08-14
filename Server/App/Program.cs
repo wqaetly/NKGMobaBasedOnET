@@ -156,9 +156,10 @@ namespace App
 						Game.Scene.AddComponent<B2S_CollisionRelationRepositoryComponent>();
 						
 						
-
-						Game.Scene.AddComponent<AllHeroBaseDataComponent>();
-						Game.Scene.AddComponent<AllHeroSkillDataComponent>();
+						//增加英雄基础数据仓库组件
+						Game.Scene.AddComponent<HeroBaseDataRepositoryComponent>();
+						//增加英雄技能数据仓库组件
+						Game.Scene.AddComponent<HeroSkillDataRepositoryComponent>();
 						Game.Scene.AddComponent<CoroutineLockComponent>();
 						break;
 					case AppType.Benchmark:
