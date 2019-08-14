@@ -162,7 +162,7 @@ namespace B2S_CollisionRelation
         [Button("开始自动生成代码", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AutoGenerateCollisionCode()
         {
-            #region
+            #region //添加碰撞组件ID部分
 
             StringBuilder sb1 = new StringBuilder();
             sb1.AppendLine("//------------------------------------------------------------");
@@ -186,7 +186,7 @@ namespace B2S_CollisionRelation
             sb1.AppendLine("}");
             File.WriteAllText($"{this.theEventIdPathWillBeSaved}/EventIdType_Collision.cs", sb1.ToString());
 
-            #endregion 添加碰撞组件ID部分
+            #endregion //添加碰撞组件ID部分
 
             //碰撞关系代码部分
             foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in this.className)
@@ -237,14 +237,10 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("        public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)");
                 sb.AppendLine("        {");
 
-                sb.AppendLine($"            switch (b2SHeroColliderData.m_B2S_CollisionInstance.BelongGroup)");
-                sb.AppendLine("            {");
                 foreach (var VARIABLE1 in GroupInfo)
                 {
-                    sb.AppendLine($"                case \"{VARIABLE1}\":");
-
-                    sb.AppendLine("                    switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)");
-                    sb.AppendLine("                    {");
+                    sb.AppendLine("            switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)");
+                    sb.AppendLine("            {");
                     foreach (var VARIABLE2 in Group_IDInfo)
                     {
                         if (VARIABLE2.Key == VARIABLE1)
@@ -265,29 +261,26 @@ namespace B2S_CollisionRelation
                                         }
 
                                         this.hasRegisterIDs.Add(VARIABLE4);
-                                        sb.AppendLine($"                        case {VARIABLE4}:");
+                                        sb.AppendLine($"                case {VARIABLE4}://{this.m_MainDataDic.B2S_CollisionsRelationDic[VARIABLE4].Flag}");
                                         foreach (var VARIABLE6 in VARIABLE2.Value)
                                         {
                                             if (VARIABLE.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE6) &&
                                                 this.m_PrefabDataDic[VARIABLE6].Exists(t => t == VARIABLE4))
                                             {
                                                 sb.AppendLine(
-                                                    $"                        //{this.m_PrefabDic.B2S_CollisionsRelationDic[VARIABLE6].Flag}");
+                                                    $"                    //{this.m_PrefabDic.B2S_CollisionsRelationDic[VARIABLE6].Flag}");
                                             }
                                         }
 
-                                        sb.AppendLine("                            break;");
+                                        sb.AppendLine("                    break;");
                                     }
                                 }
                             }
                         }
                     }
-
-                    sb.AppendLine("                    }");
-                    sb.AppendLine("                    break;");
+                    sb.AppendLine("            }");
                 }
 
-                sb.AppendLine("            }");
                 sb.AppendLine("        }");
                 sb.AppendLine();
                 sb.AppendLine("        public void OnCollideSustain(B2S_HeroColliderData b2SHeroColliderData)");
@@ -301,7 +294,16 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("        }");
                 sb.AppendLine("    }");
                 sb.AppendLine("}");
-                File.WriteAllText($"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}.cs", sb.ToString());
+                string tempFileInfo = $"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}.cs";
+                int GS = 0;
+                Log.Info(tempFileInfo);
+                while (File.Exists(tempFileInfo))
+                {
+                    Log.Info("已经有了此文件");
+                    GS++;
+                    tempFileInfo=$"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}_{GS}.cs";
+                }
+                File.WriteAllText(tempFileInfo, sb.ToString());
             }
         }
 

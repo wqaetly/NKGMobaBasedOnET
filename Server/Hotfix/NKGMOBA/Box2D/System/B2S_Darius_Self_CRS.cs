@@ -1,7 +1,7 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019/8/12 20:06:09
+// Data: 2019/8/14 16:22:55
 // Description: 此代码switch case与System部分由工具生成，请勿进行增减操作
 //------------------------------------------------------------
 
@@ -31,9 +31,6 @@ namespace ETHotfix
     {
         public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
         {
-            switch (b2SHeroColliderData.m_B2S_CollisionInstance.BelongGroup)
-            {
-            }
         }
 
         public void OnCollideSustain(B2S_HeroColliderData b2SHeroColliderData)
