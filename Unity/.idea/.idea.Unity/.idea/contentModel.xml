@@ -1257,6 +1257,10 @@
                   <e p="CanvasCalculator.cs" t="Include" />
                   <e p="FloatCalculation.cs" t="Include" />
                 </e>
+                <e p="Graph Example" t="Include">
+                  <e p="GraphCanvasType.cs" t="Include" />
+                  <e p="GraphTraversal.cs" t="Include" />
+                </e>
                 <e p="IO Formats" t="Include">
                   <e p="XMLImportExport.cs" t="Include" />
                 </e>
@@ -1298,6 +1302,7 @@
                   <e p="NodeEditorInputControls.cs" t="Include" />
                   <e p="NodeEditorInputSystem.cs" t="Include" />
                   <e p="NodeEditorInterface.cs" t="Include" />
+                  <e p="NodeEditorUndoActions.cs" t="Include" />
                 </e>
                 <e p="NodeEditor.cs" t="Include" />
                 <e p="SaveSystem" t="Include">
@@ -1307,6 +1312,20 @@
                   <e p="NodeCanvasSceneSave.cs" t="Include" />
                   <e p="NodeEditorSaveManager.cs" t="Include" />
                   <e p="NodeEditorUserCache.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Nodes" t="Include">
+                <e p="Example" t="Include">
+                  <e p="AllAroundNode.cs" t="Include" />
+                  <e p="ExampleNode.cs" t="Include" />
+                  <e p="FlowNode.cs" t="Include" />
+                  <e p="ResizingNode.cs" t="Include" />
+                  <e p="RootGraphNode.cs" t="Include" />
+                </e>
+                <e p="FloatCalc" t="Include">
+                  <e p="CalcNode.cs" t="Include" />
+                  <e p="DisplayNode.cs" t="Include" />
+                  <e p="InputNode.cs" t="Include" />
                 </e>
               </e>
               <e p="Resources" t="Include">
@@ -1508,6 +1527,22 @@
               </e>
             </e>
             <e p="Readme.txt" t="Include" />
+          </e>
+          <e p="UndoPro" t="Include">
+            <e p="Editor" t="Include">
+              <e p="SerializableActionTestWindow.cs" t="Include" />
+              <e p="UndoProTestWindow.cs" t="Include" />
+            </e>
+            <e p="UndoPro" t="Include">
+              <e p="SerializableAction" t="Include">
+                <e p="SerializableAction.cs" t="Include" />
+                <e p="SerializableMethodInfo.cs" t="Include" />
+                <e p="SerializableObject.cs" t="Include" />
+                <e p="SerializableType.cs" t="Include" />
+              </e>
+              <e p="UndoProManager.cs" t="Include" />
+              <e p="UndoProRecords.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="ThirdParty" t="Include">
@@ -2391,9 +2426,7 @@
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="Unity.BehaviorDesigner.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.BehaviorDesigner.Runtime.csproj" t="IncludeRecursive" />
       <e p="Unity.Editor.csproj" t="IncludeRecursive" />

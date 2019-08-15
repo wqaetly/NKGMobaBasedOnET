@@ -13,10 +13,11 @@ namespace ETModel
     /// </summary>
     public static class CodeTimeCostObserver
     {
-        static Stopwatch _stopwatch = new Stopwatch();
+        static Stopwatch _stopwatch;
 
         public static void StartObserve()
         {
+            _stopwatch = new Stopwatch();
             _stopwatch.Start();
         }
 

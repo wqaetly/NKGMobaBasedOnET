@@ -44,13 +44,14 @@ namespace NodeEditorFramework
         [ColorPalette]
         public Color _color = Color.blue;
 
-        private bool edit = true;
         internal bool isClipped;
+        
         [LabelText("顶部大小（高度）")]
         public int headerHeight = 70;
         
         [LabelText("字体大小")]
         public int TextSize = 60;
+
         // Resizing and dragging state for active node group
         private static BorderSelection resizeDir;
         public List<Node> pinnedNodes = new List<Node>();
@@ -60,7 +61,6 @@ namespace NodeEditorFramework
         private static bool headerFree = true;
         private const int borderWidth = 15;
         private const int minGroupSize = 150;
-
 
         // Accessors
         private Rect headerRect
@@ -203,7 +203,7 @@ namespace NodeEditorFramework
             //			dragHandleStyle.padding = new RectOffset (10, 10, 5, 5);
 
             headerTitleStyle = new GUIStyle();
-            headerTitleStyle.fontSize = TextSize;
+            headerTitleStyle.fontSize = this.TextSize;
             headerTitleStyle.normal.textColor = Color.white;
 
             headerTitleEditStyle = new GUIStyle(headerTitleStyle);
@@ -252,9 +252,8 @@ namespace NodeEditorFramework
             Rect groupHeaderRect = headerRect;
             groupHeaderRect.position += state.zoomPanAdjust + state.panOffset+new Vector2(0,-10);
             GUILayout.BeginArea(groupHeaderRect, headerFree? GUIStyle.none : altBackgroundStyle);
-            
             GUILayout.BeginHorizontal();
-            
+
             title = GUILayout.TextField(title, headerTitleEditStyle, GUILayout.MinWidth(40));
 
             GUILayout.Space(10);

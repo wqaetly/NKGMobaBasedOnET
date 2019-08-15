@@ -753,6 +753,7 @@ namespace NodeEditorFramework.Utilities
 		{
 			if (Event.current.type != EventType.Repaint && Event.current.type != EventType.KeyDown)
 				return;
+
 			Rect clippingRect = GUIScaleUtility.getTopRect;
 			clippingRect.x = clippingRect.y = 0;
 			Rect bounds = new Rect(Mathf.Min(startPos.x, endPos.x), Mathf.Min(startPos.y, endPos.y), 

@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using ETModel;
+using MongoDB.Bson;
 
 namespace ETHotfix
 {

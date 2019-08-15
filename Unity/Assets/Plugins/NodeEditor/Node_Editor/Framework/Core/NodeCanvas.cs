@@ -1,10 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using MongoDB.Bson.IO;
-using MongoDB.Bson.Serialization;
 using Sirenix.OdinInspector;
 
 namespace NodeEditorFramework
@@ -38,22 +35,21 @@ namespace NodeEditorFramework
             }
         }
 
-        [HideInInspector]
         public NodeCanvasTraversal Traversal;
 
-        [HideInInspector]
         public NodeEditorState[] editorStates = new NodeEditorState[0];
 
         public string saveName;
         public string savePath;
 
-        [HideInInspector]
         public bool livesInScene = false;
 
         public List<Node> nodes = new List<Node>();
-
         [LabelText("右击Group的顶部标题即可弹出删除选项")]
         public List<NodeGroup> groups = new List<NodeGroup>();
+
+        [NonSerialized]
+        public List<ScriptableObject> SOMemoryDump = new List<ScriptableObject>();
 
         #region Constructors
 
@@ -200,16 +196,15 @@ namespace NodeEditorFramework
         {
             if (list == null)
             {
-                Debug.LogWarning("NodeCanvas '" + name + "' " + listName +
-                    " were erased and set to null! Automatically fixed!");
+                Debug.LogWarning("NodeCanvas '" + name + "' " + listName + " were erased and set to null! Automatically fixed!");
                 list = new List<T>();
             }
 
             int originalCount = list.Count;
             list = list.Where((T o) => o != null).ToList();
             if (originalCount != list.Count)
-                Debug.LogWarning("NodeCanvas '" + name + "' contained " + (originalCount - list.Count) +
-                    " broken (null) " + listName + "! Automatically fixed!");
+                Debug.LogWarning("NodeCanvas '" + name + "' contained " + (originalCount - list.Count) + " broken (null) " + listName +
+                    "! Automatically fixed!");
         }
 
         /// <summary>

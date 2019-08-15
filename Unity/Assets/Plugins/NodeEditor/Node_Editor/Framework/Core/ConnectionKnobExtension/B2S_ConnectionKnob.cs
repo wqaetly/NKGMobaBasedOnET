@@ -16,6 +16,9 @@ namespace NodeEditorFramework
 
         private string ConnectedFlag;
 
+        /// <summary>
+        /// 这个数据块的ValueConnectionKnob信息（对方）
+        /// </summary>
         public ValueConnectionKnob connectionInfo;
 
         [Button("移除这条连接"), GUIColor(0.4f, 0.8f, 1)]
@@ -40,10 +43,33 @@ namespace NodeEditorFramework
             }
             else
             {
+                //双方最后重新读取一下信息，防止出错
+                this.connectionInfo.TryToAutoReadAllConnectedNode();
                 this.connectionInfo
-                        .connections[theIndexWillBeRemove_theConnectedValue].Remove(this);
-                this.connectionInfo.RemoveConnection(this.connectionInfo
-                        .connections[theIndexWillBeRemove_theConnectedValue]);
+                        .connections[theIndexWillBeRemove_theConnectedValue].TryToAutoReadAllConnectedNode();
+                
+                //自身移除联系结点关系id
+                this.connectionInfo
+                        .body.B2SCollisionRelation_GetNodeData().CollisionRelations
+                        .Remove(this.connectionInfo
+                                .connections[theIndexWillBeRemove_theConnectedValue].body.B2SCollisionRelation_GetNodeData().nodeDataId);
+
+                //联系结点移除自身关系id
+                this.connectionInfo
+                        .connections[theIndexWillBeRemove_theConnectedValue].body.B2SCollisionRelation_GetNodeData().CollisionRelations.Remove(this
+                                .connectionInfo
+                                .body.B2SCollisionRelation_GetNodeData().nodeDataId);
+
+                //自身移除联系信息btn
+                this.connectionInfo.RemoveInfoWithDeleteBtn(this.connectionInfo.b2sInfo[theIndexWillBeRemove_theConnectedValue]);
+
+                //从联系结点移除自身btn
+                this.connectionInfo
+                        .connections[theIndexWillBeRemove_theConnectedValue].RemoveInfoWithDeleteBtn(this);
+
+                //双方移除联系信息
+                this.connectionInfo
+                        .connections[theIndexWillBeRemove_theConnectedValue].RemoveConnection(this.connectionInfo);
             }
         }
 
@@ -76,9 +102,10 @@ namespace NodeEditorFramework
             }
         }
 
-        public void Remove(InfoWithDeleteBtn infoWithDeleteBtn)
+        public void RemoveInfoWithDeleteBtn(InfoWithDeleteBtn infoWithDeleteBtn)
         {
-            b2sInfo.Remove(infoWithDeleteBtn);
+            if (this.b2sInfo.Count > 0)
+                b2sInfo.Remove(infoWithDeleteBtn);
         }
     }
 }

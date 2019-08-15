@@ -39,7 +39,10 @@ namespace ETModel
         {
             if (this.m_AllHeroBaseDataDic.MHeroDataSupportorDic.ContainsKey(id))
             {
-                return this.m_AllHeroBaseDataDic.MHeroDataSupportorDic[id].DeepCopy();
+                Log.Info("反射深拷贝");
+                return DeepCloneHelper.DeepCopyByReflect(this.m_AllHeroBaseDataDic.MHeroDataSupportorDic[id]);
+                /*Log.Info("序列化深拷贝");
+                return this.m_AllHeroBaseDataDic.MHeroDataSupportorDic[id].DeepCopy();*/
             }
             Log.Error($"查询英雄基础数据失败,id为{id}");
             return null;
