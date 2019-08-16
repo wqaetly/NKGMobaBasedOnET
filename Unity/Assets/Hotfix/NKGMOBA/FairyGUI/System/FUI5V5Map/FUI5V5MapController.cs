@@ -4,6 +4,7 @@
 // Data: 2019年5月21日 19:41:22
 //------------------------------------------------------------
 
+using ETHotfix.FUI5v5Map;
 using ETModel;
 
 namespace ETHotfix
@@ -29,6 +30,18 @@ namespace ETHotfix
             hotfixui.MakeFullScreen();
             //将UI注册到FUIComponent中，正式显示
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
+        }
+    }
+
+    [Event(EventIdType.SetSelfHeroDataOnUI)]
+    public class SetSelfHeroDataOnUI: AEvent
+    {
+        public override void Run()
+        {
+            NodeDataForHero mNodeDataForHero =
+                    ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.GetComponent<HeroDataComponent>().NodeDataForHero;
+            FUI5V5Map fui5v5Map = (FUI5V5Map) Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName);
+            fui5v5Map.AttackInfo.text = (mNodeDataForHero.OriAttackValue + mNodeDataForHero.ExtAttackValue).ToString();
         }
     }
 }

@@ -62,6 +62,14 @@
         /// </summary>
         public const string CreateHeadBar = "CreateHeadBar";
 
-        public const string CreateUnitComplete = "CreateUnitComplete";
+        /// <summary>
+        /// 设置自身的英雄Unit
+        /// </summary>
+        public const string SetSelfHero = "SetSelfHero";
+
+        /// <summary>
+        /// 在UI上设置英雄数据
+        /// </summary>
+        public const string SetSelfHeroDataOnUI = "SetSelfHeroDataOnUI";
     }
 }

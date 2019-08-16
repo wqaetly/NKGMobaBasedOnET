@@ -45,7 +45,12 @@ namespace ETHotfix
 
             if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)
             {
-                Game.EventSystem.Run(EventIdType.CreateUnitComplete);
+                // 给自己的Unit添加引用
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit =
+                        ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
+                        .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
+                Game.EventSystem.Run(EventIdType.SetSelfHeroDataOnUI);
             }
 
             //ETModel.Log.Info($"{DateTime.UtcNow}完成一次创建Unit");
