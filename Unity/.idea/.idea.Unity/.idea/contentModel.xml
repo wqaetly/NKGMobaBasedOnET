@@ -211,7 +211,6 @@
               <e p="GameObjectHelper.cs" t="Include" />
             </e>
             <e p="Component" t="Include">
-              <e p="HeroBaseDataComponent.cs" t="Include" />
               <e p="HeroHeadBarComponent.cs" t="Include" />
               <e p="M5V5GameComponent.cs" t="Include" />
               <e p="MapClickCompoent.cs" t="Include" />
@@ -305,6 +304,7 @@
               </e>
             </e>
             <e p="GlobalSystem" t="Include">
+              <e p="CreateUnitComplete.cs" t="Include" />
               <e p="LoginFinish_ToTestScene.cs" t="Include" />
             </e>
             <e p="Handler" t="Include">
@@ -947,7 +947,10 @@
               <e p="DeepCopyHelper.cs" t="Include" />
             </e>
             <e p="HeroData" t="Include">
+              <e p="HeroBaseDataRepositoryComponent.cs" t="Include" />
+              <e p="HeroDataComponent.cs" t="Include" />
               <e p="HeroDataSupportor.cs" t="Include" />
+              <e p="HeroProfession.cs" t="Include" />
               <e p="NodeDataForHero.cs" t="Include" />
             </e>
             <e p="Skill" t="Include">
@@ -1333,6 +1336,22 @@
                   <e p="LineShader.shader" t="Include" />
                 </e>
               </e>
+              <e p="UndoPro_PRO" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="SerializableActionTestWindow.cs" t="Include" />
+                  <e p="UndoProTestWindow.cs" t="Include" />
+                </e>
+                <e p="UndoPro" t="Include">
+                  <e p="SerializableAction" t="Include">
+                    <e p="SerializableAction.cs" t="Include" />
+                    <e p="SerializableMethodInfo.cs" t="Include" />
+                    <e p="SerializableObject.cs" t="Include" />
+                    <e p="SerializableType.cs" t="Include" />
+                  </e>
+                  <e p="UndoProManager.cs" t="Include" />
+                  <e p="UndoProRecords.cs" t="Include" />
+                </e>
+              </e>
               <e p="Utilities" t="Include">
                 <e p="EditorLoadingControl.cs" t="Include" />
                 <e p="GUI" t="Include">
@@ -1527,22 +1546,6 @@
               </e>
             </e>
             <e p="Readme.txt" t="Include" />
-          </e>
-          <e p="UndoPro" t="Include">
-            <e p="Editor" t="Include">
-              <e p="SerializableActionTestWindow.cs" t="Include" />
-              <e p="UndoProTestWindow.cs" t="Include" />
-            </e>
-            <e p="UndoPro" t="Include">
-              <e p="SerializableAction" t="Include">
-                <e p="SerializableAction.cs" t="Include" />
-                <e p="SerializableMethodInfo.cs" t="Include" />
-                <e p="SerializableObject.cs" t="Include" />
-                <e p="SerializableType.cs" t="Include" />
-              </e>
-              <e p="UndoProManager.cs" t="Include" />
-              <e p="UndoProRecords.cs" t="Include" />
-            </e>
           </e>
         </e>
         <e p="ThirdParty" t="Include">
@@ -2426,7 +2429,9 @@
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
       <e p="Unity.BehaviorDesigner.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.BehaviorDesigner.Runtime.csproj" t="IncludeRecursive" />
       <e p="Unity.Editor.csproj" t="IncludeRecursive" />

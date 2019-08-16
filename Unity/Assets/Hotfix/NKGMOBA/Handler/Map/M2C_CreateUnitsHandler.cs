@@ -1,4 +1,6 @@
-﻿using ETModel;
+﻿using System;
+using ETModel;
+using UnityEngine.Experimental.UIElements;
 using Vector3 = UnityEngine.Vector3;
 
 namespace ETHotfix
@@ -30,7 +32,23 @@ namespace ETHotfix
                 // 增加头顶Bar
                 hotfixUnit.AddComponent<HeroHeadBarComponent, Unit, FUI>(unit,
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
+
+                //添加英雄数据
+                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await ETHotfix.Game.Scene.GetComponent<SessionComponent>()
+                        .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
+
+                ETModel.Game.Scene.GetComponent<UnitComponent>().Get(unitInfo.UnitId)
+                        .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
+
+                //ETModel.Log.Info($"成功添加英雄数据");
             }
+
+            if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)
+            {
+                Game.EventSystem.Run(EventIdType.CreateUnitComplete);
+            }
+
+            //ETModel.Log.Info($"{DateTime.UtcNow}完成一次创建Unit");
             await ETTask.CompletedTask;
         }
     }

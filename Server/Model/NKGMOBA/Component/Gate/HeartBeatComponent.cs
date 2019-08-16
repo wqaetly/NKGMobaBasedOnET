@@ -54,7 +54,7 @@ namespace ETModel
 
             if (TimeHelper.ClientNowSeconds() - CurrentTime > OutInterval)
             {
-                Console.WriteLine("心跳失败");
+                //Console.WriteLine("心跳失败");
                 Game.Scene.GetComponent<NetOuterComponent>().Remove(this.Parent.InstanceId);
                 Game.Scene.GetComponent<NetInnerComponent>().Remove(this.Parent.InstanceId);
             }

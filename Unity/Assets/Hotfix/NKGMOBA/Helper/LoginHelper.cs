@@ -63,7 +63,7 @@ namespace ETHotfix
                 // 增加心跳组件
                 ETModel.Game.Scene.GetComponent<ETModel.SessionComponent>().Session.AddComponent<HeartBeatComponent>();
 
-                G2C_LoginGate g2CLoginGate = (G2C_LoginGate) await SessionComponent.Instance.Session.Call(new C2G_LoginGate() { Key = r2CLogin.Key });
+                await SessionComponent.Instance.Session.Call(new C2G_LoginGate() { Key = r2CLogin.Key });
 
                 Game.EventSystem.Run(EventIdType.ShowLoginInfo, "登录成功");
 

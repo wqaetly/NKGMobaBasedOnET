@@ -11,8 +11,8 @@ namespace ETHotfix
         {
             GateSessionKeyComponent gateSessionKeyComponent = Game.Scene.GetComponent<GateSessionKeyComponent>();
             //从已经分发的KEY里面寻找，如果没找到，说明非法用户，不给他连接gate服务器
-            string account = gateSessionKeyComponent.Get(request.Key);
-            if (account == null)
+            long playerID = gateSessionKeyComponent.Get(request.Key);
+            if (playerID == 0)
             {
                 response.Error = ErrorCode.ERR_ConnectGateKeyError;
                 response.Message = "Gate key验证失败!";
@@ -24,7 +24,7 @@ namespace ETHotfix
             gateSessionKeyComponent.Remove(request.Key);
 
             //专门给这个玩家创建一个Player对象
-            Player player = ComponentFactory.Create<Player, string>(account);
+            Player player = ComponentFactory.Create<Player, long>(playerID);
             player.AddComponent<UnitGateComponent, long>(session.InstanceId);
 
             //注册到PlayerComponent，方便管理
@@ -47,14 +47,15 @@ namespace ETHotfix
             IPEndPoint realmIPEndPoint = config.RealmConfig.GetComponent<InnerConfig>().IPEndPoint;
             Session realmSession = Game.Scene.GetComponent<NetInnerComponent>().Get(realmIPEndPoint);
 
-            await realmSession.Call(new G2R_PlayerOnline() { playerAccount = account, PlayerId = player.Id, GateAppID = config.StartConfig.AppId });
+            await realmSession.Call(new G2R_PlayerOnline()
+            {
+                PlayerIDInPlayerComponent = player.Id, PlayerId = player.PlayerID, GateAppID = config.StartConfig.AppId
+            });
+
+            //Log.Info("发送离线消息完毕");
 
             //回复客户端的连接gate服务器请求
             reply();
-
-            //向客户端发送热更层信息
-            session.Send(new G2C_TestHotfixMessage() { Info = "recv hotfix message success" });
-
             await ETTask.CompletedTask;
         }
     }

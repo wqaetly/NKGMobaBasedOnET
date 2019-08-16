@@ -90,6 +90,23 @@ message M2C_TestActorResponse // IActorLocationResponse
     string Info = 1;
 }
 
+message C2M_GetHeroDataRequest // IActorLocationRequest
+{
+    int32 RpcId = 90;
+    int64 ActorId = 91;
+    //unit的ID
+    int64 unitID = 1;
+}
+
+message M2C_GetHeroDataResponse // IActorLocationResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    int64 heroDataID = 92;
+    string Message = 94;
+}
+
+
 message UserInput_SkillCmd // IActorLocationMessage
 {
     int32 RpcId = 90;

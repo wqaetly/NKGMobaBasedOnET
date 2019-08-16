@@ -14,61 +14,61 @@ namespace ETModel
     /// </summary>
     public class OnlineComponent: Component
     {
-        private readonly Dictionary<string, Tuple<long, int>> m_dictionarty = new Dictionary<string, Tuple<long, int>>();
+        /// <summary>
+        /// 记录玩家在线情况的字典，long为playerID（MongoDB数据库中的），long为PlayerComonent的id，int为GateAppID
+        /// </summary>
+        private readonly Dictionary<long, (long, int)> m_dictionarty = new Dictionary<long, (long, int)>();
 
         /// <summary>
         /// 添加在线玩家
         /// </summary>
-        /// <param name="playerAccount"></param>
-        /// <param name="gateAppId"></param>
-        public void Add(string playerAccount, long playerId, int gateAppId)
-        {
-            this.m_dictionarty.Add(playerAccount, new Tuple<long, int>(playerId, gateAppId));
-        }
-
-        /// <summary>
-        /// 获取在线玩家ID
-        /// </summary>
         /// <param name="playerId"></param>
-        /// <returns></returns>
-        public long GetPlayerId(string playerAccount)
+        /// <param name="playerIDInPlayerComponent"></param>
+        /// <param name="gateAppId"></param>
+        public void Add(long playerId, long playerIDInPlayerComponent, int gateAppId)
         {
-            Tuple<long, int> temp = new Tuple<long, int>(0, 0);
-            this.m_dictionarty.TryGetValue(playerAccount, out temp);
-            return temp.Item1;
+            this.m_dictionarty.Add(playerId, (playerIDInPlayerComponent, gateAppId));
         }
 
         /// <summary>
         /// 获取在线玩家网关服务器ID
         /// </summary>
-        /// <param name="playerId"></param>
+        /// <param name="playerID">玩家ID（MongoDB数据库中的）</param>
         /// <returns></returns>
-        public int GetGateAppId(string playerAccount)
+        public int GetGateAppId(long playerID)
         {
-            if (this.m_dictionarty.Count >= 1)
+            if (this.m_dictionarty.TryGetValue(playerID, out (long,int) tempGateAppID))
             {
-                Tuple<long, int> temp = new Tuple<long, int>(0, 0);
-                this.m_dictionarty.TryGetValue(playerAccount, out temp);
-                if (temp != null && temp.Item2 != 0 && temp.Item1 != 0)
-                    return temp.Item2;
-                else
-                {
-                    return 0;
-                }
+                return tempGateAppID.Item2;
             }
 
-            return 0;
+            Log.Error($"没有找到id为{playerID}的玩家");
+            return tempGateAppID.Item2;
+        }
+        
+        /// <summary>
+        /// 获取在线玩家id(PlayerComponent中的id)
+        /// </summary>
+        /// <param name="playerID">玩家ID（MongoDB数据库中的）</param>
+        /// <returns></returns>
+        public long GetPlayerIdInPlayerComponent(long playerID)
+        {
+            if (this.m_dictionarty.TryGetValue(playerID, out (long,int) tempGateAppID))
+            {
+                return tempGateAppID.Item1;
+            }
+
+            Log.Error($"没有找到id为{playerID}的玩家");
+            return tempGateAppID.Item1;
         }
 
         /// <summary>
         /// 移除在线玩家
         /// </summary>
-        /// <param name="playerId"></param>
-        public void Remove(string playerAccount)
+        /// <param name="playerID">玩家ID（MongoDB数据库中的）</param>
+        public void Remove(long playerID)
         {
-            Tuple<long, int> temp;
-            if (!this.m_dictionarty.TryGetValue(playerAccount, out temp)) return;
-            this.m_dictionarty.Remove(playerAccount);
+            this.m_dictionarty.Remove(playerID);
         }
     }
 }

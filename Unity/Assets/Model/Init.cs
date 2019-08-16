@@ -51,6 +51,9 @@ namespace ETModel
                 Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
+
+                Game.Scene.AddComponent<HeroBaseDataRepositoryComponent>();
+                
                 Game.Scene.AddComponent<B2S_DebuggerComponent>();
 
                 Game.Hotfix.GotoHotfix();

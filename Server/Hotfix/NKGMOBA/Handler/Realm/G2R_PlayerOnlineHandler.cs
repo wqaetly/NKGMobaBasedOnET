@@ -14,17 +14,13 @@ namespace ETHotfix
     {
         protected override async ETTask Run(Session session, G2R_PlayerOnline message, R2G_PlayerOnline response, Action reply)
         {
-            OnlineComponent onlineComponent = Game.Scene.GetComponent<OnlineComponent>();
+            //Log.Info("将已在线玩家踢下线");
+            await RealmHelper.KickOutPlayer(message.PlayerId, PlayerOfflineTypes.SamePlayerLogin);
 
-            //将已在线玩家踢下线
-            await RealmHelper.KickOutPlayer(message.playerAccount, PlayerOfflineTypes.SamePlayerLogin);
-
-            //玩家上线
-            onlineComponent.Add(message.playerAccount, message.PlayerId, message.GateAppID);
+            //Log.Info("玩家上线");
+            Game.Scene.GetComponent<OnlineComponent>().Add(message.PlayerId, message.PlayerIDInPlayerComponent, message.GateAppID);
             //Log.Info($"玩家{message.playerAccount}上线");
-
             reply();
-            await ETTask.CompletedTask;
         }
     }
 }

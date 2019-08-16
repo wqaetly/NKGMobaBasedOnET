@@ -30,13 +30,9 @@ namespace ETHotfix
 
                 G2C_EnterMap g2CEnterMap = await ETModel.SessionComponent.Instance.Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
 
+                ETModel.Log.Info($"{DateTime.UtcNow}处理完成服务端发来的进入Map后的信息");
+                
                 PlayerComponent.Instance.MyPlayer.UnitId = g2CEnterMap.UnitId;
-
-                // 给自己的Unit添加引用
-                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit =
-                        ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
-                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
-                        .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
 
                 // 添加点击地图寻路组件
                 m5V5Game.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());

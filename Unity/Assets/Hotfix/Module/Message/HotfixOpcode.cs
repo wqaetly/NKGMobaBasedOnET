@@ -38,6 +38,13 @@ namespace ETHotfix
 	[Message(HotfixOpcode.M2C_TestActorResponse)]
 	public partial class M2C_TestActorResponse : IActorLocationResponse {}
 
+	[Message(HotfixOpcode.C2M_GetHeroDataRequest)]
+	public partial class C2M_GetHeroDataRequest : IActorLocationRequest {}
+
+//unit的ID
+	[Message(HotfixOpcode.M2C_GetHeroDataResponse)]
+	public partial class M2C_GetHeroDataResponse : IActorLocationResponse {}
+
 	[Message(HotfixOpcode.UserInput_SkillCmd)]
 	public partial class UserInput_SkillCmd : IActorLocationMessage {}
 
@@ -81,14 +88,16 @@ namespace ETHotfix
 		 public const ushort G2C_TestHotfixMessage = 10009;
 		 public const ushort C2M_TestActorRequest = 10010;
 		 public const ushort M2C_TestActorResponse = 10011;
-		 public const ushort UserInput_SkillCmd = 10012;
-		 public const ushort M2C_UserInput_SkillCmd = 10013;
-		 public const ushort M2C_B2S_VectorBase = 10014;
-		 public const ushort M2C_B2S_Debugger_Circle = 10015;
-		 public const ushort M2C_B2S_Debugger_Polygon = 10016;
-		 public const ushort PlayerInfo = 10017;
-		 public const ushort C2G_PlayerInfo = 10018;
-		 public const ushort G2C_PlayerInfo = 10019;
-		 public const ushort G2C_PlayerOffline = 10020;
+		 public const ushort C2M_GetHeroDataRequest = 10012;
+		 public const ushort M2C_GetHeroDataResponse = 10013;
+		 public const ushort UserInput_SkillCmd = 10014;
+		 public const ushort M2C_UserInput_SkillCmd = 10015;
+		 public const ushort M2C_B2S_VectorBase = 10016;
+		 public const ushort M2C_B2S_Debugger_Circle = 10017;
+		 public const ushort M2C_B2S_Debugger_Polygon = 10018;
+		 public const ushort PlayerInfo = 10019;
+		 public const ushort C2G_PlayerInfo = 10020;
+		 public const ushort G2C_PlayerInfo = 10021;
+		 public const ushort G2C_PlayerOffline = 10022;
 	}
 }

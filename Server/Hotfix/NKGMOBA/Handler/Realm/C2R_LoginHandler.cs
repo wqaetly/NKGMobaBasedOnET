@@ -29,7 +29,7 @@ namespace ETHotfix
             Session gateSession = Game.Scene.GetComponent<NetInnerComponent>().Get(innerAddress);
 
             // 向gate请求一个key,客户端可以拿着这个key连接gate,20秒失效
-            G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey) await gateSession.Call(new R2G_GetLoginKey() { Account = request.Account });
+            G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey) await gateSession.Call(new R2G_GetLoginKey() { playerID = result[0].Id });
 
             string outerAddress = config.GetComponent<OuterConfig>().Address2;
 

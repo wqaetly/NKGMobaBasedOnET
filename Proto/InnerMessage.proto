@@ -213,7 +213,7 @@ message ObjectGetResponse // IResponse
 message R2G_GetLoginKey // IRequest
 {
     int32 RpcId = 90;
-    string Account = 1;
+    int64 playerID = 1;
 }
 
 message G2R_GetLoginKey // IResponse
@@ -253,41 +253,14 @@ message G2M_SessionDisconnect // IActorLocationMessage
 message G2R_PlayerOnline // IRequest
 {
     int32 RpcId = 90;
-    long PlayerId = 1;
-    string playerAccount = 3;
-    int GateAppID = 2;
+    //playercomponent中的playerID
+    int64 PlayerIDInPlayerComponent = 4;
+    //将要上线的PlayerID
+    int64 PlayerId = 1;
+    int32 GateAppID = 2;
 }
 
 message R2G_PlayerOnline // IResponse
-{
-    int32 RpcId = 90;
-    int32 Error = 91;
-    string Message = 92;
-}
-
-message G2R_PlayerOffline // IRequest
-{
-    int32 RpcId = 90;
-    long PlayerId = 1;
-    string playerAccount = 3;
-}
-
-message R2G_PlayerOffline // IResponse
-{
-    int32 RpcId = 90;
-    int32 Error = 91;
-    string Message = 92;
-}
-
-message R2G_PlayerKickOut // IRequest
-{
-    int32 RpcId = 90;
-    long PlayerId = 1;
-    PlayerOfflineTypes Playerofflinetypes = 2;
-    string PlayerAccount = 3;
-}
-
-message G2R_PlayerKickOut // IResponse
 {
     int32 RpcId = 90;
     int32 Error = 91;

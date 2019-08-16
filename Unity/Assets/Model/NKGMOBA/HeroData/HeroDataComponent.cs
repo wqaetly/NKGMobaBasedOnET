@@ -6,6 +6,15 @@
 
 namespace ETModel
 {
+    [ObjectSystem]
+    public class HeroDataComponentSystem: AwakeSystem<HeroDataComponent, long>
+    {
+        public override void Awake(HeroDataComponent self, long a)
+        {
+            self.NodeDataForHero = Game.Scene.GetComponent<HeroBaseDataRepositoryComponent>().GetHeroDataById(a);
+        }
+    }
+    
     /// <summary>
     /// 英雄数据组件，负责管理英雄数据
     /// </summary>

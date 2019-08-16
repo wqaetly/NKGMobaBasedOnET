@@ -24,6 +24,9 @@ namespace ETModel
         [LabelText("英雄名称")]
         public string HeroName;
 
+        [LabelText("英雄职业")]
+        public HeroProfession HeroProfession;
+
         [LabelText("英雄头像Sprite名称")]
         public string HeroAvatar;
 

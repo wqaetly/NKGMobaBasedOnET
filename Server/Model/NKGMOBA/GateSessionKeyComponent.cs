@@ -4,17 +4,17 @@ namespace ETModel
 {
 	public class GateSessionKeyComponent : Component
 	{
-		private readonly Dictionary<long, string> sessionKey = new Dictionary<long, string>();
+		private readonly Dictionary<long, long> sessionKey = new Dictionary<long, long>();
 		
-		public void Add(long key, string account)
+		public void Add(long key, long account)
 		{
 			this.sessionKey.Add(key, account);
 			this.TimeoutRemoveKey(key).Coroutine();
 		}
 
-		public string Get(long key)
+		public long Get(long key)
 		{
-			string account = null;
+			long account = 0;
 			this.sessionKey.TryGetValue(key, out account);
 			return account;
 		}

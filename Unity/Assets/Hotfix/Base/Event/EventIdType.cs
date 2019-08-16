@@ -61,5 +61,7 @@
         /// 创建人物头部UI
         /// </summary>
         public const string CreateHeadBar = "CreateHeadBar";
+
+        public const string CreateUnitComplete = "CreateUnitComplete";
     }
 }

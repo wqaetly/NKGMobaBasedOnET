@@ -110,6 +110,7 @@
                 <e p="UserInput_SkillCmdHandler.cs" t="Include" />
               </e>
               <e p="Map" t="Include">
+                <e p="C2M_GetHeroDataRequestHandler.cs" t="Include" />
                 <e p="C2M_TestActorRequestHandler.cs" t="Include" />
               </e>
             </e>
@@ -119,7 +120,6 @@
               <e p="C2G_HeartBeatHandler.cs" t="Include" />
               <e p="C2G_LoginGateHandler.cs" t="Include" />
               <e p="R2G_GetLoginKeyHandler.cs" t="Include" />
-              <e p="R2G_PlayerKickOut_Handler.cs" t="Include" />
             </e>
             <e p="Map" t="Include">
               <e p="G2M_CreateUnitHandler.cs" t="Include" />
@@ -129,7 +129,6 @@
             <e p="Realm" t="Include">
               <e p="C2R_LoginHandler.cs" t="Include" />
               <e p="C2R_RegisterHandler.cs" t="Include" />
-              <e p="G2R_PlayerOfflineHandler.cs" t="Include" />
               <e p="G2R_PlayerOnlineHandler.cs" t="Include" />
             </e>
           </e>
@@ -335,10 +334,7 @@
           <e p="GateSessionKeyComponent.cs" t="Include" />
           <e p="Helper" t="Include" />
           <e p="HeroData" t="Include">
-            <e p="Component" t="Include">
-              <e p="HeroBaseDataRepositoryComponent.cs" t="Include" />
-              <e p="HeroDataComponent.cs" t="Include" />
-            </e>
+            <e p="Component" t="Include" />
           </e>
           <e p="MoveComponent.cs" t="Include" />
           <e p="OdinAttribute" t="Include">
@@ -2164,7 +2160,10 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\CodeTimeCostObserver.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\HeroBaseDataRepositoryComponent.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\HeroDataComponent.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\HeroDataSupportor.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\HeroProfession.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\NodeDataForHero.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\Bson\NodeDataSupporter.cs" t="Include" />

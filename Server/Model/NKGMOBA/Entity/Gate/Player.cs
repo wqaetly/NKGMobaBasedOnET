@@ -1,9 +1,9 @@
 ﻿namespace ETModel
 {
 	[ObjectSystem]
-	public class PlayerSystem : AwakeSystem<Player, string>
+	public class PlayerSystem : AwakeSystem<Player, long>
 	{
-		public override void Awake(Player self, string a)
+		public override void Awake(Player self, long a)
 		{
 			self.Awake(a);
 		}
@@ -11,13 +11,13 @@
 
 	public sealed class Player : Entity
 	{
-		public string Account { get; private set; }
+		public long PlayerID { get; private set; }
 		
 		public long UnitId { get; set; }
 
-		public void Awake(string account)
+		public void Awake(long account)
 		{
-			this.Account = account;
+			this.PlayerID = account;
 		}
 		
 		public override void Dispose()

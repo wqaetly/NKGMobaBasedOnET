@@ -22,9 +22,10 @@ namespace ETHotfix
             unit.AddComponent<B2S_HeroColliderDataManagerComponent>();
 
             //Log.Info("创建自身碰撞体");
-            
             unit.GetComponent<B2S_HeroColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
-            
+
+            unit.AddComponent<HeroDataComponent, long>(10001);
+
             //设置小骷髅位置
             unit.Position = new Vector3(-10, 0, -10);
 
