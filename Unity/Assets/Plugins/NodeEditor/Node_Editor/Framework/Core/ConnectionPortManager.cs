@@ -63,10 +63,10 @@ namespace NodeEditorFramework
 		/// <summary>
 		/// Updates the connectionPorts and connectionKnobs lists of the given node with all declared nodes
 		/// </summary>
-		public static void UpdatePortLists (Node node, bool representative = true) 
+		public static void UpdatePortLists (Node node) 
 		{
 			// Triggering is enough to update the list
-			IEnumerator enumerator = GetPortDeclarationEnumerator(node, representative).GetEnumerator();
+			IEnumerator enumerator = GetPortDeclarationEnumerator(node, true).GetEnumerator();
 			while (enumerator.MoveNext()) { }
 		}
 

@@ -1252,16 +1252,44 @@
                 <e p="SkillStartNode.cs" t="Include" />
               </e>
             </e>
+            <e p="ExampleDialogSystem" t="Include">
+              <e p="Core" t="Include">
+                <e p="Canvas" t="Include">
+                  <e p="DialogNodeCanvas.cs" t="Include" />
+                </e>
+                <e p="Nodes" t="Include">
+                  <e p="BaseDialogNode.cs" t="Include" />
+                  <e p="DialogMultiOptionsNode.cs" t="Include" />
+                  <e p="DialogNode.cs" t="Include" />
+                  <e p="DialogStartNode.cs" t="Include" />
+                  <e p="MultiPathSelectorNode.cs" t="Include" />
+                </e>
+                <e p="Utilities" t="Include">
+                  <e p="AudioUtils.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Source" t="Include">
+                <e p="Manager" t="Include">
+                  <e p="DialogBlackboard.cs" t="Include" />
+                  <e p="DialogManager.cs" t="Include" />
+                </e>
+                <e p="MessageBox" t="Include">
+                  <e p="ButtonTextHandler.cs" t="Include" />
+                  <e p="MessageBoxHud.cs" t="Include" />
+                  <e p="OptionsButtonHandler.cs" t="Include" />
+                  <e p="OptionsHandler.cs" t="Include" />
+                </e>
+                <e p="Testing" t="Include">
+                  <e p="TestScripts.cs" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="Node_Editor" t="Include">
               <e p="Default" t="Include">
                 <e p="Calculation Base" t="Include">
                   <e p="CalculationCanvasType.cs" t="Include" />
                   <e p="CanvasCalculator.cs" t="Include" />
                   <e p="FloatCalculation.cs" t="Include" />
-                </e>
-                <e p="Graph Example" t="Include">
-                  <e p="GraphCanvasType.cs" t="Include" />
-                  <e p="GraphTraversal.cs" t="Include" />
                 </e>
                 <e p="IO Formats" t="Include">
                   <e p="XMLImportExport.cs" t="Include" />
@@ -1304,7 +1332,6 @@
                   <e p="NodeEditorInputControls.cs" t="Include" />
                   <e p="NodeEditorInputSystem.cs" t="Include" />
                   <e p="NodeEditorInterface.cs" t="Include" />
-                  <e p="NodeEditorUndoActions.cs" t="Include" />
                 </e>
                 <e p="NodeEditor.cs" t="Include" />
                 <e p="SaveSystem" t="Include">
@@ -1335,22 +1362,6 @@
                   <e p="LineShader.shader" t="Include" />
                 </e>
               </e>
-              <e p="UndoPro_PRO" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="SerializableActionTestWindow.cs" t="Include" />
-                  <e p="UndoProTestWindow.cs" t="Include" />
-                </e>
-                <e p="UndoPro" t="Include">
-                  <e p="SerializableAction" t="Include">
-                    <e p="SerializableAction.cs" t="Include" />
-                    <e p="SerializableMethodInfo.cs" t="Include" />
-                    <e p="SerializableObject.cs" t="Include" />
-                    <e p="SerializableType.cs" t="Include" />
-                  </e>
-                  <e p="UndoProManager.cs" t="Include" />
-                  <e p="UndoProRecords.cs" t="Include" />
-                </e>
-              </e>
               <e p="Utilities" t="Include">
                 <e p="EditorLoadingControl.cs" t="Include" />
                 <e p="GUI" t="Include">
@@ -1361,6 +1372,40 @@
                 <e p="link.xml" t="Include" />
                 <e p="ReflectionUtility.cs" t="Include" />
                 <e p="ResourceManager.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Texture_Composer" t="Include">
+              <e p="Nodes" t="Include">
+                <e p="ChannelBundleNode.cs" t="Include" />
+                <e p="TextureInfoNode.cs" t="Include" />
+                <e p="TextureInputNode.cs" t="Include" />
+                <e p="TextureOutputNode.cs" t="Include" />
+                <e p="TextureSplitNode.cs" t="Include" />
+              </e>
+              <e p="Resources" t="Include">
+                <e p="Shader" t="Include">
+                  <e p="GUITextureClip_ChannelControl.shader" t="Include" />
+                </e>
+              </e>
+              <e p="Texture_Composer.cs" t="Include" />
+              <e p="Utility" t="Include">
+                <e p="RTTextureViz.cs" t="Include" />
+              </e>
+            </e>
+            <e p="UndoPro" t="Include">
+              <e p="Editor" t="Include">
+                <e p="SerializableActionTestWindow.cs" t="Include" />
+                <e p="UndoProTestWindow.cs" t="Include" />
+              </e>
+              <e p="UndoPro" t="Include">
+                <e p="SerializableAction" t="Include">
+                  <e p="SerializableAction.cs" t="Include" />
+                  <e p="SerializableMethodInfo.cs" t="Include" />
+                  <e p="SerializableObject.cs" t="Include" />
+                  <e p="SerializableType.cs" t="Include" />
+                </e>
+                <e p="UndoProManager.cs" t="Include" />
+                <e p="UndoProRecords.cs" t="Include" />
               </e>
             </e>
           </e>

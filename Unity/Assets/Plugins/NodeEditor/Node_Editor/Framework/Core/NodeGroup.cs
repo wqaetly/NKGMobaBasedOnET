@@ -10,6 +10,7 @@ namespace NodeEditorFramework
     /// <summary>
     /// A NodeGroup on the canvas that handles node and subgroup pinning and syncing along with functionality to manipulate and customize the group
     /// </summary>
+    [Serializable]
     public class NodeGroup
     {
         /// <summary>
@@ -41,20 +42,24 @@ namespace NodeEditorFramework
             }
         }
 
-        [ColorPalette]
-        public Color _color = Color.blue;
+        [SerializeField]
+        private Color _color = Color.cyan;
 
         internal bool isClipped;
-        
+
         [LabelText("顶部大小（高度）")]
-        public int headerHeight = 70;
-        
+        public int headerHeight = 30;
+
         [LabelText("字体大小")]
-        public int TextSize = 60;
+        public int TextSize = 25;
 
         // Resizing and dragging state for active node group
         private static BorderSelection resizeDir;
+
+        [NonSerialized]
         public List<Node> pinnedNodes = new List<Node>();
+
+        [NonSerialized]
         private List<NodeGroup> pinnedGroups = new List<NodeGroup>();
 
         // Settings
@@ -250,14 +255,20 @@ namespace NodeEditorFramework
 
             // Header
             Rect groupHeaderRect = headerRect;
-            groupHeaderRect.position += state.zoomPanAdjust + state.panOffset+new Vector2(0,-10);
+            groupHeaderRect.position += state.zoomPanAdjust + state.panOffset + new Vector2(0, -10);
+
             GUILayout.BeginArea(groupHeaderRect, headerFree? GUIStyle.none : altBackgroundStyle);
             GUILayout.BeginHorizontal();
+
+            GUILayout.Space(8);
+
+            // Header Title
 
             title = GUILayout.TextField(title, headerTitleEditStyle, GUILayout.MinWidth(40));
 
             GUILayout.Space(10);
 
+            // Header Color Edit
             color = this._color;
 
             GUILayout.FlexibleSpace();

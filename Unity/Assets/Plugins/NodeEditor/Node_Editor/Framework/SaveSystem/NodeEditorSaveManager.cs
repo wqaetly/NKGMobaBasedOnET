@@ -252,7 +252,7 @@ namespace NodeEditorFramework
 				Debug.LogWarning ("Attempting to save scene canvas '" + nodeCanvas.name + "' to an asset, references to scene object may be broken!" + (!createWorkingCopy? " Forcing creation of working copy!" : ""));
 				createWorkingCopy = true;
 			}
-			if (!createWorkingCopy && UnityEditor.AssetDatabase.Contains (nodeCanvas) && UnityEditor.AssetDatabase.GetAssetPath (nodeCanvas) != path) 
+			if (UnityEditor.AssetDatabase.Contains (nodeCanvas) && UnityEditor.AssetDatabase.GetAssetPath (nodeCanvas) != path) 
 			{ 
 				Debug.LogWarning ("Trying to create a duplicate save file for '" + nodeCanvas.name + "'! Forcing creation of working copy!");
 				nodeCanvas = CreateWorkingCopy(nodeCanvas);
@@ -270,13 +270,8 @@ namespace NodeEditorFramework
 
 			// Differenciate canvasSave as the canvas asset and nodeCanvas as the source incase an existing save has been overwritten
 			NodeCanvas canvasSave = processedCanvas;
-			NodeCanvas prevSave = ResourceManager.LoadResource<NodeCanvas>(path);
-			if (canvasSave == prevSave)
-			{
-				Debug.LogWarning("Overwriting same canvas impossible, please use another path!");
-				return;
-			}
-			if (safeOverwrite && prevSave != null && prevSave.GetType () == canvasSave.GetType ())
+			NodeCanvas prevSave;
+			if (safeOverwrite && (prevSave = ResourceManager.LoadResource<NodeCanvas> (path)) != null && prevSave.GetType () == canvasSave.GetType ())
 			{ // OVERWRITE: Delete contents of old save
 				Object[] subAssets = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path);
 				for (int i = 0; i < subAssets.Length; i++)
@@ -301,12 +296,10 @@ namespace NodeEditorFramework
 			{ // Write node and additional scriptable objects
 				AddSubAsset (node, canvasSave);
 				AddSubAssets (node.GetScriptableObjects (), node);
-				// Add all ports
-				ConnectionPortManager.UpdatePortLists(node, false);
-				foreach (ConnectionPort port in node.staticConnectionPorts)
-					AddSubAsset(port, node);
-				foreach (ConnectionPort port in node.dynamicConnectionPorts)
-					AddSubAsset(port, node);
+				// Make sure all node ports are included in the representative connectionPorts list
+				ConnectionPortManager.UpdatePortLists(node);
+				foreach (ConnectionPort port in node.connectionPorts)
+					AddSubAsset (port, node);
 			}
 
 			UnityEditor.AssetDatabase.SaveAssets ();
@@ -372,13 +365,8 @@ namespace NodeEditorFramework
 		{
 			if (subAsset != null && mainAsset != null)
 			{
-				if (UnityEditor.AssetDatabase.IsSubAsset(subAsset) || UnityEditor.AssetDatabase.IsMainAsset(subAsset))
-					Debug.LogWarning("Failed to create working copy of '" + subAsset.name + "', it's alread saved elsewhere!");
-				else
-				{ 
-					UnityEditor.AssetDatabase.AddObjectToAsset (subAsset, mainAsset);
-					subAsset.hideFlags = HideFlags.HideInHierarchy;
-				}
+				UnityEditor.AssetDatabase.AddObjectToAsset (subAsset, mainAsset);
+				subAsset.hideFlags = HideFlags.HideInHierarchy;
 			}
 		}
 
@@ -389,13 +377,8 @@ namespace NodeEditorFramework
 		{
 			if (subAsset != null && !string.IsNullOrEmpty (path))
 			{
-				if (UnityEditor.AssetDatabase.IsSubAsset(subAsset) || UnityEditor.AssetDatabase.IsMainAsset(subAsset))
-					Debug.LogWarning("Failed to create working copy of '" + subAsset.name + "', it's alread saved elsewhere!");
-				else
-				{
-					UnityEditor.AssetDatabase.AddObjectToAsset (subAsset, path);
-					subAsset.hideFlags = HideFlags.HideInHierarchy;
-				}
+				UnityEditor.AssetDatabase.AddObjectToAsset (subAsset, path);
+				subAsset.hideFlags = HideFlags.HideInHierarchy;
 			}
 		}
 
@@ -431,13 +414,12 @@ namespace NodeEditorFramework
 				Node node = nodeCanvas.nodes[nodeCnt];
 
 				// Clone Node and additional scriptableObjects
-				AddClonedSO (allSOs, clonedSOs, node);
-				AddClonedSOs (allSOs, clonedSOs, node.GetScriptableObjects ());
+				Node clonedNode = AddClonedSO (allSOs, clonedSOs, node);
+				AddClonedSOs (allSOs, clonedSOs, clonedNode.GetScriptableObjects ());
 
 				// Update representative port list connectionPorts with all ports and clone them
-				ConnectionPortManager.UpdatePortLists(node, false);
-				AddClonedSOs(allSOs, clonedSOs, node.staticConnectionPorts);
-				AddClonedSOs(allSOs, clonedSOs, node.dynamicConnectionPorts);
+				ConnectionPortManager.UpdatePortLists(clonedNode);
+				AddClonedSOs(allSOs, clonedSOs, clonedNode.connectionPorts);
 			}
 
 			// Replace every reference to any of the initial SOs of the first list with the respective clones of the second list
@@ -453,7 +435,7 @@ namespace NodeEditorFramework
 				clonedNode.CopyScriptableObjects (copySOs);
 
 				// Replace ConnectionPorts
-				foreach (ConnectionPortDeclaration portDecl in ConnectionPortManager.GetPortDeclarationEnumerator(clonedNode, false))
+				foreach (ConnectionPortDeclaration portDecl in ConnectionPortManager.GetPortDeclarationEnumerator(clonedNode, true))
 				{ // Iterate over each static port declaration and replace it with it's connections
 					ConnectionPort port = (ConnectionPort)portDecl.portField.GetValue(clonedNode);
 					port = ReplaceSO(allSOs, clonedSOs, port);
@@ -524,10 +506,10 @@ namespace NodeEditorFramework
 		/// <summary>
 		/// Clones SOs and writes both the initial and cloned versions into the respective list
 		/// </summary>
-		private static void AddClonedSOs<T> (List<ScriptableObject> scriptableObjects, List<ScriptableObject> clonedScriptableObjects, ICollection<T> initialSOs) where T : ScriptableObject
+		private static void AddClonedSOs<T> (List<ScriptableObject> scriptableObjects, List<ScriptableObject> clonedScriptableObjects, IEnumerable<T> initialSOs) where T : ScriptableObject
 		{
 			// Filter out all new SOs to add
-			ICollection<T> newSOs = initialSOs.Where ((T so) => !scriptableObjects.Contains (so)).ToArray();
+			IEnumerable<T> newSOs = initialSOs.Where ((T so) => !scriptableObjects.Contains (so));
 			foreach (T SO in newSOs)
 			{ // Clone and record them
 				scriptableObjects.Add(SO);
@@ -581,32 +563,6 @@ namespace NodeEditorFramework
 		#endregion
 
 		#region Utility
-
-#if UNITY_EDITOR
-		public static void ScriptableObjectReferenceDump(List<ScriptableObject> SOs, string path, bool deleteOthers)
-		{
-			ScriptableObject[] dumpSOs = ResourceManager.LoadResources<ScriptableObject>(path);
-			foreach (ScriptableObject so in dumpSOs)
-			{
-				if (SOs.Contains(so))
-					SOs.Remove(so);
-				else if (deleteOthers)
-					ScriptableObject.DestroyImmediate(so, true);
-			}
-			
-			if (SOs.Count <= 0) return;
-
-			if (!System.IO.File.Exists(path))
-			{
-				UnityEditor.AssetDatabase.CreateAsset(SOs[0], path);
-				SOs.RemoveAt(0);
-			}
-			foreach (ScriptableObject so in SOs)
-			{
-				AddSubAsset(so, path);
-			}
-		}
-#endif
 
 		/// <summary>
 		/// Returns the editorState with the specified name in canvas.

@@ -2,7 +2,7 @@
 
 namespace NodeEditorFramework.Standard
 {
-	[Node (false, "Example/Example Node",typeof(Time))]
+	[Node (false, "Example/Example Node")]
 	public class ExampleNode : Node 
 	{
 		public const string ID = "exampleNode";

@@ -56,7 +56,8 @@ namespace NodeEditorFramework
 			NodeEditorState state = inputInfo.editorState;
 			if (state.focusedNode != null && state.canvas.CanAddNode (state.focusedNode.GetID)) 
 			{ // Create new node of same type
-				Node.Create (state.focusedNode.GetID, NodeEditor.ScreenToCanvasSpace (inputInfo.inputPos), state.canvas, state.connectKnob);
+				Node duplicatedNode = Node.Create (state.focusedNode.GetID, NodeEditor.ScreenToCanvasSpace (inputInfo.inputPos), state.canvas, state.connectKnob);
+				state.selectedNode = state.focusedNode = duplicatedNode;
 				state.connectKnob = null;
 				inputInfo.inputEvent.Use ();
 			}
@@ -137,10 +138,7 @@ namespace NodeEditorFramework
 				if (state.selectedNode != null && inputInfo.editorState.dragUserID == "node")
 				{ // Apply new position for the dragged node
 					state.UpdateDrag ("node", inputInfo.inputPos);
-					if ((state.dragObjectPos - state.dragObjectStart).magnitude > 10)
-						state.selectedNode.position = state.dragObjectPos;
-					else
-						state.selectedNode.position = state.dragObjectStart;
+					state.selectedNode.position = state.dragObjectPos;
 					NodeEditor.RepaintClients ();
 				} 
 				else
@@ -152,26 +150,14 @@ namespace NodeEditorFramework
 		[EventHandlerAttribute (EventType.MouseUp)]
 		private static void HandleNodeDraggingEnd (NodeEditorInputInfo inputInfo) 
 		{
-			if (inputInfo.editorState.dragUserID == "node")
+			if (inputInfo.editorState.dragUserID == "node") 
 			{
-				Vector2 dragStart = inputInfo.editorState.dragObjectStart;
-				Vector2 dragEnd = inputInfo.editorState.EndDrag("node");
-				if (inputInfo.editorState.dragNode && inputInfo.editorState.selectedNode != null && (dragStart - dragEnd).magnitude > 10)
+				Vector2 totalDrag = inputInfo.editorState.EndDrag ("node");
+				if (inputInfo.editorState.dragNode && inputInfo.editorState.selectedNode != null)
 				{
-					inputInfo.editorState.selectedNode.position = dragEnd;
-#if UNITY_EDITOR
-					// Important: Copy variables used within anonymous functions within same level (this if block) for correct serialization!
-					float prevX = dragStart.x, prevY = dragStart.y, newX = dragEnd.x, newY = dragEnd.y;
-					Node draggedNode = inputInfo.editorState.selectedNode;
-					UndoPro.UndoProManager.RecordOperation(
-						() => NodeEditorUndoActions.SetNodePosition(draggedNode, new Vector2(newX, newY)),
-						() => NodeEditorUndoActions.SetNodePosition(draggedNode, new Vector2(prevX, prevY)),
-						"Node Drag", true, false);
-#endif
-					NodeEditorCallbacks.IssueOnMoveNode(inputInfo.editorState.selectedNode);
+					inputInfo.editorState.selectedNode.position = totalDrag;
+					NodeEditorCallbacks.IssueOnMoveNode (inputInfo.editorState.selectedNode);
 				}
-				else
-					inputInfo.editorState.selectedNode.position = dragStart;
 			}
 			inputInfo.editorState.dragNode = false;
 		}
@@ -255,13 +241,7 @@ namespace NodeEditorFramework
 			NodeEditorState state = inputInfo.editorState;
 			if (inputInfo.inputEvent.button == 0 && state.connectKnob != null && state.focusedNode != null && state.focusedConnectionKnob != null && state.focusedConnectionKnob != state.connectKnob) 
 			{ // A connection curve was dragged and released onto a connection knob
-#if UNITY_EDITOR
-				UndoPro.UndoProManager.BeginRecordStack();
-#endif
-				state.focusedConnectionKnob.TryApplyConnection(state.connectKnob);
-#if UNITY_EDITOR
-				UndoPro.UndoProManager.EndRecordStack();
-#endif
+				state.focusedConnectionKnob.TryApplyConnection (state.connectKnob);
 				inputInfo.inputEvent.Use ();
 			}
 			state.connectKnob = null;

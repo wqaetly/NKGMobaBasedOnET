@@ -4,7 +4,7 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework.Standard
 {
-	[Node(false, "Example/Resizing Node",typeof(Time))]
+	[Node(false, "Example/Resizing Node")]
 	public class ResizingNode : Node
 	{
 		public const string ID = "resizingNode";

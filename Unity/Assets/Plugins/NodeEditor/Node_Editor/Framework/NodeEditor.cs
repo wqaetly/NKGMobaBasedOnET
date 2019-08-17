@@ -14,7 +14,7 @@ namespace NodeEditorFramework
 	/// </summary>
 	public static partial class NodeEditor 
 	{
-		public static string editorPath = "Assets/Plugins/NodeEditor/Node_Editor/";
+		public static string editorPath = "Assets/Node_Editor/";
 
 		// The NodeCanvas which represents the currently drawn Node Canvas; globally accessed
 		public static NodeCanvas curNodeCanvas;
@@ -236,7 +236,7 @@ namespace NodeEditorFramework
 			}
 			
 			// Push the active node to the top of the draw order.
-			if (Event.current.type == EventType.Layout && curEditorState.selectedNode != null && curNodeCanvas.nodes.Contains(curEditorState.selectedNode))
+			if (Event.current.type == EventType.Layout && curEditorState.selectedNode != null)
 			{
 				curNodeCanvas.nodes.Remove (curEditorState.selectedNode);
 				curNodeCanvas.nodes.Add (curEditorState.selectedNode);

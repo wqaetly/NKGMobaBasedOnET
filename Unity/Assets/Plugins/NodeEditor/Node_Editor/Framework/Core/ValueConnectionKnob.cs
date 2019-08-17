@@ -6,6 +6,7 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework
 {
+    [System.Serializable]
     public partial class ValueConnectionKnob: ConnectionKnob
     {
         // Connections

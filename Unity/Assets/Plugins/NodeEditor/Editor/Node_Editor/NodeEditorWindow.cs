@@ -3,10 +3,11 @@ using UnityEditor;
 using System.IO;
 
 using NodeEditorFramework.Utilities;
+using Sirenix.OdinInspector.Editor;
 
 namespace NodeEditorFramework.Standard
 {
-	public class NodeEditorWindow : EditorWindow 
+	public class NodeEditorWindow : OdinEditorWindow 
 	{
 		// Information about current instance
 		private static NodeEditorWindow _editor;
@@ -26,7 +27,7 @@ namespace NodeEditorFramework.Standard
 		/// <summary>
 		/// Opens the Node Editor window and loads the last session
 		/// </summary>
-		[MenuItem("Tools/其他实用工具/多功能可视化编辑器")]
+		[MenuItem("Tools//其他实用工具/多功能可视化编辑器")]
 		public static NodeEditorWindow OpenNodeEditor () 
 		{
 			_editor = GetWindow<NodeEditorWindow>();
@@ -59,9 +60,8 @@ namespace NodeEditorFramework.Standard
 		private void OnEnable()
 		{
 			_editor = this;
-
 			NormalReInit();
-			editorInterface.SaveCanvas();
+
 			// Subscribe to events
 			NodeEditor.ClientRepaints -= Repaint;
 			NodeEditor.ClientRepaints += Repaint;
@@ -71,10 +71,6 @@ namespace NodeEditorFramework.Standard
 			EditorLoadingControl.justOpenedNewScene += NormalReInit;
 			SceneView.onSceneGUIDelegate -= OnSceneGUI;
 			SceneView.onSceneGUIDelegate += OnSceneGUI;
-			Undo.undoRedoPerformed -= NodeEditor.RepaintClients;
-			Undo.undoRedoPerformed += NodeEditor.RepaintClients;
-			Undo.undoRedoPerformed -= UndoRedoRecalculate;
-			Undo.undoRedoPerformed += UndoRedoRecalculate;
 		}
 		
 		private void OnDestroy()
@@ -84,22 +80,15 @@ namespace NodeEditorFramework.Standard
 			EditorLoadingControl.justLeftPlayMode -= NormalReInit;
 			EditorLoadingControl.justOpenedNewScene -= NormalReInit;
 			SceneView.onSceneGUIDelegate -= OnSceneGUI;
-			Undo.undoRedoPerformed -= NodeEditor.RepaintClients;
-			Undo.undoRedoPerformed -= UndoRedoRecalculate;
 
 			// Clear Cache
 			canvasCache.ClearCacheEvents();
 		}
 
-		private void UndoRedoRecalculate()
-		{
-			canvasCache.nodeCanvas.TraverseAll();
-		}
-
 		private void OnLostFocus () 
 		{ // Save any changes made while focussing this window
 			// Will also save before possible assembly reload, scene switch, etc. because these require focussing of a different window
-			canvasCache.SaveCache(false);
+			canvasCache.SaveCache();
 		}
 
 		private void OnFocus () 

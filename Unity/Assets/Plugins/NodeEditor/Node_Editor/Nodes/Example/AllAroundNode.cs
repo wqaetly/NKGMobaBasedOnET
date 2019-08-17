@@ -2,7 +2,7 @@
 
 namespace NodeEditorFramework.Standard
 {
-	[Node (false, "Example/AllAround Node",typeof(Time))]
+	[Node (false, "Example/AllAround Node")]
 	public class AllAroundNode : Node 
 	{
 		public const string ID = "allaroundNode";

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace NodeEditorFramework.Standard
 {
-	[Node (false, "Example/Flow Node",typeof(Time))]
+	[Node (false, "Example/Flow Node")]
 	public class FlowNode : Node 
 	{
 		public const string ID = "flowNode";
