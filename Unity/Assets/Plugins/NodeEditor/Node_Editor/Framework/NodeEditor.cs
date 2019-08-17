@@ -14,7 +14,7 @@ namespace NodeEditorFramework
 	/// </summary>
 	public static partial class NodeEditor 
 	{
-		public static string editorPath = "Assets/Plugins/Node_Editor/";
+		public static string editorPath = "Assets/Plugins/NodeEditor/Node_Editor/";
 
 		// The NodeCanvas which represents the currently drawn Node Canvas; globally accessed
 		public static NodeCanvas curNodeCanvas;

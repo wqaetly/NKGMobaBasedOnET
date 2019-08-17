@@ -59,8 +59,9 @@ namespace NodeEditorFramework.Standard
 		private void OnEnable()
 		{
 			_editor = this;
-			NormalReInit();
 
+			NormalReInit();
+			editorInterface.SaveCanvas();
 			// Subscribe to events
 			NodeEditor.ClientRepaints -= Repaint;
 			NodeEditor.ClientRepaints += Repaint;
