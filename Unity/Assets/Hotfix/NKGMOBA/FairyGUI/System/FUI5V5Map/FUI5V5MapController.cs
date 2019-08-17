@@ -9,7 +9,6 @@ using ETModel;
 
 namespace ETHotfix
 {
-    [Event(EventIdType.Show5v5MapUI)]
     [Event(EventIdType.EnterMapFinish)]
     public class Show5v5MapUI: AEvent
     {
@@ -30,18 +29,6 @@ namespace ETHotfix
             hotfixui.MakeFullScreen();
             //将UI注册到FUIComponent中，正式显示
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
-        }
-    }
-
-    [Event(EventIdType.SetSelfHeroDataOnUI)]
-    public class SetSelfHeroDataOnUI: AEvent
-    {
-        public override void Run()
-        {
-            NodeDataForHero mNodeDataForHero =
-                    ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.GetComponent<HeroDataComponent>().NodeDataForHero;
-            FUI5V5Map fui5v5Map = (FUI5V5Map) Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName);
-            fui5v5Map.AttackInfo.text = (mNodeDataForHero.OriAttackValue + mNodeDataForHero.ExtAttackValue).ToString();
         }
     }
 }

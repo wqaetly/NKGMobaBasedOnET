@@ -50,7 +50,8 @@ namespace ETHotfix
                         ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
                 ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
                         .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
-                Game.EventSystem.Run(EventIdType.SetSelfHeroDataOnUI);
+
+                Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }
 
             //ETModel.Log.Info($"{DateTime.UtcNow}完成一次创建Unit");

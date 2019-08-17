@@ -36,8 +36,6 @@ namespace ETHotfix
 
                 // 添加点击地图寻路组件
                 m5V5Game.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());
-
-                Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }
             catch (Exception e)
             {

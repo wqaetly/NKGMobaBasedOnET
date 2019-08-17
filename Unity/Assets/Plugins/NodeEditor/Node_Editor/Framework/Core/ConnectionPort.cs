@@ -75,8 +75,7 @@ namespace NodeEditorFramework
         public Color color = Color.white;
 
         // Connections
-        [SerializeField]
-        protected List<ConnectionPort> _connections = new List<ConnectionPort>();
+        public List<ConnectionPort> _connections = new List<ConnectionPort>();
 
         public List<ConnectionPort> connections
         {

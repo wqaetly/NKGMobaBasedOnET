@@ -30,6 +30,21 @@ namespace ETModel
         [LabelText("英雄头像Sprite名称")]
         public string HeroAvatar;
 
+        [LabelText("英雄天赋技能图标名称")]
+        public string Talent_SkillSprite;
+
+        [LabelText("英雄Q技能图标名称")]
+        public string Q_SkillSprite;
+
+        [LabelText("英雄W技能图标名称")]
+        public string W_SkillSprite;
+
+        [LabelText("英雄E技能图标名称")]
+        public string E_SkillSprite;
+
+        [LabelText("英雄R技能图标名称")]
+        public string R_SkillSprite;
+
         [LabelText("升级所需经验")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<int, int> LevelUpExp = new Dictionary<int, int>

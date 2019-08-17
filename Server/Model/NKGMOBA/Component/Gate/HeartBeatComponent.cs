@@ -60,7 +60,7 @@ namespace ETModel
             }
             else
             {
-                Console.WriteLine("心跳成功");
+                //Console.WriteLine("心跳成功");
             }
         }
     }
