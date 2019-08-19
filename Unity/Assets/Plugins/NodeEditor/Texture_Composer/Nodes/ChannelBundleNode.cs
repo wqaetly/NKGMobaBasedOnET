@@ -2,7 +2,7 @@
 
 namespace NodeEditorFramework.TextureComposer
 {
-	[Node(false, "Texture/Bundle")]
+	[Node(false, "Texture/Bundle",typeof(SkillTest))]
 	public class ChannelBundleNode : Node
 	{
 		public const string ID = "channelBundleNode";

@@ -2,7 +2,7 @@
 
 namespace NodeEditorFramework.TextureComposer
 {
-	[Node(false, "Texture/Split")]
+	[Node(false, "Texture/Split",typeof(SkillTest))]
 	public class TextureSplitNode : Node
 	{
 		public const string ID = "texSplitNode";

@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ETModel;
+using NETCoreTest.Framework;
 using NLog;
 
 namespace App
@@ -161,6 +162,9 @@ namespace App
 						//增加英雄技能数据仓库组件
 						Game.Scene.AddComponent<HeroSkillDataRepositoryComponent>();
 						Game.Scene.AddComponent<CoroutineLockComponent>();
+
+						Game.Scene.AddComponent<SyncComponent>();
+						Game.Scene.AddComponent<TestHelloWorldComponent>();
 						break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();
@@ -177,8 +181,8 @@ namespace App
 						throw new Exception($"命令行参数没有设置正确的AppType: {startConfig.AppType}");
 				}
 				
-				long fixedUpdateInterval = (long)(EventSystem.FixedUpdateTimeDelta * 1000);
-				long timing = TimeHelper.ClientNow();
+				//用于FixedUpdate
+				FixedUpdate fixedUpdate = new FixedUpdate(){UpdateCallback = ()=>Game.EventSystem.FixedUpdate()};
 				
 				while (true)
 				{
@@ -187,12 +191,7 @@ namespace App
 						Thread.Sleep(1);
 						OneThreadSynchronizationContext.Instance.Update();
 						Game.EventSystem.Update();
-						
-						if (TimeHelper.ClientNow() - timing >= fixedUpdateInterval)
-						{
-							timing += fixedUpdateInterval;
-							Game.EventSystem.FixedUpdate();
-						}
+						fixedUpdate.Tick();
 					}
 					catch (Exception e)
 					{

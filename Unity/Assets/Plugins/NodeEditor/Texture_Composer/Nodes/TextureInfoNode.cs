@@ -2,7 +2,7 @@
 
 namespace NodeEditorFramework.TextureComposer
 {
-	[Node(false, "Texture/Info")]
+	[Node(false, "Texture/Info",typeof(SkillTest))]
 	public class TextureInfoNode : Node
 	{
 		public const string ID = "texInfoNode";

@@ -3,7 +3,7 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework.TextureComposer
 {
-	[Node(false, "Texture/Input")]
+	[Node(false, "Texture/Input",typeof(SkillTest))]
 	public class TextureInputNode : Node
 	{
 		public const string ID = "texInNode";

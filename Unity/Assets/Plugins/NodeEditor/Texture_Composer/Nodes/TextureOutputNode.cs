@@ -4,7 +4,7 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework.TextureComposer
 {
-	[Node(false, "Texture/Output")]
+	[Node(false, "Texture/Output",typeof(SkillTest))]
 	public class TextureOutputNode : Node
 	{
 		public const string ID = "texOutNode";

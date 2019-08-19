@@ -2,7 +2,7 @@
 
 namespace NodeEditorFramework.Standard
 {
-	[Node (false, "Example/Example Node")]
+	[Node (false, "Example/Example Node",typeof(SkillTest))]
 	public class ExampleNode : Node 
 	{
 		public const string ID = "exampleNode";
