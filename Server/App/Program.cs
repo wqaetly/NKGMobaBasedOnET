@@ -184,7 +184,6 @@ namespace App
 				//用于FixedUpdate
 				FixedUpdate fixedUpdate = new FixedUpdate(){UpdateCallback = ()=>Game.EventSystem.FixedUpdate()};
 				
-				
 				while (true)
 				{
 					try
