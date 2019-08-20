@@ -18,6 +18,11 @@ namespace ETModel
     [Serializable]
     public class NodeDataForHero
     {
+        public void BindDelegate()
+        {
+            Log.Info("用Odin反序列化成功");
+        }
+        
         [LabelText("此结点(英雄数据结点)ID为")]
         public long HeroID;
 
@@ -203,6 +208,6 @@ namespace ETModel
         public float ExtCriticalStrikeHarm;
 
         [LabelText("额外CD")]
-        public float ExtSkillCD;
+        public float ExtSkillCD;     
     }
 }

@@ -50,7 +50,8 @@ namespace ETModel
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);
             this.MB2S_CircleColliderDataStructure.radius = this.mCollider2D.radius * this.theObjectWillBeEdited.transform.parent.localScale.x;
-            MB2S_CircleColliderDataStructure.offset.Fill(this.mCollider2D.offset);
+            MB2S_CircleColliderDataStructure.offset.X = this.mCollider2D.offset.x;
+            MB2S_CircleColliderDataStructure.offset.Y = this.mCollider2D.offset.y;
             this.canDraw = true;
         }
 
@@ -92,10 +93,8 @@ namespace ETModel
                         this.MB2S_CircleColliderDataStructure.id;
             }
 
-            using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderNameAndIdInflectSupporter);
-            }
+            OdinSerializeHelper.Serialize(MColliderNameAndIdInflectSupporter,
+                $"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes");
         }
 
         [Button("保存所有圆形碰撞体信息", 25), GUIColor(0.2f, 0.9f, 1.0f)]
@@ -107,8 +106,8 @@ namespace ETModel
                 {
                     B2S_CircleColliderDataStructure b2SCircleColliderDataStructure = new B2S_CircleColliderDataStructure();
                     b2SCircleColliderDataStructure.id = MB2S_CircleColliderDataStructure.id;
-                    b2SCircleColliderDataStructure.offset.x = MB2S_CircleColliderDataStructure.offset.x;
-                    b2SCircleColliderDataStructure.offset.y = MB2S_CircleColliderDataStructure.offset.y;
+                    b2SCircleColliderDataStructure.offset.X = MB2S_CircleColliderDataStructure.offset.X;
+                    b2SCircleColliderDataStructure.offset.Y = MB2S_CircleColliderDataStructure.offset.Y;
                     b2SCircleColliderDataStructure.isSensor = MB2S_CircleColliderDataStructure.isSensor;
                     b2SCircleColliderDataStructure.b2SColliderType = MB2S_CircleColliderDataStructure.b2SColliderType;
                     b2SCircleColliderDataStructure.radius = MB2S_CircleColliderDataStructure.radius;
@@ -122,10 +121,7 @@ namespace ETModel
                 }
             }
 
-            using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
-            }
+            OdinSerializeHelper.Serialize(MColliderDataSupporter, $"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes");
         }
 
         [Button("清除所有圆形碰撞体信息", 25), GUIColor(1.0f, 20 / 255f, 147 / 255f)]
@@ -134,15 +130,10 @@ namespace ETModel
             this.MColliderDataSupporter.colliderDataDic.Clear();
             this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Clear();
 
-            using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderNameAndIdInflectSupporter);
-            }
+            OdinSerializeHelper.Serialize(MColliderNameAndIdInflectSupporter,
+                $"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes");
 
-            using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
-            }
+            OdinSerializeHelper.Serialize(MColliderDataSupporter, $"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes");
         }
 
         [Button("清除此圆形碰撞体信息", 25), GUIColor(1.0f, 20 / 255f, 147 / 255f)]
@@ -160,15 +151,10 @@ namespace ETModel
                     this.MColliderNameAndIdInflectSupporter.colliderNameAndIdInflectDic.Remove(this.theObjectWillBeEdited.name);
                 }
 
-                using (FileStream file = File.Create($"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes"))
-                {
-                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderNameAndIdInflectSupporter);
-                }
+                OdinSerializeHelper.Serialize(MColliderNameAndIdInflectSupporter,
+                    $"{this.NameAndIdInflectSavePath}/{this.NameAndIdInflectFileName}.bytes");
 
-                using (FileStream file = File.Create($"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes"))
-                {
-                    BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MColliderDataSupporter);
-                }
+                OdinSerializeHelper.Serialize(MColliderDataSupporter, $"{this.ColliderDataSavePath}/{this.ColliderDataFileName}.bytes");
             }
         }
 
@@ -219,7 +205,7 @@ namespace ETModel
             this.canDraw = false;
             this.MB2S_CircleColliderDataStructure.id = 0;
             this.MB2S_CircleColliderDataStructure.radius = 0;
-            MB2S_CircleColliderDataStructure.offset.Clean();
+            MB2S_CircleColliderDataStructure.offset = System.Numerics.Vector2.Zero;
             this.MB2S_CircleColliderDataStructure.isSensor = false;
         }
 

@@ -944,6 +944,7 @@
               <e p="B2S_Debugger.cs" t="Include" />
               <e p="CodeTimeCostObserver.cs" t="Include" />
               <e p="DeepCopyHelper.cs" t="Include" />
+              <e p="OdinSerializeHelper.cs" t="Include" />
             </e>
             <e p="HeroData" t="Include">
               <e p="HeroBaseDataRepositoryComponent.cs" t="Include" />
@@ -1007,6 +1008,28 @@
                   <e p="FixedUpdate.cs" t="Include" />
                   <e p="GameTime.cs" t="Include" />
                   <e p="TimerTicker.cs" t="Include" />
+                </e>
+              </e>
+              <e p="NodeDatas" t="Include">
+                <e p="Composite" t="Include">
+                  <e p="NP_ParallelNodeData.cs" t="Include" />
+                  <e p="NP_SelectorNodeData.cs" t="Include" />
+                  <e p="NP_SequenceNodeData.cs" t="Include" />
+                </e>
+                <e p="Decorator" t="Include">
+                  <e p="NP_BlackboardQueryNodeData.cs" t="Include" />
+                  <e p="NP_BlackboradConditionNodeData.cs" t="Include" />
+                  <e p="NP_ConditionNodeData.cs" t="Include" />
+                  <e p="NP_RandomNodeData.cs" t="Include" />
+                  <e p="NP_RepeaterNodeData.cs" t="Include" />
+                  <e p="NP_ServiceNodeData.cs" t="Include" />
+                </e>
+                <e p="NP_NodeDataBase.cs" t="Include" />
+                <e p="NP_NodeDataSupportor.cs" t="Include" />
+                <e p="NP_RootNodeData.cs" t="Include" />
+                <e p="Task" t="Include">
+                  <e p="NP_ActionNodeData.cs" t="Include" />
+                  <e p="NP_WaitNodeData.cs" t="Include" />
                 </e>
               </e>
               <e p="SyncComponent.cs" t="Include" />
@@ -1307,8 +1330,11 @@
                 <e p="NodeEditorWindow.cs" t="Include" />
               </e>
               <e p="NPBehaveNodes" t="Include">
-                <e p="NPBehaveNode.cs" t="Include" />
+                <e p="NP_RootNode.cs" t="Include" />
                 <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
+                <e p="Task" t="Include">
+                  <e p="NP_ActionNode.cs" t="Include" />
+                </e>
               </e>
               <e p="SkillNodes" t="Include">
                 <e p="CheckSkillNode.cs" t="Include" />
@@ -1380,6 +1406,7 @@
                     <e p="Node.CollisionRelation.cs" t="Include" />
                     <e p="Node.GeneralExtension.cs" t="Include" />
                     <e p="Node.HeroData.cs" t="Include" />
+                    <e p="Node.NP_NodeData.cs" t="Include" />
                     <e p="Node.PrefabData.cs" t="Include" />
                     <e p="Node.Skill.cs" t="Include" />
                   </e>

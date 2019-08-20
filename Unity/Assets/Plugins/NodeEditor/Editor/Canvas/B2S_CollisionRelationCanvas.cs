@@ -106,11 +106,7 @@ namespace B2S_CollisionRelation
         [Button("保存碰撞信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Save()
         {
-            using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.m_MainDataDic);
-            }
-
+            OdinSerializeHelper.Serialize(m_MainDataDic,$"{SavePath}/{this.Name}.bytes");
             Debug.Log("保存成功");
         }
 

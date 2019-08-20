@@ -1,6 +1,7 @@
 ﻿#if !UNITY_EDITOR
        using NUnit.Framework;
 #else
+using ETModel;
 using UnityEngine.Assertions;
 
 #endif
@@ -24,17 +25,17 @@ namespace NPBehave
             CANCEL,
         }
 
-        private System.Func<bool> singleFrameFunc = null;
+        public System.Func<bool> singleFrameFunc = null;
         private System.Func<bool, Result> multiFrameFunc = null;
         private System.Func<Request, Result> multiFrameFunc2 = null;
-        private System.Action action = null;
+        public System.Action action = null;
         private bool bWasBlocked = false;
 
         public Action(System.Action action) : base("Action")
         {
             this.action = action;
         }
-
+        
         public Action(System.Func<bool, Result> multiframeFunc) : base("Action")
         {
             this.multiFrameFunc = multiframeFunc;

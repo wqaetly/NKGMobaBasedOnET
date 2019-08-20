@@ -27,19 +27,19 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [FolderPath]
         public string SavePath;
 
+        [LabelText("此行为树ID")]
+        public long id;
+
         /// <summary>
         /// 节点数据载体，用以搜集所有本SO文件的数据
         /// </summary>
-        public HeroDataSupportor m_TestDic = new HeroDataSupportor();
+        public NP_NodeDataSupportor m_Test = new NP_NodeDataSupportor();
 
-        [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("结点自动进行所有数据绑定", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
-            m_TestDic.MHeroDataSupportorDic.Clear();
-            foreach (var VARIABLE in nodes)
-            {
-                m_TestDic.MHeroDataSupportorDic.Add(VARIABLE.HeroData_GetNodeData().HeroID, VARIABLE.HeroData_GetNodeData());
-            }
+            m_Test.id = id;
+            //this.m_Test.MNpNodeDataBase = 
         }
 
         [Button("保存行为树信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
@@ -47,7 +47,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
             {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
+               // BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
             }
 
             Debug.Log("保存成功");

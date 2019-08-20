@@ -42,7 +42,7 @@ namespace SkillDemo
         /// <summary>
         /// 节点数据载体，测试用
         /// </summary>
-        public SkillNodeDataSupporter m_DebugDic =new SkillNodeDataSupporter();
+        public SkillNodeDataSupporter m_DebugDic = new SkillNodeDataSupporter();
 
         CostumNodeData tempData = new CostumNodeData();
 
@@ -83,23 +83,15 @@ namespace SkillDemo
         [Button("保存技能信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Save()
         {
-            m_DebugDic.m_DataDic.Clear();
-            using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
-            }
-
+            OdinSerializeHelper.Serialize(m_TestDic, $"{SavePath}/{this.Name}.bytes");
             Debug.Log("保存成功");
         }
 
         [Button("测试反序列化", 25), GUIColor(0.4f, 0.8f, 1)]
         public void TestDeserialize()
         {
-            byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
-
-            if (mfile.Length == 0) Debug.Log("没有读取到文件");
-
-            m_DebugDic = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
+            m_DebugDic.m_DataDic.Clear();
+            m_DebugDic = OdinSerializeHelper.DeSerialize<SkillNodeDataSupporter>($"{SavePath}/{this.Name}.bytes");
         }
     }
 }

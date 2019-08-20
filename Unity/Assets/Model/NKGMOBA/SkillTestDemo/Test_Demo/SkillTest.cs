@@ -52,12 +52,13 @@ public class SkillTest : MonoBehaviour
 
         m_XiaoPaoSkills = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
 
-        /*Q.onClick.AddListener(PressQ);
+        /*
+        Q.onClick.AddListener(PressQ);
         W.onClick.AddListener(PressW);
         E.onClick.AddListener(PressE);
-        R.onClick.AddListener(PressR);*/
+        R.onClick.AddListener(PressR);
         
-        /*AddInfoToLog("被动技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(0).NodeDataInnerDic[0]))
+        AddInfoToLog("被动技能名称为:" + ((NodeDataForStartSkill) (m_XiaoPaoSkills.GetNodeById(0).NodeDataInnerDic[0]))
                      .SkillName);
         foreach (KeyValuePair<long, SkillBaseNodeData> temp in m_XiaoPaoSkills.GetNodeById(0).NodeDataInnerDic)
         {

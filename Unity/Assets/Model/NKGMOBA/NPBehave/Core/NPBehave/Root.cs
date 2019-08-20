@@ -1,6 +1,7 @@
 ﻿#if !UNITY_EDITOR
        using NUnit.Framework;
 #else
+using Sirenix.OdinInspector;
 using UnityEngine.Assertions;
 
 #endif
@@ -33,8 +34,11 @@ namespace NPBehave
         }
 
 #if UNITY_EDITOR
+        [HideInEditorMode]
         public int TotalNumStartCalls = 0;
+        [HideInEditorMode]
         public int TotalNumStopCalls = 0;
+        [HideInEditorMode]
         public int TotalNumStoppedCalls = 0;
 #endif
 
