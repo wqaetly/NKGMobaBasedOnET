@@ -50,17 +50,18 @@ namespace ETHotfix
                 {
                     case B2S_ColliderType.BoxColllider:
                         self.m_Body.CreateBoxFixture(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy,
-                            VARIABLE.offset, 0, VARIABLE.isSensor, self);
+                            VARIABLE.finalOffset, 0, VARIABLE.isSensor, self);
                         break;
                     case B2S_ColliderType.CircleCollider:
-                        self.m_Body.CreateCircleFixture(((B2S_CircleColliderDataStructure) VARIABLE).radius, VARIABLE.offset, VARIABLE.isSensor,
+                        self.m_Body.CreateCircleFixture(((B2S_CircleColliderDataStructure) VARIABLE).radius, VARIABLE.finalOffset, VARIABLE.isSensor,
                             self);
                         break;
                     case B2S_ColliderType.PolygonCollider:
-                        foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).points)
+                        foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).finalPoints)
                         {
-                            self.m_Body.CreatePolygonFixture(VARIABLE1,VARIABLE.isSensor,self);
+                            self.m_Body.CreatePolygonFixture(VARIABLE1, VARIABLE.isSensor, self);
                         }
+
                         break;
                 }
             }

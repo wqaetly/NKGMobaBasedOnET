@@ -128,23 +128,27 @@ namespace ETEditor
         {
             if (File.Exists($"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[0]}.bytes"))
             {
-                this.BoxColliderNameAndIdInflectSupporter =
-                        OdinSerializeHelper.DeSerialize<ColliderNameAndIdInflectSupporter>(
-                            $"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[0]}.bytes");
+                byte[] mfile0 = File.ReadAllBytes($"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[0]}.bytes");
+                //这里不进行长度判断会报错，正在试图访问一个已经关闭的流，咱也不懂，咱也不敢问
+                if (mfile0.Length > 0)
+                    this.BoxColliderNameAndIdInflectSupporter =
+                            BsonSerializer.Deserialize<ColliderNameAndIdInflectSupporter>(mfile0);
             }
 
             if (File.Exists($"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[1]}.bytes"))
             {
-                this.CircleColliderNameAndIdInflectSupporter =
-                        OdinSerializeHelper.DeSerialize<ColliderNameAndIdInflectSupporter>(
-                            $"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[1]}.bytes");
+                byte[] mfile1 = File.ReadAllBytes($"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[1]}.bytes");
+                if (mfile1.Length > 0)
+                    this.CircleColliderNameAndIdInflectSupporter =
+                            BsonSerializer.Deserialize<ColliderNameAndIdInflectSupporter>(mfile1);
             }
 
             if (File.Exists($"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[2]}.bytes"))
             {
-                this.PolygonColliderNameAndIdInflectSupporter =
-                        OdinSerializeHelper.DeSerialize<ColliderNameAndIdInflectSupporter>(
-                            $"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[2]}.bytes");
+                byte[] mfile2 = File.ReadAllBytes($"{this.ColliderNameAndIdInflectSavePath}/{this.colliderNameAndIdInflectName[2]}.bytes");
+                if (mfile2.Length > 0)
+                    this.PolygonColliderNameAndIdInflectSupporter =
+                            BsonSerializer.Deserialize<ColliderNameAndIdInflectSupporter>(mfile2);
             }
         }
 
@@ -153,22 +157,42 @@ namespace ETEditor
         /// </summary>
         private void ReadcolliderData()
         {
+            Type[] types = typeof (ColliderDataSupporter).Assembly.GetTypes();
+            foreach (Type type in types)
+            {
+                if (!type.IsSubclassOf(typeof (B2S_ColliderDataStructureBase)))
+                {
+                    continue;
+                }
+
+                BsonClassMap.LookupClassMap(type);
+            }
+
             if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes"))
             {
-                this.BoxColliderDataSupporter =
-                        OdinSerializeHelper.DeSerialize<ColliderDataSupporter>($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes");
+                byte[] mfile0 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[0]}.bytes");
+                //这里不进行长度判断会报错，正在试图访问一个已经关闭的流，咱也不懂，咱也不敢问
+                if (mfile0.Length > 0)
+                    this.BoxColliderDataSupporter =
+                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile0);
             }
 
             if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[1]}.bytes"))
             {
-                this.CircleColliderDataSupporter =
-                        OdinSerializeHelper.DeSerialize<ColliderDataSupporter>($"{this.ColliderDataSavePath}/{this.colliderDataName[1]}.bytes");
+                byte[] mfile1 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[1]}.bytes");
+                if (mfile1.Length > 0)
+                    this.CircleColliderDataSupporter =
+                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile1);
             }
 
             if (File.Exists($"{this.ColliderDataSavePath}/{this.colliderDataName[2]}.bytes"))
             {
-                this.PolygonColliderDataSupporter =
-                        OdinSerializeHelper.DeSerialize<ColliderDataSupporter>($"{this.ColliderDataSavePath}/{this.colliderDataName[2]}.bytes");
+                byte[] mfile2 = File.ReadAllBytes($"{this.ColliderDataSavePath}/{this.colliderDataName[2]}.bytes");
+                if (mfile2.Length > 0)
+                {
+                    this.PolygonColliderDataSupporter =
+                            BsonSerializer.Deserialize<ColliderDataSupporter>(mfile2);
+                }
             }
         }
 

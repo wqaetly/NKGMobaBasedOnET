@@ -23,6 +23,48 @@ namespace ETModel
         PolygonCollider,
     }
 
+    public class CostumVector2
+    {
+        public float x;
+        public float y;
+
+        public CostumVector2(float x, float y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public void Clean()
+        {
+            this.x = 0;
+            this.y = 0;
+        }
+
+        public void Fill(UnityEngine.Vector2 vector2)
+        {
+            this.x = vector2.x;
+            this.y = vector2.y;
+        }
+
+        public Vector2 ToUnityVector2()
+        {
+            return new Vector2(this.x, this.y);
+        }
+
+        public System.Numerics.Vector2 ToSystemVector2()
+        {
+            return new System.Numerics.Vector2(this.x, this.y);
+        }
+    }
+
+    public static class CostumVector2Helper
+    {
+        public static CostumVector2 UnityVector2ToCoustumVector2(this Vector2 theVector2WillbeConvert)
+        {
+            return new CostumVector2(theVector2WillbeConvert.x, theVector2WillbeConvert.y);
+        }
+    }
+
     public class B2S_ColliderDataStructureBase
     {
         [LabelText("碰撞体ID")]
@@ -35,6 +77,10 @@ namespace ETModel
         public B2S_ColliderType b2SColliderType;
 
         [LabelText("碰撞体偏移信息")]
-        public System.Numerics.Vector2 offset = System.Numerics.Vector2.One;
+        public CostumVector2 offset = new CostumVector2(0, 0);
+
+#if SERVER
+        public System.Numerics.Vector2 finalOffset = System.Numerics.Vector2.One;
+#endif
     }
 }

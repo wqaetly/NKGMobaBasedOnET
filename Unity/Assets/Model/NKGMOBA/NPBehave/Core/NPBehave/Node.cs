@@ -1,7 +1,6 @@
 ﻿#if !UNITY_EDITOR
        using NUnit.Framework;
 #else
-using Sirenix.OdinInspector;
 using UnityEngine.Assertions;
 
 #endif
@@ -108,17 +107,11 @@ namespace NPBehave
         }
 
 #if UNITY_EDITOR
-        [HideInEditorMode]
         public float DebugLastStopRequestAt = 0.0f;
-        [HideInEditorMode]
         public float DebugLastStoppedAt = 0.0f;
-        [HideInEditorMode]
         public int DebugNumStartCalls = 0;
-        [HideInEditorMode]
         public int DebugNumStopCalls = 0;
-        [HideInEditorMode]
         public int DebugNumStoppedCalls = 0;
-        [HideInEditorMode]
         public bool DebugLastResult = false;
 #endif
 
