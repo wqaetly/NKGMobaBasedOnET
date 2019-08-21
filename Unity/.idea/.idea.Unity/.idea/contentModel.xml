@@ -1009,6 +1009,26 @@
                   <e p="TimerTicker.cs" t="Include" />
                 </e>
               </e>
+              <e p="NodeDatas" t="Include">
+                <e p="Composite" t="Include">
+                  <e p="NP_ParallelNodeData.cs" t="Include" />
+                  <e p="NP_SelectorNodeData.cs" t="Include" />
+                  <e p="NP_SequenceNodeData.cs" t="Include" />
+                </e>
+                <e p="Decorator" t="Include">
+                  <e p="NP_BlackboardConditionNodeData.cs" t="Include" />
+                  <e p="NP_BlackboardQueryNodeData.cs" t="Include" />
+                </e>
+                <e p="NP_NodeDataBase.cs" t="Include" />
+                <e p="NP_RootNodeData.cs" t="Include" />
+                <e p="Task" t="Include">
+                  <e p="Costum" t="Include">
+                    <e p="NP_LogActionNodeData.cs" t="Include" />
+                  </e>
+                  <e p="NP_ActionNodeData.cs" t="Include" />
+                  <e p="NP_WaitNodeData.cs" t="Include" />
+                </e>
+              </e>
               <e p="SyncComponent.cs" t="Include" />
               <e p="TestHelloWorldComponent.cs" t="Include" />
             </e>
@@ -1297,6 +1317,7 @@
               <e p="Canvas" t="Include">
                 <e p="B2S_CollisionRelationCanvas.cs" t="Include" />
                 <e p="HeroDataNodeCanvas.cs" t="Include" />
+                <e p="NeverbeUsedCanvas.cs" t="Include" />
                 <e p="NPBehaveCanvas.cs" t="Include" />
                 <e p="SkillNodeCanvas.cs" t="Include" />
               </e>
@@ -1307,8 +1328,14 @@
                 <e p="NodeEditorWindow.cs" t="Include" />
               </e>
               <e p="NPBehaveNodes" t="Include">
-                <e p="NPBehaveNode.cs" t="Include" />
+                <e p="NP_NodeBase.cs" t="Include" />
+                <e p="NP_RootNode.cs" t="Include" />
                 <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
+                <e p="Task" t="Include">
+                  <e p="Costum" t="Include">
+                    <e p="NP_LogActionNode.cs" t="Include" />
+                  </e>
+                </e>
               </e>
               <e p="SkillNodes" t="Include">
                 <e p="CheckSkillNode.cs" t="Include" />
@@ -1380,6 +1407,7 @@
                     <e p="Node.CollisionRelation.cs" t="Include" />
                     <e p="Node.GeneralExtension.cs" t="Include" />
                     <e p="Node.HeroData.cs" t="Include" />
+                    <e p="Node.NP_NodeData.cs" t="Include" />
                     <e p="Node.PrefabData.cs" t="Include" />
                     <e p="Node.Skill.cs" t="Include" />
                   </e>

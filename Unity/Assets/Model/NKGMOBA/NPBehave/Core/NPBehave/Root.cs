@@ -1,6 +1,8 @@
 ﻿#if !UNITY_EDITOR
        using NUnit.Framework;
 #else
+using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 #endif
@@ -9,11 +11,11 @@ namespace NPBehave
 {
     public class Root : Decorator
     {
-        private Node mainNode;
+        public Node mainNode;
 
         //private Node inProgressNode;
 
-        private Blackboard blackboard;
+        public Blackboard blackboard;
         public override Blackboard Blackboard
         {
             get
@@ -23,7 +25,7 @@ namespace NPBehave
         }
 
 
-        private Clock clock;
+        public Clock clock;
         public override Clock Clock
         {
             get
@@ -33,10 +35,18 @@ namespace NPBehave
         }
 
 #if UNITY_EDITOR
+        [HideInEditorMode]
         public int TotalNumStartCalls = 0;
+        [HideInEditorMode]
         public int TotalNumStopCalls = 0;
+        [HideInEditorMode]
         public int TotalNumStoppedCalls = 0;
 #endif
+
+        public Root(): base("Root")
+        {
+
+        }
 
         public Root(Node mainNode) : base("Root", mainNode)
         {

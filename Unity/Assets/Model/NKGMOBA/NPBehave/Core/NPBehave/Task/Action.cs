@@ -24,12 +24,17 @@ namespace NPBehave
             CANCEL,
         }
 
-        private System.Func<bool> singleFrameFunc = null;
-        private System.Func<bool, Result> multiFrameFunc = null;
-        private System.Func<Request, Result> multiFrameFunc2 = null;
-        private System.Action action = null;
-        private bool bWasBlocked = false;
+        public System.Func<bool> singleFrameFunc = null;
+        public System.Func<bool, Result> multiFrameFunc = null;
+        public System.Func<Request, Result> multiFrameFunc2 = null;
+        public System.Action action = null;
+        public bool bWasBlocked = false;
 
+        public Action(): base("Action")
+        {
+            
+        }
+        
         public Action(System.Action action) : base("Action")
         {
             this.action = action;

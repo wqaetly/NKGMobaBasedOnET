@@ -3,8 +3,13 @@
 
     public abstract class Decorator : Container
     {
-        protected Node Decoratee;
+        public Node Decoratee;
 
+        public Decorator(string name): base(name)
+        {
+            
+        }
+        
         public Decorator(string name, Node decoratee) : base(name)
         {
             this.Decoratee = decoratee;

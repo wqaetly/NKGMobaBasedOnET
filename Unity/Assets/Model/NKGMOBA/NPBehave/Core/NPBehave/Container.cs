@@ -9,7 +9,7 @@ namespace NPBehave
 {
     public abstract class Container : Node
     {
-        private bool collapse = false;
+        public bool collapse = false;
         public bool Collapse
         {
             get

@@ -1,6 +1,7 @@
 ﻿#if !UNITY_EDITOR
        using NUnit.Framework;
 #else
+using Sirenix.OdinInspector;
 using UnityEngine.Assertions;
 
 #endif
@@ -16,7 +17,7 @@ namespace NPBehave
             STOP_REQUESTED,
         }
 
-        protected State currentState = State.INACTIVE;
+        public State currentState = State.INACTIVE;
 
         public State CurrentState
         {
@@ -25,7 +26,7 @@ namespace NPBehave
 
         public Root RootNode;
 
-        private Container parentNode;
+        public Container parentNode;
         public Container ParentNode
         {
             get
@@ -34,7 +35,7 @@ namespace NPBehave
             }
         }
 
-        private string label;
+        public string label;
 
         public string Label
         {
@@ -48,7 +49,7 @@ namespace NPBehave
             }
         }
 
-        private string name;
+        public string name;
 
         public string Name
         {
@@ -107,11 +108,17 @@ namespace NPBehave
         }
 
 #if UNITY_EDITOR
+        [HideInEditorMode]
         public float DebugLastStopRequestAt = 0.0f;
+        [HideInEditorMode]
         public float DebugLastStoppedAt = 0.0f;
+        [HideInEditorMode]
         public int DebugNumStartCalls = 0;
+        [HideInEditorMode]
         public int DebugNumStopCalls = 0;
+        [HideInEditorMode]
         public int DebugNumStoppedCalls = 0;
+        [HideInEditorMode]
         public bool DebugLastResult = false;
 #endif
 

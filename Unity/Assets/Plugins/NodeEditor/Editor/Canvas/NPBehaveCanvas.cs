@@ -4,13 +4,17 @@
 // Data: 2019年8月20日 7:55:05
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.IO;
 using ETModel;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NodeEditorFramework;
+using NPBehave;
+using Plugins.NodeEditor.Editor.NPBehaveNodes;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.Canvas
 {
@@ -27,18 +31,23 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [FolderPath]
         public string SavePath;
 
-        /// <summary>
-        /// 节点数据载体，用以搜集所有本SO文件的数据
-        /// </summary>
-        public HeroDataSupportor m_TestDic = new HeroDataSupportor();
-
-        [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("自动配置所有结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
-            m_TestDic.MHeroDataSupportorDic.Clear();
-            foreach (var VARIABLE in nodes)
+            foreach (var VARIABLE in this.nodes)
             {
-                m_TestDic.MHeroDataSupportorDic.Add(VARIABLE.HeroData_GetNodeData().HeroID, VARIABLE.HeroData_GetNodeData());
+                VARIABLE.NP_GetNodeData().GetNPBehaveNode();
+            }
+
+            foreach (var VARIABLE1 in this.nodes)
+            {
+                List<Node> tempNode = new List<Node>();
+                foreach (var VARIABLE2 in ((NP_NodeBase) VARIABLE1).NextNode.connections)
+                {
+                    tempNode.Add(VARIABLE2.body.NP_GetNodeData().GetNPBehaveNode());
+                }
+
+                // VARIABLE1.NP_GetNodeData().AutoSetNodeData(tempNode);
             }
         }
 
@@ -47,7 +56,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
             {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
+                // BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
             }
 
             Debug.Log("保存成功");
