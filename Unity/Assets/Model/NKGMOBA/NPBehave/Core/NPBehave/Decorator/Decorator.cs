@@ -22,7 +22,6 @@
             Decoratee.SetRoot(rootNode);
         }
 
-
 #if UNITY_EDITOR
         public override Node[] DebugChildren
         {
