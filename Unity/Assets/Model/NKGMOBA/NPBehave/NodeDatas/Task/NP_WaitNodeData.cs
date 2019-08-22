@@ -14,6 +14,10 @@ namespace ETModel
     {
         [LabelText("等待结点")]
         public Wait mWaitNode;
-        
+
+        public override Node NP_GetNode()
+        {
+            return this.mWaitNode;
+        }
     }
 }

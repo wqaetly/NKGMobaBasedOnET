@@ -14,5 +14,10 @@ namespace ETModel
     {
         [LabelText("黑板条件结点")]
         public BlackboardCondition mBlackboardConditionNode;
+
+        public override Node NP_GetNode()
+        {
+            return this.mBlackboardConditionNode;
+        }
     }
 }

@@ -1018,18 +1018,20 @@
                 <e p="Decorator" t="Include">
                   <e p="NP_BlackboardConditionNodeData.cs" t="Include" />
                   <e p="NP_BlackboardQueryNodeData.cs" t="Include" />
+                  <e p="NP_ServiceNodeData.cs" t="Include" />
                 </e>
                 <e p="NodeType.cs" t="Include" />
                 <e p="NP_DataSupportor.cs" t="Include" />
                 <e p="NP_NodeDataBase.cs" t="Include" />
-                <e p="NP_NodeFactory.cs" t="Include" />
                 <e p="NP_RootNodeData.cs" t="Include" />
                 <e p="Task" t="Include">
-                  <e p="Costum" t="Include">
-                    <e p="NP_LogActionNodeData.cs" t="Include" />
-                  </e>
                   <e p="NP_ActionNodeData.cs" t="Include" />
                   <e p="NP_WaitNodeData.cs" t="Include" />
+                </e>
+                <e p="TheDataContainsAction" t="Include">
+                  <e p="NP_ChangeBlackValue.cs" t="Include" />
+                  <e p="NP_ClassForStoreAction.cs" t="Include" />
+                  <e p="NP_LogAction.cs" t="Include" />
                 </e>
               </e>
               <e p="SyncComponent.cs" t="Include" />
@@ -1345,6 +1347,9 @@
                 <e p="NodeEditorWindow.cs" t="Include" />
               </e>
               <e p="NPBehaveNodes" t="Include">
+                <e p="Decorator" t="Include">
+                  <e p="NP_ServiceNode.cs" t="Include" />
+                </e>
                 <e p="NP_NodeBase.cs" t="Include" />
                 <e p="NP_RootNode.cs" t="Include" />
                 <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />

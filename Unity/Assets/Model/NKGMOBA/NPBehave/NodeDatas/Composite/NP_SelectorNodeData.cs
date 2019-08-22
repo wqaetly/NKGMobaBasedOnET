@@ -14,5 +14,10 @@ namespace ETModel
     {
         [LabelText("选择结点")]
         public Selector mSelectorNode;
+
+        public override Node NP_GetNode()
+        {
+            return this.mSelectorNode;
+        }
     }
 }

@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_NodeDataBase
+    public abstract class NP_NodeDataBase
     {
         /// <summary>
         /// 此结点ID
@@ -20,7 +20,7 @@ namespace ETModel
 
         [LabelText("此结点类型")]
         public NodeType NodeType;
-        
+
         /// <summary>
         /// 优先级，值越小，优先级越高
         /// </summary>
@@ -32,23 +32,39 @@ namespace ETModel
         /// </summary>
         [LabelText("与此结点相连的ID")]
         public List<long> linkedID = new List<long>();
-        
+
         [LabelText("结点信息描述")]
         public string NodeDes;
 
-        public virtual Node NP_GetNode()
+        public abstract Node NP_GetNode();
+
+        /// <summary>
+        /// 创建组合结点
+        /// </summary>
+        /// <returns></returns>
+        public virtual Composite CreateComposite(Node[] nodes)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// 创建装饰结点
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        public virtual Decorator CreateDecoratorNode(Node node)
         {
             return null;
         }
         
-        public virtual Action CreateAction()
+        /// <summary>
+        /// 创建任务节点
+        /// </summary>
+        /// <returns></returns>
+        public virtual Task CreateTask()
         {
             return null;
         }
-        
-        public virtual Root CreateRoot(Action action)
-        {
-            return null;
-        }
+
     }
 }

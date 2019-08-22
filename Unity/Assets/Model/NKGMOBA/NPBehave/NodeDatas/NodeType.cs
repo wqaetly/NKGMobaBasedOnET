@@ -8,23 +8,8 @@ namespace ETModel
 {
     public enum NodeType
     {
-        Parallel,
-        RandomSelector,
-        RandomSequence,
-        Selector,
-        Sequence,
-        BlackboardCondition,
-        BlackboardQuery,
-        Condition,
-        Cooldown,
-        Repeater,
-        Service,
-        TimeMax,
-        TimeMin,
-        WaitForCondition,
-        Action,
-        Wait,
-        WaitUntilStopped,
-        Root,
+        Composite,
+        Decorator,
+        Task,
     }
 }

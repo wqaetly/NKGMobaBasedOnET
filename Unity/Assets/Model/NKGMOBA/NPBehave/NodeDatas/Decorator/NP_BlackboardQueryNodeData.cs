@@ -14,5 +14,10 @@ namespace ETModel
     {
         [LabelText("黑板查询结点")]
         public BlackboardQuery mBlackboardQueryNode;
+
+        public override Node NP_GetNode()
+        {
+            return mBlackboardQueryNode;
+        }
     }
 }

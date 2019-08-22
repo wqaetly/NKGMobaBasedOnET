@@ -14,5 +14,10 @@ namespace ETModel
     {
         [LabelText("并行结点")]
         public Parallel mParallelNode;
+
+        public override Node NP_GetNode()
+        {
+            return this.mParallelNode;
+        }
     }
 }

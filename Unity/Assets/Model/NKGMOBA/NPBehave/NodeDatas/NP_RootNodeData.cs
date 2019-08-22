@@ -14,9 +14,9 @@ namespace ETModel
     {
         public Root m_Root;
 
-        public override Root CreateRoot(Action action)
+        public override Decorator CreateDecoratorNode(Node node)
         {
-            this.m_Root = new Root(action);
+            this.m_Root = new Root(node);
             return this.m_Root;
         }
 
