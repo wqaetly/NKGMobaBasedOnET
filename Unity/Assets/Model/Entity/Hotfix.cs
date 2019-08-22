@@ -23,6 +23,7 @@ namespace ETModel
 		private List<Type> hotfixTypes;
 
 		public Action Update;
+		public Action FixedUpdate;
 		public Action LateUpdate;
 		public Action OnApplicationQuit;
 

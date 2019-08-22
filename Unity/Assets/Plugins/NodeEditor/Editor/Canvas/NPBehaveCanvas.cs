@@ -31,23 +31,35 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [FolderPath]
         public string SavePath;
 
+        [LabelText("此行为树数据载体")]
+        public NP_DataSupportor MNpDataSupportor = new NP_DataSupportor();
+        
+        [LabelText("反序列化测试")]
+        public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
+
         [Button("自动配置所有结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
-            foreach (var VARIABLE in this.nodes)
-            {
-                VARIABLE.NP_GetNodeData().GetNPBehaveNode();
-            }
-
+            MNpDataSupportor.mNP_DataSupportorDic.Clear();
             foreach (var VARIABLE1 in this.nodes)
             {
-                List<Node> tempNode = new List<Node>();
+                NP_NodeDataBase mNodeData = ((NP_NodeBase) VARIABLE1).NP_GetNodeData();
+                List<long> mNodeDataLinkedIds = mNodeData.linkedID;
+                long mNodeDataID = mNodeData.id;
+                mNodeDataLinkedIds.Clear();
+                
+                List<long> tempNode = new List<long>();
                 foreach (var VARIABLE2 in ((NP_NodeBase) VARIABLE1).NextNode.connections)
                 {
-                    tempNode.Add(VARIABLE2.body.NP_GetNodeData().GetNPBehaveNode());
+                    tempNode.Add(((NP_NodeBase) VARIABLE2.body).NP_GetNodeData().id);
+                }
+                
+                if (tempNode.Count > 0)
+                {
+                    mNodeDataLinkedIds.AddRange(tempNode);
                 }
 
-                // VARIABLE1.NP_GetNodeData().AutoSetNodeData(tempNode);
+                MNpDataSupportor.mNP_DataSupportorDic.Add(mNodeDataID, mNodeData);
             }
         }
 
@@ -56,10 +68,20 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
             {
-                // BsonSerializer.Serialize(new BsonBinaryWriter(file), m_TestDic);
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MNpDataSupportor);
             }
 
             Debug.Log("保存成功");
+        }
+
+        [Button("测试反序列化", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void TestDe()
+        {
+            byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
+
+            if (mfile.Length == 0) Debug.Log("没有读取到文件");
+
+            MNpDataSupportor1 = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
         }
     }
 }

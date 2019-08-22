@@ -15,14 +15,5 @@ namespace ETModel
         [LabelText("等待结点")]
         public Wait mWaitNode;
         
-        public override Node GetNPBehaveNode()
-        {
-            return this.mWaitNode;
-        }
-
-        public override void AutoSetNodeData(List<Node>  nextNode)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

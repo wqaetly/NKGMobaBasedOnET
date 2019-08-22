@@ -5,9 +5,10 @@
     {
         public Node Decoratee;
 
-        public Decorator(string name): base(name)
+        public void SetDecoratorData(Node decoratee)
         {
-            
+            this.Decoratee = decoratee;
+            this.Decoratee.SetParent(this);
         }
         
         public Decorator(string name, Node decoratee) : base(name)

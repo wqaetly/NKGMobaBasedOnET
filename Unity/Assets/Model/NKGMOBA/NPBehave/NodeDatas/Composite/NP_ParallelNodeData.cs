@@ -14,15 +14,5 @@ namespace ETModel
     {
         [LabelText("并行结点")]
         public Parallel mParallelNode;
-        
-        public override Node GetNPBehaveNode()
-        {
-            return this.mParallelNode;
-        }
-
-        public override void AutoSetNodeData(List<Node> nextNode)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

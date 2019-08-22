@@ -4,12 +4,15 @@
 // Data: 2019年8月20日 8:00:48
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework;
+using NPBehave;
 using Plugins.NodeEditor.Editor.Canvas;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
@@ -29,11 +32,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         [LabelText("根结点数据")]
         public NP_RootNodeData MRootNodeData;
 
-        public override NP_NodeDataBase NP_GetNodeData()
-        {
-            return this.MRootNodeData;
-        }
-        
         private void OnEnable()
         {
             if (MRootNodeData == null)
@@ -44,9 +42,15 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             MRootNodeData.NodeDes = "根结点";
         }
 
+        public override NP_NodeDataBase NP_GetNodeData()
+        {
+            return this.MRootNodeData;
+        }
+
         public override void NodeGUI()
         {
             EditorGUILayout.TextField(MRootNodeData.NodeDes);
+            EditorGUILayout.TextField($"优先级：{MRootNodeData.priority}");
         }
     }
 }

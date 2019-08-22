@@ -14,15 +14,5 @@ namespace ETModel
     {
         [LabelText("选择结点")]
         public Selector mSelectorNode;
-        
-        public override Node GetNPBehaveNode()
-        {
-            return this.mSelectorNode;
-        }
-
-        public override void AutoSetNodeData(List<Node>  nextNode)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

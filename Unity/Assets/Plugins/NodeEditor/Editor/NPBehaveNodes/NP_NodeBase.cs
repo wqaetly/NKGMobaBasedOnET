@@ -4,6 +4,7 @@
 // Data: 2019年8月21日 13:11:41
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
 using UnityEditor;
@@ -12,7 +13,7 @@ using UnityEngine;
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
     [Node(false, "NPBehave行为树结点", typeof (NeverbeUsedCanvas))]
-    public class NP_NodeBase: Node
+    public abstract class NP_NodeBase: Node
     {
         /// <summary>
         /// 内部ID
@@ -31,7 +32,10 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         [ValueConnectionKnob("NPBehave_NextNode", Direction.Out, "NPBehave_NextNodeDatas", NodeSide.Bottom, 75)]
         public ValueConnectionKnob NextNode;
-
+        public virtual void AutoBindAllDelegate()
+        {
+        }
+        
         public override void NodeGUI()
         {
             EditorGUILayout.TextField("不允许使用此结点");

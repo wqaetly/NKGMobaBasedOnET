@@ -40,7 +40,7 @@ namespace ETModel
                 new Sequence(
 
                     // print out a message ...
-                    new Action(() => Log.Info("foo")),
+                    new Action(() => Log.Info("Awake行为树")),
 
                     // ... and stay here until the `BlackboardValue`-node stops us because the toggled flag went false.
                     new WaitUntilStopped()
@@ -70,7 +70,7 @@ namespace ETModel
                                 new Sequence(
 
                                     // print out a message ...
-                                    new Action(() => Log.Info("foo")),
+                                    new Action(this.TimeTest_foo),
 
                                     // ... and stay here until the `BlackboardValue`-node stops us because the toggled flag went false.
                                     new WaitUntilStopped()
@@ -79,7 +79,7 @@ namespace ETModel
 
                             // when 'toggled' is false, we'll eventually land here
                             new Sequence(
-                                new Action(() => Log.Info("bar")),
+                                new Action(this.TimeTest_bar),
                                 new WaitUntilStopped()
                             )
                         )
@@ -87,6 +87,18 @@ namespace ETModel
                 );
                 behaviorTree2.Start();
             }
+        }
+
+        public void TimeTest_foo()
+        {
+            CodeTimeCostObserver.StartObserve();
+            Log.Info("FixedUpdate行为树：foo");
+        }
+
+        public void TimeTest_bar()
+        {
+            CodeTimeCostObserver.StopObserve();
+            Log.Info("FixedUpdate行为树：bar");
         }
     }
 }

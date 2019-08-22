@@ -14,15 +14,5 @@ namespace ETModel
     {
         [LabelText("黑板条件结点")]
         public BlackboardCondition mBlackboardConditionNode;
-        
-        public override Node GetNPBehaveNode()
-        {
-            return this.mBlackboardConditionNode;
-        }
-
-        public override void AutoSetNodeData(List<Node>  nextNode)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

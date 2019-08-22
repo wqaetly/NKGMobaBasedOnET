@@ -4,6 +4,7 @@
 // Data: 2019年8月21日 8:18:19
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
@@ -30,11 +31,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         [LabelText("Log结点数据")]
         public NP_LogActionNodeData NP_LogActionNodeData;
 
-        public override NP_NodeDataBase NP_GetNodeData()
-        {
-            return NP_LogActionNodeData;
-        }
-
         private void OnEnable()
         {
             if (NP_LogActionNodeData == null)
@@ -45,9 +41,15 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             NP_LogActionNodeData.NodeDes = "Log节点，打印数据";
         }
 
+        public override NP_NodeDataBase NP_GetNodeData()
+        {
+            return NP_LogActionNodeData;
+        }
+
         public override void NodeGUI()
         {
             EditorGUILayout.TextField(NP_LogActionNodeData.NodeDes);
+            EditorGUILayout.TextField($"优先级：{NP_LogActionNodeData.priority}");
         }
     }
 }

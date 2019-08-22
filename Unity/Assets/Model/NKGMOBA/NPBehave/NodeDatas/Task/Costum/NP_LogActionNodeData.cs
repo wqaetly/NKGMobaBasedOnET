@@ -4,13 +4,21 @@
 // Data: 2019年8月21日 7:55:58
 //------------------------------------------------------------
 
+using NPBehave;
+
 namespace ETModel
 {
     public class NP_LogActionNodeData: NP_ActionNodeData
     {
-        public override void AutoBindAllDelegate()
+        public override Action CreateAction()
         {
-            this.mActionNode.action += this.LogHelloWorld;
+            this.m_Action = new Action(LogHelloWorld);
+            return this.m_Action;
+        }
+
+        public override Node NP_GetNode()
+        {
+            return this.m_Action;
         }
 
         public void LogHelloWorld()

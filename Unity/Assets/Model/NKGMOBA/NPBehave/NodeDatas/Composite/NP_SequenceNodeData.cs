@@ -14,15 +14,5 @@ namespace ETModel
     {
         [LabelText("队列结点")]
         public Sequence mSequenceNode;
-        
-        public override Node GetNPBehaveNode()
-        {
-            return this.mSequenceNode;
-        }
-
-        public override void AutoSetNodeData(List<Node>  nextNode)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

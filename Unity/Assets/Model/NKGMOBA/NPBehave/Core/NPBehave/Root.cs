@@ -43,11 +43,6 @@ namespace NPBehave
         public int TotalNumStoppedCalls = 0;
 #endif
 
-        public Root(): base("Root")
-        {
-
-        }
-
         public Root(Node mainNode) : base("Root", mainNode)
         {
             this.mainNode = mainNode;

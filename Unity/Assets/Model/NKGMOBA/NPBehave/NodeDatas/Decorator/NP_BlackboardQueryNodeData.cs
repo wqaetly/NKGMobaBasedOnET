@@ -14,16 +14,5 @@ namespace ETModel
     {
         [LabelText("黑板查询结点")]
         public BlackboardQuery mBlackboardQueryNode;
-
-        public override Node GetNPBehaveNode()
-        {
-            return this.mBlackboardQueryNode;
-        }
-
-        public override void AutoSetNodeData(List<Node>  nextNode)
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }
