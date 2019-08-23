@@ -63,7 +63,8 @@ namespace ETModel
 
                 Game.Hotfix.GotoHotfix();
 
-                Game.Scene.AddComponent<SyncComponent>();
+                Game.Scene.AddComponent<NP_SyncComponent>();
+                Game.Scene.AddComponent<NP_RuntimeTreeRepository>();
                 //Game.Scene.AddComponent<TestHelloWorldComponent>();
                 Game.Scene.AddComponent<TestDeSeriComponent>();
             }

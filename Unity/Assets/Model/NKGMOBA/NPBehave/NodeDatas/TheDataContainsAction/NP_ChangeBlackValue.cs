@@ -4,12 +4,14 @@
 // Data: 2019年8月22日 21:43:58
 //------------------------------------------------------------
 
-using System;
+using NPBehave;
+using Action = System.Action;
 
 namespace ETModel.TheDataContainsAction
 {
     public class NP_ChangeBlackValue:NP_ClassForStoreAction
     {
+        public Blackboard theBlackBoardWillBedo;
         public override Action GetActionToBeDone()
         {
             this.m_Action = this.TestChangeBlackBoard;

@@ -10,15 +10,15 @@ using NPBehave;
 namespace ETModel
 {
     [ObjectSystem]
-    public class SyncComponentFixedUpdate: FixedUpdateSystem<SyncComponent>
+    public class SyncComponentFixedUpdate: FixedUpdateSystem<NP_SyncComponent>
     {
-        public override void FixedUpdate(SyncComponent self)
+        public override void FixedUpdate(NP_SyncComponent self)
         {
             self.FixedUpdate();
         }
     }
     
-    public class SyncComponent: Component
+    public class NP_SyncComponent: Component
     {
         public void FixedUpdate()
         {
