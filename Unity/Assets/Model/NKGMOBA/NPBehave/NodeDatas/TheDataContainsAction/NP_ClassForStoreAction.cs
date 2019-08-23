@@ -10,6 +10,16 @@ namespace ETModel.TheDataContainsAction
 {
     public class NP_ClassForStoreAction
     {
+        /// <summary>
+        /// 归属的UnitID
+        /// </summary>
+        public long Unitid;
+
+        /// <summary>
+        /// 归属的运行时行为树id
+        /// </summary>
+        public long RuntimeTreeID;
+        
         public Action m_Action;
 
         public virtual Action GetActionToBeDone()

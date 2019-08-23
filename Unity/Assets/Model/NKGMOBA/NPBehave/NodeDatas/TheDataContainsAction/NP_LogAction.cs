@@ -5,11 +5,15 @@
 //------------------------------------------------------------
 
 using System;
+using Sirenix.OdinInspector;
 
 namespace ETModel.TheDataContainsAction
 {
     public class NP_LogAction:NP_ClassForStoreAction
     {
+        [LabelText("打印信息")]
+        public string LogInfo; 
+        
         public override Action GetActionToBeDone()
         {
             this.m_Action = this.TestLog;
@@ -18,7 +22,7 @@ namespace ETModel.TheDataContainsAction
 
         public void TestLog()
         {
-            Log.Info("HelloWorld");
+            Log.Info(LogInfo);
         }
     }
 }

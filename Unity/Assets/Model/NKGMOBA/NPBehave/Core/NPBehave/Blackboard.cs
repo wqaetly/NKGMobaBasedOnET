@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
+using ETModel;
 
 namespace NPBehave
 {
@@ -11,11 +12,13 @@ namespace NPBehave
             REMOVE,
             CHANGE
         }
+
         private struct Notification
         {
             public string key;
             public Type type;
             public object value;
+
             public Notification(string key, Type type, object value)
             {
                 this.key = key;
@@ -25,52 +28,34 @@ namespace NPBehave
         }
 
         private Clock clock;
-        private Dictionary<string, object> data = new Dictionary<string, object>();
+        private Dictionary<string, NP_BlackBoardDataForCompare> data = new Dictionary<string, NP_BlackBoardDataForCompare>();
         private Dictionary<string, List<System.Action<Type, object>>> observers = new Dictionary<string, List<System.Action<Type, object>>>();
         private bool isNotifiyng = false;
         private Dictionary<string, List<System.Action<Type, object>>> addObservers = new Dictionary<string, List<System.Action<Type, object>>>();
         private Dictionary<string, List<System.Action<Type, object>>> removeObservers = new Dictionary<string, List<System.Action<Type, object>>>();
         private List<Notification> notifications = new List<Notification>();
         private List<Notification> notificationsDispatch = new List<Notification>();
-        private Blackboard parentBlackboard;
         private HashSet<Blackboard> children = new HashSet<Blackboard>();
 
-        public Blackboard(Blackboard parent, Clock clock)
-        {
-            this.clock = clock;
-            this.parentBlackboard = parent;
-        }
         public Blackboard(Clock clock)
         {
-            this.parentBlackboard = null;
             this.clock = clock;
-        }
-
-        public void Enable()
-        {
-            if (this.parentBlackboard != null)
-            {
-                this.parentBlackboard.children.Add(this);
-            }
         }
 
         public void Disable()
         {
-            if (this.parentBlackboard != null)
-            {
-                this.parentBlackboard.children.Remove(this);
-            }
             if (this.clock != null)
             {
                 this.clock.RemoveTimer(this.NotifiyObservers);
             }
         }
 
-        public object this[string key]
+        public NP_BlackBoardDataForCompare this[string key]
         {
             get
             {
-                return Get(key);
+                //暂时一颗行为树支持一个黑板
+                return this.GetFromSelf(key);
             }
             set
             {
@@ -86,28 +71,21 @@ namespace NPBehave
             }
         }
 
-        public void Set(string key, object value)
+        public void Set(string key, NP_BlackBoardDataForCompare value)
         {
-            if (this.parentBlackboard != null && this.parentBlackboard.Isset(key))
+            if (!this.data.ContainsKey(key))
             {
-                this.parentBlackboard.Set(key, value);
+                this.data[key] = value;
+                this.notifications.Add(new Notification(key, Type.ADD, value));
+                this.clock.AddTimer(0f, 0, NotifiyObservers);
             }
             else
             {
-                if (!this.data.ContainsKey(key))
+                if ((this.data[key] == null && value != null) || (this.data[key] != null && !this.data[key].Equals(value)))
                 {
                     this.data[key] = value;
-                    this.notifications.Add(new Notification(key, Type.ADD, value));
+                    this.notifications.Add(new Notification(key, Type.CHANGE, value));
                     this.clock.AddTimer(0f, 0, NotifiyObservers);
-                }
-                else
-                {
-                    if ((this.data[key] == null && value != null) || (this.data[key] != null && !this.data[key].Equals(value)))
-                    {
-                        this.data[key] = value;
-                        this.notifications.Add(new Notification(key, Type.CHANGE, value));
-                        this.clock.AddTimer(0f, 0, NotifiyObservers);
-                    }
                 }
             }
         }
@@ -122,64 +100,19 @@ namespace NPBehave
             }
         }
 
-        [System.Obsolete("Use Get<T> instead")]
-        public bool GetBool(string key)
-        {
-            return Get<bool>(key);
-        }
-
-        [System.Obsolete("Use Get<T> instead - WARNING: return value for non-existant key will be 0.0f instead of float.NaN")]
-        public float GetFloat(string key)
-        {
-            object result = Get(key);
-            if (result == null)
-            {
-                return float.NaN;
-            }
-            return (float)Get(key);
-        }
-
-        [System.Obsolete("Use Get<T> instead")]
-        public Vector3 GetVector3(string key)
-        {
-            return Get<Vector3>(key);
-        }
-
-        [System.Obsolete("Use Get<T> instead")]
-        public int GetInt(string key)
-        {
-            return Get<int>(key);
-        }
-
-        public T Get<T>(string key)
-        {
-            object result = Get(key);
-            if (result == null)
-            {
-                return default(T);
-            }
-            return (T)result;
-        }
-
-        public object Get(string key)
+        public NP_BlackBoardDataForCompare GetFromSelf(string key)
         {
             if (this.data.ContainsKey(key))
             {
                 return data[key];
             }
-            else if (this.parentBlackboard != null)
-            {
-                return this.parentBlackboard.Get(key);
-            }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public bool Isset(string key)
         {
-            return this.data.ContainsKey(key) || (this.parentBlackboard != null && this.parentBlackboard.Isset(key));
+            return this.data.ContainsKey(key);
         }
 
         public void AddObserver(string key, System.Action<Type, object> observer)
@@ -240,22 +173,12 @@ namespace NPBehave
             }
         }
 
-
 #if UNITY_EDITOR
         public List<string> Keys
         {
             get
             {
-                if (this.parentBlackboard != null)
-                {
-                    List<string> keys = this.parentBlackboard.Keys;
-                    keys.AddRange(data.Keys);
-                    return keys;
-                }
-                else
-                {
-                    return new List<string>(data.Keys);
-                }
+                return new List<string>(data.Keys);
             }
         }
 
@@ -268,11 +191,11 @@ namespace NPBehave
                 {
                     count += observers[key].Count;
                 }
+
                 return count;
             }
         }
 #endif
-
 
         private void NotifiyObservers()
         {
@@ -288,6 +211,7 @@ namespace NPBehave
                 child.notifications.AddRange(notifications);
                 child.clock.AddTimer(0f, 0, child.NotifiyObservers);
             }
+
             notifications.Clear();
 
             isNotifiyng = true;
@@ -306,6 +230,7 @@ namespace NPBehave
                     {
                         continue;
                     }
+
                     observer(notification.type, notification.value);
                 }
             }
@@ -314,6 +239,7 @@ namespace NPBehave
             {
                 GetObserverList(this.observers, key).AddRange(this.addObservers[key]);
             }
+
             foreach (string key in this.removeObservers.Keys)
             {
                 foreach (System.Action<Type, object> action in removeObservers[key])
@@ -321,6 +247,7 @@ namespace NPBehave
                     GetObserverList(this.observers, key).Remove(action);
                 }
             }
+
             this.addObservers.Clear();
             this.removeObservers.Clear();
 
@@ -339,6 +266,7 @@ namespace NPBehave
                 observers = new List<System.Action<Type, object>>();
                 target[key] = observers;
             }
+
             return observers;
         }
     }

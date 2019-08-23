@@ -76,7 +76,6 @@ namespace NPBehave
 
         override protected void DoStart()
         {
-            this.blackboard.Enable();
             this.mainNode.Start();
         }
 

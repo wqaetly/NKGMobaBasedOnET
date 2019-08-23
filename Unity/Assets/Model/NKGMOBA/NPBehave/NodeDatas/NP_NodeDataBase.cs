@@ -50,21 +50,24 @@ namespace ETModel
         /// <summary>
         /// 创建装饰结点
         /// </summary>
-        /// <param name="node"></param>
+        /// <param name="UnitId">行为树归属的UnitID</param>
+        /// <param name="RuntimeTreeID">运行时归属的行为树ID</param>
+        /// <param name="node">所装饰的结点</param>
         /// <returns></returns>
-        public virtual Decorator CreateDecoratorNode(Node node)
-        {
-            return null;
-        }
-        
-        /// <summary>
-        /// 创建任务节点
-        /// </summary>
-        /// <returns></returns>
-        public virtual Task CreateTask()
+        public virtual Decorator CreateDecoratorNode(long UnitId,long RuntimeTreeID,Node node)
         {
             return null;
         }
 
+        /// <summary>
+        /// 创建任务节点
+        /// </summary>
+        /// <param name="UnitId">行为树归属的UnitID</param>
+        /// <param name="RuntimeTreeID">运行时归属的行为树ID</param>
+        /// <returns></returns>
+        public virtual Task CreateTask(long UnitId,long RuntimeTreeID)
+        {
+            return null;
+        }
     }
 }

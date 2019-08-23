@@ -27,7 +27,7 @@ public class NPBehaveExampleEnemyAI : MonoBehaviour
 
                 new Selector(
 
-                    // check the 'playerDistance' blackboard value.
+                    /*// check the 'playerDistance' blackboard value.
                     // When the condition changes, we want to immediately jump in or out of this path, thus we use IMMEDIATE_RESTART
                     new BlackboardCondition("playerDistance", Operator.IS_SMALLER, 7.5f, Stops.IMMEDIATE_RESTART,
 
@@ -51,7 +51,7 @@ public class NPBehaveExampleEnemyAI : MonoBehaviour
                                 }
                             }) { Label = "Follow" }
                         )
-                    ),
+                    ),*/
 
                     // park until playerDistance does change
                     new Sequence(
@@ -65,9 +65,9 @@ public class NPBehaveExampleEnemyAI : MonoBehaviour
 
     private void UpdatePlayerDistance()
     {
-        Vector3 playerLocalPos = this.transform.InverseTransformPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
+        /*Vector3 playerLocalPos = this.transform.InverseTransformPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
         behaviorTree.Blackboard["playerLocalPos"] = playerLocalPos;
-        behaviorTree.Blackboard["playerDistance"] = playerLocalPos.magnitude;
+        behaviorTree.Blackboard["playerDistance"] = playerLocalPos.magnitude;*/
     }
 
     private void MoveTowards(Vector3 localPosition)

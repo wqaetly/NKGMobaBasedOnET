@@ -10,10 +10,27 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_BlackboardConditionNodeData:NP_NodeDataBase
+    public class NP_BlackboardConditionNodeData: NP_NodeDataBase
     {
         [LabelText("黑板条件结点")]
         public BlackboardCondition mBlackboardConditionNode;
+
+        [LabelText("字典键")]
+        public string DicKey;
+
+        [LabelText("运算符号")]
+        public Operator mOpe;
+
+        [LabelText("终止条件")]
+        public Stops stop;
+
+        [LabelText("对比值")]
+        public NP_BlackBoardDataForCompare value;
+
+        public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
+        {
+            return new BlackboardCondition(DicKey, this.mOpe, this.value, this.stop, node);
+        }
 
         public override Node NP_GetNode()
         {

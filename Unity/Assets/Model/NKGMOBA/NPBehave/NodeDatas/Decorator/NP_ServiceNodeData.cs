@@ -26,8 +26,10 @@ namespace ETModel
             return this.m_Service;
         }
 
-        public override Decorator CreateDecoratorNode(Node node)
+        public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
         {
+            this.MNpClassForStoreAction.Unitid = UnitId;
+            this.MNpClassForStoreAction.RuntimeTreeID = RuntimeTreeID;
             this.m_Service = new Service(interval, MNpClassForStoreAction.GetActionToBeDone(), node);
             return this.m_Service;
         }

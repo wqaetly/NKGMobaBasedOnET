@@ -1041,6 +1041,9 @@
                   <e p="NP_ClassForStoreAction.cs" t="Include" />
                   <e p="NP_LogAction.cs" t="Include" />
                 </e>
+                <e p="TheDataForCompare" t="Include">
+                  <e p="NP_BlackBoardDataForCompare.cs" t="Include" />
+                </e>
               </e>
               <e p="system" t="Include">
                 <e p="NP_RuntimeTreeFactory.cs" t="Include" />
@@ -1355,16 +1358,19 @@
                 <e p="NodeEditorWindow.cs" t="Include" />
               </e>
               <e p="NPBehaveNodes" t="Include">
+                <e p="Composite" t="Include">
+                  <e p="NP_SelectorNode.cs" t="Include" />
+                  <e p="NP_SequenceNode.cs" t="Include" />
+                </e>
                 <e p="Decorator" t="Include">
+                  <e p="NP_BlackboardConditionNode.cs" t="Include" />
                   <e p="NP_ServiceNode.cs" t="Include" />
                 </e>
                 <e p="NP_NodeBase.cs" t="Include" />
                 <e p="NP_RootNode.cs" t="Include" />
                 <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
                 <e p="Task" t="Include">
-                  <e p="Costum" t="Include">
-                    <e p="NP_LogActionNode.cs" t="Include" />
-                  </e>
+                  <e p="NP_ActionNode.cs" t="Include" />
                 </e>
               </e>
               <e p="SkillNodes" t="Include">

@@ -10,10 +10,15 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_ParallelNodeData:NP_NodeDataBase
+    public class NP_ParallelNodeData: NP_NodeDataBase
     {
         [LabelText("并行结点")]
         public Parallel mParallelNode;
+
+        public override Composite CreateComposite(Node[] nodes)
+        {
+            return new Parallel(Parallel.Policy.ALL, Parallel.Policy.ALL, nodes);
+        }
 
         public override Node NP_GetNode()
         {

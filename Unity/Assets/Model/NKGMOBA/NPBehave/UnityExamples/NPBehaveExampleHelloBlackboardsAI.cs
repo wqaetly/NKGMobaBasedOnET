@@ -7,7 +7,7 @@ public class NPBehaveExampleHelloBlackboardsAI : MonoBehaviour
 
     void Start()
     {
-        behaviorTree = new Root(
+        /*behaviorTree = new Root(
 
             // toggle the 'toggled' blackboard boolean flag around every 500 milliseconds
             new Service(0.5f, () => { behaviorTree.Blackboard["foo"] = !behaviorTree.Blackboard.Get<bool>("foo"); },
@@ -37,7 +37,7 @@ public class NPBehaveExampleHelloBlackboardsAI : MonoBehaviour
                     )
                 )
             )
-        );
+        );*/
         behaviorTree.Start();
     }
 }

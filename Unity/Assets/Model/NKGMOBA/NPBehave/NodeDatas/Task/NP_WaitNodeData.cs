@@ -10,10 +10,18 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_WaitNodeData:NP_NodeDataBase
+    public class NP_WaitNodeData: NP_NodeDataBase
     {
         [LabelText("等待结点")]
         public Wait mWaitNode;
+
+        [LabelText("等待时间")]
+        public float waitTime;
+
+        public override Task CreateTask(long UnitId, long RuntimeTreeID)
+        {
+            return new Wait(this.waitTime);
+        }
 
         public override Node NP_GetNode()
         {

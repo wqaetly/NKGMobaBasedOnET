@@ -1,55 +1,52 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019年8月21日 8:18:19
+// Data: 2019年8月23日 17:35:02
 //------------------------------------------------------------
 
-using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
 using Sirenix.OdinInspector;
 using UnityEditor;
-using UnityEngine;
-using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/LogAction", typeof (NPBehaveCanvas))]
-    public class NP_LogActionNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Composite/Selector", typeof (NPBehaveCanvas))]
+    public class NP_SelectorNode: NP_NodeBase
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "行为节点";
+        private const string Id = "选择结点";
 
         /// <summary>
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("Log结点数据")]
-        public NP_ActionNodeData NP_ActionNodeData;
+        [LabelText("Selector结点数据")]
+        public NP_SelectorNodeData NP_SelectorNodeData;
 
         private void OnEnable()
         {
-            if (NP_ActionNodeData == null)
+            if (NP_SelectorNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData();
+                this.NP_SelectorNodeData = new NP_SelectorNodeData();
             }
 
-            NP_ActionNodeData.NodeDes = "Log节点，打印数据";
+            NP_SelectorNodeData.NodeDes = "Selector结点，一遇到成功就成功";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()
         {
-            return NP_ActionNodeData;
+            return NP_SelectorNodeData;
         }
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_ActionNodeData.NodeDes);
-            EditorGUILayout.TextField($"优先级：{NP_ActionNodeData.priority}");
+            EditorGUILayout.TextField(NP_SelectorNodeData.NodeDes);
+            EditorGUILayout.TextField($"优先级：{NP_SelectorNodeData.priority}");
         }
     }
 }

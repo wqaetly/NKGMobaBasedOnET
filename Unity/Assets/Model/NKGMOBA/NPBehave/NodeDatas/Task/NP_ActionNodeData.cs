@@ -11,15 +11,17 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_ActionNodeData:NP_NodeDataBase
+    public class NP_ActionNodeData: NP_NodeDataBase
     {
         public Action m_ActionNode;
 
         [LabelText("承载Action的数据结构")]
         public NP_ClassForStoreAction MNpClassForStoreAction;
-        
-        public override Task CreateTask()
+
+        public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {
+            MNpClassForStoreAction.Unitid = UnitId;
+            MNpClassForStoreAction.RuntimeTreeID = RuntimeTreeID;
             this.m_ActionNode = new Action(MNpClassForStoreAction.GetActionToBeDone());
             return this.m_ActionNode;
         }

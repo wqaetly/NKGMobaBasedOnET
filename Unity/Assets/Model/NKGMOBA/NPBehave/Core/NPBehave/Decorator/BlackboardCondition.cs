@@ -1,12 +1,13 @@
 ﻿using System.Diagnostics;
-using NPBehave_Core;
+using ETModel;
+using Log = NPBehave_Core.Log;
 
 namespace NPBehave
 {
-    public class BlackboardCondition : ObservingDecorator
+    public class BlackboardCondition: ObservingDecorator
     {
         private string key;
-        private object value;
+        private NP_BlackBoardDataForCompare value;
         private Operator op;
 
         public string Key
@@ -17,7 +18,7 @@ namespace NPBehave
             }
         }
 
-        public object Value
+        public NP_BlackBoardDataForCompare Value
         {
             get
             {
@@ -33,21 +34,22 @@ namespace NPBehave
             }
         }
 
-        public BlackboardCondition(string key, Operator op, object value, Stops stopsOnChange, Node decoratee) : base("BlackboardCondition", stopsOnChange, decoratee)
+        public BlackboardCondition(string key, Operator op, NP_BlackBoardDataForCompare value, Stops stopsOnChange, Node decoratee): base(
+            "BlackboardCondition", stopsOnChange, decoratee)
         {
             this.op = op;
             this.key = key;
             this.value = value;
             this.stopsOnChange = stopsOnChange;
         }
-        
-        public BlackboardCondition(string key, Operator op, Stops stopsOnChange, Node decoratee) : base("BlackboardCondition", stopsOnChange, decoratee)
+
+        public BlackboardCondition(string key, Operator op, Stops stopsOnChange, Node decoratee): base("BlackboardCondition", stopsOnChange,
+            decoratee)
         {
             this.op = op;
             this.key = key;
             this.stopsOnChange = stopsOnChange;
         }
-
 
         override protected void StartObserving()
         {
@@ -76,74 +78,21 @@ namespace NPBehave
                 return op == Operator.IS_NOT_SET;
             }
 
-            object o = this.RootNode.Blackboard.Get(key);
+            NP_BlackBoardDataForCompare o = this.RootNode.Blackboard.GetFromSelf(key);
 
             switch (this.op)
             {
                 case Operator.IS_SET: return true;
-                case Operator.IS_EQUAL: return object.Equals(o, value);
-                case Operator.IS_NOT_EQUAL: return !object.Equals(o, value);
-
+                case Operator.IS_EQUAL: return o.Equals(value);
+                case Operator.IS_NOT_EQUAL: return !o.Equals(value);
                 case Operator.IS_GREATER_OR_EQUAL:
-                    if (o is float)
-                    {
-                        return (float)o >= (float)this.value;
-                    }
-                    else if (o is int)
-                    {
-                        return (int)o >= (int)this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
-
+                    return o >= this.value;
                 case Operator.IS_GREATER:
-                    if (o is float)
-                    {
-                        return (float)o > (float)this.value;
-                    }
-                    else if (o is int)
-                    {
-                        return (int)o > (int)this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
-
+                    return o > this.value;
                 case Operator.IS_SMALLER_OR_EQUAL:
-                    if (o is float)
-                    {
-                        return (float)o <= (float)this.value;
-                    }
-                    else if (o is int)
-                    {
-                        return (int)o <= (int)this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
-
+                    return o <= this.value;
                 case Operator.IS_SMALLER:
-                    if (o is float)
-                    {
-                        return (float)o < (float)this.value;
-                    }
-                    else if (o is int)
-                    {
-                        return (int)o < (int)this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
-
+                    return o < this.value;
                 default: return false;
             }
         }

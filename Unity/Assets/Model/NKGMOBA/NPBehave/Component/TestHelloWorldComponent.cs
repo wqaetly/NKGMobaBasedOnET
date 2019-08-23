@@ -51,7 +51,7 @@ namespace ETModel
 
         public void FixedUpdate()
         {
-            if (!this.hasAddSecond)
+            /*if (!this.hasAddSecond)
             {
                 this.hasAddSecond = true;
                 behaviorTree2 = new Root(
@@ -66,6 +66,7 @@ namespace ETModel
                             // stopped and it will be immediately jump to the branch that now matches the condition.
                             new BlackboardCondition("foo", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART,
 
+                                
                                 // when 'toggled' is true, this branch will get executed.
                                 new Sequence(
 
@@ -86,7 +87,7 @@ namespace ETModel
                     )
                 );
                 behaviorTree2.Start();
-            }
+            }*/
         }
 
         public void TimeTest_foo()

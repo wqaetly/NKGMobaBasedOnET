@@ -9,9 +9,10 @@ using Action = System.Action;
 
 namespace ETModel.TheDataContainsAction
 {
-    public class NP_ChangeBlackValue:NP_ClassForStoreAction
+    public class NP_ChangeBlackValue: NP_ClassForStoreAction
     {
         public Blackboard theBlackBoardWillBedo;
+
         public override Action GetActionToBeDone()
         {
             this.m_Action = this.TestChangeBlackBoard;
@@ -20,7 +21,14 @@ namespace ETModel.TheDataContainsAction
 
         public void TestChangeBlackBoard()
         {
-            
+            if (this.theBlackBoardWillBedo == null)
+            {
+                theBlackBoardWillBedo = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>()
+                        .GetTree(this.RuntimeTreeID)
+                        .GetBlackboard();
+            }
+
+            theBlackBoardWillBedo["foo"]._bool = !theBlackBoardWillBedo.GetFromSelf("foo")._bool;
         }
     }
 }

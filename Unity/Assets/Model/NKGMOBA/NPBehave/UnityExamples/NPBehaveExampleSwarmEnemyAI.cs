@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using NPBehave;
 
 public class NPBehaveExampleSwarmEnemyAI : MonoBehaviour
@@ -9,7 +10,7 @@ public class NPBehaveExampleSwarmEnemyAI : MonoBehaviour
 
     void Start()
     {
-        /*// get the shared blackboard for this kind of ai, this blackboard is shared by all instances
+        /#1#/ get the shared blackboard for this kind of ai, this blackboard is shared by all instances
         sharedBlackboard = UnityContext.GetSharedBlackboard("example-swarm-ai");
 
         // create a new blackboard instance for this ai instance, parenting it to the sharedBlackboard.
@@ -23,7 +24,7 @@ public class NPBehaveExampleSwarmEnemyAI : MonoBehaviour
 #if UNITY_EDITOR
         Debugger debugger = (Debugger)this.gameObject.AddComponent(typeof(Debugger));
         debugger.BehaviorTree = behaviorTree;
-#endif*/
+#endif#1#
 
         // start the behaviour tree
         behaviorTree.Start();
@@ -129,3 +130,4 @@ public class NPBehaveExampleSwarmEnemyAI : MonoBehaviour
         GetComponent<MeshRenderer>().material.SetColor("_Color", color);
     }
 }
+*/
