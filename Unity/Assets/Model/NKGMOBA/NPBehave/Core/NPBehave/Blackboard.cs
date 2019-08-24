@@ -17,9 +17,9 @@ namespace NPBehave
         {
             public string key;
             public Type type;
-            public object value;
+            public NP_BlackBoardDataForCompare value;
 
-            public Notification(string key, Type type, object value)
+            public Notification(string key, Type type, NP_BlackBoardDataForCompare value)
             {
                 this.key = key;
                 this.type = type;
@@ -71,6 +71,51 @@ namespace NPBehave
             }
         }
 
+        /// <summary>
+        /// 刷新键为key的数据
+        /// </summary>
+        /// <param name="key"></param>
+        public void RefreshData(string key)
+        {
+            this.notifications.Add(new Notification(key, Type.CHANGE, this.data[key]));
+            this.clock.AddTimer(0f, 0, NotifiyObservers);
+        }
+
+        public void SetFloat(string key, float value)
+        {
+            GetFromSelf(key)._float = value;
+            RefreshData(key);
+        }
+        
+        public void SetInt(string key, int value)
+        {
+            GetFromSelf(key)._int = value;
+            RefreshData(key);
+        }
+
+        public void SetBool(string key, bool value)
+        {
+            GetFromSelf(key)._bool = value;
+            RefreshData(key);
+        }
+        
+        public void SetLong(string key, long value)
+        {
+            GetFromSelf(key)._long = value;
+            RefreshData(key);
+        }
+        
+        public void SetString(string key, string value)
+        {
+            GetFromSelf(key)._string = value;
+            RefreshData(key);
+        }
+
+        /// <summary>
+        /// 整体赋值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Set(string key, NP_BlackBoardDataForCompare value)
         {
             if (!this.data.ContainsKey(key))
@@ -81,12 +126,9 @@ namespace NPBehave
             }
             else
             {
-                if ((this.data[key] == null && value != null) || (this.data[key] != null && !this.data[key].Equals(value)))
-                {
-                    this.data[key] = value;
-                    this.notifications.Add(new Notification(key, Type.CHANGE, value));
-                    this.clock.AddTimer(0f, 0, NotifiyObservers);
-                }
+                this.data[key] = value;
+                this.notifications.Add(new Notification(key, Type.CHANGE, value));
+                this.clock.AddTimer(0f, 0, NotifiyObservers);
             }
         }
 
@@ -106,8 +148,13 @@ namespace NPBehave
             {
                 return data[key];
             }
-
-            return null;
+            
+            NP_BlackBoardDataForCompare temp = new NP_BlackBoardDataForCompare();
+            this.data.Add(key, temp);
+            this.notifications.Add(new Notification(key, Type.ADD, temp));
+            this.clock.AddTimer(0f, 0, NotifiyObservers);
+            
+            return data[key];
         }
 
         public bool Isset(string key)

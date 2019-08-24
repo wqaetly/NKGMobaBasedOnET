@@ -29,7 +29,6 @@ namespace ETModel
             {
                 return true;
             }
-
             return false;
         }
 
