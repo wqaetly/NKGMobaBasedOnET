@@ -29,6 +29,7 @@
 - 重构可视化结点编辑器代码，将用它做更多的事情 2019.7.24
 - 完成碰撞关系可视化编辑器的制作，附带自动生成代码功能 2019.8.1
 - 完成服务端Box2D相关架构的搭建 2019.8.14
+- 移除传统行为树，完成NPBehave行为树可视化编辑器制作 2019.8.26
 
 #### 开发计划
 
@@ -42,6 +43,6 @@
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173207_17e8e767_2253805.png "资源更新界面")
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173246_f83a8591_2253805.png "登录注册界面")
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173252_7dbcd604_2253805.png "游戏大厅界面")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0626/082316_bde401fd_2253805.png "可视化技能编辑器以及行为树界面")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0630/130133_d3559984_2253805.png "战斗界面第二版")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0720/185840_f28e17e6_2253805.jpeg "Box2D编辑器界面")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0826/184939_02856dc7_2253805.png "NPBehave可视化行为树编辑器")
