@@ -106,17 +106,6 @@
     <Compile Include="Assets\Hotfix\Module\Message\OpcodeTypeComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\Message\Session.cs" />
     <Compile Include="Assets\Hotfix\Module\Message\SessionComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\BehaviorTree.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\BehaviorTreeComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\BehaviorTreeFactory.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\BehaviorTreeHelper.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\BehaviorTreeVariableComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\Demo\LogActionComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\Demo\PatrolActionComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\Demo\PlaySkillActionComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\Demo\SeekActionComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\Demo\WithInRoomActionComponent.cs" />
-    <Compile Include="Assets\Hotfix\NKGMOBA\BehaviorTree\GameObjectHelper.cs" />
     <Compile Include="Assets\Hotfix\NKGMOBA\Component\HeroHeadBarComponent.cs" />
     <Compile Include="Assets\Hotfix\NKGMOBA\Component\M5V5GameComponent.cs" />
     <Compile Include="Assets\Hotfix\NKGMOBA\Component\MapClickCompoent.cs" />
@@ -427,12 +416,6 @@
     </Reference>
     <Reference Include="Pathfinding.Poly2Tri">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
-    </Reference>
-    <Reference Include="BehaviorDesignerEditor">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Behavior Designer/Editor/Core/BehaviorDesignerEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="BehaviorDesignerRuntime">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Behavior Designer/Runtime/Core/BehaviorDesignerRuntime.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Buffers.dll</HintPath>
@@ -860,10 +843,6 @@
     <ProjectReference Include="Unity.ThirdParty.csproj">
       <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
       <Name>Unity.ThirdParty</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.BehaviorDesigner.Runtime.csproj">
-      <Project>{B04BF23E-2EA0-221F-942C-19DFE6549B89}</Project>
-      <Name>Unity.BehaviorDesigner.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,22 +23,17 @@ namespace ETModel
 
             long theTreeID = IdGenerater.GenerateId();
 
-            //先要把叶子结点都实例化好，这是基础
-            foreach (var VARIABLE in npDataSupportor.mNP_DataSupportorDic)
-            {
-                if (VARIABLE.Value.NodeType == NodeType.Task)
-                {
-                    VARIABLE.Value.CreateTask(unit.Id, theTreeID);
-                }
-            }
-
             //然后开始处理非叶子结点
             foreach (var VARIABLE in npDataSupportor.mNP_DataSupportorDic)
             {
                 switch (VARIABLE.Value.NodeType)
                 {
+                    case NodeType.Task:
+                        VARIABLE.Value.CreateTask(unit.Id, theTreeID);
+                        break;  
                     case NodeType.Decorator:
-                        VARIABLE.Value.CreateDecoratorNode(unit.Id, theTreeID,npDataSupportor.mNP_DataSupportorDic[VARIABLE.Value.linkedID[0]].NP_GetNode());
+                        VARIABLE.Value.CreateDecoratorNode(unit.Id, theTreeID,
+                            npDataSupportor.mNP_DataSupportorDic[VARIABLE.Value.linkedID[0]].NP_GetNode());
                         break;
                     case NodeType.Composite:
                         List<Node> temp = new List<Node>();
