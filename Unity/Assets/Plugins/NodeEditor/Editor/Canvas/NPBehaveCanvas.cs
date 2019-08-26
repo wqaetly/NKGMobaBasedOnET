@@ -56,7 +56,9 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 VARIABLE.NP_GetNodeData().id = IdGenerater.GenerateId();
             }
-
+            
+            MNpDataSupportor.RootId = tempNode1[tempNode1.Count - 1].NP_GetNodeData().id;
+            
             foreach (var VARIABLE1 in tempNode1)
             {
                 NP_NodeDataBase mNodeData = VARIABLE1.NP_GetNodeData();
