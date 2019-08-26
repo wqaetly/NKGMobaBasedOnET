@@ -20,7 +20,8 @@ namespace ETModel
 
         public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {
-            return new Wait(this.waitTime);
+            mWaitNode = new Wait(this.waitTime);
+            return mWaitNode;
         }
 
         public override Node NP_GetNode()

@@ -30,10 +30,10 @@ namespace ETModel
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static Unit NPBehaveTestCreate(long id)
+        public static Unit NPBehaveTestCreate()
         {
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
-            Unit unit = ComponentFactory.CreateWithId<Unit>(id);
+            Unit unit = ComponentFactory.Create<Unit>();
             unitComponent.Add(unit);
             return unit;
         }

@@ -100,6 +100,8 @@ namespace SkillDemo
             if (mfile.Length == 0) Debug.Log("没有读取到文件");
 
             m_DebugDic = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
+            
+            Log.Info("反序列化成功");
         }
     }
 }

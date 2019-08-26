@@ -25,28 +25,27 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("Log结点数据")]
-        public NP_ServiceNodeData NP_ServiceNodeData;
+        [LabelText("队列结点数据")]
+        public NP_SequenceNodeData NP_SequenceNodeData;
 
         private void OnEnable()
         {
-            if (NP_ServiceNodeData == null)
+            if (NP_SequenceNodeData == null)
             {
-                this.NP_ServiceNodeData = new NP_ServiceNodeData();
+                this.NP_SequenceNodeData = new NP_SequenceNodeData();
             }
 
-            NP_ServiceNodeData.NodeDes = "队列结点，一遇到失败即失败";
+            NP_SequenceNodeData.NodeDes = "队列结点，一遇到失败即失败";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()
         {
-            return NP_ServiceNodeData;
+            return NP_SequenceNodeData;
         }
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_ServiceNodeData.NodeDes);
-            EditorGUILayout.TextField($"优先级：{NP_ServiceNodeData.priority}");
+            EditorGUILayout.TextField(NP_SequenceNodeData.NodeDes);
         }
     }
 }

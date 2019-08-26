@@ -46,7 +46,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         public override void NodeGUI()
         {
             EditorGUILayout.TextField(NP_ServiceNodeData.NodeDes);
-            EditorGUILayout.TextField($"优先级：{NP_ServiceNodeData.priority}");
         }
     }
 }

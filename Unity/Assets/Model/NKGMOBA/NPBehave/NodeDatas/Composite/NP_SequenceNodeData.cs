@@ -19,5 +19,11 @@ namespace ETModel
         {
             return this.mSequenceNode;
         }
+
+        public override Composite CreateComposite(Node[] nodes)
+        {
+            mSequenceNode = new Sequence(nodes);
+            return mSequenceNode;
+        }
     }
 }

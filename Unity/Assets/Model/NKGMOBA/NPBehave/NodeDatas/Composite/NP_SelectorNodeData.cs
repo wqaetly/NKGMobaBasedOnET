@@ -17,7 +17,8 @@ namespace ETModel
 
         public override Composite CreateComposite(Node[] nodes)
         {
-            return new Selector(nodes);
+            mSelectorNode = new Selector(nodes);
+            return mSelectorNode;
         }
 
         public override Node NP_GetNode()

@@ -34,7 +34,9 @@ public class NPBehaveExampleHelloBlackboardsAI: MonoBehaviour
                             CodeTimeCostObserver.StopObserve();
                             Debug.Log("bar");
                         }),
-                        new WaitUntilStopped()))));
+                        new WaitUntilStopped())
+                    )
+                ));
         behaviorTree.Start();
     }
 }

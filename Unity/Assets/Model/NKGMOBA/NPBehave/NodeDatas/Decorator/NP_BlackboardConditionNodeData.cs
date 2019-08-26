@@ -29,7 +29,8 @@ namespace ETModel
 
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
         {
-            return new BlackboardCondition(DicKey, this.mOpe, this.value, this.stop, node);
+            this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.value, this.stop, node);
+            return mBlackboardConditionNode;
         }
 
         public override Node NP_GetNode()

@@ -50,7 +50,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         public override void NodeGUI()
         {
             EditorGUILayout.TextField(MRootNodeData.NodeDes);
-            EditorGUILayout.TextField($"优先级：{MRootNodeData.priority}");
         }
     }
 }

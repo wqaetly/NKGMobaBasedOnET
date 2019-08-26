@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using NPBehave;
+using NPOI.Util;
 
 namespace ETModel
 {
@@ -22,7 +23,7 @@ namespace ETModel
             NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_RuntimeTreeRepository>().GetNPRuntimeTree(NPDataId);
 
             long theTreeID = IdGenerater.GenerateId();
-
+            
             //然后开始处理非叶子结点
             foreach (var VARIABLE in npDataSupportor.mNP_DataSupportorDic)
             {
@@ -47,8 +48,12 @@ namespace ETModel
                 }
             }
 
-            return ComponentFactory.CreateWithId<NP_RuntimeTree, Root>(theTreeID,
+            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root>(theTreeID,
                 (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode());
+            
+            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id,tempTree);
+            
+            return tempTree;
         }
     }
 }

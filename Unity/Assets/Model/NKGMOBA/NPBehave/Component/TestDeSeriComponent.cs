@@ -28,9 +28,9 @@ namespace ETModel
     {
         public void Awake()
         {
-            Unit mUnit = UnitFactory.Create(10000);
+            Unit mUnit = UnitFactory.NPBehaveTestCreate();
             mUnit.AddComponent<NP_RuntimeTreeManager>();
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(mUnit, 102658009006093).m_NPRuntimeTreeRootNode.Start();
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(mUnit, 102682845708299).m_NPRuntimeTreeRootNode.Start();
         }
     }
 }

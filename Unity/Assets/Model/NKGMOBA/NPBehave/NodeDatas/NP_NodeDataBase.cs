@@ -16,16 +16,10 @@ namespace ETModel
         /// 此结点ID
         /// </summary>
         [LabelText("此结点ID")]
-        public long id = IdGenerater.GenerateId();
+        public long id;
 
         [LabelText("此结点类型")]
         public NodeType NodeType;
-
-        /// <summary>
-        /// 优先级，值越小，优先级越高
-        /// </summary>
-        [LabelText("优先级")]
-        public long priority;
 
         /// <summary>
         /// 与此结点相连的ID

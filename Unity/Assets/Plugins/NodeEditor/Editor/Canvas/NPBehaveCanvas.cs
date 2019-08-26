@@ -33,7 +33,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
 
         [LabelText("此行为树数据载体")]
         public NP_DataSupportor MNpDataSupportor = new NP_DataSupportor();
-        
+
         [LabelText("反序列化测试")]
         public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
 
@@ -41,24 +41,41 @@ namespace Plugins.NodeEditor.Editor.Canvas
         public void AddAllNodeData()
         {
             MNpDataSupportor.mNP_DataSupportorDic.Clear();
-            foreach (var VARIABLE1 in this.nodes)
+
+            List<NP_NodeBase> tempNode1 = new List<NP_NodeBase>();
+
+            foreach (var VARIABLE in this.nodes)
             {
-                NP_NodeDataBase mNodeData = ((NP_NodeBase) VARIABLE1).NP_GetNodeData();
-                List<long> mNodeDataLinkedIds = mNodeData.linkedID;
+                NP_NodeBase mNode = (NP_NodeBase) VARIABLE;
+                tempNode1.Add(mNode);
+            }
+
+            tempNode1.Sort((x, y) => -x.position.y.CompareTo(y.position.y));
+
+            foreach (var VARIABLE in tempNode1)
+            {
+                VARIABLE.NP_GetNodeData().id = IdGenerater.GenerateId();
+            }
+
+            foreach (var VARIABLE1 in tempNode1)
+            {
+                NP_NodeDataBase mNodeData = VARIABLE1.NP_GetNodeData();
+                mNodeData.linkedID.Clear();
                 long mNodeDataID = mNodeData.id;
-                mNodeDataLinkedIds.Clear();
-                
-                List<long> tempNode = new List<long>();
-                foreach (var VARIABLE2 in ((NP_NodeBase) VARIABLE1).NextNode.connections)
+                List<NP_NodeBase> tempNode = new List<NP_NodeBase>();
+                foreach (var VARIABLE2 in VARIABLE1.NextNode.connections)
                 {
-                    tempNode.Add(((NP_NodeBase) VARIABLE2.body).NP_GetNodeData().id);
-                }
-                
-                if (tempNode.Count > 0)
-                {
-                    mNodeDataLinkedIds.AddRange(tempNode);
+                    tempNode.Add((NP_NodeBase) VARIABLE2.body);
                 }
 
+                tempNode.Sort((x, y) => x.position.x.CompareTo(y.position.x));
+
+                foreach (var np_NodeBase in tempNode)
+                {
+                    mNodeData.linkedID.Add(np_NodeBase.NP_GetNodeData().id);
+                }
+
+                Log.Info($"y:{VARIABLE1.position.y},x:{VARIABLE1.position.x},id:{mNodeDataID}");
                 MNpDataSupportor.mNP_DataSupportorDic.Add(mNodeDataID, mNodeData);
             }
         }

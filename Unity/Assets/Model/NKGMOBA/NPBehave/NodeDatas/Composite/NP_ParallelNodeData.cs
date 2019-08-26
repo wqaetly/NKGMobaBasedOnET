@@ -17,7 +17,8 @@ namespace ETModel
 
         public override Composite CreateComposite(Node[] nodes)
         {
-            return new Parallel(Parallel.Policy.ALL, Parallel.Policy.ALL, nodes);
+            this.mParallelNode = new Parallel(Parallel.Policy.ALL, Parallel.Policy.ALL, nodes);
+            return mParallelNode;
         }
 
         public override Node NP_GetNode()
