@@ -46,14 +46,17 @@ namespace ETModel
 
             DirectoryInfo directory = new DirectoryInfo(NPDataPath);
             FileInfo[] fileInfos = directory.GetFiles();
+            
             foreach (var VARIABLE in fileInfos)
             {
                 byte[] mfile = File.ReadAllBytes(VARIABLE.FullName);
 
-                if (mfile.Length == 0) Debug.Log("没有读取到文件");
+                if (mfile.Length == 0) Log.Info("没有读取到文件");
 
-                NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
+                    NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
 
+
+                Log.Info(VARIABLE.FullName);
                 NpRuntimeTrees.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
             }
         }

@@ -4,7 +4,7 @@
 // Data: 2019年8月21日 7:11:32
 //------------------------------------------------------------
 
-using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 using Sirenix.OdinInspector;
 

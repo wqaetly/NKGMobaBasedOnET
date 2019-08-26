@@ -34,12 +34,5 @@ namespace NPBehave
         }
 
         protected abstract void DoChildStopped(Node child, bool succeeded);
-
-#if UNITY_EDITOR
-        public abstract Node[] DebugChildren
-        {
-            get;
-        }
-#endif
     }
 }

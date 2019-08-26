@@ -6,7 +6,6 @@
 
 using System.Collections.Generic;
 using NPBehave;
-using NPOI.Util;
 
 namespace ETModel
 {

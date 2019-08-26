@@ -4,12 +4,13 @@
 // Data: 2019年8月21日 7:11:12
 //------------------------------------------------------------
 
-using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    [BsonIgnoreExtraElements]
     public class NP_SelectorNodeData:NP_NodeDataBase
     {
         [LabelText("选择结点")]

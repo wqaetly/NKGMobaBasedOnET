@@ -4,14 +4,6 @@
 // Data: 2019年8月22日 9:19:21
 //------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using ETModel.TheDataContainsAction;
-using MongoDB.Bson.Serialization;
-using NPBehave;
-using UnityEngine;
-using Action = NPBehave.Action;
 
 namespace ETModel
 {
@@ -28,9 +20,11 @@ namespace ETModel
     {
         public void Awake()
         {
-            Unit mUnit = UnitFactory.NPBehaveTestCreate();
-            mUnit.AddComponent<NP_RuntimeTreeManager>();
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(mUnit, 102682845708299).m_NPRuntimeTreeRootNode.Start();
+            UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
+            Unit unit = ComponentFactory.Create<Unit>();
+            unitComponent.Add(unit);
+            unit.AddComponent<NP_RuntimeTreeManager>();
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102683211726858).m_NPRuntimeTreeRootNode.Start();
         }
     }
 }

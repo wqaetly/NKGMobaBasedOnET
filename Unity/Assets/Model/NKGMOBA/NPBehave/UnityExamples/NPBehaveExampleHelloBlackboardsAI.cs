@@ -22,7 +22,6 @@ public class NPBehaveExampleHelloBlackboardsAI: MonoBehaviour
                             // print out a message ...
                             new Action(() =>
                             {
-                                CodeTimeCostObserver.StartObserve();
                                 Debug.Log("foo");
                             }),
                             // ... and stay here until the `BlackboardValue`-node stops us because the toggled flag went false.
@@ -31,7 +30,6 @@ public class NPBehaveExampleHelloBlackboardsAI: MonoBehaviour
                     // when 'toggled' is false, we'll eventually land here
                     new Sequence(new Action(() =>
                         {
-                            CodeTimeCostObserver.StopObserve();
                             Debug.Log("bar");
                         }),
                         new WaitUntilStopped())

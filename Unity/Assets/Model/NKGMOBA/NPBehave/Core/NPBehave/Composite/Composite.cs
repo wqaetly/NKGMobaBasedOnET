@@ -33,29 +33,6 @@ namespace NPBehave
         }
 
 
-#if UNITY_EDITOR
-        public override Node[] DebugChildren
-        {
-            get
-            {
-                return this.Children;
-            }
-        }
-
-        public Node DebugGetActiveChild()
-        {
-            foreach( Node node in DebugChildren )
-            {
-                if(node.CurrentState == Node.State.ACTIVE )
-                {
-                    return node;
-                }
-            }
-
-            return null;
-        }
-#endif
-
         protected override void Stopped(bool success)
         {
             foreach (Node child in Children)

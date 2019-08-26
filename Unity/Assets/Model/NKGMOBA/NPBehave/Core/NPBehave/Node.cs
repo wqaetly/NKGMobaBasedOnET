@@ -107,30 +107,10 @@ namespace NPBehave
             this.parentNode = parent;
         }
 
-#if UNITY_EDITOR
-        [HideInEditorMode]
-        public float DebugLastStopRequestAt = 0.0f;
-        [HideInEditorMode]
-        public float DebugLastStoppedAt = 0.0f;
-        [HideInEditorMode]
-        public int DebugNumStartCalls = 0;
-        [HideInEditorMode]
-        public int DebugNumStopCalls = 0;
-        [HideInEditorMode]
-        public int DebugNumStoppedCalls = 0;
-        [HideInEditorMode]
-        public bool DebugLastResult = false;
-#endif
-
         public void Start()
         {
             // Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes, tried to start: " + this.Name + "! PATH: " + GetPath());
             Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes");
-
-#if UNITY_EDITOR
-            RootNode.TotalNumStartCalls++;
-            this.DebugNumStartCalls++;
-#endif
             this.currentState = State.ACTIVE;
             DoStart();
         }
@@ -143,11 +123,6 @@ namespace NPBehave
             // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
             Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop");
             this.currentState = State.STOP_REQUESTED;
-#if UNITY_EDITOR
-            RootNode.TotalNumStopCalls++;
-            this.DebugLastStopRequestAt = UnityEngine.Time.time;
-            this.DebugNumStopCalls++;
-#endif
             DoStop();
         }
 
@@ -169,12 +144,6 @@ namespace NPBehave
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
             Assert.AreNotEqual(this.currentState, State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
             this.currentState = State.INACTIVE;
-#if UNITY_EDITOR
-            RootNode.TotalNumStoppedCalls++;
-            this.DebugNumStoppedCalls++;
-            this.DebugLastStoppedAt = UnityEngine.Time.time;
-            DebugLastResult = success;
-#endif
             if (this.ParentNode != null)
             {
                 this.ParentNode.ChildStopped(this, success);

@@ -23,16 +23,6 @@
             Decoratee.SetRoot(rootNode);
         }
 
-#if UNITY_EDITOR
-        public override Node[] DebugChildren
-        {
-            get
-            {
-                return new Node[] { Decoratee };
-            }
-        }
-#endif
-
         public override void ParentCompositeStopped(Composite composite)
         {
             base.ParentCompositeStopped(composite);
