@@ -60,7 +60,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\New Folder\Assets\Editor\EditorUtils.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\BlackboardInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\GlobalBlackboardInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\GraphInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Inspectors\GraphOwnerInspector.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\ExternalInspectorWindow.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphConsole.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor_Events.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor_Panels.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphEditor_Toolbar.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\GraphFinder.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\QuickPopup.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\TaskWizardWindow.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Framework\Design\Editor\Windows\WelcomeWindow.cs" />
+    <Compile Include="Assets\ParadoxNotion\FlowCanvas\Module\Design\Editor\Commands.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -72,6 +86,9 @@
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
@@ -325,6 +342,15 @@
     <Reference Include="Pathfinding.Poly2Tri">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/AstarPathfindingProject/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
     </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
@@ -378,18 +404,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/New Folder/Assets/System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/New Folder/Assets/System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/New Folder/Assets/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/New Folder/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

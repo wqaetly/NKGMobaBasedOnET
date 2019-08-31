@@ -29,13 +29,14 @@ namespace ETModel
             {
                 return true;
             }
+
             return false;
         }
 
         public static bool operator >=(NP_BlackBoardDataForCompare first, NP_BlackBoardDataForCompare other)
         {
             if (first == null || other == null) return false;
-            if (first._float >= other._float && first._long >= other._long && first._int >= other._int && first._bool == other._bool ||
+            if (first._float >= other._float && first._long >= other._long && first._int >= other._int && first._bool == other._bool &&
                 first._string == other._string)
             {
                 return true;
@@ -43,11 +44,11 @@ namespace ETModel
 
             return false;
         }
-        
-        public static bool operator > (NP_BlackBoardDataForCompare first, NP_BlackBoardDataForCompare other)
+
+        public static bool operator >(NP_BlackBoardDataForCompare first, NP_BlackBoardDataForCompare other)
         {
             if (first == null || other == null) return false;
-            if (first._float > other._float && first._long > other._long && first._int > other._int && first._bool == other._bool ||
+            if (first._float > other._float || first._long > other._long || first._int > other._int || first._bool == other._bool &&
                 first._string == other._string)
             {
                 return true;
@@ -67,11 +68,11 @@ namespace ETModel
 
             return false;
         }
-        
-        public static bool operator < (NP_BlackBoardDataForCompare first, NP_BlackBoardDataForCompare other)
+
+        public static bool operator <(NP_BlackBoardDataForCompare first, NP_BlackBoardDataForCompare other)
         {
             if (first == null || other == null) return false;
-            if (first._float < other._float && first._long < other._long && first._int < other._int && first._bool == other._bool ||
+            if (first._float < other._float || first._long < other._long || first._int < other._int || first._bool == other._bool &&
                 first._string == other._string)
             {
                 return true;
@@ -79,6 +80,5 @@ namespace ETModel
 
             return false;
         }
-        
     }
 }
