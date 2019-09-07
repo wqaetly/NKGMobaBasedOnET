@@ -17,10 +17,6 @@ namespace ETModel
         [Title("技能消耗类型")]
         public SkillCostTypes SkillCostTypes = SkillCostTypes.None;
 
-        [DictionaryDrawerSettings(KeyLabel = "等级", ValueLabel = "消耗值")]
-        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        [HideLabel]
-        [Title("技能消耗具体数据")]
-        public Dictionary<int, float> m_SkillRequestCost;
+
     }
 }

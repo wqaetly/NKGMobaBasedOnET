@@ -22,7 +22,7 @@ namespace ETModel
         {
             MNpClassForStoreAction.Unitid = UnitId;
             MNpClassForStoreAction.RuntimeTreeID = RuntimeTreeID;
-            this.m_ActionNode = new Action(MNpClassForStoreAction.GetActionToBeDone());
+            this.m_ActionNode = MNpClassForStoreAction._CreateNPBehaveAction();
             return this.m_ActionNode;
         }
 

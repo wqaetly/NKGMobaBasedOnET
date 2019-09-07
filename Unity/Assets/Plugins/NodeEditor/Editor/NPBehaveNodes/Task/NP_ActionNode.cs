@@ -15,7 +15,7 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/LogAction", typeof (NPBehaveCanvas))]
+    [Node(false, "NPBehave行为树/Task/CommonAction", typeof (NPBehaveCanvas))]
     public class NP_ActionNode: NP_NodeBase
     {
         /// <summary>

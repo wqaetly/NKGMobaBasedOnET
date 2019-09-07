@@ -26,6 +26,8 @@ namespace ETModel
     {
         public NodeDataForHero NodeDataForHero;
 
+        public int CurrentLevel;
+
         public float CurrentLifeValue;
 
         public float MaxLifeValue;
@@ -33,5 +35,33 @@ namespace ETModel
         public float CurrentMagicValue;
 
         public float MaxMagicValue;
+
+        public int Q_SkillLevel;
+        public int W_SkillLevel;
+        public int E_SkillLevel;
+        public int R_SkillLevel;
+
+        /// <summary>
+        /// 获取指定技能等级
+        /// </summary>
+        /// <param name="i">技能序号</param>
+        /// <returns></returns>
+        public int GetSkillLevel(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    return Q_SkillLevel;
+                case 1:
+                    return W_SkillLevel;
+                case 2:
+                    return E_SkillLevel;
+                case 3:
+                    return R_SkillLevel;
+            }
+
+            Log.Info($"技能序号获取错误,{i}");
+            return -1;
+        }
     }
 }
