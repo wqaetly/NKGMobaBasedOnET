@@ -37,8 +37,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             {
                 this.NP_ActionNodeData = new NP_ActionNodeData();
             }
-
-            NP_ActionNodeData.NodeDes = "行为节点";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

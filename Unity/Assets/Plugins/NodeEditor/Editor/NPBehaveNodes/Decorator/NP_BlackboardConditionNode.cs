@@ -34,8 +34,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             {
                 this.NP_BlackboardConditionNodeData = new NP_BlackboardConditionNodeData();
             }
-
-            NP_BlackboardConditionNodeData.NodeDes = "黑板条件结点，提供观察黑板值的服务";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

@@ -34,8 +34,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             {
                 this.NP_SequenceNodeData = new NP_SequenceNodeData();
             }
-
-            NP_SequenceNodeData.NodeDes = "队列结点，一遇到失败即失败";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

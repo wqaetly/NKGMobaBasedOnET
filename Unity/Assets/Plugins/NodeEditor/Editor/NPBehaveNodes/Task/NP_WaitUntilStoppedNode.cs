@@ -34,8 +34,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             {
                 this.NpWaitUntilStoppedData = new NP_WaitUntilStoppedData();
             }
-
-            NpWaitUntilStoppedData.NodeDes = "一直等待，直到Stopped";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

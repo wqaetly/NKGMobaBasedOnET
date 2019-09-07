@@ -35,7 +35,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
                 this.NP_ServiceNodeData = new NP_ServiceNodeData();
             }
 
-            NP_ServiceNodeData.NodeDes = "服务结点，提供数据服务";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

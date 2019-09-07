@@ -34,8 +34,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             {
                 this.NP_SelectorNodeData = new NP_SelectorNodeData();
             }
-
-            NP_SelectorNodeData.NodeDes = "Selector结点，一遇到成功就成功";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

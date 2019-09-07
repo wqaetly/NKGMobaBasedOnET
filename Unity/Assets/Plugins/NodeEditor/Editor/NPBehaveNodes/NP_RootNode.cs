@@ -38,8 +38,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             {
                 this.MRootNodeData = new NP_RootNodeData();
             }
-
-            MRootNodeData.NodeDes = "根结点";
         }
 
         public override NP_NodeDataBase NP_GetNodeData()
