@@ -30,7 +30,7 @@ namespace ETHotfix
 
                 G2C_EnterMap g2CEnterMap = await ETModel.SessionComponent.Instance.Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
 
-                ETModel.Log.Info($"{DateTime.UtcNow}处理完成服务端发来的进入Map后的信息");
+                //ETModel.Log.Info($"{DateTime.UtcNow}处理完成服务端发来的进入Map后的信息");
                 
                 PlayerComponent.Instance.MyPlayer.UnitId = g2CEnterMap.UnitId;
 

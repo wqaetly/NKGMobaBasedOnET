@@ -21,7 +21,7 @@ namespace ETModel
         public void Awake()
         {
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
-            Unit unit = ComponentFactory.Create<Unit>();
+            Unit unit = ComponentFactory.CreateWithId<Unit>(1000003);
             unitComponent.Add(unit);
             unit.AddComponent<NP_RuntimeTreeManager>();
             NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102749242589194).m_NPRuntimeTreeRootNode.Start();
