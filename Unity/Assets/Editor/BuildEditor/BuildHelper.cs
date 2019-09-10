@@ -79,7 +79,7 @@ namespace ETEditor
             if (isBuildExe)
             {
                 AssetDatabase.Refresh();
-                string[] levels = { "Assets/Scenes/Init.unity","Assets/Scenes/Map.unity", };
+                string[] levels = { "Assets/Scenes/Init.unity", };
                 Log.Info("开始EXE打包");
                 BuildPipeline.BuildPlayer(levels, $"{relativeDirPrefix}/{exeName}", buildTarget, buildOptions);
                 Log.Info("完成exe打包");

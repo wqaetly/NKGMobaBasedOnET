@@ -365,7 +365,7 @@ namespace ETModel
         {
             assetBundleName = assetBundleName.ToLower();
             string[] dependencies = AssetBundleHelper.GetSortedDependencies(assetBundleName);
-            // Log.Debug($"-----------dep load {assetBundleName} dep: {dependencies.ToList().ListToString()}");
+            //Log.Debug($"-----------dep load {assetBundleName} dep: {dependencies.ToList().ListToString()}");
             foreach (string dependency in dependencies)
             {
                 if (string.IsNullOrEmpty(dependency))
@@ -389,11 +389,12 @@ namespace ETModel
             //Log.Debug($"---------------load one bundle {assetBundleName}");
             if (Define.ResModeIsEditor)
             {
-#if UNITY_EDITOR
                 string[] realPath = null;
+#if UNITY_EDITOR
                 realPath = AssetDatabase.GetAssetPathsFromAssetBundle(assetBundleName);
                 foreach (string s in realPath)
                 {
+                    //Log.Info(s);
                     string assetName = Path.GetFileNameWithoutExtension(s);
                     UnityEngine.Object resource = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(s);
                     AddResource(assetBundleName, assetName, resource);
@@ -401,8 +402,8 @@ namespace ETModel
 
                 abInfo = ComponentFactory.CreateWithParent<ABInfo, string, AssetBundle>(this, assetBundleName, null);
                 this.bundles[assetBundleName] = abInfo;
-                return;
 #endif
+                return;
             }
 
             string p = Path.Combine(PathHelper.AppHotfixResPath, assetBundleName);
