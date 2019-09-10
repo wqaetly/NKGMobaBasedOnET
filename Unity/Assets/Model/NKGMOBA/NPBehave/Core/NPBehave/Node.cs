@@ -1,10 +1,4 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using Sirenix.OdinInspector;
-using UnityEngine.Assertions;
-
-#endif
+﻿using System.Diagnostics;
 
 namespace NPBehave
 {
@@ -21,12 +15,16 @@ namespace NPBehave
 
         public State CurrentState
         {
-            get { return currentState; }
+            get
+            {
+                return currentState;
+            }
         }
 
         public Root RootNode;
 
         public Container parentNode;
+
         public Container ParentNode
         {
             get
@@ -91,7 +89,6 @@ namespace NPBehave
             }
         }
 
-
         public Node(string name)
         {
             this.name = name;
@@ -110,7 +107,7 @@ namespace NPBehave
         public void Start()
         {
             // Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes, tried to start: " + this.Name + "! PATH: " + GetPath());
-            Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes");
+            Debug.Assert(this.currentState == State.INACTIVE, "can only start inactive nodes");
             this.currentState = State.ACTIVE;
             DoStart();
         }
@@ -121,28 +118,25 @@ namespace NPBehave
         public void Stop()
         {
             // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
-            Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop");
+            Debug.Assert(this.currentState == State.ACTIVE, "can only stop active nodes, tried to stop");
             this.currentState = State.STOP_REQUESTED;
             DoStop();
         }
 
         protected virtual void DoStart()
         {
-
         }
 
         protected virtual void DoStop()
         {
-
         }
-
 
         /// THIS ABSOLUTLY HAS TO BE THE LAST CALL IN YOUR FUNCTION, NEVER MODIFY
         /// ANY STATE AFTER CALLING Stopped !!!!
         protected virtual void Stopped(bool success)
         {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
-            Assert.AreNotEqual(this.currentState, State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
+            Debug.Assert(this.currentState != State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
             this.currentState = State.INACTIVE;
             if (this.ParentNode != null)
             {
@@ -179,7 +173,7 @@ namespace NPBehave
 
         override public string ToString()
         {
-            return !string.IsNullOrEmpty(Label) ? (this.Name + "{"+Label+"}") : this.Name;
+            return !string.IsNullOrEmpty(Label)? (this.Name + "{" + Label + "}") : this.Name;
         }
 
         protected string GetPath()

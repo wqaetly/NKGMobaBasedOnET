@@ -1,16 +1,10 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
-
-#endif
+﻿using System.Diagnostics;
 
 namespace NPBehave
 {
-    public class RandomSequence : Composite
+    public class RandomSequence: Composite
     {
         static System.Random rng = new System.Random();
-
 
 #if UNITY_EDITOR
         static public void DebugSetSeed( int seed )
@@ -22,32 +16,32 @@ namespace NPBehave
         private int currentIndex = -1;
         private int[] randomizedOrder;
 
-        public RandomSequence( params Node[] children ) : base( "Random Sequence", children )
+        public RandomSequence(params Node[] children): base("Random Sequence", children)
         {
-            randomizedOrder = new int[ children.Length ];
-            for ( int i = 0; i < Children.Length; i++ )
+            randomizedOrder = new int[children.Length];
+            for (int i = 0; i < Children.Length; i++)
             {
-                randomizedOrder[ i ] = i;
+                randomizedOrder[i] = i;
             }
         }
 
         protected override void DoStart()
         {
-            foreach ( Node child in Children )
+            foreach (Node child in Children)
             {
-                Assert.AreEqual( child.CurrentState, State.INACTIVE );
+                Debug.Assert(child.CurrentState == State.INACTIVE);
             }
 
             currentIndex = -1;
 
             // Shuffling
             int n = randomizedOrder.Length;
-            while ( n > 1 )
+            while (n > 1)
             {
-                int k = rng.Next( n-- );
-                int temp = randomizedOrder[ n ];
-                randomizedOrder[ n ] = randomizedOrder[ k ];
-                randomizedOrder[ k ] = temp;
+                int k = rng.Next(n--);
+                int temp = randomizedOrder[n];
+                randomizedOrder[n] = randomizedOrder[k];
+                randomizedOrder[k] = temp;
             }
 
             ProcessChildren();
@@ -55,58 +49,57 @@ namespace NPBehave
 
         protected override void DoStop()
         {
-            Children[ currentIndex ].Stop();
+            Children[currentIndex].Stop();
         }
 
-
-        protected override void DoChildStopped( Node child, bool result )
+        protected override void DoChildStopped(Node child, bool result)
         {
-            if ( result )
+            if (result)
             {
                 ProcessChildren();
             }
             else
             {
-                Stopped( false );
+                Stopped(false);
             }
         }
 
         private void ProcessChildren()
         {
-            if ( ++currentIndex < Children.Length )
+            if (++currentIndex < Children.Length)
             {
-                if ( IsStopRequested )
+                if (IsStopRequested)
                 {
-                    Stopped( false );
+                    Stopped(false);
                 }
                 else
                 {
-                    Children[ randomizedOrder[ currentIndex ] ].Start();
+                    Children[randomizedOrder[currentIndex]].Start();
                 }
             }
             else
             {
-                Stopped( true );
+                Stopped(true);
             }
         }
 
-        public override void StopLowerPriorityChildrenForChild( Node abortForChild, bool immediateRestart )
+        public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart)
         {
             int indexForChild = 0;
             bool found = false;
-            foreach ( Node currentChild in Children )
+            foreach (Node currentChild in Children)
             {
-                if ( currentChild == abortForChild )
+                if (currentChild == abortForChild)
                 {
                     found = true;
                 }
-                else if ( !found )
+                else if (!found)
                 {
                     indexForChild++;
                 }
-                else if ( found && currentChild.IsActive )
+                else if (found && currentChild.IsActive)
                 {
-                    if ( immediateRestart )
+                    if (immediateRestart)
                     {
                         currentIndex = indexForChild - 1;
                     }
@@ -114,6 +107,7 @@ namespace NPBehave
                     {
                         currentIndex = Children.Length;
                     }
+
                     currentChild.Stop();
                     break;
                 }

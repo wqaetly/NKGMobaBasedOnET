@@ -1,9 +1,6 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
+﻿
 
-#endif
+using System.Diagnostics;
 
 namespace NPBehave
 {
@@ -23,7 +20,7 @@ namespace NPBehave
             this.cooldownTime = cooldownTime;
             this.randomVariation = cooldownTime * 0.1f;
             this.resetOnFailiure = resetOnFailiure;
-            Assert.IsTrue(cooldownTime > 0f, "cooldownTime has to be set");
+            Debug.Assert(cooldownTime > 0f, "cooldownTime has to be set");
         }
         
 
@@ -33,7 +30,7 @@ namespace NPBehave
             this.cooldownTime = cooldownTime;
             this.resetOnFailiure = resetOnFailiure;
             this.randomVariation = randomVariation;
-            Assert.IsTrue(cooldownTime > 0f, "limit has to be set");
+            Debug.Assert(cooldownTime > 0f, "limit has to be set");
         }
 
         public Cooldown(float cooldownTime, float randomVariation, Node decoratee) : base("TimeCooldown", decoratee)
@@ -42,7 +39,7 @@ namespace NPBehave
             this.cooldownTime = cooldownTime;
             this.resetOnFailiure = false;
             this.randomVariation = randomVariation;
-            Assert.IsTrue(cooldownTime > 0f, "limit has to be set");
+            Debug.Assert(cooldownTime > 0f, "limit has to be set");
         }
 
         public Cooldown(float cooldownTime, Node decoratee) : base("TimeCooldown", decoratee)
@@ -51,7 +48,7 @@ namespace NPBehave
             this.cooldownTime = cooldownTime;
             this.resetOnFailiure = false;
             this.randomVariation = cooldownTime * 0.1f;
-            Assert.IsTrue(cooldownTime > 0f, "limit has to be set");
+            Debug.Assert(cooldownTime > 0f, "limit has to be set");
         }
 
 

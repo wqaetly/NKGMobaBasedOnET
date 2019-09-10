@@ -1,9 +1,6 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
+﻿
+using System.Diagnostics;
 
-#endif
 namespace NPBehave
 {
     public class Selector : Composite
@@ -19,7 +16,7 @@ namespace NPBehave
         {
             foreach (Node child in Children)
             {
-                Assert.AreEqual(child.CurrentState, State.INACTIVE);
+                Debug.Assert(child.CurrentState==State.INACTIVE);
             }
 
             currentIndex = -1;

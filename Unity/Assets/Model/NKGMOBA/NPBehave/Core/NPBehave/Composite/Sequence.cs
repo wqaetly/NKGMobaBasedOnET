@@ -1,9 +1,7 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
+﻿
 
-#endif
+
+using System.Diagnostics;
 
 namespace NPBehave
 {
@@ -19,7 +17,7 @@ namespace NPBehave
         {
             foreach (Node child in Children)
             {
-                Assert.AreEqual(child.CurrentState, State.INACTIVE);
+                Debug.Assert(child.CurrentState == State.INACTIVE);
             }
 
             currentIndex = -1;

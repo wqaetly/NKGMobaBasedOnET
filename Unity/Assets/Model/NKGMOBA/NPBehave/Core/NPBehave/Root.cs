@@ -1,11 +1,5 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.Assertions;
-
-#endif
+﻿
+using System.Diagnostics;
 
 namespace NPBehave
 {
@@ -34,15 +28,6 @@ namespace NPBehave
             }
         }
 
-#if UNITY_EDITOR
-        [HideInEditorMode]
-        public int TotalNumStartCalls = 0;
-        [HideInEditorMode]
-        public int TotalNumStopCalls = 0;
-        [HideInEditorMode]
-        public int TotalNumStoppedCalls = 0;
-#endif
-
         public Root(Node mainNode) : base("Root", mainNode)
         {
             this.mainNode = mainNode;
@@ -68,7 +53,7 @@ namespace NPBehave
 
         public override void SetRoot(Root rootNode)
         {
-            Assert.AreEqual(this, rootNode);
+            Debug.Assert(this == rootNode);
             base.SetRoot(rootNode);
             this.mainNode.SetRoot(rootNode);
         }

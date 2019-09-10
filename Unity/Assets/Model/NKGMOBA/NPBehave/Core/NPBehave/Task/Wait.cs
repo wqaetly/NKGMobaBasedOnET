@@ -1,9 +1,6 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
+﻿
 
-#endif
+using System.Diagnostics;
 
 namespace NPBehave
 {
@@ -28,7 +25,7 @@ namespace NPBehave
 
         public Wait(float seconds, float randomVariance) : base("Wait")
         {
-            Assert.IsTrue(seconds >= 0);
+            Debug.Assert(seconds >= 0);
             this.seconds = seconds;
             this.randomVariance = randomVariance;
         }

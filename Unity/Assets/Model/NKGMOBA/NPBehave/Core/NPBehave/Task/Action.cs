@@ -1,13 +1,8 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
-
-#endif
+﻿using System.Diagnostics;
 
 namespace NPBehave
 {
-    public class Action : Task
+    public class Action: Task
     {
         public enum Result
         {
@@ -32,26 +27,24 @@ namespace NPBehave
 
         public Action(): base("Action")
         {
-            
         }
-        
-        public Action(System.Action action) : base("Action")
+
+        public Action(System.Action action): base("Action")
         {
             this.action = action;
         }
 
-        public Action(System.Func<bool, Result> multiframeFunc) : base("Action")
+        public Action(System.Func<bool, Result> multiframeFunc): base("Action")
         {
             this.multiFrameFunc = multiframeFunc;
         }
 
-        public Action(System.Func<Request, Result> multiframeFunc2) : base("Action")
+        public Action(System.Func<Request, Result> multiframeFunc2): base("Action")
         {
             this.multiFrameFunc2 = multiframeFunc2;
         }
 
-
-        public Action(System.Func<bool> singleFrameFunc) : base("Action")
+        public Action(System.Func<bool> singleFrameFunc): base("Action")
         {
             this.singleFrameFunc = singleFrameFunc;
         }
@@ -66,14 +59,14 @@ namespace NPBehave
             else if (this.multiFrameFunc != null)
             {
                 Result result = this.multiFrameFunc.Invoke(false);
-                if ( result == Result.PROGRESS )
+                if (result == Result.PROGRESS)
                 {
-                    this.RootNode.Clock.AddUpdateObserver( OnUpdateFunc );
+                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc);
                 }
-                else if ( result == Result.BLOCKED )
+                else if (result == Result.BLOCKED)
                 {
                     this.bWasBlocked = true;
-                    this.RootNode.Clock.AddUpdateObserver( OnUpdateFunc );
+                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc);
                 }
                 else
                 {
@@ -87,10 +80,10 @@ namespace NPBehave
                 {
                     this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc2);
                 }
-                else if ( result == Result.BLOCKED )
+                else if (result == Result.BLOCKED)
                 {
                     this.bWasBlocked = true;
-                    this.RootNode.Clock.AddUpdateObserver( OnUpdateFunc2 );
+                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc2);
                 }
                 else
                 {
@@ -115,20 +108,20 @@ namespace NPBehave
 
         private void OnUpdateFunc2()
         {
-            Result result = this.multiFrameFunc2.Invoke( bWasBlocked ? Request.START : Request.UPDATE);
+            Result result = this.multiFrameFunc2.Invoke(bWasBlocked? Request.START : Request.UPDATE);
 
-            if ( result == Result.BLOCKED )
+            if (result == Result.BLOCKED)
             {
                 bWasBlocked = true;
             }
-            else if ( result == Result.PROGRESS )
+            else if (result == Result.PROGRESS)
             {
                 bWasBlocked = false;
             }
             else
             {
-                this.RootNode.Clock.RemoveUpdateObserver( OnUpdateFunc2 );
-                this.Stopped( result == Result.SUCCESS );
+                this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc2);
+                this.Stopped(result == Result.SUCCESS);
             }
         }
 
@@ -137,20 +130,20 @@ namespace NPBehave
             if (this.multiFrameFunc != null)
             {
                 Result result = this.multiFrameFunc.Invoke(true);
-                Assert.AreNotEqual(result, Result.PROGRESS, "The Task has to return Result.SUCCESS, Result.FAILED/BLOCKED after beeing cancelled!");
+                Debug.Assert(result != Result.PROGRESS, "The Task has to return Result.SUCCESS, Result.FAILED/BLOCKED after beeing cancelled!");
                 this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc);
                 this.Stopped(result == Result.SUCCESS);
             }
             else if (this.multiFrameFunc2 != null)
             {
                 Result result = this.multiFrameFunc2.Invoke(Request.CANCEL);
-                Assert.AreNotEqual(result, Result.PROGRESS, "The Task has to return Result.SUCCESS or Result.FAILED/BLOCKED after beeing cancelled!");
+                Debug.Assert(result != Result.PROGRESS, "The Task has to return Result.SUCCESS or Result.FAILED/BLOCKED after beeing cancelled!");
                 this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc2);
                 this.Stopped(result == Result.SUCCESS);
             }
             else
             {
-                Assert.IsTrue(false, "DoStop called for a single frame action on " + this);
+                Debug.Assert(false, "DoStop called for a single frame action on " + this);
             }
         }
     }

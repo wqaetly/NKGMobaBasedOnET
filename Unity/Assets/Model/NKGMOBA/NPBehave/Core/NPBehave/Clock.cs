@@ -1,12 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using NPBehave_Core;
-#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
-
-#endif
 
 namespace NPBehave
 {
@@ -81,8 +76,7 @@ namespace NPBehave
                 }
             }
 
-            Assert.IsTrue(timer.used);
-
+            Debug.Assert(timer.used);
 
             timer.delay = delay;
             timer.randomVariance = randomVariance;
@@ -109,7 +103,7 @@ namespace NPBehave
 
                 if (this.addTimers.ContainsKey(action))
                 {
-                    Assert.IsTrue(this.addTimers[action].used);
+                    Debug.Assert(this.addTimers[action].used);
                     this.addTimers[action].used = false;
                     this.addTimers.Remove(action);
                 }
@@ -257,17 +251,17 @@ namespace NPBehave
             {
                 if (this.timers.ContainsKey(action))
                 {
-                    Assert.AreNotEqual(this.timers[action], this.addTimers[action]);
+                    Debug.Assert(this.timers[action] != this.addTimers[action]);
                     this.timers[action].used = false;
                 }
 
-                Assert.IsTrue(this.addTimers[action].used);
+                Debug.Assert(this.addTimers[action].used);
                 this.timers[action] = this.addTimers[action];
             }
 
             foreach (System.Action action in this.removeTimers)
             {
-                Assert.IsTrue(this.timers[action].used);
+                Debug.Assert(this.timers[action].used);
                 timers[action].used = false;
                 this.timers.Remove(action);
             }

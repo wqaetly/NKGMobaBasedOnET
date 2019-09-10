@@ -1,15 +1,11 @@
-#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
-
-#endif
+using System.Diagnostics;
 
 namespace NPBehave
 {
-    public abstract class Container : Node
+    public abstract class Container: Node
     {
         public bool collapse = false;
+
         public bool Collapse
         {
             get
@@ -22,14 +18,14 @@ namespace NPBehave
             }
         }
 
-        public Container(string name) : base(name)
+        public Container(string name): base(name)
         {
         }
 
         public void ChildStopped(Node child, bool succeeded)
         {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Child " + child.Name + " of Container " + this.Name + " was stopped while the container was inactive. PATH: " + GetPath());
-            Assert.AreNotEqual(this.currentState, State.INACTIVE, "A Child of a Container was stopped while the container was inactive.");
+            Debug.Assert(this.currentState != State.INACTIVE, "A Child of a Container was stopped while the container was inactive.");
             this.DoChildStopped(child, succeeded);
         }
 

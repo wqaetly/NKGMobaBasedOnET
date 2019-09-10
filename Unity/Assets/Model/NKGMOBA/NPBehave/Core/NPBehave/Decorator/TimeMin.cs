@@ -1,9 +1,6 @@
-﻿#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
+﻿
 
-#endif
+using System.Diagnostics;
 
 namespace NPBehave
 {
@@ -21,7 +18,7 @@ namespace NPBehave
             this.limit = limit;
             this.randomVariation = this.limit * 0.05f;
             this.waitOnFailure = false;
-            Assert.IsTrue(limit > 0f, "limit has to be set");
+            Debug.Assert(limit > 0f, "limit has to be set");
         }
 
         public TimeMin(float limit, bool waitOnFailure, Node decoratee) : base("TimeMin", decoratee)
@@ -29,7 +26,7 @@ namespace NPBehave
             this.limit = limit;
             this.randomVariation = this.limit * 0.05f;
             this.waitOnFailure = waitOnFailure;
-            Assert.IsTrue(limit > 0f, "limit has to be set");
+            Debug.Assert(limit > 0f, "limit has to be set");
         }
 
         public TimeMin(float limit, float randomVariation, bool waitOnFailure, Node decoratee) : base("TimeMin", decoratee)
@@ -37,7 +34,7 @@ namespace NPBehave
             this.limit = limit;
             this.randomVariation = randomVariation;
             this.waitOnFailure = waitOnFailure;
-            Assert.IsTrue(limit > 0f, "limit has to be set");
+            Debug.Assert(limit > 0f, "limit has to be set");
         }
 
         protected override void DoStart()
@@ -75,7 +72,7 @@ namespace NPBehave
             }
             else
             {
-                Assert.IsTrue(Clock.HasTimer(TimeoutReached));
+                Debug.Assert(Clock.HasTimer(TimeoutReached));
             }
         }
 
@@ -88,7 +85,7 @@ namespace NPBehave
             }
             else
             {
-                Assert.IsTrue(Decoratee.IsActive);
+                Debug.Assert(Decoratee.IsActive);
             }
         }
     }

@@ -1,20 +1,15 @@
 ﻿using System;
-#if !UNITY_EDITOR
-       using NUnit.Framework;
-#else
-using UnityEngine.Assertions;
-
-#endif
+using System.Diagnostics;
 
 namespace NPBehave
 {
-    public class WaitForCondition : Decorator
+    public class WaitForCondition: Decorator
     {
         private Func<bool> condition;
         private float checkInterval;
         private float checkVariance;
 
-        public WaitForCondition(Func<bool> condition, float checkInterval, float randomVariance, Node decoratee) : base("WaitForCondition", decoratee)
+        public WaitForCondition(Func<bool> condition, float checkInterval, float randomVariance, Node decoratee): base("WaitForCondition", decoratee)
         {
             this.condition = condition;
 
@@ -24,7 +19,7 @@ namespace NPBehave
             this.Label = "" + (checkInterval - randomVariance) + "..." + (checkInterval + randomVariance) + "s";
         }
 
-        public WaitForCondition(Func<bool> condition, Node decoratee) : base("WaitForCondition", decoratee)
+        public WaitForCondition(Func<bool> condition, Node decoratee): base("WaitForCondition", decoratee)
         {
             this.condition = condition;
             this.checkInterval = 0.0f;
@@ -68,7 +63,7 @@ namespace NPBehave
 
         protected override void DoChildStopped(Node child, bool result)
         {
-            Assert.AreNotEqual(this.CurrentState, State.INACTIVE);
+            Debug.Assert(this.CurrentState != State.INACTIVE);
             Stopped(result);
         }
     }
