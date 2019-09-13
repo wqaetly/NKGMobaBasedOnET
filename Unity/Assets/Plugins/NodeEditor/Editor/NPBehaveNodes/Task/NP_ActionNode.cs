@@ -35,7 +35,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData();
+                this.NP_ActionNodeData = new NP_ActionNodeData{NodeType = NodeType.Task};
             }
         }
 

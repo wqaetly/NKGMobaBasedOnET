@@ -32,7 +32,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         {
             if (NP_BlackboardConditionNodeData == null)
             {
-                this.NP_BlackboardConditionNodeData = new NP_BlackboardConditionNodeData();
+                this.NP_BlackboardConditionNodeData = new NP_BlackboardConditionNodeData { NodeType = NodeType.Decorator};
             }
         }
 

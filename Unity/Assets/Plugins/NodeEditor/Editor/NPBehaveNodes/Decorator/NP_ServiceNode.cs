@@ -32,7 +32,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         {
             if (NP_ServiceNodeData == null)
             {
-                this.NP_ServiceNodeData = new NP_ServiceNodeData();
+                this.NP_ServiceNodeData = new NP_ServiceNodeData { NodeType = NodeType.Decorator};
             }
 
         }

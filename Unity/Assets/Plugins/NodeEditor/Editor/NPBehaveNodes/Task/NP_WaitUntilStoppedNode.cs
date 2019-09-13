@@ -32,7 +32,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         {
             if (NpWaitUntilStoppedData == null)
             {
-                this.NpWaitUntilStoppedData = new NP_WaitUntilStoppedData();
+                this.NpWaitUntilStoppedData = new NP_WaitUntilStoppedData{NodeType = NodeType.Task};
             }
         }
 

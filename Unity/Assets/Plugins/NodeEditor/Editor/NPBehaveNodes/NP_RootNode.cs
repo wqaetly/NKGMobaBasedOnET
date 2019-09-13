@@ -36,7 +36,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         {
             if (MRootNodeData == null)
             {
-                this.MRootNodeData = new NP_RootNodeData();
+                this.MRootNodeData = new NP_RootNodeData{NodeType = NodeType.Decorator};
             }
         }
 

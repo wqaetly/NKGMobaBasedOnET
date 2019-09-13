@@ -32,7 +32,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         {
             if (NP_SelectorNodeData == null)
             {
-                this.NP_SelectorNodeData = new NP_SelectorNodeData();
+                this.NP_SelectorNodeData = new NP_SelectorNodeData { NodeType = NodeType.Composite};
             }
         }
 
