@@ -29,7 +29,7 @@ namespace ETModel
 
         public override Func<bool> GetFunc1ToBeDone()
         {
-            this.m_Func1 += this.CheckCostToSpanSkill;
+            this.m_Func1 = this.CheckCostToSpanSkill;
             return this.m_Func1;
         }
 

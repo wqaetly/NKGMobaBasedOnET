@@ -7,7 +7,7 @@ namespace NPBehave
     public class BlackboardCondition: ObservingDecorator
     {
         private string key;
-        private NP_BlackBoardDataForCompare value;
+        private object value;
         private Operator op;
 
         public string Key
@@ -18,7 +18,7 @@ namespace NPBehave
             }
         }
 
-        public NP_BlackBoardDataForCompare Value
+        public object Value
         {
             get
             {
@@ -34,8 +34,8 @@ namespace NPBehave
             }
         }
 
-        public BlackboardCondition(string key, Operator op, NP_BlackBoardDataForCompare value, Stops stopsOnChange, Node decoratee): base(
-            "BlackboardCondition", stopsOnChange, decoratee)
+        public BlackboardCondition(string key, Operator op, object value, Stops stopsOnChange, Node decoratee): base("BlackboardCondition",
+            stopsOnChange, decoratee)
         {
             this.op = op;
             this.key = key;
@@ -78,21 +78,74 @@ namespace NPBehave
                 return op == Operator.IS_NOT_SET;
             }
 
-            NP_BlackBoardDataForCompare o = this.RootNode.Blackboard.GetFromSelf(key);
+            object o = this.RootNode.Blackboard.Get(key);
 
             switch (this.op)
             {
                 case Operator.IS_SET: return true;
-                case Operator.IS_EQUAL: return o.Equals(value);
-                case Operator.IS_NOT_EQUAL: return !o.Equals(value);
+                case Operator.IS_EQUAL: return object.Equals(o, value);
+                case Operator.IS_NOT_EQUAL: return !object.Equals(o, value);
+
                 case Operator.IS_GREATER_OR_EQUAL:
-                    return o >= this.value;
+                    if (o is float)
+                    {
+                        return (float) o >= (float) this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int) o >= (int) this.value;
+                    }
+                    else
+                    {
+                        Log.Error("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
                 case Operator.IS_GREATER:
-                    return o > this.value;
+                    if (o is float)
+                    {
+                        return (float) o > (float) this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int) o > (int) this.value;
+                    }
+                    else
+                    {
+                        Log.Error("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
                 case Operator.IS_SMALLER_OR_EQUAL:
-                    return o <= this.value;
+                    if (o is float)
+                    {
+                        return (float) o <= (float) this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int) o <= (int) this.value;
+                    }
+                    else
+                    {
+                        Log.Error("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
                 case Operator.IS_SMALLER:
-                    return o < this.value;
+                    if (o is float)
+                    {
+                        return (float) o < (float) this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int) o < (int) this.value;
+                    }
+                    else
+                    {
+                        Log.Error("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
                 default: return false;
             }
         }

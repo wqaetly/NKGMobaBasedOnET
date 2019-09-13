@@ -12,14 +12,12 @@ namespace NPBehave
             REMOVE,
             CHANGE
         }
-
         private struct Notification
         {
             public string key;
             public Type type;
-            public NP_BlackBoardDataForCompare value;
-
-            public Notification(string key, Type type, NP_BlackBoardDataForCompare value)
+            public object value;
+            public Notification(string key, Type type, object value)
             {
                 this.key = key;
                 this.type = type;
@@ -28,34 +26,52 @@ namespace NPBehave
         }
 
         private Clock clock;
-        private Dictionary<string, NP_BlackBoardDataForCompare> data = new Dictionary<string, NP_BlackBoardDataForCompare>();
+        private Dictionary<string, object> data = new Dictionary<string, object>();
         private Dictionary<string, List<System.Action<Type, object>>> observers = new Dictionary<string, List<System.Action<Type, object>>>();
         private bool isNotifiyng = false;
         private Dictionary<string, List<System.Action<Type, object>>> addObservers = new Dictionary<string, List<System.Action<Type, object>>>();
         private Dictionary<string, List<System.Action<Type, object>>> removeObservers = new Dictionary<string, List<System.Action<Type, object>>>();
         private List<Notification> notifications = new List<Notification>();
         private List<Notification> notificationsDispatch = new List<Notification>();
+        private Blackboard parentBlackboard;
         private HashSet<Blackboard> children = new HashSet<Blackboard>();
 
-        public Blackboard(Clock clock)
+        public Blackboard(Blackboard parent, Clock clock)
         {
             this.clock = clock;
+            this.parentBlackboard = parent;
+        }
+        public Blackboard(Clock clock)
+        {
+            this.parentBlackboard = null;
+            this.clock = clock;
+        }
+
+        public void Enable()
+        {
+            if (this.parentBlackboard != null)
+            {
+                this.parentBlackboard.children.Add(this);
+            }
         }
 
         public void Disable()
         {
+            if (this.parentBlackboard != null)
+            {
+                this.parentBlackboard.children.Remove(this);
+            }
             if (this.clock != null)
             {
                 this.clock.RemoveTimer(this.NotifiyObservers);
             }
         }
 
-        public NP_BlackBoardDataForCompare this[string key]
+        public object this[string key]
         {
             get
             {
-                //暂时一颗行为树支持一个黑板
-                return this.GetFromSelf(key);
+                return Get(key);
             }
             set
             {
@@ -71,64 +87,29 @@ namespace NPBehave
             }
         }
 
-        /// <summary>
-        /// 刷新键为key的数据
-        /// </summary>
-        /// <param name="key"></param>
-        public void RefreshData(string key)
+        public void Set(string key, object value)
         {
-            this.notifications.Add(new Notification(key, Type.CHANGE, this.data[key]));
-            this.clock.AddTimer(0f, 0, NotifiyObservers);
-        }
-
-        public void SetFloat(string key, float value)
-        {
-            GetFromSelf(key)._float = value;
-            RefreshData(key);
-        }
-        
-        public void SetInt(string key, int value)
-        {
-            GetFromSelf(key)._int = value;
-            RefreshData(key);
-        }
-
-        public void SetBool(string key, bool value)
-        {
-            GetFromSelf(key)._bool = value;
-            RefreshData(key);
-        }
-        
-        public void SetLong(string key, long value)
-        {
-            GetFromSelf(key)._long = value;
-            RefreshData(key);
-        }
-        
-        public void SetString(string key, string value)
-        {
-            GetFromSelf(key)._string = value;
-            RefreshData(key);
-        }
-
-        /// <summary>
-        /// 整体赋值
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void Set(string key, NP_BlackBoardDataForCompare value)
-        {
-            if (!this.data.ContainsKey(key))
+            if (this.parentBlackboard != null && this.parentBlackboard.Isset(key))
             {
-                this.data[key] = value;
-                this.notifications.Add(new Notification(key, Type.ADD, value));
-                this.clock.AddTimer(0f, 0, NotifiyObservers);
+                this.parentBlackboard.Set(key, value);
             }
             else
             {
-                this.data[key] = value;
-                this.notifications.Add(new Notification(key, Type.CHANGE, value));
-                this.clock.AddTimer(0f, 0, NotifiyObservers);
+                if (!this.data.ContainsKey(key))
+                {
+                    this.data[key] = value;
+                    this.notifications.Add(new Notification(key, Type.ADD, value));
+                    this.clock.AddTimer(0f, 0, NotifiyObservers);
+                }
+                else
+                {
+                    if ((this.data[key] == null && value != null) || (this.data[key] != null && !this.data[key].Equals(value)))
+                    {
+                        this.data[key] = value;
+                        this.notifications.Add(new Notification(key, Type.CHANGE, value));
+                        this.clock.AddTimer(0f, 0, NotifiyObservers);
+                    }
+                }
             }
         }
 
@@ -141,25 +122,36 @@ namespace NPBehave
                 this.clock.AddTimer(0f, 0, NotifiyObservers);
             }
         }
+        
+        public T Get<T>(string key)
+        {
+            object result = Get(key);
+            if (result == null)
+            {
+                return default(T);
+            }
+            return (T)result;
+        }
 
-        public NP_BlackBoardDataForCompare GetFromSelf(string key)
+        public object Get(string key)
         {
             if (this.data.ContainsKey(key))
             {
                 return data[key];
             }
-            
-            NP_BlackBoardDataForCompare temp = new NP_BlackBoardDataForCompare();
-            this.data.Add(key, temp);
-            this.notifications.Add(new Notification(key, Type.ADD, temp));
-            this.clock.AddTimer(0f, 0, NotifiyObservers);
-            
-            return data[key];
+            else if (this.parentBlackboard != null)
+            {
+                return this.parentBlackboard.Get(key);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public bool Isset(string key)
         {
-            return this.data.ContainsKey(key);
+            return this.data.ContainsKey(key) || (this.parentBlackboard != null && this.parentBlackboard.Isset(key));
         }
 
         public void AddObserver(string key, System.Action<Type, object> observer)
@@ -220,29 +212,6 @@ namespace NPBehave
             }
         }
 
-#if UNITY_EDITOR
-        public List<string> Keys
-        {
-            get
-            {
-                return new List<string>(data.Keys);
-            }
-        }
-
-        public int NumObservers
-        {
-            get
-            {
-                int count = 0;
-                foreach (string key in observers.Keys)
-                {
-                    count += observers[key].Count;
-                }
-
-                return count;
-            }
-        }
-#endif
 
         private void NotifiyObservers()
         {
@@ -258,7 +227,6 @@ namespace NPBehave
                 child.notifications.AddRange(notifications);
                 child.clock.AddTimer(0f, 0, child.NotifiyObservers);
             }
-
             notifications.Clear();
 
             isNotifiyng = true;
@@ -277,7 +245,6 @@ namespace NPBehave
                     {
                         continue;
                     }
-
                     observer(notification.type, notification.value);
                 }
             }
@@ -286,7 +253,6 @@ namespace NPBehave
             {
                 GetObserverList(this.observers, key).AddRange(this.addObservers[key]);
             }
-
             foreach (string key in this.removeObservers.Keys)
             {
                 foreach (System.Action<Type, object> action in removeObservers[key])
@@ -294,7 +260,6 @@ namespace NPBehave
                     GetObserverList(this.observers, key).Remove(action);
                 }
             }
-
             this.addObservers.Clear();
             this.removeObservers.Clear();
 
@@ -313,7 +278,6 @@ namespace NPBehave
                 observers = new List<System.Action<Type, object>>();
                 target[key] = observers;
             }
-
             return observers;
         }
     }

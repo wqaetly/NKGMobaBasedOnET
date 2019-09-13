@@ -55,7 +55,7 @@ namespace NPBehave
             {
                 if (this.blackboardKey != null)
                 {
-                    seconds = Blackboard.GetFromSelf(this.blackboardKey)._float;
+                    seconds = Blackboard.Get<float>(this.blackboardKey);
                 }
                 else if (this.function != null)
                 {

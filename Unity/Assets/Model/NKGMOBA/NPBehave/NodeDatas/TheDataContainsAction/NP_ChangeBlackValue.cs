@@ -28,7 +28,9 @@ namespace ETModel.TheDataContainsAction
                         .GetBlackboard();
             }
 
-            theBlackBoardWillBedo.SetBool("foo", !theBlackBoardWillBedo.GetFromSelf("foo")._bool);
+            theBlackBoardWillBedo["foo"] = !theBlackBoardWillBedo.Get<bool>("foo");
+            
+            Log.Info($"改变了黑板值:{theBlackBoardWillBedo["foo"] }");
         }
     }
 }

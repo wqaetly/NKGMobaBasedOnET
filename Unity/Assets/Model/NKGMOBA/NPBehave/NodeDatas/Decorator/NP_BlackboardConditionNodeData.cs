@@ -24,12 +24,10 @@ namespace ETModel
         [LabelText("终止条件")]
         public Stops stop;
 
-        [LabelText("对比值")]
-        public NP_BlackBoardDataForCompare value;
-
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
         {
-            this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.value, this.stop, node);
+            //此处的value参数可以随便设，因为我们在游戏中这个value是需要动态改变的
+            this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, true, this.stop, node);
             return mBlackboardConditionNode;
         }
 
