@@ -28,7 +28,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("Log结点数据")]
+        [LabelText("行为结点数据")]
         public NP_ActionNodeData NP_ActionNodeData;
 
         private void OnEnable()

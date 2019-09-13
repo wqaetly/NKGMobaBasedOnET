@@ -25,7 +25,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("一直等待，直到Stopped结点数据")]
+        [LabelText("结点数据")]
         public NP_WaitUntilStoppedData NpWaitUntilStoppedData;
 
         private void OnEnable()

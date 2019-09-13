@@ -1,7 +1,7 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2019年8月22日 20:30:01
+// Data: 2019年9月13日 20:28:02
 //------------------------------------------------------------
 
 using ETModel;
@@ -12,39 +12,38 @@ using UnityEditor;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Decorator/Service", typeof (NPBehaveCanvas))]
-    public class NP_ServiceNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Task/Wait", typeof (NPBehaveCanvas))]
+    public class NP_WaitNode: NP_NodeBase
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "服务结点";
+        private const string Id = "等待节点";
 
         /// <summary>
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("服务结点数据")]
-        public NP_ServiceNodeData NP_ServiceNodeData;
+        [LabelText("等待结点数据")]
+        public NP_WaitNodeData NP_WaitNodeData;
 
         private void OnEnable()
         {
-            if (NP_ServiceNodeData == null)
+            if (NP_WaitNodeData == null)
             {
-                this.NP_ServiceNodeData = new NP_ServiceNodeData { NodeType = NodeType.Decorator};
+                this.NP_WaitNodeData = new NP_WaitNodeData { NodeType = NodeType.Task };
             }
-
         }
 
         public override NP_NodeDataBase NP_GetNodeData()
         {
-            return NP_ServiceNodeData;
+            return NP_WaitNodeData;
         }
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_ServiceNodeData.NodeDes);
+            EditorGUILayout.TextField(NP_WaitNodeData.NodeDes);
         }
     }
 }
