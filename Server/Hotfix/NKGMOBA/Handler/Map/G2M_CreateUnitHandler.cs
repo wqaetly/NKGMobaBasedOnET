@@ -53,6 +53,8 @@ namespace ETHotfix
                 unitInfo.UnitId = u.Id;
                 createUnits.Units.Add(unitInfo);
             }
+            
+            Log.Info("已经到这一步了");
 
             //向所有小骷髅广播信息
             MessageHelper.Broadcast(createUnits);

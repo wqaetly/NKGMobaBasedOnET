@@ -165,7 +165,7 @@ namespace App
                         Game.Scene.AddComponent<NP_SyncComponent>();
                         Game.Scene.AddComponent<NP_RuntimeTreeRepository>();
 
-                        Game.Scene.AddComponent<TestDeSeriComponent>();
+                        //Game.Scene.AddComponent<TestDeSeriComponent>();
                         break;
                     case AppType.Benchmark:
                         Game.Scene.AddComponent<NetOuterComponent>();

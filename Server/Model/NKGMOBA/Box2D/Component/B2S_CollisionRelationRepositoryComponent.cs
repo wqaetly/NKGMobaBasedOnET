@@ -25,7 +25,8 @@ namespace ETModel
         /// <summary>
         /// 碰撞关系数据载体
         /// </summary>
-        public Dictionary<long, B2S_CollisionsRelationSupport> m_B2S_CollisionsRelationSupportDic = new Dictionary<long, B2S_CollisionsRelationSupport>();
+        public Dictionary<long, B2S_CollisionsRelationSupport> m_B2S_CollisionsRelationSupportDic =
+                new Dictionary<long, B2S_CollisionsRelationSupport>();
 
         /// <summary>
         /// 数据所处路径
@@ -59,7 +60,13 @@ namespace ETModel
         /// <returns></returns>
         public B2S_CollisionsRelationSupport GetB2S_CollisionsRelationSupportById(long id)
         {
-            return m_B2S_CollisionsRelationSupportDic[id];
+            if (this.m_B2S_CollisionsRelationSupportDic.ContainsKey(id))
+                return m_B2S_CollisionsRelationSupportDic[id];
+            else
+            {
+                Log.Error($"请求的碰撞关系载体不存在，id为{id}");
+                return null;
+            }
         }
     }
 }

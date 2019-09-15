@@ -66,8 +66,6 @@ namespace ETModel
                 Game.Scene.AddComponent<NP_RuntimeTreeRepository>();
 
                 Game.Scene.AddComponent<TestDeSeriComponent>();
-                //Game.Scene.AddComponent<TestHelloWorldComponent>();
-                // Game.Scene.AddComponent<TestDeSeriComponent>();
             }
             catch (Exception e)
             {
