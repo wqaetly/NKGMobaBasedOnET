@@ -15,14 +15,5 @@ namespace NodeEditorFramework
         {
             
         }
-        
-        /// <summary>
-        /// 自动设置每个节点所有相关联ID
-        /// </summary>
-        public virtual void AutoSetNodeNextAndPreIDs()
-        {
-            
-        }
- 
     }
 }

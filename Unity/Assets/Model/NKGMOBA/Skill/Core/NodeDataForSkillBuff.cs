@@ -10,8 +10,11 @@ namespace ETModel
 {
     public class NodeDataForSkillBuff: SkillBaseNodeData
     {
+        [LabelText("Buff描述")]
+        public string BuffDes;
+        
         [HideLabel]
         [Title("技能Buff模块")]
-        public SkillBuffBase SkillBuffBases;
+        public SkillBuffDataBase SkillBuffBases;
     }
 }

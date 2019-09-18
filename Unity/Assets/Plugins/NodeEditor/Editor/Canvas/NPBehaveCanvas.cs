@@ -37,7 +37,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [LabelText("反序列化测试")]
         public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
 
-        [Button("自动配置所有结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("自动配置所有行为树结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
             MNpDataSupportor.mNP_DataSupportorDic.Clear();
@@ -77,7 +77,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                     mNodeData.linkedID.Add(np_NodeBase.NP_GetNodeData().id);
                 }
 
-                Log.Info($"y:{VARIABLE1.position.y},x:{VARIABLE1.position.x},id:{mNodeDataID}");
+                //Log.Info($"y:{VARIABLE1.position.y},x:{VARIABLE1.position.x},id:{mNodeDataID}");
                 MNpDataSupportor.mNP_DataSupportorDic.Add(mNodeDataID, mNodeData);
             }
         }

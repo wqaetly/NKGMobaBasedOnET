@@ -15,16 +15,6 @@ namespace ETModel
     [BsonIgnoreExtraElements]
     public class NodeDataForStartSkill: SkillBaseNodeData
     {
-#if !SERVER
-        [TabGroup("基础信息")]
-        [PreviewField(Height = 50)]
-        [LabelText("技能图标")]
-        [GUIColor(1, 0.6f, 0.4f)]
-        [BsonIgnore]
-        public Sprite SkillSprite;
-
-
-#endif
         [TabGroup("基础信息")]
         [LabelText("技能名称")]
         [GUIColor(1, 0.6f, 0.4f)]
@@ -52,6 +42,13 @@ namespace ETModel
         [GUIColor(0.4f, 0.8f, 1)]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<int, float> SkillCD;
+        
+        [TabGroup("基础信息")]
+        [HideLabel]
+        [Title("技能消耗", Bold = false)]
+        [GUIColor(0.4f, 0.8f, 1)]
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<int, float> SkillCost;
 
         [TabGroup("基础信息")]
         [Title("技能类型", Bold = false)]
@@ -65,13 +62,6 @@ namespace ETModel
         [GUIColor(1, 0.6f, 0.4f)]
         [HideIf("SkillTypes", SkillTypes.Passive)]
         public SkillReleaseMode SkillReleaseMode;
-
-        [TabGroup("基础信息")]
-        [Title("技能目标", Bold = false)]
-        [HideLabel]
-        [GUIColor(1, 0.6f, 0.4f)]
-        [HideIf("SkillTypes", SkillTypes.Passive)]
-        public SkillTarget SkillTarget;
 
         [TabGroup("基础信息")]
         [Title("伤害类型", Bold = false)]

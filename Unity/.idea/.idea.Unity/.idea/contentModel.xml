@@ -858,10 +858,12 @@
               </e>
             </e>
             <e p="Buff" t="Include">
-              <e p="BuffBase.cs" t="Include" />
-              <e p="BuffManagerComponent.cs" t="Include" />
-              <e p="BuffPoolComponent.cs" t="Include" />
-              <e p="BuffState.cs" t="Include" />
+              <e p="Core" t="Include">
+                <e p="BuffBase.cs" t="Include" />
+                <e p="BuffManagerComponent.cs" t="Include" />
+                <e p="BuffPoolComponent.cs" t="Include" />
+                <e p="BuffState.cs" t="Include" />
+              </e>
               <e p="PhysicalDamgeBuff.cs" t="Include" />
             </e>
             <e p="Component" t="Include">
@@ -1064,10 +1066,12 @@
                 <e p="NodeDataForStartSkill.cs" t="Include" />
                 <e p="SkillBaseNodeData.cs" t="Include" />
                 <e p="SkillBuffDatas" t="Include">
-                  <e p="DamageBuff.cs" t="Include" />
-                  <e p="DelayBuff.cs" t="Include" />
+                  <e p="DamageBuff_Flash.cs" t="Include" />
+                  <e p="DamageBuff_Sustain.cs" t="Include" />
+                  <e p="DelayBuff_WithDamage.cs" t="Include" />
+                  <e p="DelayBuff_WithoutOtherEffect.cs" t="Include" />
                   <e p="SkillBuffBase" t="Include">
-                    <e p="SkillBuffBase.cs" t="Include" />
+                    <e p="SkillBuffDataBase.cs" t="Include" />
                   </e>
                 </e>
                 <e p="SkillEnums" t="Include">
@@ -1080,11 +1084,6 @@
                   <e p="SkillTarget.cs" t="Include" />
                   <e p="SkillTypes.cs" t="Include" />
                 </e>
-              </e>
-            </e>
-            <e p="SkillTestDemo" t="Include">
-              <e p="Test_Demo" t="Include">
-                <e p="SkillTest.cs" t="Include" />
               </e>
             </e>
             <e p="system" t="Include">
@@ -1515,30 +1514,33 @@
               <e p="Node_Editor" t="Include">
                 <e p="NodeEditorWindow.cs" t="Include" />
               </e>
-              <e p="NPBehaveNodes" t="Include">
-                <e p="Composite" t="Include">
-                  <e p="NP_ParallelNode.cs" t="Include" />
-                  <e p="NP_SelectorNode.cs" t="Include" />
-                  <e p="NP_SequenceNode.cs" t="Include" />
+              <e p="SkillSystemNodes" t="Include">
+                <e p="NPBehaveNodes" t="Include">
+                  <e p="Composite" t="Include">
+                    <e p="NP_ParallelNode.cs" t="Include" />
+                    <e p="NP_SelectorNode.cs" t="Include" />
+                    <e p="NP_SequenceNode.cs" t="Include" />
+                  </e>
+                  <e p="Decorator" t="Include">
+                    <e p="NP_BlackboardConditionNode.cs" t="Include" />
+                    <e p="NP_ServiceNode.cs" t="Include" />
+                  </e>
+                  <e p="NP_NodeBase.cs" t="Include" />
+                  <e p="NP_RootNode.cs" t="Include" />
+                  <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
+                  <e p="Task" t="Include">
+                    <e p="NP_ActionNode.cs" t="Include" />
+                    <e p="NP_WaitNode.cs" t="Include" />
+                    <e p="NP_WaitUntilStoppedNode.cs" t="Include" />
+                  </e>
                 </e>
-                <e p="Decorator" t="Include">
-                  <e p="NP_BlackboardConditionNode.cs" t="Include" />
-                  <e p="NP_ServiceNode.cs" t="Include" />
+                <e p="SkillData" t="Include">
+                  <e p="BuffNodes" t="Include">
+                    <e p="SkillBuffNode.cs" t="Include" />
+                    <e p="SkillNodeInputAndOutputTypes.cs" t="Include" />
+                  </e>
+                  <e p="SkillDescriptionNode.cs" t="Include" />
                 </e>
-                <e p="NP_NodeBase.cs" t="Include" />
-                <e p="NP_RootNode.cs" t="Include" />
-                <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
-                <e p="Task" t="Include">
-                  <e p="NP_ActionNode.cs" t="Include" />
-                  <e p="NP_WaitNode.cs" t="Include" />
-                  <e p="NP_WaitUntilStoppedNode.cs" t="Include" />
-                </e>
-              </e>
-              <e p="SkillNodes" t="Include">
-                <e p="CheckSkillNode.cs" t="Include" />
-                <e p="SkillBuffNode.cs" t="Include" />
-                <e p="SkillNodeInputAndOutputTypes.cs" t="Include" />
-                <e p="SkillStartNode.cs" t="Include" />
               </e>
             </e>
             <e p="Node_Editor" t="Include">
@@ -1601,20 +1603,6 @@
                   <e p="NodeEditorUserCache.cs" t="Include" />
                 </e>
               </e>
-              <e p="Nodes" t="Include">
-                <e p="Example" t="Include">
-                  <e p="AllAroundNode.cs" t="Include" />
-                  <e p="ExampleNode.cs" t="Include" />
-                  <e p="FlowNode.cs" t="Include" />
-                  <e p="ResizingNode.cs" t="Include" />
-                  <e p="RootGraphNode.cs" t="Include" />
-                </e>
-                <e p="FloatCalc" t="Include">
-                  <e p="CalcNode.cs" t="Include" />
-                  <e p="DisplayNode.cs" t="Include" />
-                  <e p="InputNode.cs" t="Include" />
-                </e>
-              </e>
               <e p="Resources" t="Include">
                 <e p="Shader" t="Include">
                   <e p="LineShader.shader" t="Include" />
@@ -1630,24 +1618,6 @@
                 <e p="link.xml" t="Include" />
                 <e p="ReflectionUtility.cs" t="Include" />
                 <e p="ResourceManager.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Texture_Composer" t="Include">
-              <e p="Nodes" t="Include">
-                <e p="ChannelBundleNode.cs" t="Include" />
-                <e p="TextureInfoNode.cs" t="Include" />
-                <e p="TextureInputNode.cs" t="Include" />
-                <e p="TextureOutputNode.cs" t="Include" />
-                <e p="TextureSplitNode.cs" t="Include" />
-              </e>
-              <e p="Resources" t="Include">
-                <e p="Shader" t="Include">
-                  <e p="GUITextureClip_ChannelControl.shader" t="Include" />
-                </e>
-              </e>
-              <e p="Texture_Composer.cs" t="Include" />
-              <e p="Utility" t="Include">
-                <e p="RTTextureViz.cs" t="Include" />
               </e>
             </e>
           </e>

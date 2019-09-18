@@ -496,10 +496,10 @@
     <Compile Include="Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_DataSupporter.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_PrefabData.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Buff\BuffBase.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Buff\BuffManagerComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Buff\BuffPoolComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Buff\BuffState.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Buff\Core\BuffBase.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Buff\Core\BuffManagerComponent.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Buff\Core\BuffPoolComponent.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Buff\Core\BuffState.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Buff\PhysicalDamgeBuff.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\AnimatorComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\CameraComponent.cs" />
@@ -626,9 +626,11 @@
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\NodeDataForSkillBuff.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\NodeDataForStartSkill.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBaseNodeData.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff_Flash.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff_Sustain.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff_WithDamage.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff_WithoutOtherEffect.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase\SkillBuffDataBase.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffTypes.cs" />
@@ -637,7 +639,6 @@
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillReleaseMode.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTarget.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillTypes.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\SkillTestDemo\Test_Demo\SkillTest.cs" />
     <Compile Include="Assets\Model\NKGMOBA\System\Player\PlayerFactory.cs" />
     <Compile Include="Assets\Model\NKGMOBA\System\Unit\UnitFactory.cs" />
     <Compile Include="Assets\Model\Other\AppType.cs" />

@@ -18,15 +18,6 @@ namespace ETModel
         [LabelText("技能花费")]
         public SkillCostTypes SkillCostTypes;
 
-        [LabelText("技能序号（QWER——1234）")]
-        public int SkillNumber;
-
-        [DictionaryDrawerSettings(KeyLabel = "技能等级", ValueLabel = "消耗值")]
-        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        [HideLabel]
-        [Title("技能消耗具体数据")]
-        public Dictionary<int, float> m_SkillRequestCost;
-
         public override Func<bool> GetFunc1ToBeDone()
         {
             this.m_Func1 = this.CheckCostToSpanSkill;
@@ -39,7 +30,7 @@ namespace ETModel
             switch (SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:
-                    if (heroDataComponent.CurrentMagicValue > this.m_SkillRequestCost[heroDataComponent.GetSkillLevel(this.SkillNumber)])
+                    if (heroDataComponent.CurrentMagicValue > 0)
                         return true;
                     else
                     {
@@ -48,7 +39,7 @@ namespace ETModel
                 case SkillCostTypes.Other:
                     return true;
                 case SkillCostTypes.HPValue:
-                    if (heroDataComponent.CurrentLifeValue > this.m_SkillRequestCost[heroDataComponent.GetSkillLevel(this.SkillNumber)])
+                    if (heroDataComponent.CurrentLifeValue > 0)
                         return true;
                     else
                     {

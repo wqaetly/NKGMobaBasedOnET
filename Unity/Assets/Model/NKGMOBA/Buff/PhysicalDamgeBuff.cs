@@ -8,9 +8,16 @@ namespace ETModel
 {
     public class PhysicalDamageBuff: BuffBase
     {
-        public override void OnInit()
+        /// <summary>
+        /// 最终伤害值
+        /// </summary>
+        public float finalDamageValue;
+        
+        public override void OnInit(NodeDataForSkillBuff nodeDataForSkillBuff, Unit unit)
         {
-            this.MBuffTypes = BuffTypes.BuffValue_Physical;
+            this.MBuffTypes = nodeDataForSkillBuff.SkillBuffBases.Base_BuffTypes;
+            finalDamageValue = unit.GetComponent<HeroDataComponent>().CurrentLevel;
+            this.MBuffState = BuffState.Waiting;
         }
 
         public override void OnExecute()
@@ -19,7 +26,6 @@ namespace ETModel
 
         public override void OnFinished()
         {
-            
         }
     }
 }
