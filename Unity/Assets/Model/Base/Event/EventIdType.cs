@@ -36,5 +36,9 @@
 
 		// 小地图寻路事件，用来传递目标点
 		public const string SmallMapPathFinder = "SmallMapPathFinder";
+		
+		//Buff奏效回调
+		public const string BuffCallBack = "BuffCallBack";
+
 	}
 }

@@ -15,6 +15,6 @@ namespace ETModel
         
         [HideLabel]
         [Title("技能Buff模块")]
-        public SkillBuffDataBase SkillBuffBases;
+        public BuffDataBase SkillBuffBases;
     }
 }

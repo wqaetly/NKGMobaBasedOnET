@@ -19,21 +19,24 @@ namespace ETModel
 
     public class BuffManagerComponent: Component
     {
-        LinkedList<BuffBase> m_Buffs = new LinkedList<BuffBase>();
+        /// <summary>
+        /// Buff链表
+        /// </summary>
+        public LinkedList<BuffSystemBase> m_Buffs = new LinkedList<BuffSystemBase>();
 
         public void Update()
         {
             //指向首链表地址
-            LinkedListNode<BuffBase> current = m_Buffs.First;
+            LinkedListNode<BuffSystemBase> current = m_Buffs.First;
             //轮询链表
             while (current != null)
             {
-                BuffBase buff = current.Value;
+                BuffSystemBase buff = current.Value;
                 if (buff.MBuffState == BuffState.Waiting)
                 {
                     buff.OnExecute();
                 }
-                else if(buff.MBuffState == BuffState.Running)
+                else if (buff.MBuffState == BuffState.Running)
                 {
                     buff.OnUpdate();
                 }
@@ -41,18 +44,18 @@ namespace ETModel
                 {
                     buff.OnFinished();
                     current = current.Next;
-                    LinkedListNode<BuffBase> next = current.Next;
+                    LinkedListNode<BuffSystemBase> next = current.Next;
                     m_Buffs.Remove(current);
                     current = next;
                     continue;
                 }
+
                 current = current.Next;
             }
         }
 
-        public void AddBuff(BuffBase buff)
+        public void AddBuff(BuffSystemBase buff)
         {
-            
             m_Buffs.AddLast(buff);
         }
     }

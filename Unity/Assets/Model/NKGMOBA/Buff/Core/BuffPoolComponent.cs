@@ -10,15 +10,15 @@ using System.Collections.Generic;
 namespace ETModel
 {
     /// <summary>
-    /// Buff池组件
+    /// Buff池组件,包括Buff的事件池化
     /// </summary>
     public class BuffPoolComponent: Component
     {
-        public Dictionary<Type, Queue<BuffBase>> MBuffBases = new Dictionary<Type, Queue<BuffBase>>();
+        public Dictionary<Type, Queue<BuffSystemBase>> MBuffBases = new Dictionary<Type, Queue<BuffSystemBase>>();
 
-        public T Acquire<T>() where T : BuffBase
+        public T AcquireBuff<T, A>(A a) where T : BuffSystemBase where A : BuffDataBase
         {
-            Queue<BuffBase> buffBase;
+            Queue<BuffSystemBase> buffBase;
             if (this.MBuffBases.TryGetValue(typeof (T), out buffBase))
             {
                 if (buffBase.Count > 0)
@@ -27,10 +27,12 @@ namespace ETModel
                 }
             }
 
-            return (T) Activator.CreateInstance(typeof (T));
+            T temp = (T) Activator.CreateInstance(typeof (T));
+            temp.MSkillBuffDataBase = a;
+            return temp;
         }
 
-        public void Recycle(BuffBase buffBase)
+        public void RecycleBuff(BuffSystemBase buffBase)
         {
             Type type = buffBase.GetType();
             if (this.MBuffBases.ContainsKey(type))
@@ -39,7 +41,7 @@ namespace ETModel
             }
             else
             {
-                Queue<BuffBase> temp = new Queue<BuffBase>();
+                Queue<BuffSystemBase> temp = new Queue<BuffSystemBase>();
                 temp.Enqueue(buffBase);
                 this.MBuffBases.Add(type, temp);
             }

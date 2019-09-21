@@ -36,6 +36,16 @@ namespace ETModel
 
         public float MaxMagicValue;
 
+        /// <summary>
+        /// 当前攻击力
+        /// </summary>
+        public float CurrentAttackValue;
+
+        /// <summary>
+        /// 当前法强
+        /// </summary>
+        public float CurrentSpellpower;
+
         public int Q_SkillLevel;
         public int W_SkillLevel;
         public int E_SkillLevel;

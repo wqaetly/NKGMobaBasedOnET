@@ -858,13 +858,16 @@
               </e>
             </e>
             <e p="Buff" t="Include">
+              <e p="ChangeLifeValueSystem.cs" t="Include" />
               <e p="Core" t="Include">
-                <e p="BuffBase.cs" t="Include" />
+                <e p="BattleEventSystem.cs" t="Include" />
                 <e p="BuffManagerComponent.cs" t="Include" />
                 <e p="BuffPoolComponent.cs" t="Include" />
                 <e p="BuffState.cs" t="Include" />
+                <e p="BuffSystemBase.cs" t="Include" />
               </e>
-              <e p="PhysicalDamgeBuff.cs" t="Include" />
+              <e p="DamgeBuffSystem.cs" t="Include" />
+              <e p="ListenBuffCallBackBuffSystem.cs" t="Include" />
             </e>
             <e p="Component" t="Include">
               <e p="AnimatorComponent.cs" t="Include" />
@@ -1066,11 +1069,14 @@
                 <e p="NodeDataForStartSkill.cs" t="Include" />
                 <e p="SkillBaseNodeData.cs" t="Include" />
                 <e p="SkillBuffDatas" t="Include">
-                  <e p="DamageBuff_Flash.cs" t="Include" />
-                  <e p="DamageBuff_Sustain.cs" t="Include" />
-                  <e p="DelayBuff_WithDamage.cs" t="Include" />
-                  <e p="DelayBuff_WithoutOtherEffect.cs" t="Include" />
-                  <e p="SkillBuffBase" t="Include">
+                  <e p="BindStateBuffData.cs" t="Include" />
+                  <e p="ChangeLifeValueData.cs" t="Include" />
+                  <e p="ChangeSpeedBuffData.cs" t="Include" />
+                  <e p="DamageBuffData.cs" t="Include" />
+                  <e p="ListenBuffCallBackDataBase" t="Include">
+                    <e p="ListenBuffDataCallBackDataBase.cs" t="Include" />
+                  </e>
+                  <e p="SkillBuffDataBase" t="Include">
                     <e p="SkillBuffDataBase.cs" t="Include" />
                   </e>
                 </e>

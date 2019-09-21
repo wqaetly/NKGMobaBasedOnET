@@ -11,16 +11,22 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    /// <summary>
-    /// 百分比加成的伤害
-    /// </summary>
-    public class DamageBuff_Flash: SkillBuffDataBase
+    public class DamageBuffData: BuffDataBase
     {
         [LabelText("伤害类型")]
         public BuffDamageTypes BuffDamageTypes;
-        
-        [LabelText("具体的加成百分比(可能会一个伤害多种加成方式)")]
-        public List<float> additionValue;
+
+        [LabelText("是否为持续伤害")]
+        [BsonIgnore]
+        public bool isSustainDamage = false;
+
+        [ShowIf("isSustainDamage")]
+        [LabelText("持续时间")]
+        public float SustainTime = 0;
+
+        [ShowIf("isSustainDamage")]
+        [LabelText("作用间隔")]
+        public float WorkInternal = 0;
 
         [LabelText("预伤害修正")]
         public float damageFix = 1.0f;

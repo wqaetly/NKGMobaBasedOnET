@@ -11,12 +11,19 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [GUIColor(0.4f, 0.8f, 1)]
-    public class SkillBuffDataBase
+    [GUIColor(193 / 255f, 255 / 255f, 193 / 255f)]
+    public class BuffDataBase
     {
         [Title("Buff基本信息")]
         [LabelText("Buff是否状态栏可见")]
         public bool Base_isVisualable;
+
+        [LabelText("归属的技能ID")]
+        public int BelongSkillId;
+        
+        [ShowIf("Base_isVisualable")]
+        [LabelText("Buff图标的名称")]
+        public string SpriteABInfo;
 
         [LabelText("Buff效果为")]
         public BuffWorkTypes Base_BuffExtraWork;
@@ -27,8 +34,8 @@ namespace ETModel
         [LabelText("Buff基础数值影响者")]
         public BuffEffectedTypes Base_BuffEffectedTypes;
 
-        [LabelText("Buff加成数值来自于")]
-        public BuffTypes Base_BuffTypes;
+        [LabelText("具体的加成百分比(可能会一个效果多种加成方式)")]
+        public Dictionary<BuffTypes, float> additionValue;
 
         [LabelText("将要被改变的数值，若键为-1，表明定值")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
