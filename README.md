@@ -45,3 +45,4 @@
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0626/082316_bde401fd_2253805.png "可视化技能编辑器以及行为树界面")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0630/130133_d3559984_2253805.png "战斗界面第二版")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0720/185840_f28e17e6_2253805.jpeg "Box2D编辑器界面")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0919/163758_138e22e9_2253805.png "技能系统架构.png")
