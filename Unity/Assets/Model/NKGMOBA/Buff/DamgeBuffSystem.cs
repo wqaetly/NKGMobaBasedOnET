@@ -44,11 +44,11 @@ namespace ETModel
             {
                 switch (VARIABLE.Key)
                 {
-                    case BuffTypes.BuffPercentage_Physical:
+                    case BuffAdditionTypes.Percentage_Physical:
                         this.finalDamageValue = finalDamageValue * VARIABLE.Value *
                                 theUnitFromHeroData.CurrentAttackValue;
                         break;
-                    case BuffTypes.BuffPercentage_Magic:
+                    case BuffAdditionTypes.Percentage_Magic:
                         this.finalDamageValue = finalDamageValue * VARIABLE.Value *
                                 theUnitFromHeroData.CurrentSpellpower;
                         break;
@@ -68,8 +68,9 @@ namespace ETModel
         {
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
             //抛出Buff奏效事件
-            //TODO 单独写一个事件系统，避免不必要的性能浪费，只关心本局战斗即可
-            Game.EventSystem.Run(EventIdType.BuffCallBack, this);
+            //单独写一个事件系统，避免不必要的性能浪费，只关心本局战斗即可
+            //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
+            //Game.EventSystem.Run(EventIdType.BuffCallBack, this);
         }
 
         public override void OnFinished()

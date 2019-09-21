@@ -65,6 +65,9 @@ namespace ETModel
                 Game.Scene.AddComponent<NP_SyncComponent>();
                 Game.Scene.AddComponent<NP_RuntimeTreeRepository>();
 
+                //Buff池组件
+                Game.Scene.AddComponent<BuffPoolComponent>();
+                
                 Game.Scene.AddComponent<TestDeSeriComponent>();
             }
             catch (Exception e)

@@ -25,6 +25,9 @@ namespace ETModel
         [LabelText("Buff图标的名称")]
         public string SpriteABInfo;
 
+        [LabelText("Buff的基本特征")]
+        public BuffBaseType BuffBaseType;
+        
         [LabelText("Buff效果为")]
         public BuffWorkTypes Base_BuffExtraWork;
 
@@ -34,8 +37,8 @@ namespace ETModel
         [LabelText("Buff基础数值影响者")]
         public BuffEffectedTypes Base_BuffEffectedTypes;
 
-        [LabelText("具体的加成百分比(可能会一个效果多种加成方式)")]
-        public Dictionary<BuffTypes, float> additionValue;
+        [LabelText("具体的加成(可能会一个效果多种加成方式)")]
+        public Dictionary<BuffAdditionTypes, float> additionValue;
 
         [LabelText("将要被改变的数值，若键为-1，表明定值")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
