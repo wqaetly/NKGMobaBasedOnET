@@ -36,8 +36,10 @@ namespace ETModel
             Type[] types = typeof (NodeType).Assembly.GetTypes();
             foreach (Type type in types)
             {
-                if (!type.IsSubclassOf(typeof (NP_NodeDataBase)) && !type.IsSubclassOf(typeof (NP_ClassForStoreAction)))
+                if (!type.IsSubclassOf(typeof (NP_NodeDataBase)) && !type.IsSubclassOf(typeof (NP_ClassForStoreAction)) &&
+                    !type.IsSubclassOf(typeof (SkillBaseNodeData))&&!type.IsSubclassOf(typeof (BuffDataBase)))
                 {
+                    
                     continue;
                 }
 
@@ -46,17 +48,15 @@ namespace ETModel
 
             DirectoryInfo directory = new DirectoryInfo(NPDataPath);
             FileInfo[] fileInfos = directory.GetFiles();
-            
+
             foreach (var VARIABLE in fileInfos)
             {
                 byte[] mfile = File.ReadAllBytes(VARIABLE.FullName);
 
                 if (mfile.Length == 0) Log.Info("没有读取到文件");
 
-                    NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
+                NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
 
-
-                Log.Info(VARIABLE.FullName);
                 NpRuntimeTrees.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
             }
         }

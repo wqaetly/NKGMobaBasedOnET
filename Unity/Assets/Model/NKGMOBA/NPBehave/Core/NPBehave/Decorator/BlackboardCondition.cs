@@ -24,6 +24,10 @@ namespace NPBehave
             {
                 return value;
             }
+            set
+            {
+                this.value = value;
+            }
         }
 
         public Operator Operator

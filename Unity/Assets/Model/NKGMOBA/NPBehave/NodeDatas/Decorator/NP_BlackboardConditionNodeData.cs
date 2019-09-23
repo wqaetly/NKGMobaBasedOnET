@@ -10,6 +10,13 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    public enum CompareType
+    {
+        _String,
+        _Float,
+        _Int,
+    }
+
     public class NP_BlackboardConditionNodeData: NP_NodeDataBase
     {
         [LabelText("黑板条件结点")]
@@ -24,10 +31,34 @@ namespace ETModel
         [LabelText("终止条件")]
         public Stops stop;
 
+        [LabelText("将要对比的值")]
+        public CompareType m_CompareType;
+
+        [ShowIf("m_CompareType", CompareType._String)]
+        public string theStringWillBeCompare;
+
+        [ShowIf("m_CompareType", CompareType._Float)]
+        public float theFloatWillBeCompare;
+
+        [ShowIf("m_CompareType", CompareType._Int)]
+        public int theIntWillBeCompare;
+
+        
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
         {
+            switch (m_CompareType)
+            {
+                case CompareType._String:
+                    this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.theStringWillBeCompare, this.stop, node);
+                    break;
+                case CompareType._Float:
+                    this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.theFloatWillBeCompare, this.stop, node);
+                    break;
+                case CompareType._Int:
+                    this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.theIntWillBeCompare, this.stop, node);
+                    break;
+            }
             //此处的value参数可以随便设，因为我们在游戏中这个value是需要动态改变的
-            this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, true, this.stop, node);
             return mBlackboardConditionNode;
         }
 

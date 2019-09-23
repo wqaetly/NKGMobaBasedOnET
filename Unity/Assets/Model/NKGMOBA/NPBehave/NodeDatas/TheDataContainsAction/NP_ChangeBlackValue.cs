@@ -29,8 +29,6 @@ namespace ETModel.TheDataContainsAction
             }
 
             theBlackBoardWillBedo["foo"] = !theBlackBoardWillBedo.Get<bool>("foo");
-            
-            //Log.Info($"改变了黑板值:{theBlackBoardWillBedo["foo"] }");
         }
     }
 }
