@@ -14,6 +14,7 @@ using NPBehave;
 using Plugins.NodeEditor.Editor.NPBehaveNodes;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.Canvas
@@ -37,8 +38,35 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [LabelText("反序列化测试")]
         public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
 
-        [Button("自动配置所有行为树结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("自动配置所有结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
+        {
+            this.AutoSetNP_NodeData();
+            this.AutoSetSkillData_NodeData();
+        }
+
+        [Button("保存行为树信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void Save()
+        {
+            using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
+            {
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MNpDataSupportor);
+            }
+
+            Debug.Log("保存成功");
+        }
+
+        [Button("测试反序列化", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void TestDe()
+        {
+            byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
+
+            if (mfile.Length == 0) Debug.Log("没有读取到文件");
+
+            MNpDataSupportor1 = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
+        }
+
+        private void AutoSetNP_NodeData()
         {
             MNpDataSupportor.mNP_DataSupportorDic.Clear();
 
@@ -46,8 +74,10 @@ namespace Plugins.NodeEditor.Editor.Canvas
 
             foreach (var VARIABLE in this.nodes)
             {
-                NP_NodeBase mNode = (NP_NodeBase) VARIABLE;
-                tempNode1.Add(mNode);
+                if (VARIABLE is NP_NodeBase mNode)
+                {
+                    tempNode1.Add(mNode);
+                }
             }
 
             tempNode1.Sort((x, y) => -x.position.y.CompareTo(y.position.y));
@@ -56,9 +86,9 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 VARIABLE.NP_GetNodeData().id = IdGenerater.GenerateId();
             }
-            
+
             MNpDataSupportor.RootId = tempNode1[tempNode1.Count - 1].NP_GetNodeData().id;
-            
+
             foreach (var VARIABLE1 in tempNode1)
             {
                 NP_NodeDataBase mNodeData = VARIABLE1.NP_GetNodeData();
@@ -82,25 +112,17 @@ namespace Plugins.NodeEditor.Editor.Canvas
             }
         }
 
-        [Button("保存行为树信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void Save()
+        private void AutoSetSkillData_NodeData()
         {
-            using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
+            MNpDataSupportor.mSkillDataDic.Clear();
+
+            foreach (var VARIABLE in this.nodes)
             {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), this.MNpDataSupportor);
+                if (VARIABLE is SkillNodeBase mNode)
+                {
+                    this.MNpDataSupportor.mSkillDataDic.Add(mNode.Skill_GetNodeData().NodeID, mNode.Skill_GetNodeData());
+                }
             }
-
-            Debug.Log("保存成功");
-        }
-
-        [Button("测试反序列化", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void TestDe()
-        {
-            byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
-
-            if (mfile.Length == 0) Debug.Log("没有读取到文件");
-
-            MNpDataSupportor1 = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
         }
     }
 }

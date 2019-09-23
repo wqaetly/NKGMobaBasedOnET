@@ -19,5 +19,9 @@ namespace ETModel
         [LabelText("单个行为树所有结点")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<long, NP_NodeDataBase> mNP_DataSupportorDic = new Dictionary<long, NP_NodeDataBase>();
+        
+        [LabelText("技能数据所有结点")]
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<long, SkillBaseNodeData> mSkillDataDic = new Dictionary<long, SkillBaseNodeData>();
     }
 }
