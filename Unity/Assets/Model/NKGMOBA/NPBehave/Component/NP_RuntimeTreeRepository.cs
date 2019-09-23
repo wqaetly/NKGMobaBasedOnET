@@ -14,9 +14,9 @@ using UnityEngine;
 namespace ETModel
 {
     [ObjectSystem]
-    public class NP_RuntimeTreeRepositoryAwakeSystem: AwakeSystem<NP_RuntimeTreeRepository>
+    public class NP_RuntimeTreeRepositoryAwakeSystem: AwakeSystem<NP_TreeDataRepository>
     {
-        public override void Awake(NP_RuntimeTreeRepository self)
+        public override void Awake(NP_TreeDataRepository self)
         {
             self.Awake();
         }
@@ -25,11 +25,11 @@ namespace ETModel
     /// <summary>
     /// 行为树数据仓库组件
     /// </summary>
-    public class NP_RuntimeTreeRepository: Component
+    public class NP_TreeDataRepository: Component
     {
         public const string NPDataPath = "../Config/NPBehaveConfig/";
 
-        public Dictionary<long, NP_DataSupportor> NpRuntimeTrees = new Dictionary<long, NP_DataSupportor>();
+        public Dictionary<long, NP_DataSupportor> NpRuntimeTreesDatas = new Dictionary<long, NP_DataSupportor>();
 
         public void Awake()
         {
@@ -37,9 +37,8 @@ namespace ETModel
             foreach (Type type in types)
             {
                 if (!type.IsSubclassOf(typeof (NP_NodeDataBase)) && !type.IsSubclassOf(typeof (NP_ClassForStoreAction)) &&
-                    !type.IsSubclassOf(typeof (SkillBaseNodeData))&&!type.IsSubclassOf(typeof (BuffDataBase)))
+                    !type.IsSubclassOf(typeof (SkillBaseNodeData)) && !type.IsSubclassOf(typeof (BuffDataBase)))
                 {
-                    
                     continue;
                 }
 
@@ -57,15 +56,15 @@ namespace ETModel
 
                 NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
 
-                NpRuntimeTrees.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
+                NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
             }
         }
 
-        public NP_DataSupportor GetNPRuntimeTree(long id)
+        public NP_DataSupportor GetNP_TreeData(long id)
         {
-            if (this.NpRuntimeTrees.ContainsKey(id))
+            if (this.NpRuntimeTreesDatas.ContainsKey(id))
             {
-                return NpRuntimeTrees[id];
+                return NpRuntimeTreesDatas[id].DeepCopy();
             }
 
             Log.Error($"请求的行为树id不存在，id为{id}");

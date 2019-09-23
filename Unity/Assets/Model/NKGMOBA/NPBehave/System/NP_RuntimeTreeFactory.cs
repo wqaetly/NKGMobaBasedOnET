@@ -19,20 +19,20 @@ namespace ETModel
         /// <returns></returns>
         public static NP_RuntimeTree CreateNpRuntimeTree(Unit unit, long NPDataId)
         {
-            NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_RuntimeTreeRepository>().GetNPRuntimeTree(NPDataId);
+            NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(NPDataId);
 
-            long theTreeID = IdGenerater.GenerateId();
-            
+            long theRuntimeTreeID = IdGenerater.GenerateId();
+
             //然后开始处理非叶子结点
             foreach (var VARIABLE in npDataSupportor.mNP_DataSupportorDic)
             {
                 switch (VARIABLE.Value.NodeType)
                 {
                     case NodeType.Task:
-                        VARIABLE.Value.CreateTask(unit.Id, theTreeID);
-                        break;  
+                        VARIABLE.Value.CreateTask(unit.Id, theRuntimeTreeID);
+                        break;
                     case NodeType.Decorator:
-                        VARIABLE.Value.CreateDecoratorNode(unit.Id, theTreeID,
+                        VARIABLE.Value.CreateDecoratorNode(unit.Id, theRuntimeTreeID,
                             npDataSupportor.mNP_DataSupportorDic[VARIABLE.Value.linkedID[0]].NP_GetNode());
                         break;
                     case NodeType.Composite:
@@ -47,11 +47,11 @@ namespace ETModel
                 }
             }
 
-            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root>(theTreeID,
-                (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode());
-            
-            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id,tempTree);
-            
+            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, long>(theRuntimeTreeID,
+                (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), NPDataId);
+
+            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, tempTree);
+
             return tempTree;
         }
     }

@@ -9,11 +9,11 @@ using NPBehave;
 namespace ETModel
 {
     [ObjectSystem]
-    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, Root>
+    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, Root, long>
     {
-        public override void Awake(NP_RuntimeTree self,Root mRoot)
+        public override void Awake(NP_RuntimeTree self, Root mRoot, long theNP_DataSupportIdBelongTo)
         {
-            self.Awake(mRoot);
+            self.Awake(mRoot, theNP_DataSupportIdBelongTo);
         }
     }
 
@@ -24,9 +24,15 @@ namespace ETModel
         /// </summary>
         public Root m_NPRuntimeTreeRootNode;
 
-        public void Awake(Root mRoot)
+        /// <summary>
+        /// 来自哪个数据块ID
+        /// </summary>
+        public long theNP_DataSupportIdBelongTo;
+
+        public void Awake(Root mRoot,long theNP_DataSupportIdBelongTo)
         {
             this.m_NPRuntimeTreeRootNode = mRoot;
+            this.theNP_DataSupportIdBelongTo = theNP_DataSupportIdBelongTo;
         }
 
         /// <summary>

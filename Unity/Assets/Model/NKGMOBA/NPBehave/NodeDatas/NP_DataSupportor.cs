@@ -4,6 +4,7 @@
 // Data: 2019年8月22日 8:06:52
 //------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
@@ -11,6 +12,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    [Serializable]
     public class NP_DataSupportor
     {
         [LabelText("此行为树根结点ID")]

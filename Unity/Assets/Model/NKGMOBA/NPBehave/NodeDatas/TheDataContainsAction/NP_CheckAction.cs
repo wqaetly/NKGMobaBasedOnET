@@ -15,11 +15,17 @@ namespace ETModel
 {
     public class NP_CheckAction: NP_ClassForStoreAction
     {
-        [LabelText("技能花费")]
-        public SkillCostTypes SkillCostTypes;
+        [LabelText("要引用的的数据结点ID")]
+        public long dataId;
+
+        public NodeDataForStartSkill m_NodeDataForStartSkill;
 
         public override Func<bool> GetFunc1ToBeDone()
         {
+            this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(Game.Scene
+                    .GetComponent<UnitComponent>()
+                    .Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>()
+                    .GetTree(this.RuntimeTreeID).theNP_DataSupportIdBelongTo).mSkillDataDic[dataId];
             this.m_Func1 = this.CheckCostToSpanSkill;
             return this.m_Func1;
         }
@@ -27,7 +33,7 @@ namespace ETModel
         private bool CheckCostToSpanSkill()
         {
             HeroDataComponent heroDataComponent = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<HeroDataComponent>();
-            switch (SkillCostTypes)
+            switch (m_NodeDataForStartSkill.SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:
                     if (heroDataComponent.CurrentMagicValue > 0)

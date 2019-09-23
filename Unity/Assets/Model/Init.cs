@@ -63,7 +63,7 @@ namespace ETModel
                 Game.Hotfix.GotoHotfix();
 
                 Game.Scene.AddComponent<NP_SyncComponent>();
-                Game.Scene.AddComponent<NP_RuntimeTreeRepository>();
+                Game.Scene.AddComponent<NP_TreeDataRepository>();
 
                 //Buff池组件
                 Game.Scene.AddComponent<BuffPoolComponent>();
