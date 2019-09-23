@@ -38,7 +38,7 @@ namespace ETModel
             m_Unit = ComponentFactory.CreateWithId<Unit>(1000003);
             unitComponent.Add(m_Unit);
             m_Unit.AddComponent<NP_RuntimeTreeManager>();
-            m_NP_RuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(m_Unit, 102841833095187);
+            m_NP_RuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(m_Unit, 102842094256153);
             m_NP_RuntimeTree.m_NPRuntimeTreeRootNode.Start();
         }
 

@@ -31,7 +31,7 @@ namespace ETModel
         [LabelText("终止条件")]
         public Stops stop;
 
-        [LabelText("将要对比的值")]
+        [LabelText("将要对比的值类型")]
         public CompareType m_CompareType;
 
         [ShowIf("m_CompareType", CompareType._String)]
