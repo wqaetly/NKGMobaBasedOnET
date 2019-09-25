@@ -4,6 +4,7 @@
 // Data: 2019年9月25日 13:59:03
 //------------------------------------------------------------
 
+using NPBehave;
 using Sirenix.OdinInspector;
 
 namespace ETModel
@@ -15,7 +16,7 @@ namespace ETModel
     {
         [LabelText("字典键")]
         public string DicKey;
-        
+
         [LabelText("指定的值类型")]
         public CompareType m_CompareType;
 
@@ -28,5 +29,40 @@ namespace ETModel
         [ShowIf("m_CompareType", CompareType._Int)]
         public int theIntValue;
 
+        /// <summary>
+        /// 自动根据预先设定的值设置值
+        /// </summary>
+        /// <param name="blackboard">要修改的黑板</param>
+        public void SetBlackBoardValue(Blackboard blackboard)
+        {
+            switch (m_CompareType)
+            {
+                case CompareType._String:
+                    blackboard[DicKey] = this.theStringValue;
+                    break;
+                case CompareType._Float:
+                    blackboard[DicKey] = this.theFloatValue;
+                    break;
+                case CompareType._Int:
+                    blackboard[DicKey] = this.theIntValue;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 自动根据传来的值设置值
+        /// </summary>
+        /// <param name="blackboard">将要改变的黑板值</param>
+        /// <param name="compareType">值类型</param>
+        /// <param name="value">值</param>
+        public void SetBlackBoardValue(Blackboard blackboard, CompareType compareType, object value)
+        {
+            if (compareType != this.m_CompareType)
+            {
+                Log.Error("要修改的值与预设类型不符");
+                return;
+            }
+            blackboard[DicKey] = value;
+        }
     }
 }

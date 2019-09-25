@@ -34,13 +34,15 @@ namespace ETHotfix
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
 
                 //添加英雄数据
-                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await ETHotfix.Game.Scene.GetComponent<SessionComponent>()
+                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
                         .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
 
                 ETModel.Game.Scene.GetComponent<UnitComponent>().Get(unitInfo.UnitId)
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
 
-                //ETModel.Log.Info($"成功添加英雄数据");
+                unit.AddComponent<NP_RuntimeTreeManager>();
+                NP_RuntimeTree m_NP_RuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102853512658974);
+                m_NP_RuntimeTree.m_NPRuntimeTreeRootNode.Start();
             }
 
             if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)
@@ -51,6 +53,7 @@ namespace ETHotfix
                 ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
                         .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
 
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.AddComponent<ListenPlayerInputCompoennt>();
                 Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }
 

@@ -158,12 +158,10 @@ namespace App
 
                         //增加英雄基础数据仓库组件
                         Game.Scene.AddComponent<HeroBaseDataRepositoryComponent>();
-                        //增加英雄技能数据仓库组件
-                        Game.Scene.AddComponent<HeroSkillDataRepositoryComponent>();
                         Game.Scene.AddComponent<CoroutineLockComponent>();
 
                         Game.Scene.AddComponent<NP_SyncComponent>();
-                        Game.Scene.AddComponent<NP_RuntimeTreeRepository>();
+                        Game.Scene.AddComponent<NP_TreeDataRepository>();
 
                         //Game.Scene.AddComponent<TestDeSeriComponent>();
                         break;

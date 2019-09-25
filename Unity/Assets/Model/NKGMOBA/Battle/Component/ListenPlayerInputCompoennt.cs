@@ -8,38 +8,32 @@
 namespace ETModel
 {
     [ObjectSystem]
-    public class TestDeSeriComponentAwakeSystem: AwakeSystem<TestDeSeriComponent>
+    public class TestDeSeriComponentAwakeSystem: AwakeSystem<ListenPlayerInputCompoennt>
     {
-        public override void Awake(TestDeSeriComponent self)
+        public override void Awake(ListenPlayerInputCompoennt self)
         {
             self.Awake();
         }
     }
 
     [ObjectSystem]
-    public class TestDeSeriComponentUpdateSystem: UpdateSystem<TestDeSeriComponent>
+    public class TestDeSeriComponentUpdateSystem: UpdateSystem<ListenPlayerInputCompoennt>
     {
-        public override void Update(TestDeSeriComponent self)
+        public override void Update(ListenPlayerInputCompoennt self)
         {
             self.Update();
         }
     }
     
-    public class TestDeSeriComponent: Component
+    public class ListenPlayerInputCompoennt: Component
     {
         private UserInputComponent userInputComponent;
-        private Unit m_Unit;
         private NP_RuntimeTree m_NP_RuntimeTree;
         
         public void Awake()
         {
             this.userInputComponent = Game.Scene.GetComponent<UserInputComponent>();
-            UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
-            m_Unit = ComponentFactory.CreateWithId<Unit>(1000003);
-            unitComponent.Add(m_Unit);
-            m_Unit.AddComponent<NP_RuntimeTreeManager>();
-            m_NP_RuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(m_Unit, 102842094256153);
-            m_NP_RuntimeTree.m_NPRuntimeTreeRootNode.Start();
+            this.m_NP_RuntimeTree = this.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByPrefabID(102853512658974);
         }
 
         public void Update()

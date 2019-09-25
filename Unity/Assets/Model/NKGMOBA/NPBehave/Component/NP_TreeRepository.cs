@@ -64,7 +64,7 @@ namespace ETModel
         {
             if (this.NpRuntimeTreesDatas.ContainsKey(id))
             {
-                return NpRuntimeTreesDatas[id].DeepCopy();
+                return NpRuntimeTreesDatas[id];
             }
 
             Log.Error($"请求的行为树id不存在，id为{id}");

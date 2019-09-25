@@ -46,7 +46,7 @@ namespace ETModel
         /// </summary>
         public float CurrentSpellpower;
 
-        public int Q_SkillLevel;
+        public int Q_SkillLevel = 1;
         public int W_SkillLevel;
         public int E_SkillLevel;
         public int R_SkillLevel;

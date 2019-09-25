@@ -486,6 +486,8 @@
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs" />
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" />
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Battle\Component\HeroSkillBehaveComponent.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Battle\Component\ListenPlayerInputCompoennt.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Box2DSharp\CollisionRelations\B2S_AllCollideableObject.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Box2DSharp\CollisionRelations\B2S_CollisionInstance.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Box2DSharp\CollisionRelations\B2S_CollisionRelationSupport.cs" />
@@ -508,7 +510,6 @@
     <Compile Include="Assets\Model\NKGMOBA\Component\CameraComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\GameObjectPool.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\Gate\HeartBeatComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Component\HeroSkillBehaveComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\MoveComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\PlayerComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Component\SessionComponent.cs" />
@@ -552,9 +553,8 @@
     <Compile Include="Assets\Model\NKGMOBA\HeroData\NodeDataForHero.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeRepository.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_SyncComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\TestDeSeriComponent.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_TreeRepository.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\TestHelloWorldComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Core\Log\Log.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Blackboard.cs" />
@@ -610,7 +610,8 @@
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_ActionNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitUntilStoppedData.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValue.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValueAction.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeUnitPropertyAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs" />

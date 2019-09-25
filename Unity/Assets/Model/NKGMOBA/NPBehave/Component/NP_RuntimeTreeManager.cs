@@ -12,22 +12,55 @@ namespace ETModel
     {
         public Dictionary<long, NP_RuntimeTree> RuntimeTrees = new Dictionary<long, NP_RuntimeTree>();
 
-        public void AddTree(long id, NP_RuntimeTree npRuntimeTree)
+        /// <summary>
+        /// 已经添加过的行为树，string为名称，long为id
+        /// </summary>
+        public Dictionary<long, long> hasAddedTrees = new Dictionary<long, long>();
+
+        /// <summary>
+        /// 添加行为树
+        /// </summary>
+        /// <param name="runTimeID">行为树运行时ID</param>
+        /// <param name="id">行为树在预配置中的id，即根节点id</param>
+        /// <param name="npRuntimeTree">要添加的行为树</param>
+        public void AddTree(long runTimeID, long prefabID, NP_RuntimeTree npRuntimeTree)
         {
-            RuntimeTrees.Add(id, npRuntimeTree);
+            RuntimeTrees.Add(runTimeID, npRuntimeTree);
+            this.hasAddedTrees.Add(prefabID, runTimeID);
         }
 
-        public NP_RuntimeTree GetTree(long id)
+        /// <summary>
+        /// 通过运行时ID请求行为树
+        /// </summary>
+        /// <param name="runTimeid">运行时ID</param>
+        /// <returns></returns>
+        public NP_RuntimeTree GetTreeByRuntimeID(long runTimeid)
         {
-            if (RuntimeTrees.ContainsKey(id))
+            if (RuntimeTrees.ContainsKey(runTimeid))
             {
-                return RuntimeTrees[id];
+                return RuntimeTrees[runTimeid];
             }
 
-            Log.Error($"请求的ID不存在，id是{id}");
+            Log.Error($"通过运行时ID请求行为树请求的ID不存在，id是{runTimeid}");
             return null;
         }
 
+        /// <summary>
+        /// 通过预制id请求行为树(将要废弃)
+        /// </summary>
+        /// <param name="prefabid">预制id</param>
+        /// <returns></returns>
+        public NP_RuntimeTree GetTreeByPrefabID(long prefabid)
+        {
+            if (this.hasAddedTrees.ContainsKey(prefabid))
+            {
+                return RuntimeTrees[hasAddedTrees[prefabid]];
+            }
+
+            Log.Error($"通过预制id请求行为树,请求的ID不存在，id是{prefabid}");
+            return null;
+        }
+        
         public void RemoveTree(long id)
         {
             if (RuntimeTrees.ContainsKey(id))

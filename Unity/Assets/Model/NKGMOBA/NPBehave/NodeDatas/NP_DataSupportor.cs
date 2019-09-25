@@ -12,12 +12,11 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [Serializable]
     public class NP_DataSupportor
     {
         [LabelText("此行为树根结点ID")]
         public long RootId;
-        
+
         [LabelText("单个行为树所有结点")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<long, NP_NodeDataBase> mNP_DataSupportorDic = new Dictionary<long, NP_NodeDataBase>();

@@ -839,6 +839,12 @@
             </e>
           </e>
           <e p="NKGMOBA" t="Include">
+            <e p="Battle" t="Include">
+              <e p="Component" t="Include">
+                <e p="HeroSkillBehaveComponent.cs" t="Include" />
+                <e p="ListenPlayerInputCompoennt.cs" t="Include" />
+              </e>
+            </e>
             <e p="Box2DSharp" t="Include">
               <e p="CollisionRelations" t="Include">
                 <e p="B2S_AllCollideableObject.cs" t="Include" />
@@ -876,7 +882,6 @@
               <e p="Gate" t="Include">
                 <e p="HeartBeatComponent.cs" t="Include" />
               </e>
-              <e p="HeroSkillBehaveComponent.cs" t="Include" />
               <e p="MoveComponent.cs" t="Include" />
               <e p="PlayerComponent.cs" t="Include" />
               <e p="SessionComponent.cs" t="Include" />
@@ -951,9 +956,8 @@
               <e p="Component" t="Include">
                 <e p="NP_RuntimeTree.cs" t="Include" />
                 <e p="NP_RuntimeTreeManager.cs" t="Include" />
-                <e p="NP_RuntimeTreeRepository.cs" t="Include" />
                 <e p="NP_SyncComponent.cs" t="Include" />
-                <e p="TestDeSeriComponent.cs" t="Include" />
+                <e p="NP_TreeRepository.cs" t="Include" />
                 <e p="TestHelloWorldComponent.cs" t="Include" />
               </e>
               <e p="Core" t="Include">
@@ -1034,7 +1038,8 @@
                   <e p="NP_WaitUntilStoppedData.cs" t="Include" />
                 </e>
                 <e p="TheDataContainsAction" t="Include">
-                  <e p="NP_ChangeBlackValue.cs" t="Include" />
+                  <e p="NP_ChangeBlackValueAction.cs" t="Include" />
+                  <e p="NP_ChangeUnitPropertyAction.cs" t="Include" />
                   <e p="NP_CheckAction.cs" t="Include" />
                   <e p="NP_ClassForStoreAction.cs" t="Include" />
                   <e p="NP_LogAction.cs" t="Include" />

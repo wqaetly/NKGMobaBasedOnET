@@ -67,8 +67,7 @@ namespace ETModel
 
                 //Buff池组件
                 Game.Scene.AddComponent<BuffPoolComponent>();
-                
-                Game.Scene.AddComponent<TestDeSeriComponent>();
+               
             }
             catch (Exception e)
             {

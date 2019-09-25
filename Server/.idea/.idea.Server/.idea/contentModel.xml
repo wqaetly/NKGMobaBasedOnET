@@ -270,28 +270,35 @@
           </e>
         </e>
         <e p="NKGMOBA" t="Include">
+          <e p="Battle" t="Include">
+            <e p="Box2D" t="Include">
+              <e p="Component" t="Include">
+                <e p="B2S_ColliderDataRepositoryComponent.cs" t="Include" />
+                <e p="B2S_CollisionListenerComponent.cs" t="Include" />
+                <e p="B2S_CollisionRelationRepositoryComponent.cs" t="Include" />
+                <e p="B2S_CollisionResponseComponent.cs" t="Include" />
+                <e p="B2S_HeroColliderDataManagerComponent.cs" t="Include" />
+                <e p="B2S_WorldComponent.cs" t="Include" />
+              </e>
+              <e p="Entity" t="Include">
+                <e p="B2S_HeroColliderData.cs" t="Include" />
+              </e>
+              <e p="system" t="Include">
+                <e p="B2S_HeroColliderDataComponentFactory.cs" t="Include" />
+              </e>
+              <e p="Utility" t="Include">
+                <e p="B2S_BodyUtility.cs" t="Include" />
+                <e p="B2S_FixtureUtility.cs" t="Include" />
+                <e p="B2S_WorldUtility.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Box2D" t="Include">
             <e p="ColliderData" t="Include" />
             <e p="CollisionRelations" t="Include" />
-            <e p="Component" t="Include">
-              <e p="B2S_ColliderDataRepositoryComponent.cs" t="Include" />
-              <e p="B2S_CollisionListenerComponent.cs" t="Include" />
-              <e p="B2S_CollisionRelationRepositoryComponent.cs" t="Include" />
-              <e p="B2S_CollisionResponseComponent.cs" t="Include" />
-              <e p="B2S_HeroColliderDataManagerComponent.cs" t="Include" />
-              <e p="B2S_WorldComponent.cs" t="Include" />
-            </e>
-            <e p="Entity" t="Include">
-              <e p="B2S_HeroColliderData.cs" t="Include" />
-            </e>
-            <e p="system" t="Include">
-              <e p="B2S_HeroColliderDataComponentFactory.cs" t="Include" />
-            </e>
-            <e p="Utility" t="Include">
-              <e p="B2S_BodyUtility.cs" t="Include" />
-              <e p="B2S_FixtureUtility.cs" t="Include" />
-              <e p="B2S_WorldUtility.cs" t="Include" />
-            </e>
+          </e>
+          <e p="Buff" t="Include">
+            <e p="Core" t="Include" />
           </e>
           <e p="Component" t="Include">
             <e p="Gate" t="Include">
@@ -349,13 +356,13 @@
           <e p="SessionInfoComponent.cs" t="Include" />
           <e p="SessionPlayerComponent.cs" t="Include" />
           <e p="Skill" t="Include">
-            <e p="Component" t="Include">
-              <e p="HeroSkillDataRepositoryComponent.cs" t="Include" />
-            </e>
             <e p="Core" t="Include">
               <e p="AnimationCore" t="Include" />
               <e p="Bson" t="Include" />
-              <e p="SkillBuffDatas" t="Include" />
+              <e p="SkillBuffDatas" t="Include">
+                <e p="ListenBuffCallBackDataBase" t="Include" />
+                <e p="SkillBuffDataBase" t="Include" />
+              </e>
               <e p="SkillEnums" t="Include" />
             </e>
           </e>
@@ -2143,6 +2150,14 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_ColliderDataStructureBase.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_DataSupporter.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\ChangeLifeValueSystem.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\Core\BattleEventSystem.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffManagerComponent.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffPoolComponent.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffState.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffSystemBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\DamgeBuffSystem.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Buff\ListenBuffCallBackBuffSystem.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\CodeTimeCostObserver.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\HeroBaseDataRepositoryComponent.cs" t="Include" />
@@ -2152,9 +2167,8 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\HeroData\NodeDataForHero.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeRepository.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_SyncComponent.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\TestDeSeriComponent.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_TreeRepository.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\TestHelloWorldCOmponent.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\Log\Log.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Blackboard.cs" t="Include" />
@@ -2203,28 +2217,31 @@
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_ServiceNodeData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NodeType.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_BlackBoardRelationData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_DataSupportor.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_NodeDataBase.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_RootNodeData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_ActionNodeData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitNodeData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitUntilStoppedData.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValue.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\system\NP_RuntimeTreeFactory.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\Bson\NodeDataSupporter.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForCheckSkill.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForSkillBuff.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForStartSkill.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBaseNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\BindStateBuffData.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangeLifeValueData.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangeSpeedBuffData.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuffData.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ListenBuffCallBackDataBase\ListenBuffDataCallBackDataBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffDataBase\BuffDataBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffAdditionTypes.cs" t="Include" />
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffBaseType.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffWorkTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillCostTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\SkillReleaseMode.cs" t="Include" />

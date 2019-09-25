@@ -22,8 +22,7 @@ namespace ETModel
             NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(NPDataId);
 
             long theRuntimeTreeID = IdGenerater.GenerateId();
-
-            //然后开始处理非叶子结点
+            Log.Info($"运行时id为{theRuntimeTreeID}");
             foreach (var VARIABLE in npDataSupportor.mNP_DataSupportorDic)
             {
                 switch (VARIABLE.Value.NodeType)
@@ -50,7 +49,7 @@ namespace ETModel
             NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, long>(theRuntimeTreeID,
                 (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), NPDataId);
 
-            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, tempTree);
+            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, npDataSupportor.RootId, tempTree);
 
             return tempTree;
         }

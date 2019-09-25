@@ -44,7 +44,6 @@ namespace ETModel
             });
 
 
-
             CLRBindings.Initialize(appdomain);
 
             // 注册适配器
