@@ -22,42 +22,33 @@ namespace ETModel
         [LabelText("黑板条件结点")]
         public BlackboardCondition mBlackboardConditionNode;
 
-        [LabelText("字典键")]
-        public string DicKey;
-
         [LabelText("运算符号")]
         public Operator mOpe;
 
         [LabelText("终止条件")]
         public Stops stop;
 
-        [LabelText("将要对比的值类型")]
-        public CompareType m_CompareType;
+        [LabelText("黑板相关数据")]
+        public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
-        [ShowIf("m_CompareType", CompareType._String)]
-        public string theStringWillBeCompare;
-
-        [ShowIf("m_CompareType", CompareType._Float)]
-        public float theFloatWillBeCompare;
-
-        [ShowIf("m_CompareType", CompareType._Int)]
-        public int theIntWillBeCompare;
-
-        
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
         {
-            switch (m_CompareType)
+            switch (m_NPBalckBoardRelationData.m_CompareType)
             {
                 case CompareType._String:
-                    this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.theStringWillBeCompare, this.stop, node);
+                    this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey, this.mOpe,
+                        this.m_NPBalckBoardRelationData.theStringValue, this.stop, node);
                     break;
                 case CompareType._Float:
-                    this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.theFloatWillBeCompare, this.stop, node);
+                    this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey, this.mOpe,
+                        this.m_NPBalckBoardRelationData.theFloatValue, this.stop, node);
                     break;
                 case CompareType._Int:
-                    this.mBlackboardConditionNode = new BlackboardCondition(DicKey, this.mOpe, this.theIntWillBeCompare, this.stop, node);
+                    this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey, this.mOpe,
+                        this.m_NPBalckBoardRelationData.theIntValue, this.stop, node);
                     break;
             }
+
             //此处的value参数可以随便设，因为我们在游戏中这个value是需要动态改变的
             return mBlackboardConditionNode;
         }

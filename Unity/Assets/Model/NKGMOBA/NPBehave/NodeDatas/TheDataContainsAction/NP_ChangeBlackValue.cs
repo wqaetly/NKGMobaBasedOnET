@@ -14,20 +14,8 @@ namespace ETModel.TheDataContainsAction
     {
         public Blackboard theBlackBoardWillBedo;
 
-        [LabelText("将要被改变的黑板键")]
-        public string theKey;
-
-        [LabelText("将要对比的值类型")]
-        public CompareType m_CompareType;
-
-        [ShowIf("m_CompareType", CompareType._String)]
-        public string theValue_string;
-
-        [ShowIf("m_CompareType", CompareType._Int)]
-        public float theValue_int;
-
-        [ShowIf("m_CompareType", CompareType._Float)]
-        public int theValue_float;
+        [LabelText("黑板相关数据")]
+        public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Action GetActionToBeDone()
         {
@@ -40,16 +28,16 @@ namespace ETModel.TheDataContainsAction
             theBlackBoardWillBedo = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>()
                     .GetTree(this.RuntimeTreeID)
                     .GetBlackboard();
-            switch (m_CompareType)
+            switch (m_NPBalckBoardRelationData.m_CompareType)
             {
                 case CompareType._String:
-                    theBlackBoardWillBedo[theKey] = this.theValue_string;
+                    theBlackBoardWillBedo[m_NPBalckBoardRelationData.DicKey] = this.m_NPBalckBoardRelationData.theStringValue;
                     break;
                 case CompareType._Float:
-                    theBlackBoardWillBedo[theKey] = this.theValue_float;
+                    theBlackBoardWillBedo[m_NPBalckBoardRelationData.DicKey] = this.m_NPBalckBoardRelationData.theFloatValue;
                     break;
                 case CompareType._Int:
-                    theBlackBoardWillBedo[theKey] = this.theValue_int;
+                    theBlackBoardWillBedo[m_NPBalckBoardRelationData.DicKey] = this.m_NPBalckBoardRelationData.theIntValue;
                     break;
             }
 

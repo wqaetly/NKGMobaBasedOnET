@@ -46,19 +46,19 @@ namespace ETModel
         {
             if (this.userInputComponent.QDown)
             {
-                this.m_NP_RuntimeTree.GetBlackboard()["UserSkillInput"] = "Q";
+                this.m_NP_RuntimeTree.GetBlackboard()["PlayerInput"] = "QInput";
             }
             if (this.userInputComponent.WDown)
             {
-                this.m_NP_RuntimeTree.GetBlackboard()["UserSkillInput"] = "W";
+                this.m_NP_RuntimeTree.GetBlackboard()["PlayerInput"] = "WInput";
             }
             if (this.userInputComponent.EDown)
             {
-                this.m_NP_RuntimeTree.GetBlackboard()["UserSkillInput"] = "E";
+                this.m_NP_RuntimeTree.GetBlackboard()["PlayerInput"] = "EInput";
             }
             if (this.userInputComponent.RDown)
             {
-                this.m_NP_RuntimeTree.GetBlackboard()["UserSkillInput"] = "R";
+                this.m_NP_RuntimeTree.GetBlackboard()["PlayerInput"] = "RInput";
             }
         }
     }

@@ -27,6 +27,9 @@ namespace ETModel
         [LabelText("将要检查的技能ID（QWER：0123）")]
         public int theSkillIDBelongTo;
 
+        [LabelText("黑板相关数据")]
+        public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
+
         public override Func<bool> GetFunc1ToBeDone()
         {
             this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(Game.Scene
