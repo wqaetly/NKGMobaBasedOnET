@@ -33,7 +33,7 @@ namespace ETModel
         public void Awake()
         {
             this.userInputComponent = Game.Scene.GetComponent<UserInputComponent>();
-            this.m_NP_RuntimeTree = this.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByPrefabID(102853512658974);
+            this.m_NP_RuntimeTree = this.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByPrefabID(102859210555481);
         }
 
         public void Update()

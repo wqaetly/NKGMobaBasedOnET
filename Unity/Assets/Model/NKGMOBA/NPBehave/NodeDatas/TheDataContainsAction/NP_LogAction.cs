@@ -12,7 +12,7 @@ namespace ETModel.TheDataContainsAction
     public class NP_LogAction:NP_ClassForStoreAction
     {
         [LabelText("打印信息")]
-        public string LogInfo; 
+        public string LogInfo;
         
         public override Action GetActionToBeDone()
         {

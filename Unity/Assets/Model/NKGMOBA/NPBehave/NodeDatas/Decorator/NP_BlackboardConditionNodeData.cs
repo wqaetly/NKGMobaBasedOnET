@@ -15,6 +15,7 @@ namespace ETModel
         _String,
         _Float,
         _Int,
+        _Bool
     }
 
     public class NP_BlackboardConditionNodeData: NP_NodeDataBase
@@ -46,6 +47,10 @@ namespace ETModel
                 case CompareType._Int:
                     this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey, this.mOpe,
                         this.m_NPBalckBoardRelationData.theIntValue, this.stop, node);
+                    break;
+                case CompareType._Bool:
+                    this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey, this.mOpe,
+                        this.m_NPBalckBoardRelationData.theBoolValue, this.stop, node);
                     break;
             }
 

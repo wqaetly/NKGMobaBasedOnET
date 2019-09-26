@@ -16,8 +16,6 @@ namespace ETHotfix
             Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
             if (message.Message == "Q")
                 unit.GetComponent<HeroSkillBehaveComponent>().OnQSkillPressed();
-            if(message.Message=="E")
-                unit.GetComponent<HeroSkillBehaveComponent>().OnESkillPressed();
             await ETTask.CompletedTask;
         }
     }

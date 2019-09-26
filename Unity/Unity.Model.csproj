@@ -601,6 +601,7 @@
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_SequenceNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardConditionNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_RepeaterNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_ServiceNodeData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\NodeType.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_BlackBoardRelationData.cs" />
@@ -615,6 +616,8 @@
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_PlayAnimationAction.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_WaitAChangeableTime.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\System\NP_RuntimeTreeFactory.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\UnityExamples\NPBehaveExampleClockThrottling.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\UnityExamples\NPBehaveExampleEnemyAI.cs" />
@@ -1324,6 +1327,10 @@
     <ProjectReference Include="Unity.ThirdParty.csproj">
       <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
       <Name>Unity.ThirdParty</Name>
+    </ProjectReference>
+    <ProjectReference Include="Animancer.csproj">
+      <Project>{F6659E15-63D3-6D1A-EC57-6DB30DA1B98F}</Project>
+      <Name>Animancer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,8 +24,6 @@ namespace ETModel
     public class HeroSkillBehaveComponent: Component
     {
         private Unit MyHero;
-
-        private AnimatorComponent animatorComponent;
         private Transform headPos;
         private Transform channelPos;
         private Transform groundPos;
@@ -38,8 +36,6 @@ namespace ETModel
         public void Awake()
         {
             this.MyHero = this.GetParent<Unit>();
-
-            this.animatorComponent = this.MyHero.GetComponent<AnimatorComponent>();
             this.headPos = this.MyHero.GameObject.Get<GameObject>("C_BuffBone_Glb_Overhead_Loc").transform;
             this.groundPos = this.MyHero.GameObject.Get<GameObject>("BUFFBONE_GLB_GROUND_LOC").transform;
             this.channelPos = this.MyHero.GameObject.Get<GameObject>("BUFFBONE_GLB_CHANNEL_LOC").transform;
@@ -61,27 +57,6 @@ namespace ETModel
             {
                 this.Q_Par.Play();
             }
-
-            this.animatorComponent.SetBoolValue("ToIdel", false);
-            this.animatorComponent.SetBoolValue("ToRun", false);
-            this.animatorComponent.SetTrigger("ToSpell1");
-        }
-
-        public void OnWSkillPressed()
-        {
-            this.animatorComponent.SetTrigger("ToSpell2");
-            this.animatorComponent.SetBoolValue("ToIdel", false);
-            this.animatorComponent.SetBoolValue("ToRun", false);
-        }
-
-        public void OnESkillPressed()
-        {
-            this.animatorComponent.SetTrigger("ToSpell3");
-        }
-
-        public void OnRSkillPressed()
-        {
-            this.animatorComponent.SetTrigger("ToSpell4");
         }
     }
 }

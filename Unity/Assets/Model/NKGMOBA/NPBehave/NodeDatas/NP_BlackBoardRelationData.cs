@@ -29,6 +29,9 @@ namespace ETModel
         [ShowIf("m_CompareType", CompareType._Int)]
         public int theIntValue;
 
+        [ShowIf("m_CompareType", CompareType._Bool)]
+        public bool theBoolValue;
+
         /// <summary>
         /// 自动根据预先设定的值设置值
         /// </summary>
@@ -45,6 +48,9 @@ namespace ETModel
                     break;
                 case CompareType._Int:
                     blackboard[DicKey] = this.theIntValue;
+                    break;
+                case CompareType._Bool:
+                    blackboard[DicKey] = this.theBoolValue;
                     break;
             }
         }

@@ -41,7 +41,7 @@ namespace ETHotfix
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
 
                 unit.AddComponent<NP_RuntimeTreeManager>();
-                NP_RuntimeTree m_NP_RuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102853512658974);
+                NP_RuntimeTree m_NP_RuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102859210555481);
                 m_NP_RuntimeTree.m_NPRuntimeTreeRootNode.Start();
             }
 
