@@ -4,6 +4,7 @@
 // Data: 2019年8月21日 7:14:44
 //------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using NPBehave;
 using Sirenix.OdinInspector;

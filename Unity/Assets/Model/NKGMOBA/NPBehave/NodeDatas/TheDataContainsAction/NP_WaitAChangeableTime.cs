@@ -53,16 +53,10 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                 tempBlackboard =  this.m_Unit.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard();
 
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
-                this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(Game.Scene
-                        .GetComponent<UnitComponent>()
-                        .Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID).theNP_DataSupportIdBelongTo).mSkillDataDic[dataId];
+                this.m_NodeDataForStartSkill = (NodeDataForStartSkill)Game.Scene.GetComponent<UnitComponent>().Get(Unitid).GetComponent<NP_RuntimeTreeManager>()
+                        .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.mSkillDataDic[this.dataId];
                 tempBlackboard[NpBlackBoardRelationData.DicKey] =
                         m_NodeDataForStartSkill.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.theSkillIDBelongTo)];
-                this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(Game.Scene
-                        .GetComponent<UnitComponent>()
-                        .Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID).theNP_DataSupportIdBelongTo).mSkillDataDic[dataId];
                 Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }

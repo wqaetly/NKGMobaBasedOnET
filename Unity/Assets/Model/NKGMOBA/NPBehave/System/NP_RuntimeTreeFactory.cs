@@ -19,7 +19,7 @@ namespace ETModel
         /// <returns></returns>
         public static NP_RuntimeTree CreateNpRuntimeTree(Unit unit, long NPDataId)
         {
-            NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(NPDataId);
+            NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(NPDataId);
 
             long theRuntimeTreeID = IdGenerater.GenerateId();
             Log.Info($"运行时id为{theRuntimeTreeID}");
@@ -46,8 +46,8 @@ namespace ETModel
                 }
             }
 
-            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, long>(theRuntimeTreeID,
-                (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), NPDataId);
+            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, NP_DataSupportor>(theRuntimeTreeID,
+                (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), npDataSupportor);
 
             unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, npDataSupportor.RootId, tempTree);
 

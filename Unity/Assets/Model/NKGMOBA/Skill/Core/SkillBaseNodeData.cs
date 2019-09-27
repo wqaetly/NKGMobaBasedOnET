@@ -4,8 +4,7 @@
 // Data: 2019年5月17日 20:57:44
 //------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System;
 using Sirenix.OdinInspector;
 
 namespace ETModel

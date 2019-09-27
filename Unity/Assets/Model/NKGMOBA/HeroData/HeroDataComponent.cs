@@ -11,7 +11,7 @@ namespace ETModel
     {
         public override void Awake(HeroDataComponent self, long a)
         {
-            self.NodeDataForHero = Game.Scene.GetComponent<HeroBaseDataRepositoryComponent>().GetHeroDataById(a);
+            self.NodeDataForHero = Game.Scene.GetComponent<HeroBaseDataRepositoryComponent>().GetHeroDataById_DeepCopy(a);
             self.MaxLifeValue = self.NodeDataForHero.OriHP + self.NodeDataForHero.ExtHP + self.NodeDataForHero.GroHP;
             self.CurrentLifeValue = self.MaxLifeValue;
             self.MaxMagicValue = self.NodeDataForHero.OriMagicValue + self.NodeDataForHero.ExtMagicValue + self.NodeDataForHero.GroMagicValue;

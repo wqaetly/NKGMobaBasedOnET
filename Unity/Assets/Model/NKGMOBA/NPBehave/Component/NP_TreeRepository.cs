@@ -60,11 +60,16 @@ namespace ETModel
             }
         }
 
-        public NP_DataSupportor GetNP_TreeData(long id)
+        /// <summary>
+        /// 获取一棵树的所有数据（通过深拷贝形式）
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public NP_DataSupportor GetNP_TreeData_DeepCopy(long id)
         {
             if (this.NpRuntimeTreesDatas.ContainsKey(id))
             {
-                return NpRuntimeTreesDatas[id];
+                return NpRuntimeTreesDatas[id].DeepCopy();
             }
 
             Log.Error($"请求的行为树id不存在，id为{id}");

@@ -38,10 +38,8 @@ namespace ETModel
 
         private bool CheckCostToSpanSkill()
         {
-            this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(Game.Scene
-                    .GetComponent<UnitComponent>()
-                    .Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>()
-                    .GetTreeByRuntimeID(this.RuntimeTreeID).theNP_DataSupportIdBelongTo).mSkillDataDic[dataId];
+            this.m_NodeDataForStartSkill = (NodeDataForStartSkill)Game.Scene.GetComponent<UnitComponent>().Get(Unitid).GetComponent<NP_RuntimeTreeManager>()
+                    .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.mSkillDataDic[this.dataId];
             //TODO 相关状态检测，例如沉默，眩晕等,下面是示例代码
             /*
             if (Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<BuffManagerComponent>()
