@@ -25,10 +25,9 @@ namespace EThotfix
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(a);
             B2S_HeroColliderData heroColliderData = unit.GetComponent<B2S_HeroColliderDataManagerComponent>()
                     .CreateHeroColliderData(unit, b, c);
-            
-            heroColliderData.m_Unit.Position = unit.Position;
-            heroColliderData.m_Unit.Rotation = unit.Rotation;
-            heroColliderData.SetColliderBodyTransform();
+
+            //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参
+            heroColliderData.SyncBody();
 
             //下面这一部分是Debug用的，稳定后请去掉
             {

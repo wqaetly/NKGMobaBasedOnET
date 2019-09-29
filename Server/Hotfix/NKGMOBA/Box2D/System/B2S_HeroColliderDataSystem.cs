@@ -4,12 +4,13 @@
 // Data: 2019年8月4日 16:31:14
 //------------------------------------------------------------
 
-using System.Numerics;
 using Box2DSharp.Collision.Shapes;
 using Box2DSharp.Common;
 using Box2DSharp.Dynamics;
 using ETMode;
 using ETModel;
+using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 namespace ETHotfix
 {
@@ -81,7 +82,7 @@ namespace ETHotfix
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
             if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit && !Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().IsLocked)
             {
-                self.SetColliderBodyTransform();
+                self.SyncBody();
                 //Log.Info($"进行了位置移动，数据结点为{self.ID}");
             }
         }
@@ -90,14 +91,14 @@ namespace ETHotfix
     public static class B2S_HeroColliderComponentHelper
     {
         /// <summary>
-        /// 设置刚体位置
+        /// 同步刚体（依据归属Unit）
         /// </summary>
         /// <param name="self"></param>
         /// <param name="pos"></param>
-        public static void SetColliderBodyTransform(this B2S_HeroColliderData self)
+        public static void SyncBody(this B2S_HeroColliderData self)
         {
-            self.SetColliderBodyPos(new Vector2(self.m_Unit.Position.x, self.m_Unit.Position.z));
-            self.SetColliderBodyAngle(-UnityEngine.Quaternion.QuaternionToEuler(self.m_Unit.Rotation).y * Settings.Pi / 180);
+            self.SetColliderBodyPos(new Vector2(self.m_BelongUnit.Position.x, self.m_BelongUnit.Position.z));
+            self.SetColliderBodyAngle(-Quaternion.QuaternionToEuler(self.m_BelongUnit.Rotation).y * Settings.Pi / 180);
         }
 
         /// <summary>
@@ -107,7 +108,9 @@ namespace ETHotfix
         /// <param name="pos"></param>
         public static void SetColliderBodyPos(this B2S_HeroColliderData self, Vector2 pos)
         {
+            self.m_Unit.Position = new Vector3(pos.X, pos.Y, 0);
             self.m_Body.SetTransform(pos, self.m_Body.GetAngle());
+            //Log.Info($"位置为{pos}");
         }
 
         /// <summary>
@@ -117,6 +120,7 @@ namespace ETHotfix
         /// <param name="angle"></param>
         public static void SetColliderBodyAngle(this B2S_HeroColliderData self, float angle)
         {
+            self.m_Unit.Rotation = Quaternion.Euler(0, angle, 0);
             self.m_Body.SetTransform(self.m_Body.GetPosition(), angle);
         }
 

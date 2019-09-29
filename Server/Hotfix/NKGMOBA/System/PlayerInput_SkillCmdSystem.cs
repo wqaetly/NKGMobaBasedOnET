@@ -29,10 +29,8 @@ namespace ETHotfix
         /// <param name="skillCmd"></param>
         public static void BroadcastB2S_ColliderData(Unit unit, B2S_HeroColliderData heroColliderData, string skillCmd)
         {
+            heroColliderData.SyncBody();
 
-            heroColliderData.SetColliderBodyTransform();
-
-            
             //广播碰撞体信息
             foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
             {
