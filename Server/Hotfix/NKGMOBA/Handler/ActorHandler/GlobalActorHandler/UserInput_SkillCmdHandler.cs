@@ -17,7 +17,7 @@ namespace ETHotfix
             {
                 B2S_HeroColliderData m_heroQ = entity.GetComponent<B2S_HeroColliderDataManagerComponent>()
                         .CreateHeroColliderData(entity, 10001, 10001);
-                
+
                 B2S_HeroColliderData m_heroSelf = entity.GetComponent<B2S_HeroColliderDataManagerComponent>()
                         .CreateHeroColliderData(entity, 10001, 10006);
 

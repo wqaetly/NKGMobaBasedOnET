@@ -31,7 +31,7 @@ namespace ETHotfix
         {
             M2C_UserInput_SkillCmd m2CUserInputSkillCmd = new M2C_UserInput_SkillCmd() { Message = skillCmd, Id = unit.Id };
 
-            //广播技能指令
+            //广播技能指令(BroadcastSkillCmd),让客户端行为树做出反应
             MessageHelper.Broadcast(m2CUserInputSkillCmd);
 
             heroColliderData.m_Unit.Position = unit.Position;

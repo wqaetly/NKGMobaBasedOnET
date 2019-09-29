@@ -42,7 +42,7 @@ namespace ETHotfix
             PathfindingComponent pathfindingComponent = Game.Scene.GetComponent<PathfindingComponent>();
             self.ABPath = ComponentFactory.Create<ABPathWrap, Vector3, Vector3>(unit.Position, new Vector3(target.x, target.y, target.z));
             pathfindingComponent.Search(self.ABPath);
-            Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
+            //Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
             
             self.CancellationTokenSource?.Cancel();
             self.CancellationTokenSource = new CancellationTokenSource();
