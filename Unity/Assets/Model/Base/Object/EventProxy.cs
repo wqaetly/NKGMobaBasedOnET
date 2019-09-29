@@ -42,5 +42,15 @@ namespace ETModel
 			this.param.Add(c);
 			this.action.Invoke(this.param);
 		}
+		
+		public void Handle(object a, object b, object c,object d)
+		{
+			this.param.Clear();
+			this.param.Add(a);
+			this.param.Add(b);
+			this.param.Add(c);
+			this.param.Add(d);
+			this.action.Invoke(this.param);
+		}
 	}
 }

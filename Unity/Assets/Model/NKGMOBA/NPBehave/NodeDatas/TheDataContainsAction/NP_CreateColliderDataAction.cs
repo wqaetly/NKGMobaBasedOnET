@@ -5,19 +5,20 @@
 //------------------------------------------------------------
 
 using System;
+using ETModel;
 using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
 
 namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 {
-    public class NP_CreateColliderData:NP_ClassForStoreAction
+    public class NP_CreateColliderData: NP_ClassForStoreAction
     {
         [LabelText("要生成的碰撞数据载体ID")]
         public long supportDataID;
-        
+
         [LabelText("要生成的碰撞数据ID")]
         public long colliderDataID;
-        
+
         public override Action GetActionToBeDone()
         {
             this.m_Action = this.CreateColliderData;
@@ -26,7 +27,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 
         public void CreateColliderData()
         {
-            
+            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.RuntimeTreeID, this.supportDataID, this.colliderDataID);
         }
     }
 }
