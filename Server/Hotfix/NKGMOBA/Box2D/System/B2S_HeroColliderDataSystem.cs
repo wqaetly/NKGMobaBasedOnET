@@ -4,9 +4,7 @@
 // Data: 2019年8月4日 16:31:14
 //------------------------------------------------------------
 
-using Box2DSharp.Collision.Shapes;
 using Box2DSharp.Common;
-using Box2DSharp.Dynamics;
 using ETMode;
 using ETModel;
 using UnityEngine;
@@ -15,11 +13,12 @@ using Vector2 = System.Numerics.Vector2;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_HeroColliderDataAwakeSystem: AwakeSystem<B2S_HeroColliderData, B2S_CollisionInstance, long>
+    public class B2S_HeroColliderDataAwakeSystem: AwakeSystem<B2S_HeroColliderData, B2S_CollisionInstance, long, int>
     {
-        public override void Awake(B2S_HeroColliderData self, B2S_CollisionInstance b2SCollisionInstance, long id)
+        public override void Awake(B2S_HeroColliderData self, B2S_CollisionInstance b2SCollisionInstance, long id, int flagID)
         {
             self.ID = id;
+            self.flagID = flagID;
             self.m_B2S_CollisionInstance = b2SCollisionInstance;
             self.m_Unit = ComponentFactory.Create<Unit>();
             self.m_BelongUnit = (Unit) self.Entity;

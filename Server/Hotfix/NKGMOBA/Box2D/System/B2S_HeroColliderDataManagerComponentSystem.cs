@@ -35,6 +35,7 @@ namespace ETHotfix
                         //Log.Info($"复用的碰撞数据,ID为{nodeDataId}");
                         return VARIABLE.Key.Item3;
                     }
+
                     flag++;
                 }
             }
@@ -50,14 +51,25 @@ namespace ETHotfix
 
             //创建数据，并以英雄作为父Entity
             B2S_HeroColliderData b2SHeroColliderData =
-                    ComponentFactory.CreateWithParent<B2S_HeroColliderData, B2S_CollisionInstance, long>(unit,
+                    ComponentFactory.CreateWithParent<B2S_HeroColliderData, B2S_CollisionInstance, long, int>(unit,
                         b2SCollisionsRelationSupport.B2S_CollisionsRelationDic[nodeDataId],
-                        nodeDataId);
+                        nodeDataId, flag);
 
             self.AllColliderData
                     .Add((b2SHeroColliderData.ID, flag, b2SHeroColliderData), false);
             Log.Info($"新建的碰撞数据.ID为{nodeDataId}");
             return b2SHeroColliderData;
+        }
+
+        /// <summary>
+        /// 回收碰撞数据
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="supportorId">所处碰撞关系数据载体id</param>
+        /// <param name="nodeDataId">结点ID</param>
+        public static void RecycleColliderData(this B2S_HeroColliderData self)
+        {
+            self.m_Unit.GetComponent<B2S_HeroColliderDataManagerComponent>().AllColliderData[(self.ID, self.flagID, self)] = false;
         }
     }
 }
