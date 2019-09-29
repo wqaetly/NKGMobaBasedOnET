@@ -27,7 +27,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 
         public void CreateColliderData()
         {
-            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.RuntimeTreeID, this.supportDataID, this.colliderDataID);
+            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.supportDataID, this.colliderDataID);
         }
     }
 }

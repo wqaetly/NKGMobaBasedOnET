@@ -54,9 +54,21 @@ namespace ETModel
 
                 if (mfile.Length == 0) Log.Info("没有读取到文件");
 
-                NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
+                try
+                {
+                    NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
+                
+                    Log.Info("反序列化行为树我完成");
+                    
+                    NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
 
-                NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
+
             }
         }
 

@@ -32,6 +32,7 @@ namespace ETModel
         
         [TabGroup("技能动画")]
         [HideLabel]
+        [BsonIgnore]
         public List<AnimationData> m_AnimationData;
 
         [TabGroup("基础信息")]

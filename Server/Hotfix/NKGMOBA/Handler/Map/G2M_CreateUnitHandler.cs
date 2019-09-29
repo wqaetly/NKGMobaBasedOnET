@@ -26,6 +26,12 @@ namespace ETHotfix
 
             unit.AddComponent<HeroDataComponent, long>(10001);
 
+            unit.AddComponent<NP_RuntimeTreeManager>();
+
+            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102874373685265);
+            
+            npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
+
             //设置小骷髅位置
             unit.Position = new Vector3(-10, 0, -10);
 
@@ -53,7 +59,7 @@ namespace ETHotfix
                 unitInfo.UnitId = u.Id;
                 createUnits.Units.Add(unitInfo);
             }
-            
+
             Log.Info("已经到这一步了");
 
             //向所有小骷髅广播信息
