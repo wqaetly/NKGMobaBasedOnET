@@ -18,7 +18,6 @@ namespace ETModel
     {
         /// <summary>
         /// 深拷贝
-        /// 注意：T必须标识为可序列化[Serializable]
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>

@@ -29,7 +29,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Model\Server.Model.csproj" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Hotfix\Server.Hotfix.csproj" />
+  </ItemGroup>
+  
   <ItemGroup>
     <None Update="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

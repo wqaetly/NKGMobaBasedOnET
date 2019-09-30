@@ -23,15 +23,16 @@ namespace ETHotfix
 
             //Log.Info("创建自身碰撞体");
             unit.GetComponent<B2S_HeroColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
-
+            //Log.Info("碰撞体创建完成");
             unit.AddComponent<HeroDataComponent, long>(10001);
 
             unit.AddComponent<BuffManagerComponent>();
 
             unit.AddComponent<NP_RuntimeTreeManager>();
 
-            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102874373685265);
-            
+            //Log.Info("开始创建行为树");
+            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102881705066515);
+            //Log.Info("行为树创建完成");
             npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
 
             //设置小骷髅位置

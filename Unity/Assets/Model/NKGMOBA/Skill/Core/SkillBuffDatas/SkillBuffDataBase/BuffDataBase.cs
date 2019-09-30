@@ -42,6 +42,7 @@ namespace ETModel
         public BuffEffectedTypes Base_BuffEffectedTypes;
 
         [LabelText("具体的加成(可能会一个效果多种加成方式)")]
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<BuffAdditionTypes, float> additionValue;
 
         [LabelText("将要被改变的数值，若键为-1，表明定值")]

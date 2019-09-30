@@ -60,17 +60,6 @@ namespace ETModel
 
 		public Unit[] GetAll()
 		{
-			//TODO:这是迎合行为树的测试代码，之后要删去
-			List<Unit> temp = new List<Unit>();
-			foreach (var VARIABLE in idUnits)
-			{
-				if (VARIABLE.Key != 1000003)
-				{
-					temp.Add(VARIABLE.Value);
-				}
-			}
-
-			return temp.ToArray();
 			return this.idUnits.Values.ToArray();
 		}
 	}

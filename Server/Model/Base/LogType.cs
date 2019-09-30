@@ -6,5 +6,6 @@
 		Info,
 		Debug,
 		Error,
+		
 	}
 }

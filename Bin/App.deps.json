@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.2": {
       "App/1.0.0": {
         "dependencies": {
+          "Hotfix": "1.0.0",
           "Model": "1.0.0",
           "NLog": "4.5.4"
         },
@@ -1295,6 +1296,17 @@
           "Google.Protobuf.dll": {}
         }
       },
+      "Hotfix/1.0.0": {
+        "dependencies": {
+          "Model": "1.0.0",
+          "MongoDB.Bson": "0.0.0-local",
+          "MongoDB.Driver": "0.0.0-local",
+          "MongoDB.Driver.Core": "0.0.0-local"
+        },
+        "runtime": {
+          "Hotfix.dll": {}
+        }
+      },
       "KcpLib/1.0.0": {
         "runtime": {
           "KcpLib.dll": {}
@@ -2028,6 +2040,11 @@
       "sha512": ""
     },
     "Google.Protobuf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hotfix/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
