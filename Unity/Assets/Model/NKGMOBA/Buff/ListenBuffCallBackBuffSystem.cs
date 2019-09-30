@@ -13,8 +13,6 @@ namespace ETModel
     {
         public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
         {
-            //先设置Buff类型
-            this.MBuffWorkTypes = BuffDataBase.Base_BuffExtraWork;
             //设置Buff来源Unit和归属Unit
             this.theUnitFrom = theUnitFrom;
             this.theUnitBelongto = theUnitBelongto;

@@ -18,7 +18,7 @@ namespace ETModel
             self.CurrentMagicValue = self.MaxMagicValue;
         }
     }
-    
+
     /// <summary>
     /// 英雄数据组件，负责管理英雄数据
     /// </summary>

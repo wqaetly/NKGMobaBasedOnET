@@ -26,6 +26,8 @@ namespace ETHotfix
 
             unit.AddComponent<HeroDataComponent, long>(10001);
 
+            unit.AddComponent<BuffManagerComponent>();
+
             unit.AddComponent<NP_RuntimeTreeManager>();
 
             NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102874373685265);

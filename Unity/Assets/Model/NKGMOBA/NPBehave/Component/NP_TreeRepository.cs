@@ -58,7 +58,7 @@ namespace ETModel
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
                 
-                    Log.Info("反序列化行为树我完成");
+                    Log.Info("反序列化行为树完成");
                     
                     NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }

@@ -13,9 +13,8 @@ using Sirenix.OdinInspector;
 namespace ETModel
 {
     /// <summary>
-    /// 英雄基本数据，实现Serializable是为了迎合深Copy
+    /// 英雄基本数据
     /// </summary>
-    [Serializable]
     public class NodeDataForHero
     {
         [LabelText("此结点(英雄数据结点)ID为")]

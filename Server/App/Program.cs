@@ -163,7 +163,8 @@ namespace App
                         Game.Scene.AddComponent<NP_SyncComponent>();
                         Game.Scene.AddComponent<NP_TreeDataRepository>();
 
-                        //Game.Scene.AddComponent<TestDeSeriComponent>();
+                        //增加Buff池组件
+                        Game.Scene.AddComponent<BuffPoolComponent>();
                         break;
                     case AppType.Benchmark:
                         Game.Scene.AddComponent<NetOuterComponent>();

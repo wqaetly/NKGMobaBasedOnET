@@ -10,8 +10,6 @@ namespace ETModel
 {
     public abstract class BuffSystemBase
     {
-        public BuffWorkTypes MBuffWorkTypes;
-
         public BuffState MBuffState;
 
         /// <summary>

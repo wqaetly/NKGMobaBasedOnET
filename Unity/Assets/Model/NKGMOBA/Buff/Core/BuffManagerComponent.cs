@@ -48,7 +48,7 @@ namespace ETModel
                     current = current.Next;
                     LinkedListNode<BuffSystemBase> next = current.Next;
                     m_Buffs.Remove(current);
-                    m_BuffsForFind[current.Value.MBuffWorkTypes].Remove(current.Value);
+                    m_BuffsForFind[current.Value.MSkillBuffDataBase.Base_BuffExtraWork].Remove(current.Value);
                     current = next;
                     continue;
                 }
@@ -60,13 +60,13 @@ namespace ETModel
         public void AddBuff(BuffSystemBase buff)
         {
             m_Buffs.AddLast(buff);
-            if (this.m_BuffsForFind.ContainsKey(buff.MBuffWorkTypes))
+            if (this.m_BuffsForFind.ContainsKey(buff.MSkillBuffDataBase.Base_BuffExtraWork))
             {
-                m_BuffsForFind[buff.MBuffWorkTypes].Add(buff);
+                m_BuffsForFind[buff.MSkillBuffDataBase.Base_BuffExtraWork].Add(buff);
             }
             else
             {
-                m_BuffsForFind.Add(buff.MBuffWorkTypes, new List<BuffSystemBase>() { buff });
+                m_BuffsForFind.Add(buff.MSkillBuffDataBase.Base_BuffExtraWork, new List<BuffSystemBase>() { buff });
             }
         }
 
