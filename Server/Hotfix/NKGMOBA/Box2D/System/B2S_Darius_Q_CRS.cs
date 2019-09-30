@@ -5,6 +5,7 @@
 // Description: 此代码switch case与System部分由工具生成，请勿进行增减操作
 //------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using ETModel;
 using UnityEngine;
@@ -39,7 +40,7 @@ namespace ETHotfix
             {
                 case 10006: //诺克：自身
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(102881705066515).mSkillDataDic;
+                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(102882148810772).mSkillDataDic;
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
                     
@@ -48,10 +49,19 @@ namespace ETHotfix
                         2.3f)
                     {
                         Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
-                        b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                .AddBuff(buffPoolComponent.AcquireBuff<DamageBuffSystem>(
-                                    ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
-                                    ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
+                        try
+                        {
+                            b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
+                                    .AddBuff(buffPoolComponent.AcquireBuff<DamageBuffSystem>(
+                                        ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
+                                        ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                            throw;
+                        }
+
                     }
                     else
                     {

@@ -58,6 +58,7 @@ namespace ETModel
 
             //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
+            Log.Info($"预计造成{this.finalDamageValue}伤害");
             //设置Buff状态为就绪
             this.MBuffState = BuffState.Waiting;
         }
@@ -65,6 +66,8 @@ namespace ETModel
         public override void OnExecute()
         {
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
+            Log.Info($"造成了{this.finalDamageValue}伤害");
+            this.MBuffState = BuffState.Finished;
             //抛出Buff奏效事件
             //单独写一个事件系统，避免不必要的性能浪费，只关心本局战斗即可
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件

@@ -26,7 +26,7 @@ namespace ETModel
     {
         public NodeDataForHero NodeDataForHero;
 
-        public int CurrentLevel;
+        public int CurrentLevel ;
 
         public float CurrentLifeValue;
 
@@ -39,7 +39,7 @@ namespace ETModel
         /// <summary>
         /// 当前攻击力
         /// </summary>
-        public float CurrentAttackValue;
+        public float CurrentAttackValue = 10;
 
         /// <summary>
         /// 当前法强
