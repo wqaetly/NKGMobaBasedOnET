@@ -162,7 +162,8 @@ namespace App
 
                         Game.Scene.AddComponent<NP_SyncComponent>();
                         Game.Scene.AddComponent<NP_TreeDataRepository>();
-
+                        //战斗系统中的事件系统组件，一场战斗挂载一个，这里是Demo，就直接挂在Game.Scene里
+                        Game.Scene.AddComponent<BattleEventSystem>();
                         //增加Buff池组件
                         Game.Scene.AddComponent<BuffPoolComponent>();
                         break;

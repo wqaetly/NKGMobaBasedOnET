@@ -17,20 +17,21 @@ namespace ETModel
             this.theUnitFrom = theUnitFrom;
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
-            //强制类型转换为Buff事件
-            ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
+
             //取得归属Unit的Hero数据，用以计算数据
             HeroDataComponent theUnitFromHeroData = this.theUnitFrom.GetComponent<HeroDataComponent>();
         }
 
         public override void OnExecute()
         {
-            //TODO 调用当前战斗中的BattleEventSystem来监听MSkillBuffDataBase的事件 
+            //强制类型转换为Buff事件
+            ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
+            Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent(temp.EventId, temp.ListenBuffEventBase);
         }
 
         public override void OnFinished()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

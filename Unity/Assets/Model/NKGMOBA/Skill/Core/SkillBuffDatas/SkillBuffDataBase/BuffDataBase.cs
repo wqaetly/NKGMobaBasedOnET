@@ -4,6 +4,7 @@
 // Data: 2019年5月14日 22:44:27
 //------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
@@ -20,7 +21,10 @@ namespace ETModel
 
         [LabelText("归属的技能ID")]
         public int BelongSkillId;
-        
+
+        [LabelText("归属的BuffSystem类型")]
+        public Type BelongBuffSystemType;
+
         [ShowIf("Base_isVisualable")]
         [LabelText("Buff图标的名称")]
         public string SpriteABInfo;

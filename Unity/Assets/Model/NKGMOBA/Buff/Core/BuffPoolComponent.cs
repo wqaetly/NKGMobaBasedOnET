@@ -16,19 +16,54 @@ namespace ETModel
     {
         public Dictionary<Type, Queue<BuffSystemBase>> MBuffBases = new Dictionary<Type, Queue<BuffSystemBase>>();
 
-        public T AcquireBuff<T, A>(A a) where T : BuffSystemBase where A : BuffDataBase
+        /// <summary>
+        /// 取得Buff
+        /// </summary>
+        /// <param name="buffDataBase">Buff数据</param>
+        /// <param name="theUnitFrom">Buff来源者</param>
+        /// <param name="theUnitBelongTo">Buff寄生者</param>
+        /// <typeparam name="T">要取得的具体Buff</typeparam>
+        /// <returns></returns>
+        public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : BuffSystemBase
         {
             Queue<BuffSystemBase> buffBase;
             if (this.MBuffBases.TryGetValue(typeof (T), out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
-                    return (T) buffBase.Dequeue();
+                    T tempBuffBase = (T) buffBase.Dequeue();
+                    tempBuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+                    return tempBuffBase;
                 }
             }
 
             T temp = (T) Activator.CreateInstance(typeof (T));
-            temp.MSkillBuffDataBase = a;
+            temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+            return temp;
+        }
+
+        /// <summary>
+        /// 取得Buff
+        /// </summary>
+        /// <param name="buffDataBase">Buff数据</param>
+        /// <param name="theUnitFrom">Buff来源者</param>
+        /// <param name="theUnitBelongTo">Buff寄生者</param>
+        /// <returns></returns>
+        public BuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
+        {
+            Queue<BuffSystemBase> buffBase;
+            if (this.MBuffBases.TryGetValue(buffDataBase.BelongBuffSystemType, out buffBase))
+            {
+                if (buffBase.Count > 0)
+                {
+                    BuffSystemBase tempBuffBase = buffBase.Dequeue();
+                    tempBuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+                    return tempBuffBase;
+                }
+            }
+
+            BuffSystemBase temp = (BuffSystemBase) Activator.CreateInstance(buffDataBase.BelongBuffSystemType);
+            temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return temp;
         }
 

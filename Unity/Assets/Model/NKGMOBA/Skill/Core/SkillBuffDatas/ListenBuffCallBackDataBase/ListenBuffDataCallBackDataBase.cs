@@ -4,7 +4,9 @@
 // Data: 2019年9月21日 10:09:03
 //------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using ILRuntime.Runtime;
 using Sirenix.OdinInspector;
 
 namespace ETModel
@@ -25,7 +27,7 @@ namespace ETModel
             foreach (var VARIABLE in m_BuffsWillBeAdded)
             {
                 a.theUnitFrom.GetComponent<BuffManagerComponent>()
-                        .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff<BuffSystemBase, BuffDataBase>(VARIABLE));
+                        .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitFrom, a.theUnitBelongto));
             }
         }
     }
@@ -35,8 +37,11 @@ namespace ETModel
     /// </summary>
     public class ListenBuffDataBase: BuffDataBase
     {
+        [LabelText("事件ID标识")]
+        public string EventId;
+
         /// <summary>
-        /// Buff回调条件达成时会添加的Buff
+        /// Buff事件
         /// </summary>
         [LabelText("Buff回调条件达成时会添加的Buff")]
         public ListenBuffEventBase ListenBuffEventBase;

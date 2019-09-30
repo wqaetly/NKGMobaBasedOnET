@@ -10,6 +10,9 @@ namespace ETModel
 {
     public abstract class BuffSystemBase
     {
+        /// <summary>
+        /// Buff当前状态
+        /// </summary>
         public BuffState MBuffState;
 
         /// <summary>

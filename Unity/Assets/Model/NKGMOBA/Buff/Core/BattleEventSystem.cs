@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace ETModel
 {
     /// <summary>
-    /// 战斗系统中的事件系统组件
+    /// 战斗系统中的事件系统组件，一场战斗挂载一个，这里是Demo，就直接挂在Game.Scene里
     /// </summary>
     public class BattleEventSystem: Component
     {
