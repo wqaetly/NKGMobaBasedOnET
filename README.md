@@ -12,8 +12,6 @@
 
 最后，大家一起加油！   :neckbeard:  :neckbeard:  :neckbeard: 
 
- **_目前技能系统的开发工作在dev分支，开发完成后再放到主分支，望周知。_** 
-
 #### 已实现功能列表
 
 - 整合FairyGUI 2019.4.27
@@ -34,10 +32,11 @@
 - 完成碰撞关系可视化编辑器的制作，附带自动生成代码功能 2019.8.1
 - 完成服务端Box2D相关架构的搭建 2019.8.14
 - 移除传统行为树，完成NPBehave行为树可视化编辑器制作(dev分支) 2019.8.26
+- 基本实现基于NPBehave的可视化技能系统编辑器 2019.9.28
 
 #### 开发计划
 
-1. 技能系统
+1. Buff系统
 2. 待定
 
 #### 开发进度展示
@@ -48,8 +47,5 @@
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173252_7dbcd604_2253805.png "游戏大厅界面")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0630/130133_d3559984_2253805.png "战斗界面第二版")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0720/185840_f28e17e6_2253805.jpeg "Box2D编辑器界面")
-<<<<<<< HEAD
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0826/184939_02856dc7_2253805.png "NPBehave可视化行为树编辑器")
-=======
->>>>>>> dev
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0919/163758_138e22e9_2253805.png "技能系统架构.png")
