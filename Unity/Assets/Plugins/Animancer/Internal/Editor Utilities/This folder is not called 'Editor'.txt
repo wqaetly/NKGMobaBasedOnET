@@ -1,0 +1,3 @@
+This folder is not called 'Editor' because we need the editor and runtime classes to be able to interact freely.
+
+It doesn't matter in Unity 2018 or newer because the Assembly Definition file compiles everything into the same assembly, but in earlier versions any folder called 'Editor' would compile its scripts into a separate assembly.

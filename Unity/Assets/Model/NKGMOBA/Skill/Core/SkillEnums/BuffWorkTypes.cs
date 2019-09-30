@@ -85,5 +85,11 @@ namespace ETModel
         
         [LabelText("改变技能范围")]
         ChangeSkillRange = 1 << 25,
+        
+        [LabelText("改变蓝量")]
+        ChangeMagic = 1 << 26,
+        
+        [LabelText("改变HP")]
+        ChangeHP = 1 << 27,
     }
 }

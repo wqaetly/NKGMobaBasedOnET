@@ -4,5 +4,8 @@
 	{
 		public const string NumbericChange = "NumbericChange";
 		public const string TestBehavior = "TestBehavior";
+
+
+		public const string CreateCollider = "CreateCollider";
 	}
 }

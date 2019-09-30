@@ -45,7 +45,6 @@ namespace ETHotfix
         {
             if (this.userInputComponent.QDown)
             {
-                //TODO 检测技能（行为树）
                 SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "Q" });
             }
 

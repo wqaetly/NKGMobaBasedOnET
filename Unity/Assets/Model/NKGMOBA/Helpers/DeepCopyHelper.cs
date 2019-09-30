@@ -8,6 +8,9 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using MongoDB.Bson.IO;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace ETModel
 {
@@ -29,13 +32,11 @@ namespace ETModel
                 {
                     return null;
                 }
-
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
                 using (MemoryStream stream = new MemoryStream())
                 {
-                    binaryFormatter.Serialize(stream, obj);
+                    BsonSerializer.Serialize(new BsonBinaryWriter(stream), obj);
                     stream.Position = 0;
-                    return (T) binaryFormatter.Deserialize(stream);
+                    return  BsonSerializer.Deserialize<T>(stream);
                 }
             }
             catch

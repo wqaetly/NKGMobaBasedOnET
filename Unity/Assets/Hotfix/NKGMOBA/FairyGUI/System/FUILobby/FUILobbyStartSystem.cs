@@ -14,7 +14,7 @@ namespace ETHotfix
         public override void Start(FUILobby.FUILobby self)
         {
             GetUserInfo().Coroutine();
-            self.normalPVPBtn.self.onClick.Add(() => this.EnterMapAsync().Coroutine());
+            self.normalPVPBtn.self.onClick.Add(() => this.EnterMapAsync());
         }
 
         private async ETVoid GetUserInfo()
@@ -33,11 +33,10 @@ namespace ETHotfix
             Game.EventSystem.Run(EventIdType.LobbyUIAllDataLoadComplete);
         }
 
-        private async ETVoid EnterMapAsync()
+        private void EnterMapAsync()
         {
             ETModel.Game.EventSystem.Run(ETModel.EventIdType.ShowLoadingUI);
-            await MapHelper.EnterMapAsync();
-            ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
+            MapHelper.EnterMapAsync().Coroutine();
         }
     }
 }

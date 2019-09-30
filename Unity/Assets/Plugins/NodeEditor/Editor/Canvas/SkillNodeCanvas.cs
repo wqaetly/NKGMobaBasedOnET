@@ -44,41 +44,6 @@ namespace SkillDemo
         /// </summary>
         public SkillNodeDataSupporter m_DebugDic =new SkillNodeDataSupporter();
 
-        CostumNodeData tempData = new CostumNodeData();
-
-        [Button("自动设置所有Node前后的id", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void AutoSetAllNodeNextAndPreId()
-        {
-            foreach (var VARIABLE in this.nodes)
-            {
-                VARIABLE.SetBaseNodeData();
-            }
-
-            foreach (var VARIABLE in this.nodes)
-            {
-                VARIABLE.AutoSetNodeNextAndPreIDs();
-            }
-        }
-
-        [Button("扫描所有NodeData并添加", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void AddAllNodeData()
-        {
-            m_TestDic.m_DataDic.Clear();
-            foreach (var VARIABLE in nodes)
-            {
-                if (m_TestDic.m_DataDic.TryGetValue(VARIABLE.Skill_GetNodeData().BelongToSkillId, out tempData))
-                {
-                    tempData.NodeDataInnerDic.Add(VARIABLE.Skill_GetNodeData().NodeID, VARIABLE.Skill_GetNodeData());
-                }
-                else
-                {
-                    tempData = new CostumNodeData();
-                    tempData.NodeDataInnerDic.Add(VARIABLE.Skill_GetNodeData().NodeID, VARIABLE.Skill_GetNodeData());
-                    m_TestDic.m_DataDic.Add(VARIABLE.Skill_GetNodeData().BelongToSkillId,
-                        tempData);
-                }
-            }
-        }
 
         [Button("保存技能信息为二进制文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Save()
@@ -100,6 +65,8 @@ namespace SkillDemo
             if (mfile.Length == 0) Debug.Log("没有读取到文件");
 
             m_DebugDic = BsonSerializer.Deserialize<SkillNodeDataSupporter>(mfile);
+            
+            Log.Info("反序列化成功");
         }
     }
 }

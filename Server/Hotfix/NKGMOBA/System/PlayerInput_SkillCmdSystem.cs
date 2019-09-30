@@ -29,16 +29,8 @@ namespace ETHotfix
         /// <param name="skillCmd"></param>
         public static void BroadcastB2S_ColliderData(Unit unit, B2S_HeroColliderData heroColliderData, string skillCmd)
         {
-            M2C_UserInput_SkillCmd m2CUserInputSkillCmd = new M2C_UserInput_SkillCmd() { Message = skillCmd, Id = unit.Id };
+            heroColliderData.SyncBody();
 
-            //广播技能指令
-            MessageHelper.Broadcast(m2CUserInputSkillCmd);
-
-            heroColliderData.m_Unit.Position = unit.Position;
-            heroColliderData.m_Unit.Rotation = unit.Rotation;
-            heroColliderData.SetColliderBodyTransform();
-
-            
             //广播碰撞体信息
             foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
             {

@@ -334,6 +334,30 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs">
       <Link>NKGMOBA\Box2D\ColliderData\B2S_PolygonColliderDataStructure.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\ChangeLifeValueSystem.cs">
+      <Link>NKGMOBA\Buff\ChangeLifeValueSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BattleEventSystem.cs">
+      <Link>NKGMOBA\Buff\Core\BattleEventSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffManagerComponent.cs">
+      <Link>NKGMOBA\Buff\Core\BuffManagerComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffPoolComponent.cs">
+      <Link>NKGMOBA\Buff\Core\BuffPoolComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffState.cs">
+      <Link>NKGMOBA\Buff\Core\BuffState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffSystemBase.cs">
+      <Link>NKGMOBA\Buff\Core\BuffSystemBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\DamgeBuffSystem.cs">
+      <Link>NKGMOBA\Buff\DamgeBuffSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\ListenBuffCallBackBuffSystem.cs">
+      <Link>NKGMOBA\Buff\ListenBuffCallBackBuffSystem.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Helpers\CodeTimeCostObserver.cs">
       <Link>NKGMOBA\Helper\CodeTimeCostObserver.cs</Link>
     </Compile>
@@ -355,14 +379,212 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\HeroData\NodeDataForHero.cs">
       <Link>NKGMOBA\HeroData\NodeDataForHero.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs">
+      <Link>NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs">
+      <Link>NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_SyncComponent.cs">
+      <Link>NKGMOBA\NPBehave\Component\NP_SyncComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_TreeRepository.cs">
+      <Link>NKGMOBA\NPBehave\Component\NP_TreeRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\Log\Log.cs">
+      <Link>NKGMOBA\NPBehave\Core\Log\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Blackboard.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Blackboard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Clock.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Clock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Composite.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Composite\Composite.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Parallel.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Composite\Parallel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\RandomSelector.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Composite\RandomSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\RandomSequence.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Composite\RandomSequence.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Selector.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Composite\Selector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Sequence.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Composite\Sequence.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Container.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Container.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\BlackboardCondition.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\BlackboardCondition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\BlackboardQuery.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\BlackboardQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Condition.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Condition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Cooldown.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Cooldown.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Decorator.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Decorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Failer.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Failer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Inverter.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Inverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Observer.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Observer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\ObservingDecorator.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\ObservingDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Random.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Random.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Repeater.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Repeater.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Service.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Service.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Succeeder.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\Succeeder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\TimeMax.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\TimeMax.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\TimeMin.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\TimeMin.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\WaitForCondition.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Decorator\WaitForCondition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Exception.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Exception.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Node.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Node.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Operator.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Operator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Root.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Root.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Stops.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Stops.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\SyncContext.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\SyncContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\Action.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Task\Action.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\Task.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Task\Task.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\Wait.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Task\Wait.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\WaitUntilStopped.cs">
+      <Link>NKGMOBA\NPBehave\Core\NPBehave\Task\WaitUntilStopped.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UnityMath\Mathf.cs">
+      <Link>NKGMOBA\NPBehave\Core\UnityMath\Mathf.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UpdateModule\FixedUpdate.cs">
+      <Link>NKGMOBA\NPBehave\Core\UpdateModule\FixedUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UpdateModule\GameTime.cs">
+      <Link>NKGMOBA\NPBehave\Core\UpdateModule\GameTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UpdateModule\TimerTicker.cs">
+      <Link>NKGMOBA\NPBehave\Core\UpdateModule\TimerTicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_ParallelNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Composite\NP_ParallelNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_SelectorNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Composite\NP_SelectorNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_SequenceNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Composite\NP_SequenceNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardConditionNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardConditionNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_RepeaterNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Decorator\NP_RepeaterNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_ServiceNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Decorator\NP_ServiceNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NodeType.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\NodeType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_BlackBoardRelationData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\NP_BlackBoardRelationData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_DataSupportor.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\NP_DataSupportor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_NodeDataBase.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\NP_NodeDataBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_RootNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\NP_RootNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_ActionNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Task\NP_ActionNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitNodeData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitNodeData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitUntilStoppedData.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitUntilStoppedData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValueAction.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValueAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeUnitPropertyAction.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeUnitPropertyAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckAction.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CreateColliderDataAction.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CreateColliderDataAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_WaitAChangeableTime.cs">
+      <Link>NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_WaitAChangeableTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\NPBehave\System\NP_RuntimeTreeFactory.cs">
+      <Link>NKGMOBA\NPBehave\System\NP_RuntimeTreeFactory.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs">
       <Link>NKGMOBA\Skill\Core\AnimationCore\AnimationData.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\Bson\NodeDataSupporter.cs">
       <Link>NKGMOBA\Skill\Core\Bson\NodeDataSupporter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForCheckSkill.cs">
-      <Link>NKGMOBA\Skill\Core\NodeDataForCheckSkill.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\NodeDataForSkillBuff.cs">
       <Link>NKGMOBA\Skill\Core\NodeDataForSkillBuff.cs</Link>
@@ -373,23 +595,35 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBaseNodeData.cs">
       <Link>NKGMOBA\Skill\Core\SkillBaseNodeData.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff.cs">
-      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuff.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\BindStateBuffData.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\BindStateBuffData.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff.cs">
-      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\DelayBuff.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangeLifeValueData.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\ChangeLifeValueData.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase\SkillBuffBase.cs">
-      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffBase.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangeSpeedBuffData.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\ChangeSpeedBuffData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuffData.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\DamageBuffData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ListenBuffCallBackDataBase\ListenBuffDataCallBackDataBase.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\ListenBuffCallBackDataBase\ListenBuffDataCallBackDataBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffDataBase\BuffDataBase.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\SkillBuffDataBase\BuffDataBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffAdditionTypes.cs">
+      <Link>NKGMOBA\Skill\Core\SkillEnums\BuffAdditionTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffBaseType.cs">
+      <Link>NKGMOBA\Skill\Core\SkillEnums\BuffBaseType.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffTypes.cs">
-      <Link>NKGMOBA\Skill\Core\SkillEnums\BuffTypes.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffWorkTypes.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffWorkTypes.cs</Link>
@@ -414,14 +648,12 @@
     <PackageReference Include="CommandLineParser" Version="2.2.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.Scripting" Version="2.9.0" />
     <PackageReference Include="NLog" Version="4.5.4" />
-    <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="SharpZipLib" Version="1.0.0-alpha2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThirdParty\Box2D\Box2D.csproj" />
     <ProjectReference Include="..\ThirdParty\Google.Protobuf\Google.Protobuf.csproj" />
     <ProjectReference Include="..\ThirdParty\KcpLib\KcpLib.csproj" />
-    <ProjectReference Include="..\ThirdParty\BehaviorDesigner.Runtime\BehaviorDesigner.Runtime.csproj" />
     <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Bson\MongoDB.Bson.csproj" />
     <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj" />
     <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Driver\MongoDB.Driver.csproj" />
@@ -436,9 +668,6 @@
     <Folder Include="Module\Numeric\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BehaviorDesignerRuntime">
-      <HintPath>..\ThirdParty\BehaviorDesigner.Runtime\Core\BehaviorDesignerRuntime.dll</HintPath>
-    </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced, Version=1.9.1.9000, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ThirdParty\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>

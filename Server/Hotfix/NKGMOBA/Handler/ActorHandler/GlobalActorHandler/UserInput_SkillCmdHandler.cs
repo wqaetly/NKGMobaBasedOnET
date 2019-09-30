@@ -13,36 +13,14 @@ namespace ETHotfix
     {
         protected override async ETTask Run(Unit entity, UserInput_SkillCmd message)
         {
-            if (message.Message == "Q")
+            M2C_UserInput_SkillCmd m2CUserInputSkillCmd = new M2C_UserInput_SkillCmd() { Message = message.Message, Id = entity.Id };
+            foreach (var VARIABLE in entity.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
             {
-                B2S_HeroColliderData m_heroQ = entity.GetComponent<B2S_HeroColliderDataManagerComponent>()
-                        .CreateHeroColliderData(entity, 10001, 10001);
-                
-                B2S_HeroColliderData m_heroSelf = entity.GetComponent<B2S_HeroColliderDataManagerComponent>()
-                        .CreateHeroColliderData(entity, 10001, 10006);
-
-                //Log.Info("创建碰撞体完成");
-                //PlayerInput_SkillCmdSystem.BroadcastPath(entity, message.Message);
-                PlayerInput_SkillCmdSystem.BroadcastB2S_ColliderData(entity, m_heroSelf, "");
-                PlayerInput_SkillCmdSystem.BroadcastB2S_ColliderData(entity, m_heroQ, message.Message);
-
-                await ETTask.CompletedTask;
+                VARIABLE.Value.GetBlackboard()["PlayerInput"] = message.Message;
             }
-            else
-            {
-                B2S_HeroColliderData m_hero = entity.GetComponent<B2S_HeroColliderDataManagerComponent>()
-                        .CreateHeroColliderData(entity, 10001, 10002);
-                B2S_HeroColliderData m_heroSelf = entity.GetComponent<B2S_HeroColliderDataManagerComponent>()
-                        .CreateHeroColliderData(entity, 10001, 10006);
-
-                //Log.Info("创建碰撞体完成");
-                //PlayerInput_SkillCmdSystem.BroadcastPath(entity, message.Message);
-                PlayerInput_SkillCmdSystem.BroadcastB2S_ColliderData(entity, m_heroSelf, "");
-                //Log.Info("创建碰撞体完成");
-                //PlayerInput_SkillCmdSystem.BroadcastPath(entity, message.Message);
-                PlayerInput_SkillCmdSystem.BroadcastB2S_ColliderData(entity, m_hero, message.Message);
-                await ETTask.CompletedTask;
-            }
+            //广播技能指令(BroadcastSkillCmd),让客户端行为树做出反应
+            MessageHelper.Broadcast(m2CUserInputSkillCmd);
+            await ETTask.CompletedTask;
         }
     }
 }

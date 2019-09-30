@@ -1,5 +1,6 @@
 ﻿using System;
 using ETModel;
+using NETCoreTest.Framework;
 
 namespace ETHotfix
 {
@@ -26,6 +27,7 @@ namespace ETHotfix
 
                 // 注册热更层回调
                 ETModel.Game.Hotfix.Update = () => { Update(); };
+                ETModel.Game.Hotfix.FixedUpdate = () => { FixedUpdate(); };
                 ETModel.Game.Hotfix.LateUpdate = () => { LateUpdate(); };
                 ETModel.Game.Hotfix.OnApplicationQuit = () => { OnApplicationQuit(); };
 
@@ -44,7 +46,6 @@ namespace ETHotfix
 
                 await Game.Scene.AddComponent<FUIInitComponent>().Init();
 
-                
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);
 
                 //至此，检查更新界面使命正式结束
@@ -64,6 +65,18 @@ namespace ETHotfix
             try
             {
                 Game.EventSystem.Update();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+        }
+
+        public static void FixedUpdate()
+        {
+            try
+            {
+                Game.EventSystem.FixedUpdate();
             }
             catch (Exception e)
             {

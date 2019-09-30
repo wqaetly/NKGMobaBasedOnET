@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
+using NETCoreTest.Framework;
 using UnityEngine;
 
 namespace ETModel
@@ -8,6 +8,8 @@ namespace ETModel
     public class Init: MonoBehaviour
     {
         public bool isEditorMode = false;
+
+        private FixedUpdate fixedUpdate;
 
         private void Start()
         {
@@ -22,6 +24,8 @@ namespace ETModel
                 SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
                 DontDestroyOnLoad(gameObject);
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
+                
+                fixedUpdate = new FixedUpdate(){UpdateCallback = ()=>Game.EventSystem.FixedUpdate()};
 
                 Game.Scene.AddComponent<TimerComponent>();
 
@@ -40,7 +44,7 @@ namespace ETModel
 
                 Game.Scene.AddComponent<GameObjectPool<Unit>>();
 
-                // 下载ab包
+                // 下载ab包 
                 await BundleHelper.DownloadBundle();
 
                 Game.Hotfix.LoadHotfixAssembly();
@@ -57,6 +61,13 @@ namespace ETModel
                 Game.Scene.AddComponent<B2S_DebuggerComponent>();
 
                 Game.Hotfix.GotoHotfix();
+
+                Game.Scene.AddComponent<NP_SyncComponent>();
+                Game.Scene.AddComponent<NP_TreeDataRepository>();
+
+                //Buff池组件
+                Game.Scene.AddComponent<BuffPoolComponent>();
+               
             }
             catch (Exception e)
             {
@@ -65,13 +76,17 @@ namespace ETModel
         }
 
 
-
         private void Update()
         {
             OneThreadSynchronizationContext.Instance.Update();
 
             Game.Hotfix.Update?.Invoke();
             Game.EventSystem.Update();
+        }
+
+        private void FixedUpdate()
+        {
+            this.fixedUpdate.Tick();
         }
 
         private void LateUpdate()

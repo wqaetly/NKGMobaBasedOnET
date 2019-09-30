@@ -34,13 +34,12 @@ namespace ETHotfix
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
 
                 //添加英雄数据
-                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await ETHotfix.Game.Scene.GetComponent<SessionComponent>()
+                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
                         .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
 
                 ETModel.Game.Scene.GetComponent<UnitComponent>().Get(unitInfo.UnitId)
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
 
-                //ETModel.Log.Info($"成功添加英雄数据");
             }
 
             if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)

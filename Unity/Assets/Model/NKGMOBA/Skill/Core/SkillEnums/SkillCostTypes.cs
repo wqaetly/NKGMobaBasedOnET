@@ -20,9 +20,6 @@ namespace ETModel
         [LabelText("其他")]
         Other = 1 << 3,
 
-        [LabelText("耗时")]
-        Time = 1 << 4,
-
         [LabelText("无消耗")]
         None = 1 << 5,
     }

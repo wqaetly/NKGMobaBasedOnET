@@ -64,6 +64,10 @@ namespace Sirenix.OdinInspector
         public ShowIfAttribute(string value)
         {
         }
+        
+        public ShowIfAttribute(string name,object value)
+        {
+        }
     }
 
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
