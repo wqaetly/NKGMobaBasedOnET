@@ -52,7 +52,21 @@ namespace ETModel
         public BuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
         {
             Queue<BuffSystemBase> buffBase;
-            if (this.MBuffBases.TryGetValue(buffDataBase.BelongBuffSystemType, out buffBase))
+            Type tempType = typeof(BuffSystemBase);
+            switch (buffDataBase.BelongBuffSystemType)
+            {
+                case BuffSystemType.DamageBuffSystem:
+                    tempType = typeof (DamageBuffSystem);
+                    break;
+                case BuffSystemType.ChangeLifeValueSystem:
+                    tempType = typeof (ChangeLifeValueSystem);
+                    break;
+                case BuffSystemType.ListenBuffCallBackBuffSystem:
+                    tempType = typeof (ListenBuffCallBackBuffSystem);
+                    break;
+                //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人能力的确有限。。。
+            }
+            if (this.MBuffBases.TryGetValue(tempType, out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
@@ -62,7 +76,7 @@ namespace ETModel
                 }
             }
 
-            BuffSystemBase temp = (BuffSystemBase) Activator.CreateInstance(buffDataBase.BelongBuffSystemType);
+            BuffSystemBase temp = (BuffSystemBase) Activator.CreateInstance(tempType);
             temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return temp;
         }

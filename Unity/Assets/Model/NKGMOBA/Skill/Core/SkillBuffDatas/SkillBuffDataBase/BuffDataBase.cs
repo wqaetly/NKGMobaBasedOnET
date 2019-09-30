@@ -23,7 +23,7 @@ namespace ETModel
         public int BelongSkillId;
 
         [LabelText("归属的BuffSystem类型")]
-        public Type BelongBuffSystemType;
+        public BuffSystemType BelongBuffSystemType;
 
         [ShowIf("Base_isVisualable")]
         [LabelText("Buff图标的名称")]
