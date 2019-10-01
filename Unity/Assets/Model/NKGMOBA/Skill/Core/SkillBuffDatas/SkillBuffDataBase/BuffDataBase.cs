@@ -19,6 +19,9 @@ namespace ETModel
         [LabelText("Buff是否状态栏可见")]
         public bool Base_isVisualable;
 
+        [LabelText("Buff的标识ID，用以区分不同Buff")]
+        public int FlagId;
+        
         [LabelText("归属的技能ID")]
         public int BelongSkillId;
 

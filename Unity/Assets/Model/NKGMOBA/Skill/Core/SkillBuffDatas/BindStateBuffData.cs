@@ -16,8 +16,11 @@ namespace ETModel
     /// </summary>
     public class BindStateBuffData: BuffDataBase
     {
-        [LabelText("是否可以叠加")]
+        [LabelText("是否可以叠加(不能叠加就刷新，叠加满也刷新)")]
         public bool CanOverlay;
+
+        [LabelText("持续时间，-1为永久")]
+        public float SustainTime = 0;
         
         [ShowIf("CanOverlay")]
         [LabelText("最大叠加数")]

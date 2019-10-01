@@ -67,7 +67,10 @@ namespace ETModel
                 case BuffSystemType.ListenBuffCallBackBuffSystem:
                     tempType = typeof (ListenBuffCallBackBuffSystem);
                     break;
-                //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人能力的确有限。。。
+                case BuffSystemType.BindStateBuffSystem:
+                    tempType = typeof (BindStateBuffSystem);
+                    break;
+                //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
             if (this.MBuffBases.TryGetValue(tempType, out buffBase))
             {

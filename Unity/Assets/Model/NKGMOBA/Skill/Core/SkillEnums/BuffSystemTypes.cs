@@ -10,17 +10,25 @@ namespace ETModel
         /// 生命移除
         /// </summary>
         ChangeLifeValueSystem,
+
         /// <summary>
         /// 瞬时伤害
         /// </summary>
         FlashDamageBuffSystem,
+
         /// <summary>
         /// 持续伤害
         /// </summary>
         SustainDamageBuffSystem,
+
         /// <summary>
         /// 监听Buff事件
         /// </summary>
-        ListenBuffCallBackBuffSystem
+        ListenBuffCallBackBuffSystem,
+
+        /// <summary>
+        /// 绑定一个状态
+        /// </summary>
+        BindStateBuffSystem
     }
 }
