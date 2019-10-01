@@ -8,21 +8,24 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class DamageBuffSystem: BuffSystemBase
+    /// <summary>
+    /// 瞬时伤害
+    /// </summary>
+    public class FlashDamageBuffSystem: BuffSystemBase
     {
         /// <summary>
         /// 最终伤害值
         /// </summary>
         private float finalDamageValue;
 
-        public override void OnInit(BuffDataBase skillBuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
+        public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
             this.theUnitFrom = theUnitFrom;
             this.theUnitBelongto = theUnitBelongto;
-            this.MSkillBuffDataBase = skillBuffDataBase;
+            this.MSkillBuffDataBase = BuffDataBase;
             //强制类型转换为伤害Buff数据
-            DamageBuffData temp = (DamageBuffData) MSkillBuffDataBase;
+            FlashDamageBuffData temp = (FlashDamageBuffData) MSkillBuffDataBase;
             //取得归属Unit的Hero数据，用以计算伤害数据
             HeroDataComponent theUnitFromHeroData = this.theUnitFrom.GetComponent<HeroDataComponent>();
 
@@ -47,7 +50,7 @@ namespace ETModel
                                 theUnitFromHeroData.CurrentAttackValue;
                         break;
                     case BuffAdditionTypes.Percentage_Magic:
-                        this.finalDamageValue +=  VARIABLE.Value *
+                        this.finalDamageValue += VARIABLE.Value *
                                 theUnitFromHeroData.CurrentSpellpower;
                         break;
                 }
@@ -55,10 +58,9 @@ namespace ETModel
 
             //对伤害进行修正
             this.finalDamageValue *= temp.damageFix;
-
+            Log.Info($"预计造成{this.finalDamageValue}伤害");
             //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
-            Log.Info($"预计造成{this.finalDamageValue}伤害");
             //设置Buff状态为就绪
             this.MBuffState = BuffState.Waiting;
         }
@@ -66,7 +68,6 @@ namespace ETModel
         public override void OnExecute()
         {
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
-            Log.Info($"造成了{this.finalDamageValue}伤害");
             this.MBuffState = BuffState.Finished;
             //抛出Buff奏效事件
             //单独写一个事件系统，避免不必要的性能浪费，只关心本局战斗即可
