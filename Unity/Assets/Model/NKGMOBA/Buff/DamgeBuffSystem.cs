@@ -43,11 +43,11 @@ namespace ETModel
                 switch (VARIABLE.Key)
                 {
                     case BuffAdditionTypes.Percentage_Physical:
-                        this.finalDamageValue = finalDamageValue * VARIABLE.Value *
+                        this.finalDamageValue += VARIABLE.Value *
                                 theUnitFromHeroData.CurrentAttackValue;
                         break;
                     case BuffAdditionTypes.Percentage_Magic:
-                        this.finalDamageValue = finalDamageValue * VARIABLE.Value *
+                        this.finalDamageValue +=  VARIABLE.Value *
                                 theUnitFromHeroData.CurrentSpellpower;
                         break;
                 }
