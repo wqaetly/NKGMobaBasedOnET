@@ -61,8 +61,8 @@ namespace ETModel
                 case BuffSystemType.SustainDamageBuffSystem:
                     tempType = typeof (SustainDamageBuffSystem);
                     break;
-                case BuffSystemType.ChangeLifeValueSystem:
-                    tempType = typeof (ChangeLifeValueSystem);
+                case BuffSystemType.ChangePlayerPropertyBuffSystem:
+                    tempType = typeof (ChangePlayerPropertyBuffSystem);
                     break;
                 case BuffSystemType.ListenBuffCallBackBuffSystem:
                     tempType = typeof (ListenBuffCallBackBuffSystem);

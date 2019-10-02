@@ -7,11 +7,6 @@ namespace ETModel
     public enum BuffSystemType
     {
         /// <summary>
-        /// 生命移除
-        /// </summary>
-        ChangeLifeValueSystem,
-
-        /// <summary>
         /// 瞬时伤害
         /// </summary>
         FlashDamageBuffSystem,
@@ -29,6 +24,16 @@ namespace ETModel
         /// <summary>
         /// 绑定一个状态
         /// </summary>
-        BindStateBuffSystem
+        BindStateBuffSystem,
+
+        /// <summary>
+        /// 改变某个属性，硬性改变，不考虑任何额外影响
+        /// </summary>
+        ChangePlayerPropertyBuffSystem,
+        
+        /// <summary>
+        /// 治疗
+        /// </summary>
+        TreatmenBuffSystem
     }
 }

@@ -29,7 +29,5 @@ namespace ETModel
         [LabelText("此状态自带的Buff")]
         public List<BuffDataBase> OriBuff = new List<BuffDataBase>();
 
-        [LabelText("叠加完成后要执行的Buff")]
-        public List<BuffDataBase> buffAddedWhenOverlayFinish = new List<BuffDataBase>();
     }
 }
