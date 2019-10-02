@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 namespace ETModel
 {
     [System.Flags]
-    public enum BuffEffectedTypes
+    public enum BuffBaseDataEffectTypes
     {
         [LabelText("来自英雄等级的加成")]
         FromHeroLevel = 1 << 1,
@@ -17,7 +17,6 @@ namespace ETModel
         [LabelText("来自技能等级的加成")]
         FromSkillLevel = 1 << 2,
 
-        [LabelText("来自英雄和技能等级的加成")]
-        ALL = FromHeroLevel | FromSkillLevel,
+        FromHasLostLifeValue = 1<<3,
     }
 }
