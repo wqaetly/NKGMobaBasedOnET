@@ -11,11 +11,6 @@ namespace ETModel
     /// </summary>
     public class ListenBuffCallBackBuffSystem: BuffSystemBase
     {
-        /// <summary>
-        /// 自身下一个时间点
-        /// </summary>
-        private float selfNextimer;
-
         public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
@@ -23,9 +18,7 @@ namespace ETModel
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
 
-            this.MaxLimitTime = TimeHelper.Now() + this.MSkillBuffDataBase.SustainTime;
-
-            this.MBuffState = BuffState.Waiting;
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
         }
 
         public override void OnExecute()

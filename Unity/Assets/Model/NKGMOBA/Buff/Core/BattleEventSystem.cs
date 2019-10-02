@@ -28,7 +28,7 @@ namespace ETModel
 
         public void UnRegisterEvent(string eventId, IEvent e)
         {
-            if (!this.allEvents.ContainsKey(eventId))
+            if (this.allEvents.ContainsKey(eventId))
             {
                 this.allEvents[eventId].Remove(e);
             }

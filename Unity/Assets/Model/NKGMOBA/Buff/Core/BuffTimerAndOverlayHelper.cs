@@ -42,6 +42,7 @@ namespace ETModel
 
                 BuffSystemBase.CurrentOverlay++;
 
+                Log.Info($"本次计算Buff时长ID为{BuffDataBase.FlagId}，并将状态设置为BuffState.Waiting");
                 BuffSystemBase.MBuffState = BuffState.Waiting;
             }
         }

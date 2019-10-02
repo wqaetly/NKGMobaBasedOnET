@@ -31,13 +31,14 @@ namespace ETModel
             this.MSkillBuffDataBase = BuffDataBase;
 
             BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
+            Log.Info("持续伤害Buff初始化完成");
         }
 
         public override void OnExecute()
         {
             try
             {
-                //Log.Info("进入持续伤害的Execute");
+                Log.Info("进入持续伤害的Execute");
                 currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
                 //强制类型转换为伤害Buff数据
                 SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
@@ -92,6 +93,7 @@ namespace ETModel
 
         public override void OnFinished()
         {
+            Log.Info("执行了持续伤害的Finish");
         }
     }
 }

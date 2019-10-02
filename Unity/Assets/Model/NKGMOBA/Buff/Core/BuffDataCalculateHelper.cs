@@ -47,10 +47,10 @@ namespace ETModel
                                 theUnitFromHeroData.CurrentSpellpower;
                         break;
                     case BuffAdditionTypes.SelfOverlay_Mul:
-                        tempData += VARIABLE.Value * BuffSystemBase.CurrentOverlay;
+                        tempData *= VARIABLE.Value * BuffSystemBase.CurrentOverlay;
                         break;
                     case BuffAdditionTypes.SelfOverlay_Plu:
-                        tempData *= VARIABLE.Value * BuffSystemBase.CurrentOverlay;
+                        tempData += VARIABLE.Value * BuffSystemBase.CurrentOverlay;
                         break;
                 }
             }

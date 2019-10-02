@@ -23,26 +23,7 @@ namespace ETModel
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
 
-            TreatmentBuffSystem tempSystem =
-                    (TreatmentBuffSystem) theUnitBelongto.GetComponent<BuffManagerComponent>().GetBuffByFlagID(BuffDataBase.FlagId);
-
-            if (tempSystem != null)
-            {
-                TreatmentBuffData tempData = tempSystem.MSkillBuffDataBase as TreatmentBuffData;
-                //可以叠加，并且当前层数未达到最高层
-                if (tempData.CanOverlay &&
-                    tempSystem.CurrentOverlay < tempData.MaxOverlay)
-                {
-                    tempSystem.CurrentOverlay++;
-                }
-
-                this.MBuffState = BuffState.Finished;
-            }
-            else
-            {
-                this.CurrentOverlay++;
-                this.MBuffState = BuffState.Waiting;
-            }
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
         }
 
         public override void OnExecute()
@@ -59,7 +40,7 @@ namespace ETModel
 
         public override void OnFinished()
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }

@@ -39,11 +39,13 @@ namespace ETModel
             
             this.finalDamageValue = tempFinalData;
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
-            this.MBuffState = BuffState.Finished;
+
             //抛出Buff奏效事件
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
             Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
             Log.Info($"抛出了EventID为{this.MSkillBuffDataBase.theEventID}的事件");
+            
+            this.MBuffState = BuffState.Finished;
         }
 
         public override void OnFinished()

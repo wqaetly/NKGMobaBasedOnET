@@ -54,6 +54,7 @@ namespace ETModel
                 }
                 else
                 {
+                    Log.Info($"移除一个Buff，ID为{current.Value.MSkillBuffDataBase.FlagId}");
                     buff.OnFinished();
                     LinkedListNode<BuffSystemBase> next = current.Next;
                     m_Buffs.Remove(current);

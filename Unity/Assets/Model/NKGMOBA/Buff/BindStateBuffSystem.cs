@@ -19,8 +19,6 @@ namespace ETModel
             this.MSkillBuffDataBase = BuffDataBase;
 
             BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
-            
-            
         }
 
         public override void OnExecute()
@@ -32,7 +30,6 @@ namespace ETModel
                 this.theUnitBelongto.GetComponent<BuffManagerComponent>()
                         .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto));
             }
-
             this.MBuffState = BuffState.Running;
         }
 
