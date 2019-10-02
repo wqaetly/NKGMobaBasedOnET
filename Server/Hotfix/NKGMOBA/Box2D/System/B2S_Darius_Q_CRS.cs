@@ -40,7 +40,7 @@ namespace ETHotfix
             {
                 case 10006: //诺克：自身
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(102882148810772).mSkillDataDic;
+                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(102892373671953  ).mSkillDataDic;
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
                     
@@ -51,18 +51,19 @@ namespace ETHotfix
                         try
                         {
                             Log.Info("Q技能打到了诺克，内圈，但这里模拟外圈，开始添加Buff");
+                            Log.Info("添加外圈伤害Buff");
                             b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
                                     .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                         ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
                                         ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
-
+                            Log.Info("添加血怒Buff");
                             b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
+                                    .AddBuff(buffPoolComponent.AcquireBuff<BindStateBuffSystem>(
                                         ((NodeDataForSkillBuff) skillNodeDataSupporter[10004]).SkillBuffBases,
                                         ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
-                        
+                            Log.Info("添加监听回血Buff");
                             b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
+                                    .AddBuff(buffPoolComponent.AcquireBuff<ListenBuffCallBackBuffSystem>(
                                         ((NodeDataForSkillBuff) skillNodeDataSupporter[10005]).SkillBuffBases,
                                         ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
                         }

@@ -49,7 +49,7 @@ namespace ETModel
         public BuffWorkTypes BuffWorkType;
 
         [LabelText("Buff持续时间,-1代表永久,0代表此处设置无效")]
-        public float SustainTime;
+        public long SustainTime;
 
         [LabelText("Buff基础数值影响者")]
         public BuffBaseDataEffectTypes BaseBuffBaseDataEffectTypes;

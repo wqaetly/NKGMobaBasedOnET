@@ -17,6 +17,6 @@ namespace ETModel
         public float damageFix = 1.0f;
 
         [LabelText("作用间隔")]
-        public float WorkInternal = 0;
+        public long WorkInternal = 0;
     }
 }

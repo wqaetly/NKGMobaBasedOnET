@@ -26,7 +26,7 @@ namespace ETModel
     {
         public NodeDataForHero NodeDataForHero;
 
-        public int CurrentLevel ;
+        public int CurrentLevel = 1;
 
         public float CurrentLifeValue;
 

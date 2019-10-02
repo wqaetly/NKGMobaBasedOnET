@@ -45,24 +45,22 @@ namespace ETModel
                 if (buff.MBuffState == BuffState.Waiting)
                 {
                     buff.OnExecute();
-                }
-                else if (buff.MBuffState == BuffState.Running)
+                } 
+                
+                if (buff.MBuffState == BuffState.Running)
                 {
                     buff.OnUpdate();
+                    current = current.Next;
                 }
                 else
                 {
                     buff.OnFinished();
-                    current = current.Next;
                     LinkedListNode<BuffSystemBase> next = current.Next;
                     m_Buffs.Remove(current);
                     m_BuffsForFind_BuffWorkType[current.Value.MSkillBuffDataBase.BuffWorkType].Remove(current.Value);
                     m_BuffsForFind_BuffFlagID.Remove(current.Value.MSkillBuffDataBase.FlagId);
-                    current = next;
-                    continue;
+                    current = next; 
                 }
-
-                current = current.Next;
             }
         }
 

@@ -15,7 +15,7 @@ namespace ETModel
 
             if (tempSystem != null)
             {
-                BindStateBuffData tempData = tempSystem.MSkillBuffDataBase as BindStateBuffData;
+                BuffDataBase tempData = tempSystem.MSkillBuffDataBase;
                 //可以叠加，并且当前层数未达到最高层
                 if (tempData.CanOverlay &&
                     tempSystem.CurrentOverlay < tempData.MaxOverlay)
@@ -37,7 +37,7 @@ namespace ETModel
                 //如果是有限时长的
                 if (BuffDataBase.SustainTime + 1 > 0)
                 {
-                    BuffSystemBase.MaxLimitTime = TimeHelper.ClientNow() + BuffDataBase.SustainTime;
+                    BuffSystemBase.MaxLimitTime = TimeHelper.Now() + BuffDataBase.SustainTime;
                 }
 
                 BuffSystemBase.CurrentOverlay++;

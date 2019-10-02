@@ -23,7 +23,7 @@ namespace ETModel
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
 
-            this.MaxLimitTime = TimeHelper.ClientNow() + this.MSkillBuffDataBase.SustainTime;
+            this.MaxLimitTime = TimeHelper.Now() + this.MSkillBuffDataBase.SustainTime;
 
             this.MBuffState = BuffState.Waiting;
         }
@@ -38,7 +38,7 @@ namespace ETModel
 
         public override void OnUpdate()
         {
-            if (TimeHelper.ClientNow() > this.MaxLimitTime)
+            if (TimeHelper.Now() > this.MaxLimitTime)
             {
                 //强制类型转换为Buff事件
                 ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;

@@ -4,6 +4,8 @@
 // Data: 2019年10月1日 16:00:56
 //------------------------------------------------------------
 
+using System;
+
 namespace ETModel
 {
     /// <summary>
@@ -19,12 +21,7 @@ namespace ETModel
         /// <summary>
         /// 自身下一个时间点
         /// </summary>
-        private float selfNextimer;
-
-        /// <summary>
-        /// 最大时间限制（持续几秒）
-        /// </summary>
-        private float maxTime;
+        private long selfNextimer;
 
         public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
         {
@@ -32,80 +29,64 @@ namespace ETModel
             this.theUnitFrom = theUnitFrom;
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
-            
-            SustainDamageBuffSystem tempSystem =
-                    (SustainDamageBuffSystem) theUnitBelongto.GetComponent<BuffManagerComponent>().GetBuffByFlagID(BuffDataBase.FlagId);
 
-            if (tempSystem != null)
-            {
-                SustainDamageBuffData tempData = tempSystem.MSkillBuffDataBase as SustainDamageBuffData;
-                //可以叠加，并且当前层数未达到最高层
-                if (tempData.CanOverlay &&
-                    tempSystem.CurrentOverlay < tempData.MaxOverlay)
-                {
-                    //如果是有限时长的
-                    if (tempData.SustainTime + 1 > 0)
-                    {
-                        tempSystem.maxTime += tempData.SustainTime;
-                    }
-
-                    tempSystem.CurrentOverlay++;
-                }
-
-                this.MBuffState = BuffState.Finished;
-            }
-            else
-            {
-                //如果是有限时长的
-                if (this.MSkillBuffDataBase.SustainTime + 1 > 0)
-                {
-                    maxTime = TimeHelper.ClientNow() + ((SustainDamageBuffData) this.MSkillBuffDataBase).SustainTime;
-                }
-
-                this.CurrentOverlay++;
-
-                this.MBuffState = BuffState.Waiting;
-            }
-
-            maxTime = TimeHelper.ClientNow() + this.MSkillBuffDataBase.SustainTime;
-            this.MBuffState = BuffState.Waiting;
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
         }
 
         public override void OnExecute()
         {
-            currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
-            //强制类型转换为伤害Buff数据
-            SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
-            
-            //TODO 对受方的伤害结算，此时finalDamageValue为最终值
-            
-            this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
-            Log.Info($"来自持续伤害的数据:{this.currentDamageValue}");
-            //设置下一个时间点
-            this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
-            this.MBuffState = BuffState.Running;
+            try
+            {
+                //Log.Info("进入持续伤害的Execute");
+                currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
+                //强制类型转换为伤害Buff数据
+                SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
+
+                //TODO 对受方的伤害结算，此时finalDamageValue为最终值
+
+                this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
+                Log.Info($"来自持续伤害ExeCute的数据:{this.currentDamageValue}");
+                //设置下一个时间点
+                this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
+                //Log.Info($"作用间隔为{selfNextimer - TimeHelper.Now()},持续时间为{temp.SustainTime},持续到{this.selfNextimer}");
+                this.MBuffState = BuffState.Running;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public override void OnUpdate()
         {
-            if (TimeHelper.ClientNow() > maxTime)
+            //Log.Info($"执行持续伤害的Update,当前时间是{TimeHelper.Now()}");
+            if (TimeHelper.Now() > MaxLimitTime)
             {
                 this.MBuffState = BuffState.Finished;
+                Log.Info("持续伤害结束了");
             }
-
-            if (TimeHelper.Now() > this.selfNextimer)
+            else if (TimeHelper.Now() > this.selfNextimer)
             {
-                currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
-                //强制类型转换为伤害Buff数据
-                SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
-            
-                //TODO 对受方的伤害结算，此时finalDamageValue为最终值
-            
-                this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
-                Log.Info($"来自持续伤害的数据:{this.currentDamageValue}");
-                //设置下一个时间点
-                this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
-                this.MBuffState = BuffState.Running;
+                try
+                {
+                    currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
+                    //强制类型转换为伤害Buff数据
+                    SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
+
+                    //TODO 对受方的伤害结算，此时finalDamageValue为最终值
+
+                    this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
+                    Log.Info($"来自持续伤害Update的数据:{this.currentDamageValue}");
+                    //设置下一个时间点
+                    this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
+                    this.MBuffState = BuffState.Running;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
 

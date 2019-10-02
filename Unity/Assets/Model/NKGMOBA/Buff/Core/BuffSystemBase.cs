@@ -23,7 +23,7 @@ namespace ETModel
         /// <summary>
         /// 最多持续到什么时候
         /// </summary>
-        public float MaxLimitTime;
+        public long MaxLimitTime;
         
         /// <summary>
         /// Buff数据

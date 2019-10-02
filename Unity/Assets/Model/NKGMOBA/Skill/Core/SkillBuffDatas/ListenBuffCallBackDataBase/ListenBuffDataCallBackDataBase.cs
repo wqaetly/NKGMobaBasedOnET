@@ -25,9 +25,9 @@ namespace ETModel
         {
             foreach (var VARIABLE in m_BuffsWillBeAdded)
             {
+                Log.Info($"通过监听机制增加id为{a.MSkillBuffDataBase.FlagId}的Buff");
                 a.theUnitFrom.GetComponent<BuffManagerComponent>()
                         .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitBelongto, a.theUnitFrom));
-                Log.Info($"通过监听机制增加id为{a.MSkillBuffDataBase.FlagId}的Buff");
             }
         }
     }
