@@ -13,7 +13,6 @@ namespace ETModel
     {
         [LabelText("伤害类型")]
         public BuffDamageTypes BuffDamageTypes;
-        
 
         [LabelText("预伤害修正")]
         public float damageFix = 1.0f;

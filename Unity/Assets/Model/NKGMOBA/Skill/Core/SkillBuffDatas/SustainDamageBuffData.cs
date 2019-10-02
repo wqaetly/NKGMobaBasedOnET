@@ -15,10 +15,7 @@ namespace ETModel
         
         [LabelText("预伤害修正")]
         public float damageFix = 1.0f;
-        
-        [LabelText("持续时间")]
-        public float SustainTime = 0;
-        
+
         [LabelText("作用间隔")]
         public float WorkInternal = 0;
     }

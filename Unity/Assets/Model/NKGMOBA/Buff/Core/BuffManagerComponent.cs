@@ -30,7 +30,7 @@ namespace ETModel
         public Dictionary<BuffWorkTypes, List<BuffSystemBase>> m_BuffsForFind_BuffWorkType = new Dictionary<BuffWorkTypes, List<BuffSystemBase>>();
 
         /// <summary>
-        /// 用于查找的——基于Buff生效方式
+        /// 用于查找的——基于Buff的ID
         /// </summary>
         public Dictionary<int, BuffSystemBase> m_BuffsForFind_BuffFlagID = new Dictionary<int, BuffSystemBase>();
 
@@ -56,7 +56,7 @@ namespace ETModel
                     current = current.Next;
                     LinkedListNode<BuffSystemBase> next = current.Next;
                     m_Buffs.Remove(current);
-                    m_BuffsForFind_BuffWorkType[current.Value.MSkillBuffDataBase.Base_BuffExtraWork].Remove(current.Value);
+                    m_BuffsForFind_BuffWorkType[current.Value.MSkillBuffDataBase.BuffWorkType].Remove(current.Value);
                     m_BuffsForFind_BuffFlagID.Remove(current.Value.MSkillBuffDataBase.FlagId);
                     current = next;
                     continue;
@@ -69,13 +69,13 @@ namespace ETModel
         public void AddBuff(BuffSystemBase buff)
         {
             m_Buffs.AddLast(buff);
-            if (this.m_BuffsForFind_BuffWorkType.ContainsKey(buff.MSkillBuffDataBase.Base_BuffExtraWork))
+            if (this.m_BuffsForFind_BuffWorkType.ContainsKey(buff.MSkillBuffDataBase.BuffWorkType))
             {
-                m_BuffsForFind_BuffWorkType[buff.MSkillBuffDataBase.Base_BuffExtraWork].Add(buff);
+                m_BuffsForFind_BuffWorkType[buff.MSkillBuffDataBase.BuffWorkType].Add(buff);
             }
             else
             {
-                m_BuffsForFind_BuffWorkType.Add(buff.MSkillBuffDataBase.Base_BuffExtraWork, new List<BuffSystemBase>() { buff });
+                m_BuffsForFind_BuffWorkType.Add(buff.MSkillBuffDataBase.BuffWorkType, new List<BuffSystemBase>() { buff });
             }
 
             if (!this.m_BuffsForFind_BuffFlagID.ContainsKey(buff.MSkillBuffDataBase.FlagId))

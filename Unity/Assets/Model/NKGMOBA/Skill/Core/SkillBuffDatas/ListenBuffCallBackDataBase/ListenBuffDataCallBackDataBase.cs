@@ -26,7 +26,8 @@ namespace ETModel
             foreach (var VARIABLE in m_BuffsWillBeAdded)
             {
                 a.theUnitFrom.GetComponent<BuffManagerComponent>()
-                        .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitFrom, a.theUnitBelongto));
+                        .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitBelongto, a.theUnitFrom));
+                Log.Info($"通过监听机制增加id为{a.MSkillBuffDataBase.FlagId}的Buff");
             }
         }
     }
@@ -36,7 +37,7 @@ namespace ETModel
     /// </summary>
     public class ListenBuffDataBase: BuffDataBase
     {
-        [LabelText("事件ID标识")]
+        [LabelText("要监听的事件ID标识")]
         public string EventId;
 
         /// <summary>

@@ -337,11 +337,14 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\BindStateBuffSystem.cs">
       <Link>NKGMOBA\Buff\BindStateBuffSystem.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\ChangeLifeValueSystem.cs">
-      <Link>NKGMOBA\Buff\ChangeLifeValueSystem.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\ChangePlayerPropertyBuffSystem.cs">
+      <Link>NKGMOBA\Buff\ChangePlayerPropertyBuffSystem.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BattleEventSystem.cs">
       <Link>NKGMOBA\Buff\Core\BattleEventSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffDataCalculateHelper.cs">
+      <Link>NKGMOBA\Buff\Core\BuffDataCalculateHelper.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffManagerComponent.cs">
       <Link>NKGMOBA\Buff\Core\BuffManagerComponent.cs</Link>
@@ -355,6 +358,9 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffSystemBase.cs">
       <Link>NKGMOBA\Buff\Core\BuffSystemBase.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\Core\BuffTimerAndOverlayHelper.cs">
+      <Link>NKGMOBA\Buff\Core\BuffTimerAndOverlayHelper.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\FlashDamageBuffSystem.cs">
       <Link>NKGMOBA\Buff\FlashDamageBuffSystem.cs</Link>
     </Compile>
@@ -363,6 +369,9 @@
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\SustainDamageBuffSystem.cs">
       <Link>NKGMOBA\Buff\SustainDamageBuffSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Buff\TreatmentBuffSystem.cs">
+      <Link>NKGMOBA\Buff\TreatmentBuffSystem.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Helpers\CodeTimeCostObserver.cs">
       <Link>NKGMOBA\Helper\CodeTimeCostObserver.cs</Link>
@@ -604,11 +613,8 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\BindStateBuffData.cs">
       <Link>NKGMOBA\Skill\Core\SkillBuffDatas\BindStateBuffData.cs</Link>
     </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangeLifeValueData.cs">
-      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\ChangeLifeValueData.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangeSpeedBuffData.cs">
-      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\ChangeSpeedBuffData.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\ChangePlayerPropertyBuffData.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\ChangePlayerPropertyBuffData.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\FlashDamageBuffData.cs">
       <Link>NKGMOBA\Skill\Core\SkillBuffDatas\FlashDamageBuffData.cs</Link>
@@ -622,17 +628,20 @@
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\SustainDamageBuffData.cs">
       <Link>NKGMOBA\Skill\Core\SkillBuffDatas\SustainDamageBuffData.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillBuffDatas\TreatmentBuffData.cs">
+      <Link>NKGMOBA\Skill\Core\SkillBuffDatas\TreatmentBuffData.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffAdditionTypes.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffAdditionTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffBaseDataEffectTypes.cs">
+      <Link>NKGMOBA\Skill\Core\SkillEnums\BuffBaseDataEffectTypes.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffBaseType.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffBaseType.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffDamageTypes.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs">
-      <Link>NKGMOBA\Skill\Core\SkillEnums\BuffEffectedTypes.cs</Link>
     </Compile>
     <Compile Include="..\..\Unity\Assets\Model\NKGMOBA\Skill\Core\SkillEnums\BuffSystemTypes.cs">
       <Link>NKGMOBA\Skill\Core\SkillEnums\BuffSystemTypes.cs</Link>

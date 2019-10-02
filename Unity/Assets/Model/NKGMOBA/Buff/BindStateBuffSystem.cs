@@ -12,20 +12,10 @@ namespace ETModel
     public class BindStateBuffSystem: BuffSystemBase
     {
         /// <summary>
-        /// 当前叠加数
-        /// </summary>
-        public int CurrentOverlay;
-
-        /// <summary>
         /// 自身下一个时间点
         /// </summary>
         private float selfNextimer;
-
-        /// <summary>
-        /// 最大时间限制（持续几秒）
-        /// </summary>
-        private float maxTime;
-
+        
         public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
@@ -33,40 +23,7 @@ namespace ETModel
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
 
-            BindStateBuffSystem tempSystem =
-                    (BindStateBuffSystem) theUnitBelongto.GetComponent<BuffManagerComponent>().GetBuffByFlagID(BuffDataBase.FlagId);
-
-            BindStateBuffData tempData = tempSystem.MSkillBuffDataBase as BindStateBuffData;
-
-            if (theUnitBelongto.GetComponent<BuffManagerComponent>().FindBuffByFlagID(BuffDataBase.FlagId))
-            {
-                //可以叠加，并且当前层数未达到最高层
-                if (tempData.CanOverlay &&
-                    tempSystem.CurrentOverlay < tempData.MaxOverlay)
-                {
-                    //如果是有限时长的
-                    if (tempData.SustainTime + 1 > 0)
-                    {
-                        tempSystem.maxTime += tempData.SustainTime;
-                    }
-
-                    tempSystem.CurrentOverlay++;
-                }
-
-                this.MBuffState = BuffState.Finished;
-            }
-            else
-            {
-                //如果是有限时长的
-                if (tempData.SustainTime + 1 > 0)
-                {
-                    maxTime = TimeHelper.ClientNow() + ((SustainDamageBuffData) this.MSkillBuffDataBase).SustainTime;
-                }
-
-                tempSystem.CurrentOverlay++;
-
-                this.MBuffState = BuffState.Waiting;
-            }
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
         }
 
         public override void OnExecute()
@@ -86,7 +43,7 @@ namespace ETModel
             //只有不是永久Buff的情况下才会执行Update判断
             if ((this.MSkillBuffDataBase as BindStateBuffData).SustainTime + 1 > 0)
             {
-                if (TimeHelper.ClientNow() > maxTime)
+                if (TimeHelper.ClientNow() > this.MaxLimitTime)
                 {
                     this.MBuffState = BuffState.Finished;
                 }

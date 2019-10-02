@@ -36,9 +36,17 @@ namespace ETModel
 
         [LabelText("加成方式(法强值百分比)")]
         Percentage_Magic = Percentage | Magic,
+        
+        [LabelText("来自自身层数加成_乘法")]
+        SelfOverlay_Mul = 1 << 3,
+        
+        [LabelText("来自自身层数加成_加法")]
+        SelfOverlay_Plu = 1 << 4,
 
         //TODO 可继续拓展
         [LabelText("其他")]
         Other = 5 << 1,
+        
+
     }
 }

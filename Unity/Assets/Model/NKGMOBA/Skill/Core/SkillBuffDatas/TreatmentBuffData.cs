@@ -4,9 +4,13 @@
 // Data: 2019年10月2日 12:24:00
 //------------------------------------------------------------
 
+using Sirenix.OdinInspector;
+
 namespace ETModel
 {
     public class TreatmentBuffData: BuffDataBase
     {
+        [LabelText("预治疗修正")]
+        public float treatmentFix = 1.0f;
     }
 }

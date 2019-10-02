@@ -16,6 +16,16 @@ namespace ETModel
         public BuffState MBuffState;
 
         /// <summary>
+        /// 当前叠加数
+        /// </summary>
+        public int CurrentOverlay;
+
+        /// <summary>
+        /// 最多持续到什么时候
+        /// </summary>
+        public float MaxLimitTime;
+        
+        /// <summary>
         /// Buff数据
         /// </summary>
         public BuffDataBase MSkillBuffDataBase;

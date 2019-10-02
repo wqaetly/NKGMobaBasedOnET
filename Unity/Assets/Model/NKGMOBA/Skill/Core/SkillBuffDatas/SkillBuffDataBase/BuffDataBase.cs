@@ -25,8 +25,18 @@ namespace ETModel
         [LabelText("归属的技能ID")]
         public int BelongSkillId;
 
+        [LabelText("要抛出的事件ID，如果有的话")]
+        public string theEventID;
+
         [LabelText("归属的BuffSystem类型")]
         public BuffSystemType BelongBuffSystemType;
+        
+        [LabelText("是否可以叠加(不能叠加就刷新，叠加满也刷新)")]
+        public bool CanOverlay;
+        
+        [ShowIf("CanOverlay")]
+        [LabelText("最大叠加数")]
+        public int MaxOverlay;
 
         [ShowIf("Base_isVisualable")]
         [LabelText("Buff图标的名称")]
@@ -36,20 +46,20 @@ namespace ETModel
         public BuffBaseType BuffBaseType;
         
         [LabelText("Buff效果为")]
-        public BuffWorkTypes Base_BuffExtraWork;
+        public BuffWorkTypes BuffWorkType;
 
         [LabelText("Buff持续时间,-1代表永久,0代表此处设置无效")]
-        public float Base_buffSustainTime;
+        public float SustainTime;
 
         [LabelText("Buff基础数值影响者")]
-        public BuffEffectedTypes Base_BuffEffectedTypes;
+        public BuffBaseDataEffectTypes BaseBuffBaseDataEffectTypes;
+        
+        [LabelText("将要被改变的基础数值")]
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+        public Dictionary<int, float> ValueToBeChanged = new Dictionary<int, float>();
 
         [LabelText("具体的加成(可能会一个效果多种加成方式)")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<BuffAdditionTypes, float> additionValue;
-
-        [LabelText("将要被改变的数值，若键为-1，表明定值")]
-        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<int, float> ValueToBeChanged = new Dictionary<int, float>();
     }
 }

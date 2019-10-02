@@ -6,7 +6,21 @@
 
 namespace ETModel
 {
-    public class ChangePlayerPropertyBuffSystem
+    public class ChangePlayerPropertyBuffSystem: BuffSystemBase
     {
+        public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void OnExecute()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void OnFinished()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

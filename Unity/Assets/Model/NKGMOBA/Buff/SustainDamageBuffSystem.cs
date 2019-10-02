@@ -32,19 +32,55 @@ namespace ETModel
             this.theUnitFrom = theUnitFrom;
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
+            
+            SustainDamageBuffSystem tempSystem =
+                    (SustainDamageBuffSystem) theUnitBelongto.GetComponent<BuffManagerComponent>().GetBuffByFlagID(BuffDataBase.FlagId);
 
-            maxTime = TimeHelper.ClientNow() + ((SustainDamageBuffData) this.MSkillBuffDataBase).SustainTime;
+            if (tempSystem != null)
+            {
+                SustainDamageBuffData tempData = tempSystem.MSkillBuffDataBase as SustainDamageBuffData;
+                //可以叠加，并且当前层数未达到最高层
+                if (tempData.CanOverlay &&
+                    tempSystem.CurrentOverlay < tempData.MaxOverlay)
+                {
+                    //如果是有限时长的
+                    if (tempData.SustainTime + 1 > 0)
+                    {
+                        tempSystem.maxTime += tempData.SustainTime;
+                    }
 
-            this.CalculateCurrentDamage();
+                    tempSystem.CurrentOverlay++;
+                }
 
+                this.MBuffState = BuffState.Finished;
+            }
+            else
+            {
+                //如果是有限时长的
+                if (this.MSkillBuffDataBase.SustainTime + 1 > 0)
+                {
+                    maxTime = TimeHelper.ClientNow() + ((SustainDamageBuffData) this.MSkillBuffDataBase).SustainTime;
+                }
+
+                this.CurrentOverlay++;
+
+                this.MBuffState = BuffState.Waiting;
+            }
+
+            maxTime = TimeHelper.ClientNow() + this.MSkillBuffDataBase.SustainTime;
             this.MBuffState = BuffState.Waiting;
         }
 
         public override void OnExecute()
         {
+            currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
             //强制类型转换为伤害Buff数据
             SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
+            
+            //TODO 对受方的伤害结算，此时finalDamageValue为最终值
+            
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
+            Log.Info($"来自持续伤害的数据:{this.currentDamageValue}");
             //设置下一个时间点
             this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
             this.MBuffState = BuffState.Running;
@@ -56,55 +92,25 @@ namespace ETModel
             {
                 this.MBuffState = BuffState.Finished;
             }
-            
+
             if (TimeHelper.Now() > this.selfNextimer)
             {
-                this.CalculateCurrentDamage();
+                currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
+                //强制类型转换为伤害Buff数据
+                SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
+            
+                //TODO 对受方的伤害结算，此时finalDamageValue为最终值
+            
+                this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
+                Log.Info($"来自持续伤害的数据:{this.currentDamageValue}");
+                //设置下一个时间点
+                this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
+                this.MBuffState = BuffState.Running;
             }
         }
 
         public override void OnFinished()
         {
-        }
-
-        /// <summary>
-        /// 计算本次伤害
-        /// </summary>
-        private void CalculateCurrentDamage()
-        {
-            //强制类型转换为伤害Buff数据
-            SustainDamageBuffData temp = (SustainDamageBuffData) MSkillBuffDataBase;
-            //取得归属Unit的Hero数据，用以计算伤害数据
-            HeroDataComponent theUnitFromHeroData = this.theUnitFrom.GetComponent<HeroDataComponent>();
-
-            //依据基础数值的加成方式来获取对应伤害数据
-            switch (temp.Base_BuffEffectedTypes)
-            {
-                case BuffEffectedTypes.FromHeroLevel:
-                    this.currentDamageValue = temp.ValueToBeChanged[theUnitFromHeroData.CurrentLevel];
-                    break;
-                case BuffEffectedTypes.FromSkillLevel:
-                    this.currentDamageValue = temp.ValueToBeChanged[theUnitFromHeroData.GetSkillLevel(temp.BelongSkillId)];
-                    break;
-            }
-
-            //依据加成方式对伤害进行加成
-            foreach (var VARIABLE in temp.additionValue)
-            {
-                switch (VARIABLE.Key)
-                {
-                    case BuffAdditionTypes.Percentage_Physical:
-                        this.currentDamageValue += VARIABLE.Value *
-                                theUnitFromHeroData.CurrentAttackValue;
-                        break;
-                    case BuffAdditionTypes.Percentage_Magic:
-                        this.currentDamageValue += VARIABLE.Value *
-                                theUnitFromHeroData.CurrentSpellpower;
-                        break;
-                }
-            }
-            
-            Log.Info($"来自持续伤害：本次伤害为{currentDamageValue}");
         }
     }
 }

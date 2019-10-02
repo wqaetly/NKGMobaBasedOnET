@@ -26,6 +26,14 @@ namespace ETModel
             this.allEvents[eventId].Add(e);
         }
 
+        public void UnRegisterEvent(string eventId, IEvent e)
+        {
+            if (!this.allEvents.ContainsKey(eventId))
+            {
+                this.allEvents[eventId].Remove(e);
+            }
+        }
+
         public void Run(string type)
         {
             List<IEvent> iEvents;

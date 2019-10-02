@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace ETModel
 {
     /// <summary>
-    /// Buff池组件,包括Buff的事件池化
+    /// Buff池组件
     /// </summary>
     public class BuffPoolComponent: Component
     {
@@ -52,7 +52,7 @@ namespace ETModel
         public BuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
         {
             Queue<BuffSystemBase> buffBase;
-            Type tempType = typeof(BuffSystemBase);
+            Type tempType = typeof (BuffSystemBase);
             switch (buffDataBase.BelongBuffSystemType)
             {
                 case BuffSystemType.FlashDamageBuffSystem:
@@ -70,8 +70,12 @@ namespace ETModel
                 case BuffSystemType.BindStateBuffSystem:
                     tempType = typeof (BindStateBuffSystem);
                     break;
+                case BuffSystemType.TreatmenBuffSystem:
+                    tempType = typeof (TreatmentBuffSystem);
+                    break;
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
+
             if (this.MBuffBases.TryGetValue(tempType, out buffBase))
             {
                 if (buffBase.Count > 0)
@@ -87,18 +91,16 @@ namespace ETModel
             return temp;
         }
 
-        public void RecycleBuff(BuffSystemBase buffBase)
+        public void RecycleBuff<T>(T buffSystemBase) where T : BuffSystemBase
         {
-            Type type = buffBase.GetType();
-            if (this.MBuffBases.ContainsKey(type))
+            if (this.MBuffBases.TryGetValue(typeof (T), out Queue<BuffSystemBase> temp))
             {
-                MBuffBases[type].Enqueue(buffBase);
+                temp.Enqueue(buffSystemBase);
             }
             else
             {
-                Queue<BuffSystemBase> temp = new Queue<BuffSystemBase>();
-                temp.Enqueue(buffBase);
-                this.MBuffBases.Add(type, temp);
+                this.MBuffBases.Add(typeof (T), new Queue<BuffSystemBase>());
+                this.MBuffBases[typeof (T)].Enqueue(buffSystemBase);
             }
         }
     }

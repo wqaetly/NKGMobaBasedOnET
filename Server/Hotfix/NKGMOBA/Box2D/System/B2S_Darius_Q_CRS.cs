@@ -48,7 +48,33 @@ namespace ETHotfix
                     if (Vector3.Distance(((B2S_HeroColliderData) this.Entity).m_BelongUnit.Position, b2SHeroColliderData.m_BelongUnit.Position) <=
                         2.3f)
                     {
-                        Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
+                        try
+                        {
+                            Log.Info("Q技能打到了诺克，内圈，但这里模拟外圈，开始添加Buff");
+                            b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
+                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
+                                        ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
+                                        ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
+
+                            b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
+                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
+                                        ((NodeDataForSkillBuff) skillNodeDataSupporter[10004]).SkillBuffBases,
+                                        ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
+                        
+                            b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
+                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
+                                        ((NodeDataForSkillBuff) skillNodeDataSupporter[10005]).SkillBuffBases,
+                                        ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                            throw;
+                        }
+                    }
+                    else
+                    {
+                        Log.Info("Q技能打到了诺克，外圈，但这里模拟内圈，开始添加Buff");
                         try
                         {
                             b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
@@ -61,22 +87,7 @@ namespace ETHotfix
                             Console.WriteLine(e);
                             throw;
                         }
-
                     }
-                    else
-                    {
-                        Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
-                        b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
-                                    ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
-                                    ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
-
-                        b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
-                                    ((NodeDataForSkillBuff) skillNodeDataSupporter[10004]).SkillBuffBases,
-                                    ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
-                    }
-
                     break;
             }
         }
