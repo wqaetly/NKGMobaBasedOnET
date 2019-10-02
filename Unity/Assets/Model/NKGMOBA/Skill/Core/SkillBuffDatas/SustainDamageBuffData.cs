@@ -16,11 +16,9 @@ namespace ETModel
         [LabelText("预伤害修正")]
         public float damageFix = 1.0f;
         
-        [ShowIf("isSustainDamage")]
         [LabelText("持续时间")]
         public float SustainTime = 0;
-
-        [ShowIf("isSustainDamage")]
+        
         [LabelText("作用间隔")]
         public float WorkInternal = 0;
     }

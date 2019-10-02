@@ -52,7 +52,7 @@ namespace ETHotfix
                         try
                         {
                             b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                    .AddBuff(buffPoolComponent.AcquireBuff<DamageBuffSystem>(
+                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                         ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
                                         ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
                         }
@@ -67,12 +67,12 @@ namespace ETHotfix
                     {
                         Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
                         b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                .AddBuff(buffPoolComponent.AcquireBuff<DamageBuffSystem>(
+                                .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                     ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
                                     ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
 
                         b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                .AddBuff(buffPoolComponent.AcquireBuff<DamageBuffSystem>(
+                                .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                     ((NodeDataForSkillBuff) skillNodeDataSupporter[10004]).SkillBuffBases,
                                     ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
                     }
