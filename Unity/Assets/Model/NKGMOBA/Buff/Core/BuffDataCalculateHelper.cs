@@ -31,6 +31,9 @@ namespace ETModel
                     tempData = BuffSystemBase.theUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
                             BuffSystemBase.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue;
                     break;
+                case BuffBaseDataEffectTypes.FromCurrentOverlay:
+                    tempData = BuffDataBase.ValueToBeChanged[BuffSystemBase.CurrentOverlay];
+                    break;
             }
 
             //依据加成方式对伤害进行加成

@@ -37,7 +37,8 @@ namespace ETModel
             foreach (Type type in types)
             {
                 if (!type.IsSubclassOf(typeof (NP_NodeDataBase)) && !type.IsSubclassOf(typeof (NP_ClassForStoreAction)) &&
-                    !type.IsSubclassOf(typeof (SkillBaseNodeData)) && !type.IsSubclassOf(typeof (BuffDataBase)))
+                    !type.IsSubclassOf(typeof (SkillBaseNodeData)) && !type.IsSubclassOf(typeof (BuffDataBase)) &&
+                    !type.IsSubclassOf(typeof (ListenBuffEventBase)))
                 {
                     continue;
                 }
@@ -57,9 +58,9 @@ namespace ETModel
                 try
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
-                
+
                     Log.Info("反序列化行为树完成");
-                    
+
                     NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }
                 catch (Exception e)
@@ -67,8 +68,6 @@ namespace ETModel
                     Console.WriteLine(e);
                     throw;
                 }
-
-
             }
         }
 
@@ -87,6 +86,5 @@ namespace ETModel
             Log.Error($"请求的行为树id不存在，id为{id}");
             return null;
         }
-        
     }
 }

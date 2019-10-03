@@ -17,18 +17,25 @@ namespace ETModel
             this.theUnitFrom = theUnitFrom;
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
-
+            
             BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
+
         }
 
         public override void OnExecute()
         {
-            Log.Info("进入了叠加血怒Buff Execute部分");
             BindStateBuffData tempData = MSkillBuffDataBase as BindStateBuffData;
+            
             foreach (var VARIABLE in tempData.OriBuff)
             {
-                this.theUnitBelongto.GetComponent<BuffManagerComponent>()
-                        .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto));
+                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto).AutoAddBuff();
+            }
+            
+            if (this.MSkillBuffDataBase.theEventID != null)
+            {
+                Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
+                Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
+                
             }
             this.MBuffState = BuffState.Running;
         }
@@ -36,7 +43,7 @@ namespace ETModel
         public override void OnUpdate()
         {
             //只有不是永久Buff的情况下才会执行Update判断
-            if ((this.MSkillBuffDataBase as BindStateBuffData).SustainTime + 1 > 0)
+            if (this.MSkillBuffDataBase.SustainTime + 1 > 0)
             {
                 if (TimeHelper.Now() > this.MaxLimitTime)
                 {
@@ -47,6 +54,23 @@ namespace ETModel
 
         public override void OnFinished()
         {
+        }
+
+        public override void OnRefresh()
+        {
+            BindStateBuffData tempData = MSkillBuffDataBase as BindStateBuffData;
+            
+            foreach (var VARIABLE in tempData.OriBuff)
+            {
+                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto).AutoAddBuff();
+            }
+            
+            if (this.MSkillBuffDataBase.theEventID != null)
+            {
+                Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
+                Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
+                
+            }
         }
     }
 }

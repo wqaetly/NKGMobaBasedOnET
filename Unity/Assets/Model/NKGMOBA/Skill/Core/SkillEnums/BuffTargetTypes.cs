@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 namespace ETModel
 {
     [Flags]
-    public enum SkillTarget
+    public enum BuffTargetTypes
     {
         /// <summary>
         /// 自己
@@ -21,10 +21,5 @@ namespace ETModel
         /// 别人
         /// </summary>
         [LabelText("别人")]  Others = 1 << 2,
-
-        /// <summary>
-        /// 自己和别人
-        /// </summary>
-        [LabelText("自己和别人")] All = Self|Others
     }
 }

@@ -56,7 +56,7 @@ namespace ETModel
             switch (buffDataBase.BelongBuffSystemType)
             {
                 case BuffSystemType.FlashDamageBuffSystem:
-                    tempType = typeof (FlashDamageBuffData);
+                    tempType = typeof (FlashDamageBuffSystem);
                     break;
                 case BuffSystemType.SustainDamageBuffSystem:
                     tempType = typeof (SustainDamageBuffSystem);

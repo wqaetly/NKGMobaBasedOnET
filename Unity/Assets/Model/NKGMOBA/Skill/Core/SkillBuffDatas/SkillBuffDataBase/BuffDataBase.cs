@@ -31,6 +31,9 @@ namespace ETModel
         [LabelText("归属的BuffSystem类型")]
         public BuffSystemType BelongBuffSystemType;
         
+        [LabelText("Buff的添加目标")]
+        public BuffTargetTypes BuffTargetTypes;
+        
         [LabelText("是否可以叠加(不能叠加就刷新，叠加满也刷新)")]
         public bool CanOverlay;
         

@@ -25,9 +25,28 @@ namespace ETModel
         {
             foreach (var VARIABLE in m_BuffsWillBeAdded)
             {
-                Log.Info($"通过监听机制增加id为{VARIABLE.FlagId}的Buff");
-                a.theUnitFrom.GetComponent<BuffManagerComponent>()
-                        .AddBuff(Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitBelongto, a.theUnitFrom));
+                Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
+                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitBelongto, a.theUnitFrom).AutoAddBuff();
+            }
+        }
+    }
+
+    /// <summary>
+    /// 监听Buff事件数据基类，用以监听指定事件
+    /// </summary>
+    public class ListenBuffEvent_CheckOverlay: ListenBuffEventBase
+    {
+        public int targetOverlay;
+
+        public override void Run(BuffSystemBase a)
+        {
+            if (a.CurrentOverlay == this.targetOverlay)
+            {
+                foreach (var VARIABLE in m_BuffsWillBeAdded)
+                {
+                    Log.Info($"层数判定_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
+                    Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitBelongto, a.theUnitFrom).AutoAddBuff();
+                }
             }
         }
     }
@@ -38,7 +57,7 @@ namespace ETModel
     public class ListenBuffDataBase: BuffDataBase
     {
         [LabelText("要监听的事件ID标识")]
-        public string EventId;
+        public List<string> EventIds;
 
         /// <summary>
         /// Buff事件

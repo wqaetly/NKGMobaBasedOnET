@@ -32,7 +32,7 @@ namespace ETModel
         /// <summary>
         /// 用于查找的——基于Buff的ID
         /// </summary>
-        public Dictionary<int, BuffSystemBase> m_BuffsForFind_BuffFlagID = new Dictionary<int, BuffSystemBase>();
+        public Dictionary<int, List<BuffSystemBase>> m_BuffsForFind_BuffFlagID = new Dictionary<int, List<BuffSystemBase>>();
 
         public void Update()
         {
@@ -45,8 +45,8 @@ namespace ETModel
                 if (buff.MBuffState == BuffState.Waiting)
                 {
                     buff.OnExecute();
-                } 
-                
+                }
+
                 if (buff.MBuffState == BuffState.Running)
                 {
                     buff.OnUpdate();
@@ -54,13 +54,14 @@ namespace ETModel
                 }
                 else
                 {
-                    Log.Info($"移除一个Buff，ID为{current.Value.MSkillBuffDataBase.FlagId}");
                     buff.OnFinished();
                     LinkedListNode<BuffSystemBase> next = current.Next;
                     m_Buffs.Remove(current);
                     m_BuffsForFind_BuffWorkType[current.Value.MSkillBuffDataBase.BuffWorkType].Remove(current.Value);
-                    m_BuffsForFind_BuffFlagID.Remove(current.Value.MSkillBuffDataBase.FlagId);
-                    current = next; 
+                    m_BuffsForFind_BuffFlagID[current.Value.MSkillBuffDataBase.FlagId].Remove(current.Value);
+                    /*Log.Info(
+                        $"移除一个Buff，ID为{current.Value.MSkillBuffDataBase.FlagId},BuffManager是否还有?:{this.FindBuffByFlagID(current.Value.MSkillBuffDataBase.FlagId)}");*/
+                    current = next;
                 }
             }
         }
@@ -77,9 +78,13 @@ namespace ETModel
                 m_BuffsForFind_BuffWorkType.Add(buff.MSkillBuffDataBase.BuffWorkType, new List<BuffSystemBase>() { buff });
             }
 
-            if (!this.m_BuffsForFind_BuffFlagID.ContainsKey(buff.MSkillBuffDataBase.FlagId))
+            if (this.m_BuffsForFind_BuffFlagID.ContainsKey(buff.MSkillBuffDataBase.FlagId))
             {
-                this.m_BuffsForFind_BuffFlagID.Add(buff.MSkillBuffDataBase.FlagId, buff);
+                m_BuffsForFind_BuffFlagID[buff.MSkillBuffDataBase.FlagId].Add(buff);
+            }
+            else
+            {
+                m_BuffsForFind_BuffFlagID.Add(buff.MSkillBuffDataBase.FlagId, new List<BuffSystemBase>() { buff });
             }
         }
 
@@ -94,7 +99,7 @@ namespace ETModel
                 return _temp;
             }
 
-            Log.Error($"查找{buffWorkTypes}失败");
+            //Log.Error($"查找{buffWorkTypes}失败");
             return null;
         }
 
@@ -117,14 +122,14 @@ namespace ETModel
         /// 通过标识ID获得Buff
         /// </summary>
         /// <param name="flagID">BuffData的标识ID</param>
-        public BuffSystemBase GetBuffByFlagID(int flagID)
+        public List<BuffSystemBase> GetBuffByFlagID(int flagID)
         {
-            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out BuffSystemBase _temp))
+            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out List<BuffSystemBase> _temp))
             {
                 return _temp;
             }
 
-            Log.Error($"查找{flagID}Buff失败");
+            //Log.Info($"查找{flagID}Buff失败");
             return null;
         }
 

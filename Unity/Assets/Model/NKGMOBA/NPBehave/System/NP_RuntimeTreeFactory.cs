@@ -22,7 +22,7 @@ namespace ETModel
             NP_DataSupportor npDataSupportor = Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(NPDataId);
 
             long theRuntimeTreeID = IdGenerater.GenerateId();
-            Log.Info($"运行时id为{theRuntimeTreeID}");
+            //Log.Info($"运行时id为{theRuntimeTreeID}");
             foreach (var VARIABLE in npDataSupportor.mNP_DataSupportorDic)
             {
                 switch (VARIABLE.Value.NodeType)

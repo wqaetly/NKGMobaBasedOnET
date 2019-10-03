@@ -66,5 +66,13 @@ namespace ETModel
         /// 重置Buff用
         /// </summary>
         public abstract void OnFinished();
+
+        /// <summary>
+        /// 刷新，用于刷新Buff状态
+        /// </summary>
+        public virtual void OnRefresh()
+        {
+            
+        }
     }
 }

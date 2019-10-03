@@ -25,18 +25,31 @@ namespace ETModel
         {
             //强制类型转换为Buff事件
             ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
-            Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent(temp.EventId, temp.ListenBuffEventBase);
+            foreach (var VARIABLE in temp.EventIds)
+            {
+                Log.Info($"订阅了{VARIABLE}");
+                Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent(VARIABLE, temp.ListenBuffEventBase);
+            }
+
             this.MBuffState = BuffState.Running;
         }
 
         public override void OnUpdate()
         {
-            if (TimeHelper.Now() > this.MaxLimitTime)
+            //只有不是永久Buff的情况下才会执行Update判断
+            if (this.MSkillBuffDataBase.SustainTime + 1 > 0)
             {
-                //强制类型转换为Buff事件
-                ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
-                Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent(temp.EventId, temp.ListenBuffEventBase);
-                this.MBuffState = BuffState.Finished;
+                if (TimeHelper.Now() > this.MaxLimitTime)
+                {
+                    //强制类型转换为Buff事件
+                    ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
+                    foreach (var VARIABLE in temp.EventIds)
+                    {
+                        Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent(VARIABLE, temp.ListenBuffEventBase);
+                    }
+
+                    this.MBuffState = BuffState.Finished;
+                }
             }
         }
 

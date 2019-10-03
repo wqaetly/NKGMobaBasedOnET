@@ -31,7 +31,7 @@ namespace ETHotfix
             unit.AddComponent<NP_RuntimeTreeManager>();
 
             //Log.Info("开始创建行为树");
-            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102892373671953);
+            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 102896782278679);
             //Log.Info("行为树创建完成");
             npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
 
@@ -62,8 +62,6 @@ namespace ETHotfix
                 unitInfo.UnitId = u.Id;
                 createUnits.Units.Add(unitInfo);
             }
-
-            Log.Info("已经到这一步了");
 
             //向所有小骷髅广播信息
             MessageHelper.Broadcast(createUnits);

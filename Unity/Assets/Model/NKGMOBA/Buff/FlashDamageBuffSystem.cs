@@ -23,8 +23,7 @@ namespace ETModel
             this.theUnitBelongto = theUnitBelongto;
             this.MSkillBuffDataBase = BuffDataBase;
 
-            //设置Buff状态为就绪
-            this.MBuffState = BuffState.Waiting;
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
         }
 
         public override void OnExecute()
@@ -34,17 +33,17 @@ namespace ETModel
             tempFinalData *= (MSkillBuffDataBase as FlashDamageBuffData).damageFix;
 
             Log.Info($"预计造成{tempFinalData}伤害");
-            
+
             //TODO 对受方的伤害结算，此时finalDamageValue为最终值
-            
+
             this.finalDamageValue = tempFinalData;
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
 
             //抛出Buff奏效事件
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
             Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
-            Log.Info($"抛出了EventID为{this.MSkillBuffDataBase.theEventID}的事件");
-            
+            // Log.Info($"抛出了EventID为{this.MSkillBuffDataBase.theEventID}的事件");
+
             this.MBuffState = BuffState.Finished;
         }
 
