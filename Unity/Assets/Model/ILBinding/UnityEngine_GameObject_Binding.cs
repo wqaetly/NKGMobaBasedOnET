@@ -25,9 +25,6 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("get_transform", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_transform_0);
-            args = new Type[]{typeof(System.Int32)};
-            method = type.GetMethod("set_layer", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, set_layer_1);
             Dictionary<string, List<MethodInfo>> genericMethods = new Dictionary<string, List<MethodInfo>>();
             List<MethodInfo> lst = null;                    
             foreach(var m in type.GetMethods())
@@ -50,7 +47,7 @@ namespace ILRuntime.Runtime.Generated
                     if(m.MatchGenericParameters(args, typeof(ETModel.ComponentView)))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, AddComponent_2);
+                        app.RegisterCLRMethodRedirection(method, AddComponent_1);
 
                         break;
                     }
@@ -58,7 +55,7 @@ namespace ILRuntime.Runtime.Generated
             }
             args = new Type[]{typeof(System.String)};
             method = type.GetMethod("Find", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Find_3);
+            app.RegisterCLRMethodRedirection(method, Find_2);
 
             args = new Type[]{};
             method = type.GetConstructor(flag, null, args, null);
@@ -82,25 +79,7 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* set_layer_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Int32 @value = ptr_of_this_method->Value;
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            UnityEngine.GameObject instance_of_this_method = (UnityEngine.GameObject)typeof(UnityEngine.GameObject).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            instance_of_this_method.layer = value;
-
-            return __ret;
-        }
-
-        static StackObject* AddComponent_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* AddComponent_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -115,7 +94,7 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* Find_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* Find_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

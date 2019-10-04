@@ -20,11 +20,16 @@ namespace ILRuntime.Runtime.Generated
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
+            FieldInfo field;
             Type[] args;
             Type type = typeof(ETModel.UnitComponent);
             args = new Type[]{typeof(System.Int64)};
             method = type.GetMethod("Get", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Get_0);
+
+            field = type.GetField("MyUnit", flag);
+            app.RegisterCLRFieldGetter(field, get_MyUnit_0);
+            app.RegisterCLRFieldSetter(field, set_MyUnit_0);
 
 
         }
@@ -48,6 +53,15 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
+
+        static object get_MyUnit_0(ref object o)
+        {
+            return ((ETModel.UnitComponent)o).MyUnit;
+        }
+        static void set_MyUnit_0(ref object o, object v)
+        {
+            ((ETModel.UnitComponent)o).MyUnit = (ETModel.Unit)v;
+        }
 
 
     }

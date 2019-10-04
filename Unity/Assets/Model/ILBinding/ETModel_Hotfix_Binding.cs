@@ -30,12 +30,15 @@ namespace ILRuntime.Runtime.Generated
             field = type.GetField("Update", flag);
             app.RegisterCLRFieldGetter(field, get_Update_0);
             app.RegisterCLRFieldSetter(field, set_Update_0);
+            field = type.GetField("FixedUpdate", flag);
+            app.RegisterCLRFieldGetter(field, get_FixedUpdate_1);
+            app.RegisterCLRFieldSetter(field, set_FixedUpdate_1);
             field = type.GetField("LateUpdate", flag);
-            app.RegisterCLRFieldGetter(field, get_LateUpdate_1);
-            app.RegisterCLRFieldSetter(field, set_LateUpdate_1);
+            app.RegisterCLRFieldGetter(field, get_LateUpdate_2);
+            app.RegisterCLRFieldSetter(field, set_LateUpdate_2);
             field = type.GetField("OnApplicationQuit", flag);
-            app.RegisterCLRFieldGetter(field, get_OnApplicationQuit_2);
-            app.RegisterCLRFieldSetter(field, set_OnApplicationQuit_2);
+            app.RegisterCLRFieldGetter(field, get_OnApplicationQuit_3);
+            app.RegisterCLRFieldSetter(field, set_OnApplicationQuit_3);
 
 
         }
@@ -65,19 +68,27 @@ namespace ILRuntime.Runtime.Generated
         {
             ((ETModel.Hotfix)o).Update = (System.Action)v;
         }
-        static object get_LateUpdate_1(ref object o)
+        static object get_FixedUpdate_1(ref object o)
+        {
+            return ((ETModel.Hotfix)o).FixedUpdate;
+        }
+        static void set_FixedUpdate_1(ref object o, object v)
+        {
+            ((ETModel.Hotfix)o).FixedUpdate = (System.Action)v;
+        }
+        static object get_LateUpdate_2(ref object o)
         {
             return ((ETModel.Hotfix)o).LateUpdate;
         }
-        static void set_LateUpdate_1(ref object o, object v)
+        static void set_LateUpdate_2(ref object o, object v)
         {
             ((ETModel.Hotfix)o).LateUpdate = (System.Action)v;
         }
-        static object get_OnApplicationQuit_2(ref object o)
+        static object get_OnApplicationQuit_3(ref object o)
         {
             return ((ETModel.Hotfix)o).OnApplicationQuit;
         }
-        static void set_OnApplicationQuit_2(ref object o, object v)
+        static void set_OnApplicationQuit_3(ref object o, object v)
         {
             ((ETModel.Hotfix)o).OnApplicationQuit = (System.Action)v;
         }

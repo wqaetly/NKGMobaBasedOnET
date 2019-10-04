@@ -91,6 +91,34 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
             }
+            args = new Type[]{typeof(ETModel.HeroSkillBehaveComponent)};
+            if (genericMethods.TryGetValue("GetComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.HeroSkillBehaveComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_4);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.UserInputComponent)};
+            if (genericMethods.TryGetValue("GetComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.UserInputComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_5);
+
+                        break;
+                    }
+                }
+            }
             args = new Type[]{typeof(ETModel.SessionComponent)};
             if (genericMethods.TryGetValue("RemoveComponent", out lst))
             {
@@ -99,7 +127,7 @@ namespace ILRuntime.Runtime.Generated
                     if(m.MatchGenericParameters(args, typeof(void)))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, RemoveComponent_4);
+                        app.RegisterCLRMethodRedirection(method, RemoveComponent_6);
 
                         break;
                     }
@@ -113,46 +141,18 @@ namespace ILRuntime.Runtime.Generated
                     if(m.MatchGenericParameters(args, typeof(ETModel.FUIPackageComponent)))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, GetComponent_5);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_7);
 
                         break;
                     }
                 }
             }
-            args = new Type[]{typeof(ETModel.NetOuterComponent)};
+            args = new Type[]{typeof(ETModel.UnitComponent)};
             if (genericMethods.TryGetValue("GetComponent", out lst))
             {
                 foreach(var m in lst)
                 {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.NetOuterComponent)))
-                    {
-                        method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, GetComponent_6);
-
-                        break;
-                    }
-                }
-            }
-            args = new Type[]{typeof(ETModel.SessionComponent)};
-            if (genericMethods.TryGetValue("AddComponent", out lst))
-            {
-                foreach(var m in lst)
-                {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.SessionComponent)))
-                    {
-                        method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, AddComponent_7);
-
-                        break;
-                    }
-                }
-            }
-            args = new Type[]{typeof(ETModel.SessionComponent)};
-            if (genericMethods.TryGetValue("GetComponent", out lst))
-            {
-                foreach(var m in lst)
-                {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.SessionComponent)))
+                    if(m.MatchGenericParameters(args, typeof(ETModel.UnitComponent)))
                     {
                         method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, GetComponent_8);
@@ -161,15 +161,15 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
             }
-            args = new Type[]{typeof(ETModel.HeartBeatComponent)};
-            if (genericMethods.TryGetValue("AddComponent", out lst))
+            args = new Type[]{typeof(ETModel.HeroDataComponent)};
+            if (genericMethods.TryGetValue("GetComponent", out lst))
             {
                 foreach(var m in lst)
                 {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.HeartBeatComponent)))
+                    if(m.MatchGenericParameters(args, typeof(ETModel.HeroDataComponent)))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, AddComponent_9);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_9);
 
                         break;
                     }
@@ -189,57 +189,43 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
             }
-            args = new Type[]{typeof(ETModel.SceneChangeComponent)};
+            args = new Type[]{typeof(ETModel.B2S_DebuggerComponent)};
+            if (genericMethods.TryGetValue("GetComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.B2S_DebuggerComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_11);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.HeroDataComponent), typeof(System.Int64)};
             if (genericMethods.TryGetValue("AddComponent", out lst))
             {
                 foreach(var m in lst)
                 {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.SceneChangeComponent)))
+                    if(m.MatchGenericParameters(args, typeof(ETModel.HeroDataComponent), typeof(System.Int64)))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, AddComponent_11);
+                        app.RegisterCLRMethodRedirection(method, AddComponent_12);
 
                         break;
                     }
                 }
             }
-            args = new Type[]{typeof(ETModel.UserInputComponent)};
-            if (genericMethods.TryGetValue("GetComponent", out lst))
+            args = new Type[]{typeof(ETModel.CameraComponent), typeof(ETModel.Unit)};
+            if (genericMethods.TryGetValue("AddComponent", out lst))
             {
                 foreach(var m in lst)
                 {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.UserInputComponent)))
+                    if(m.MatchGenericParameters(args, typeof(ETModel.CameraComponent), typeof(ETModel.Unit)))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, GetComponent_12);
-
-                        break;
-                    }
-                }
-            }
-            args = new Type[]{typeof(ETModel.UnitComponent)};
-            if (genericMethods.TryGetValue("GetComponent", out lst))
-            {
-                foreach(var m in lst)
-                {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.UnitComponent)))
-                    {
-                        method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, GetComponent_13);
-
-                        break;
-                    }
-                }
-            }
-            args = new Type[]{typeof(ETModel.AnimatorComponent)};
-            if (genericMethods.TryGetValue("GetComponent", out lst))
-            {
-                foreach(var m in lst)
-                {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.AnimatorComponent)))
-                    {
-                        method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, GetComponent_14);
+                        app.RegisterCLRMethodRedirection(method, AddComponent_13);
 
                         break;
                     }
@@ -253,7 +239,77 @@ namespace ILRuntime.Runtime.Generated
                     if(m.MatchGenericParameters(args, typeof(ETModel.UnitPathComponent)))
                     {
                         method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_14);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.NetOuterComponent)};
+            if (genericMethods.TryGetValue("GetComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.NetOuterComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, GetComponent_15);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.SessionComponent)};
+            if (genericMethods.TryGetValue("AddComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.SessionComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, AddComponent_16);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.SessionComponent)};
+            if (genericMethods.TryGetValue("GetComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.SessionComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, GetComponent_17);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.HeartBeatComponent)};
+            if (genericMethods.TryGetValue("AddComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.HeartBeatComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, AddComponent_18);
+
+                        break;
+                    }
+                }
+            }
+            args = new Type[]{typeof(ETModel.SceneChangeComponent)};
+            if (genericMethods.TryGetValue("AddComponent", out lst))
+            {
+                foreach(var m in lst)
+                {
+                    if(m.MatchGenericParameters(args, typeof(ETModel.SceneChangeComponent)))
+                    {
+                        method = m.MakeGenericMethod(args);
+                        app.RegisterCLRMethodRedirection(method, AddComponent_19);
 
                         break;
                     }
@@ -344,7 +400,47 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* RemoveComponent_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* GetComponent_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.HeroSkillBehaveComponent>();
+
+            object obj_result_of_this_method = result_of_this_method;
+            if(obj_result_of_this_method is CrossBindingAdaptorType)
+            {    
+                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
+            }
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* GetComponent_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.UserInputComponent>();
+
+            object obj_result_of_this_method = result_of_this_method;
+            if(obj_result_of_this_method is CrossBindingAdaptorType)
+            {    
+                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
+            }
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* RemoveComponent_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -359,7 +455,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* GetComponent_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* GetComponent_7(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -379,46 +475,6 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* GetComponent_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.NetOuterComponent>();
-
-            object obj_result_of_this_method = result_of_this_method;
-            if(obj_result_of_this_method is CrossBindingAdaptorType)
-            {    
-                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
-            }
-            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
-        }
-
-        static StackObject* AddComponent_7(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.SessionComponent>();
-
-            object obj_result_of_this_method = result_of_this_method;
-            if(obj_result_of_this_method is CrossBindingAdaptorType)
-            {    
-                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
-            }
-            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
-        }
-
         static StackObject* GetComponent_8(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
@@ -429,7 +485,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.SessionComponent>();
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.UnitComponent>();
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)
@@ -439,7 +495,7 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* AddComponent_9(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* GetComponent_9(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -449,7 +505,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.HeartBeatComponent>();
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.HeroDataComponent>();
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)
@@ -479,7 +535,7 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* AddComponent_11(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* GetComponent_11(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -489,7 +545,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.SceneChangeComponent>();
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.B2S_DebuggerComponent>();
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)
@@ -499,17 +555,20 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* GetComponent_12(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* AddComponent_12(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Int64 @p1 = *(long*)&ptr_of_this_method->Value;
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.UserInputComponent>();
+            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.HeroDataComponent, System.Int64>(@p1);
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)
@@ -519,17 +578,21 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* GetComponent_13(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* AddComponent_13(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Unit @p1 = (ETModel.Unit)typeof(ETModel.Unit).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.UnitComponent>();
+            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.CameraComponent, ETModel.Unit>(@p1);
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)
@@ -549,7 +612,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.AnimatorComponent>();
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.UnitPathComponent>();
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)
@@ -569,7 +632,87 @@ namespace ILRuntime.Runtime.Generated
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.UnitPathComponent>();
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.NetOuterComponent>();
+
+            object obj_result_of_this_method = result_of_this_method;
+            if(obj_result_of_this_method is CrossBindingAdaptorType)
+            {    
+                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
+            }
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* AddComponent_16(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.SessionComponent>();
+
+            object obj_result_of_this_method = result_of_this_method;
+            if(obj_result_of_this_method is CrossBindingAdaptorType)
+            {    
+                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
+            }
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* GetComponent_17(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.SessionComponent>();
+
+            object obj_result_of_this_method = result_of_this_method;
+            if(obj_result_of_this_method is CrossBindingAdaptorType)
+            {    
+                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
+            }
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* AddComponent_18(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.HeartBeatComponent>();
+
+            object obj_result_of_this_method = result_of_this_method;
+            if(obj_result_of_this_method is CrossBindingAdaptorType)
+            {    
+                return ILIntepreter.PushObject(__ret, __mStack, ((CrossBindingAdaptorType)obj_result_of_this_method).ILInstance);
+            }
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* AddComponent_19(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.AddComponent<ETModel.SceneChangeComponent>();
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)

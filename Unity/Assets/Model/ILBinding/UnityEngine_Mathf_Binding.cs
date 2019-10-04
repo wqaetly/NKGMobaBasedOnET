@@ -37,6 +37,12 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{typeof(System.Single)};
             method = type.GetMethod("Abs", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Abs_4);
+            args = new Type[]{typeof(System.Single)};
+            method = type.GetMethod("RoundToInt", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, RoundToInt_5);
+            args = new Type[]{typeof(System.Single)};
+            method = type.GetMethod("Cos", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, Cos_6);
 
             app.RegisterCLRCreateDefaultInstance(type, () => new UnityEngine.Mathf());
 
@@ -174,6 +180,40 @@ namespace ILRuntime.Runtime.Generated
 
 
             var result_of_this_method = UnityEngine.Mathf.Abs(@f);
+
+            __ret->ObjectType = ObjectTypes.Float;
+            *(float*)&__ret->Value = result_of_this_method;
+            return __ret + 1;
+        }
+
+        static StackObject* RoundToInt_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Single @f = *(float*)&ptr_of_this_method->Value;
+
+
+            var result_of_this_method = UnityEngine.Mathf.RoundToInt(@f);
+
+            __ret->ObjectType = ObjectTypes.Integer;
+            __ret->Value = result_of_this_method;
+            return __ret + 1;
+        }
+
+        static StackObject* Cos_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Single @f = *(float*)&ptr_of_this_method->Value;
+
+
+            var result_of_this_method = UnityEngine.Mathf.Cos(@f);
 
             __ret->ObjectType = ObjectTypes.Float;
             *(float*)&__ret->Value = result_of_this_method;

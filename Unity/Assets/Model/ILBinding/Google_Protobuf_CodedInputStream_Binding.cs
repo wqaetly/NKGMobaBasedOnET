@@ -37,9 +37,12 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("ReadInt64", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, ReadInt64_4);
+            args = new Type[]{};
+            method = type.GetMethod("ReadFloat", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, ReadFloat_5);
             args = new Type[]{typeof(Google.Protobuf.IMessage)};
             method = type.GetMethod("ReadMessage", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, ReadMessage_5);
+            app.RegisterCLRMethodRedirection(method, ReadMessage_6);
 
 
         }
@@ -126,7 +129,24 @@ namespace ILRuntime.Runtime.Generated
             return __ret + 1;
         }
 
-        static StackObject* ReadMessage_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* ReadFloat_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            Google.Protobuf.CodedInputStream instance_of_this_method = (Google.Protobuf.CodedInputStream)typeof(Google.Protobuf.CodedInputStream).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            var result_of_this_method = instance_of_this_method.ReadFloat();
+
+            __ret->ObjectType = ObjectTypes.Float;
+            *(float*)&__ret->Value = result_of_this_method;
+            return __ret + 1;
+        }
+
+        static StackObject* ReadMessage_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
