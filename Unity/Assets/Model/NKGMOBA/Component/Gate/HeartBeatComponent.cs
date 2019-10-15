@@ -50,15 +50,27 @@ namespace ETModel
             // 开始发包
             try
             {
-                G2C_HeartBeat result = (G2C_HeartBeat) await this.GetParent<Session>().Call(new C2G_HeartBeat());
+                await this.GetParent<Session>().Call(new C2G_HeartBeat());
             }
             catch
             {
+                Log.Info("发送心跳包失败");
                 if (this.hasOffline) return;
                 this.hasOffline = true;
-                Log.Info("发送心跳包失败");
                 Game.EventSystem.Run(EventIdType.ShowOfflineDialogUI_Model, 1, "提示", "很抱歉，你与服务器连接已断开");
             }
+        }
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+			
+            base.Dispose();
+
+            Game.EventSystem.Run(EventIdType.ShowOfflineDialogUI_Model, 1, "提示", "很抱歉，你与服务器连接已断开");
         }
     }
 }

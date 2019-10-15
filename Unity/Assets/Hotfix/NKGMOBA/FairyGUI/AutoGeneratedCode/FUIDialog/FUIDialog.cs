@@ -46,6 +46,7 @@ namespace ETHotfix.FUIDialog
 
         public static FUIDialog CreateInstance()
 		{			
+			Log.Info("创建了对话框UI");
 			return ComponentFactory.Create<FUIDialog, GObject>(CreateGObject());
 		}
 

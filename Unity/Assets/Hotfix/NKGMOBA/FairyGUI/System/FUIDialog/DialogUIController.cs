@@ -13,6 +13,7 @@ namespace ETHotfix
     {
         public override void Run(int mode, string tittle, string content)
         {
+            Log.Info("服务端主动断开连接要显示对话框");
             var hotfixui = FUIDialog.FUIDialog.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = FUIPackage.FUIDialog;
@@ -45,6 +46,7 @@ namespace ETHotfix
     {
         public override void Run(int mode, string tittle, string content)
         {
+            Log.Info("因与服务端断开连接要显示对话框");
             var hotfixui = FUIDialog.FUIDialog.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = FUIPackage.FUIDialog;

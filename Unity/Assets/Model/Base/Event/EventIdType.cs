@@ -32,7 +32,7 @@
         public const string CreateLoadingUI = "CreateLoadingUI";
 
         // 显示热更层对话框
-        public const string ShowOfflineDialogUI_Model = "ShowOfflineDialogUI";
+        public const string ShowOfflineDialogUI_Model = "ShowOfflineDialogUI_Model";
 
         // 小地图寻路事件，用来传递目标点
         public const string SmallMapPathFinder = "SmallMapPathFinder";
