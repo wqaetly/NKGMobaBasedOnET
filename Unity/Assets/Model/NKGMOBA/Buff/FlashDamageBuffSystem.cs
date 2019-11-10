@@ -32,11 +32,12 @@ namespace ETModel
 
             tempFinalData *= (MSkillBuffDataBase as FlashDamageBuffData).damageFix;
 
-            Log.Info($"预计造成{tempFinalData}伤害");
+            Log.Info($"瞬时预计造成{tempFinalData}伤害");
 
             //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
             this.finalDamageValue = tempFinalData;
+
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
 
             //抛出Buff奏效事件

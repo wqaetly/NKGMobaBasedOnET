@@ -19,7 +19,6 @@ namespace ETModel
             this.MSkillBuffDataBase = BuffDataBase;
             
             BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
-
         }
 
         public override void OnExecute()
@@ -34,7 +33,7 @@ namespace ETModel
             if (this.MSkillBuffDataBase.theEventID != null)
             {
                 Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
-                Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
+                //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
                 
             }
             this.MBuffState = BuffState.Running;
@@ -68,8 +67,7 @@ namespace ETModel
             if (this.MSkillBuffDataBase.theEventID != null)
             {
                 Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
-                Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
-                
+                //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
             }
         }
     }

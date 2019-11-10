@@ -40,7 +40,7 @@ namespace ETHotfix
             {
                 case 10006: //诺克：自身
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(102896782278679).mSkillDataDic;
+                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(103112247476249).mSkillDataDic;
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
                     

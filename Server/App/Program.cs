@@ -19,7 +19,6 @@ namespace App
                 Game.EventSystem.Add(DLLType.Model, typeof (Game).Assembly);
                 //添加Hotfix.dll到字典维护
                 Game.EventSystem.Add(DLLType.Hotfix, DllHelper.GetHotfixAssembly());
-
                 //添加并获取设置组件的引用
                 Options options = Game.Scene.AddComponent<OptionComponent, string[]>(args).Options;
                 //添加并获取初始配置的组件的引用

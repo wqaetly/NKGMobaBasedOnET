@@ -57,5 +57,11 @@ namespace ETModel
         {
             
         }
+
+        public override void OnRefresh()
+        {
+            base.OnRefresh();
+            Log.Info("刷新了血怒Buff!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 }

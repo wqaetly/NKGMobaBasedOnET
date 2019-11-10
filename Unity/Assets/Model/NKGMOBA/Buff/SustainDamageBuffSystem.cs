@@ -31,7 +31,7 @@ namespace ETModel
             this.MSkillBuffDataBase = BuffDataBase;
 
             BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
-            Log.Info("持续伤害Buff初始化完成");
+            //Log.Info("持续伤害Buff初始化完成");
         }
 
         public override void OnExecute()
