@@ -8,7 +8,7 @@
 对于想系统学习本项目而无从下手的，推荐去看看本项目的Wiki，里面有运行指南和基础教程以及相关技术点讲解。
 [这是Wiki地址](https://gitee.com/NKG_admin/MKGMobaBasedOnET/wikis)
 
-还有引导演示视频：[输入链接说明](https://www.bilibili.com/video/av74833675)
+**引导演示视频：[视频链接](https://www.bilibili.com/video/av74833675)** 
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
