@@ -47,7 +47,7 @@ namespace ETModel
 			this.componentFilters.Clear();
 
 			Type parentType = this.Parent.GetType();
-			List<Type> types = Game.EventSystem.GetTypes(typeof(FilterAttribute));
+			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(FilterAttribute));
 			foreach (Type type in types)
 			{
 				object[] attrs = type.GetCustomAttributes(typeof(FilterAttribute), false);

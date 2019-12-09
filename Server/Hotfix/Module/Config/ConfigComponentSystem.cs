@@ -34,7 +34,7 @@ namespace ETHotfix
 			AppType appType = StartConfigComponent.Instance.StartConfig.AppType;
 			
 			self.AllConfig.Clear();
-			List<Type> types = Game.EventSystem.GetTypes(typeof(ConfigAttribute));
+			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(ConfigAttribute));
 
 			foreach (Type type in types)
 			{

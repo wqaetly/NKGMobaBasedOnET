@@ -35,7 +35,7 @@ namespace ETHotfix
 
 			self.MailboxHandlers.Clear();
 
-			List<Type> types = Game.EventSystem.GetTypes(typeof(MailboxHandlerAttribute));
+			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(MailboxHandlerAttribute));
 
 			foreach (Type type in types)
 			{

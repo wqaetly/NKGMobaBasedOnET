@@ -4,6 +4,12 @@ using ETModel;
 
 namespace ETHotfix
 {
+    public enum DLLType
+    {
+        Model,
+        Hotfix,
+        Editor,
+    }
     public sealed class EventSystem
     {
         private readonly Dictionary<long, Component> allComponents = new Dictionary<long, Component>();

@@ -30,7 +30,7 @@ namespace ETModel
         private readonly Dictionary<long, Component> allComponents = new Dictionary<long, Component>();
 
         private readonly Dictionary<DLLType, Assembly> assemblies = new Dictionary<DLLType, Assembly>();
-        private readonly UnOrderMultiMap<Type, Type> types = new UnOrderMultiMap<Type, Type>();
+        private readonly UnOrderMultiMapSet<Type, Type> types = new UnOrderMultiMapSet<Type, Type>();
 
         private readonly Dictionary<string, List<IEvent>> allEvents = new Dictionary<string, List<IEvent>>();
 
@@ -179,16 +179,24 @@ namespace ETModel
             return this.assemblies[dllType];
         }
 
-        public List<Type> GetTypes(Type systemAttributeType)
+        public HashSet<Type> GetTypes(Type systemAttributeType)
         {
             if (!this.types.ContainsKey(systemAttributeType))
             {
-                return new List<Type>();
+                return new HashSet<Type>();
             }
-
             return this.types[systemAttributeType];
         }
-
+		
+        public List<Type> GetTypes()
+        {
+            List<Type> allTypes = new List<Type>();
+            foreach (Assembly assembly in this.assemblies.Values)
+            {
+                allTypes.AddRange(assembly.GetTypes());
+            }
+            return allTypes;
+        }
         public void Add(Component component)
         {
             this.allComponents.Add(component.InstanceId, component);

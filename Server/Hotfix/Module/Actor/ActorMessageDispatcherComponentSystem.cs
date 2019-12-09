@@ -38,7 +38,7 @@ namespace ETHotfix
 
 			self.ActorMessageHandlers.Clear();
 
-			List<Type> types = Game.EventSystem.GetTypes(typeof(ActorMessageHandlerAttribute));
+			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(ActorMessageHandlerAttribute));
 
 			types = Game.EventSystem.GetTypes(typeof (ActorMessageHandlerAttribute));
 			foreach (Type type in types)

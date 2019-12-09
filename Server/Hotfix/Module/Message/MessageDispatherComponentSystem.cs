@@ -33,7 +33,7 @@ namespace ETHotfix
 
 			AppType appType = StartConfigComponent.Instance.StartConfig.AppType;
 
-			List<Type> types = Game.EventSystem.GetTypes(typeof(MessageHandlerAttribute));
+			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(MessageHandlerAttribute));
 
 			foreach (Type type in types)
 			{
