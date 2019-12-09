@@ -144,7 +144,7 @@ namespace ETHotfix
 
             if (children.ContainsKey(ui.Name))
             {
-                Log.Error($"ui.Name({ui.Name}) already exist");
+                Log.Warning($"注意，ui.Name({ui.Name}) already exist");
                 return;
             }
 
