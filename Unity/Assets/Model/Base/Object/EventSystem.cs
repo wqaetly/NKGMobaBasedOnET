@@ -140,24 +140,27 @@ namespace ETModel
             }
 
             this.allEvents.Clear();
-            foreach (Type type in types[typeof (EventAttribute)])
+            if (this.types.ContainsKey(typeof (EventAttribute)))
             {
-                object[] attrs = type.GetCustomAttributes(typeof (EventAttribute), false);
-
-                foreach (object attr in attrs)
+                foreach (Type type in types[typeof (EventAttribute)])
                 {
-                    EventAttribute aEventAttribute = (EventAttribute) attr;
-                    object obj = Activator.CreateInstance(type);
-                    IEvent iEvent = obj as IEvent;
-                    if (iEvent == null)
-                    {
-                        Log.Error($"{obj.GetType().Name} 没有继承IEvent");
-                    }
+                    object[] attrs = type.GetCustomAttributes(typeof (EventAttribute), false);
 
-                    this.RegisterEvent(aEventAttribute.Type, iEvent);
+                    foreach (object attr in attrs)
+                    {
+                        EventAttribute aEventAttribute = (EventAttribute) attr;
+                        object obj = Activator.CreateInstance(type);
+                        IEvent iEvent = obj as IEvent;
+                        if (iEvent == null)
+                        {
+                            Log.Error($"{obj.GetType().Name} 没有继承IEvent");
+                        }
+
+                        this.RegisterEvent(aEventAttribute.Type, iEvent);
+                    }
                 }
             }
-
+            
             this.Load();
         }
 

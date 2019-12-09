@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos
 {
@@ -5,6 +7,11 @@ namespace Sirenix.OdinInspector.Demos
 
     public class DefaultDrawerChanges : MonoBehaviour
     {
+        //[PreviewField]
+        public Sprite m_TestSprite;
+        
+        public Dictionary<int,int> m_TestDic = new Dictionary<int, int>();
+        
         [InfoBox("All enums will now have a more feature-rich dropdown that introduces search.")]
         public KeyCode NormalEnum;
         public Sirenix.Utilities.AssemblyTypeFlags FlagEnum;
