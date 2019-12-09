@@ -864,6 +864,69 @@
               <e p="Component" t="Include">
                 <e p="HeroSkillBehaveComponent.cs" t="Include" />
               </e>
+              <e p="HeroData" t="Include">
+                <e p="HeroBaseDataRepositoryComponent.cs" t="Include" />
+                <e p="HeroDataComponent.cs" t="Include" />
+                <e p="HeroDataSupportor.cs" t="Include" />
+                <e p="HeroProfession.cs" t="Include" />
+                <e p="NodeDataForHero.cs" t="Include" />
+              </e>
+              <e p="SkillSystem" t="Include">
+                <e p="BuffSystem" t="Include">
+                  <e p="BindStateBuffSystem.cs" t="Include" />
+                  <e p="ChangePlayerPropertyBuffSystem.cs" t="Include" />
+                  <e p="Core" t="Include">
+                    <e p="BattleEventSystem.cs" t="Include" />
+                    <e p="BuffAddHelper.cs" t="Include" />
+                    <e p="BuffDataCalculateHelper.cs" t="Include" />
+                    <e p="BuffManagerComponent.cs" t="Include" />
+                    <e p="BuffPoolComponent.cs" t="Include" />
+                    <e p="BuffState.cs" t="Include" />
+                    <e p="BuffSystemBase.cs" t="Include" />
+                    <e p="BuffTimerAndOverlayHelper.cs" t="Include" />
+                  </e>
+                  <e p="FlashDamageBuffSystem.cs" t="Include" />
+                  <e p="ListenBuffCallBackBuffSystem.cs" t="Include" />
+                  <e p="SustainDamageBuffSystem.cs" t="Include" />
+                  <e p="TreatmentBuffSystem.cs" t="Include" />
+                </e>
+                <e p="Core" t="Include">
+                  <e p="AnimationCore" t="Include">
+                    <e p="AnimationData.cs" t="Include" />
+                  </e>
+                  <e p="Bson" t="Include">
+                    <e p="NodeDataSupporter.cs" t="Include" />
+                  </e>
+                  <e p="NodeDataForSkillBuff.cs" t="Include" />
+                  <e p="NodeDataForStartSkill.cs" t="Include" />
+                  <e p="SkillBaseNodeData.cs" t="Include" />
+                  <e p="SkillBuffDatas" t="Include">
+                    <e p="BindStateBuffData.cs" t="Include" />
+                    <e p="ChangePlayerPropertyBuffData.cs" t="Include" />
+                    <e p="FlashDamageBuffData.cs" t="Include" />
+                    <e p="ListenBuffCallBackDataBase" t="Include">
+                      <e p="ListenBuffDataCallBackDataBase.cs" t="Include" />
+                    </e>
+                    <e p="SkillBuffDataBase" t="Include">
+                      <e p="BuffDataBase.cs" t="Include" />
+                    </e>
+                    <e p="SustainDamageBuffData.cs" t="Include" />
+                    <e p="TreatmentBuffData.cs" t="Include" />
+                  </e>
+                  <e p="SkillEnums" t="Include">
+                    <e p="BuffAdditionTypes.cs" t="Include" />
+                    <e p="BuffBaseDataEffectTypes.cs" t="Include" />
+                    <e p="BuffBaseType.cs" t="Include" />
+                    <e p="BuffDamageTypes.cs" t="Include" />
+                    <e p="BuffSystemTypes.cs" t="Include" />
+                    <e p="BuffTargetTypes.cs" t="Include" />
+                    <e p="BuffWorkTypes.cs" t="Include" />
+                    <e p="SkillCostTypes.cs" t="Include" />
+                    <e p="SkillReleaseMode.cs" t="Include" />
+                    <e p="SkillTypes.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
             </e>
             <e p="Box2DSharp" t="Include">
               <e p="CollisionRelations" t="Include">
@@ -882,24 +945,6 @@
                 <e p="B2S_PolygonColliderDataStructure.cs" t="Include" />
                 <e p="B2S_PrefabData.cs" t="Include" />
               </e>
-            </e>
-            <e p="Buff" t="Include">
-              <e p="BindStateBuffSystem.cs" t="Include" />
-              <e p="ChangePlayerPropertyBuffSystem.cs" t="Include" />
-              <e p="Core" t="Include">
-                <e p="BattleEventSystem.cs" t="Include" />
-                <e p="BuffAddHelper.cs" t="Include" />
-                <e p="BuffDataCalculateHelper.cs" t="Include" />
-                <e p="BuffManagerComponent.cs" t="Include" />
-                <e p="BuffPoolComponent.cs" t="Include" />
-                <e p="BuffState.cs" t="Include" />
-                <e p="BuffSystemBase.cs" t="Include" />
-                <e p="BuffTimerAndOverlayHelper.cs" t="Include" />
-              </e>
-              <e p="FlashDamageBuffSystem.cs" t="Include" />
-              <e p="ListenBuffCallBackBuffSystem.cs" t="Include" />
-              <e p="SustainDamageBuffSystem.cs" t="Include" />
-              <e p="TreatmentBuffSystem.cs" t="Include" />
             </e>
             <e p="Component" t="Include">
               <e p="AnimatorComponent.cs" t="Include" />
@@ -969,13 +1014,6 @@
               <e p="B2S_Debugger.cs" t="Include" />
               <e p="CodeTimeCostObserver.cs" t="Include" />
               <e p="DeepCopyHelper.cs" t="Include" />
-            </e>
-            <e p="HeroData" t="Include">
-              <e p="HeroBaseDataRepositoryComponent.cs" t="Include" />
-              <e p="HeroDataComponent.cs" t="Include" />
-              <e p="HeroDataSupportor.cs" t="Include" />
-              <e p="HeroProfession.cs" t="Include" />
-              <e p="NodeDataForHero.cs" t="Include" />
             </e>
             <e p="NPBehave" t="Include">
               <e p="Component" t="Include">
@@ -1075,57 +1113,6 @@
               </e>
               <e p="System" t="Include">
                 <e p="NP_RuntimeTreeFactory.cs" t="Include" />
-              </e>
-              <e p="UnityExamples" t="Include">
-                <e p="NPBehaveExampleClockThrottling.cs" t="Include" />
-                <e p="NPBehaveExampleEnemyAI.cs" t="Include" />
-                <e p="NPBehaveExampleHelloBlackboardsAI.cs" t="Include" />
-                <e p="NPBehaveExampleHelloWorldAI.cs" t="Include" />
-                <e p="NPBehaveExampleMouseController.cs" t="Include" />
-                <e p="NPBehaveExampleSwarmEnemyAI.cs" t="Include" />
-                <e p="ReusableSubtrees" t="Include">
-                  <e p="EnemyA.cs" t="Include" />
-                  <e p="EnemyB.cs" t="Include" />
-                  <e p="NodeFactory.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Skill" t="Include">
-              <e p="Core" t="Include">
-                <e p="AnimationCore" t="Include">
-                  <e p="AnimationData.cs" t="Include" />
-                </e>
-                <e p="Bson" t="Include">
-                  <e p="NodeDataSupporter.cs" t="Include" />
-                </e>
-                <e p="NodeDataForSkillBuff.cs" t="Include" />
-                <e p="NodeDataForStartSkill.cs" t="Include" />
-                <e p="SkillBaseNodeData.cs" t="Include" />
-                <e p="SkillBuffDatas" t="Include">
-                  <e p="BindStateBuffData.cs" t="Include" />
-                  <e p="ChangePlayerPropertyBuffData.cs" t="Include" />
-                  <e p="FlashDamageBuffData.cs" t="Include" />
-                  <e p="ListenBuffCallBackDataBase" t="Include">
-                    <e p="ListenBuffDataCallBackDataBase.cs" t="Include" />
-                  </e>
-                  <e p="SkillBuffDataBase" t="Include">
-                    <e p="BuffDataBase.cs" t="Include" />
-                  </e>
-                  <e p="SustainDamageBuffData.cs" t="Include" />
-                  <e p="TreatmentBuffData.cs" t="Include" />
-                </e>
-                <e p="SkillEnums" t="Include">
-                  <e p="BuffAdditionTypes.cs" t="Include" />
-                  <e p="BuffBaseDataEffectTypes.cs" t="Include" />
-                  <e p="BuffBaseType.cs" t="Include" />
-                  <e p="BuffDamageTypes.cs" t="Include" />
-                  <e p="BuffSystemTypes.cs" t="Include" />
-                  <e p="BuffTargetTypes.cs" t="Include" />
-                  <e p="BuffWorkTypes.cs" t="Include" />
-                  <e p="SkillCostTypes.cs" t="Include" />
-                  <e p="SkillReleaseMode.cs" t="Include" />
-                  <e p="SkillTypes.cs" t="Include" />
-                </e>
               </e>
             </e>
             <e p="System" t="Include">
