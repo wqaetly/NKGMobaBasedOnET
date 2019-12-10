@@ -21,6 +21,8 @@ namespace ETModel
         {
             try
             {
+                BsonHelper.Init();
+                
                 SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
                 DontDestroyOnLoad(gameObject);
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
