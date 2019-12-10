@@ -50,7 +50,8 @@ namespace ETModel
             matrix4X4 = Matrix4x4.TRS(theObjectWillBeEdited.transform.position, theObjectWillBeEdited.transform.rotation,
                 theObjectWillBeEdited.transform.parent.localScale);
             this.MB2S_CircleColliderDataStructure.radius = this.mCollider2D.radius * this.theObjectWillBeEdited.transform.parent.localScale.x;
-            MB2S_CircleColliderDataStructure.offset.Fill(this.mCollider2D.offset);
+            MB2S_CircleColliderDataStructure.finalOffset.X = this.mCollider2D.offset.x;
+            MB2S_CircleColliderDataStructure.finalOffset.Y = this.mCollider2D.offset.y;
             this.canDraw = true;
         }
 
@@ -107,8 +108,8 @@ namespace ETModel
                 {
                     B2S_CircleColliderDataStructure b2SCircleColliderDataStructure = new B2S_CircleColliderDataStructure();
                     b2SCircleColliderDataStructure.id = MB2S_CircleColliderDataStructure.id;
-                    b2SCircleColliderDataStructure.offset.x = MB2S_CircleColliderDataStructure.offset.x;
-                    b2SCircleColliderDataStructure.offset.y = MB2S_CircleColliderDataStructure.offset.y;
+                    b2SCircleColliderDataStructure.finalOffset.X = MB2S_CircleColliderDataStructure.finalOffset.X;
+                    b2SCircleColliderDataStructure.finalOffset.Y = MB2S_CircleColliderDataStructure.finalOffset.Y;
                     b2SCircleColliderDataStructure.isSensor = MB2S_CircleColliderDataStructure.isSensor;
                     b2SCircleColliderDataStructure.b2SColliderType = MB2S_CircleColliderDataStructure.b2SColliderType;
                     b2SCircleColliderDataStructure.radius = MB2S_CircleColliderDataStructure.radius;
@@ -219,7 +220,7 @@ namespace ETModel
             this.canDraw = false;
             this.MB2S_CircleColliderDataStructure.id = 0;
             this.MB2S_CircleColliderDataStructure.radius = 0;
-            MB2S_CircleColliderDataStructure.offset.Clean();
+            MB2S_CircleColliderDataStructure.finalOffset = System.Numerics.Vector2.Zero;
             this.MB2S_CircleColliderDataStructure.isSensor = false;
         }
 

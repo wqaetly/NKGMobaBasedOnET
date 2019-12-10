@@ -15,6 +15,7 @@ namespace App
             SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
             try
             {
+                BsonHelper.Init();
                 //添加Model.dll到字典维护
                 Game.EventSystem.Add(DLLType.Model, typeof (Game).Assembly);
                 //添加Hotfix.dll到字典维护

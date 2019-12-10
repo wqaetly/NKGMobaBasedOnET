@@ -51,7 +51,8 @@ namespace ETModel
             this.MB2S_BoxColliderDataStructure.hy = tempBox2D.bounds.size.y / 2;
             var conversion = new Vector3(this.theObjectWillBeEdited.transform.parent.localScale.x,
                 this.theObjectWillBeEdited.transform.parent.localScale.y, this.theObjectWillBeEdited.transform.parent.localScale.z);
-            MB2S_BoxColliderDataStructure.offset.Fill(this.mCollider2D.offset);
+            MB2S_BoxColliderDataStructure.finalOffset.X = this.mCollider2D.offset.x;
+            MB2S_BoxColliderDataStructure.finalOffset.Y = this.mCollider2D.offset.y;
             this.points.Clear();
 
             this.points.Add(new Vector2(-tempBox2D.bounds.size.x / 2 / conversion.x + tempBox2D.offset.x,
@@ -119,8 +120,8 @@ namespace ETModel
                 {
                     B2S_BoxColliderDataStructure b2SBoxColliderDataStructure = new B2S_BoxColliderDataStructure();
                     b2SBoxColliderDataStructure.id = MB2S_BoxColliderDataStructure.id;
-                    b2SBoxColliderDataStructure.offset.x = MB2S_BoxColliderDataStructure.offset.x;
-                    b2SBoxColliderDataStructure.offset.y = MB2S_BoxColliderDataStructure.offset.y;
+                    b2SBoxColliderDataStructure.finalOffset.X = MB2S_BoxColliderDataStructure.finalOffset.X;
+                    b2SBoxColliderDataStructure.finalOffset.Y = MB2S_BoxColliderDataStructure.finalOffset.Y;
                     b2SBoxColliderDataStructure.isSensor = MB2S_BoxColliderDataStructure.isSensor;
                     b2SBoxColliderDataStructure.b2SColliderType = MB2S_BoxColliderDataStructure.b2SColliderType;
                     b2SBoxColliderDataStructure.hx = MB2S_BoxColliderDataStructure.hx;
@@ -228,7 +229,7 @@ namespace ETModel
             this.MB2S_BoxColliderDataStructure.id = 0;
             this.points.Clear();
             this.MB2S_BoxColliderDataStructure.isSensor = false;
-            MB2S_BoxColliderDataStructure.offset.Clean();
+            MB2S_BoxColliderDataStructure.finalOffset = System.Numerics.Vector2.Zero;
         }
         
         
