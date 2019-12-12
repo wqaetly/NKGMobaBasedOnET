@@ -105,8 +105,8 @@ namespace ETModel
             // 对比MD5
             foreach (FileVersionInfo fileVersionInfo in remoteVersionConfig.FileInfoDict.Values)
             {
-                // 对比md5
-                string localFileMD5 = BundleHelper.GetBundleMD5(streamingVersionConfig, fileVersionInfo.File);
+                // 对比md5, 优先从可读写目录取文件MD5，再从streaming取
+                string localFileMD5 = BundleHelper.GetBundleMD5_FPer_SStr(streamingVersionConfig, fileVersionInfo.File);
 
                 this.HasCheckResCount++;
 

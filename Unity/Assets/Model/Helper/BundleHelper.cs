@@ -44,7 +44,7 @@ namespace ETModel
         /// <param name="streamingVersionConfig"></param>
         /// <param name="bundleName"></param>
         /// <returns></returns>
-        public static string GetBundleMD5(VersionConfig streamingVersionConfig, string bundleName)
+        public static string GetBundleMD5_FPer_SStr(VersionConfig streamingVersionConfig, string bundleName)
         {
             string path = Path.Combine(PathHelper.AppHotfixResPath, bundleName);
             if (File.Exists(path))
