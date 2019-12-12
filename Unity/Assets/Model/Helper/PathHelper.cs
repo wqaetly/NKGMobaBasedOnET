@@ -47,5 +47,20 @@ namespace ETModel
 #endif
             }
         }
+        
+        /// <summary>
+        /// 应用程序外部资源路径存放路径(www/webrequest专用)，仅PC,安卓测试通过
+        /// </summary>
+        public static string AppHotfixResPath4Web
+        {
+            get
+            {
+                if (Application.isMobilePlatform)
+                {
+                    return $"file://{Application.persistentDataPath}";
+                }
+                return Application.persistentDataPath;
+            }
+        }
     }
 }
