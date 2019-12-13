@@ -26,7 +26,7 @@ namespace ETHotfix
         }
 
         /// <summary>
-        /// 加载依赖数据
+        /// 加载依赖数据，并且进行碰撞体的生成
         /// </summary>
         /// <param name="self"></param>
         private void LoadDependenceRes(B2S_HeroColliderData self)

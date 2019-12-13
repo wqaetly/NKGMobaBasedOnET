@@ -31,12 +31,14 @@ namespace ETModel
         public Body m_Body;
 
         /// <summary>
-        /// 此刚体的Unit，一般而言，与Body同进退，共生死，可以看成ET下的Body
+        /// 此刚体的Unit，一般而言，与Body同进退，共生死，可以看成ET下的Body，
+        /// 比如诺克放一个Q，那么m_Unit就是这个Q技能
         /// </summary>
         public Unit m_Unit;
         
         /// <summary>
-        /// 所归属的Unit，就是挂有此碰撞体的目标单位
+        /// 所归属的Unit，就是挂有此碰撞体的目标单位，
+        /// 比如诺克放一个Q，那么m_BelongUnit就是诺克
         /// </summary>
         public Unit m_BelongUnit;
 

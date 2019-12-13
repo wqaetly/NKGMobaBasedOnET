@@ -29,6 +29,9 @@ namespace ETModel
     {
         public const string NPDataPath = "../Config/NPBehaveConfig/";
 
+        /// <summary>
+        /// 运行时的行为树仓库，注意，一定不能对这些数据做修改
+        /// </summary>
         public Dictionary<long, NP_DataSupportor> NpRuntimeTreesDatas = new Dictionary<long, NP_DataSupportor>();
 
         public void Awake()
