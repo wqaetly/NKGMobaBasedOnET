@@ -12,7 +12,7 @@ namespace ETModel
 {
     public class NP_ParallelNodeData: NP_NodeDataBase
     {
-        [LabelText("并行结点")]
+        [HideInEditorMode]
         public Parallel mParallelNode;
 
         public override Composite CreateComposite(Node[] nodes)

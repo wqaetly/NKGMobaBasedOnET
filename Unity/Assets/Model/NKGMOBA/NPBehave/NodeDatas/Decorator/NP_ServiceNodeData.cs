@@ -13,7 +13,7 @@ namespace ETModel
 {
     public class NP_ServiceNodeData: NP_NodeDataBase
     {
-        [LabelText("服务节点")]
+        [HideInEditorMode]
         public Service m_Service;
 
         [LabelText("委托执行时间间隔")]

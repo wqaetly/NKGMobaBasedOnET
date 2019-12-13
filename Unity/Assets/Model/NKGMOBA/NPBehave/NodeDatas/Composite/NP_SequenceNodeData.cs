@@ -12,7 +12,7 @@ namespace ETModel
 {
     public class NP_SequenceNodeData: NP_NodeDataBase
     {
-        [LabelText("队列结点")]
+        [HideInEditorMode]
         public Sequence mSequenceNode;
 
         public override Node NP_GetNode()

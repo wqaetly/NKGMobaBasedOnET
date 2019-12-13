@@ -5,12 +5,15 @@
 //------------------------------------------------------------
 
 using NPBehave;
+using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_WaitUntilStoppedData:NP_NodeDataBase
+    public class NP_WaitUntilStoppedData: NP_NodeDataBase
     {
+        [HideInEditorMode]
         public WaitUntilStopped MWaitUntilStopped;
+
         public override Node NP_GetNode()
         {
             return this.MWaitUntilStopped;

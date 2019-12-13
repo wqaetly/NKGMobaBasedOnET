@@ -13,7 +13,7 @@ namespace ETModel
     [BsonIgnoreExtraElements]
     public class NP_SelectorNodeData:NP_NodeDataBase
     {
-        [LabelText("选择结点")]
+        [HideInEditorMode]
         public Selector mSelectorNode;
 
         public override Composite CreateComposite(Node[] nodes)

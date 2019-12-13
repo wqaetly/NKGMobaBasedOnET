@@ -12,7 +12,7 @@ namespace ETModel.TheDataContainsAction
 {
     public class NP_ChangeBlackValue: NP_ClassForStoreAction
     {
-        [LabelText("黑板相关数据")]
+        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Action GetActionToBeDone()

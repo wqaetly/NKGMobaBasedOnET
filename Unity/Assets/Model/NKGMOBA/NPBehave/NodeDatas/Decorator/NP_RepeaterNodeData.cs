@@ -11,7 +11,7 @@ namespace ETModel
 {
     public class NP_RepeaterNodeData:NP_NodeDataBase
     {
-        [LabelText("重复运行结点")]
+        [HideInEditorMode]
         public Repeater m_Repeater;
         
         public override Node NP_GetNode()

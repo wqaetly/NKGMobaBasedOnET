@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System;
+using Sirenix.OdinInspector;
 
 namespace ETModel.TheDataContainsAction
 {
@@ -13,17 +14,22 @@ namespace ETModel.TheDataContainsAction
         /// <summary>
         /// 归属的UnitID
         /// </summary>
+        [HideInEditorMode]
         public long Unitid;
 
         /// <summary>
         /// 归属的运行时行为树id
         /// </summary>
+        [HideInEditorMode]
         public long RuntimeTreeID;
 
+        [HideInEditorMode]
         public Action m_Action;
 
+        [HideInEditorMode]
         public Func<bool> m_Func1;
 
+        [HideInEditorMode]
         public Func<bool, NPBehave.Action.Result> m_Func2;
 
         public virtual Action GetActionToBeDone()
@@ -44,18 +50,18 @@ namespace ETModel.TheDataContainsAction
         public NPBehave.Action _CreateNPBehaveAction()
         {
             GetActionToBeDone();
-            GetFunc1ToBeDone();
-            GetFunc2ToBeDone();
             if (m_Action != null)
             {
                 return new NPBehave.Action(this.m_Action);
             }
 
+            GetFunc1ToBeDone();
             if (m_Func1 != null)
             {
                 return new NPBehave.Action(m_Func1);
             }
 
+            GetFunc2ToBeDone();
             if (m_Func2 != null)
             {
                 return new NPBehave.Action(m_Func2);

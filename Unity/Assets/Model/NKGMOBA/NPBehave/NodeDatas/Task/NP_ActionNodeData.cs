@@ -13,6 +13,7 @@ namespace ETModel
 {
     public class NP_ActionNodeData: NP_NodeDataBase
     {
+        [HideInEditorMode]
         public Action m_ActionNode;
 
         [LabelText("承载Action的数据结构")]

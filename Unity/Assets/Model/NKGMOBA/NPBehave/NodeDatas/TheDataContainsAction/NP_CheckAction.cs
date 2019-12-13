@@ -27,7 +27,7 @@ namespace ETModel
         [LabelText("将要检查的技能ID（QWER：0123）")]
         public int theSkillIDBelongTo;
 
-        [LabelText("黑板相关数据")]
+        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Func<bool> GetFunc1ToBeDone()

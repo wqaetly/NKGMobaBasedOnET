@@ -27,7 +27,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
         [HideInEditorMode]
         public NodeDataForStartSkill m_NodeDataForStartSkill;
 
-        [LabelText("黑板相关结点")]
+        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData NpBlackBoardRelationData;
 
         [HideInEditorMode]

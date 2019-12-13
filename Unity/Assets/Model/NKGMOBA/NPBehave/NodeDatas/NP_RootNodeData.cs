@@ -12,6 +12,7 @@ namespace ETModel
 {
     public class NP_RootNodeData: NP_NodeDataBase
     {
+        [HideInEditorMode]
         public Root m_Root;
 
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)

@@ -12,7 +12,7 @@ namespace ETModel
 {
     public class NP_WaitNodeData: NP_NodeDataBase
     {
-        [LabelText("等待结点")]
+        [HideInEditorMode]
         public Wait mWaitNode;
 
         [LabelText("等待时间")]

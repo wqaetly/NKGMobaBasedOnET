@@ -17,22 +17,29 @@ namespace ETModel
         /// 此结点ID
         /// </summary>
         [LabelText("此结点ID")]
+        [HideInEditorMode]
         public long id;
 
         [LabelText("此结点类型")]
+        [HideInEditorMode]
         public NodeType NodeType;
 
         /// <summary>
         /// 与此结点相连的ID
         /// </summary>
-        [LabelText("与此结点相连的ID")]
+        [HideInEditorMode]
         public List<long> linkedID = new List<long>();
 
         [LabelText("结点信息描述")]
         public string NodeDes;
 
+        /// <summary>
+        /// 获取结点
+        /// </summary>
+        /// <returns></returns>
         public abstract Node NP_GetNode();
 
+        
         /// <summary>
         /// 创建组合结点
         /// </summary>

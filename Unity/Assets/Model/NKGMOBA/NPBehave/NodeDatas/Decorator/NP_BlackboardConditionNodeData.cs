@@ -20,7 +20,7 @@ namespace ETModel
 
     public class NP_BlackboardConditionNodeData: NP_NodeDataBase
     {
-        [LabelText("黑板条件结点")]
+        [HideInEditorMode]
         public BlackboardCondition mBlackboardConditionNode;
 
         [LabelText("运算符号")]
@@ -29,7 +29,7 @@ namespace ETModel
         [LabelText("终止条件")]
         public Stops stop;
 
-        [LabelText("黑板相关数据")]
+        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)

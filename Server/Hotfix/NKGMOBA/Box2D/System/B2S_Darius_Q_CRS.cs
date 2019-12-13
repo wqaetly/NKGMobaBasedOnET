@@ -36,14 +36,16 @@ namespace ETHotfix
     {
         public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
         {
+            //Log.Info("诺克Q技能打到了东西");
             switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)
             {
                 case 10006: //诺克：自身
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(103112247476249).mSkillDataDic;
+                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(103298095251473).mSkillDataDic;
+
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
-                    
+
                     //敌方英雄
                     if (Vector3.Distance(((B2S_HeroColliderData) this.Entity).m_BelongUnit.Position, b2SHeroColliderData.m_BelongUnit.Position) <=
                         2.3f)
@@ -61,12 +63,12 @@ namespace ETHotfix
                             buffPoolComponent.AcquireBuff<ListenBuffCallBackBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10005]).SkillBuffBases,
                                 ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
-                            
+
                             Log.Info("监听添加流血Buff");
                             buffPoolComponent.AcquireBuff<ListenBuffCallBackBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10004]).SkillBuffBases,
                                 ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
-                            
+
                             Log.Info("外圈伤害Buff");
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
@@ -94,6 +96,7 @@ namespace ETHotfix
                             throw;
                         }
                     }
+
                     break;
             }
         }
