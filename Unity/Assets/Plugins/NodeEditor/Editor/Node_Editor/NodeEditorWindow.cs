@@ -16,7 +16,7 @@ namespace NodeEditorFramework.Standard
 
 		// Canvas cache
 		public NodeEditorUserCache canvasCache;
-		public NodeEditorInterface editorInterface;
+		public static NodeEditorInterface editorInterface;
 
 		// GUI
 		private Rect canvasWindowRect { get { return new Rect(0, editorInterface.toolbarHeight, position.width, position.height - editorInterface.toolbarHeight); } }
@@ -34,7 +34,7 @@ namespace NodeEditorFramework.Standard
 			_editor.minSize = new Vector2(400, 200);
 
 			NodeEditor.ReInit (false);
-			Texture iconTexture = ResourceManager.LoadTexture (EditorGUIUtility.isProSkin? "Textures/Icon_Dark.png" : "Textures/Icon_Light.png");
+			Texture iconTexture = ResourceManager.LoadTexture ("Textures/Icon_Dark.png");
 			_editor.titleContent = new GUIContent ("Node Editor", iconTexture);
 
 			return _editor;
@@ -49,9 +49,12 @@ namespace NodeEditorFramework.Standard
 		{
 			if (Selection.activeObject != null && Selection.activeObject is NodeCanvas)
 			{
-				string NodeCanvasPath = AssetDatabase.GetAssetPath(instanceID);
-				OpenNodeEditor().canvasCache.LoadNodeCanvas(NodeCanvasPath);
-				return true;
+				if (editorInterface.AssertSavaCanvasSuccessfully())
+				{
+					string NodeCanvasPath = AssetDatabase.GetAssetPath(instanceID);
+					OpenNodeEditor().canvasCache.LoadNodeCanvas(NodeCanvasPath);
+					return true;
+				}
 			}
 			return false;
 		}
@@ -75,6 +78,14 @@ namespace NodeEditorFramework.Standard
 		
 		private void OnDestroy()
 		{
+			//因为支持双击打开目标Canvas的自动保存当前Canvas的功能，所以这里要做一下调整
+			//BUG具体表现为：假如新建了一个Canvas，此时双击打开Canvas会失效
+			if (!editorInterface.AssertSavaCanvasSuccessfully())
+			{
+				Debug.LogError("安全起见！需要先把当前Canvas保存，所以会有刚刚的保存窗口！");
+				editorInterface.SaveCanvasAs();
+			}
+			
 			// Unsubscribe from events
 			NodeEditor.ClientRepaints -= Repaint;
 			EditorLoadingControl.justLeftPlayMode -= NormalReInit;

@@ -21,7 +21,7 @@ namespace NodeEditorFramework
         /// </summary>
         public ValueConnectionKnob connectionInfo;
 
-        [Button("移除这条连接"), GUIColor(0.4f, 0.8f, 1)]
+        [Button("移除这条连接(注意自己清理依赖数据)"), GUIColor(0.4f, 0.8f, 1)]
         public void RemoveTheConnection()
         {
             int theIndexWillBeRemove_theConnectedValue = -1;
@@ -87,10 +87,10 @@ namespace NodeEditorFramework
 
     public partial class ValueConnectionKnob
     {
-        [LabelText("同Connections顺序，其连接的结点标识为")]
+        [LabelText("同Connections顺序，其连接的结点标识为(仅碰撞关系可用)")]
         public List<InfoWithDeleteBtn> b2sInfo = new List<InfoWithDeleteBtn>();
 
-        [Button("尝试自动读取所连接结点信息", 25), GUIColor(0.4f, 0.8f, 1)]
+        [Button("尝试自动读取所连接结点信息(仅碰撞关系可用)", 25), GUIColor(0.4f, 0.8f, 1)]
         public void TryToAutoReadAllConnectedNode()
         {
             b2sInfo.Clear();

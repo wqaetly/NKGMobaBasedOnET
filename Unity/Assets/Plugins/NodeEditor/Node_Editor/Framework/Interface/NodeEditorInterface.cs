@@ -195,7 +195,7 @@ namespace NodeEditorFramework.Standard
 				ShowNotification(new GUIContent("Cannot reload canvas as it has not been saved yet!"));
 		}
 
-		private void SaveCanvas()
+		public void SaveCanvas()
 		{
 			string path = canvasCache.nodeCanvas.savePath;
 			if (!string.IsNullOrEmpty(path))
@@ -205,12 +205,41 @@ namespace NodeEditorFramework.Standard
 				else
 					canvasCache.SaveNodeCanvas(path);
 				ShowNotification(new GUIContent("Canvas Saved!"));
+				Debug.Log($"{path}已保存成功");
 			}
 			else
+			{
+				Debug.LogError($"{path}保存失败，请先确保要覆盖的文件已存在！（尝试使用Save As创建目标文件）");
 				ShowNotification(new GUIContent("No save location found. Use 'Save As'!"));
+			}
 		}
 
-		private void SaveCanvasAs()
+		/// <summary>
+		/// 供外部调用的保存当前图的接口
+		/// </summary>
+		/// <returns></returns>
+		public bool AssertSavaCanvasSuccessfully()
+		{
+			string path = canvasCache.nodeCanvas.savePath;
+			if (!string.IsNullOrEmpty(path))
+			{
+				if (path.StartsWith("SCENE/"))
+					canvasCache.SaveSceneNodeCanvas(path.Substring(6));
+				else
+					canvasCache.SaveNodeCanvas(path);
+				ShowNotification(new GUIContent("Canvas Saved!"));
+				Debug.Log($"{path}已保存成功");
+				return true;
+			}
+			else
+			{
+				Debug.LogError($"{path}保存失败，请先确保要覆盖的文件已存在！（尝试使用Save As创建目标文件）");
+				ShowNotification(new GUIContent("No save location found. Use 'Save As'!"));
+				return false;
+			}
+		}
+
+		public void SaveCanvasAs()
 		{
 			string panelPath = NodeEditor.editorPath + "Resources/Saves/";
 			string panelFileName = "Node Canvas";
@@ -307,5 +336,7 @@ namespace NodeEditorFramework.Standard
 		}
 
 #endregion
+
+		
 	}
 }

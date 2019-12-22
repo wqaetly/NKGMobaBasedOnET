@@ -335,6 +335,7 @@ namespace NodeEditorFramework
 			UpdateCanvasInfo ();
 			nodeCanvas.TraverseAll ();
 			NodeEditor.RepaintClients ();
+			Debug.Log($"加载{path}成功");
 		}
 
 		/// <summary>
