@@ -10,7 +10,7 @@ using UnityEditor;
 
 namespace Plugins.NodeEditor.Editor.Canvas
 {
-    public class CanvasOpenHelper
+    public static class CanvasOpenHelper
     {
         [MenuItem("Assets/Node_Editor_Framework/OpenThisFileInNodeEdtior",false,10000)]
         static void OpenThisFileInNodeEdtior()

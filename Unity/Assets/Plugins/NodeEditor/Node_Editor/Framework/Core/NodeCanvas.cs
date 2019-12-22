@@ -7,6 +7,7 @@ using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEditor.Callbacks;
 
 namespace NodeEditorFramework
 {
