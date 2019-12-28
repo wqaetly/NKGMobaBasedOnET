@@ -14,7 +14,7 @@ namespace ETModel
     /// </summary>
     public class BuffPoolComponent: Component
     {
-        public Dictionary<Type, Queue<BuffSystemBase>> MBuffBases = new Dictionary<Type, Queue<BuffSystemBase>>();
+        public Dictionary<Type, Queue<BuffSystemBase>> BuffSystemBases = new Dictionary<Type, Queue<BuffSystemBase>>();
 
         /// <summary>
         /// 取得Buff
@@ -27,7 +27,7 @@ namespace ETModel
         public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : BuffSystemBase
         {
             Queue<BuffSystemBase> buffBase;
-            if (this.MBuffBases.TryGetValue(typeof (T), out buffBase))
+            if (this.BuffSystemBases.TryGetValue(typeof (T), out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
@@ -76,7 +76,7 @@ namespace ETModel
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
 
-            if (this.MBuffBases.TryGetValue(tempType, out buffBase))
+            if (this.BuffSystemBases.TryGetValue(tempType, out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
@@ -91,16 +91,16 @@ namespace ETModel
             return temp;
         }
 
-        public void RecycleBuff<T>(T buffSystemBase) where T : BuffSystemBase
+        public void RecycleBuff(BuffSystemBase buffSystemBase)
         {
-            if (this.MBuffBases.TryGetValue(typeof (T), out Queue<BuffSystemBase> temp))
+            if (this.BuffSystemBases.TryGetValue(buffSystemBase.GetType(), out Queue<BuffSystemBase> temp))
             {
                 temp.Enqueue(buffSystemBase);
             }
             else
             {
-                this.MBuffBases.Add(typeof (T), new Queue<BuffSystemBase>());
-                this.MBuffBases[typeof (T)].Enqueue(buffSystemBase);
+                this.BuffSystemBases.Add(buffSystemBase.GetType(), new Queue<BuffSystemBase>());
+                this.BuffSystemBases[buffSystemBase.GetType()].Enqueue(buffSystemBase);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
-
+using ETModel;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector.Editor;
 
@@ -56,6 +56,7 @@ namespace NodeEditorFramework.Standard
 					return true;
 				}
 			}
+			Debug.LogError($"打开失败？试试从Tools/其他实用工具/多功能可视化编辑器打开吧！");
 			return false;
 		}
 		
@@ -97,7 +98,8 @@ namespace NodeEditorFramework.Standard
 		}
 
 		private void OnLostFocus () 
-		{ // Save any changes made while focussing this window
+		{ 
+			// Save any changes made while focussing this window
 			// Will also save before possible assembly reload, scene switch, etc. because these require focussing of a different window
 			canvasCache.SaveCache();
 		}
