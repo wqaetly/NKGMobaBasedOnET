@@ -1,9 +1,11 @@
-﻿#if UNITY_EDITOR
-//-----------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------
 // <copyright file="EnsureOdinInspectorDefine.cs" company="Sirenix IVS">
 // Copyright (c) Sirenix IVS. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
+
+#if UNITY_EDITOR
+
 namespace Sirenix.Utilities
 {
     using System;
@@ -18,7 +20,7 @@ namespace Sirenix.Utilities
         private const string DEFINE = "ODIN_INSPECTOR";
 
         [InitializeOnLoadMethod]
-        private static void AssureScriptingDefineSymbol()
+        private static void EnsureScriptingDefineSymbol()
         {
             var currentTarget = EditorUserBuildSettings.selectedBuildTargetGroup;
 
@@ -106,4 +108,5 @@ namespace Sirenix.Utilities
     //        }
     //    }
 }
-#endif
+
+#endif // UNITY_EDITOR
