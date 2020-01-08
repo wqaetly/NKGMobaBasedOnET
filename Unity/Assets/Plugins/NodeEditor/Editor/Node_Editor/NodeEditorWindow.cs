@@ -7,7 +7,7 @@ using Sirenix.OdinInspector.Editor;
 
 namespace NodeEditorFramework.Standard
 {
-	public class NodeEditorWindow : OdinEditorWindow 
+	public class NodeEditorWindow : EditorWindow 
 	{
 		// Information about current instance
 		private static NodeEditorWindow _editor;
@@ -44,19 +44,22 @@ namespace NodeEditorFramework.Standard
 		/// <summary>
 		/// Assures that the canvas is opened when double-clicking a canvas asset
 		/// </summary>
-		[UnityEditor.Callbacks.OnOpenAsset(1)]
+		[UnityEditor.Callbacks.OnOpenAsset(10)]
 		private static bool AutoOpenCanvas(int instanceID, int line)
 		{
-			if (Selection.activeObject != null && Selection.activeObject is NodeCanvas)
+			if (Selection.activeObject is NodeCanvas)
 			{
-				if (editorInterface.AssertSavaCanvasSuccessfully())
+				if (Selection.activeObject != null)
 				{
-					string NodeCanvasPath = AssetDatabase.GetAssetPath(instanceID);
-					OpenNodeEditor().canvasCache.LoadNodeCanvas(NodeCanvasPath);
-					return true;
+					if (editorInterface.AssertSavaCanvasSuccessfully())
+					{
+						string NodeCanvasPath = AssetDatabase.GetAssetPath(instanceID);
+						OpenNodeEditor().canvasCache.LoadNodeCanvas(NodeCanvasPath);
+						return true;
+					}
 				}
+				Debug.LogError($"打开失败？试试从Tools/其他实用工具/多功能可视化编辑器打开吧！");
 			}
-			Debug.LogError($"打开失败？试试从Tools/其他实用工具/多功能可视化编辑器打开吧！");
 			return false;
 		}
 		
