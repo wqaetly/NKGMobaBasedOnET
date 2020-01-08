@@ -474,7 +474,11 @@
             <param name="list">The list.</param>
             <param name="item">The value.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Sirenix.Utilities.LinqExtensions.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})" -->
+        <member name="M:Sirenix.Utilities.LinqExtensions.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the elements of the specified collection to the end of the IList&lt;T&gt;.
+            </summary>
+        </member>
         <member name="M:Sirenix.Utilities.LinqExtensions.Sort``1(System.Collections.Generic.IList{``0},System.Comparison{``0})">
             <summary>
             Sorts an IList
@@ -962,10 +966,18 @@
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AlignCenterXY(UnityEngine.Rect,System.Single)">
             <summary>
-            Returns a Rect, with the specified width and height, that has been aligned vertically to the center of the original rect.
+            Returns a Rect, with the specified width and height, that has been aligned horizontally and vertically to the center of the original rect.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="size">The desired width and height of the new Rect.</param>
+        </member>
+        <member name="M:Sirenix.Utilities.RectExtensions.AlignCenterXY(UnityEngine.Rect,System.Single,System.Single)">
+            <summary>
+            Returns a Rect, with the specified width and height, that has been aligned horizontally and vertically to the center of the original rect.
+            </summary>
+            <param name="rect">The original Rect.</param>
+            <param name="width">The desired width of the new Rect.</param>
+            <param name="height">The desired height of the new Rect.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.Expand(UnityEngine.Rect,System.Single)">
             <summary>
@@ -1022,11 +1034,6 @@
             <summary>
             Splits a Rect into a grid from left to right and then down.
             </summary>
-            <param name="rect">The original rect.</param>
-            <param name="width">The width of a grid cell.</param>
-            <param name="height">The height of a grid cell.</param>
-            <param name="index">The index of the grid cell.</param>
-            <returns></returns>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetCenterX(UnityEngine.Rect,System.Single)">
             <summary>
@@ -1627,7 +1634,7 @@
             <para>Checks whether an array of types satisfy the constraints of a given generic method definition.</para>
             <para>If this method returns true, the given parameters can be safely used with <see cref="M:System.Reflection.MethodInfo.MakeGenericMethod(System.Type[])"/> with the given generic method definition.</para>
             </summary>
-            <param name="genericType">The generic method definition to check.</param>
+            <param name="genericMethod">The generic method definition to check.</param>
             <param name="parameters">The parameters to check validity for.</param>
             <exception cref="T:System.ArgumentNullException">
             genericType is null
@@ -1735,158 +1742,6 @@
             <exception cref="T:System.ArgumentNullException">The given array was null.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">The given index to remove an element at was out of range.</exception>
         </member>
-        <member name="T:Sirenix.Utilities.AssemblyTypeFlags">
-            <summary>
-            AssemblyTypeFlags is a bitmask used to filter types and assemblies related to Unity.
-            </summary>
-            <seealso cref="T:Sirenix.Utilities.AssemblyUtilities"/>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.None">
-            <summary>
-            Excludes all types.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.UserTypes">
-            <summary>
-            UserTypes includes all custom user scripts that are not located in an editor or plugin folder.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.PluginTypes">
-            <summary>
-            PluginTypes includes all types located in the plugins folder and are not located in an editor folder.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.UnityTypes">
-            <summary>
-            UnityTypes includes all types depended on UnityEngine and from UnityEngine, except editor, plugin and user types.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.UserEditorTypes">
-            <summary>
-            UserEditorTypes includes all custom user scripts that are located in an editor folder but not in a plugins folder.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.PluginEditorTypes">
-            <summary>
-            PluginEditorTypes includes all editor types located in the plugins folder.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.UnityEditorTypes">
-            <summary>
-            UnityEditorTypes includes all editor types that are not user editor types nor plugin editor types.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.OtherTypes">
-            <summary>
-            OtherTypes includes all other types that are not depended on UnityEngine or UnityEditor.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.CustomTypes">
-            <summary>
-            CustomTypes includes includes all types manually added to the Unity project.
-            This includes UserTypes, UserEditorTypes, PluginTypes and PluginEditorTypes.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.GameTypes">
-            <summary>
-            GameTypes includes all assemblies that are likely to be included in builds.
-            This includes UserTypes, PluginTypes, UnityTypes and OtherTypes.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.EditorTypes">
-            <summary>
-            EditorTypes includes UserEditorTypes, PluginEditorTypes and UnityEditorTypes.
-            </summary>
-        </member>
-        <member name="F:Sirenix.Utilities.AssemblyTypeFlags.All">
-            <summary>
-            All includes UserTypes, PluginTypes, UnityTypes, UserEditorTypes, PluginEditorTypes, UnityEditorTypes and OtherTypes.
-            </summary>
-        </member>
-        <member name="T:Sirenix.Utilities.AssemblyUtilities">
-            <summary>
-            A utility class for finding types in various asssembly.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.Reload">
-            <summary>
-            Re-scans the entire AppDomain.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.#cctor">
-            <summary>
-            Initializes the <see cref="T:Sirenix.Utilities.AssemblyUtilities"/> class.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAllAssemblies">
-            <summary>
-            Gets an <see cref="T:Sirenix.Utilities.ImmutableList"/> of all assemblies in the current <see cref="T:System.AppDomain"/>.
-            </summary>
-            <returns>An <see cref="T:Sirenix.Utilities.ImmutableList"/> of all assemblies in the current <see cref="T:System.AppDomain"/>.</returns>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAssemblyTypeFlag(System.Reflection.Assembly)">
-            <summary>
-            Gets the <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> for a given assembly.
-            </summary>
-            <param name="assembly">The assembly.</param>
-            <returns>The <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> for a given assembly.</returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is null.</exception>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetTypeByCachedFullName(System.String)">
-            <summary>
-            Gets the type.
-            </summary>
-            <param name="fullName">The full name of the type without any assembly information.</param>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetType(System.String)">
-            <summary>
-            Looks in all assemblies for for the given type.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.IsDependentOn(System.Reflection.Assembly,System.Reflection.Assembly)">
-            <summary>
-            Determines whether an assembly is depended on another assembly.
-            </summary>
-            <param name="assembly">The assembly.</param>
-            <param name="otherAssembly">The other assembly.</param>
-            <returns>
-              <c>true</c> if <paramref name="assembly"/> has a reference in <paramref name="otherAssembly"/> or <paramref name="assembly"/> is the same as <paramref name="otherAssembly"/>.
-            </returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is null.</exception>
-            <exception cref="T:System.NullReferenceException"><paramref name="otherAssembly"/> is null.</exception>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.IsDynamic(System.Reflection.Assembly)">
-            <summary>
-            Determines whether the assembly module is a of type <see cref="T:System.Reflection.Emit.ModuleBuilder"/>.
-            </summary>
-            <param name="assembly">The assembly.</param>
-            <returns>
-              <c>true</c> if the specified assembly of type <see cref="T:System.Reflection.Emit.ModuleBuilder"/>; otherwise, <c>false</c>.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">assembly</exception>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAssemblyDirectory(System.Reflection.Assembly)">
-            <summary>
-            Gets the full file path to a given assembly.
-            </summary>
-            <param name="assembly">The assembly.</param>
-            <returns>The full file path to a given assembly, or <c>Null</c> if no file path was found.</returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is Null.</exception>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAssemblyFilePath(System.Reflection.Assembly)">
-            <summary>
-            Gets the full directory path to a given assembly.
-            </summary>
-            <param name="assembly">The assembly.</param>
-            <returns>The full directory path in which a given assembly is located, or <c>Null</c> if no file path was found.</returns>
-        </member>
-        <member name="M:Sirenix.Utilities.AssemblyUtilities.GetTypes(Sirenix.Utilities.AssemblyTypeFlags)">
-            <summary>
-            Get types from the current AppDomain with a specified <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> filter.
-            </summary>
-            <param name="assemblyTypeFlags">The <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> filters.</param>
-            <returns>Types from the current AppDomain with the specified <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> filters.</returns>
-        </member>
         <member name="T:Sirenix.Utilities.Editor.AssetScriptGuidUtility">
             <summary>
             Utility class for asset Guid script
@@ -1897,32 +1752,15 @@
             Tries to update the Guid of a specified asset with the Guid from a specified script type.
             </summary>
         </member>
-        <member name="T:Sirenix.Utilities.ICache`1">
-            <summary>
-            The ICache interface used by <see cref="T:Sirenix.Utilities.Cache`1"/>.
-            </summary>
-            <seealso cref="T:Sirenix.Utilities.Cache`1" />
-        </member>
-        <member name="P:Sirenix.Utilities.ICache`1.Value">
-            <summary>
-            Not yet documented.
-            </summary>
-        </member>
-        <member name="P:Sirenix.Utilities.ICache`1.IsFree">
-            <summary>
-            Not yet documented.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.ICache`1.Release">
-            <summary>
-            Not yet documented.
-            </summary>
-        </member>
         <member name="T:Sirenix.Utilities.Cache`1">
             <summary>
             Provides an easy way of claiming and freeing cached values of any non-abstract reference type with a public parameterless constructor.
             <para />
             Cached types which implement the <see cref="T:Sirenix.Utilities.ICacheNotificationReceiver"/> interface will receive notifications when they are claimed and freed.
+            <para />
+            Only one thread should be holding a given cache instance at a time if <see cref="T:Sirenix.Utilities.ICacheNotificationReceiver"/> is implemented, since the invocation of 
+            <see cref="M:Sirenix.Utilities.ICacheNotificationReceiver.OnFreed"/> is not thread safe, IE, weird stuff might happen if multiple different threads are trying to free
+            the same cache instance at the same time. This will practically never happen unless you're doing really strange stuff, but the case is documented here.
             </summary>
             <typeparam name="T">The type which is cached.</typeparam>
             <seealso cref="T:System.IDisposable" />
@@ -1935,16 +1773,12 @@
             The maximum size of the cache.
             </value>
         </member>
-        <member name="P:Sirenix.Utilities.Cache`1.Value">
+        <member name="F:Sirenix.Utilities.Cache`1.Value">
             <summary>
-            Gets the cached value.
-            </summary>
-            <value>
             The cached value.
-            </value>
-            <exception cref="T:System.InvalidOperationException">Cannot access a cache while it is freed.</exception>
+            </summary>
         </member>
-        <member name="P:Sirenix.Utilities.Cache`1.Sirenix#Utilities#ICache{T}#IsFree">
+        <member name="P:Sirenix.Utilities.Cache`1.IsFree">
             <summary>
             Gets a value indicating whether this cached value is free.
             </summary>
@@ -1974,7 +1808,7 @@
             The result of the conversion.
             </returns>
         </member>
-        <member name="M:Sirenix.Utilities.Cache`1.Sirenix#Utilities#ICache{T}#Release">
+        <member name="M:Sirenix.Utilities.Cache`1.Release">
             <summary>
             Releases this cached value.
             </summary>
@@ -2438,7 +2272,7 @@
              </summary>
              <example>
              <code>
-             [GlobalConfig("Resources/MyConfigFiles/")]
+             [GlobalConfig("Assets/Resources/MyConfigFiles/")]
              public class MyGlobalConfig : GlobalConfig&lt;MyGlobalConfig&gt;
              {
                  public int MyGlobalVariable;
@@ -3317,225 +3151,6 @@
         <member name="M:Sirenix.Utilities.MathUtilities.ClampWrapAngle(System.Single,System.Single,System.Single)">
             <summary>
             Clamps and wraps an angle between two values.
-            </summary>
-        </member>
-        <member name="T:Sirenix.Utilities.MemberFinderExtensions">
-            <summary>
-            Not yet documented.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinderExtensions.FindMember(System.Type)">
-            <summary>
-            <para>Find members of the given type, while providing good error messages based on the following search filters provided.</para>
-            <para>See <see cref="T:Sirenix.Utilities.MemberFinder"/> for more information.</para>
-            </summary>
-        </member>
-        <member name="T:Sirenix.Utilities.MemberFinder">
-            <summary>
-            <para>
-            The MemberFinder is a utility class often used by Odin drawers to find fields, methods, and
-            properties while providing good user-friendly error messages based on the search criteria.
-            </para>
-            <para>
-            The MemberFinder is initialized by ether using the extensions method type.FindMember() or MemberFinder.Start(type),
-            and must be ended again using ether TryGetMember() or GetMember().
-            </para>
-            </summary>
-            <example>
-            <code>
-            // Finds any member (FieldInfo, PropertyInfo or MethodInfo) "memberName" with a return type of string.
-            string errorMessage;
-            MemberInfo myMember = typeof(MyType)
-                                    .FindMember()
-                                    .IsNamed("memberName")
-                                    .HasReturnType(typeof(string))
-                                    .HasNoParameters()
-                                    .GetMember(out errorMessage);
-            If no matching member was found, myMember will be null and errorMessage will contain a proper formatted error message based on the search filters provided.
-            </code>
-            </example>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberFinder"/> class.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.#ctor(System.Type)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberFinder"/> class.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.Start``1">
-            <summary>
-            <para>Find members of the given type, while providing good error messages based on the following search filters provided.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.Start(System.Type)">
-            <summary>
-            <para>Find members of the given type, while providing good error messages based on the following search filters provided.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasNoParameters">
-            <summary>
-            Can be true for both fields, properties and methods.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsDeclaredOnly">
-            <summary>
-            Exclude members found in base-types.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters(System.Type)">
-            <summary>
-            <para>Only include methods with the following parameter.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters(System.Type,System.Type)">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters(System.Type,System.Type,System.Type)">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters(System.Type,System.Type,System.Type,System.Type)">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters``1">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters``2">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters``3">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasParameters``4">
-            <summary>
-            <para>Only include methods with the following parameters.</para>
-            <para>Calling this will also exclude fields and properties.</para>
-            <para>Parameter type inheritance is supported.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasReturnType(System.Type,System.Boolean)">
-            <summary>
-            Determines whether [has return type] [the specified return type].
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.HasReturnType``1(System.Boolean)">
-            <summary>
-            Can be true for both fields, properties and methods.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsFieldOrProperty">
-            <summary>
-            Calls IsField() and IsProperty().
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsStatic">
-            <summary>
-            Only include static members. By default, both static and non-static members are included.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsInstance">
-            <summary>
-            Only include non-static members. By default, both static and non-static members are included.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsNamed(System.String)">
-            <summary>
-            Specify the name of the member.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsProperty">
-            <summary>
-            <para>Excludes fields and methods if nether IsField() or IsMethod() is called. Otherwise includes properties.</para>
-            <para>By default, all member types are included.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsMethod">
-            <summary>
-            <para>Excludes fields and properties if nether IsField() or IsProperty() is called. Otherwise includes methods.</para>
-            <para>By default, all member types are included.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsField">
-            <summary>
-            <para>Excludes properties and methods if nether IsProperty() or IsMethod() is called. Otherwise includes fields.</para>
-            <para>By default, all member types are included.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsPublic">
-            <summary>
-            <para>Excludes non-public members if IsNonPublic() has not yet been called. Otherwise includes public members.</para>
-            <para>By default, both public and non-public members are included.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.IsNonPublic">
-            <summary>
-            <para>Excludes public members if IsPublic() has not yet been called. Otherwise includes non-public members.</para>
-            <para>By default, both public and non-public members are included.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.ReturnsVoid">
-            <summary>
-            Excludes fields and properties, and only includes methods with a return type of void.
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.GetMember``1">
-            <summary>
-            <para>Gets the member based on the search filters provided</para>
-            <para>Returns null if no member was found.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.GetMember``1(System.String@)">
-            <summary>
-            <para>Gets the member based on the search filters provided, and provides a proper error message if no members was found.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.GetMember(System.String@)">
-            <summary>
-            <para>Gets the member based on the search filters provided, and provides a proper error message if no members was found.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.TryGetMember``1(``0@,System.String@)">
-            <summary>
-            <para>Try gets the member based on the search filters provided, and provides a proper error message if no members was found.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.TryGetMember(System.Reflection.MemberInfo@,System.String@)">
-            <summary>
-            <para>Try gets the member based on the search filters provided, and provides a proper error message if no members was found.</para>
-            </summary>
-        </member>
-        <member name="M:Sirenix.Utilities.MemberFinder.TryGetMembers(System.Reflection.MemberInfo[]@,System.String@)">
-            <summary>
-            <para>Try gets all members based on the search filters provided, and provides a proper error message if no members was found.</para>
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.MultiDimArrayUtilities">

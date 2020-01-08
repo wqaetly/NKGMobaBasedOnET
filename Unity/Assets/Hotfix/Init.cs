@@ -43,9 +43,11 @@ namespace ETHotfix
 
                 //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
-
+                //初始化UI操作
                 await Game.Scene.AddComponent<FUIInitComponent>().Init();
-
+                //增加UI栈组件，方便管理UI
+                Game.Scene.AddComponent<FUIStackComponent>();
+                //显示登录UI
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);
 
                 //至此，检查更新界面使命正式结束
