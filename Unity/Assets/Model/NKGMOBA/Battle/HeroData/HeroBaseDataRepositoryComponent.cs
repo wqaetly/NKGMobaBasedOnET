@@ -20,16 +20,9 @@ namespace ETModel
         }
     }
 
-    public class TestAction
-    {
-        public Action myAction;
-    }
-
     public class HeroBaseDataRepositoryComponent: Component
     {
         public HeroDataSupportor m_AllHeroBaseDataDic;
-
-        public TestAction actionTest;
 
         public void Awake()
         {

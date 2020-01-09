@@ -45,7 +45,7 @@ namespace ETHotfix
                     sw.Start();
                     //TODO:这里应该从英雄身上取技能数据，而不是每次都从数据仓库深拷贝，十几kb的数据居然要4ms才能深拷贝完成
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(103298095251473).mSkillDataDic;
+                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(103453645864977).mSkillDataDic;
                     sw.Stop();
                     TimeSpan ts = sw.Elapsed; 
                     Console.WriteLine("DateTime costed for Shuffle function is: {0}ms", ts.TotalMilliseconds);

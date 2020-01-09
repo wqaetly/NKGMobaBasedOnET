@@ -77,22 +77,23 @@
     <Compile Include="Assets\Plugins\NodeEditor\Editor\Canvas\HeroDataNodeCanvas.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\Canvas\NeverbeUsedCanvas.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\Canvas\NPBehaveCanvas.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\Canvas\NPBehaveCanvasBase.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\ChildrenNodes\ChildrenNodeDatas.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\ChildrenNodes\SkillSystemChildNode.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\HeroNodes\HeroDataNode.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor\NodeEditorWindow.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Composite\NP_ParallelNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Composite\NP_SelectorNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Composite\NP_SequenceNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Decorator\NP_BlackboardConditionNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Decorator\NP_RepeaterNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Decorator\NP_ServiceNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\NP_NodeBase.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\NP_RootNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\NPBehaveNodeInputAndOutputTypes.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Task\NP_ActionNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Task\NP_WaitNode.cs" />
-    <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\NPBehaveNodes\Task\NP_WaitUntilStoppedNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Composite\NP_ParallelNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Composite\NP_SelectorNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Composite\NP_SequenceNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Decorator\NP_BlackboardConditionNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Decorator\NP_RepeaterNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Decorator\NP_ServiceNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\NP_NodeBase.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\NP_RootNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\NPBehaveNodeInputAndOutputTypes.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Task\NP_ActionNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Task\NP_WaitNode.cs" />
+    <Compile Include="Assets\Plugins\NodeEditor\Editor\NPBehaveNodes\Task\NP_WaitUntilStoppedNode.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\SkillData\BuffNodes\SkillBuffNode.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\SkillData\BuffNodes\SkillNodeInputAndOutputTypes.cs" />
     <Compile Include="Assets\Plugins\NodeEditor\Editor\SkillSystemNodes\SkillData\SkillDescriptionNode.cs" />
@@ -798,6 +799,14 @@
       <Project>{CD311104-1830-B119-81B6-5DBEE2467FFB}</Project>
       <Name>Unity.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
+      <Project>{686145E0-A51B-685E-EF99-A1034C8B63AB}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
+      <Project>{E387569F-725F-F5C8-517B-584709B7D5D8}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Hotfix.csproj">
       <Project>{1066F652-6A89-D1C4-9881-1A19DF7AB80E}</Project>
       <Name>Unity.Hotfix</Name>
@@ -809,14 +818,6 @@
     <ProjectReference Include="Animancer.csproj">
       <Project>{F6659E15-63D3-6D1A-EC57-6DB30DA1B98F}</Project>
       <Name>Animancer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{686145E0-A51B-685E-EF99-A1034C8B63AB}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{E387569F-725F-F5C8-517B-584709B7D5D8}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -41,7 +41,6 @@ namespace NETCoreTest.Framework
         private readonly TimerTick _timer;
 
         internal object TickLock = new object();
-
         public FixedUpdate()
         {
             // Internals

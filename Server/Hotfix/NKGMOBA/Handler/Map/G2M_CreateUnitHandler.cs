@@ -31,7 +31,7 @@ namespace ETHotfix
             unit.AddComponent<NP_RuntimeTreeManager>();
 
             //Log.Info("开始创建行为树");
-            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 103298095251473);
+            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 103453645864977);
             //Log.Info("行为树创建完成");
             npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
 
