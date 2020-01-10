@@ -39,6 +39,7 @@ namespace NodeEditorFramework
 			SetCanvas(loadedCanvas);
 		}
 
+		
 		public NodeEditorUserCache()
 		{ }
 

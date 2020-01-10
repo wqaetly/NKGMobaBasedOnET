@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
+using Plugins.NodeEditor.Node_Editor.Default;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -83,7 +84,7 @@ namespace NodeEditorFramework
             if (canvasType != null && canvasType.IsSubclassOf(typeof (NodeCanvas)))
                 canvas = ScriptableObject.CreateInstance(canvasType) as NodeCanvas;
             else
-                canvas = ScriptableObject.CreateInstance<NodeEditorFramework.Standard.CalculationCanvasType>();
+                canvas = ScriptableObject.CreateInstance<DefaultCanvas>();
             canvas.name = canvas.saveName = "New " + canvas.canvasName;
 
             NodeEditor.BeginEditingCanvas(canvas);
