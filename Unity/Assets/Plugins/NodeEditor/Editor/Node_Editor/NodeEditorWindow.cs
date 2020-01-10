@@ -59,6 +59,8 @@ namespace NodeEditorFramework.Standard
 						{
 							string NodeCanvasPath = AssetDatabase.GetAssetPath(instanceID);
 							OpenNodeEditor().canvasCache.LoadNodeCanvas(NodeCanvasPath);
+							//需要重新为editorInterface绑定canvasCache，所以这里要置空，留给框架底层自行检测然后绑定
+							editorInterface = null;
 							return true;
 						}
 					}
@@ -97,14 +99,12 @@ namespace NodeEditorFramework.Standard
 				Debug.LogError("安全起见！需要先把当前Canvas保存，所以会有刚刚的保存窗口！");
 				editorInterface.SaveCanvasAs();
 			}
-			Log.Info("关闭了当前的Canvas Window");
 			// Unsubscribe from events
 			NodeEditor.ClientRepaints -= Repaint;
 			EditorLoadingControl.justLeftPlayMode -= NormalReInit;
 			EditorLoadingControl.justOpenedNewScene -= NormalReInit;
 			SceneView.onSceneGUIDelegate -= OnSceneGUI;
-
-			editorInterface = null;
+			
 			// Clear Cache
 			canvasCache.ClearCacheEvents();
 			this.canvasCache = null;
