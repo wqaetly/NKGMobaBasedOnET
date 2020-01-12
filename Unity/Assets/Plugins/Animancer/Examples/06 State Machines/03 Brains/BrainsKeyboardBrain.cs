@@ -47,7 +47,7 @@ namespace Animancer.Examples
                     forward * input.y;
 
                 // Determine if the player wants to run or not.
-                IsRunning = Input.GetButton("Fire3");//Left Shift by default.
+                IsRunning = Input.GetButton("Fire1");//Left Shift by default.
 
                 // Enter the locomotion state if we aren't already in it.
                 _Locomotion.TryEnterState();
