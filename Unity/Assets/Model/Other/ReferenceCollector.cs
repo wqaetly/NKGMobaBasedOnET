@@ -109,6 +109,11 @@ public class ReferenceCollector: MonoBehaviour, ISerializationCallbackReceiver
 		serializedObject.UpdateIfRequiredOrScript();
 	}
 
+	public void RenameTargetReferenceCollectorData()
+	{
+		
+	}
+	
 	public void Sort()
 	{
 		SerializedObject serializedObject = new SerializedObject(this);

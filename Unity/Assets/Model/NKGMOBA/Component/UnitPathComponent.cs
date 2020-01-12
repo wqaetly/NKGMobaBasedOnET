@@ -35,8 +35,7 @@ namespace ETModel
 				this.Entity.GetComponent<TurnComponent>().Turn(v);
 				await this.Entity.GetComponent<MoveComponent>().MoveToAsync(v, speed, cancellationToken);
 			}
-			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",true);
-			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",false);
+
 		}
 
 		public async ETVoid StartMove(M2C_PathfindingResult message)
@@ -44,8 +43,7 @@ namespace ETModel
 			// 取消之前的移动协程
 			this.CancellationTokenSource?.Cancel();
 			this.CancellationTokenSource = new CancellationTokenSource();
-			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToIdel",false);
-			this.Entity.GetComponent<AnimatorComponent>().SetBoolValue("ToRun",true);
+
 			
 			this.Path.Clear();
 			for (int i = 0; i < message.Xs.Count; ++i)

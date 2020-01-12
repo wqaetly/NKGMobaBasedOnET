@@ -15,7 +15,7 @@ namespace ETModel
             Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("NuoKe", prefab);
             Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "NuoKe");
 
-            unit.AddComponent<AnimatorComponent>();
+            unit.AddComponent<AnimationComponent>();
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
