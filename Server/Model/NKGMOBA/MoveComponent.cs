@@ -53,7 +53,7 @@ namespace ETModel
 
             while (true)
             {
-                await timerComponent.WaitAsync(50, cancellationToken);
+                await timerComponent.WaitAsync(10, cancellationToken);
 
                 long timeNow = TimeHelper.Now();
 
