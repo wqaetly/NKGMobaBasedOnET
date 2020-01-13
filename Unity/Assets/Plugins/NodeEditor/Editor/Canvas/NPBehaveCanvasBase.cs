@@ -34,7 +34,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         
         [Title("本Canvas所有数据整理部分")]
         [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
-        public string Name = "NPBehaveBase";
+        public string Name = "";
 
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
         [FolderPath]

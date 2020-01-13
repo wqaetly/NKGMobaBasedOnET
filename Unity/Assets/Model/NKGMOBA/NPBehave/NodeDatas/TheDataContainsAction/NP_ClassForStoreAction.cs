@@ -32,6 +32,10 @@ namespace ETModel.TheDataContainsAction
         [HideInEditorMode]
         public Func<bool, NPBehave.Action.Result> m_Func2;
 
+        /// <summary>
+        /// 获取将要执行的委托函数，也可以在这里面做一些初始化操作
+        /// </summary>
+        /// <returns></returns>
         public virtual Action GetActionToBeDone()
         {
             return null;

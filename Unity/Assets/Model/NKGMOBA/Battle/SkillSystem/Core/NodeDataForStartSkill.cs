@@ -30,11 +30,6 @@ namespace ETModel
         [Title("技能资源AB名,第一个是图标")]
         public List<string> SkillABInfo;
         
-        [TabGroup("技能动画")]
-        [HideLabel]
-        [BsonIgnore]
-        public List<AnimationData> m_AnimationData;
-
         [TabGroup("基础信息")]
         [HideLabel]
         [Title("技能消耗类型")]

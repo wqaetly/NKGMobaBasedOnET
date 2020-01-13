@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using Animancer;
+using DefaultNamespace;
 using ETModel;
 using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
@@ -14,28 +15,67 @@ using UnityEngine;
 
 namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 {
+    /// <summary>
+    /// 这个结点中的动画默认是不可被打断的
+    /// </summary>
     public class NP_PlayAnimationAction: NP_ClassForStoreAction
     {
-        [LabelText("要播放的动画列表")]
-        [InlineEditor(InlineEditorModes.LargePreview)]
-        public List<AnimationClip> _Animations = new List<AnimationClip>();
+        [LabelText("要播放的动画数据")]
+        public List<NodeDataForPlayAnim> NodeDataForPlayAnims;
+
+        /// <summary>
+        /// 用于标识当前播放到哪一个动画的flag
+        /// </summary>
+        private int flag = 0;
+
+        /// <summary>
+        /// 避免GC
+        /// </summary>
+        private Action FlagIncrease;
 
         [HideInEditorMode]
         public Unit belongtoUnit;
 
-        public override Action GetActionToBeDone()
+        public override Func<bool> GetFunc1ToBeDone()
         {
-            this.m_Action = this.PlayAnimation;
-            return this.m_Action;
+            this.FlagIncrease = () => this.flag++;
+            this.belongtoUnit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
+            //进行数据的装入
+            foreach (var VARIABLE in NodeDataForPlayAnims)
+            {
+                if (this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips.ContainsKey(VARIABLE.StateTypes))
+                {
+                    this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips[VARIABLE.StateTypes] =
+                            VARIABLE.AnimationClipName;
+                }
+                else
+                {
+                    this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips
+                            .Add(VARIABLE.StateTypes, VARIABLE.AnimationClipName);
+                }
+            }
+
+            this.m_Func1 = this.PlayAnimation;
+            return this.m_Func1;
         }
 
-        public void PlayAnimation()
+        private bool PlayAnimation()
         {
-            AnimancerComponent animancerComponent = this.belongtoUnit.GameObject.GetComponent<AnimancerComponent>();
-            foreach (var VARIABLE in _Animations)
+            //如果播放完成就默认播放默认动画，这里是可配置的
+            if (this.flag >= NodeDataForPlayAnims.Count)
             {
-                animancerComponent.Play(VARIABLE);
+                this.belongtoUnit.GetComponent<AnimationComponent>().PlayIdel();
+                Log.Info("这次播放的是默认动画");
+                this.flag = 0;
+                return true;
             }
+
+            this.belongtoUnit.GetComponent<AnimationComponent>()
+                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes, this.NodeDataForPlayAnims[this.flag].FadeOutTime)
+                            .OnEnd =
+                    this.FlagIncrease;
+            Log.Info("这次播放的是Q技能动画");
+            return false;
         }
     }
 }

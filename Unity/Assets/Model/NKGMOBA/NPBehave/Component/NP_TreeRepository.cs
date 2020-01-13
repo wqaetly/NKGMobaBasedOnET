@@ -27,7 +27,11 @@ namespace ETModel
     /// </summary>
     public class NP_TreeDataRepository: Component
     {
-        public const string NPDataPath = "../Config/NPBehaveConfig/";
+#if SERVER
+        public const string NPDataPath = "../Config/SkillConfigs/Server/";
+#else
+        public const string NPDataPath = "../Config/SkillConfigs/Client/";
+#endif
 
         /// <summary>
         /// 运行时的行为树仓库，注意，一定不能对这些数据做修改
@@ -62,7 +66,7 @@ namespace ETModel
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
 
-                    Log.Info("反序列化行为树完成");
+                    Log.Info($"反序列化行为树:{VARIABLE.FullName}完成");
 
                     NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }

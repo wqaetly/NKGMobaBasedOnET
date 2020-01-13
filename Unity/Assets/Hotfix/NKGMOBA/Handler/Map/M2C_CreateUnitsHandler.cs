@@ -26,6 +26,12 @@ namespace ETHotfix
 
                 unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
 
+                unit.AddComponent<NP_RuntimeTreeManager>();
+                //Log.Info("开始创建行为树");
+                NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client);
+                //Log.Info("行为树创建完成");
+                npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
+
                 // 创建血条
                 Game.EventSystem.Run(EventIdType.CreateHeadBar, unitInfo.UnitId);
 
@@ -39,7 +45,6 @@ namespace ETHotfix
 
                 ETModel.Game.Scene.GetComponent<UnitComponent>().Get(unitInfo.UnitId)
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
-
             }
 
             if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)

@@ -26,6 +26,8 @@ namespace ETModel
                     self.AnimationClips.Add(VARIABLE.key, VARIABLE.gameObject as AnimationClip);
                 }
             }
+
+            self.PlayIdel();
         }
     }
 
@@ -57,12 +59,35 @@ namespace ETModel
         };
 
         /// <summary>
-        /// 播放一个动画（播放完自动循环）
+        /// 播放一个动画并且允许设置好下一个要播放的动画，在外部调用.OnEnd即可添加委托
+        /// </summary>
+        /// <param name="currentStateTypes"></param>
+        /// <param name="fadeOutTime"></param>
+        /// <returns></returns>
+        public AnimancerState PlayAnimAndAllowRegisterNext(StateTypes currentStateTypes, float fadeOutTime)
+        {
+            return AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[currentStateTypes]], fadeOutTime);
+        }
+
+        /// <summary>
+        /// 播放一个动画(播放完成自动循环)
         /// </summary>
         /// <param name="stateTypes"></param>
+        /// <returns></returns>
         public void PlayAnim(StateTypes stateTypes)
         {
             AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]]);
+        }
+
+        /// <summary>
+        /// 播放一个动画(播放完成自动回到默认动画)
+        /// </summary>
+        /// <param name="stateTypes"></param>
+        /// <returns></returns>
+        public void PlayAnimAndReturnIdel(StateTypes stateTypes)
+        {
+            AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]]).OnEnd =
+                    PlayIdel;
         }
 
         /// <summary>
@@ -70,7 +95,8 @@ namespace ETModel
         /// </summary>
         public void PlayRun()
         {
-            AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Run]]);
+            if (this.AnimancerComponent.IsPlayingClip(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idel]]))
+                AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Run]]);
         }
 
         /// <summary>

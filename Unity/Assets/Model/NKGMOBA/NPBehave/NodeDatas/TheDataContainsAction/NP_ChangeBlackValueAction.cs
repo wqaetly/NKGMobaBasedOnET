@@ -27,7 +27,7 @@ namespace ETModel.TheDataContainsAction
                     .GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
                     .GetBlackboard());
-            //Log.Info($"修改黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
+            Log.Info($"修改黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
         }
     }
 }
