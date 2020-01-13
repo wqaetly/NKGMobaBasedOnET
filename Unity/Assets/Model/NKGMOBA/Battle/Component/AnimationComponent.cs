@@ -18,6 +18,7 @@ namespace ETModel
         public override void Awake(AnimationComponent self)
         {
             self.AnimancerComponent = self.Parent.GameObject.GetComponent<AnimancerComponent>();
+            self.StackFsmComponent = self.Entity.GetComponent<StackFsmComponent>();
             //如果是以Anim开头的key值，说明是动画文件，需要添加引用
             foreach (var VARIABLE in self.Parent.GameObject.GetComponent<ReferenceCollector>().data)
             {
@@ -27,7 +28,8 @@ namespace ETModel
                 }
             }
 
-            self.PlayIdel();
+            self.StackFsmComponent.FsmLinkedListHasChanaged += self.PlayAnimByStackFsmCurrent;
+            self.StackFsmComponent.AddState(StateTypes.Idel, "Idel", 1);
         }
     }
 
@@ -41,6 +43,11 @@ namespace ETModel
         /// Animacner的组件
         /// </summary>
         public AnimancerComponent AnimancerComponent;
+
+        /// <summary>
+        /// 栈式状态机组件，用于辅助切换动画
+        /// </summary>
+        public StackFsmComponent StackFsmComponent;
 
         /// <summary>
         /// 管理所有的动画文件
@@ -107,6 +114,15 @@ namespace ETModel
             AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idel]]);
         }
 
+        /// <summary>
+        /// 根据栈式状态机来自动播放动画
+        /// </summary>
+        public void PlayAnimByStackFsmCurrent()
+        {
+            Log.Info($"动画组件收到通知，当前状态{this.StackFsmComponent.GetCurrentFsmState().StateTypes}");
+            PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateTypes);
+        }
+
         public override void Dispose()
         {
             if (this.IsDisposed)
@@ -121,6 +137,8 @@ namespace ETModel
             this.AnimationClips = null;
             RuntimeAnimationClips.Clear();
             this.RuntimeAnimationClips = null;
+            StackFsmComponent.FsmLinkedListHasChanaged -= PlayAnimByStackFsmCurrent;
+            this.StackFsmComponent = null;
         }
     }
 }

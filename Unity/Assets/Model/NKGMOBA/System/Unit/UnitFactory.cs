@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ETModel.NKGMOBA.Battle.State;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -15,6 +16,8 @@ namespace ETModel
             Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("NuoKe", prefab);
             Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "NuoKe");
 
+            //增加栈式状态机，辅助动画切换
+            unit.AddComponent<StackFsmComponent>();
             unit.AddComponent<AnimationComponent>();
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
@@ -24,7 +27,7 @@ namespace ETModel
             unitComponent.Add(unit);
             return unit;
         }
-        
+
         /// <summary>
         /// 用于NPBehave测试
         /// </summary>

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Animancer;
 using DefaultNamespace;
 using ETModel;
+using ETModel.NKGMOBA.Battle.State;
 using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -64,8 +65,8 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
             //如果播放完成就默认播放默认动画，这里是可配置的
             if (this.flag >= NodeDataForPlayAnims.Count)
             {
-                this.belongtoUnit.GetComponent<AnimationComponent>().PlayIdel();
-                Log.Info("这次播放的是默认动画");
+                this.belongtoUnit.GetComponent<StackFsmComponent>().RefreshState();
+                Log.Info("栈式状态机已刷新，应该会衔接切换到正确的动画");
                 this.flag = 0;
                 return true;
             }
@@ -74,7 +75,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                             .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes, this.NodeDataForPlayAnims[this.flag].FadeOutTime)
                             .OnEnd =
                     this.FlagIncrease;
-            Log.Info("这次播放的是Q技能动画");
+            //Log.Info("这次播放的是Q技能动画");
             return false;
         }
     }
