@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 //Object并非C#基础中的Object，而是 UnityEngine.Object
 using Object = UnityEngine.Object;
 
@@ -107,7 +108,7 @@ public class ReferenceCollectorEditor: Editor
             GUILayout.BeginHorizontal();
             //这里的知识点在ReferenceCollector中有说
             property = dataProperty.GetArrayElementAtIndex(i).FindPropertyRelative("key");
-            property.stringValue = EditorGUILayout.TextField(property.stringValue, GUILayout.Width(150));
+            property.stringValue = EditorGUILayout.TextField(property.stringValue, GUILayout.ExpandWidth(true));
             property = dataProperty.GetArrayElementAtIndex(i).FindPropertyRelative("gameObject");
             EditorGUILayout.ObjectField(property.objectReferenceValue, typeof (Object), true);
 
