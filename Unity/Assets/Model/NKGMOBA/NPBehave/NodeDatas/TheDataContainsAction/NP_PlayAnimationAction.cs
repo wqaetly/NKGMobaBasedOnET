@@ -30,7 +30,12 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
         private int flag = 0;
 
         /// <summary>
-        /// 避免GC
+        /// 是否已经被调用过一次
+        /// </summary>
+        private bool hasInvoked = false;
+        
+        /// <summary>
+        /// 避免GC，缓存委托
         /// </summary>
         private Action FlagIncrease;
 
@@ -39,7 +44,16 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 
         public override Func<bool> GetFunc1ToBeDone()
         {
-            this.FlagIncrease = () => this.flag++;
+            this.FlagIncrease = () =>
+            {
+                if (this.hasInvoked)
+                {
+                    return;
+                }
+                this.flag++;
+                Log.Info($"第{this.flag}个动画播放完成");
+                hasInvoked = true;
+            };
             this.belongtoUnit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             //进行数据的装入
             foreach (var VARIABLE in NodeDataForPlayAnims)
@@ -62,6 +76,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 
         private bool PlayAnimation()
         {
+            hasInvoked = false;
             //如果播放完成就默认播放默认动画，这里是可配置的
             if (this.flag >= NodeDataForPlayAnims.Count)
             {
@@ -71,8 +86,9 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                 return true;
             }
 
+            //在播放完成后，每帧都会调用OnEnd委托，由于行为树中的FixedUpdate与Unity的Update频率不一致，所以需要作特殊处理
             this.belongtoUnit.GetComponent<AnimationComponent>()
-                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes, this.NodeDataForPlayAnims[this.flag].FadeOutTime)
+                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes, NodeDataForPlayAnims[flag].FadeOutTime)
                             .OnEnd =
                     this.FlagIncrease;
             //Log.Info("这次播放的是Q技能动画");
