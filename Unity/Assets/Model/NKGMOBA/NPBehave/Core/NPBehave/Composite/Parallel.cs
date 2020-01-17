@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using Sirenix.OdinInspector;
 
 namespace NPBehave
 {
@@ -7,7 +8,9 @@ namespace NPBehave
     {
         public enum Policy
         {
+            [LabelText("一个XX就返回XX")]
             ONE,
+            [LabelText("全部XX才返回XX")]
             ALL,
         }
 

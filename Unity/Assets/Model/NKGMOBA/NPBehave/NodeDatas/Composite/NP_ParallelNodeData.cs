@@ -15,9 +15,15 @@ namespace ETModel
         [HideInEditorMode]
         public Parallel mParallelNode;
 
+        [LabelText("成功政策")]
+        public Parallel.Policy SuccessPolicy;
+
+        [LabelText("失败政策")]
+        public Parallel.Policy FailurePolicy;
+        
         public override Composite CreateComposite(Node[] nodes)
         {
-            this.mParallelNode = new Parallel(Parallel.Policy.ALL, Parallel.Policy.ALL, nodes);
+            this.mParallelNode = new Parallel(SuccessPolicy, FailurePolicy, nodes);
             return mParallelNode;
         }
 
