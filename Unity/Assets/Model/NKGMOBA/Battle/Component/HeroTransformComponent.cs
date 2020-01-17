@@ -10,28 +10,51 @@ using UnityEngine;
 namespace ETModel
 {
     [ObjectSystem]
-    public class HeroSkillBehaveomponentAwakeSystem: AwakeSystem<HeroSkillBehaveComponent>
+    public class HeroSkillBehaveomponentAwakeSystem: AwakeSystem<HeroTransformComponent>
     {
-        public override void Awake(HeroSkillBehaveComponent self)
+        public override void Awake(HeroTransformComponent self)
         {
             self.Awake();
         }
     }
 
     /// <summary>
-    /// 英雄技能的表现层组件
+    /// 位置类型
     /// </summary>
-    public class HeroSkillBehaveComponent: Component
+    public enum PosType
+    {
+        /// <summary>
+        /// 头顶
+        /// </summary>
+        HEAD,
+
+        /// <summary>
+        /// 正中央
+        /// </summary>
+        CENTER,
+
+        /// <summary>
+        /// 底部
+        /// </summary>
+        GROUND,
+
+        /// <summary>
+        /// 正前方
+        /// </summary>
+        FRONT
+    }
+
+    /// <summary>
+    /// 英雄的位置组件，主要用于让外部取得想要的位置，从而做一些操作
+    /// 例如特效的插拔
+    /// </summary>
+    public class HeroTransformComponent: Component
     {
         private Unit MyHero;
         private Transform headPos;
         private Transform channelPos;
         private Transform groundPos;
         private Transform centerPos;
-
-        private Transform Q_Pos;
-
-        private ParticleSystem Q_Par;
 
         public void Awake()
         {
@@ -40,23 +63,28 @@ namespace ETModel
             this.groundPos = this.MyHero.GameObject.Get<GameObject>("BUFFBONE_GLB_GROUND_LOC").transform;
             this.channelPos = this.MyHero.GameObject.Get<GameObject>("BUFFBONE_GLB_CHANNEL_LOC").transform;
             this.centerPos = this.MyHero.GameObject.Get<GameObject>("C_BUFFBONE_GLB_CENTER_LOC").transform;
-
-            this.Q_Pos = UnityEngine.Object.Instantiate(this.MyHero.GameObject.Get<GameObject>("Darius_Q_Effect")).transform;
-            this.Q_Par = this.Q_Pos.gameObject.GetComponent<ParticleSystem>();
         }
 
-        public void OnQSkillPressed()
+        /// <summary>
+        /// 获取目标位置
+        /// </summary>
+        /// <param name="posType"></param>
+        /// <returns></returns>
+        public Transform GetTranform(PosType posType)
         {
-            if (this.centerPos.Find(this.Q_Pos.name) == false)
+            switch (posType)
             {
-                this.Q_Pos.SetParent(this.centerPos);
-                this.Q_Pos.localPosition = Vector3.zero;
-                this.Q_Par.Play();
+                case PosType.HEAD:
+                    return this.headPos;
+                case PosType.GROUND:
+                    return this.groundPos;
+                case PosType.FRONT:
+                    return this.channelPos;
+                case PosType.CENTER:
+                    return this.centerPos;
             }
-            else
-            {
-                this.Q_Par.Play();
-            }
+
+            return null;
         }
     }
 }
