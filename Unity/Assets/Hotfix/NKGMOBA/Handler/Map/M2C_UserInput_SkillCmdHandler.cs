@@ -14,8 +14,6 @@ namespace ETHotfix
         protected override async ETTask Run(ETModel.Session session, M2C_UserInput_SkillCmd message)
         {
             Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
-            if (message.Message == "Q")
-                unit.GetComponent<HeroSkillBehaveComponent>().OnQSkillPressed();
             foreach (var VARIABLE in unit.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
             {
                 VARIABLE.Value.GetBlackboard()["PlayerInput"] = message.Message;

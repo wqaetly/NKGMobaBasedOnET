@@ -27,7 +27,16 @@ namespace ETModel.TheDataContainsAction
                     .GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
                     .GetBlackboard());
-            Log.Info($"修改黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
+            switch (m_NPBalckBoardRelationData.m_CompareType)
+            {
+                case CompareType._Bool:
+                    Log.Info($"修改Bool黑板数据为{m_NPBalckBoardRelationData.theBoolValue}");
+                    break;
+                case CompareType._String:
+                    Log.Info($"修改string黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
+                    break;
+            }
+
         }
     }
 }

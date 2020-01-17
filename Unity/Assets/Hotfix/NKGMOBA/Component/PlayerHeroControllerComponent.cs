@@ -33,11 +33,11 @@ namespace ETHotfix
     {
         private UserInputComponent userInputComponent;
 
-        private HeroSkillBehaveComponent heroSkillBehaveComponent;
+        private HeroTransformComponent heroTransformComponent;
 
         public void Awake()
         {
-            heroSkillBehaveComponent = this.GetParent<HotfixUnit>().m_ModelUnit.GetComponent<HeroSkillBehaveComponent>();
+            this.heroTransformComponent = this.GetParent<HotfixUnit>().m_ModelUnit.GetComponent<HeroTransformComponent>();
             this.userInputComponent = ETModel.Game.Scene.GetComponent<UserInputComponent>();
         }
 

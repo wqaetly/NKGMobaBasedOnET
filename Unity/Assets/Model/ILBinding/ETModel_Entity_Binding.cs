@@ -91,12 +91,12 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
             }
-            args = new Type[]{typeof(ETModel.HeroSkillBehaveComponent)};
+            args = new Type[]{typeof(ETModel.HeroTransformComponent)};
             if (genericMethods.TryGetValue("GetComponent", out lst))
             {
                 foreach(var m in lst)
                 {
-                    if(m.MatchGenericParameters(args, typeof(ETModel.HeroSkillBehaveComponent)))
+                    if(m.MatchGenericParameters(args, typeof(ETModel.HeroTransformComponent)))
                     {
                         method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, GetComponent_4);
@@ -410,7 +410,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel.Entity instance_of_this_method = (ETModel.Entity)typeof(ETModel.Entity).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.HeroSkillBehaveComponent>();
+            var result_of_this_method = instance_of_this_method.GetComponent<ETModel.HeroTransformComponent>();
 
             object obj_result_of_this_method = result_of_this_method;
             if(obj_result_of_this_method is CrossBindingAdaptorType)

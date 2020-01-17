@@ -469,7 +469,6 @@
             <e p="ETModel_GlobalProto_Binding.cs" t="Include" />
             <e p="ETModel_GWindow_Binding.cs" t="Include" />
             <e p="ETModel_HeroDataComponent_Binding.cs" t="Include" />
-            <e p="ETModel_HeroSkillBehaveComponent_Binding.cs" t="Include" />
             <e p="ETModel_Hotfix_Binding.cs" t="Include" />
             <e p="ETModel_IdGenerater_Binding.cs" t="Include" />
             <e p="ETModel_IFixedUpdateSystem_Binding.cs" t="Include" />
@@ -863,7 +862,7 @@
             <e p="Battle" t="Include">
               <e p="Component" t="Include">
                 <e p="AnimationComponent.cs" t="Include" />
-                <e p="HeroSkillBehaveComponent.cs" t="Include" />
+                <e p="HeroTransformComponent.cs" t="Include" />
               </e>
               <e p="Fsm" t="Include">
                 <e p="FsmStateBase.cs" t="Include" />
@@ -1020,6 +1019,7 @@
             </e>
             <e p="NPBehave" t="Include">
               <e p="Component" t="Include">
+                <e p="NP_InitCacheComponent.cs" t="Include" />
                 <e p="NP_RuntimeTree.cs" t="Include" />
                 <e p="NP_RuntimeTreeManager.cs" t="Include" />
                 <e p="NP_SyncComponent.cs" t="Include" />
@@ -1113,6 +1113,7 @@
                   <e p="NP_CreateColliderDataAction.cs" t="Include" />
                   <e p="NP_LogAction.cs" t="Include" />
                   <e p="NP_PlayAnimationAction.cs" t="Include" />
+                  <e p="NP_PlayParticalAction.cs" t="Include" />
                   <e p="NP_WaitAChangeableTime.cs" t="Include" />
                 </e>
               </e>

@@ -77,7 +77,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
         private bool PlayAnimation()
         {
             hasInvoked = false;
-            //如果播放完成就默认播放默认动画，这里是可配置的
+
             if (this.flag >= NodeDataForPlayAnims.Count)
             {
                 this.belongtoUnit.GetComponent<StackFsmComponent>().RefreshState();

@@ -14,7 +14,7 @@ namespace ETModel
         /// <summary>
         /// 诺克Q技能客户端行为树
         /// </summary>
-        public const long Darius_Q_Client = 103474378375175;
+        public const long Darius_Q_Client = 103493846106129;
     }
 
     /// <summary>

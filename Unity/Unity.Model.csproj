@@ -195,7 +195,6 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_GlobalProto_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_GWindow_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_HeroDataComponent_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_HeroSkillBehaveComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Hotfix_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_IdGenerater_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_IFixedUpdateSystem_Binding.cs" />
@@ -509,7 +508,7 @@
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" />
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Component\AnimationComponent.cs" />
-    <Compile Include="Assets\Model\NKGMOBA\Battle\Component\HeroSkillBehaveComponent.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Battle\Component\HeroTransformComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\FsmStateBase.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\StackFsmComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\StateTypes.cs" />
@@ -602,6 +601,7 @@
     <Compile Include="Assets\Model\NKGMOBA\Helpers\BsonHelper.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Helpers\CodeTimeCostObserver.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_InitCacheComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_SyncComponent.cs" />
@@ -670,6 +670,7 @@
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CreateColliderDataAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_PlayAnimationAction.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_PlayParticalAction.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_WaitAChangeableTime.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\System\NP_RuntimeTreeFactory.cs" />
     <Compile Include="Assets\Model\NKGMOBA\System\Player\PlayerFactory.cs" />
