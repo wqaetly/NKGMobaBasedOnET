@@ -97,7 +97,7 @@ namespace NPBehave
             {
                 if (!this.data.ContainsKey(key))
                 {
-                    this.data[key] = value;
+                    this.data.Add(key,value);
                     this.notifications.Add(new Notification(key, Type.ADD, value));
                     this.clock.AddTimer(0f, 0, NotifiyObservers);
                 }
