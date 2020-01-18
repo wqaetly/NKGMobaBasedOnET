@@ -29,6 +29,7 @@ namespace ETEditor
         [LabelText("这里是Png文件夹列表")]
         [FolderPath(AbsolutePath = true)]
         public List<string> pngFolderList = new List<string>();
+        
 
         [MenuItem("Tools/其他实用工具/贴图工作流/Png与DDS互转")]
         private static void OpenWindow()
@@ -47,6 +48,8 @@ namespace ETEditor
                     VARIABLE,
                     "./Tools/");
             }
+
+
         }
 
         [Button("DDS转Png", 25), GUIColor(0.4f, 0.8f, 1)]
@@ -58,6 +61,7 @@ namespace ETEditor
                     VARIABLE,
                     "./Tools/");
             }
+            
         }
     }
 }

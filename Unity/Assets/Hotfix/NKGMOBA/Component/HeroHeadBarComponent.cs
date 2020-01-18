@@ -55,8 +55,20 @@ namespace ETHotfix
             this.m_HeadBar.GObject.position = GRoot.inst.GlobalToLocal(m_HeadBarScreenPos);
 
             // 血条本地坐标修正
-            this.m_HeadBar.GObject.x -= 100f;
-            this.m_HeadBar.GObject.y -= 180f;
+            this.m_HeadBar.GObject.x -= GetOffsetX(m_HeadBarScreenPos);
+            this.m_HeadBar.GObject.y -= 180;
         }
+
+        /// <summary>
+        /// 得到偏移的x
+        /// </summary>
+        /// <param name="barPos">血条的屏幕坐标</param>
+        /// <returns></returns>
+        private float GetOffsetX(Vector2 barPos)
+        {
+            float final = 100 + (Screen.width / 2.0f - barPos.x) * 0.05f;
+            return final;
+        }
+        
     }
 }

@@ -8,31 +8,26 @@ using ETHotfix;
 namespace ETHotfix.FUIHeadBar
 {
     [ObjectSystem]
-    public class HeadBarAwakeSystem : AwakeSystem<HeadBar, GObject>
+    public class Bar_MPAwakeSystem : AwakeSystem<Bar_MP, GObject>
     {
-        public override void Awake(HeadBar self, GObject go)
+        public override void Awake(Bar_MP self, GObject go)
         {
             self.Awake(go);
         }
     }
 	
-	public sealed class HeadBar : FUI
+	public sealed class Bar_MP : FUI
 	{	
 		public const string UIPackageName = "FUIHeadBar";
-		public const string UIResName = "HeadBar";
+		public const string UIResName = "Bar_MP";
 		
 		/// <summary>
-        /// HeadBar的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
+        /// Bar_MP的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
         /// </summary>
-		public GComponent self;
+		public GProgressBar self;
 		
-		public GImage n16;
-		public GTextField Tex_Level;
-		public GTextField Tex_PlayerName;
-		public GImage n15;
-		public Bar_HP Bar_HP;
-		public GList HPGapList;
-		public Bar_MP n18;
+		public GGraph n0;
+		public GImage bar;
 
 		private static GObject CreateGObject()
         {
@@ -44,34 +39,34 @@ namespace ETHotfix.FUIHeadBar
             UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
         }
 
-        public static HeadBar CreateInstance()
+        public static Bar_MP CreateInstance()
 		{			
-			return ComponentFactory.Create<HeadBar, GObject>(CreateGObject());
+			return ComponentFactory.Create<Bar_MP, GObject>(CreateGObject());
 		}
 
-        public static ETTask<HeadBar> CreateInstanceAsync()
+        public static ETTask<Bar_MP> CreateInstanceAsync()
         {
-            ETTaskCompletionSource<HeadBar> tcs = new ETTaskCompletionSource<HeadBar>();
+            ETTaskCompletionSource<Bar_MP> tcs = new ETTaskCompletionSource<Bar_MP>();
 
             CreateGObjectAsync((go) =>
             {
-                tcs.SetResult(ComponentFactory.Create<HeadBar, GObject>(go));
+                tcs.SetResult(ComponentFactory.Create<Bar_MP, GObject>(go));
             });
 
             return tcs.Task;
         }
 
-        public static HeadBar Create(GObject go)
+        public static Bar_MP Create(GObject go)
 		{
-			return ComponentFactory.Create<HeadBar, GObject>(go);
+			return ComponentFactory.Create<Bar_MP, GObject>(go);
 		}
 		
         /// <summary>
         /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
         /// </summary>
-        public static HeadBar GetFormPool(GObject go)
+        public static Bar_MP GetFormPool(GObject go)
         {
-            var fui = go.Get<HeadBar>();
+            var fui = go.Get<Bar_MP>();
 
             if(fui == null)
             {
@@ -97,7 +92,7 @@ namespace ETHotfix.FUIHeadBar
 				Name = Id.ToString();
             }
 			
-			self = (GComponent)go;
+			self = (GProgressBar)go;
 			
 			self.Add(this);
 			
@@ -105,13 +100,8 @@ namespace ETHotfix.FUIHeadBar
 				
 			if(com != null)
 			{	
-				n16 = (GImage)com.GetChild("n16");
-				Tex_Level = (GTextField)com.GetChild("Tex_Level");
-				Tex_PlayerName = (GTextField)com.GetChild("Tex_PlayerName");
-				n15 = (GImage)com.GetChild("n15");
-				Bar_HP = Bar_HP.Create(com.GetChild("Bar_HP"));
-				HPGapList = (GList)com.GetChild("HPGapList");
-				n18 = Bar_MP.Create(com.GetChild("n18"));
+				n0 = (GGraph)com.GetChild("n0");
+				bar = (GImage)com.GetChild("bar");
 			}
 		}
 		
@@ -126,15 +116,8 @@ namespace ETHotfix.FUIHeadBar
 			
 			self.Remove();
 			self = null;
-			n16 = null;
-			Tex_Level = null;
-			Tex_PlayerName = null;
-			n15 = null;
-			Bar_HP.Dispose();
-			Bar_HP = null;
-			HPGapList = null;
-			n18.Dispose();
-			n18 = null;
+			n0 = null;
+			bar = null;
 		}
 	}
 }
