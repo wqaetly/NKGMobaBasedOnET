@@ -34,19 +34,18 @@ namespace ETHotfix
                 //Log.Info("行为树创建完成");
                 npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
 
-                // 创建血条
-                Game.EventSystem.Run(EventIdType.CreateHeadBar, unitInfo.UnitId);
-
-                // 增加头顶Bar
-                hotfixUnit.AddComponent<HeroHeadBarComponent, Unit, FUI>(unit,
-                    Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
-
                 //添加英雄数据
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
                         .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
 
                 ETModel.Game.Scene.GetComponent<UnitComponent>().Get(unitInfo.UnitId)
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
+
+                // 创建头顶Bar
+                Game.EventSystem.Run(EventIdType.CreateHeadBar, unitInfo.UnitId);
+                // 挂载头顶Bar
+                hotfixUnit.AddComponent<HeroHeadBarComponent, Unit, FUI>(unit,
+                    Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
             }
 
             if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)

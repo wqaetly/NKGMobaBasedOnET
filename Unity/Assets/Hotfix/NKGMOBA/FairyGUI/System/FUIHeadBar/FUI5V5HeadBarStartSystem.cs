@@ -16,6 +16,7 @@ namespace ETHotfix
         public override void Start(FUIHeadBar.HeadBar self)
         {
             //self.HPGapList.itemRenderer += (index, item) => { Log.Info("血条更新了"); };
+            
         }
     }
 }

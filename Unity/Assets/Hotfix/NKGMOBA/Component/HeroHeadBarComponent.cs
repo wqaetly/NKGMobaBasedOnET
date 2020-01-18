@@ -27,7 +27,6 @@ namespace ETHotfix
             self.Update();
         }
     }
-    
 
     /// <summary>
     /// 头部血条组件，负责血条的密度以及血条与人物的同步
@@ -43,16 +42,17 @@ namespace ETHotfix
         {
             this.m_Hero = hero;
             this.m_HeadBar = headBar;
+            Game.EventSystem.Run(EventIdType.ChangeHPMax, hero.Id, hero.GetComponent<HeroDataComponent>().MaxLifeValue);
         }
 
         public void Update()
         {
-            if (ETModel.Game.Scene.GetComponent<UserInputComponent>().JDown)
+            /*if (ETModel.Game.Scene.GetComponent<UserInputComponent>().JDown)
             {
                 float randomMaxLifeValue = Random.Range(1000, 2000);
                 ETModel.Log.Info($"此次随机最大生命值为{randomMaxLifeValue}");
                 Game.EventSystem.Run(EventIdType.ChangeHPMax, this.Entity.Id, randomMaxLifeValue);
-            }
+            }*/
 
             // 游戏物体的世界坐标转屏幕坐标
             this.m_Hero2Screen =
