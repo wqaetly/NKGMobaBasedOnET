@@ -26,7 +26,6 @@ namespace ETHotfix.FUI5v5Map
         /// </summary>
 		public GProgressBar self;
 		
-		public GImage n3;
 		public GImage bar;
 
 		private static GObject CreateGObject()
@@ -44,9 +43,9 @@ namespace ETHotfix.FUI5v5Map
 			return ComponentFactory.Create<SkillSmallProBar, GObject>(CreateGObject());
 		}
 
-        public static Task<SkillSmallProBar> CreateInstanceAsync()
+        public static ETTask<SkillSmallProBar> CreateInstanceAsync()
         {
-            TaskCompletionSource<SkillSmallProBar> tcs = new TaskCompletionSource<SkillSmallProBar>();
+            ETTaskCompletionSource<SkillSmallProBar> tcs = new ETTaskCompletionSource<SkillSmallProBar>();
 
             CreateGObjectAsync((go) =>
             {
@@ -100,7 +99,6 @@ namespace ETHotfix.FUI5v5Map
 				
 			if(com != null)
 			{	
-				n3 = (GImage)com.GetChild("n3");
 				bar = (GImage)com.GetChild("bar");
 			}
 		}
@@ -116,7 +114,6 @@ namespace ETHotfix.FUI5v5Map
 			
 			self.Remove();
 			self = null;
-			n3 = null;
 			bar = null;
 		}
 	}

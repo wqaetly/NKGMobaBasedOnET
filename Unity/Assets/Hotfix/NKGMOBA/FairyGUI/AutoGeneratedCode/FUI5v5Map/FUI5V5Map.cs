@@ -118,6 +118,15 @@ namespace ETHotfix.FUI5v5Map
 		public GLoader SmallMapSprite;
 		public GImage SmallMapFrame;
 		public GGroup SmallMap;
+		public GImage GM_BackGround;
+		public Btn_NoMPCost Btn_NoMPCost;
+		public Btn_NoHPCost Btn_NoHPCost;
+		public Btn_GMController_Disable Btn_GMController_Disable;
+		public Btn_NoCDCost Btn_NoCDCost;
+		public Btn_GMController_Disable Btn_GMController_Enable;
+		public GGroup GM;
+		public Transition Par_GMControllerDis;
+		public Transition Part_GMControllerEnable;
 
 		private static GObject CreateGObject()
         {
@@ -134,9 +143,9 @@ namespace ETHotfix.FUI5v5Map
 			return ComponentFactory.Create<FUI5V5Map, GObject>(CreateGObject());
 		}
 
-        public static Task<FUI5V5Map> CreateInstanceAsync()
+        public static ETTask<FUI5V5Map> CreateInstanceAsync()
         {
-            TaskCompletionSource<FUI5V5Map> tcs = new TaskCompletionSource<FUI5V5Map>();
+            ETTaskCompletionSource<FUI5V5Map> tcs = new ETTaskCompletionSource<FUI5V5Map>();
 
             CreateGObjectAsync((go) =>
             {
@@ -282,6 +291,15 @@ namespace ETHotfix.FUI5v5Map
 				SmallMapSprite = (GLoader)com.GetChild("SmallMapSprite");
 				SmallMapFrame = (GImage)com.GetChild("SmallMapFrame");
 				SmallMap = (GGroup)com.GetChild("SmallMap");
+				GM_BackGround = (GImage)com.GetChild("GM_BackGround");
+				Btn_NoMPCost = Btn_NoMPCost.Create(com.GetChild("Btn_NoMPCost"));
+				Btn_NoHPCost = Btn_NoHPCost.Create(com.GetChild("Btn_NoHPCost"));
+				Btn_GMController_Disable = Btn_GMController_Disable.Create(com.GetChild("Btn_GMController_Disable"));
+				Btn_NoCDCost = Btn_NoCDCost.Create(com.GetChild("Btn_NoCDCost"));
+				Btn_GMController_Enable = Btn_GMController_Disable.Create(com.GetChild("Btn_GMController_Enable"));
+				GM = (GGroup)com.GetChild("GM");
+				Par_GMControllerDis = com.GetTransition("Par_GMControllerDis");
+				Part_GMControllerEnable = com.GetTransition("Part_GMControllerEnable");
 			}
 		}
 		
@@ -399,6 +417,20 @@ namespace ETHotfix.FUI5v5Map
 			SmallMapSprite = null;
 			SmallMapFrame = null;
 			SmallMap = null;
+			GM_BackGround = null;
+			Btn_NoMPCost.Dispose();
+			Btn_NoMPCost = null;
+			Btn_NoHPCost.Dispose();
+			Btn_NoHPCost = null;
+			Btn_GMController_Disable.Dispose();
+			Btn_GMController_Disable = null;
+			Btn_NoCDCost.Dispose();
+			Btn_NoCDCost = null;
+			Btn_GMController_Enable.Dispose();
+			Btn_GMController_Enable = null;
+			GM = null;
+			Par_GMControllerDis = null;
+			Part_GMControllerEnable = null;
 		}
 	}
 }

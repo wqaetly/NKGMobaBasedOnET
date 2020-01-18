@@ -23,6 +23,20 @@ namespace ETHotfix
 
             self.SmallMapSprite.onRightClick.Add(this.AnyEventHandler);
 
+            self.Btn_GMController_Enable.self.visible = false;
+            self.Btn_GMController_Disable.self.onClick.Add(() =>
+            {
+                self.Btn_GMController_Disable.Visible = false;
+                self.Btn_GMController_Enable.Visible = true;
+                self.Par_GMControllerDis.Play();
+            });
+            self.Btn_GMController_Enable.self.onClick.Add(()=>
+            {
+                self.Btn_GMController_Disable.Visible = true;
+                self.Btn_GMController_Enable.Visible = false;
+                self.Part_GMControllerEnable.Play();
+            });
+
             GameObject HeroAvatars =
                     (GameObject) ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroavatars.unity3d", "HeroAvatars");
             GameObject HeroSkillIcons =
@@ -78,6 +92,7 @@ namespace ETHotfix
             
             self.SkillF_CDInfo.visible = false;
             self.SkillF_Bar.Visible = false;
+            
         }
 
         void AnyEventHandler(EventContext context)

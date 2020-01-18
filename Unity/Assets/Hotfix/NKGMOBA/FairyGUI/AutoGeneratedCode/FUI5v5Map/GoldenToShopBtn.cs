@@ -44,9 +44,9 @@ namespace ETHotfix.FUI5v5Map
 			return ComponentFactory.Create<GoldenToShopBtn, GObject>(CreateGObject());
 		}
 
-        public static Task<GoldenToShopBtn> CreateInstanceAsync()
+        public static ETTask<GoldenToShopBtn> CreateInstanceAsync()
         {
-            TaskCompletionSource<GoldenToShopBtn> tcs = new TaskCompletionSource<GoldenToShopBtn>();
+            ETTaskCompletionSource<GoldenToShopBtn> tcs = new ETTaskCompletionSource<GoldenToShopBtn>();
 
             CreateGObjectAsync((go) =>
             {

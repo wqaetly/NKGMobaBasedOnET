@@ -44,9 +44,9 @@ namespace ETHotfix.FUI5v5Map
 			return ComponentFactory.Create<BuffProBar, GObject>(CreateGObject());
 		}
 
-        public static Task<BuffProBar> CreateInstanceAsync()
+        public static ETTask<BuffProBar> CreateInstanceAsync()
         {
-            TaskCompletionSource<BuffProBar> tcs = new TaskCompletionSource<BuffProBar>();
+            ETTaskCompletionSource<BuffProBar> tcs = new ETTaskCompletionSource<BuffProBar>();
 
             CreateGObjectAsync((go) =>
             {

@@ -44,9 +44,9 @@ namespace ETHotfix.FUI5v5Map
 			return ComponentFactory.Create<HpProcessBar, GObject>(CreateGObject());
 		}
 
-        public static Task<HpProcessBar> CreateInstanceAsync()
+        public static ETTask<HpProcessBar> CreateInstanceAsync()
         {
-            TaskCompletionSource<HpProcessBar> tcs = new TaskCompletionSource<HpProcessBar>();
+            ETTaskCompletionSource<HpProcessBar> tcs = new ETTaskCompletionSource<HpProcessBar>();
 
             CreateGObjectAsync((go) =>
             {
