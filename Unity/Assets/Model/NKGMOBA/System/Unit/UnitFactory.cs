@@ -15,6 +15,7 @@ namespace ETModel
 
             Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("NuoKe", prefab);
             Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "NuoKe");
+            //Log.Info($"此英雄的Model层ID为{unit.Id}");
 
             //增加栈式状态机，辅助动画切换
             unit.AddComponent<StackFsmComponent>();

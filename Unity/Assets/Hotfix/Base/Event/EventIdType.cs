@@ -63,6 +63,11 @@
         public const string CreateHeadBar = "CreateHeadBar";
 
         /// <summary>
+        /// 最大生命值改变事件，意图修改血条UI密度
+        /// </summary>
+        public const string ChangeHPMax = "ChangeHPMax";
+
+        /// <summary>
         /// 设置自身的英雄Unit
         /// </summary>
         public const string SetSelfHero = "SetSelfHero";

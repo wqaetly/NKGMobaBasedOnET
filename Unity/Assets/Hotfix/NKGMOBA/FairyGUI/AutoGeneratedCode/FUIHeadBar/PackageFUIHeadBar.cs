@@ -12,7 +12,6 @@ namespace ETHotfix
 		public const string FUIHeadBar_QQJieTu20200118153803 = "ui://FUIHeadBar/QQ截图20200118153803";
 		public const string FUIHeadBar_MP = "ui://FUIHeadBar/MP";
 		public const string FUIHeadBar_HP = "ui://FUIHeadBar/HP";
-		public const string FUIHeadBar_BarBackGround = "ui://FUIHeadBar/BarBackGround";
 		public const string FUIHeadBar_HeadBar = "ui://FUIHeadBar/HeadBar";
 	}
 }

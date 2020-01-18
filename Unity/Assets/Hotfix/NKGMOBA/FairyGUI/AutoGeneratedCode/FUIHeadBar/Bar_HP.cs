@@ -26,7 +26,6 @@ namespace ETHotfix.FUIHeadBar
         /// </summary>
 		public GProgressBar self;
 		
-		public GImage n0;
 		public GImage bar;
 
 		private static GObject CreateGObject()
@@ -100,7 +99,6 @@ namespace ETHotfix.FUIHeadBar
 				
 			if(com != null)
 			{	
-				n0 = (GImage)com.GetChild("n0");
 				bar = (GImage)com.GetChild("bar");
 			}
 		}
@@ -116,7 +114,6 @@ namespace ETHotfix.FUIHeadBar
 			
 			self.Remove();
 			self = null;
-			n0 = null;
 			bar = null;
 		}
 	}
