@@ -35,6 +35,10 @@ namespace ETHotfix
 
     public class B2S_Darius_Q_CRS: Component
     {
+        /// <summary>
+        /// 当发生碰撞时
+        /// </summary>
+        /// <param name="b2SHeroColliderData">碰撞到的对象数据集合</param>
         public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
         {
             //Log.Info("诺克Q技能打到了东西");
@@ -49,7 +53,7 @@ namespace ETHotfix
                     sw.Stop();
                     TimeSpan ts = sw.Elapsed;
                     Console.WriteLine("DateTime costed for Shuffle function is: {0}ms", ts.TotalMilliseconds);
-                    
+
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
 
@@ -75,10 +79,9 @@ namespace ETHotfix
                         Log.Info("Q技能打到了诺克，外圈，但这里模拟内圈，开始添加Buff");
                         try
                         {
-                            b2SHeroColliderData.m_BelongUnit.GetComponent<BuffManagerComponent>()
-                                    .AddBuff(buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
-                                        ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
-                                        ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit));
+                            buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
+                                ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
+                                ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
                         }
                         catch (Exception e)
                         {
