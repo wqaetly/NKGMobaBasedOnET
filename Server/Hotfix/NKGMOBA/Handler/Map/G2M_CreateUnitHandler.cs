@@ -12,7 +12,8 @@ namespace ETHotfix
         {
             //创建战斗单位（小骷髅给劲哦）（赋予了Id）
             Unit unit = ComponentFactory.CreateWithId<Unit>(IdGenerater.GenerateId());
-
+            //将这个小骷髅维护在Unit组件里
+            Game.Scene.GetComponent<UnitComponent>().Add(unit);
             //增加移动组件
             unit.AddComponent<MoveComponent>();
             //增加寻路相关组件
@@ -31,10 +32,21 @@ namespace ETHotfix
             unit.AddComponent<NP_InitCacheComponent>();
             unit.AddComponent<NP_RuntimeTreeManager>();
 
-            //Log.Info("开始创建行为树");
-            NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Server_TreeIds.Darius_Q_Server);
-            //Log.Info("行为树创建完成");
-            npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
+            Log.Info("开始创建行为树");
+            
+            try
+            {
+                NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Server_TreeIds.Darius_Q_Server);
+                Log.Info("行为树创建完成");
+                npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
 
             //设置小骷髅位置
             unit.Position = new Vector3(-10, 0, -10);
@@ -44,9 +56,6 @@ namespace ETHotfix
 
             //添加同gate服务器通信基础组件，主要是赋予ID
             unit.AddComponent<UnitGateComponent, long>(request.GateSessionId);
-
-            //将这个小骷髅维护在Unit组件里
-            Game.Scene.GetComponent<UnitComponent>().Add(unit);
 
             //设置回复消息的Id
             response.UnitId = unit.Id;

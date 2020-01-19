@@ -49,10 +49,10 @@ namespace ETModel
 
             NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, NP_DataSupportor>(theRuntimeTreeID,
                 (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), npDataSupportor);
+            
+            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, npDataSupportor.RootId, tempTree);
             //把提前缓存的数据注入黑板
             unit.GetComponent<NP_InitCacheComponent>().AddCacheDatas2RuntimeTree(tempTree);
-            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, npDataSupportor.RootId, tempTree);
-
             return tempTree;
         }
     }

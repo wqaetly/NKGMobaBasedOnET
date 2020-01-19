@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -39,13 +40,16 @@ namespace ETModel
         /// </summary>
         public void AddCacheDatas2RuntimeTree(NP_RuntimeTree npRuntimeTree)
         {
+            Log.Info("准备添加缓存数据到行为树");
             if (this.CacheDatas.TryGetValue(npRuntimeTree.Id, out var keyvalueList))
             {
                 foreach (var VARIABLE in keyvalueList)
                 {
                     npRuntimeTree.GetBlackboard()[VARIABLE.Item1] = VARIABLE.Item2;
+                    Log.Info($"已经加入字典键{VARIABLE.Item1},值为{VARIABLE.Item2}");
                 }
             }
+            Log.Info("添加数据完毕");
         }
     }
 }

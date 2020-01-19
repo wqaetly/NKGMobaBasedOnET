@@ -68,6 +68,7 @@ namespace ETModel
                 Log.Error("要修改的值与预设类型不符");
                 return;
             }
+
             blackboard[DicKey] = value;
         }
     }

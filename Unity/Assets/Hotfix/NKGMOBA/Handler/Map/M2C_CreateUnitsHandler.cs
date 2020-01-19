@@ -34,6 +34,7 @@ namespace ETHotfix
                 //Log.Info("行为树创建完成");
                 npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
 
+
                 //添加英雄数据
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
                         .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;

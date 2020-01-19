@@ -41,7 +41,6 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
         public override Action GetActionToBeDone()
         {
             BelongUnit = Game.Scene.GetComponent<UnitComponent>().Get(Unitid);
-            BelongUnit.GetComponent<NP_InitCacheComponent>().AdvanceAddInitData(this.RuntimeTreeID, "Darius_Q_Effect", true);
             Game.Scene.GetComponent<GameObjectPool<Unit>>().Add(ParticalName,
                 this.BelongUnit.GameObject.GetComponent<ReferenceCollector>().Get<GameObject>(ParticalName));
             Partical = Game.Scene.GetComponent<GameObjectPool<Unit>>().Fetch(ParticalName);
