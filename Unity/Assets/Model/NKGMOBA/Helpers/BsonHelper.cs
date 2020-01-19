@@ -7,8 +7,8 @@
 using System.Numerics;
 using MongoDB.Bson.Serialization;
 
-#if !SERVER
-using UnityEditor;
+#if UNITY_EDITOR
+using UnityEditor;    
 #endif
 
 namespace ETModel
@@ -16,7 +16,7 @@ namespace ETModel
     /// <summary>
     /// Bson序列化反序列化辅助类
     /// </summary>
-#if !SERVER
+#if UNITY_EDITOR
     [InitializeOnLoad]
 #endif
     public static class BsonHelper
