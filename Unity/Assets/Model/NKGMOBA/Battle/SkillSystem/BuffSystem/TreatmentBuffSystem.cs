@@ -32,6 +32,7 @@ namespace ETModel
 
             //TODO:进行相关治疗影响操作，例如减疗，增疗等
 
+            
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue += this.FinalTreatValue;
             Log.Info($"受到了治疗，治疗量为{FinalTreatValue}");
 
