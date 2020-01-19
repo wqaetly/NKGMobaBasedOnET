@@ -13,7 +13,7 @@ namespace ETModel
         public Dictionary<long, NP_RuntimeTree> RuntimeTrees = new Dictionary<long, NP_RuntimeTree>();
 
         /// <summary>
-        /// 已经添加过的行为树，string为名称，long为id
+        /// 已经添加过的行为树，第一个id为配置id，第二个id为运行时id
         /// </summary>
         public Dictionary<long, long> hasAddedTrees = new Dictionary<long, long>();
 

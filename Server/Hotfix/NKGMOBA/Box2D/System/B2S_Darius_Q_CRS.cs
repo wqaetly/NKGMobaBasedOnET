@@ -43,11 +43,11 @@ namespace ETHotfix
                 case 10006: //诺克：自身
                     Stopwatch sw = new Stopwatch();
                     sw.Start();
-                    //TODO:这里应该从英雄身上取技能数据，而不是每次都从数据仓库深拷贝，十几kb的数据居然要4ms才能深拷贝完成
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(NP_Server_TreeIds.Darius_Q_Server).mSkillDataDic;
+                            b2SHeroColliderData.m_BelongUnit.GetComponent<NP_RuntimeTreeManager>()
+                                    .GetTreeByPrefabID(NP_Server_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
                     sw.Stop();
-                    TimeSpan ts = sw.Elapsed; 
+                    TimeSpan ts = sw.Elapsed;
                     Console.WriteLine("DateTime costed for Shuffle function is: {0}ms", ts.TotalMilliseconds);
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
