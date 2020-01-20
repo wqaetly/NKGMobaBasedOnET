@@ -43,6 +43,9 @@ namespace ETHotfix
             this.m_Hero = hero;
             this.m_HeadBar = headBar;
             Game.EventSystem.Run(EventIdType.ChangeHPMax, hero.Id, hero.GetComponent<HeroDataComponent>().MaxLifeValue);
+            Game.EventSystem.Run(EventIdType.ChangeHPValue, hero.Id, hero.GetComponent<HeroDataComponent>().CurrentLifeValue);
+            Game.EventSystem.Run(EventIdType.ChangeMPMax, hero.Id, hero.GetComponent<HeroDataComponent>().MaxMagicValue);
+            Game.EventSystem.Run(EventIdType.ChangeMPValue, hero.Id, hero.GetComponent<HeroDataComponent>().CurrentMagicValue);
         }
 
         public void Update()

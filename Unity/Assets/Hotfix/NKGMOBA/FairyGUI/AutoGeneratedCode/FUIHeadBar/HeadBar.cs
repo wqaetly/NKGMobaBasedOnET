@@ -32,7 +32,7 @@ namespace ETHotfix.FUIHeadBar
 		public GImage n15;
 		public Bar_HP Bar_HP;
 		public GList HPGapList;
-		public Bar_MP n18;
+		public Bar_MP Bar_MP;
 
 		private static GObject CreateGObject()
         {
@@ -111,7 +111,7 @@ namespace ETHotfix.FUIHeadBar
 				n15 = (GImage)com.GetChild("n15");
 				Bar_HP = Bar_HP.Create(com.GetChild("Bar_HP"));
 				HPGapList = (GList)com.GetChild("HPGapList");
-				n18 = Bar_MP.Create(com.GetChild("n18"));
+				Bar_MP = Bar_MP.Create(com.GetChild("Bar_MP"));
 			}
 		}
 		
@@ -133,8 +133,8 @@ namespace ETHotfix.FUIHeadBar
 			Bar_HP.Dispose();
 			Bar_HP = null;
 			HPGapList = null;
-			n18.Dispose();
-			n18 = null;
+			Bar_MP.Dispose();
+			Bar_MP = null;
 		}
 	}
 }

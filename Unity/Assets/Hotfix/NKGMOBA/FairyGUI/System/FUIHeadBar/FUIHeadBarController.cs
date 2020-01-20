@@ -41,9 +41,43 @@ namespace ETHotfix
                 actual = maxHP / 100 + 2;
             }
 
+            headBar.Bar_HP.self.max = maxHP;
             headBar.HPGapList.numItems = (int) actual;
             headBar.HPGapList.columnGap = (int) (headBar.HPGapList.actualWidth / (actual - 1));
             //ETModel.Log.Info($"此次更新间距：{headBar.HPGapList.columnGap}");
+        }
+    }
+
+    [Event(EventIdType.ChangeHPValue)]
+    public class ChangeHPValue: AEvent<long, float>
+    {
+        public override void Run(long fuiId, float changedValue)
+        {
+            //Log.Info($"事件收到的血条ID为{fuiId}");
+            HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
+            headBar.Bar_HP.self.value += changedValue;
+        }
+    }
+    
+    [Event(EventIdType.ChangeMPMax)]
+    public class ChangeMPBar_Max: AEvent<long, float>
+    {
+        public override void Run(long fuiId, float maxHP)
+        {
+            //Log.Info($"事件收到的血条ID为{fuiId}");
+            HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
+            headBar.Bar_MP.self.max = maxHP;
+        }
+    }
+
+    [Event(EventIdType.ChangeHPValue)]
+    public class ChangeMPValue: AEvent<long, float>
+    {
+        public override void Run(long fuiId, float changedValue)
+        {
+            //Log.Info($"事件收到的血条ID为{fuiId}");
+            HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
+            headBar.Bar_MP.self.value += changedValue;
         }
     }
 }

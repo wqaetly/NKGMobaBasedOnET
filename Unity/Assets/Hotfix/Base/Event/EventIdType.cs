@@ -57,6 +57,8 @@
         /// </summary>
         public const string ClickSmallMap = "ClickSmallMap";
 
+        #region 血条相关事件
+
         /// <summary>
         /// 创建人物头部UI
         /// </summary>
@@ -66,7 +68,24 @@
         /// 最大生命值改变事件，意图修改血条UI密度
         /// </summary>
         public const string ChangeHPMax = "ChangeHPMax";
+        
+        /// <summary>
+        /// 更改生命值，值为修改的量，正为加血，负为减血
+        /// </summary>
+        public const string ChangeHPValue = "ChangeHPValue";
+        
+        /// <summary>
+        /// 最大蓝量改变事件
+        /// </summary>
+        public const string ChangeMPMax = "ChangeMPMax";
+        
+        /// <summary>
+        /// 更改蓝量，值为修改的量，正为加蓝，负为减蓝
+        /// </summary>
+        public const string ChangeMPValue = "ChangeMPValue";
 
+        #endregion
+        
         /// <summary>
         /// 设置自身的英雄Unit
         /// </summary>
