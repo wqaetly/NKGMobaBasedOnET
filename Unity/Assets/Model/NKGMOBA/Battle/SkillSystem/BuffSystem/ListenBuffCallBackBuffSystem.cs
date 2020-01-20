@@ -28,7 +28,7 @@ namespace ETModel
             foreach (var VARIABLE in temp.EventIds)
             {
                 Log.Info($"订阅了{VARIABLE}");
-                Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent(VARIABLE, temp.ListenBuffEventBase);
+                Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
             }
 
             this.MBuffState = BuffState.Running;
@@ -45,7 +45,7 @@ namespace ETModel
                     ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
                     foreach (var VARIABLE in temp.EventIds)
                     {
-                        Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent(VARIABLE, temp.ListenBuffEventBase);
+                        Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
                     }
 
                     this.MBuffState = BuffState.Finished;

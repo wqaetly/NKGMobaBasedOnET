@@ -32,7 +32,7 @@ namespace ETModel
             
             if (this.MSkillBuffDataBase.theEventID != null)
             {
-                Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}", this);
                 //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
                 
             }
@@ -66,7 +66,7 @@ namespace ETModel
             
             if (this.MSkillBuffDataBase.theEventID != null)
             {
-                Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}", this);
                 //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}");
             }
         }

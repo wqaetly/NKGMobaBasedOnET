@@ -44,10 +44,10 @@ namespace ETModel
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
             if (this.MSkillBuffDataBase.theEventID != null)
             {
-                Game.Scene.GetComponent<BattleEventSystem>().Run(this.MSkillBuffDataBase.theEventID, this);
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}", this);
                 // Log.Info($"抛出了EventID为{this.MSkillBuffDataBase.theEventID}的事件");
             }
-            
+
             this.MBuffState = BuffState.Finished;
             Log.Info($"设置瞬时伤害Buff：{this.MSkillBuffDataBase.FlagId}状态为Finshed");
         }
