@@ -72,6 +72,16 @@ namespace ETHotfix
 	[Message(HotfixOpcode.G2C_PlayerOffline)]
 	public partial class G2C_PlayerOffline : IMessage {}
 
+	[Message(HotfixOpcode.Actor_CreateSpiling)]
+	public partial class Actor_CreateSpiling : IActorLocationMessage {}
+
+//所归属的父实体id
+	[Message(HotfixOpcode.M2C_ChangeHeroHP)]
+	public partial class M2C_ChangeHeroHP : IActorMessage {}
+
+	[Message(HotfixOpcode.M2C_ChangeHeroMP)]
+	public partial class M2C_ChangeHeroMP : IActorMessage {}
+
 }
 namespace ETHotfix
 {
@@ -99,5 +109,8 @@ namespace ETHotfix
 		 public const ushort C2G_PlayerInfo = 10020;
 		 public const ushort G2C_PlayerInfo = 10021;
 		 public const ushort G2C_PlayerOffline = 10022;
+		 public const ushort Actor_CreateSpiling = 10023;
+		 public const ushort M2C_ChangeHeroHP = 10024;
+		 public const ushort M2C_ChangeHeroMP = 10025;
 	}
 }

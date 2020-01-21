@@ -34,12 +34,23 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
             switch (BuffWorkTypes)
             {
                 case BuffWorkTypes.ChangeMagic:
-                    heroDataComponent.CurrentMagicValue -= (float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
+                    float tobeReMagicValue = (float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                             .GetComponent<NP_RuntimeTreeManager>()
                             .GetTreeByRuntimeID(this.RuntimeTreeID)
                             .GetBlackboard()[m_NPBalckBoardRelationData.DicKey];
+                    heroDataComponent.CurrentMagicValue -= tobeReMagicValue;
+                    try
+                    {
+                        Game.EventSystem.Run(EventIdType.ChangeMP, this.Unitid, -tobeReMagicValue);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                        throw;
+                    }
+
                     Log.Info(
-                        $"减少了蓝量：{((float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
+                        $"减少了蓝：{((float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
                     break;
                 case BuffWorkTypes.ChangeHP:
                     heroDataComponent.CurrentLifeValue -= (float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)

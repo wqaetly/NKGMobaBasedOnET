@@ -10,6 +10,7 @@ namespace ETModel
 {
     /// <summary>
     /// 碰撞响应组件，用来响应碰撞
+    /// 挂载到B2S_HeroColliderData上
     /// </summary>
     public class B2S_CollisionResponseComponent: Component
     {

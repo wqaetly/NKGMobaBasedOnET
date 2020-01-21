@@ -46,6 +46,7 @@ namespace ETModel
                 //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
                 this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
+                Game.EventSystem.Run(EventIdType.ChangeHP, this.theUnitBelongto.Id, -this.currentDamageValue);
                 Log.Info($"来自持续伤害ExeCute的数据:{this.currentDamageValue}");
                 //设置下一个时间点
                 this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
@@ -81,6 +82,7 @@ namespace ETModel
                         //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
                         this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
+                        Game.EventSystem.Run(EventIdType.ChangeHP, this.theUnitBelongto.Id, -this.currentDamageValue);
                         Log.Info($"来自持续伤害Update的数据:{this.currentDamageValue},结束时间为{MaxLimitTime},当前层数为{this.CurrentOverlay}");
                         //设置下一个时间点
                         this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;

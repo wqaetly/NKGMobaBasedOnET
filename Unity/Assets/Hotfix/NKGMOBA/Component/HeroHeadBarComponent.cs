@@ -4,6 +4,7 @@
 // Data: 2019年5月31日 14:21:00
 //------------------------------------------------------------
 
+using ETHotfix.FUIHeadBar;
 using ETModel;
 using FairyGUI;
 using UnityEngine;
@@ -34,18 +35,20 @@ namespace ETHotfix
     public class HeroHeadBarComponent: Component
     {
         private Unit m_Hero;
-        private FUI m_HeadBar;
+        private HeadBar m_HeadBar;
         private Vector2 m_Hero2Screen;
         private Vector2 m_HeadBarScreenPos;
 
         public void Awake(Unit hero, FUI headBar)
         {
             this.m_Hero = hero;
-            this.m_HeadBar = headBar;
-            Game.EventSystem.Run(EventIdType.ChangeHPMax, hero.Id, hero.GetComponent<HeroDataComponent>().MaxLifeValue);
-            Game.EventSystem.Run(EventIdType.ChangeHPValue, hero.Id, hero.GetComponent<HeroDataComponent>().CurrentLifeValue);
-            Game.EventSystem.Run(EventIdType.ChangeMPMax, hero.Id, hero.GetComponent<HeroDataComponent>().MaxMagicValue);
-            Game.EventSystem.Run(EventIdType.ChangeMPValue, hero.Id, hero.GetComponent<HeroDataComponent>().CurrentMagicValue);
+            HeroDataComponent heroDataComponent = hero.GetComponent<HeroDataComponent>();
+            this.m_HeadBar = headBar as HeadBar;
+            //这个血量最大值有点特殊，还需要设置一下密度用事件比较好一点
+            Game.EventSystem.Run(EventIdType.ChangeHPMax,hero.Id,heroDataComponent.MaxLifeValue);
+            this.m_HeadBar.Bar_HP.self.value = heroDataComponent.MaxLifeValue;
+            this.m_HeadBar.Bar_MP.self.max = heroDataComponent.MaxMagicValue;
+            this.m_HeadBar.Bar_MP.self.value = heroDataComponent.MaxMagicValue;
         }
 
         public void Update()

@@ -5,18 +5,15 @@ namespace ETModel
 {
     public static class UnitFactory
     {
-        public static Unit Create(long id)
+        public static Unit Create(string unitType, long id)
         {
-            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            GameObject prefab = bundleGameObject.Get<GameObject>("NuoKe");
-
+            PrepareHeroRes(unitType);
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
-
-            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add("NuoKe", prefab);
-            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, "NuoKe");
+            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(id, unitType);
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
 
+            //增加子实体组件，用于管理子实体
+            unit.AddComponent<ChildrenUnitComponent>();
             //增加栈式状态机，辅助动画切换
             unit.AddComponent<StackFsmComponent>();
             unit.AddComponent<AnimationComponent>();
@@ -27,6 +24,44 @@ namespace ETModel
 
             unitComponent.Add(unit);
             return unit;
+        }
+
+        /// <summary>
+        /// 创建木桩
+        /// </summary>
+        /// <param name="selfId">自己的id</param>
+        /// <param name="parentId">父实体id</param>
+        /// <returns></returns>
+        public static Unit CreateSpiling(long selfId, long parentId)
+        {
+            PrepareHeroRes("NuoKe");
+
+            UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
+            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchWithId(selfId, "NuoKe");
+            //Log.Info($"此英雄的Model层ID为{unit.Id}");
+
+            //增加子实体组件，用于管理子实体
+            unit.AddComponent<ChildrenUnitComponent>();
+            //增加栈式状态机，辅助动画切换
+            unit.AddComponent<StackFsmComponent>();
+            unit.AddComponent<AnimationComponent>();
+            unit.AddComponent<TurnComponent>();
+            unit.AddComponent<HeroTransformComponent>();
+
+            unitComponent.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
+            return unit;
+        }
+
+        /// <summary>
+        /// 准备英雄资源
+        /// </summary>
+        /// <param name="heroType"></param>
+        private static void PrepareHeroRes(string heroType)
+        {
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+            GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
+            GameObject prefab = bundleGameObject.Get<GameObject>(heroType);
+            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add(heroType, prefab);
         }
 
         /// <summary>

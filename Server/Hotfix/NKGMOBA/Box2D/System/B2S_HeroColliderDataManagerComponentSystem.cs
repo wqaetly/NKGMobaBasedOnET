@@ -32,7 +32,7 @@ namespace ETHotfix
                     if (VARIABLE.Value)
                     {
                         self.AllColliderData[VARIABLE.Key] = false;
-                        //Log.Info($"复用的碰撞数据,ID为{nodeDataId}");
+                        Log.Info($"复用的碰撞数据,ID为{nodeDataId}");
                         return VARIABLE.Key.Item3;
                     }
 

@@ -79,6 +79,9 @@
           </e>
         </e>
         <e p="NKGMOBA" t="Include">
+          <e p="Battle" t="Include">
+            <e p="Bat_SendMessage.cs" t="Include" />
+          </e>
           <e p="Box2D" t="Include">
             <e p="EventDefines" t="Include">
               <e p="EventIdType_Collision.cs" t="Include" />
@@ -95,6 +98,7 @@
           <e p="Handler" t="Include">
             <e p="ActorHandler" t="Include">
               <e p="GlobalActorHandler" t="Include">
+                <e p="Actor_CreateSpilingHandler.cs" t="Include" />
                 <e p="Actor_TransferHandler.cs" t="Include" />
                 <e p="Frame_ClickMapHandler.cs" t="Include" />
                 <e p="UserInput_SkillCmdHandler.cs" t="Include" />
@@ -276,6 +280,7 @@
                 <e p="B2S_CollisionRelationRepositoryComponent.cs" t="Include" />
                 <e p="B2S_CollisionResponseComponent.cs" t="Include" />
                 <e p="B2S_HeroColliderDataManagerComponent.cs" t="Include" />
+                <e p="B2S_RoleCastComponent.cs" t="Include" />
                 <e p="B2S_WorldComponent.cs" t="Include" />
               </e>
               <e p="Core" t="Include" />
@@ -2190,6 +2195,7 @@
       <e p="B2S_PolygonColliderDataStructure.cs" t="Include" />
       <e p="B2S_PrefabData.cs" t="Include" />
     </e>
+    <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Component\ChildrenUnitComponent.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\BsonHelper.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" t="Include" />
     <e p="D:\Study\GameProject\MKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_InitCacheComponent.cs" t="Include" />

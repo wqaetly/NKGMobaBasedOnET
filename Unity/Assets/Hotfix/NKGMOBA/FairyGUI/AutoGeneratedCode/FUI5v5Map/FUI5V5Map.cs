@@ -121,6 +121,7 @@ namespace ETHotfix.FUI5v5Map
 		public GImage GM_BackGround;
 		public Btn_NoMPCost Btn_NoMPCost;
 		public Btn_NoHPCost Btn_NoHPCost;
+		public Btn_CreateSpiling Btn_CreateSpiling;
 		public Btn_GMController_Disable Btn_GMController_Disable;
 		public Btn_NoCDCost Btn_NoCDCost;
 		public Btn_GMController_Disable Btn_GMController_Enable;
@@ -294,6 +295,7 @@ namespace ETHotfix.FUI5v5Map
 				GM_BackGround = (GImage)com.GetChild("GM_BackGround");
 				Btn_NoMPCost = Btn_NoMPCost.Create(com.GetChild("Btn_NoMPCost"));
 				Btn_NoHPCost = Btn_NoHPCost.Create(com.GetChild("Btn_NoHPCost"));
+				Btn_CreateSpiling = Btn_CreateSpiling.Create(com.GetChild("Btn_CreateSpiling"));
 				Btn_GMController_Disable = Btn_GMController_Disable.Create(com.GetChild("Btn_GMController_Disable"));
 				Btn_NoCDCost = Btn_NoCDCost.Create(com.GetChild("Btn_NoCDCost"));
 				Btn_GMController_Enable = Btn_GMController_Disable.Create(com.GetChild("Btn_GMController_Enable"));
@@ -422,6 +424,8 @@ namespace ETHotfix.FUI5v5Map
 			Btn_NoMPCost = null;
 			Btn_NoHPCost.Dispose();
 			Btn_NoHPCost = null;
+			Btn_CreateSpiling.Dispose();
+			Btn_CreateSpiling = null;
 			Btn_GMController_Disable.Dispose();
 			Btn_GMController_Disable = null;
 			Btn_NoCDCost.Dispose();

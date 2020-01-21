@@ -4,6 +4,8 @@
 // Data: 2019年9月16日 21:12:21
 //------------------------------------------------------------
 
+using System;
+
 namespace ETModel
 {
     /// <summary>
@@ -39,6 +41,8 @@ namespace ETModel
             this.finalDamageValue = tempFinalData;
 
             this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
+
+            Game.EventSystem.Run(EventIdType.ChangeHP, this.theUnitBelongto.Id, -this.finalDamageValue);
 
             //抛出Buff奏效事件
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件

@@ -5,6 +5,7 @@ namespace ETHotfix
 	public static partial class FUIPackage
 	{
 		public const string FUI5v5Map = "FUI5v5Map";
+		public const string FUI5v5Map_Btn_CreateSpiling = "ui://FUI5v5Map/Btn_CreateSpiling";
 		public const string FUI5v5Map_HpProcessBar = "ui://FUI5v5Map/HpProcessBar";
 		public const string FUI5v5Map_OtherBar = "ui://FUI5v5Map/OtherBar";
 		public const string FUI5v5Map_SkillSmallProBar = "ui://FUI5v5Map/SkillSmallProBar";
@@ -16,6 +17,7 @@ namespace ETHotfix
 		public const string FUI5v5Map_Btn_NoHPCost = "ui://FUI5v5Map/Btn_NoHPCost";
 		public const string FUI5v5Map_Btn_NoCDCost = "ui://FUI5v5Map/Btn_NoCDCost";
 		public const string FUI5v5Map_Btn_GMController_Disable = "ui://FUI5v5Map/Btn_GMController_Disable";
+		public const string FUI5v5Map_80668E524672C2EE_18 = "ui://FUI5v5Map/80668E524672C2EE_18";
 		public const string FUI5v5Map_Avatar = "ui://FUI5v5Map/Avatar";
 		public const string FUI5v5Map_Skill = "ui://FUI5v5Map/Skill";
 		public const string FUI5v5Map_UIHeroHead_16 = "ui://FUI5v5Map/UIHeroHead_16";

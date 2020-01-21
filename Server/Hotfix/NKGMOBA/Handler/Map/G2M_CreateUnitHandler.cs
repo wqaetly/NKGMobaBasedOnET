@@ -14,6 +14,7 @@ namespace ETHotfix
             Unit unit = ComponentFactory.CreateWithId<Unit>(IdGenerater.GenerateId());
             //将这个小骷髅维护在Unit组件里
             Game.Scene.GetComponent<UnitComponent>().Add(unit);
+            unit.AddComponent<ChildrenUnitComponent>();
             //增加移动组件
             unit.AddComponent<MoveComponent>();
             //增加寻路相关组件
@@ -22,9 +23,11 @@ namespace ETHotfix
             //增加碰撞体管理组件
             unit.AddComponent<B2S_HeroColliderDataManagerComponent>();
 
-            //Log.Info("创建自身碰撞体");
+            Log.Info("创建自身碰撞体");
+            //Game.EventSystem.Run(EventIdType.CreateCollider, unit.Id, 10001, 10006);
             unit.GetComponent<B2S_HeroColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
-            //Log.Info("碰撞体创建完成");
+            unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Friendly;
+            Log.Info("碰撞体创建完成");
             unit.AddComponent<HeroDataComponent, long>(10001);
 
             unit.AddComponent<BuffManagerComponent>();

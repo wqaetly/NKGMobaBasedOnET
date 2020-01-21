@@ -2134,6 +2134,384 @@ namespace ETHotfix {
 
   }
 
+  public partial class Actor_CreateSpiling : pb::IMessage {
+    private static readonly pb::MessageParser<Actor_CreateSpiling> _parser = new pb::MessageParser<Actor_CreateSpiling>(() => (Actor_CreateSpiling)MessagePool.Instance.Fetch(typeof(Actor_CreateSpiling)));
+    public static pb::MessageParser<Actor_CreateSpiling> Parser { get { return _parser; } }
+
+    private float x_;
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    private float y_;
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    private float z_;
+    public float Z {
+      get { return z_; }
+      set {
+        z_ = value;
+      }
+    }
+
+    private long parentUnitId_;
+    /// <summary>
+    ///所归属的父实体id
+    /// </summary>
+    public long ParentUnitId {
+      get { return parentUnitId_; }
+      set {
+        parentUnitId_ = value;
+      }
+    }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long id_;
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (X != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Y);
+      }
+      if (Z != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Z);
+      }
+      if (ParentUnitId != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(ParentUnitId);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+      if (Id != 0L) {
+        output.WriteRawTag(240, 5);
+        output.WriteInt64(Id);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
+        size += 1 + 4;
+      }
+      if (Z != 0F) {
+        size += 1 + 4;
+      }
+      if (ParentUnitId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ParentUnitId);
+      }
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (Id != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      x_ = 0f;
+      y_ = 0f;
+      z_ = 0f;
+      parentUnitId_ = 0;
+      rpcId_ = 0;
+      actorId_ = 0;
+      id_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 21: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Y = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            Z = input.ReadFloat();
+            break;
+          }
+          case 40: {
+            ParentUnitId = input.ReadInt64();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+          case 752: {
+            Id = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class M2C_ChangeHeroHP : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_ChangeHeroHP> _parser = new pb::MessageParser<M2C_ChangeHeroHP>(() => (M2C_ChangeHeroHP)MessagePool.Instance.Fetch(typeof(M2C_ChangeHeroHP)));
+    public static pb::MessageParser<M2C_ChangeHeroHP> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long unitId_;
+    public long UnitId {
+      get { return unitId_; }
+      set {
+        unitId_ = value;
+      }
+    }
+
+    private float changeHPValue_;
+    public float ChangeHPValue {
+      get { return changeHPValue_; }
+      set {
+        changeHPValue_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ChangeHPValue != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(ChangeHPValue);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+      if (UnitId != 0L) {
+        output.WriteRawTag(240, 5);
+        output.WriteInt64(UnitId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (UnitId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
+      }
+      if (ChangeHPValue != 0F) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      changeHPValue_ = 0f;
+      rpcId_ = 0;
+      actorId_ = 0;
+      unitId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 21: {
+            ChangeHPValue = input.ReadFloat();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+          case 752: {
+            UnitId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class M2C_ChangeHeroMP : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_ChangeHeroMP> _parser = new pb::MessageParser<M2C_ChangeHeroMP>(() => (M2C_ChangeHeroMP)MessagePool.Instance.Fetch(typeof(M2C_ChangeHeroMP)));
+    public static pb::MessageParser<M2C_ChangeHeroMP> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long unitId_;
+    public long UnitId {
+      get { return unitId_; }
+      set {
+        unitId_ = value;
+      }
+    }
+
+    private float changeMPValue_;
+    public float ChangeMPValue {
+      get { return changeMPValue_; }
+      set {
+        changeMPValue_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ChangeMPValue != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(ChangeMPValue);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+      if (UnitId != 0L) {
+        output.WriteRawTag(240, 5);
+        output.WriteInt64(UnitId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (UnitId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
+      }
+      if (ChangeMPValue != 0F) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      changeMPValue_ = 0f;
+      rpcId_ = 0;
+      actorId_ = 0;
+      unitId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 21: {
+            ChangeMPValue = input.ReadFloat();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+          case 752: {
+            UnitId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   #endregion
 
 }

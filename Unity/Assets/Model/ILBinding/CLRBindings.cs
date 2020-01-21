@@ -160,7 +160,6 @@ namespace ILRuntime.Runtime.Generated
             Google_Protobuf_Collections_RepeatedField_1_UnitInfo_Binding.Register(app);
             System_Collections_Generic_IEnumerator_1_UnitInfo_Binding.Register(app);
             ETModel_UnitInfo_Binding.Register(app);
-            ETModel_UnitFactory_Binding.Register(app);
             ETModel_Player_Binding.Register(app);
             ETModel_M2C_PathfindingResult_Binding.Register(app);
             ETModel_UnitPathComponent_Binding.Register(app);

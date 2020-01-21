@@ -134,7 +134,7 @@ message M2C_B2S_Debugger_Circle // IActorMessage
     int64 ActorId = 93;
     int64 Id = 1;
     float radius = 94;
-    int64 sustainTime = 5;    //持续时间
+    int64 sustainTime = 5; //持续时间
     M2C_B2S_VectorBase Pos = 4;
 }
 
@@ -142,7 +142,7 @@ message M2C_B2S_Debugger_Polygon // IActorMessage
 {
     int64 ActorId = 93;
     int64 Id = 1;
-    int64 sustainTime = 5;    //持续时间
+    int64 sustainTime = 5; //持续时间
     repeated M2C_B2S_VectorBase vects = 2;
 }
 
@@ -171,4 +171,34 @@ message G2C_PlayerInfo // IResponse
 message G2C_PlayerOffline // IMessage
 {
     int32 m_playerOfflineType = 1;
+}
+
+message Actor_CreateSpiling // IActorLocationMessage
+{
+    float X = 2;
+    float Y = 3;
+    float Z = 4;
+    //所归属的父实体id
+    int64 ParentUnitId=5;
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 Id = 94;
+}
+
+message M2C_ChangeHeroHP // IActorMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 UnitId = 94;
+
+    float ChangeHPValue = 2;
+}
+
+message M2C_ChangeHeroMP // IActorMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 UnitId = 94;
+
+    float ChangeMPValue = 2;
 }

@@ -27,7 +27,7 @@ namespace ETHotfix
         /// <param name="unit"></param>
         /// <param name="heroColliderData"></param>
         /// <param name="skillCmd"></param>
-        public static void BroadcastB2S_ColliderData(Unit unit, B2S_HeroColliderData heroColliderData, string skillCmd)
+        public static void BroadcastB2S_ColliderData(Unit unit, B2S_HeroColliderData heroColliderData)
         {
             heroColliderData.SyncBody();
 

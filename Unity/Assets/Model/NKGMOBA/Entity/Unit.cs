@@ -1,4 +1,5 @@
-﻿using PF;
+﻿using System.Collections.Generic;
+using PF;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -22,7 +23,7 @@ namespace ETModel
 			this.GameObject = gameObject;
 			this.GameObject.AddComponent<ComponentView>().Component = this;
 		}
-		
+
 		public Vector3 Position
 		{
 			get
