@@ -55,29 +55,31 @@ namespace ETHotfix
         {
             //Log.Info($"事件收到的血条ID为{fuiId}");
             HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
-            headBar.Bar_HP.self.value += changedValue;
-        }
-    }
-    
-    [Event(EventIdType.ChangeMPMax)]
-    public class ChangeMPBar_Max: AEvent<long, float>
-    {
-        public override void Run(long fuiId, float maxHP)
-        {
-            //Log.Info($"事件收到的血条ID为{fuiId}");
-            HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
-            headBar.Bar_MP.self.max = maxHP;
+            headBar.Bar_HP.self.TweenValue(ETModel.Game.Scene.GetComponent<UnitComponent>().Get(fuiId).GetComponent<HeroDataComponent>().CurrentLifeValue,
+                0.2f);
         }
     }
 
-    [Event(EventIdType.ChangeHPValue)]
+    [Event(EventIdType.ChangeMPMax)]
+    public class ChangeMPBar_Max: AEvent<long, float>
+    {
+        public override void Run(long fuiId, float maxMP)
+        {
+            //Log.Info($"事件收到的血条ID为{fuiId}");
+            HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
+            headBar.Bar_MP.self.max = maxMP;
+        }
+    }
+
+    [Event(EventIdType.ChangeMPValue)]
     public class ChangeMPValue: AEvent<long, float>
     {
         public override void Run(long fuiId, float changedValue)
         {
-            //Log.Info($"事件收到的血条ID为{fuiId}");
+            Log.Info($"事件收到的将要改变的数值为{changedValue}");
             HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
-            headBar.Bar_MP.self.value += changedValue;
+            headBar.Bar_MP.self.TweenValue(
+                ETModel.Game.Scene.GetComponent<UnitComponent>().Get(fuiId).GetComponent<HeroDataComponent>().CurrentMagicValue, 0.2f);
         }
     }
 }

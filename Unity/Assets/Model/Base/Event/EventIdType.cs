@@ -42,5 +42,8 @@
 
         //给NPBehave服务端用的事件系统
         public const string CreateCollider = "CreateCollider";
+
+        public const string ChangeHP = "ChangeHP";
+        public const string ChangeMP = "ChangeMP";
     }
 }

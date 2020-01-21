@@ -45,10 +45,14 @@ namespace ETHotfix
             switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)
             {
                 case 10006: //诺克：自身
+                    //TODO:这一步需要在结点编辑器配好支持自动升成
+                    if (b2SHeroColliderData.m_BelongUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
                     Stopwatch sw = new Stopwatch();
+
                     sw.Start();
+                    Unit unit = ((B2S_HeroColliderData) this.Entity).m_BelongUnit;
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            b2SHeroColliderData.m_BelongUnit.GetComponent<NP_RuntimeTreeManager>()
+                            unit.GetComponent<NP_RuntimeTreeManager>()
                                     .GetTreeByPrefabID(NP_Server_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
                     sw.Stop();
                     TimeSpan ts = sw.Elapsed;
@@ -58,12 +62,12 @@ namespace ETHotfix
                     //Log.Info("开始执行正式判断逻辑");
 
                     //敌方英雄
-                    if (Vector3.Distance(((B2S_HeroColliderData) this.Entity).m_BelongUnit.Position, b2SHeroColliderData.m_BelongUnit.Position) <=
+                    if (Vector3.Distance(((B2S_HeroColliderData) this.Entity).m_BelongUnit.Position, b2SHeroColliderData.m_BelongUnit.Position) >=
                         2.3f)
                     {
                         try
                         {
-                            Log.Info("Q技能打到了诺克，内圈，但这里模拟外圈，开始添加Buff");
+                            Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
                                 ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
@@ -76,7 +80,7 @@ namespace ETHotfix
                     }
                     else
                     {
-                        Log.Info("Q技能打到了诺克，外圈，但这里模拟内圈，开始添加Buff");
+                        Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
                         try
                         {
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(

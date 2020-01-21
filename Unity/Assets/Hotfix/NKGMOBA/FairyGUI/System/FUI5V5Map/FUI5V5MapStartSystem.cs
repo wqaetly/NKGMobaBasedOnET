@@ -17,7 +17,9 @@ namespace ETHotfix
     {
         public override void Start(FUI5V5Map self)
         {
-            HeroDataComponent heroDataComponent = ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.GetComponent<HeroDataComponent>();
+            Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit;
+
+            HeroDataComponent heroDataComponent = unit.GetComponent<HeroDataComponent>();
 
             NodeDataForHero mNodeDataForHero = heroDataComponent.NodeDataForHero;
 
@@ -30,11 +32,20 @@ namespace ETHotfix
                 self.Btn_GMController_Enable.Visible = true;
                 self.Par_GMControllerDis.Play();
             });
-            self.Btn_GMController_Enable.self.onClick.Add(()=>
+            self.Btn_GMController_Enable.self.onClick.Add(() =>
             {
                 self.Btn_GMController_Disable.Visible = true;
                 self.Btn_GMController_Enable.Visible = false;
                 self.Part_GMControllerEnable.Play();
+            });
+
+            self.Btn_CreateSpiling.self.onClick.Add(() =>
+            {
+                SessionComponent.Instance.Session.Send(new Actor_CreateSpiling()
+                {
+                    X = unit.Position.x, Y = unit.Position.y, Z = unit.Position.z, ParentUnitId = unit.Id
+                });
+                ETModel.Log.Info($"发送请求木桩父实体id：{unit.Id}");
             });
 
             GameObject HeroAvatars =
@@ -63,36 +74,36 @@ namespace ETHotfix
                     (mNodeDataForHero.OriCriticalStrikeProbability + mNodeDataForHero.ExtCriticalStrikeProbability).ToString();
             self.MoveSpeedInfo.text = (mNodeDataForHero.OriMoveSpeed + mNodeDataForHero.ExtMoveSpeed).ToString();
 
-            self.RedText.text = String.Concat(heroDataComponent.CurrentLifeValue.ToString(), "/", heroDataComponent.MaxLifeValue.ToString());
-            self.BlueText.text = String.Concat(heroDataComponent.CurrentMagicValue.ToString(), "/", heroDataComponent.MaxMagicValue.ToString());
-            
-            self.RedProBar.self.value = heroDataComponent.CurrentLifeValue;
-            self.RedProBar.self.max = heroDataComponent.MaxLifeValue;
+            self.RedText.text = $"{heroDataComponent.CurrentLifeValue}/{heroDataComponent.MaxLifeValue}";
+            self.BlueText.text = $"{heroDataComponent.CurrentMagicValue}/{heroDataComponent.MaxMagicValue}";
 
-            self.BlueProBar.self.value = heroDataComponent.CurrentMagicValue;
+            self.RedProBar.self.max = heroDataComponent.MaxLifeValue;
+            self.RedProBar.self.value = heroDataComponent.CurrentLifeValue;
+
             self.BlueProBar.self.max = heroDataComponent.MaxMagicValue;
+            self.BlueProBar.self.value = heroDataComponent.CurrentMagicValue;
+
 
             self.SkillTalent_CDInfo.visible = false;
             self.SkillTalent_Bar.Visible = false;
-            
+
             self.SkillQ_CDInfo.visible = false;
             self.SkillQ_Bar.Visible = false;
-            
+
             self.SkillW_CDInfo.visible = false;
             self.SkillW_Bar.Visible = false;
-            
+
             self.SkillE_CDInfo.visible = false;
             self.SkillE_Bar.Visible = false;
-            
+
             self.SkillR_CDInfo.visible = false;
             self.SkillR_Bar.Visible = false;
 
             self.SkillD_CDInfo.visible = false;
             self.SkillD_Bar.Visible = false;
-            
+
             self.SkillF_CDInfo.visible = false;
             self.SkillF_Bar.Visible = false;
-            
         }
 
         void AnyEventHandler(EventContext context)

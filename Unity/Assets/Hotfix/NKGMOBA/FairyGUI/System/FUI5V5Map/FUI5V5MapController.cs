@@ -31,4 +31,57 @@ namespace ETHotfix
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
         }
     }
+
+    [Event(EventIdType.ChangeHPValue)]
+    public class Map_ChangeHP: AEvent<long, float>
+    {
+        public override void Run(long a, float b)
+        {
+            if (a != ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.Id) return;
+            FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
+            fui5V5Map.RedProBar.self.TweenValue(
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.GetComponent<HeroDataComponent>().CurrentLifeValue, 0.2f);
+            fui5V5Map.RedText.text = $"{fui5V5Map.RedProBar.self.value}/{fui5V5Map.RedProBar.self.max}";
+        }
+    }
+
+    [Event(EventIdType.ChangeHPMax)]
+    public class Map_ChangeHPBarMax: AEvent<long, float>
+    {
+        public override void Run(long a, float b)
+        {
+            FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
+            //第一次抛出事件的时候可能UI还没有加载出来
+            if (fui5V5Map == null) return;
+            if (a != ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.Id) return;
+            fui5V5Map.RedProBar.self.max = b;
+            fui5V5Map.RedText.text = $"{fui5V5Map.RedProBar.self.value}/{fui5V5Map.RedProBar.self.max}";
+        }
+    }
+
+    [Event(EventIdType.ChangeMPMax)]
+    public class Map_ChangeMPBar_Max: AEvent<long, float>
+    {
+        public override void Run(long a, float b)
+        {
+            if (a != ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.Id) return;
+            FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
+
+            fui5V5Map.BlueProBar.self.max = b;
+            fui5V5Map.BlueText.text = $"{fui5V5Map.BlueProBar.self.value}/{fui5V5Map.BlueProBar.self.max}";
+        }
+    }
+
+    [Event(EventIdType.ChangeMPValue)]
+    public class Map_ChangeMPValue: AEvent<long, float>
+    {
+        public override void Run(long a, float b)
+        {
+            if (a != ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.Id) return;
+            FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
+            fui5V5Map.BlueProBar.self.TweenValue(
+                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit.GetComponent<HeroDataComponent>().CurrentMagicValue, 0.2f);
+            fui5V5Map.BlueText.text = $"{fui5V5Map.BlueProBar.self.value}/{fui5V5Map.BlueProBar.self.max}";
+        }
+    }
 }

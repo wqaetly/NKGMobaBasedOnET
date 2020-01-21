@@ -20,8 +20,8 @@ namespace ETHotfix
                     continue;
                 }
 
-                //根据不同ID，创建小骷髅
-                Unit unit = UnitFactory.Create(unitInfo.UnitId);
+                //根据不同名称和ID，创建英雄
+                Unit unit = UnitFactory.Create("NuoKe", unitInfo.UnitId);
                 //因为血条需要，创建热更层unit
                 HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit);
 
@@ -33,7 +33,6 @@ namespace ETHotfix
                 NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client);
                 //Log.Info("行为树创建完成");
                 npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
-
 
                 //添加英雄数据
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
