@@ -20,7 +20,6 @@ namespace ETModel
         {
             self.UnitComponent = Game.Scene.GetComponent<UnitComponent>();
             //绑定指定的物理世界，正常来说一个房间一个物理世界,这里是Demo，直接获取了
-            
             Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().SetContactListener(self);
             //self.TestCollision();
             
@@ -82,7 +81,8 @@ namespace ETModel
 
         public void FixedUpdate()
         {
-            foreach (var VARIABLE in this.collisionRecorder)
+            //TODO:待修整，var a = this.UnitComponent.Get(VARIABLE.Key.Item1);不能从unitcomponent取得，因为根本没有注册到它里面
+            /*foreach (var VARIABLE in this.collisionRecorder)
             {
                 if (VARIABLE.Value)
                 {
@@ -91,7 +91,7 @@ namespace ETModel
                     a.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(b.GetComponent<B2S_HeroColliderData>());
                     b.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(a.GetComponent<B2S_HeroColliderData>());
                 }
-            }
+            }*/
         }
 
         public override void Dispose()
