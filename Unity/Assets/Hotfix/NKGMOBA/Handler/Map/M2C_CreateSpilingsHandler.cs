@@ -24,7 +24,7 @@ namespace ETHotfix
 
             //因为血条需要，创建热更层unit
             HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit);
-
+            hotfixUnit.AddComponent<FallingFontComponent>();
             unit.Position = new Vector3(spilingInfo.X, spilingInfo.Y, spilingInfo.Z);
             
             unit.AddComponent<HeroDataComponent, long>(10001);

@@ -129,8 +129,6 @@ namespace FairyGUI
 
             _value = value;
             _tweening = true;
-            Debug.Log($"旧进度Value值为{oldValule}");
-            Debug.Log($"新进度Value值为{_value}");
             return GTween.ToDouble(oldValule, _value, duration)
                     .SetEase(EaseType.Linear)
                     .SetTarget(this, TweenPropType.Progress)
