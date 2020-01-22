@@ -56,9 +56,9 @@ namespace ETHotfix.FUILogin
 			return ComponentFactory.Create<FUILogin, GObject>(CreateGObject());
 		}
 
-        public static Task<FUILogin> CreateInstanceAsync()
+        public static ETTask<FUILogin> CreateInstanceAsync()
         {
-            TaskCompletionSource<FUILogin> tcs = new TaskCompletionSource<FUILogin>();
+            ETTaskCompletionSource<FUILogin> tcs = new ETTaskCompletionSource<FUILogin>();
 
             CreateGObjectAsync((go) =>
             {

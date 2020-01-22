@@ -6,6 +6,7 @@
 
 using ETHotfix.FUILogin;
 using ETModel;
+using UnityEngine;
 
 namespace ETHotfix
 {
@@ -31,7 +32,7 @@ namespace ETHotfix
             self.loginBtn.self.visible = false;
             LoginHelper.OnLoginAsync(self.accountText.text, self.passwordText.text).Coroutine();
         }
-        
+
         /// <summary>
         /// 前往训练营
         /// </summary>
@@ -42,4 +43,5 @@ namespace ETHotfix
             LoginHelper.OnLoginAsync("123", "123").Coroutine();
         }
     }
+    
 }

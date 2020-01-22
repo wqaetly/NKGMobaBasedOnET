@@ -46,9 +46,9 @@ namespace ETHotfix.FUILogin
 			return ComponentFactory.Create<loginBtn, GObject>(CreateGObject());
 		}
 
-        public static Task<loginBtn> CreateInstanceAsync()
+        public static ETTask<loginBtn> CreateInstanceAsync()
         {
-            TaskCompletionSource<loginBtn> tcs = new TaskCompletionSource<loginBtn>();
+            ETTaskCompletionSource<loginBtn> tcs = new ETTaskCompletionSource<loginBtn>();
 
             CreateGObjectAsync((go) =>
             {
