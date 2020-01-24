@@ -69,7 +69,7 @@ namespace ETModel.NKGMOBA.Battle.State
                 }
             }
 
-            Log.Error($"所请求的状态:{stateName}不存在，将会自动创建一个");
+            //Log.Error($"所请求的状态:{stateName}不存在，将会自动创建一个");
             return null;
         }
 
@@ -81,7 +81,7 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <param name="priority">状态优先级</param>
         public void AddState(StateTypes stateTypes, string stateName, int priority)
         {
-            Log.Info($"意图加入一个{stateTypes}类型的状态");
+            //Log.Info($"意图加入一个{stateTypes}类型的状态");
             FsmStateBase fsmStateBase = this.GetState(stateName);
 
             if (fsmStateBase != null)

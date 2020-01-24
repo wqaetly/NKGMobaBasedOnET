@@ -83,7 +83,6 @@ namespace ETModel
             {
                 return;
             }
-
             foreach (IEvent iEvent in iEvents)
             {
                 try

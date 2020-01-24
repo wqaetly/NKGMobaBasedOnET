@@ -20,7 +20,7 @@ namespace ETModel
         /// 监听Buff事件
         /// </summary>
         ListenBuffCallBackBuffSystem,
-
+        
         /// <summary>
         /// 绑定一个状态
         /// </summary>
@@ -30,10 +30,15 @@ namespace ETModel
         /// 改变某个属性，硬性改变，不考虑任何额外影响
         /// </summary>
         ChangePlayerPropertyBuffSystem,
-        
+
         /// <summary>
         /// 治疗
         /// </summary>
-        TreatmenBuffSystem
+        TreatmenBuffSystem,
+
+        /// <summary>
+        /// 播放特效
+        /// </summary>
+        PlayEffectBuffSystem
     }
 }

@@ -507,6 +507,7 @@
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" />
     <Compile Include="Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Component\AnimationComponent.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Battle\Component\EffectComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Component\HeroTransformComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\FsmStateBase.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\StackFsmComponent.cs" />
@@ -528,6 +529,7 @@
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffTimerAndOverlayHelper.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\FlashDamageBuffSystem.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ListenBuffCallBackBuffSystem.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\PlayEffectBuffSystem.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\SustainDamageBuffSystem.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\TreatmentBuffSystem.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\AnimationCore\NodeDataForPlayAnim.cs" />
@@ -538,6 +540,7 @@
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\ChangePlayerPropertyBuffData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\FlashDamageBuffData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\ListenBuffCallBackDataBase\ListenBuffDataCallBackDataBase.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\PlayEffectBuffData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\SkillBuffDataBase\BuffDataBase.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\SustainDamageBuffData.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillBuffDatas\TreatmentBuffData.cs" />
@@ -601,6 +604,7 @@
     <Compile Include="Assets\Model\NKGMOBA\Helpers\BsonHelper.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Helpers\CodeTimeCostObserver.cs" />
     <Compile Include="Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" />
+    <Compile Include="Assets\Model\NKGMOBA\Mono\Effect_Special_Mono.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_InitCacheComponent.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs" />
     <Compile Include="Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs" />
@@ -978,26 +982,26 @@
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>D:/Study/GameProject/MKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Study/Unity2018.2.13f1/2018.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

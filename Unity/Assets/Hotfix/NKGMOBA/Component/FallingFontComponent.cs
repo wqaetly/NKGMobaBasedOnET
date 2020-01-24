@@ -80,7 +80,7 @@ namespace ETHotfix
 
             this.RunnningFuiFallBleedQue.Enqueue(fuiFallBleed);
             this.completedIdQueue.Enqueue(fuiFallBleed.Name);
-            ETModel.Log.Info($"新建了一个飘字特效，id：{fuiFallBleed.Name}");
+            //ETModel.Log.Info($"新建了一个飘字特效，id：{fuiFallBleed.Name}");
         }
 
         private void CompleteCallBack()
@@ -93,7 +93,7 @@ namespace ETHotfix
             fuiFallBleed.self.visible = false;
             this.FuiFallBleedQue.Enqueue(fuiFallBleed);
             this.RunnningFuiFallBleedQue.Dequeue();
-            ETModel.Log.Info($"回收了一个飘字特效，id：{fuiFallBleed.Name}");
+            //ETModel.Log.Info($"回收了一个飘字特效，id：{fuiFallBleed.Name}");
         }
 
         /// <summary>

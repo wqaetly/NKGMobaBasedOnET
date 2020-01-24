@@ -73,7 +73,7 @@ namespace ETModel
             {
                 return;
             }
-            
+            Log.Info($"初始化了{gameObjectType}预制体");
             this.prefabDict.Add(gameObjectType, goPrefab);
         }
 

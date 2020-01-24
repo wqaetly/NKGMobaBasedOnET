@@ -30,10 +30,10 @@ namespace ETModel.TheDataContainsAction
             switch (m_NPBalckBoardRelationData.m_CompareType)
             {
                 case CompareType._Bool:
-                    Log.Info($"修改Bool黑板数据为{m_NPBalckBoardRelationData.theBoolValue}");
+                    //Log.Info($"修改Bool黑板数据为{m_NPBalckBoardRelationData.theBoolValue}");
                     break;
                 case CompareType._String:
-                    Log.Info($"修改string黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
+                    //Log.Info($"修改string黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
                     break;
             }
 

@@ -82,6 +82,9 @@ namespace ETHotfix
 	[Message(HotfixOpcode.M2C_ChangeHeroMP)]
 	public partial class M2C_ChangeHeroMP : IActorMessage {}
 
+	[Message(HotfixOpcode.M2C_FrieBattleEvent_PlayEffect)]
+	public partial class M2C_FrieBattleEvent_PlayEffect : IActorMessage {}
+
 }
 namespace ETHotfix
 {
@@ -112,5 +115,6 @@ namespace ETHotfix
 		 public const ushort Actor_CreateSpiling = 10023;
 		 public const ushort M2C_ChangeHeroHP = 10024;
 		 public const ushort M2C_ChangeHeroMP = 10025;
+		 public const ushort M2C_FrieBattleEvent_PlayEffect = 10026;
 	}
 }

@@ -29,14 +29,16 @@ namespace ETModel
                 //如果是有限时长的
                 if (tempData.SustainTime + 1 > 0)
                 {
-                    //Log.Info($"原本结束时间：{tempSystem.MaxLimitTime},续命之后的结束时间{TimeHelper.Now() + BuffDataBase.SustainTime}");
+                    Log.Info($"原本结束时间：{tempSystem.MaxLimitTime},续命之后的结束时间{TimeHelper.Now() + BuffDataBase.SustainTime}");
                     tempSystem.MaxLimitTime = TimeHelper.Now() + BuffDataBase.SustainTime;
                 }
 
-                //Log.Info($"本次续命BuffID为{BuffDataBase.FlagId}，当前层数{tempSystem.CurrentOverlay}，最高层为{tempData.MaxOverlay}");
-                //不用Execute了，因为已经有了
-                
+                Log.Info($"本次续命BuffID为{BuffDataBase.FlagId}，当前层数{tempSystem.CurrentOverlay}，最高层为{tempData.MaxOverlay}");
+
+                //刷新当前已有的Buff
                 tempSystem.OnRefresh();
+                
+                //把这个临时的回收，因为已经用不到他了
                 BuffSystemBase.MBuffState = BuffState.Finished;
             }
             else
@@ -49,7 +51,7 @@ namespace ETModel
 
                 BuffSystemBase.CurrentOverlay++;
 
-                //Log.Info($"本次新加BuffID为{BuffDataBase.FlagId}");
+                Log.Info($"本次新加BuffID为{BuffDataBase.FlagId}");
                 BuffSystemBase.MBuffState = BuffState.Waiting;
             }
         }

@@ -71,6 +71,10 @@ namespace ETHotfix
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
                                 ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
+                            MessageHelper.Broadcast(new M2C_FrieBattleEvent_PlayEffect()
+                            {
+                                BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SHeroColliderData.m_BelongUnit.Id
+                            });
                         }
                         catch (Exception e)
                         {

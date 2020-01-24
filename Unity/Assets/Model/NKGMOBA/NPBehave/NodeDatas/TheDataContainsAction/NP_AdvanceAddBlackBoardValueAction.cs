@@ -29,7 +29,7 @@ namespace ETModel.TheDataContainsAction
                     .GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
                     .GetBlackboard());
-            Log.Info("提前加入了黑板数据");
+            //Log.Info("提前加入了黑板数据");
         }
     }
 }

@@ -78,7 +78,7 @@ namespace ETHotfix
     {
         public override void Run(long fuiId, float changedValue)
         {
-            Log.Info($"事件收到的将要改变的数值为{changedValue}");
+            //Log.Info($"事件收到的将要改变的数值为{changedValue}");
             HeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as HeadBar;
             headBar.Bar_MP.self.TweenValue(
                 ETModel.Game.Scene.GetComponent<UnitComponent>().Get(fuiId).GetComponent<HeroDataComponent>().CurrentMagicValue, 0.2f);

@@ -21,6 +21,9 @@ namespace ETModel
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
             unit.AddComponent<HeroTransformComponent>();
+            unit.AddComponent<EffectComponent>();
+            //增加Buff管理组件
+            unit.AddComponent<BuffManagerComponent>();
 
             unitComponent.Add(unit);
             return unit;
@@ -46,7 +49,11 @@ namespace ETModel
             unit.AddComponent<StackFsmComponent>();
             unit.AddComponent<AnimationComponent>();
             unit.AddComponent<TurnComponent>();
+            unit.AddComponent<EffectComponent>();
             unit.AddComponent<HeroTransformComponent>();
+            
+            //增加Buff管理组件
+            unit.AddComponent<BuffManagerComponent>();
 
             unitComponent.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             return unit;

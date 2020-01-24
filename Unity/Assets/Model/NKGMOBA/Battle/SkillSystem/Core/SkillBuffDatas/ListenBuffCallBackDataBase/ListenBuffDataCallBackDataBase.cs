@@ -23,6 +23,7 @@ namespace ETModel
 
         public override void Run(BuffSystemBase a)
         {
+            //Log.Info($"直接添加_通过监听机制增加Buff");
             foreach (var VARIABLE in m_BuffsWillBeAdded)
             {
                 //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
@@ -30,6 +31,7 @@ namespace ETModel
             }
         }
     }
+    
 
     /// <summary>
     /// 监听Buff事件数据基类，用以监听指定事件
@@ -65,4 +67,5 @@ namespace ETModel
         [LabelText("Buff回调条件达成时会添加的Buff")]
         public ListenBuffEventBase ListenBuffEventBase;
     }
+    
 }

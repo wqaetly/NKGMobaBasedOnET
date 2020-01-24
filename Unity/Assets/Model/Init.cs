@@ -22,12 +22,12 @@ namespace ETModel
             try
             {
                 BsonHelper.Init();
-                
+
                 SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
                 DontDestroyOnLoad(gameObject);
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
-                
-                fixedUpdate = new FixedUpdate(){UpdateCallback = ()=>Game.EventSystem.FixedUpdate()};
+
+                fixedUpdate = new FixedUpdate() { UpdateCallback = () => Game.EventSystem.FixedUpdate() };
 
                 Game.Scene.AddComponent<TimerComponent>();
 
@@ -59,7 +59,7 @@ namespace ETModel
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
 
                 Game.Scene.AddComponent<HeroBaseDataRepositoryComponent>();
-                
+
                 Game.Scene.AddComponent<B2S_DebuggerComponent>();
 
                 Game.Hotfix.GotoHotfix();
@@ -67,16 +67,17 @@ namespace ETModel
                 Game.Scene.AddComponent<NP_SyncComponent>();
                 Game.Scene.AddComponent<NP_TreeDataRepository>();
 
+                //战斗系统的事件系统组件
+                Game.Scene.AddComponent<BattleEventSystem>();
                 //Buff池组件
                 Game.Scene.AddComponent<BuffPoolComponent>();
-               
+
             }
             catch (Exception e)
             {
                 Log.Error(e);
             }
         }
-
 
         private void Update()
         {

@@ -55,11 +55,11 @@ namespace ETHotfix
             {
                 if (Stage.isTouchOnUI) //点在了UI上
                 {
-                    Log.Info("点在UI上");
+                    //Log.Info("点在UI上");
                 }
                 else //没有点在UI上
                 {
-                    Log.Info("没点在UI上");
+                    //Log.Info("没点在UI上");
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Map")))

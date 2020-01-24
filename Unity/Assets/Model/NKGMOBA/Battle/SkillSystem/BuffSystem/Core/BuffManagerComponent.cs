@@ -59,8 +59,8 @@ namespace ETModel
                     m_Buffs.Remove(current);
                     m_BuffsForFind_BuffWorkType[current.Value.MSkillBuffDataBase.BuffWorkType].Remove(current.Value);
                     m_BuffsForFind_BuffFlagID[current.Value.MSkillBuffDataBase.FlagId].Remove(current.Value);
-                    /*Log.Info(
-                        $"移除一个Buff，ID为{current.Value.MSkillBuffDataBase.FlagId},BuffManager是否还有?:{this.FindBuffByFlagID(current.Value.MSkillBuffDataBase.FlagId)}");*/
+                    Log.Info(
+                        $"移除一个Buff，ID为{current.Value.MSkillBuffDataBase.FlagId},BuffManager是否还有?:{this.FindBuffByFlagID(current.Value.MSkillBuffDataBase.FlagId)}");
                     current = next;
                 }
             }

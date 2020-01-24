@@ -22,13 +22,13 @@ namespace ETModel.TheDataContainsAction
 
         public void AddBuff()
         {
-            Log.Info("行为树添加Buff");
+            //Log.Info("行为树添加Buff");
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((unit.GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
                     .m_BelongNP_DataSupportor
                     .mSkillDataDic[this.BuffDataID] as NodeDataForSkillBuff).SkillBuffBases, unit, unit).AutoAddBuff();
-            Log.Info("Buff添加完成");
+            //Log.Info("Buff添加完成");
         }
     }
 }

@@ -179,7 +179,7 @@ message Actor_CreateSpiling // IActorLocationMessage
     float Y = 3;
     float Z = 4;
     //所归属的父实体id
-    int64 ParentUnitId=5;
+    int64 ParentUnitId = 5;
     int32 RpcId = 90;
     int64 ActorId = 93;
     int64 Id = 94;
@@ -201,4 +201,15 @@ message M2C_ChangeHeroMP // IActorMessage
     int64 UnitId = 94;
 
     float ChangeMPValue = 2;
+}
+
+message M2C_FrieBattleEvent_PlayEffect // IActorMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 UnitId = 94;
+
+    int64 FromUnitId = 3;
+    int64 BelongToUnitId = 4;
+    string BattleKey = 2;
 }

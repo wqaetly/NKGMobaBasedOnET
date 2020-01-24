@@ -311,6 +311,7 @@
                 <e p="M2C_ChangeMPValueHandler.cs" t="Include" />
                 <e p="M2C_CreateSpilingsHandler.cs" t="Include" />
                 <e p="M2C_CreateUnitsHandler.cs" t="Include" />
+                <e p="M2C_FrieBattleEvent_PlayEffecthANDLER.cs" t="Include" />
                 <e p="M2C_PathfindingResultHandler.cs" t="Include" />
                 <e p="M2C_UserInput_SkillCmdHandler.cs" t="Include" />
               </e>
@@ -875,6 +876,7 @@
             <e p="Battle" t="Include">
               <e p="Component" t="Include">
                 <e p="AnimationComponent.cs" t="Include" />
+                <e p="EffectComponent.cs" t="Include" />
                 <e p="HeroTransformComponent.cs" t="Include" />
               </e>
               <e p="Fsm" t="Include">
@@ -905,6 +907,7 @@
                   </e>
                   <e p="FlashDamageBuffSystem.cs" t="Include" />
                   <e p="ListenBuffCallBackBuffSystem.cs" t="Include" />
+                  <e p="PlayEffectBuffSystem.cs" t="Include" />
                   <e p="SustainDamageBuffSystem.cs" t="Include" />
                   <e p="TreatmentBuffSystem.cs" t="Include" />
                 </e>
@@ -922,6 +925,7 @@
                     <e p="ListenBuffCallBackDataBase" t="Include">
                       <e p="ListenBuffDataCallBackDataBase.cs" t="Include" />
                     </e>
+                    <e p="PlayEffectBuffData.cs" t="Include" />
                     <e p="SkillBuffDataBase" t="Include">
                       <e p="BuffDataBase.cs" t="Include" />
                     </e>
@@ -1030,6 +1034,9 @@
               <e p="BsonHelper.cs" t="Include" />
               <e p="CodeTimeCostObserver.cs" t="Include" />
               <e p="DeepCopyHelper.cs" t="Include" />
+            </e>
+            <e p="Mono" t="Include">
+              <e p="Effect_Special_Mono.cs" t="Include" />
             </e>
             <e p="NPBehave" t="Include">
               <e p="Component" t="Include">

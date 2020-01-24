@@ -27,7 +27,7 @@ namespace ETModel
             ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
             foreach (var VARIABLE in temp.EventIds)
             {
-                Log.Info($"订阅了{VARIABLE}");
+                //Log.Info($"订阅了{VARIABLE}{this.theUnitFrom.Id}");
                 Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
             }
 

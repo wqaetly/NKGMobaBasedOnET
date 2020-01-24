@@ -119,7 +119,7 @@ namespace ETModel
         /// </summary>
         public void PlayAnimByStackFsmCurrent()
         {
-            Log.Info($"动画组件收到通知，当前状态{this.StackFsmComponent.GetCurrentFsmState().StateTypes}");
+            //Log.Info($"动画组件收到通知，当前状态{this.StackFsmComponent.GetCurrentFsmState().StateTypes}");
             PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateTypes);
         }
 
