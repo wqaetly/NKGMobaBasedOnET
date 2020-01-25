@@ -36,6 +36,7 @@
 - 移除传统行为树，完成NPBehave行为树可视化编辑器制作(dev分支) 2019.8.26
 - 基本实现基于NPBehave的可视化技能系统编辑器 2019.9.28
 - 基于NPBehave的技能系统完成，附诺克Q技能完整流程Demo 2019.10.3 
+- 基本完成客户端与服务端技能系统的通信与同步 2020.1.25
 
 #### 开发计划
 
@@ -52,7 +53,7 @@
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173207_17e8e767_2253805.png "资源更新界面")
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173246_f83a8591_2253805.png "登录注册界面")
 ![输入图片说明](https://gitee.com/uploads/images/2019/0502/173252_7dbcd604_2253805.png "游戏大厅界面")
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0120/190844_b2cc7ae5_2253805.png "战斗界面第三版")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0125/154943_83ead3dc_2253805.png "战斗界面第四版")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0720/185840_f28e17e6_2253805.jpeg "Box2D编辑器界面")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/174018_f52aab48_2253805.png "特效制作截图")
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/1003/160635_1de5993c_2253805.png "诺克Q技能行为树示例")
