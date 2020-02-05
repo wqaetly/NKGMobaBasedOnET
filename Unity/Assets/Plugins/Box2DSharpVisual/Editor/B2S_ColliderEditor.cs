@@ -19,7 +19,6 @@ using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 
 namespace ETEditor
 {

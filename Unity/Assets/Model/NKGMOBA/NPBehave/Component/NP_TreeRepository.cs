@@ -78,58 +78,31 @@ namespace ETModel
                 }
             }
 #else
-            if (!Define.ResModeIsEditor)
+
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+            resourcesComponent.LoadBundle("skillconfigs.unity3d");
+            GameObject skillConfigs = (GameObject) resourcesComponent.GetAsset("skillconfigs.unity3d", "SkillConfigs");
+            foreach (var VARIABLE in skillConfigs.GetComponent<ReferenceCollector>().data)
             {
-                ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-                resourcesComponent.LoadBundle("skillconfigs.unity3d");
-                GameObject skillConfigs = (GameObject) resourcesComponent.GetAsset("skillconfigs.unity3d", "SkillConfigs");
-                foreach (var VARIABLE in skillConfigs.GetComponent<ReferenceCollector>().data)
+                TextAsset textAsset = skillConfigs.Get<TextAsset>(VARIABLE.key);
+
+                if (textAsset.bytes.Length == 0) Log.Info("没有读取到文件");
+
+                try
                 {
-                    TextAsset textAsset = skillConfigs.Get<TextAsset>(VARIABLE.key);
-                    
-                    if (textAsset.bytes.Length == 0) Log.Info("没有读取到文件");
+                    NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(textAsset.bytes);
 
-                    try
-                    {
-                        NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(textAsset.bytes);
+                    Log.Info($"反序列化行为树:{VARIABLE.key}完成");
 
-                        Log.Info($"反序列化行为树:{VARIABLE.key}完成");
-
-                        NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
+                    NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
                 }
             }
-            else
-            {
-                DirectoryInfo directory = new DirectoryInfo(NPDataPath);
-                FileInfo[] fileInfos = directory.GetFiles();
 
-                foreach (var VARIABLE in fileInfos)
-                {
-                    byte[] mfile = File.ReadAllBytes(VARIABLE.FullName);
-
-                    if (mfile.Length == 0) Log.Info("没有读取到文件");
-
-                    try
-                    {
-                        NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
-
-                        Log.Info($"反序列化行为树:{VARIABLE.FullName}完成");
-
-                        NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
-                }
-            }
 #endif
         }
 
