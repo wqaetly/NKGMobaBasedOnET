@@ -110,11 +110,11 @@ namespace ETModel
         /// <returns></returns>
         public bool FindBuffByWorkType(BuffWorkTypes buffWorkTypes)
         {
-            if (m_BuffsForFind_BuffWorkType.ContainsKey(buffWorkTypes))
+            if (this.m_BuffsForFind_BuffWorkType.TryGetValue(buffWorkTypes, out var list))
             {
-                return true;
+                if (list.Count > 0) return true;
+                return false;
             }
-
             return false;
         }
 
@@ -140,11 +140,11 @@ namespace ETModel
         /// <returns></returns>
         public bool FindBuffByFlagID(int flagID)
         {
-            if (this.m_BuffsForFind_BuffFlagID.ContainsKey(flagID))
+            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out var list))
             {
-                return true;
+                if (list.Count > 0) return true;
+                return false;
             }
-
             return false;
         }
     }
