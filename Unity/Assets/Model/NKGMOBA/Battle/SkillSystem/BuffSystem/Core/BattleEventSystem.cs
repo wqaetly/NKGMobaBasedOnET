@@ -25,7 +25,7 @@ namespace ETModel
         /// 临时结点字典
         /// </summary>
         private readonly Dictionary<string, LinkedListNode<IEvent>> m_TempNodes = new Dictionary<string, LinkedListNode<IEvent>>();
-        
+
         public void RegisterEvent(string eventId, IEvent e)
         {
             if (!this.allEvents.ContainsKey(eventId))
@@ -42,7 +42,8 @@ namespace ETModel
             {
                 foreach (KeyValuePair<string, LinkedListNode<IEvent>> cachedNode in m_CachedNodes)
                 {
-                    if (cachedNode.Value != null && cachedNode.Value.Value == e)
+                    //预防极端情况，比如两个不同的事件id订阅了同一个事件处理者
+                    if (cachedNode.Value != null && cachedNode.Key == eventId && cachedNode.Value.Value == e)
                     {
                         //注意这里添加的Handler是下一个
                         m_TempNodes.Add(cachedNode.Key, cachedNode.Value.Next);
@@ -92,6 +93,8 @@ namespace ETModel
 
                 temp = this.m_CachedNodes[type];
             }
+
+            this.m_CachedNodes.Remove(type);
         }
 
         public void Run<A>(string type, A a)
@@ -118,6 +121,8 @@ namespace ETModel
 
                 temp = this.m_CachedNodes[type];
             }
+
+            this.m_CachedNodes.Remove(type);
         }
 
         public void Run<A, B>(string type, A a, B b)
@@ -144,6 +149,8 @@ namespace ETModel
 
                 temp = this.m_CachedNodes[type];
             }
+
+            this.m_CachedNodes.Remove(type);
         }
 
         public void Run<A, B, C>(string type, A a, B b, C c)
@@ -170,6 +177,8 @@ namespace ETModel
 
                 temp = this.m_CachedNodes[type];
             }
+
+            this.m_CachedNodes.Remove(type);
         }
     }
 }
