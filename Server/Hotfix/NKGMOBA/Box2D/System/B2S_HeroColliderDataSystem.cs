@@ -13,9 +13,9 @@ using Vector2 = System.Numerics.Vector2;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_HeroColliderDataAwakeSystem: AwakeSystem<B2S_HeroColliderData, B2S_CollisionInstance, long, int>
+    public class B2S_ColliderEntityAwakeSystem: AwakeSystem<B2S_ColliderEntity, B2S_CollisionInstance, long, int>
     {
-        public override void Awake(B2S_HeroColliderData self, B2S_CollisionInstance b2SCollisionInstance, long id, int flagID)
+        public override void Awake(B2S_ColliderEntity self, B2S_CollisionInstance b2SCollisionInstance, long id, int flagID)
         {
             self.ID = id;
             self.flagID = flagID;
@@ -29,7 +29,7 @@ namespace ETHotfix
         /// 加载依赖数据，并且进行碰撞体的生成
         /// </summary>
         /// <param name="self"></param>
-        private void LoadDependenceRes(B2S_HeroColliderData self)
+        private void LoadDependenceRes(B2S_ColliderEntity self)
         {
             B2S_ColliderDataRepositoryComponent b2SColliderDataRepositoryComponent =
                     Game.Scene.GetComponent<B2S_ColliderDataRepositoryComponent>();
@@ -74,9 +74,9 @@ namespace ETHotfix
     }
 
     [ObjectSystem]
-    public class B2S_HeroColliderDataFixedUpdateSystem: FixedUpdateSystem<B2S_HeroColliderData>
+    public class B2S_HeroColliderDataFixedUpdateSystem: FixedUpdateSystem<B2S_ColliderEntity>
     {
-        public override void FixedUpdate(B2S_HeroColliderData self)
+        public override void FixedUpdate(B2S_ColliderEntity self)
         {
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
             if (self.m_Body.IsActive && self.m_B2S_CollisionInstance.FollowUnit && !Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().IsLocked)
@@ -94,7 +94,7 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="pos"></param>
-        public static void SyncBody(this B2S_HeroColliderData self)
+        public static void SyncBody(this B2S_ColliderEntity self)
         {
             self.SetColliderBodyPos(new Vector2(self.m_BelongUnit.Position.x, self.m_BelongUnit.Position.z));
             self.SetColliderBodyAngle(-Quaternion.QuaternionToEuler(self.m_BelongUnit.Rotation).y * Settings.Pi / 180);
@@ -105,7 +105,7 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="pos"></param>
-        public static void SetColliderBodyPos(this B2S_HeroColliderData self, Vector2 pos)
+        public static void SetColliderBodyPos(this B2S_ColliderEntity self, Vector2 pos)
         {
             self.m_Unit.Position = new Vector3(pos.X, pos.Y, 0);
             self.m_Body.SetTransform(pos, self.m_Body.GetAngle());
@@ -117,7 +117,7 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="angle"></param>
-        public static void SetColliderBodyAngle(this B2S_HeroColliderData self, float angle)
+        public static void SetColliderBodyAngle(this B2S_ColliderEntity self, float angle)
         {
             self.m_Unit.Rotation = Quaternion.Euler(0, angle, 0);
             self.m_Body.SetTransform(self.m_Body.GetPosition(), angle);
@@ -128,7 +128,7 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="state"></param>
-        public static void SetColliderBodyState(this B2S_HeroColliderData self, bool state)
+        public static void SetColliderBodyState(this B2S_ColliderEntity self, bool state)
         {
             self.m_Body.IsActive = state;
         }

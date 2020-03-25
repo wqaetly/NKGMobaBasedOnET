@@ -38,19 +38,19 @@ namespace ETHotfix
         /// <summary>
         /// 当发生碰撞时
         /// </summary>
-        /// <param name="b2SHeroColliderData">碰撞到的对象数据集合</param>
-        public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
+        /// <param name="b2SColliderEntity">碰撞到的对象数据集合</param>
+        public void OnCollideStart(B2S_ColliderEntity b2SColliderEntity)
         {
             //Log.Info("诺克Q技能打到了东西");
-            switch (b2SHeroColliderData.m_B2S_CollisionInstance.nodeDataId)
+            switch (b2SColliderEntity.m_B2S_CollisionInstance.nodeDataId)
             {
                 case 10006: //诺克：自身
                     //TODO:这一步需要在结点编辑器配好支持自动升成
-                    if (b2SHeroColliderData.m_BelongUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
+                    if (b2SColliderEntity.m_BelongUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
                     Stopwatch sw = new Stopwatch();
 
                     sw.Start();
-                    Unit unit = ((B2S_HeroColliderData) this.Entity).m_BelongUnit;
+                    Unit unit = ((B2S_ColliderEntity) this.Entity).m_BelongUnit;
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
                             unit.GetComponent<NP_RuntimeTreeManager>()
                                     .GetTreeByPrefabID(NP_Server_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
@@ -62,7 +62,7 @@ namespace ETHotfix
                     //Log.Info("开始执行正式判断逻辑");
 
                     //敌方英雄
-                    if (Vector3.Distance(((B2S_HeroColliderData) this.Entity).m_BelongUnit.Position, b2SHeroColliderData.m_BelongUnit.Position) >=
+                    if (Vector3.Distance(((B2S_ColliderEntity) this.Entity).m_BelongUnit.Position, b2SColliderEntity.m_BelongUnit.Position) >=
                         2.3f)
                     {
                         try
@@ -70,10 +70,10 @@ namespace ETHotfix
                             Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
-                                ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
+                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit).AutoAddBuff();
                             MessageHelper.Broadcast(new M2C_FrieBattleEvent_PlayEffect()
                             {
-                                BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SHeroColliderData.m_BelongUnit.Id
+                                BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SColliderEntity.m_BelongUnit.Id
                             });
                         }
                         catch (Exception e)
@@ -89,7 +89,7 @@ namespace ETHotfix
                         {
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
-                                ((B2S_HeroColliderData) this.Entity).m_BelongUnit, b2SHeroColliderData.m_BelongUnit).AutoAddBuff();
+                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit).AutoAddBuff();
                         }
                         catch (Exception e)
                         {
@@ -102,12 +102,14 @@ namespace ETHotfix
             }
         }
 
-        public void OnCollideSustain(B2S_HeroColliderData b2SHeroColliderData)
+        public void OnCollideSustain(B2S_ColliderEntity b2SColliderEntity)
         {
+            //Log.Info("持续碰撞了");
         }
 
-        public void OnCollideFinish(B2S_HeroColliderData b2SHeroColliderData)
+        public void OnCollideFinish(B2S_ColliderEntity b2SColliderEntity)
         {
+            //Log.Info("不再碰撞了");
         }
     }
 }

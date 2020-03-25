@@ -25,14 +25,14 @@ namespace ETHotfix
         /// 广播指令和碰撞体数据（Debug用，正式上线后请使用上面那个）
         /// </summary>
         /// <param name="unit"></param>
-        /// <param name="heroColliderData"></param>
+        /// <param name="colliderEntity"></param>
         /// <param name="skillCmd"></param>
-        public static void BroadcastB2S_ColliderData(Unit unit, B2S_HeroColliderData heroColliderData)
+        public static void BroadcastB2S_ColliderData(Unit unit, B2S_ColliderEntity colliderEntity)
         {
-            heroColliderData.SyncBody();
+            colliderEntity.SyncBody();
 
             //广播碰撞体信息
-            foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
+            foreach (var VARIABLE in colliderEntity.m_Body.FixtureList)
             {
                 switch (VARIABLE.ShapeType)
                 {
@@ -40,7 +40,7 @@ namespace ETHotfix
                         M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 2000, };
                         foreach (var VARIABLE1 in ((PolygonShape) VARIABLE.Shape).Vertices)
                         {
-                            Vector2 worldPoint = heroColliderData.m_Body.GetWorldPoint(VARIABLE1);
+                            Vector2 worldPoint = colliderEntity.m_Body.GetWorldPoint(VARIABLE1);
                             test.Vects.Add(new M2C_B2S_VectorBase() { X = worldPoint.X, Y = worldPoint.Y });
                         }
 
@@ -55,8 +55,8 @@ namespace ETHotfix
                             Radius = myShape.Radius,
                             Pos = new M2C_B2S_VectorBase()
                             {
-                                X = heroColliderData.m_Body.GetWorldPoint(myShape.Position).X,
-                                Y = heroColliderData.m_Body.GetWorldPoint(myShape.Position).Y
+                                X = colliderEntity.m_Body.GetWorldPoint(myShape.Position).X,
+                                Y = colliderEntity.m_Body.GetWorldPoint(myShape.Position).Y
                             },
                         };
                         MessageHelper.Broadcast(test1);

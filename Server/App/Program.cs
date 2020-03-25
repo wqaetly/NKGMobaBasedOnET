@@ -146,9 +146,13 @@ namespace App
                         //RealmGlobalComponent,增加在线组件，记录在线玩家
                         Game.Scene.AddComponent<OnlineComponent>();
 
-                        //添加物理世界
+                        //添加碰撞实例管理者 TODO 待优化，一场游戏一个碰撞实例管理者
+                        Game.Scene.AddComponent<B2S_ColliderEntityManagerComponent>();
+                        
+                        //添加物理世界 TODO 待优化，一场游戏一个物理世界
                         Game.Scene.AddComponent<B2S_WorldComponent>();
 
+                        //添加碰撞检测监听者 TODO 待优化，一场游戏一个碰撞检测监听者
                         Game.Scene.AddComponent<B2S_CollisionListenerComponent>();
 
                         //增加碰撞体数据仓库
@@ -162,7 +166,7 @@ namespace App
 
                         Game.Scene.AddComponent<NP_SyncComponent>();
                         Game.Scene.AddComponent<NP_TreeDataRepository>();
-                        //战斗系统中的事件系统组件，一场战斗挂载一个，这里是Demo，就直接挂在Game.Scene里
+                        //战斗系统中的事件系统组件 TODO 待优化，一场游戏挂载一个战斗系统的事件系统
                         Game.Scene.AddComponent<BattleEventSystem>();
                         //增加Buff池组件
                         Game.Scene.AddComponent<BuffPoolComponent>();

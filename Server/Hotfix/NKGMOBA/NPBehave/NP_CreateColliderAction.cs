@@ -23,17 +23,17 @@ namespace EThotfix
         public override void Run(long a, long b, long c)
         {
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(a);
-            B2S_HeroColliderData heroColliderData = unit.GetComponent<B2S_HeroColliderDataManagerComponent>()
+            B2S_ColliderEntity colliderEntity = unit.GetComponent<B2S_HeroColliderDataManagerComponent>()
                     .CreateHeroColliderData(unit, b, c);
 
             //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参
-            heroColliderData.SyncBody();
+            colliderEntity.SyncBody();
             Log.Info("生成技能碰撞体");
 
             //下面这一部分是Debug用的，稳定后请去掉
             {
                 //广播碰撞体信息
-                foreach (var VARIABLE in heroColliderData.m_Body.FixtureList)
+                foreach (var VARIABLE in colliderEntity.m_Body.FixtureList)
                 {
                     switch (VARIABLE.ShapeType)
                     {
@@ -41,7 +41,7 @@ namespace EThotfix
                             M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 2000, };
                             foreach (var VARIABLE1 in ((PolygonShape) VARIABLE.Shape).Vertices)
                             {
-                                Vector2 worldPoint = heroColliderData.m_Body.GetWorldPoint(VARIABLE1);
+                                Vector2 worldPoint = colliderEntity.m_Body.GetWorldPoint(VARIABLE1);
                                 test.Vects.Add(new M2C_B2S_VectorBase() { X = worldPoint.X, Y = worldPoint.Y });
                             }
 
@@ -56,8 +56,8 @@ namespace EThotfix
                                 Radius = myShape.Radius,
                                 Pos = new M2C_B2S_VectorBase()
                                 {
-                                    X = heroColliderData.m_Body.GetWorldPoint(myShape.Position).X,
-                                    Y = heroColliderData.m_Body.GetWorldPoint(myShape.Position).Y
+                                    X = colliderEntity.m_Body.GetWorldPoint(myShape.Position).X,
+                                    Y = colliderEntity.m_Body.GetWorldPoint(myShape.Position).Y
                                 },
                             };
                             MessageHelper.Broadcast(test1);

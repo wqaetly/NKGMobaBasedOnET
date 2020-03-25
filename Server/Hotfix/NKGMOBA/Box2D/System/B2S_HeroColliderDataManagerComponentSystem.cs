@@ -19,13 +19,13 @@ namespace ETHotfix
         /// <param name="self"></param>
         /// <param name="unit">所归属Unit</param>
         /// <param name="supportorId">所处碰撞关系数据载体id</param>
-        /// <param name="nodeDataId">结点ID</param>
-        public static B2S_HeroColliderData CreateHeroColliderData(this B2S_HeroColliderDataManagerComponent self, Unit unit, long supportorId,
+        /// <param name="nodeDataId">碰撞体数据ID</param>
+        public static B2S_ColliderEntity CreateHeroColliderData(this B2S_HeroColliderDataManagerComponent self, Unit unit, long supportorId,
         long nodeDataId)
         {
             //用于记录id
             int flag = 0;
-            foreach (KeyValuePair<(long, int, B2S_HeroColliderData), bool> VARIABLE in self.AllColliderData)
+            foreach (KeyValuePair<(long, int, B2S_ColliderEntity), bool> VARIABLE in self.AllColliderData)
             {
                 if (VARIABLE.Key.Item1 == nodeDataId)
                 {
@@ -50,15 +50,19 @@ namespace ETHotfix
             }
 
             //创建数据，并以英雄作为父Entity
-            B2S_HeroColliderData b2SHeroColliderData =
-                    ComponentFactory.CreateWithParent<B2S_HeroColliderData, B2S_CollisionInstance, long, int>(unit,
+            B2S_ColliderEntity b2SColliderEntity =
+                    ComponentFactory.CreateWithParent<B2S_ColliderEntity, B2S_CollisionInstance, long, int>(unit,
                         b2SCollisionsRelationSupport.B2S_CollisionsRelationDic[nodeDataId],
                         nodeDataId, flag);
 
+            //把这个碰撞实体增加到管理者维护 TODO 待优化，目的同B2S_ColliderEntityManagerComponent
+            Game.Scene.GetComponent<B2S_ColliderEntityManagerComponent>().AddColliderEntity(b2SColliderEntity);
+
+            //添加到碰撞数据管理者
             self.AllColliderData
-                    .Add((b2SHeroColliderData.ID, flag, b2SHeroColliderData), false);
+                    .Add((b2SColliderEntity.ID, flag, b2SColliderEntity), false);
             Log.Info($"新建的碰撞数据.ID为{nodeDataId}");
-            return b2SHeroColliderData;
+            return b2SColliderEntity;
         }
 
         /// <summary>
@@ -67,7 +71,7 @@ namespace ETHotfix
         /// <param name="self"></param>
         /// <param name="supportorId">所处碰撞关系数据载体id</param>
         /// <param name="nodeDataId">结点ID</param>
-        public static void RecycleColliderData(this B2S_HeroColliderData self)
+        public static void RecycleColliderData(this B2S_ColliderEntity self)
         {
             self.m_Unit.GetComponent<B2S_HeroColliderDataManagerComponent>().AllColliderData[(self.ID, self.flagID, self)] = false;
         }

@@ -11,9 +11,9 @@ using ETMode;
 namespace ETModel
 {
     /// <summary>
-    /// 一个碰撞体数据结点,一个碰撞体结点即为一个实体
+    /// 一个碰撞体,为一个实体
     /// </summary>
-    public class B2S_HeroColliderData: Entity
+    public class B2S_ColliderEntity: Entity
     {
         /// <summary>
         /// 此数据结点ID

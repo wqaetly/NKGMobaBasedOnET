@@ -29,16 +29,16 @@ namespace ETHotfix
     }
     public class B2S_Darius_Self_CRS : Component
     {
-        public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)
+        public void OnCollideStart(B2S_ColliderEntity b2SColliderEntity)
         {
         }
 
-        public void OnCollideSustain(B2S_HeroColliderData b2SHeroColliderData)
+        public void OnCollideSustain(B2S_ColliderEntity b2SColliderEntity)
         {
 
         }
 
-        public void OnCollideFinish(B2S_HeroColliderData b2SHeroColliderData)
+        public void OnCollideFinish(B2S_ColliderEntity b2SColliderEntity)
         {
 
         }
