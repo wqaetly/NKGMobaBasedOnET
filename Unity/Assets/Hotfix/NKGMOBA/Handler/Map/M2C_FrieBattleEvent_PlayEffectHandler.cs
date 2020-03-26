@@ -10,7 +10,7 @@ using ETModel;
 namespace ETHotfix
 {
     [MessageHandler]
-    public class M2C_FrieBattleEvent_PlayEffectHandler: AMHandler<M2C_FrieBattleEvent_PlayEffect>
+    public class M2C_FireBattleEvent_PlayEffectHandler: AMHandler<M2C_FrieBattleEvent_PlayEffect>
     {
         protected override ETTask Run(ETModel.Session session, M2C_FrieBattleEvent_PlayEffect message)
         {

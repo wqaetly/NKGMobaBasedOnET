@@ -40,6 +40,15 @@ namespace ETModel
 
         public override void OnFinished()
         {
+            PlayEffectBuffData playEffectBuffData = MSkillBuffDataBase as PlayEffectBuffData;
+            string targetEffectName = playEffectBuffData.EffectName;
+            if (playEffectBuffData.CanChangeNameByCurrentOverlay)
+            {
+                targetEffectName = $"{playEffectBuffData.EffectName}{this.CurrentOverlay}";
+            }
+
+            theUnitBelongto.GetComponent<EffectComponent>()
+                    .Remove(targetEffectName);
         }
 
         public override void OnRefresh()
@@ -52,17 +61,26 @@ namespace ETModel
         {
             PlayEffectBuffData playEffectBuffData = MSkillBuffDataBase as PlayEffectBuffData;
             string targetEffectName = playEffectBuffData.EffectName;
+
             if (playEffectBuffData.CanChangeNameByCurrentOverlay)
             {
                 targetEffectName = $"{playEffectBuffData.EffectName}{this.CurrentOverlay}";
+                //Log.Info($"播放{targetEffectName}");
+            }
+            
+            //如果想要播放的特效正在播放，就返回
+            if (theUnitBelongto.GetComponent<EffectComponent>().CheckState(targetEffectName)) return;
+
+            GameObjectPool<Unit> gameObjectPool = Game.Scene.GetComponent<GameObjectPool<Unit>>();
+
+            if (!gameObjectPool.HasRegisteredPrefab(targetEffectName))
+            {
+                gameObjectPool.Add(targetEffectName,
+                    this.theUnitFrom.GameObject.GetComponent<ReferenceCollector>()
+                            .Get<GameObject>(targetEffectName));
             }
 
-            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add(targetEffectName,
-                this.theUnitFrom.GameObject.GetComponent<ReferenceCollector>()
-                        .Get<GameObject>(targetEffectName));
-
-            Unit effectUnit = Game.Scene.GetComponent<GameObjectPool<Unit>>()
-                    .Fetch(targetEffectName);
+            Unit effectUnit = gameObjectPool.Fetch(targetEffectName);
 
             if (playEffectBuffData.FollowUnit)
             {

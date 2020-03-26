@@ -78,6 +78,20 @@ namespace ETModel
         }
 
         /// <summary>
+        /// 检查是否已经注册过Prefab
+        /// </summary>
+        /// <returns></returns>
+        public bool HasRegisteredPrefab(string gameObjectType)
+        {
+            if (this.prefabDict.ContainsKey(gameObjectType))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        
+        /// <summary>
         /// 从对象池里获取对象
         /// </summary>
         /// <param name="type">GameObject Tag</param>
