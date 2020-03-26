@@ -41,13 +41,6 @@ namespace ETModel
             {
                 if (TimeHelper.Now() > this.MaxLimitTime)
                 {
-                    //强制类型转换为Buff事件
-                    ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
-                    foreach (var VARIABLE in temp.EventIds)
-                    {
-                        Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
-                    }
-
                     this.MBuffState = BuffState.Finished;
                 }
             }
@@ -55,6 +48,12 @@ namespace ETModel
 
         public override void OnFinished()
         {
+            //强制类型转换为Buff事件
+            ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
+            foreach (var VARIABLE in temp.EventIds)
+            {
+                Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
+            }
         }
     }
 }

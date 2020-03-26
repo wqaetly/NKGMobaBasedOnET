@@ -23,6 +23,12 @@ namespace ETModel
         public override void OnExecute()
         {
             PlayEffect();
+            if (this.MSkillBuffDataBase.theEventID != null)
+            {
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}", this);
+                //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
+            }
+
             this.MBuffState = BuffState.Running;
         }
 
@@ -54,6 +60,11 @@ namespace ETModel
         public override void OnRefresh()
         {
             PlayEffect();
+            if (this.MSkillBuffDataBase.theEventID != null)
+            {
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}", this);
+                //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
+            }
             this.MBuffState = BuffState.Running;
         }
 
@@ -67,7 +78,7 @@ namespace ETModel
                 targetEffectName = $"{playEffectBuffData.EffectName}{this.CurrentOverlay}";
                 //Log.Info($"播放{targetEffectName}");
             }
-            
+
             //如果想要播放的特效正在播放，就返回
             if (theUnitBelongto.GetComponent<EffectComponent>().CheckState(targetEffectName)) return;
 
