@@ -20,24 +20,45 @@ namespace ETModel
     public class BuffManagerComponent: Component
     {
         /// <summary>
+        /// 所有将要被添加的Buff都要先进这个链表，然后经过筛选的Buff才能加入m_Buffs链表
+        /// </summary>
+        private LinkedList<BuffSystemBase> m_TempBuffsToBeAdded = new LinkedList<BuffSystemBase>();
+
+        /// <summary>
         /// Buff链表
         /// </summary>
-        public LinkedList<BuffSystemBase> m_Buffs = new LinkedList<BuffSystemBase>();
+        private LinkedList<BuffSystemBase> m_Buffs = new LinkedList<BuffSystemBase>();
 
         /// <summary>
         /// 用于查找的——基于Buff生效方式
         /// </summary>
-        public Dictionary<BuffWorkTypes, List<BuffSystemBase>> m_BuffsForFind_BuffWorkType = new Dictionary<BuffWorkTypes, List<BuffSystemBase>>();
+        public Dictionary<BuffWorkTypes, BuffSystemBase> m_BuffsForFind_BuffWorkType = new Dictionary<BuffWorkTypes, BuffSystemBase>();
 
         /// <summary>
         /// 用于查找的——基于Buff的ID
         /// </summary>
-        public Dictionary<int, List<BuffSystemBase>> m_BuffsForFind_BuffFlagID = new Dictionary<int, List<BuffSystemBase>>();
+        public Dictionary<int, BuffSystemBase> m_BuffsForFind_BuffFlagID = new Dictionary<int, BuffSystemBase>();
+
+        private LinkedListNode<BuffSystemBase> current, next;
 
         public void Update()
         {
-            //指向首链表地址
-            LinkedListNode<BuffSystemBase> current = m_Buffs.First;
+            current = this.m_TempBuffsToBeAdded.First;
+            //筛选临时链表中的Buff，筛选通过的可以加入真正的Buff链表
+            while (current != null)
+            {
+                next = current.Next;
+                //如果Buff状态为Finish，意为不需要加入链表
+                if (current.Value.MBuffState != BuffState.Finished)
+                {
+                    this.AddBuff2Real(this.current.Value);
+                }
+
+                m_TempBuffsToBeAdded.Remove(this.current);
+                this.current = this.next;
+            }
+
+            current = m_Buffs.First;
             //轮询链表
             while (current != null)
             {
@@ -54,10 +75,10 @@ namespace ETModel
                 else
                 {
                     buff.OnFinished();
-                    LinkedListNode<BuffSystemBase> next = current.Next;
+                    next = current.Next;
                     m_Buffs.Remove(current);
-                    m_BuffsForFind_BuffWorkType[current.Value.MSkillBuffDataBase.BuffWorkType].Remove(current.Value);
-                    m_BuffsForFind_BuffFlagID[current.Value.MSkillBuffDataBase.FlagId].Remove(current.Value);
+                    m_BuffsForFind_BuffWorkType.Remove(current.Value.MSkillBuffDataBase.BuffWorkType);
+                    m_BuffsForFind_BuffFlagID.Remove(current.Value.MSkillBuffDataBase.FlagId);
                     Log.Info(
                         $"移除一个Buff，ID为{current.Value.MSkillBuffDataBase.FlagId},BuffManager是否还有?:{this.FindBuffByFlagID(current.Value.MSkillBuffDataBase.FlagId)}");
                     current = next;
@@ -65,25 +86,39 @@ namespace ETModel
             }
         }
 
+        /// <summary>
+        /// 添加Buff到临时链表，默认添加Buff方式
+        /// </summary>
+        /// <param name="buff"></param>
         public void AddBuff(BuffSystemBase buff)
         {
+            this.m_TempBuffsToBeAdded.AddLast(buff);
+        }
+
+        /// <summary>
+        /// 添加Buff到真是链表，禁止外部调用
+        /// </summary>
+        /// <param name="buff"></param>
+        private void AddBuff2Real(BuffSystemBase buff)
+        {
             m_Buffs.AddLast(buff);
+
             if (this.m_BuffsForFind_BuffWorkType.ContainsKey(buff.MSkillBuffDataBase.BuffWorkType))
             {
-                m_BuffsForFind_BuffWorkType[buff.MSkillBuffDataBase.BuffWorkType].Add(buff);
+                m_BuffsForFind_BuffWorkType[buff.MSkillBuffDataBase.BuffWorkType] = buff;
             }
             else
             {
-                m_BuffsForFind_BuffWorkType.Add(buff.MSkillBuffDataBase.BuffWorkType, new List<BuffSystemBase>() { buff });
+                m_BuffsForFind_BuffWorkType.Add(buff.MSkillBuffDataBase.BuffWorkType, buff);
             }
 
             if (this.m_BuffsForFind_BuffFlagID.ContainsKey(buff.MSkillBuffDataBase.FlagId))
             {
-                m_BuffsForFind_BuffFlagID[buff.MSkillBuffDataBase.FlagId].Add(buff);
+                m_BuffsForFind_BuffFlagID[buff.MSkillBuffDataBase.FlagId] = buff;
             }
             else
             {
-                m_BuffsForFind_BuffFlagID.Add(buff.MSkillBuffDataBase.FlagId, new List<BuffSystemBase>() { buff });
+                m_BuffsForFind_BuffFlagID.Add(buff.MSkillBuffDataBase.FlagId, buff);
             }
         }
 
@@ -91,9 +126,9 @@ namespace ETModel
         /// 通过作用方式获得Buff
         /// </summary>
         /// <param name="buffWorkTypes"></param>
-        public List<BuffSystemBase> GetBuffByWorkType(BuffWorkTypes buffWorkTypes)
+        public BuffSystemBase GetBuffByWorkType(BuffWorkTypes buffWorkTypes)
         {
-            if (m_BuffsForFind_BuffWorkType.TryGetValue(buffWorkTypes, out List<BuffSystemBase> _temp))
+            if (m_BuffsForFind_BuffWorkType.TryGetValue(buffWorkTypes, out BuffSystemBase _temp))
             {
                 return _temp;
             }
@@ -109,11 +144,11 @@ namespace ETModel
         /// <returns></returns>
         public bool FindBuffByWorkType(BuffWorkTypes buffWorkTypes)
         {
-            if (this.m_BuffsForFind_BuffWorkType.TryGetValue(buffWorkTypes, out var list))
+            if (this.m_BuffsForFind_BuffWorkType.TryGetValue(buffWorkTypes, out BuffSystemBase _temp))
             {
-                if (list.Count > 0) return true;
-                return false;
+                return true;
             }
+
             return false;
         }
 
@@ -121,9 +156,9 @@ namespace ETModel
         /// 通过标识ID获得Buff
         /// </summary>
         /// <param name="flagID">BuffData的标识ID</param>
-        public List<BuffSystemBase> GetBuffByFlagID(int flagID)
+        public BuffSystemBase GetBuffByFlagID(int flagID)
         {
-            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out List<BuffSystemBase> _temp))
+            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out BuffSystemBase _temp))
             {
                 return _temp;
             }
@@ -139,11 +174,11 @@ namespace ETModel
         /// <returns></returns>
         public bool FindBuffByFlagID(int flagID)
         {
-            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out var list))
+            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out BuffSystemBase _temp))
             {
-                if (list.Count > 0) return true;
-                return false;
+                return true;
             }
+
             return false;
         }
     }

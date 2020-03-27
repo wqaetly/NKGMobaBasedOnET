@@ -11,13 +11,14 @@ namespace ETModel
 {
     public static class BuffTimerAndOverlayHelper
     {
-        public static void CalculateTimerAndOverlay<A, B>(A BuffSystemBase, B BuffDataBase) where A : BuffSystemBase where B : BuffDataBase
+        public static void CalculateTimerAndOverlay<A, B>(A buffSystemBase, B buffDataBase) where A : BuffSystemBase where B : BuffDataBase
         {
-            List<BuffSystemBase> tempList = BuffSystemBase.theUnitBelongto.GetComponent<BuffManagerComponent>().GetBuffByFlagID(BuffDataBase.FlagId);
+            BuffManagerComponent buffManagerComponent = buffSystemBase.theUnitBelongto.GetComponent<BuffManagerComponent>();
+            List<BuffSystemBase> tempList = buffManagerComponent.GetBuffByFlagID(buffDataBase.FlagId);
 
             if (tempList != null && tempList.Count > 0)
             {
-                A tempSystem = (A)tempList[0];
+                A tempSystem = (A) tempList[0];
                 BuffDataBase tempData = tempSystem.MSkillBuffDataBase;
                 //可以叠加，并且当前层数未达到最高层
                 if (tempData.CanOverlay &&
@@ -29,30 +30,30 @@ namespace ETModel
                 //如果是有限时长的
                 if (tempData.SustainTime + 1 > 0)
                 {
-                    Log.Info($"原本结束时间：{tempSystem.MaxLimitTime},续命之后的结束时间{TimeHelper.Now() + BuffDataBase.SustainTime}");
-                    tempSystem.MaxLimitTime = TimeHelper.Now() + BuffDataBase.SustainTime;
+                    Log.Info($"原本结束时间：{tempSystem.MaxLimitTime},续命之后的结束时间{TimeHelper.Now() + buffDataBase.SustainTime}");
+                    tempSystem.MaxLimitTime = TimeHelper.Now() + buffDataBase.SustainTime;
                 }
 
-                Log.Info($"本次续命BuffID为{BuffDataBase.FlagId}，当前层数{tempSystem.CurrentOverlay}，最高层为{tempData.MaxOverlay}");
+                Log.Info($"本次续命BuffID为{buffDataBase.FlagId}，当前层数{tempSystem.CurrentOverlay}，最高层为{tempData.MaxOverlay}");
 
                 //刷新当前已有的Buff
                 tempSystem.OnRefresh();
-                
+
                 //把这个临时的回收，因为已经用不到他了
-                BuffSystemBase.MBuffState = BuffState.Finished;
+                buffSystemBase.MBuffState = BuffState.Finished;
             }
             else
             {
                 //如果是有限时长的
-                if (BuffDataBase.SustainTime + 1 > 0)
+                if (buffDataBase.SustainTime + 1 > 0)
                 {
-                    BuffSystemBase.MaxLimitTime = TimeHelper.Now() + BuffDataBase.SustainTime;
+                    buffSystemBase.MaxLimitTime = TimeHelper.Now() + buffDataBase.SustainTime;
                 }
 
-                BuffSystemBase.CurrentOverlay++;
+                buffSystemBase.CurrentOverlay++;
 
-                Log.Info($"本次新加BuffID为{BuffDataBase.FlagId}");
-                BuffSystemBase.MBuffState = BuffState.Waiting;
+                Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
+                buffSystemBase.MBuffState = BuffState.Waiting;
             }
         }
     }
