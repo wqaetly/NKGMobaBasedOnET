@@ -20,9 +20,9 @@ namespace ETModel
     public class BuffManagerComponent: Component
     {
         /// <summary>
-        /// 所有将要被添加的Buff都要先进这个链表，然后经过筛选的Buff才能加入m_Buffs链表
+        /// 所有将要被添加的Buff都要先进这个字典，然后经过筛选的Buff才能加入m_Buffs链表
         /// </summary>
-        private LinkedList<BuffSystemBase> m_TempBuffsToBeAdded = new LinkedList<BuffSystemBase>();
+        public Dictionary<long, BuffSystemBase> m_TempBuffsToBeAdded = new Dictionary<long, BuffSystemBase>();
 
         /// <summary>
         /// Buff链表
@@ -43,20 +43,13 @@ namespace ETModel
 
         public void Update()
         {
-            current = this.m_TempBuffsToBeAdded.First;
-            //筛选临时链表中的Buff，筛选通过的可以加入真正的Buff链表
-            while (current != null)
+            //把Buff从临时列表加入到正式列表
+            foreach (var VARIABLE in m_TempBuffsToBeAdded)
             {
-                next = current.Next;
-                //如果Buff状态为Finish，意为不需要加入链表
-                if (current.Value.MBuffState != BuffState.Finished)
-                {
-                    this.AddBuff2Real(this.current.Value);
-                }
-
-                m_TempBuffsToBeAdded.Remove(this.current);
-                this.current = this.next;
+                this.AddBuff2Real(VARIABLE.Value);
             }
+
+            m_TempBuffsToBeAdded.Clear();
 
             current = m_Buffs.First;
             //轮询链表
@@ -92,7 +85,7 @@ namespace ETModel
         /// <param name="buff"></param>
         public void AddBuff(BuffSystemBase buff)
         {
-            this.m_TempBuffsToBeAdded.AddLast(buff);
+            this.m_TempBuffsToBeAdded.Add(buff.MSkillBuffDataBase.FlagId, buff);
         }
 
         /// <summary>
@@ -164,6 +157,21 @@ namespace ETModel
             }
 
             //Log.Info($"查找{flagID}Buff失败");
+            return null;
+        }
+
+        /// <summary>
+        /// 移除并返回临时列表中的一个Buff
+        /// </summary>
+        /// <param name="flagID">BuffData的标识ID</param>
+        /// <returns></returns>
+        public BuffSystemBase FindBuffByFlagID_FromTempDic(int flagID)
+        {
+            if (this.m_TempBuffsToBeAdded.TryGetValue(flagID, out var temp))
+            {
+                return temp;
+            }
+
             return null;
         }
 

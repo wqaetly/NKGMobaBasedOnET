@@ -17,7 +17,7 @@ namespace ETModel
         public Dictionary<Type, Queue<BuffSystemBase>> BuffSystemBases = new Dictionary<Type, Queue<BuffSystemBase>>();
 
         /// <summary>
-        /// 取得Buff
+        /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
         /// <param name="buffDataBase">Buff数据</param>
         /// <param name="theUnitFrom">Buff来源者</param>
@@ -43,7 +43,7 @@ namespace ETModel
         }
 
         /// <summary>
-        /// 取得Buff
+        /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
         /// <param name="buffDataBase">Buff数据</param>
         /// <param name="theUnitFrom">Buff来源者</param>

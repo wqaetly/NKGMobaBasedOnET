@@ -25,7 +25,7 @@ namespace ETHotfix
                                     .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Client).m_BelongNP_DataSupportor.mSkillDataDic;
                     ETModel.Game.Scene.GetComponent<BuffPoolComponent>()
                             .AcquireBuff(((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases, unit,
-                                unitComponent.Get(message.BelongToUnitId)).AutoAddBuff();
+                                unitComponent.Get(message.BelongToUnitId));
                     break;
             }
 

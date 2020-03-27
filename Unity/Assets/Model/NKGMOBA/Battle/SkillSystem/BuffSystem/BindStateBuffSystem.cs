@@ -27,7 +27,7 @@ namespace ETModel
             
             foreach (var VARIABLE in tempData.OriBuff)
             {
-                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto).AutoAddBuff();
+                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto);
             }
             
             if (this.MSkillBuffDataBase.theEventID != null)
@@ -60,7 +60,7 @@ namespace ETModel
             
             foreach (var VARIABLE in tempData.OriBuff)
             {
-                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto).AutoAddBuff();
+                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, theUnitFrom, theUnitBelongto);
             }
             
             if (this.MSkillBuffDataBase.theEventID != null)

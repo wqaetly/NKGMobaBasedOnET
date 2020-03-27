@@ -70,7 +70,7 @@ namespace ETHotfix
                             Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
-                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit).AutoAddBuff();
+                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit);
                             MessageHelper.Broadcast(new M2C_FrieBattleEvent_PlayEffect()
                             {
                                 BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SColliderEntity.m_BelongUnit.Id
@@ -89,7 +89,7 @@ namespace ETHotfix
                         {
                             buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
                                 ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
-                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit).AutoAddBuff();
+                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit);
                         }
                         catch (Exception e)
                         {
