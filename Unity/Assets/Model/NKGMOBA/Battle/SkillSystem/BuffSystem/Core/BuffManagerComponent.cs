@@ -46,8 +46,7 @@ namespace ETModel
                 {
                     buff.OnExecute();
                 }
-
-                if (buff.MBuffState == BuffState.Running)
+                else if (buff.MBuffState == BuffState.Running)
                 {
                     buff.OnUpdate();
                     current = current.Next;
