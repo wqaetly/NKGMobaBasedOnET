@@ -49,8 +49,8 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                         throw;
                     }
 
-                    Log.Info(
-                        $"减少了蓝：{((float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
+                    // Log.Info(
+                    //     $"减少了蓝：{((float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
                     break;
                 case BuffWorkTypes.ChangeHP:
                     heroDataComponent.CurrentLifeValue -= (float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)

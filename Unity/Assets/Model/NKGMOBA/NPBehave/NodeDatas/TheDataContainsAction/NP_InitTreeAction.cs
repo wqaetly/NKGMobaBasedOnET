@@ -37,7 +37,7 @@ namespace ETModel.TheDataContainsAction
 
         public void DoInit()
         {
-            Log.Info("准备执行初始化的行为操作");
+            //Log.Info("准备执行初始化的行为操作");
             foreach (var VARIABLE in NpClassForStoreActions)
             {
                 VARIABLE.GetActionToBeDone().Invoke();

@@ -80,15 +80,6 @@ namespace ETModel
         }
 
         /// <summary>
-        /// 添加Buff到临时链表，默认添加Buff方式
-        /// </summary>
-        /// <param name="buff"></param>
-        public void AddBuff(BuffSystemBase buff)
-        {
-            this.m_TempBuffsToBeAdded.Add(buff.MSkillBuffDataBase.FlagId, buff);
-        }
-
-        /// <summary>
         /// 添加Buff到真是链表，禁止外部调用
         /// </summary>
         /// <param name="buff"></param>
@@ -113,6 +104,7 @@ namespace ETModel
             {
                 m_BuffsForFind_BuffFlagID.Add(buff.MSkillBuffDataBase.FlagId, buff);
             }
+            Log.Info($"把ID为{buff.MSkillBuffDataBase.FlagId}的buff加入检索表");
         }
 
         /// <summary>
@@ -156,7 +148,7 @@ namespace ETModel
                 return _temp;
             }
 
-            //Log.Info($"查找{flagID}Buff失败");
+            Log.Info($"查找{flagID}Buff失败");
             return null;
         }
 

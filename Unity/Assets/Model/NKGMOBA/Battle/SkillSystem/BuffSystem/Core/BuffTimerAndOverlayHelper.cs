@@ -13,7 +13,15 @@ namespace ETModel
     {
         public static void CalculateTimerAndOverlay<A, B>(A buffSystemBase, B buffDataBase) where A : BuffSystemBase where B : BuffDataBase
         {
-            BuffManagerComponent buffManagerComponent = buffSystemBase.theUnitBelongto.GetComponent<BuffManagerComponent>();
+            BuffManagerComponent buffManagerComponent;
+            if (buffDataBase.BuffTargetTypes == BuffTargetTypes.Self)
+            {
+                buffManagerComponent = buffSystemBase.theUnitFrom.GetComponent<BuffManagerComponent>();
+            }
+            else
+            {
+                buffManagerComponent = buffSystemBase.theUnitBelongto.GetComponent<BuffManagerComponent>();
+            }
 
             //先尝试从真正的Buff链表取得Buff
             BuffSystemBase temp = buffManagerComponent.GetBuffByFlagID(buffDataBase.FlagId);
@@ -61,11 +69,9 @@ namespace ETModel
                     {
                         temp.MaxLimitTime = TimeHelper.Now() + buffDataBase.SustainTime;
                     }
-                    
+
                     //刷新当前已有的Buff，因为有些Buff自带事件，需要抛出一下
                     temp.OnRefresh();
-
-                    Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
 
                     //TODO 把这个临时的回收，因为已经用不到他了
                 }

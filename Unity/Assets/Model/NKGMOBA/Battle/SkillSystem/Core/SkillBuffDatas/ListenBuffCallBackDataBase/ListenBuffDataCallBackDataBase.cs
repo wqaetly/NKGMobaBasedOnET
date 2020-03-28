@@ -26,7 +26,7 @@ namespace ETModel
             //Log.Info($"直接添加_通过监听机制增加Buff");
             foreach (var VARIABLE in m_BuffsWillBeAdded)
             {
-                Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
+                //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
                 Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitFrom, a.theUnitBelongto);
             }
         }
@@ -47,7 +47,7 @@ namespace ETModel
             {
                 foreach (var VARIABLE in m_BuffsWillBeAdded)
                 {
-                    Log.Info($"层数判定_通过监听机制添加id为{VARIABLE.FlagId}的Buff");
+                    //Log.Info($"层数判定_通过监听机制添加id为{VARIABLE.FlagId}的Buff");
                     Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitFrom, a.theUnitBelongto);
                 }
             }

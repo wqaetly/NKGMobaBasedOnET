@@ -73,6 +73,9 @@ namespace ETModel
                 case BuffSystemType.TreatmenBuffSystem:
                     tempType = typeof (TreatmentBuffSystem);
                     break;
+                case BuffSystemType.RefreshTargetBuffTimeBuffSystem:
+                    tempType = typeof (RefreshTargetBuffTimeBuffSystem);
+                    break;
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
 

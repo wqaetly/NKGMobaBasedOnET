@@ -39,6 +39,11 @@ namespace ETModel
         /// <summary>
         /// 播放特效
         /// </summary>
-        PlayEffectBuffSystem
+        PlayEffectBuffSystem,
+        
+        /// <summary>
+        /// 刷新指定Buff的持续时间
+        /// </summary>
+        RefreshTargetBuffTimeBuffSystem,
     }
 }
