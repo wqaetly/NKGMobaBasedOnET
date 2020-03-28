@@ -61,9 +61,11 @@ namespace ETModel
                     {
                         temp.MaxLimitTime = TimeHelper.Now() + buffDataBase.SustainTime;
                     }
+                    
+                    //刷新当前已有的Buff，因为有些Buff自带事件，需要抛出一下
+                    temp.OnRefresh();
 
                     Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
-                    buffSystemBase.MBuffState = BuffState.Waiting;
 
                     //TODO 把这个临时的回收，因为已经用不到他了
                 }
