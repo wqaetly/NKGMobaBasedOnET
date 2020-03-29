@@ -9,11 +9,20 @@
 [这是Wiki地址](https://gitee.com/NKG_admin/MKGMobaBasedOnET/wikis)
 
 **引导演示视频：[视频链接](https://www.bilibili.com/video/av74833675)** 
+
 **基于行为树的技能系统架构讲解视频：[视频链接](https://www.bilibili.com/video/av85318986)** 
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
 最后，大家一起加油！   :neckbeard:  :neckbeard:  :neckbeard: 
+
+## 运行环境
+
+ **编辑器：Unity 2019.3.0** 
+
+ **客户端：.Net Framework 4.7.2** 
+
+ **服务端：.Net Core 2.1** 
 
 ## 作者有话说
 
