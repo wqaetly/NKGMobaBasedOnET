@@ -9,7 +9,7 @@ namespace ETModel.NKGMOBA.Battle.State
     public enum StateTypes
     {
         Run,
-        Idel,
+        Idle,
 
         //为多段技能动画预留的标识位
         Q_Spell,

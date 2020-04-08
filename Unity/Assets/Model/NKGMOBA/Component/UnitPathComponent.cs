@@ -37,7 +37,7 @@ namespace ETModel
                 await this.Entity.GetComponent<MoveComponent>().MoveToAsync(v, speed, cancellationToken);
             }
 
-            this.Entity.GetComponent<StackFsmComponent>().AddState(StateTypes.Idel, "Idel", 1);
+            this.Entity.GetComponent<StackFsmComponent>().AddState(StateTypes.Idle, "Idle", 1);
         }
 
         public async ETVoid StartMove(M2C_PathfindingResult message)

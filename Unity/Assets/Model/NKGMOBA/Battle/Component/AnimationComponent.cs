@@ -29,7 +29,7 @@ namespace ETModel
             }
 
             self.StackFsmComponent.FsmLinkedListHasChanaged += self.PlayAnimByStackFsmCurrent;
-            self.StackFsmComponent.AddState(StateTypes.Idel, "Idel", 1);
+            self.StackFsmComponent.AddState(StateTypes.Idle, "Idle", 1);
         }
     }
 
@@ -62,7 +62,7 @@ namespace ETModel
         /// </summary>
         public Dictionary<StateTypes, string> RuntimeAnimationClips = new Dictionary<StateTypes, string>
         {
-            { StateTypes.Run, "Anim_Run1" }, { StateTypes.Idel, "Anim_Idel1" },
+            { StateTypes.Run, "Anim_Run1" }, { StateTypes.Idle, "Anim_Idle1" },
         };
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace ETModel
         /// </summary>
         public void PlayRun()
         {
-            if (this.AnimancerComponent.IsPlayingClip(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idel]]))
+            if (this.AnimancerComponent.IsPlayingClip(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idle]]))
                 AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Run]]);
         }
 
@@ -111,7 +111,7 @@ namespace ETModel
         /// </summary>
         public void PlayIdel()
         {
-            AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idel]]);
+            AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idle]]);
         }
 
         /// <summary>

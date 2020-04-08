@@ -14,13 +14,13 @@ namespace ETModel.NKGMOBA.Battle.State
     /// </summary>
     public class StackFsmComponent: Component
     {
-        private LinkedList<FsmStateBase> FsmStateBases = new LinkedList<FsmStateBase>();
+        private LinkedList<FsmStateBase> m_FsmStateBases = new LinkedList<FsmStateBase>();
 
         public Action FsmLinkedListHasChanaged ;
 
         public FsmStateBase GetCurrentFsmState()
         {
-            return this.FsmStateBases.First.Value;
+            return this.m_FsmStateBases.First.Value;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace ETModel.NKGMOBA.Battle.State
             FsmStateBase temp = GetState(stateName);
             if (temp == null)
                 return;
-            FsmStateBases.Remove(temp);
+            this.m_FsmStateBases.Remove(temp);
             FsmLinkedListHasChanaged?.Invoke();
         }
 
@@ -43,7 +43,7 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <returns></returns>
         private bool HasState(string stateName)
         {
-            foreach (var VARIABLE in this.FsmStateBases)
+            foreach (var VARIABLE in this.m_FsmStateBases)
             {
                 if (VARIABLE.StateName == stateName)
                 {
@@ -61,7 +61,7 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <returns></returns>
         private FsmStateBase GetState(string stateName)
         {
-            foreach (var VARIABLE in this.FsmStateBases)
+            foreach (var VARIABLE in this.m_FsmStateBases)
             {
                 if (VARIABLE.StateName == stateName)
                 {
@@ -101,7 +101,7 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <param name="fsmStateBase"></param>
         private void InsertState(FsmStateBase fsmStateBase)
         {
-            LinkedListNode<FsmStateBase> current = this.FsmStateBases.First;
+            LinkedListNode<FsmStateBase> current = this.m_FsmStateBases.First;
             while (current != null)
             {
                 if (fsmStateBase.Priority >= current.Value.Priority)
@@ -114,11 +114,11 @@ namespace ETModel.NKGMOBA.Battle.State
 
             if (current != null)
             {
-                FsmStateBases.AddBefore(current, fsmStateBase);
+                this.m_FsmStateBases.AddBefore(current, fsmStateBase);
             }
             else
             {
-                FsmStateBases.AddLast(fsmStateBase);
+                this.m_FsmStateBases.AddLast(fsmStateBase);
             }
 
             FsmLinkedListHasChanaged?.Invoke();
