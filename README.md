@@ -1,4 +1,4 @@
-# NKGNMobaBasedOnET
+# NKGMobaBasedOnET
 
 ## 介绍
 基于ET框架致敬LOL的Moba游戏，包含完整的客户端与服务端交互，热更新，基于双端行为树的技能系统，更多精彩等你发现！
