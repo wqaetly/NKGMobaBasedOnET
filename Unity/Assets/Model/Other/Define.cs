@@ -2,12 +2,6 @@
 {
 	public static class Define
 	{
-#if UNITY_EDITOR
-		public static bool IsEditorMode = true;
-#else
-		public static bool IsEditorMode = false;
-#endif
-
 #if DEVELOPMENT_BUILD
 		public static bool IsDevelopmentBuild = true;
 #else

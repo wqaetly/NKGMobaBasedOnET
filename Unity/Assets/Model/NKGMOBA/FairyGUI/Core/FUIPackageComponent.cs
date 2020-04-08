@@ -19,7 +19,7 @@ namespace ETModel
             if (this.packages.ContainsKey(type)) return;
             
             UIPackage uiPackage;
-            if (Define.IsEditorMode)
+            if (Define.ResModeIsEditor)
             {
                 uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
             }
@@ -43,7 +43,7 @@ namespace ETModel
         {
             if (this.packages.ContainsKey(type)) return;
             UIPackage uiPackage;
-            if (Define.IsEditorMode)
+            if (Define.ResModeIsEditor)
             {
                 uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
             }
@@ -79,7 +79,7 @@ namespace ETModel
                 packages.Remove(package.name);
             }
 
-            if (!Define.IsEditorMode)
+            if (!Define.ResModeIsEditor)
             {
                 string uiBundleDesName = $"{type}_fui".StringToAB();
                 string uiBundleResName = type.StringToAB();
