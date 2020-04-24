@@ -71,7 +71,6 @@ namespace ETModel
                 Game.Scene.AddComponent<BattleEventSystem>();
                 //Buff池组件
                 Game.Scene.AddComponent<BuffPoolComponent>();
-
             }
             catch (Exception e)
             {
