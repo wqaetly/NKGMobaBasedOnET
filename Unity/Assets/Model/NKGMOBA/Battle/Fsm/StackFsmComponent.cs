@@ -16,7 +16,7 @@ namespace ETModel.NKGMOBA.Battle.State
     {
         private LinkedList<FsmStateBase> m_FsmStateBases = new LinkedList<FsmStateBase>();
 
-        public Action FsmLinkedListHasChanaged ;
+        public Action FsmLinkedListHasChanaged;
 
         public FsmStateBase GetCurrentFsmState()
         {
@@ -86,7 +86,7 @@ namespace ETModel.NKGMOBA.Battle.State
 
             if (fsmStateBase != null)
             {
-                InsertState(fsmStateBase);
+                this.InsertState(fsmStateBase, true);
                 return;
             }
 
@@ -96,10 +96,11 @@ namespace ETModel.NKGMOBA.Battle.State
         }
 
         /// <summary>
-        /// 插入State到链表中，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行
+        /// 向状态机添加一个状态，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行
         /// </summary>
-        /// <param name="fsmStateBase"></param>
-        private void InsertState(FsmStateBase fsmStateBase)
+        /// <param name="fsmStateBase">目标状态</param>
+        /// <param name="containsItSelf">是否包含自身</param>
+        private void InsertState(FsmStateBase fsmStateBase, bool containsItSelf = false)
         {
             LinkedListNode<FsmStateBase> current = this.m_FsmStateBases.First;
             while (current != null)
@@ -112,14 +113,31 @@ namespace ETModel.NKGMOBA.Battle.State
                 current = current.Next;
             }
 
-            if (current != null)
+            //如果包含自身，就看current是不是自己，如果是，就不对链表做改变，如果不是就提到current前面
+            if (containsItSelf)
             {
-                this.m_FsmStateBases.AddBefore(current, fsmStateBase);
+                if (fsmStateBase.StateName != current.Value.StateName)
+                {
+                    m_FsmStateBases.Remove(fsmStateBase);
+                    m_FsmStateBases.AddBefore(current, fsmStateBase);
+                }
             }
-            else
+            else //如果不包含自身，且current不为空，即代表非尾节点有自己的位置，就插入，否则代表所有结点优先级都大于自身，就直接插入链表最后面
             {
-                this.m_FsmStateBases.AddLast(fsmStateBase);
+                if (current != null)
+                {
+                    this.m_FsmStateBases.AddBefore(current, fsmStateBase);
+                }
+                else
+                {
+                    this.m_FsmStateBases.AddLast(fsmStateBase);
+                }
             }
+
+            // foreach (var VARIABLE in this.m_FsmStateBases)
+            // {
+            //     Log.Info($"{VARIABLE.StateName}");
+            // }
 
             FsmLinkedListHasChanaged?.Invoke();
         }
