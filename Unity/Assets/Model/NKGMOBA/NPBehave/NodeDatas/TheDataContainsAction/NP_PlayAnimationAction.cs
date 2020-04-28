@@ -58,16 +58,8 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
             //进行数据的装入
             foreach (var VARIABLE in NodeDataForPlayAnims)
             {
-                if (this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips.ContainsKey(VARIABLE.StateTypes))
-                {
-                    this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips[VARIABLE.StateTypes] =
-                            VARIABLE.AnimationClipName;
-                }
-                else
-                {
-                    this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips
-                            .Add(VARIABLE.StateTypes, VARIABLE.AnimationClipName);
-                }
+                this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips[VARIABLE.StateTypes] =
+                        VARIABLE.AnimationClipName;
             }
 
             this.m_Func1 = this.PlayAnimation;
