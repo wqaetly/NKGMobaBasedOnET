@@ -28,14 +28,23 @@ namespace ETHotfix
                 return;
             }
 
+            CreateUser(message.Account, message.Password).Coroutine();
+
+            reply();
+        }
+
+        public static async ETVoid CreateUser(string account, string password)
+        {
+            //数据库操作对象
+            DBProxyComponent dbProxyComponent = Game.Scene.GetComponent<DBProxyComponent>();
             //新建账号
             AccountInfo newAccount = ComponentFactory.CreateWithId<AccountInfo>(IdGenerater.GenerateId());
-            newAccount.Account = message.Account;
-            newAccount.Password = message.Password;
+            newAccount.Account = account;
+            newAccount.Password = password;
 
             //新建用户信息
             UserInfo newUser = ComponentFactory.CreateWithId<UserInfo>(newAccount.Id);
-            newUser.NickName = $"召唤师{message.Account}";
+            newUser.NickName = $"召唤师{account}";
             newUser.Level = 1;
             newUser.points = 10000;
             newUser.Diamods = 10000;
@@ -48,8 +57,6 @@ namespace ETHotfix
             // 保存用户数据到数据库
             await dbProxyComponent.Save(newAccount);
             await dbProxyComponent.Save(newUser);
-
-            reply();
         }
     }
 }

@@ -18,9 +18,19 @@ namespace ETHotfix
                     await dbProxy.Query<AccountInfo>(_account => _account.Account == request.Account && _account.Password == request.Password);
             if (result.Count == 0)
             {
-                response.Error = ErrorCode.ERR_LoginError;
-                reply();
-                return;
+                //给测试场景开个后门
+                if (request.Account == "Test123" && request.Password == "Test123")
+                {
+                    C2R_RegisterHandler.CreateUser(request.Account, request.Password).Coroutine();
+                    result = await dbProxy.Query<AccountInfo>(
+                        _account => _account.Account == request.Account && _account.Password == request.Password);
+                }
+                else
+                {
+                    response.Error = ErrorCode.ERR_LoginError;
+                    reply();
+                    return;
+                }
             }
 
             // 随机分配一个Gate(内部)

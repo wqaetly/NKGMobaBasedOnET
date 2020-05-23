@@ -40,7 +40,7 @@ namespace ETHotfix
         public void ToTestSceneBtnBtnOnClick(FUILogin.FUILogin self)
         {
             self.loginBtn.self.visible = false;
-            LoginHelper.OnLoginAsync("123", "123").Coroutine();
+            LoginHelper.OnLoginAsync("Test123", "Test123").Coroutine();
         }
     }
     
