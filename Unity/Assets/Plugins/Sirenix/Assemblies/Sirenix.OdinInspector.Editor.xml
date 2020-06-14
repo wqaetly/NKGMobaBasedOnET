@@ -116,7 +116,7 @@
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.OdinInspectorVersion">
-            <summary>S
+            <summary>
             Installed Odin Inspector Version Info.
             </summary>
         </member>
@@ -9081,6 +9081,11 @@
             <para>The full path of this property as used by prefab modifications and the deep reflection system, containing all the necessary information to find this property through reflection only.</para>
             </summary>
         </member>
+        <member name="M:Sirenix.OdinInspector.Editor.InspectorProperty.RecordForUndo(System.String,System.Boolean)">
+            <summary>
+            Records the property's serialization root for undo to prepare for undoable changes, with a custom string that includes the property path and Unity object name. If a message is specified, it is included in the custom undo string.
+            </summary>
+        </member>
         <member name="M:Sirenix.OdinInspector.Editor.InspectorProperty.GetAttribute``1">
             <summary>
             Gets the first attribute of a given type on this property.
@@ -9767,12 +9772,18 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.SerializationBackend">
             <summary>
-            Enumeration that describes the different possible serialization backends that a property can have.
+            Class that describes the different possible serialization backends that a property can have,
+            and specifies the capabilities of each backend.
+            </summary>
+        </member>
+        <member name="F:Sirenix.OdinInspector.Editor.SerializationBackend.UnityPolymorphic">
+            <summary>
+            The property is serialized by Unity's polymorphic serialization backend via the [SerializeReference] attribute. Polymorphism, null values and cyclical references are supported.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.SerializationBackend.Unity">
             <summary>
-            The property is serialized by Unity. Polymorphism, null values and types such as <see cref="T:System.Collections.Generic.Dictionary`2"/> are not supported.
+            The property is serialized by Unity's classic serialization backend. Polymorphism, null values and types such as <see cref="T:System.Collections.Generic.Dictionary`2"/> are not supported.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.SerializationBackend.Odin">
@@ -9784,6 +9795,27 @@
             <summary>
             <para>The property is not serialized by anything - possibly because it is a method, possibly because it is a field or property shown in the inspector without being serialized.</para>
             <para>In the case of fields or properties, polymorphism, null values and types such as <see cref="T:System.Collections.Generic.Dictionary`2"/> are supported, but will not be saved.</para>
+            </summary>
+        </member>
+        <member name="T:Sirenix.OdinInspector.Editor.NoneSerializationBackend">
+            <summary>
+            <para>The property is not serialized by anything - possibly because it is a method, possibly because it is a field or property shown in the inspector without being serialized.</para>
+            <para>In the case of fields or properties, polymorphism, null values and types such as <see cref="T:System.Collections.Generic.Dictionary`2"/> are supported, but will not be saved.</para>
+            </summary>
+        </member>
+        <member name="T:Sirenix.OdinInspector.Editor.UnityClassicSerializationBackend">
+            <summary>
+            The property is serialized by Unity's classic serialization backend. Polymorphism, null values and types such as <see cref="T:System.Collections.Generic.Dictionary`2"/> are not supported.
+            </summary>
+        </member>
+        <member name="T:Sirenix.OdinInspector.Editor.UnityPolymorphicSerializationBackend">
+            <summary>
+            The property is serialized by Unity's polymorphic serialization backend via the [SerializeReference] attribute. Polymorphism, null values and cyclical references are supported.
+            </summary>
+        </member>
+        <member name="T:Sirenix.OdinInspector.Editor.OdinSerializationBackend">
+            <summary>
+            The property is serialized by Odin. Polymorphism, null values and types such as <see cref="T:System.Collections.Generic.Dictionary`2"/> are supported.
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.IValueEntryActualValueSetter">

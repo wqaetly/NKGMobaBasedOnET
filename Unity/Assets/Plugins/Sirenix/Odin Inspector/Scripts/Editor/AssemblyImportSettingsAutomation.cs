@@ -8,6 +8,7 @@
 
 namespace Sirenix.OdinInspector.Editor
 {
+    using System.IO;
     using System.Collections.Generic;
     using Sirenix.Serialization.Utilities.Editor;
     using Sirenix.Utilities;
@@ -35,27 +36,48 @@ namespace Sirenix.OdinInspector.Editor
                 return;
             }
 
-            var assemblyDir = SirenixAssetPaths.SirenixAssembliesPath;
-            var aotDir = assemblyDir + "NoEmitAndNoEditor/";
-            var jitDir = assemblyDir + "NoEditor/";
+            var assemblyDir = new DirectoryInfo(SirenixAssetPaths.SirenixAssembliesPath).FullName;
+            var projectAssetsPath = Directory.GetCurrentDirectory().TrimEnd('\\', '/');
+
+            var isPackage = PathUtilities.HasSubDirectory(new DirectoryInfo(projectAssetsPath), new DirectoryInfo(assemblyDir)) == false;
+
+            var aotDirPath = assemblyDir + "NoEmitAndNoEditor/";
+            var jitDirPath = assemblyDir + "NoEditor/";
+
+            var aotDir = new DirectoryInfo(aotDirPath);
+            var jitDir = new DirectoryInfo(jitDirPath);
+
             var aotAssemblies = new List<string>();
             var jitAssemblies = new List<string>();
-            var paths = AssetDatabase.GetAllAssetPaths();
-            for (int i = 0; i < paths.Length; i++)
+
+            foreach (var file in aotDir.GetFiles("*.dll"))
             {
-                var p = paths[i];
-                if (p.StartsWith(assemblyDir))
+                string path = file.FullName;
+                if (isPackage)
                 {
-                    if (!p.EndsWith(".dll", System.StringComparison.InvariantCultureIgnoreCase)) continue;
-                    if (p.StartsWith(aotDir))
-                    {
-                        aotAssemblies.Add(p);
-                    }
-                    else if (p.StartsWith(jitDir))
-                    {
-                        jitAssemblies.Add(p);
-                    }
+                    path = SirenixAssetPaths.SirenixAssembliesPath.TrimEnd('\\', '/') + "/" + path.Substring(assemblyDir.Length);
                 }
+                else
+                {
+                    path = path.Substring(projectAssetsPath.Length + 1);
+                }
+
+                aotAssemblies.Add(path);
+            }
+
+            foreach (var file in jitDir.GetFiles("*.dll"))
+            {
+                string path = file.FullName;
+                if (isPackage)
+                {
+                    path = SirenixAssetPaths.SirenixAssembliesPath.TrimEnd('\\', '/') + "/" + path.Substring(assemblyDir.Length);
+                }
+                else
+                {
+                    path = path.Substring(projectAssetsPath.Length + 1);
+                }
+
+                jitAssemblies.Add(path);
             }
 
             AssetDatabase.StartAssetEditing();

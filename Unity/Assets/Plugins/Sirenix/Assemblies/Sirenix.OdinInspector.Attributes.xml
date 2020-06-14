@@ -3120,6 +3120,11 @@
             How the InlineEditor attribute drawer should draw the object field.
             </summary>
         </member>
+        <member name="F:Sirenix.OdinInspector.InlineEditorAttribute.DisableGUIForVCSLockedAssets">
+            <summary>
+            Whether to set GUI.enabled = false when drawing an editor for an asset that is locked by source control. Defaults to true.
+            </summary>
+        </member>
         <member name="M:Sirenix.OdinInspector.InlineEditorAttribute.#ctor(Sirenix.OdinInspector.InlineEditorModes,Sirenix.OdinInspector.InlineEditorObjectFieldModes)">
             <summary>
             Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.InlineEditorAttribute" /> class.
