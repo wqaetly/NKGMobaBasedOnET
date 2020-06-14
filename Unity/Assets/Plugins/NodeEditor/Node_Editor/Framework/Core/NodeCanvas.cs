@@ -49,10 +49,15 @@ namespace NodeEditorFramework
 
         public List<Node> nodes = new List<Node>();
 
+        /// <summary>
+        /// 待删除的结点，用于Undo
+        /// </summary>
+        public List<Node> nodesForDelete = new List<Node>();
+
         [LabelText("右击Group的顶部标题即可弹出删除选项")]
         public List<NodeGroup> groups = new List<NodeGroup>();
 
-        #region Constructors
+        #region 生成一个Canvas
 
         /// <summary>
         /// Creates a canvas of the specified generic type
@@ -85,6 +90,8 @@ namespace NodeEditorFramework
             NodeEditor.BeginEditingCanvas(canvas);
             canvas.OnCreate();
             NodeEditor.EndEditingCanvas();
+            //要重绘一遍
+            NodeEditor.RepaintClients();
             return canvas;
         }
 
@@ -100,6 +107,7 @@ namespace NodeEditorFramework
 
         protected virtual void ValidateSelf()
         {
+
         }
 
         public virtual void OnBeforeSavingCanvas()

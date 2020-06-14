@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace NodeEditorFramework
 {
-    public abstract partial class Node : SerializedScriptableObject
+    public abstract partial class Node: SerializedScriptableObject
     {
         // Host Canvas
         public NodeCanvas canvas;
@@ -16,7 +16,7 @@ namespace NodeEditorFramework
         public Vector2 position;
         private Vector2 autoSize;
 
-        public Vector2 size => AutoLayout ? autoSize : DefaultSize;
+        public Vector2 size => AutoLayout? autoSize : DefaultSize;
 
         public Rect rect => new Rect(position, size);
 
@@ -25,20 +25,33 @@ namespace NodeEditorFramework
         // Dynamic connection ports
         public List<ConnectionPort> dynamicConnectionPorts = new List<ConnectionPort>();
 
-
         // Static connection ports stored in the actual declaration variables
-        [NonSerialized] public List<ConnectionPort> staticConnectionPorts = new List<ConnectionPort>();
+        [NonSerialized]
+        public List<ConnectionPort> staticConnectionPorts = new List<ConnectionPort>();
 
         // Representative lists of static port declarations aswell as dynamic ports
-        [NonSerialized] public List<ConnectionPort> connectionPorts = new List<ConnectionPort>();
-        [NonSerialized] public List<ConnectionPort> inputPorts = new List<ConnectionPort>();
-        [NonSerialized] public List<ConnectionPort> outputPorts = new List<ConnectionPort>();
-        [NonSerialized] public List<ConnectionKnob> connectionKnobs = new List<ConnectionKnob>();
-        [NonSerialized] public List<ConnectionKnob> inputKnobs = new List<ConnectionKnob>();
-        [NonSerialized] public List<ConnectionKnob> outputKnobs = new List<ConnectionKnob>();
+        [NonSerialized]
+        public List<ConnectionPort> connectionPorts = new List<ConnectionPort>();
+
+        [NonSerialized]
+        public List<ConnectionPort> inputPorts = new List<ConnectionPort>();
+
+        [NonSerialized]
+        public List<ConnectionPort> outputPorts = new List<ConnectionPort>();
+
+        [NonSerialized]
+        public List<ConnectionKnob> connectionKnobs = new List<ConnectionKnob>();
+
+        [NonSerialized]
+        public List<ConnectionKnob> inputKnobs = new List<ConnectionKnob>();
+
+        [NonSerialized]
+        public List<ConnectionKnob> outputKnobs = new List<ConnectionKnob>();
 
         // Calculation graph
-        [HideInInspector] [NonSerialized] internal bool calculated = true;
+        [HideInInspector]
+        [NonSerialized]
+        internal bool calculated = true;
 
         // Internal
         internal Vector2 contentOffset = Vector2.zero;
@@ -48,7 +61,6 @@ namespace NodeEditorFramework
 
         // Style
         public Color backgroundColor = Color.white;
-
 
         #region Properties and Settings
 
@@ -99,7 +111,6 @@ namespace NodeEditorFramework
         public virtual bool ForceGUIDawOffScreen => false;
 
         #endregion
-
 
         #region Node Implementation
 
@@ -199,14 +210,13 @@ namespace NodeEditorFramework
 
         #endregion
 
-
         #region General
 
         /// <summary>
         /// Creates a node of the specified ID at pos on the current canvas, optionally auto-connecting the specified output to a matching input
         /// </summary>
         public static Node Create(string nodeID, Vector2 pos, ConnectionPort connectingPort = null, bool silent = false,
-            bool init = true)
+        bool init = true)
         {
             return Create(nodeID, pos, NodeEditor.curNodeCanvas, connectingPort, silent, init);
         }
@@ -216,17 +226,17 @@ namespace NodeEditorFramework
         /// silent disables any events, init specifies whether OnCreate should be called
         /// </summary>
         public static Node Create(string nodeID, Vector2 pos, NodeCanvas hostCanvas,
-            ConnectionPort connectingPort = null, bool silent = false, bool init = true)
+        ConnectionPort connectingPort = null, bool silent = false, bool init = true)
         {
             if (string.IsNullOrEmpty(nodeID) || hostCanvas == null)
                 throw new ArgumentException();
             if (!NodeCanvasManager.CheckCanvasCompability(nodeID, hostCanvas.GetType()))
                 throw new UnityException("Cannot create Node with ID '" + nodeID +
-                                         "' as it is not compatible with the current canavs type (" +
-                                         hostCanvas.GetType().ToString() + ")!");
+                    "' as it is not compatible with the current canavs type (" +
+                    hostCanvas.GetType().ToString() + ")!");
             if (!hostCanvas.CanAddNode(nodeID))
                 throw new UnityException("Cannot create Node with ID '" + nodeID + "' on the current canvas of type (" +
-                                         hostCanvas.GetType().ToString() + ")!");
+                    hostCanvas.GetType().ToString() + ")!");
 
             // Create node from data
             NodeTypeData data = NodeTypes.getNodeData(nodeID);
@@ -258,7 +268,7 @@ namespace NodeEditorFramework
             if (!silent)
             {
                 // Callbacks
-                hostCanvas.OnNodeChange(connectingPort != null ? connectingPort.body : node);
+                hostCanvas.OnNodeChange(connectingPort != null? connectingPort.body : node);
                 NodeEditorCallbacks.IssueOnAddNode(node);
                 hostCanvas.Validate();
                 NodeEditor.RepaintClients();
@@ -276,14 +286,16 @@ namespace NodeEditorFramework
                 throw new UnityException("The Node " + name + " does not exist on the Canvas " + canvas.name + "!");
             if (!silent)
                 NodeEditorCallbacks.IssueOnDeleteNode(this);
+            // DestroyImmediate(this, true);
+            this.canvas.nodesForDelete.Add(this);
             canvas.nodes.Remove(this);
+
             for (int i = 0; i < connectionPorts.Count; i++)
             {
                 connectionPorts[i].ClearConnections(silent);
-                DestroyImmediate(connectionPorts[i], true);
+                //DestroyImmediate(connectionPorts[i], true);
             }
 
-            DestroyImmediate(this, true);
             if (!silent)
                 canvas.Validate();
         }
@@ -321,8 +333,8 @@ namespace NodeEditorFramework
             GUI.color = Color.white;
             GUI.Label(headerRect, Title,
                 NodeEditor.curEditorState.selectedNode == this
-                    ? NodeEditorGUI.nodeLabelBoldCentered
-                    : NodeEditorGUI.nodeLabelCentered);
+                        ? NodeEditorGUI.nodeLabelBoldCentered
+                        : NodeEditorGUI.nodeLabelCentered);
 
             // Begin the body frame around the NodeGUI
             Rect bodyRect = new Rect(nodeRect.x, nodeRect.y + contentOffset.y, nodeRect.width,
@@ -363,7 +375,7 @@ namespace NodeEditorFramework
             // Account for potential knobs that might occupy horizontal space
             float knobSize = 0;
             List<ConnectionKnob> verticalKnobs =
-                connectionKnobs.Where(x => x.side == NodeSide.Bottom || x.side == NodeSide.Top).ToList();
+                    connectionKnobs.Where(x => x.side == NodeSide.Bottom || x.side == NodeSide.Top).ToList();
             if (verticalKnobs.Count > 0)
                 knobSize = verticalKnobs.Max((ConnectionKnob knob) => knob.GetGUIKnob().xMax - nodeRect.xMin);
             size.x = Math.Max(knobSize, MinSize.x);
@@ -543,8 +555,11 @@ namespace NodeEditorFramework
 
         #region Recursive Search Helpers
 
-        [NonSerialized] private static List<Node> recursiveSearchSurpassed = new List<Node>();
-        [NonSerialized] private static Node startRecursiveSearchNode; // Temporary start node for recursive searches
+        [NonSerialized]
+        private static List<Node> recursiveSearchSurpassed = new List<Node>();
+
+        [NonSerialized]
+        private static Node startRecursiveSearchNode; // Temporary start node for recursive searches
 
         /// <summary>
         /// Begins the recursive search loop and returns whether this node has already been searched

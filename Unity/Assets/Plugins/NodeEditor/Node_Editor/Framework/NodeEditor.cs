@@ -98,7 +98,7 @@ namespace NodeEditorFramework
 		#if UNITY_EDITOR
 			UnityEditor.EditorApplication.update -= Update;
 			UnityEditor.EditorApplication.update += Update;
-		#endif
+#endif
 
 			initiatedBase = true;
 		}
