@@ -28,7 +28,7 @@ namespace EThotfix
 
             //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参
             colliderEntity.SyncBody();
-            Log.Info("生成技能碰撞体");
+            //Log.Info("生成技能碰撞体");
 
             //下面这一部分是Debug用的，稳定后请去掉
             {

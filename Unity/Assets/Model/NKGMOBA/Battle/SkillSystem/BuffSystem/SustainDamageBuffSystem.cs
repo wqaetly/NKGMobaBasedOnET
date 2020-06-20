@@ -47,7 +47,7 @@ namespace ETModel
 
                 this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
                 Game.EventSystem.Run(EventIdType.ChangeHP, this.theUnitBelongto.Id, -this.currentDamageValue);
-                Log.Info($"来自持续伤害ExeCute的数据:{this.currentDamageValue}");
+                //Log.Info($"来自持续伤害ExeCute的数据:{this.currentDamageValue}");
                 //设置下一个时间点
                 this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
                 //Log.Info($"作用间隔为{selfNextimer - TimeHelper.Now()},持续时间为{temp.SustainTime},持续到{this.selfNextimer}");
@@ -69,7 +69,7 @@ namespace ETModel
                 if (TimeHelper.Now() > MaxLimitTime)
                 {
                     this.MBuffState = BuffState.Finished;
-                    Log.Info("持续伤害结束了");
+                    //Log.Info("持续伤害结束了");
                 }
                 else if (TimeHelper.Now() > this.selfNextimer)
                 {
@@ -83,7 +83,7 @@ namespace ETModel
 
                         this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
                         Game.EventSystem.Run(EventIdType.ChangeHP, this.theUnitBelongto.Id, -this.currentDamageValue);
-                        Log.Info($"来自持续伤害Update的数据:{this.currentDamageValue},结束时间为{MaxLimitTime},当前层数为{this.CurrentOverlay}");
+                        //Log.Info($"来自持续伤害Update的数据:{this.currentDamageValue},结束时间为{MaxLimitTime},当前层数为{this.CurrentOverlay}");
                         //设置下一个时间点
                         this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
                     }

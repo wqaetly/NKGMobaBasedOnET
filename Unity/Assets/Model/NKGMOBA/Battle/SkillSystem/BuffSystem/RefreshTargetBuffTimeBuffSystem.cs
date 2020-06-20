@@ -33,12 +33,12 @@ namespace ETModel
 
             foreach (var buffId in refreshTargetBuffTimeBuffData.TheBuffsIDToBeRefreshed)
             {
-                Log.Info($"准备刷新指定Buff——{buffId}持续时间");
+                //Log.Info($"准备刷新指定Buff——{buffId}持续时间");
                 BuffSystemBase buffSystemBase = buffManagerComponent.GetBuffByFlagID(buffId);
                 if (buffSystemBase != null && buffSystemBase.MSkillBuffDataBase.SustainTime + 1 > 0)
                 {
-                    Log.Info(
-                        $"刷新了指定Buff——{buffId}持续时间{TimeHelper.Now() + buffSystemBase.MSkillBuffDataBase.SustainTime},原本为{buffSystemBase.MaxLimitTime}");
+                    // Log.Info(
+                    //     $"刷新了指定Buff——{buffId}持续时间{TimeHelper.Now() + buffSystemBase.MSkillBuffDataBase.SustainTime},原本为{buffSystemBase.MaxLimitTime}");
                     buffSystemBase.MaxLimitTime = TimeHelper.Now() + buffSystemBase.MSkillBuffDataBase.SustainTime;
                 }
             }

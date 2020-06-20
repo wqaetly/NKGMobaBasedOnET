@@ -28,14 +28,14 @@ namespace ETHotfix.NKGMOBA.Battle
     {
         public override void Run(long a, float b)
         {
-            Log.Info("准备发送蓝量改变事件");
+            //Log.Info("准备发送蓝量改变事件");
             MessageHelper.Broadcast(new M2C_ChangeHeroMP() { UnitId = a, ChangeMPValue = b });
-            Log.Info("发送蓝量改变事件成功");
+            //Log.Info("发送蓝量改变事件成功");
         }
     }
 
     /// <summary>
-    /// 像客户端发送事件，一般为特效表现
+    /// 向客户端发送事件，一般为特效表现
     /// long:来自Unit的ID
     /// long:归属Unit的ID
     /// string：要传给客户端的事件ID

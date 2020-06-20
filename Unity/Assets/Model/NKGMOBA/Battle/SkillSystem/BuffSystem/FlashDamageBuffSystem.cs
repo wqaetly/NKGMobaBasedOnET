@@ -53,7 +53,7 @@ namespace ETModel
             }
 
             this.MBuffState = BuffState.Finished;
-            Log.Info($"设置瞬时伤害Buff：{this.MSkillBuffDataBase.FlagId}状态为Finshed");
+            //Log.Info($"设置瞬时伤害Buff：{this.MSkillBuffDataBase.FlagId}状态为Finshed");
         }
 
         public override void OnFinished()
