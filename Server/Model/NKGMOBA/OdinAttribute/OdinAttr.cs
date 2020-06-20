@@ -64,8 +64,8 @@ namespace Sirenix.OdinInspector
         public ShowIfAttribute(string value)
         {
         }
-        
-        public ShowIfAttribute(string name,object value)
+
+        public ShowIfAttribute(string name, object value)
         {
         }
     }
@@ -76,8 +76,8 @@ namespace Sirenix.OdinInspector
         public InfoBoxAttribute(string value)
         {
         }
-        
-        public InfoBoxAttribute(string value,InfoMessageType infoMessageType)
+
+        public InfoBoxAttribute(string value, InfoMessageType infoMessageType)
         {
         }
     }
@@ -153,14 +153,22 @@ namespace Sirenix.OdinInspector
         {
         }
     }
-    
+
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public class DisableInEditorModeAttribute: System.Attribute
     {
     }
-    
+
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public class EnumToggleButtonsAttribute: System.Attribute
     {
+    }
+
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public class MinValueAttribute: System.Attribute
+    {
+        public MinValueAttribute(int i)
+        {
+        }
     }
 }

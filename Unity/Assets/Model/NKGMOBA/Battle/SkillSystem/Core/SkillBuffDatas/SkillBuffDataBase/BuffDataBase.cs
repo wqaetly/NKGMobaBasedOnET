@@ -21,7 +21,7 @@ namespace ETModel
 
         [LabelText("Buff的标识ID，用以区分不同Buff")]
         public int FlagId;
-        
+
         [LabelText("归属的技能ID")]
         public int BelongSkillId;
 
@@ -30,13 +30,18 @@ namespace ETModel
 
         [LabelText("归属的BuffSystem类型")]
         public BuffSystemType BelongBuffSystemType;
-        
+
         [LabelText("Buff的添加目标")]
         public BuffTargetTypes BuffTargetTypes;
-        
+
         [LabelText("是否可以叠加(不能叠加就刷新，叠加满也刷新)")]
         public bool CanOverlay;
-        
+
+        [ShowIf("CanOverlay")]
+        [LabelText("叠加层数")]
+        [MinValue(1)]
+        public int TargetOverlay = 1;
+
         [ShowIf("CanOverlay")]
         [LabelText("最大叠加数")]
         public int MaxOverlay;
@@ -47,7 +52,7 @@ namespace ETModel
 
         [LabelText("Buff的基本特征")]
         public BuffBaseType BuffBaseType;
-        
+
         [LabelText("Buff效果为")]
         public BuffWorkTypes BuffWorkType;
 
@@ -56,7 +61,7 @@ namespace ETModel
 
         [LabelText("Buff基础数值影响者")]
         public BuffBaseDataEffectTypes BaseBuffBaseDataEffectTypes;
-        
+
         [LabelText("将要被改变的基础数值")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<int, float> ValueToBeChanged = new Dictionary<int, float>();
