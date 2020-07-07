@@ -91,7 +91,7 @@ namespace ETModel
                             .Get<GameObject>(targetEffectName));
             }
 
-            Unit effectUnit = gameObjectPool.Fetch(targetEffectName);
+            Unit effectUnit = gameObjectPool.FetchEntity(targetEffectName);
 
             if (playEffectBuffData.FollowUnit)
             {

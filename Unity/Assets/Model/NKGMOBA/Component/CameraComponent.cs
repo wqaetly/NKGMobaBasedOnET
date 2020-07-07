@@ -54,5 +54,17 @@ namespace ETModel
         {
             this.mainCamera.transform.position = this.Unit.Position + offenPosition;
         }
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+			
+            base.Dispose();
+            mainCamera = null;
+            Unit = null;
+        }
     }
 }

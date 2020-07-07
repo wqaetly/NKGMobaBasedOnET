@@ -2,32 +2,26 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 using UnityEngine;
+using static UnityEngine.GameObject;
 
 namespace ETModel
 {
     // 游戏对象缓存队列
-    public class GameObjectQueue<T>: Component where T : ComponentWithId
+    public class GameObjectQueue: Component
     {
-        public string TypeName { get; }
+        private readonly Queue<GameObject> queue = new Queue<GameObject>();
 
-        private readonly Queue<T> queue = new Queue<T>();
-
-        public GameObjectQueue(string typeName)
-        {
-            this.TypeName = typeName;
-        }
-
-        public void Enqueue(T gameObject)
+        public void Enqueue(GameObject gameObject)
         {
             this.queue.Enqueue(gameObject);
         }
 
-        public T Dequeue()
+        public GameObject Dequeue()
         {
             return this.queue.Dequeue();
         }
 
-        public T Peek()
+        public GameObject Peek()
         {
             return this.queue.Peek();
         }
@@ -49,11 +43,12 @@ namespace ETModel
 
             base.Dispose();
 
-            while (this.queue.Count > 0)
+            foreach (var VARIABLE in this.queue)
             {
-                T entity = this.queue.Dequeue();
-                entity.Dispose();
+                UnityEngine.Object.Destroy(VARIABLE);
             }
+
+            queue.Clear();
         }
     }
 
@@ -61,9 +56,9 @@ namespace ETModel
     /// 对象池组件
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class GameObjectPool<T>: Component where T : ComponentWithId
+    public class GameObjectPool<T>: Component where T : Entity
     {
-        private readonly Dictionary<String, GameObjectQueue<T>> dictionary = new Dictionary<String, GameObjectQueue<T>>();
+        private readonly Dictionary<String, GameObjectQueue> dictionary = new Dictionary<String, GameObjectQueue>();
         private readonly Dictionary<String, GameObject> prefabDict = new Dictionary<String, GameObject>();
 
         // 初始化预制体
@@ -73,7 +68,8 @@ namespace ETModel
             {
                 return;
             }
-            Log.Info($"初始化了{gameObjectType}预制体");
+
+            //Log.Info($"初始化了{gameObjectType}预制体");
             this.prefabDict.Add(gameObjectType, goPrefab);
         }
 
@@ -90,16 +86,26 @@ namespace ETModel
 
             return false;
         }
-        
+
+        public T FetchEntity(string type)
+        {
+            return ComponentFactory.Create<T, GameObject>(FetchGameObject(type));
+        }
+
+        public T FetchEntityWithId(long Id, string type)
+        {
+            return ComponentFactory.CreateWithId<T, GameObject>(Id, FetchGameObject(type));
+        }
+
         /// <summary>
         /// 从对象池里获取对象
         /// </summary>
         /// <param name="type">GameObject Tag</param>
         /// <returns></returns>
-        public T Fetch(string type)
+        public GameObject FetchGameObject(string type)
         {
-            T entity = null;
-            if (!this.dictionary.TryGetValue(type, out GameObjectQueue<T> queue))
+            GameObject tempGameObject = null;
+            if (!this.dictionary.TryGetValue(type, out GameObjectQueue queue))
             {
                 GameObject prefab;
                 this.prefabDict.TryGetValue(type, out prefab);
@@ -109,9 +115,7 @@ namespace ETModel
                     throw new Exception($"对象池没有初始化{type}类型的预制体");
                 }
 
-                GameObject obj = UnityEngine.Object.Instantiate(prefab);
-                obj.tag = type;
-                entity = ComponentFactory.CreateWithId<T, GameObject>(IdGenerater.GenerateId(), obj, false); // 使用自己的对象池时，不能使用ET的对象池进行创建，否则会回到ET对象池
+                tempGameObject = UnityEngine.Object.Instantiate(prefab);
             }
             else if (queue.Count == 0)
             {
@@ -123,66 +127,23 @@ namespace ETModel
                     throw new Exception($"对象池没有初始化{type}类型的预制体");
                 }
 
-                GameObject obj = UnityEngine.Object.Instantiate(prefab);
-                obj.tag = type;
-                entity = ComponentFactory.CreateWithId<T, GameObject>(IdGenerater.GenerateId(), obj, false);
+                tempGameObject = UnityEngine.Object.Instantiate(prefab);
             }
             else
             {
-                entity = queue.Dequeue();
-                entity.GameObject.SetActive(true);
+                tempGameObject = queue.Dequeue();
+                tempGameObject.SetActive(true);
             }
 
-            return entity;
+            tempGameObject.tag = type;
+            tempGameObject.transform.position = prefabDict[type].transform.position;
+            tempGameObject.transform.rotation = prefabDict[type].transform.rotation;
+            tempGameObject.transform.localScale = prefabDict[type].transform.localScale;
+            return tempGameObject;
         }
 
         /// <summary>
-        /// 从对象池里获取对象，并指定ID
-        /// </summary>
-        /// <param name="type">GameObject Tag</param>
-        /// <returns></returns>
-        public T FetchWithId(long id, string type)
-        {
-            T entity = null;
-            if (!this.dictionary.TryGetValue(type, out GameObjectQueue<T> queue))
-            {
-                GameObject prefab;
-                this.prefabDict.TryGetValue(type, out prefab);
-                if (prefab == null)
-                {
-                    Log.Error($"对象池没有初始化{type}类型的预制体");
-                    throw new Exception($"对象池没有初始化{type}类型的预制体");
-                }
-
-                GameObject obj = UnityEngine.Object.Instantiate(prefab);
-                obj.tag = type;
-                entity = ComponentFactory.CreateWithId<T, GameObject>(id, obj, false); // 使用自己的对象池时，不能使用ET的对象池进行创建，否则会回到ET对象池
-            }
-            else if (queue.Count == 0)
-            {
-                GameObject prefab;
-                this.prefabDict.TryGetValue(type, out prefab);
-                if (prefab == null)
-                {
-                    Log.Error($"对象池没有初始化{type}类型的预制体");
-                    throw new Exception($"对象池没有初始化{type}类型的预制体");
-                }
-
-                GameObject obj = UnityEngine.Object.Instantiate(prefab);
-                obj.tag = type;
-                entity = ComponentFactory.CreateWithId<T, GameObject>(id, obj, false);
-            }
-            else
-            {
-                entity = queue.Dequeue();
-                entity.GameObject.SetActive(true);
-            }
-
-            return entity;
-        }
-
-        /// <summary>
-        /// 回收Entity到对象池。
+        /// Dispose并回收Entity到对象池。
         /// </summary>
         /// <param name="entity"></param>
         public void Recycle(T entity)
@@ -195,27 +156,33 @@ namespace ETModel
                 throw new Exception("未添加tag的gameobject不能使用对象池，因为不同tag的gameobject，身上的资源不同，若混在一起则无法复用gameobject");
             }
 
-            GameObjectQueue<T> queue;
+            GameObjectQueue queue;
             if (!this.dictionary.TryGetValue(type, out queue))
             {
-                queue = new GameObjectQueue<T>(type); // 回收的时候才需要创建
+                queue = ComponentFactory.Create<GameObjectQueue>(); // 回收的时候才需要创建
                 queue.Parent = this;
-                queue.GameObject.name = type;
+                queue.GameObject.name = $"{type}--Pool";
                 this.dictionary.Add(type, queue);
             }
-
+            entity.Dispose();
             entity.GameObject.SetActive(false);
-            entity.GameObject.transform.position = new Vector3(0, 0, 0);
-            entity.GameObject.transform.parent = queue.GameObject.transform;
-            queue.Enqueue(entity);
+            entity.GameObject.transform.SetParent(queue.GameObject.transform);
+            queue.Enqueue(entity.GameObject);
+
         }
 
-        public void Clear()
+        public override void Dispose()
         {
+            if (this.IsDisposed) return;
+            base.Dispose();
             foreach (var kv in this.dictionary)
             {
-                kv.Value.IsFromPool = false;
                 kv.Value.Dispose(); // 调用GameObjectQueue<T>的Dispose()，再对其中的所有对象进行回收
+            }
+
+            foreach (var VARIABLE in prefabDict)
+            {
+                UnityEngine.Object.Destroy(VARIABLE.Value);
             }
 
             this.dictionary.Clear();

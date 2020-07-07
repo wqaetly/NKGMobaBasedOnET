@@ -34,11 +34,12 @@ namespace ETModel
 
             base.Dispose();
 
+            GameObjectPool<Unit> gameObjectPool = Game.Scene.GetComponent<GameObjectPool<Unit>>();
             foreach (Unit unit in this.idUnits.Values)
             {
-                unit.Dispose();
+                gameObjectPool.Recycle(unit);
             }
-
+            gameObjectPool.Recycle(MyUnit);
             this.idUnits.Clear();
 
             Instance = null;

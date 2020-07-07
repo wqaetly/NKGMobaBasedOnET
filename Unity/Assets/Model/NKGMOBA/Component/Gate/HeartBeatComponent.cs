@@ -69,7 +69,9 @@ namespace ETModel
             }
 			
             base.Dispose();
-
+            SendInterval = 10f;
+            RecordDeltaTime = 0;
+            hasOffline = false;
             Game.EventSystem.Run(EventIdType.ShowOfflineDialogUI_Model, 1, "提示", "很抱歉，你与服务器连接已断开");
         }
     }

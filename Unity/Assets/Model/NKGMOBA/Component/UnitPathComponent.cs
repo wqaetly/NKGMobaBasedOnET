@@ -59,5 +59,16 @@ namespace ETModel
             this.CancellationTokenSource.Dispose();
             this.CancellationTokenSource = null;
         }
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed) return;
+            base.Dispose();
+            Path.Clear();
+            this.ServerPos = Vector3.zero;
+            CancellationTokenSource?.Cancel();
+            this.CancellationTokenSource?.Dispose();
+            this.CancellationTokenSource = null;
+        }
     }
 }

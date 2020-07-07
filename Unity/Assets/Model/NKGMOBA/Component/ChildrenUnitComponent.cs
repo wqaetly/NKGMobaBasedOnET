@@ -34,5 +34,25 @@ namespace ETModel
         {
             return this.ChildrenUnit.Find(s => s.Id.Equals(id));
         }
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed) return;
+            base.Dispose();
+#if SERVER
+            foreach (var VARIABLE in ChildrenUnit)
+            {
+                VARIABLE.Dispose();
+            }
+#elif !SERVER
+                        GameObjectPool<Unit> gameObjectPool = Game.Scene.GetComponent<GameObjectPool<Unit>>();
+            foreach (var VARIABLE in ChildrenUnit)
+            {
+                gameObjectPool.Recycle(VARIABLE);
+            }
+#endif
+
+            ChildrenUnit.Clear();
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
             BelongUnit = Game.Scene.GetComponent<UnitComponent>().Get(Unitid);
             Game.Scene.GetComponent<GameObjectPool<Unit>>().Add(ParticalName,
                 this.BelongUnit.GameObject.GetComponent<ReferenceCollector>().Get<GameObject>(ParticalName));
-            Partical = Game.Scene.GetComponent<GameObjectPool<Unit>>().Fetch(ParticalName);
+            Partical = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchEntity(ParticalName);
             if (this.FollowUnit)
             {
                 Partical.GameObject.transform.SetParent(this.BelongUnit.GetComponent<HeroTransformComponent>().GetTranform(PosType));
