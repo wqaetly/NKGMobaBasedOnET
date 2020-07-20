@@ -75,5 +75,18 @@ namespace ETModel
             targetGo.GetComponent<B2S_Debugger>().StopDraw();
             m_LinerRenderersDic[(id, targetGo)] = true;
         }
+
+        public override void Dispose()
+        {
+            if(this.IsDisposed)
+                return;
+            base.Dispose();
+            foreach (var VARIABLE in m_LinerRenderersDic)
+            {
+                GameObject.Destroy(VARIABLE.Key.Item2);
+            }
+
+            GameObject.Destroy(this.targetGo);
+        }
     }
 }

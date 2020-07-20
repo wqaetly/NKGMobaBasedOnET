@@ -146,13 +146,13 @@ namespace Pathfinding {
 
 		void CaptureContextClick (string propertyPath) {
 			var url = FindURL(target.GetType(), propertyPath);
-
-			if (url != null) {
-				Event.current.Use();
-				var menu = new GenericMenu();
-				menu.AddItem(showInDocContent, false, () => Application.OpenURL(AstarUpdateChecker.GetURL("documentation") + url));
-				menu.ShowAsContext();
-			}
+			//
+			// if (url != null) {
+			// 	Event.current.Use();
+			// 	var menu = new GenericMenu();
+			// 	menu.AddItem(showInDocContent, false, () => Application.OpenURL(AstarUpdateChecker.GetURL("documentation") + url));
+			// 	menu.ShowAsContext();
+			// }
 		}
 
 		protected void Popup (string propertyPath, GUIContent[] options, string label = null) {

@@ -435,16 +435,16 @@ namespace Pathfinding {
 		}
 
 		void DrawAboutArea () {
-			System.Version newVersion = AstarUpdateChecker.latestVersion;
-			bool beta = false;
-
-			// Check if either the latest release version or the latest beta version is newer than this version
-			if (FullyDefinedVersion(AstarUpdateChecker.latestVersion) > FullyDefinedVersion(AstarPath.Version) || FullyDefinedVersion(AstarUpdateChecker.latestBetaVersion) > FullyDefinedVersion(AstarPath.Version)) {
-				if (FullyDefinedVersion(AstarUpdateChecker.latestVersion) <= FullyDefinedVersion(AstarPath.Version)) {
-					newVersion = AstarUpdateChecker.latestBetaVersion;
-					beta = true;
-				}
-			}
+			// System.Version newVersion = AstarUpdateChecker.latestVersion;
+			// bool beta = false;
+			//
+			// // Check if either the latest release version or the latest beta version is newer than this version
+			// if (FullyDefinedVersion(AstarUpdateChecker.latestVersion) > FullyDefinedVersion(AstarPath.Version) || FullyDefinedVersion(AstarUpdateChecker.latestBetaVersion) > FullyDefinedVersion(AstarPath.Version)) {
+			// 	if (FullyDefinedVersion(AstarUpdateChecker.latestVersion) <= FullyDefinedVersion(AstarPath.Version)) {
+			// 		newVersion = AstarUpdateChecker.latestBetaVersion;
+			// 		beta = true;
+			// 	}
+			// }
 
 			aboutArea.Begin();
 
@@ -455,50 +455,50 @@ namespace Pathfinding {
 				GUI.changed = true;
 			}
 
-			// Check if the latest version is newer than this version
-			if (FullyDefinedVersion(newVersion) > FullyDefinedVersion(AstarPath.Version)) {
-				GUIUtilityx.PushTint(Color.green);
-				if (GUILayout.Button((beta ? "Beta" : "New") + " Version Available! "+newVersion, thinHelpBox, GUILayout.Height(15))) {
-					Application.OpenURL(AstarUpdateChecker.GetURL("download"));
-				}
-				GUIUtilityx.PopTint();
-				GUILayout.Space(20);
-			}
+			// // Check if the latest version is newer than this version
+			// if (FullyDefinedVersion(newVersion) > FullyDefinedVersion(AstarPath.Version)) {
+			// 	GUIUtilityx.PushTint(Color.green);
+			// 	if (GUILayout.Button((beta ? "Beta" : "New") + " Version Available! "+newVersion, thinHelpBox, GUILayout.Height(15))) {
+			// 		Application.OpenURL(AstarUpdateChecker.GetURL("download"));
+			// 	}
+			// 	GUIUtilityx.PopTint();
+			// 	GUILayout.Space(20);
+			// }
 
 			GUILayout.EndHorizontal();
 
-			if (aboutArea.BeginFade()) {
-				GUILayout.Label("The A* Pathfinding Project was made by Aron Granberg\nYour current version is "+AstarPath.Version);
-
-				if (FullyDefinedVersion(newVersion) > FullyDefinedVersion(AstarPath.Version)) {
-					EditorGUILayout.HelpBox("A new "+(beta ? "beta " : "")+"version of the A* Pathfinding Project is available, the new version is "+
-						newVersion, MessageType.Info);
-
-					if (GUILayout.Button("What's new?")) {
-						Application.OpenURL(AstarUpdateChecker.GetURL(beta ? "beta_changelog" : "changelog"));
-					}
-
-					if (GUILayout.Button("Click here to find out more")) {
-						Application.OpenURL(AstarUpdateChecker.GetURL("findoutmore"));
-					}
-
-					GUIUtilityx.PushTint(new Color(0.3F, 0.9F, 0.3F));
-
-					if (GUILayout.Button("Download new version")) {
-						Application.OpenURL(AstarUpdateChecker.GetURL("download"));
-					}
-
-					GUIUtilityx.PopTint();
-				}
-
-				if (GUILayout.Button(new GUIContent("Documentation", "Open the documentation for the A* Pathfinding Project"))) {
-					Application.OpenURL(AstarUpdateChecker.GetURL("documentation"));
-				}
-
-				if (GUILayout.Button(new GUIContent("Project Homepage", "Open the homepage for the A* Pathfinding Project"))) {
-					Application.OpenURL(AstarUpdateChecker.GetURL("homepage"));
-				}
-			}
+			// if (aboutArea.BeginFade()) {
+			// 	GUILayout.Label("The A* Pathfinding Project was made by Aron Granberg\nYour current version is "+AstarPath.Version);
+			//
+			// 	if (FullyDefinedVersion(newVersion) > FullyDefinedVersion(AstarPath.Version)) {
+			// 		EditorGUILayout.HelpBox("A new "+(beta ? "beta " : "")+"version of the A* Pathfinding Project is available, the new version is "+
+			// 			newVersion, MessageType.Info);
+			//
+			// 		if (GUILayout.Button("What's new?")) {
+			// 			Application.OpenURL(AstarUpdateChecker.GetURL(beta ? "beta_changelog" : "changelog"));
+			// 		}
+			//
+			// 		if (GUILayout.Button("Click here to find out more")) {
+			// 			Application.OpenURL(AstarUpdateChecker.GetURL("findoutmore"));
+			// 		}
+			//
+			// 		GUIUtilityx.PushTint(new Color(0.3F, 0.9F, 0.3F));
+			//
+			// 		if (GUILayout.Button("Download new version")) {
+			// 			Application.OpenURL(AstarUpdateChecker.GetURL("download"));
+			// 		}
+			//
+			// 		GUIUtilityx.PopTint();
+			// 	}
+			//
+			// 	if (GUILayout.Button(new GUIContent("Documentation", "Open the documentation for the A* Pathfinding Project"))) {
+			// 		Application.OpenURL(AstarUpdateChecker.GetURL("documentation"));
+			// 	}
+			//
+			// 	if (GUILayout.Button(new GUIContent("Project Homepage", "Open the homepage for the A* Pathfinding Project"))) {
+			// 		Application.OpenURL(AstarUpdateChecker.GetURL("homepage"));
+			// 	}
+			// }
 
 			aboutArea.End();
 		}

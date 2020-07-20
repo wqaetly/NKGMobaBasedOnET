@@ -62,17 +62,17 @@ namespace Pathfinding {
 
 			GUILayout.BeginVertical();
 
-			Color col = GUI.color;
-			GUI.backgroundColor *= new Color(0.5f,  1f, 0.5f);
-			if (GUILayout.Button("Take me to the download page!", GUILayout.Height(30), GUILayout.MaxWidth(300))) {
-				Application.OpenURL(AstarUpdateChecker.GetURL("download"));
-			}
-			GUI.backgroundColor = col;
+			// Color col = GUI.color;
+			// GUI.backgroundColor *= new Color(0.5f,  1f, 0.5f);
+			// if (GUILayout.Button("Take me to the download page!", GUILayout.Height(30), GUILayout.MaxWidth(300))) {
+			// 	Application.OpenURL(AstarUpdateChecker.GetURL("download"));
+			// }
+			// GUI.backgroundColor = col;
 
 
-			if (GUILayout.Button("What's new? (full changelog)")) {
-				Application.OpenURL(AstarUpdateChecker.GetURL("changelog"));
-			}
+			// if (GUILayout.Button("What's new? (full changelog)")) {
+			// 	Application.OpenURL(AstarUpdateChecker.GetURL("changelog"));
+			// }
 
 			GUILayout.EndVertical();
 

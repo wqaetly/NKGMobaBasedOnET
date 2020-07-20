@@ -171,9 +171,9 @@ namespace Pathfinding {
 					tagValue.intValue = newTag;
 				}
 
-				if (GUILayout.Button("Tags can be used to restrict which units can walk on what ground. Click here for more info", "HelpBox")) {
-					Application.OpenURL(AstarUpdateChecker.GetURL("tags"));
-				}
+				// if (GUILayout.Button("Tags can be used to restrict which units can walk on what ground. Click here for more info", "HelpBox")) {
+				// 	Application.OpenURL(AstarUpdateChecker.GetURL("tags"));
+				// }
 				EditorGUI.indentLevel--;
 			}
 		}

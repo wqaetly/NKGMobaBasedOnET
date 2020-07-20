@@ -23,6 +23,8 @@ namespace ETEditor
             if(Selection.activeObject == null) return;
             
             Texture2D image = Selection.activeObject as Texture2D;//获取选择的对象
+            if(image == null) return;
+            
             string imagePath = AssetDatabase.GetAssetPath(image);
             string rootPath = System.IO.Path.GetDirectoryName(imagePath);//获取路径名称
             TextureImporter texImp = AssetImporter.GetAtPath(imagePath) as TextureImporter;//获取图片的AssetImporter
