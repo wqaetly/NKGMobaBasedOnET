@@ -16,7 +16,7 @@ namespace ETEditor
 		private string account;
 		private string password;
 
-		[MenuItem("Tools/服务器管理工具")]
+		[MenuItem("NKGTools/ET/服务器管理工具")]
 		private static void ShowWindow()
 		{
 			GetWindow(typeof (ServerManagerEditor));

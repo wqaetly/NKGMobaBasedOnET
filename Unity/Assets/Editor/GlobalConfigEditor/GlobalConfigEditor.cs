@@ -11,7 +11,7 @@ namespace ETEditor
 
         private GlobalProto globalProto;
 
-        [MenuItem("Tools/全局配置")]
+        [MenuItem("NKGTools/ET/全局配置")]
         public static void ShowWindow()
         {
             GetWindow<GlobalProtoEditor>();

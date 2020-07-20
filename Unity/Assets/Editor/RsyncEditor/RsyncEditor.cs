@@ -12,7 +12,7 @@ namespace ETEditor
 		private RsyncConfig rsyncConfig;
 		private bool isFold = true;
 
-		[MenuItem("Tools/Rsync同步")]
+		[MenuItem("NKGTools/ET/Rsync同步")]
 		private static void ShowWindow()
 		{
 			GetWindow(typeof (RsyncEditor));

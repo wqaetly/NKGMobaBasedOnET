@@ -79,7 +79,7 @@ namespace ETEditor
 
         private List<string> colliderDataName = new List<string>() { "BoxColliderData", "CircleColliderData", "PolygonColliderData" };
 
-        [MenuItem("Tools/其他实用工具/Box2D可视化编辑器")]
+        [MenuItem("NKGTools/Box2D可视化编辑器")]
         private static void OpenWindow()
         {
             var window = GetWindow<B2S_ColliderEditor>();

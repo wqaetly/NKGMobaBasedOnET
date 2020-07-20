@@ -1550,141 +1550,141 @@
           </e>
           <e p="NodeEditor" t="Include">
             <e p="Editor" t="Include">
-              <e p="B2S_CollisionRelationNodes" t="Include">
-                <e p="B2S_CollisionRelationForOneHero.cs" t="Include" />
-                <e p="B2S_NodeInputAndOutPutTypes.cs" t="Include" />
-                <e p="Prefabs" t="Include">
-                  <e p="B2S_Prefab_EnemyCrystal.cs" t="Include" />
-                  <e p="B2S_Prefab_EnemyDefendBuilding.cs" t="Include" />
-                  <e p="B2S_Prefab_EnemyHero.cs" t="Include" />
-                  <e p="B2S_Prefab_EnemySoldier.cs" t="Include" />
-                  <e p="B2S_Prefab_FriendCrystal.cs" t="Include" />
-                  <e p="B2S_Prefab_FriendDefendBuilding.cs" t="Include" />
-                  <e p="B2S_Prefab_FriendHero.cs" t="Include" />
-                  <e p="B2S_Prefab_FriendSoldier.cs" t="Include" />
-                  <e p="B2S_Prefab_Monster.cs" t="Include" />
-                  <e p="B2S_PrefabIDDefine.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Canvas" t="Include">
+              <e p="CustomCanvas" t="Include">
                 <e p="B2S_CollisionRelationCanvas.cs" t="Include" />
                 <e p="HeroDataNodeCanvas.cs" t="Include" />
                 <e p="NeverbeUsedCanvas.cs" t="Include" />
                 <e p="NPBehaveCanvas.cs" t="Include" />
                 <e p="NPBehaveCanvasBase.cs" t="Include" />
               </e>
-              <e p="ChildrenNodes" t="Include">
-                <e p="ChildrenNodeDatas.cs" t="Include" />
-                <e p="SkillSystemChildNode.cs" t="Include" />
+              <e p="CustomNodes" t="Include">
+                <e p="B2S_CollisionRelationNodes" t="Include">
+                  <e p="B2S_CollisionRelationForOneHero.cs" t="Include" />
+                  <e p="B2S_NodeInputAndOutPutTypes.cs" t="Include" />
+                  <e p="Prefabs" t="Include">
+                    <e p="B2S_Prefab_EnemyCrystal.cs" t="Include" />
+                    <e p="B2S_Prefab_EnemyDefendBuilding.cs" t="Include" />
+                    <e p="B2S_Prefab_EnemyHero.cs" t="Include" />
+                    <e p="B2S_Prefab_EnemySoldier.cs" t="Include" />
+                    <e p="B2S_Prefab_FriendCrystal.cs" t="Include" />
+                    <e p="B2S_Prefab_FriendDefendBuilding.cs" t="Include" />
+                    <e p="B2S_Prefab_FriendHero.cs" t="Include" />
+                    <e p="B2S_Prefab_FriendSoldier.cs" t="Include" />
+                    <e p="B2S_Prefab_Monster.cs" t="Include" />
+                    <e p="B2S_PrefabIDDefine.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="ChildrenNodes" t="Include">
+                  <e p="ChildrenNodeDatas.cs" t="Include" />
+                  <e p="SkillSystemChildNode.cs" t="Include" />
+                </e>
+                <e p="HeroNodes" t="Include">
+                  <e p="HeroDataNode.cs" t="Include" />
+                </e>
+                <e p="NPBehaveNodes" t="Include">
+                  <e p="Composite" t="Include">
+                    <e p="NP_ParallelNode.cs" t="Include" />
+                    <e p="NP_SelectorNode.cs" t="Include" />
+                    <e p="NP_SequenceNode.cs" t="Include" />
+                  </e>
+                  <e p="Decorator" t="Include">
+                    <e p="NP_BlackboardConditionNode.cs" t="Include" />
+                    <e p="NP_RepeaterNode.cs" t="Include" />
+                    <e p="NP_ServiceNode.cs" t="Include" />
+                  </e>
+                  <e p="NP_NodeBase.cs" t="Include" />
+                  <e p="NP_RootNode.cs" t="Include" />
+                  <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
+                  <e p="Task" t="Include">
+                    <e p="NP_ActionNode.cs" t="Include" />
+                    <e p="NP_WaitNode.cs" t="Include" />
+                    <e p="NP_WaitUntilStoppedNode.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="SkillSystemNodes" t="Include">
+                  <e p="SkillData" t="Include">
+                    <e p="BuffNodes" t="Include">
+                      <e p="SkillBuffNode.cs" t="Include" />
+                      <e p="SkillNodeInputAndOutputTypes.cs" t="Include" />
+                    </e>
+                    <e p="SkillDescriptionNode.cs" t="Include" />
+                    <e p="SkillNodeBase.cs" t="Include" />
+                  </e>
+                </e>
               </e>
-              <e p="HeroNodes" t="Include">
-                <e p="HeroDataNode.cs" t="Include" />
-              </e>
-              <e p="Node_Editor" t="Include">
+              <e p="Node_Editor_Framework" t="Include">
+                <e p="Default" t="Include">
+                  <e p="DefaultCanvas.cs" t="Include" />
+                  <e p="IO Formats" t="Include">
+                    <e p="XMLImportExport.cs" t="Include" />
+                  </e>
+                  <e p="Runtime Examples" t="Include">
+                    <e p="RTCanvasCalculator.cs" t="Include" />
+                    <e p="RTNodeEditor.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Framework" t="Include">
+                  <e p="Core" t="Include">
+                    <e p="ConnectionKnob.cs" t="Include" />
+                    <e p="ConnectionPort.cs" t="Include" />
+                    <e p="ConnectionPortManager.cs" t="Include" />
+                    <e p="Node.cs" t="Include" />
+                    <e p="NodeCanvas.cs" t="Include" />
+                    <e p="NodeCanvasTraversal.cs" t="Include" />
+                    <e p="NodeEditorState.cs" t="Include" />
+                    <e p="NodeGroup.cs" t="Include" />
+                    <e p="ValueConnectionKnob.cs" t="Include" />
+                  </e>
+                  <e p="CoreExtensions" t="Include">
+                    <e p="ConnectionKnobExtension" t="Include">
+                      <e p="B2S_ConnectionKnob.cs" t="Include" />
+                    </e>
+                    <e p="ConnectionPortStyles.cs" t="Include" />
+                    <e p="NodeCanvasTypes.cs" t="Include" />
+                    <e p="NodeExtension" t="Include">
+                      <e p="Node.CollisionRelation.cs" t="Include" />
+                      <e p="Node.GeneralExtension.cs" t="Include" />
+                      <e p="Node.HeroData.cs" t="Include" />
+                      <e p="Node.NP_NodeData.cs" t="Include" />
+                      <e p="Node.PrefabData.cs" t="Include" />
+                      <e p="Node.Skill.cs" t="Include" />
+                    </e>
+                    <e p="NodeTypes.cs" t="Include" />
+                  </e>
+                  <e p="Interface" t="Include">
+                    <e p="NodeEditorCallbackReceiver.cs" t="Include" />
+                    <e p="NodeEditorGUI.cs" t="Include" />
+                    <e p="NodeEditorInputControls.cs" t="Include" />
+                    <e p="NodeEditorInputSystem.cs" t="Include" />
+                    <e p="NodeEditorInterface.cs" t="Include" />
+                  </e>
+                  <e p="NodeEditor.cs" t="Include" />
+                  <e p="SaveSystem" t="Include">
+                    <e p="ImportExportFormat.cs" t="Include" />
+                    <e p="ImportExportManager.cs" t="Include" />
+                    <e p="ImportExportStructure.cs" t="Include" />
+                    <e p="NodeCanvasSceneSave.cs" t="Include" />
+                    <e p="NodeEditorSaveManager.cs" t="Include" />
+                    <e p="NodeEditorUserCache.cs" t="Include" />
+                  </e>
+                </e>
                 <e p="NodeEditorWindow.cs" t="Include" />
-              </e>
-              <e p="NPBehaveNodes" t="Include">
-                <e p="Composite" t="Include">
-                  <e p="NP_ParallelNode.cs" t="Include" />
-                  <e p="NP_SelectorNode.cs" t="Include" />
-                  <e p="NP_SequenceNode.cs" t="Include" />
-                </e>
-                <e p="Decorator" t="Include">
-                  <e p="NP_BlackboardConditionNode.cs" t="Include" />
-                  <e p="NP_RepeaterNode.cs" t="Include" />
-                  <e p="NP_ServiceNode.cs" t="Include" />
-                </e>
-                <e p="NP_NodeBase.cs" t="Include" />
-                <e p="NP_RootNode.cs" t="Include" />
-                <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
-                <e p="Task" t="Include">
-                  <e p="NP_ActionNode.cs" t="Include" />
-                  <e p="NP_WaitNode.cs" t="Include" />
-                  <e p="NP_WaitUntilStoppedNode.cs" t="Include" />
-                </e>
-              </e>
-              <e p="SkillSystemNodes" t="Include">
-                <e p="SkillData" t="Include">
-                  <e p="BuffNodes" t="Include">
-                    <e p="SkillBuffNode.cs" t="Include" />
-                    <e p="SkillNodeInputAndOutputTypes.cs" t="Include" />
+                <e p="Resources" t="Include">
+                  <e p="Shader" t="Include">
+                    <e p="LineShader.shader" t="Include" />
                   </e>
-                  <e p="SkillDescriptionNode.cs" t="Include" />
-                  <e p="SkillNodeBase.cs" t="Include" />
                 </e>
-              </e>
-            </e>
-            <e p="Node_Editor" t="Include">
-              <e p="Default" t="Include">
-                <e p="DefaultCanvas.cs" t="Include" />
-                <e p="IO Formats" t="Include">
-                  <e p="XMLImportExport.cs" t="Include" />
-                </e>
-                <e p="Runtime Examples" t="Include">
-                  <e p="RTCanvasCalculator.cs" t="Include" />
-                  <e p="RTNodeEditor.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Framework" t="Include">
-                <e p="Core" t="Include">
-                  <e p="ConnectionKnob.cs" t="Include" />
-                  <e p="ConnectionPort.cs" t="Include" />
-                  <e p="ConnectionPortManager.cs" t="Include" />
-                  <e p="Node.cs" t="Include" />
-                  <e p="NodeCanvas.cs" t="Include" />
-                  <e p="NodeCanvasTraversal.cs" t="Include" />
-                  <e p="NodeEditorState.cs" t="Include" />
-                  <e p="NodeGroup.cs" t="Include" />
-                  <e p="ValueConnectionKnob.cs" t="Include" />
-                </e>
-                <e p="CoreExtensions" t="Include">
-                  <e p="ConnectionKnobExtension" t="Include">
-                    <e p="B2S_ConnectionKnob.cs" t="Include" />
+                <e p="Utilities" t="Include">
+                  <e p="EditorLoadingControl.cs" t="Include" />
+                  <e p="GUI" t="Include">
+                    <e p="GUIScaleUtility.cs" t="Include" />
+                    <e p="OverlayGUI.cs" t="Include" />
+                    <e p="RTEditorGUI.cs" t="Include" />
                   </e>
-                  <e p="ConnectionPortStyles.cs" t="Include" />
-                  <e p="NodeCanvasTypes.cs" t="Include" />
-                  <e p="NodeExtension" t="Include">
-                    <e p="Node.CollisionRelation.cs" t="Include" />
-                    <e p="Node.GeneralExtension.cs" t="Include" />
-                    <e p="Node.HeroData.cs" t="Include" />
-                    <e p="Node.NP_NodeData.cs" t="Include" />
-                    <e p="Node.PrefabData.cs" t="Include" />
-                    <e p="Node.Skill.cs" t="Include" />
-                  </e>
-                  <e p="NodeTypes.cs" t="Include" />
+                  <e p="link.xml" t="Include" />
+                  <e p="ReflectionUtility.cs" t="Include" />
+                  <e p="ResourceManager.cs" t="Include" />
                 </e>
-                <e p="Interface" t="Include">
-                  <e p="NodeEditorCallbackReceiver.cs" t="Include" />
-                  <e p="NodeEditorGUI.cs" t="Include" />
-                  <e p="NodeEditorInputControls.cs" t="Include" />
-                  <e p="NodeEditorInputSystem.cs" t="Include" />
-                  <e p="NodeEditorInterface.cs" t="Include" />
-                </e>
-                <e p="NodeEditor.cs" t="Include" />
-                <e p="SaveSystem" t="Include">
-                  <e p="ImportExportFormat.cs" t="Include" />
-                  <e p="ImportExportManager.cs" t="Include" />
-                  <e p="ImportExportStructure.cs" t="Include" />
-                  <e p="NodeCanvasSceneSave.cs" t="Include" />
-                  <e p="NodeEditorSaveManager.cs" t="Include" />
-                  <e p="NodeEditorUserCache.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Resources" t="Include">
-                <e p="Shader" t="Include">
-                  <e p="LineShader.shader" t="Include" />
-                </e>
-              </e>
-              <e p="Utilities" t="Include">
-                <e p="EditorLoadingControl.cs" t="Include" />
-                <e p="GUI" t="Include">
-                  <e p="GUIScaleUtility.cs" t="Include" />
-                  <e p="OverlayGUI.cs" t="Include" />
-                  <e p="RTEditorGUI.cs" t="Include" />
-                </e>
-                <e p="link.xml" t="Include" />
-                <e p="ReflectionUtility.cs" t="Include" />
-                <e p="ResourceManager.cs" t="Include" />
               </e>
             </e>
           </e>

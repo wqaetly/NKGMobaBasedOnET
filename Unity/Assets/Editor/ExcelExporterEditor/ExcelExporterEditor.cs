@@ -44,7 +44,7 @@ public class ExcelExporterEditor: OdinEditorWindow
 
     private static ExcelMD5Info md5Info;
 
-    [MenuItem("Tools/一键生成类工具/从Excel文件自动生成类/生成类到客户端")]
+    [MenuItem("NKGTools/一键生成类工具/从Excel文件自动生成类/生成类到客户端")]
     private static void ExportData2Class_Client()
     {
         try
@@ -64,7 +64,7 @@ public class ExcelExporterEditor: OdinEditorWindow
         }
     }
     
-    [MenuItem("Tools/一键生成类工具/从Excel文件自动生成类/生成类到服务端")]
+    [MenuItem("NKGTools/一键生成类工具/从Excel文件自动生成类/生成类到服务端")]
     private static void ExportData2Class_Server()
     {
         try

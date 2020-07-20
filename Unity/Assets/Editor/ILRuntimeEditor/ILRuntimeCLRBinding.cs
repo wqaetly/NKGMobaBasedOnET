@@ -34,7 +34,7 @@ public static class ILRuntimeCLRBinding
 		AssetDatabase.Refresh();
     }
 
-    [MenuItem("Tools/ILRuntime/Generate CLR Binding Code by Analysis")]
+    [MenuItem("NKGTools/ILRuntime/Generate CLR Binding Code by Analysis")]
     static void GenerateCLRBindingByAnalysis()
     {
 	    GenerateCLRBinding();

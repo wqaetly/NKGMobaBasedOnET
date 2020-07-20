@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using ETModel;
 using UnityEditor;
+using UnityEngine;
 
 namespace ETEditor
 {
@@ -18,7 +19,7 @@ namespace ETEditor
         /// </summary>
         public static string ProjectResBuildFolder = "Assets/StreamingAssets/";
 
-        [MenuItem("Tools/web资源服务器")]
+        [MenuItem("NKGTools/ET/本地资源服务器")]
         public static void OpenFileServer()
         {
             ProcessHelper.Run("dotnet", "FileServer.dll", "../FileServer/");
@@ -78,6 +79,9 @@ namespace ETEditor
 
             if (isBuildExe)
             {
+                //将资源模式更改为非编辑器模式
+                GameObject.FindObjectOfType<Init>().isEditorMode = false;
+                Debug.Log("因为要出包，所以将资源模式改为正式模式！");
                 AssetDatabase.Refresh();
                 string[] levels = { "Assets/Scenes/Init.unity", };
                 Log.Info("开始EXE打包");

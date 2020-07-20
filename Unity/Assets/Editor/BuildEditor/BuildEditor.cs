@@ -87,7 +87,7 @@ namespace ETEditor
             this.InitABEditorConfig();
         }
 
-        [MenuItem("Tools/打包工具")]
+        [MenuItem("NKGTools/打包工具")]
         private static void OpenWindow()
         {
             var window = GetWindow<BuildEditor>();
