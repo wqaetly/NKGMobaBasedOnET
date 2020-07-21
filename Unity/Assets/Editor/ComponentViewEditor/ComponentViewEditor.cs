@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ETEditor
 {
-    [CustomEditor(typeof (ComponentView))]
+    //[CustomEditor(typeof (ComponentView))]
     public class ComponentViewEditor: Editor
     {
         public override void OnInspectorGUI()
@@ -48,7 +48,7 @@ namespace ETEditor
             {
                 FieldInfo[] fields = obj.GetType()
                         .GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
-
+                
                 EditorGUILayout.BeginVertical();
 
                 foreach (FieldInfo fieldInfo in fields)
