@@ -14,18 +14,23 @@
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
-最后，大家一起加油！   :neckbeard:  :neckbeard:  :neckbeard: 
+最后，大家一起加油！
 
 ## 特别鸣谢
+
 感谢JetBrains公司提供的使用许可证！
-![https://www.jetbrains.com/?from=NKGMobaBasedOnET](https://images.gitee.com/uploads/images/2020/0722/080612_25663194_2253805.png "QQ截图20200722080548.png")
-https://www.jetbrains.com/?from=NKGMobaBasedOnET
+
+<p><a href="https://www.jetbrains.com/?from=NKGMobaBasedOnET ">
+<img src="https://images.gitee.com/uploads/images/2020/0722/084147_cc1c0a4a_2253805.png" alt="JetBrains的Logo" width="20%" height="20%"></a></p>
+
 
 ## 运行环境
 
  **编辑器：Unity 2019.4.0 LTS** 
 
  **客户端：.Net Framework 4.7.2** 
+
+ **IDE：JetBrain Rider 2020**
 
  **服务端：.Net Core 2.2** 
 
@@ -63,11 +68,11 @@ https://www.jetbrains.com/?from=NKGMobaBasedOnET
 
 ## 开发进度展示
 
-![输入图片说明](https://gitee.com/uploads/images/2019/0502/173207_17e8e767_2253805.png "资源更新界面")
-![输入图片说明](https://gitee.com/uploads/images/2019/0502/173246_f83a8591_2253805.png "登录注册界面")
-![输入图片说明](https://gitee.com/uploads/images/2019/0502/173252_7dbcd604_2253805.png "游戏大厅界面")
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0125/154943_83ead3dc_2253805.png "战斗界面第四版")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0720/185840_f28e17e6_2253805.jpeg "Box2D编辑器界面")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/174018_f52aab48_2253805.png "特效制作截图")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1003/160635_1de5993c_2253805.png "诺克Q技能行为树示例")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0919/163758_138e22e9_2253805.png "技能系统架构.png")
+![image-20200722083928209](https://images.gitee.com/uploads/images/2020/0722/084147_fc1f9a7c_2253805.png)
+![image-20200722083940466](https://images.gitee.com/uploads/images/2020/0722/084147_70475065_2253805.png)
+![image-20200722083952197](https://images.gitee.com/uploads/images/2020/0722/084147_e41d6ac7_2253805.png)
+![image-20200722084012352](https://images.gitee.com/uploads/images/2020/0722/084147_079e755b_2253805.png)
+![image-20200722084025787](https://images.gitee.com/uploads/images/2020/0722/084147_be3e8764_2253805.png)
+![image-20200722084036165](https://images.gitee.com/uploads/images/2020/0722/084147_22c5cb4d_2253805.png)
+![image-20200722084047541](https://images.gitee.com/uploads/images/2020/0722/084148_6d7d9888_2253805.png)
+![163758_138e22e9_2253805](https://images.gitee.com/uploads/images/2020/0722/084148_1f2eb6b1_2253805.png)
