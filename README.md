@@ -16,6 +16,11 @@
 
 最后，大家一起加油！   :neckbeard:  :neckbeard:  :neckbeard: 
 
+## 特别鸣谢
+感谢JetBrains公司提供的使用许可证！
+![https://www.jetbrains.com/?from=NKGMobaBasedOnET](https://images.gitee.com/uploads/images/2020/0722/080612_25663194_2253805.png "QQ截图20200722080548.png")
+https://www.jetbrains.com/?from=NKGMobaBasedOnET
+
 ## 运行环境
 
  **编辑器：Unity 2019.4.0 LTS** 
