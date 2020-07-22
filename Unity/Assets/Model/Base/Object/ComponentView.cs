@@ -1,118 +1,80 @@
-using System;
+#if UNITY_EDITOR
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using UnityEngine;
 
 namespace ETModel
 {
-    public class ComponentView: SerializedMonoBehaviour
+    public class ComponentView : SerializedMonoBehaviour
     {
-        public object Component;
+        [HideInInspector] public object Component;
 
-        [InfoBox("注意，这将十分消耗性能。", InfoMessageType.Warning)]
-        [LabelText("是否强制获取所有非公有成员")]
-        [OnValueChanged("TryGetAllPrivateMember")]
-        public bool GetAllPrivateMember = false;
-
-        [HideIf("GetAllPrivateMember")]
         [InfoBox("注意，这将十分消耗性能。默认递归一次，可更改下面的递归次数来改变递归深度", InfoMessageType.Warning)]
-        [LabelText("是否强制获取所有非公有成员(递归)")]
+        [LabelText("是否强制获取所有成员(递归)")]
         [OnValueChanged("TryGetAllPrivateMemberDeeply")]
-        public bool GetAllPrivateMemberDeeply = false;
+        public bool GetAllPrivateMemberDeeply;
 
-        [InfoBox("开启递归反射时生效")]
-        [LabelText("反射层次数")]
-        [PropertyRange(1, 4)]
-        public int ReflectCount = 1;
+        [OnValueChanged("TryGetAllPrivateMemberDeeply")] [LabelText("反射层次数")] [PropertyRange(0, 6)]
+        public int ReflectCount = 0;
 
-        [ShowIf("GetAllPrivateMember")]
-        [LabelText("所有非公有成员")]
-        public Dictionary<string, object> AllPrivateMember;
-
-        [ShowIf("GetAllPrivateMemberDeeply")]
-        [LabelText("所有非公有成员（递归）")]
-        public Dictionary<string, object> AllPrivateMember_Deeply;
-
-        public void TryGetAllPrivateMember()
-        {
-            if (this.GetAllPrivateMember)
-            {
-                if (this.AllPrivateMember == null)
-                {
-                    AllPrivateMember = new Dictionary<string, object>();
-                }
-
-                this.AllPrivateMember.Clear();
-                StartGetAllPrivateMember(this.AllPrivateMember, this.Component);
-            }
-        }
+        [ShowIf("GetAllPrivateMemberDeeply")] [LabelText("所有成员")]
+        public Dictionary<string, object> AllMembers_Deeply;
 
         public void TryGetAllPrivateMemberDeeply()
         {
             if (this.GetAllPrivateMemberDeeply)
             {
-                if (this.AllPrivateMember_Deeply == null)
+                if (this.AllMembers_Deeply == null)
                 {
-                    this.AllPrivateMember_Deeply = new Dictionary<string, object>();
+                    this.AllMembers_Deeply = new Dictionary<string, object>();
                 }
 
-                this.AllPrivateMember_Deeply.Clear();
-                StartGetAllPrivateDeeply(this.AllPrivateMember_Deeply, this.Component);
+                this.AllMembers_Deeply.Clear();
+                StartGetAllMembersDeeply(this.AllMembers_Deeply, this.Component);
             }
         }
 
-        public void StartGetAllPrivateMember(Dictionary<string, object> targetDic, object targetObject)
+        public void StartGetAllMembersDeeply(Dictionary<string, object> targetDic, object targetObject)
         {
-            //获取类中的非public字段
-            FieldInfo[] privateFields = targetObject.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-            foreach (var VARIABLE in privateFields)
+            //获取类中的字段
+            FieldInfo[] fields = targetObject.GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            foreach (var fieldInfo in fields)
             {
-                targetDic.Add(VARIABLE.GetNiceName(), VARIABLE.GetValue(targetObject));
+                targetDic.Add(fieldInfo.GetNiceName(),
+                    GetAllMembersInternal(fieldInfo.GetValue(targetObject), ReflectCount));
             }
 
-            //获取类中的非public屬性
-            PropertyInfo[] privatePropertyInfos = targetObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
-            foreach (var VARIABLE in privatePropertyInfos)
+            //获取类中的屬性
+            PropertyInfo[] propertyInfos = targetObject.GetType()
+                .GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            foreach (var propertyInfo in propertyInfos)
             {
-                targetDic.Add(VARIABLE.GetNiceName(), VARIABLE.GetValue(targetObject));
-            }
-        }
-
-        public void StartGetAllPrivateDeeply(Dictionary<string, object> targetDic, object targetObject)
-        {
-            //获取类中的非public字段
-            FieldInfo[] privateFields = targetObject.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-            foreach (var VARIABLE in privateFields)
-            {
-                targetDic.Add(VARIABLE.GetNiceName(), GetAllPrivateMemberInternal(VARIABLE.GetValue(targetObject), ReflectCount));
-            }
-
-            //获取类中的非public屬性
-            PropertyInfo[] privatePropertyInfos = targetObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
-            foreach (var VARIABLE in privatePropertyInfos)
-            {
-                targetDic.Add(VARIABLE.GetNiceName(), GetAllPrivateMemberInternal(VARIABLE.GetValue(targetObject), ReflectCount));
+                targetDic.Add(propertyInfo.GetNiceName(),
+                    GetAllMembersInternal(propertyInfo.GetValue(targetObject), ReflectCount));
             }
         }
 
-        public object GetAllPrivateMemberInternal(object targetObject, int recursiveCount)
+        public object GetAllMembersInternal(object targetObject, int recursiveCount)
         {
             if (recursiveCount <= 0 || targetObject == null) return targetObject;
             recursiveCount--;
-            Dictionary<string, object> temp = new Dictionary<string, object>();
-            //获取类中的非public字段
-            FieldInfo[] privateFields = targetObject.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-            foreach (var VARIABLE in privateFields)
+            Dictionary<string, object> temp = targetObject.ObjectToMap();
+            Dictionary<string, object> result = new Dictionary<string, object>();
+            foreach (var VARIABLE in temp)
             {
-                temp.Add(VARIABLE.GetNiceName(), GetAllPrivateMemberInternal(VARIABLE.GetValue(targetObject), recursiveCount));
+                result.Add(VARIABLE.Key, GetAllMembersInternal(VARIABLE.Value, recursiveCount));
             }
 
-            //TODO 多层获取属性会报错，待处理
-            return temp;
+            if (result.Count == 0)
+            {
+                return targetObject;
+            }
+
+            return result;
         }
     }
 }
+#endif

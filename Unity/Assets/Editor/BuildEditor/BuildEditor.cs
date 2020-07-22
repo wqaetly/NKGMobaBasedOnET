@@ -110,6 +110,11 @@ namespace ETEditor
         [Button("清空StreamingAssets目录，并生成新的Version.txt文件", 25), GUIColor(0.4f, 0.8f, 1)]
         public void CleanStreamingAssets()
         {
+            if (!Directory.Exists("Assets/StreamingAssets"))
+            {
+                Directory.CreateDirectory("Assets/StreamingAssets");
+            }
+            
             FileHelper.CleanDirectory("Assets/StreamingAssets");
             //创建版本信息类，并将版本号与资源总大小赋值
             VersionConfig versionProto = new VersionConfig();

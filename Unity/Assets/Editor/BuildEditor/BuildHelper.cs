@@ -67,6 +67,11 @@ namespace ETEditor
             BuildPipeline.BuildAssetBundles(fold, buildAssetBundleOptions, buildTarget);
 
             Log.Info("生成版本信息");
+            
+            if (!Directory.Exists(ProjectResBuildFolder))
+            {
+                Directory.CreateDirectory(ProjectResBuildFolder);
+            }
             GenerateVersionInfo(fold, ProjectResBuildFolder, version, isContainAB);
 
             Log.Info("完成资源打包");
