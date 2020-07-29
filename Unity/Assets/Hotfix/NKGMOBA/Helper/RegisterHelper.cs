@@ -63,7 +63,7 @@ namespace ETHotfix
             Log.Info("注册按钮重新显示");
             //设置注册处理完成状态
             isRegistering = false;
-            ((FUILogin.FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.FUILogin.UIPackageName)).registBtn.self
+            ((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)).registBtn.self
                     .visible =
                     true;
             //释放realmSession

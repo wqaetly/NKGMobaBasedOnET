@@ -5,7 +5,7 @@
 //------------------------------------------------------------
 
 using System;
-using ETHotfix.FUI5v5Map;
+using ETHotfix;
 using ETModel;
 using FairyGUI;
 using UnityEngine;

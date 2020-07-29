@@ -4,16 +4,16 @@
 // Data: 2019年4月27日 17:35:10
 //------------------------------------------------------------
 
-using ETHotfix.FUILogin;
+using ETHotfix;
 using ETModel;
 using UnityEngine;
 
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class FUILoginStartSystem: StartSystem<FUILogin.FUILogin>
+    public class FUILoginStartSystem: StartSystem<FUILogin>
     {
-        public override void Start(FUILogin.FUILogin self)
+        public override void Start(FUILogin self)
         {
             self.loginInfo.alpha = 0;
             self.loginBtn.self.onClick.Add(() => LoginBtnOnClick(self));
@@ -21,13 +21,13 @@ namespace ETHotfix
             self.ToTestSceneBtn.self.onClick.Add(() => ToTestSceneBtnBtnOnClick(self));
         }
 
-        private void RegisterBtnOnClick(FUILogin.FUILogin self)
+        private void RegisterBtnOnClick(FUILogin self)
         {
             self.registBtn.self.visible = false;
             RegisterHelper.OnRegisterAsync(self.accountText.text, self.passwordText.text).Coroutine();
         }
 
-        public void LoginBtnOnClick(FUILogin.FUILogin self)
+        public void LoginBtnOnClick(FUILogin self)
         {
             self.loginBtn.self.visible = false;
             LoginHelper.OnLoginAsync(self.accountText.text, self.passwordText.text).Coroutine();
@@ -37,7 +37,7 @@ namespace ETHotfix
         /// 前往训练营
         /// </summary>
         /// <param name="self"></param>
-        public void ToTestSceneBtnBtnOnClick(FUILogin.FUILogin self)
+        public void ToTestSceneBtnBtnOnClick(FUILogin self)
         {
             self.loginBtn.self.visible = false;
             LoginHelper.OnLoginAsync("Test123", "Test123").Coroutine();

@@ -22,15 +22,37 @@ namespace ILRuntime.Runtime.Generated
             MethodBase method;
             Type[] args;
             Type type = typeof(FairyGUI.Transition);
-            args = new Type[]{};
+            args = new Type[]{typeof(FairyGUI.PlayCompleteCallback)};
             method = type.GetMethod("Play", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Play_0);
+            args = new Type[]{};
+            method = type.GetMethod("Play", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, Play_1);
 
 
         }
 
 
         static StackObject* Play_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            FairyGUI.PlayCompleteCallback @onComplete = (FairyGUI.PlayCompleteCallback)typeof(FairyGUI.PlayCompleteCallback).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            FairyGUI.Transition instance_of_this_method = (FairyGUI.Transition)typeof(FairyGUI.Transition).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.Play(@onComplete);
+
+            return __ret;
+        }
+
+        static StackObject* Play_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

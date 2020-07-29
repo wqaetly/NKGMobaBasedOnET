@@ -116,6 +116,7 @@ namespace ETModel
                 }
 
                 tempGameObject = UnityEngine.Object.Instantiate(prefab);
+                tempGameObject.AddComponent<ComponentView>();
             }
             else if (queue.Count == 0)
             {
@@ -128,6 +129,7 @@ namespace ETModel
                 }
 
                 tempGameObject = UnityEngine.Object.Instantiate(prefab);
+                tempGameObject.AddComponent<ComponentView>();
             }
             else
             {

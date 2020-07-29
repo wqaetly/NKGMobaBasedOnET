@@ -23,50 +23,50 @@ namespace ILRuntime.Runtime.Generated
             Type[] args;
             Type type = typeof(ETModel.HeroDataComponent);
 
-            field = type.GetField("NodeDataForHero", flag);
-            app.RegisterCLRFieldGetter(field, get_NodeDataForHero_0);
-            app.RegisterCLRFieldSetter(field, set_NodeDataForHero_0);
-            field = type.GetField("CurrentLifeValue", flag);
-            app.RegisterCLRFieldGetter(field, get_CurrentLifeValue_1);
-            app.RegisterCLRFieldSetter(field, set_CurrentLifeValue_1);
             field = type.GetField("MaxLifeValue", flag);
-            app.RegisterCLRFieldGetter(field, get_MaxLifeValue_2);
-            app.RegisterCLRFieldSetter(field, set_MaxLifeValue_2);
+            app.RegisterCLRFieldGetter(field, get_MaxLifeValue_0);
+            app.RegisterCLRFieldSetter(field, set_MaxLifeValue_0);
+            field = type.GetField("MaxMagicValue", flag);
+            app.RegisterCLRFieldGetter(field, get_MaxMagicValue_1);
+            app.RegisterCLRFieldSetter(field, set_MaxMagicValue_1);
+            field = type.GetField("CurrentLifeValue", flag);
+            app.RegisterCLRFieldGetter(field, get_CurrentLifeValue_2);
+            app.RegisterCLRFieldSetter(field, set_CurrentLifeValue_2);
             field = type.GetField("CurrentMagicValue", flag);
             app.RegisterCLRFieldGetter(field, get_CurrentMagicValue_3);
             app.RegisterCLRFieldSetter(field, set_CurrentMagicValue_3);
-            field = type.GetField("MaxMagicValue", flag);
-            app.RegisterCLRFieldGetter(field, get_MaxMagicValue_4);
-            app.RegisterCLRFieldSetter(field, set_MaxMagicValue_4);
+            field = type.GetField("NodeDataForHero", flag);
+            app.RegisterCLRFieldGetter(field, get_NodeDataForHero_4);
+            app.RegisterCLRFieldSetter(field, set_NodeDataForHero_4);
 
 
         }
 
 
 
-        static object get_NodeDataForHero_0(ref object o)
-        {
-            return ((ETModel.HeroDataComponent)o).NodeDataForHero;
-        }
-        static void set_NodeDataForHero_0(ref object o, object v)
-        {
-            ((ETModel.HeroDataComponent)o).NodeDataForHero = (ETModel.NodeDataForHero)v;
-        }
-        static object get_CurrentLifeValue_1(ref object o)
-        {
-            return ((ETModel.HeroDataComponent)o).CurrentLifeValue;
-        }
-        static void set_CurrentLifeValue_1(ref object o, object v)
-        {
-            ((ETModel.HeroDataComponent)o).CurrentLifeValue = (System.Single)v;
-        }
-        static object get_MaxLifeValue_2(ref object o)
+        static object get_MaxLifeValue_0(ref object o)
         {
             return ((ETModel.HeroDataComponent)o).MaxLifeValue;
         }
-        static void set_MaxLifeValue_2(ref object o, object v)
+        static void set_MaxLifeValue_0(ref object o, object v)
         {
             ((ETModel.HeroDataComponent)o).MaxLifeValue = (System.Single)v;
+        }
+        static object get_MaxMagicValue_1(ref object o)
+        {
+            return ((ETModel.HeroDataComponent)o).MaxMagicValue;
+        }
+        static void set_MaxMagicValue_1(ref object o, object v)
+        {
+            ((ETModel.HeroDataComponent)o).MaxMagicValue = (System.Single)v;
+        }
+        static object get_CurrentLifeValue_2(ref object o)
+        {
+            return ((ETModel.HeroDataComponent)o).CurrentLifeValue;
+        }
+        static void set_CurrentLifeValue_2(ref object o, object v)
+        {
+            ((ETModel.HeroDataComponent)o).CurrentLifeValue = (System.Single)v;
         }
         static object get_CurrentMagicValue_3(ref object o)
         {
@@ -76,13 +76,13 @@ namespace ILRuntime.Runtime.Generated
         {
             ((ETModel.HeroDataComponent)o).CurrentMagicValue = (System.Single)v;
         }
-        static object get_MaxMagicValue_4(ref object o)
+        static object get_NodeDataForHero_4(ref object o)
         {
-            return ((ETModel.HeroDataComponent)o).MaxMagicValue;
+            return ((ETModel.HeroDataComponent)o).NodeDataForHero;
         }
-        static void set_MaxMagicValue_4(ref object o, object v)
+        static void set_NodeDataForHero_4(ref object o, object v)
         {
-            ((ETModel.HeroDataComponent)o).MaxMagicValue = (System.Single)v;
+            ((ETModel.HeroDataComponent)o).NodeDataForHero = (ETModel.NodeDataForHero)v;
         }
 
 

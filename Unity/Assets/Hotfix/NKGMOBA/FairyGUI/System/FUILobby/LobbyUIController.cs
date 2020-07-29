@@ -16,7 +16,7 @@ namespace ETHotfix
     {
         public override void Run()
         {
-            var hotfixui = FUILobby.FUILobby.CreateInstance();
+            var hotfixui = FUILobby.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = FUIPackage.FUILobby;
             hotfixui.GObject.sortingOrder = 999;

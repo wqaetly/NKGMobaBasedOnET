@@ -1,11 +1,9 @@
-/** This is an automatically generated class by FairyGUI plugin FGUI2ET. Please do not modify it. **/
+/** This is an automatically generated class by FairyGUI. Please do not modify it. **/
 
-using System.Threading.Tasks;
 using FairyGUI;
 using ETModel;
-using ETHotfix;
 
-namespace ETHotfix.FUI5v5Map
+namespace ETHotfix
 {
     [ObjectSystem]
     public class SkillProBarAwakeSystem : AwakeSystem<SkillProBar, GObject>
@@ -15,106 +13,103 @@ namespace ETHotfix.FUI5v5Map
             self.Awake(go);
         }
     }
-	
-	public sealed class SkillProBar : FUI
-	{	
-		public const string UIPackageName = "FUI5v5Map";
-		public const string UIResName = "SkillProBar";
-		
-		/// <summary>
-        /// SkillProBar的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
-        /// </summary>
-		public GProgressBar self;
-		
-		public GImage bar;
-
-		private static GObject CreateGObject()
-        {
-            return UIPackage.CreateObject(UIPackageName, UIResName);
-        }
-		
-		private static void CreateGObjectAsync(UIPackage.CreateObjectCallback result)
-        {
-            UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
-        }
-
-        public static SkillProBar CreateInstance()
-		{			
-			return ComponentFactory.Create<SkillProBar, GObject>(CreateGObject());
-		}
-
-        public static ETTask<SkillProBar> CreateInstanceAsync()
-        {
-            ETTaskCompletionSource<SkillProBar> tcs = new ETTaskCompletionSource<SkillProBar>();
-
-            CreateGObjectAsync((go) =>
-            {
-                tcs.SetResult(ComponentFactory.Create<SkillProBar, GObject>(go));
-            });
-
-            return tcs.Task;
-        }
-
-        public static SkillProBar Create(GObject go)
-		{
-			return ComponentFactory.Create<SkillProBar, GObject>(go);
-		}
-		
+        
+    public sealed class SkillProBar : FUI
+    {	
+        public const string UIPackageName = "FUI5v5Map";
+        public const string UIResName = "SkillProBar";
+        
         /// <summary>
-        /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
+        /// {uiResName}的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
         /// </summary>
-        public static SkillProBar GetFormPool(GObject go)
+        public GProgressBar self;
+            
+    public GImage bar;
+    public const string URL = "ui://9sdz56q4qraf6d";
+
+    private static GObject CreateGObject()
+    {
+        return UIPackage.CreateObject(UIPackageName, UIResName);
+    }
+    
+    private static void CreateGObjectAsync(UIPackage.CreateObjectCallback result)
+    {
+        UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
+    }
+        
+    public static SkillProBar CreateInstance()
+    {			
+        return ComponentFactory.Create<SkillProBar, GObject>(CreateGObject());
+    }
+        
+    public static ETTask<SkillProBar> CreateInstanceAsync(Entity domain)
+    {
+        ETTaskCompletionSource<SkillProBar> tcs = new ETTaskCompletionSource<SkillProBar>();
+        CreateGObjectAsync((go) =>
         {
-            var fui = go.Get<SkillProBar>();
-
-            if(fui == null)
-            {
-                fui = Create(go);
-            }
-
-            fui.isFromFGUIPool = true;
-
-            return fui;
+            tcs.SetResult(ComponentFactory.Create<SkillProBar, GObject>(go));
+        });
+        return tcs.Task;
+    }
+        
+    public static SkillProBar Create(GObject go)
+    {
+        return ComponentFactory.Create<SkillProBar, GObject>(go);
+    }
+        
+    /// <summary>
+    /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
+    /// </summary>
+    public static SkillProBar GetFormPool(GObject go)
+    {
+        var fui = go.Get<SkillProBar>();
+        if(fui == null)
+        {
+            fui = Create(go);
         }
-						
-		public void Awake(GObject go)
-		{
-			if(go == null)
-			{
-				return;
-			}
-			
-			GObject = go;	
-			
-			if (string.IsNullOrWhiteSpace(Name))
+        fui.isFromFGUIPool = true;
+        return fui;
+    }
+        
+    public void Awake(GObject go)
+    {
+        if(go == null)
+        {
+            return;
+        }
+        
+        GObject = go;	
+        
+        if (string.IsNullOrWhiteSpace(Name))
+        {
+            Name = Id.ToString();
+        }
+        
+        self = (GProgressBar)go;
+        
+        self.Add(this);
+        
+        var com = go.asCom;
+            
+        if(com != null)
+        {	
+            
+    		bar = (GImage)com.GetChildAt(0);
+    	}
+}
+       public override void Dispose()
+       {
+            if(IsDisposed)
             {
-				Name = Id.ToString();
+                return;
             }
-			
-			self = (GProgressBar)go;
-			
-			self.Add(this);
-			
-			var com = go.asCom;
-				
-			if(com != null)
-			{	
-				bar = (GImage)com.GetChild("bar");
-			}
-		}
-		
-		public override void Dispose()
-		{
-			if(IsDisposed)
-			{
-				return;
-			}
-			
-			base.Dispose();
-			
-			self.Remove();
-			self = null;
+            
+            base.Dispose();
+            
+            self.Remove();
+            self = null;
+            
 			bar = null;
 		}
-	}
+}
 }

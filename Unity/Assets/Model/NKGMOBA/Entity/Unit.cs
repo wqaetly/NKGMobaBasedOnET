@@ -21,9 +21,7 @@ namespace ETModel
 		public void Awake(GameObject gameObject)
 		{
 			this.GameObject = gameObject;
-#if UNITY_EDITOR
-			this.GameObject.AddComponent<ComponentView>().Component = this;
-#endif
+			this.GameObject.GetComponent<ComponentView>().Component = this;
 		}
 
 		public Vector3 Position

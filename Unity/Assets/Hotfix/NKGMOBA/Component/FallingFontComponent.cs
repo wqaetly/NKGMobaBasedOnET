@@ -38,12 +38,12 @@ namespace ETHotfix
         /// <summary>
         /// 预备中的飘字组件队列
         /// </summary>
-        private Queue<FUIFallBleed.FUIFallBleed> FuiFallBleedQue = new Queue<FUIFallBleed.FUIFallBleed>();
+        private Queue<FUIFallBleed> FuiFallBleedQue = new Queue<FUIFallBleed>();
 
         /// <summary>
         /// 运行中的飘字组件队列
         /// </summary>
-        private Queue<FUIFallBleed.FUIFallBleed> RunnningFuiFallBleedQue = new Queue<FUIFallBleed.FUIFallBleed>();
+        private Queue<FUIFallBleed> RunnningFuiFallBleedQue = new Queue<FUIFallBleed>();
 
         /// <summary>
         /// 已完成的飘字组件id队列
@@ -52,7 +52,7 @@ namespace ETHotfix
 
         public HotfixUnit myHero;
 
-        public void Add(FUIFallBleed.FUIFallBleed fuiFallBleed)
+        public void Add(FUIFallBleed fuiFallBleed)
         {
             this.FuiFallBleedQue.Enqueue(fuiFallBleed);
         }
@@ -66,14 +66,14 @@ namespace ETHotfix
             if (FuiFallBleedQue.Count == 0)
             {
                 ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUIFallBleed);
-                var hotfixui = FUIFallBleed.FUIFallBleed.CreateInstance();
+                var hotfixui = FUIFallBleed.CreateInstance();
                 hotfixui.Name = hotfixui.Id.ToString();
                 hotfixui.MakeFullScreen();
                 Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
                 this.Add(hotfixui);
             }
 
-            FUIFallBleed.FUIFallBleed fuiFallBleed = this.FuiFallBleedQue.Dequeue();
+            FUIFallBleed fuiFallBleed = this.FuiFallBleedQue.Dequeue();
             fuiFallBleed.Tex_ValueToFall.text = targetValue.ToString();
             fuiFallBleed.self.visible = true;
             fuiFallBleed.FallingBleed.Play(CompleteCallBack);
@@ -85,10 +85,10 @@ namespace ETHotfix
 
         private void CompleteCallBack()
         {
-            this.Recycle(Game.Scene.GetComponent<FUIComponent>().Get(this.completedIdQueue.Dequeue()) as FUIFallBleed.FUIFallBleed);
+            this.Recycle(Game.Scene.GetComponent<FUIComponent>().Get(this.completedIdQueue.Dequeue()) as FUIFallBleed);
         }
 
-        public void Recycle(FUIFallBleed.FUIFallBleed fuiFallBleed)
+        public void Recycle(FUIFallBleed fuiFallBleed)
         {
             fuiFallBleed.self.visible = false;
             this.FuiFallBleedQue.Enqueue(fuiFallBleed);

@@ -11,9 +11,9 @@ using UnityEngine;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class FUIHeadBarStartSystem: StartSystem<FUIHeadBar.HeadBar>
+    public class FUIHeadBarStartSystem: StartSystem<FUIHeadBar>
     {
-        public override void Start(FUIHeadBar.HeadBar self)
+        public override void Start(FUIHeadBar self)
         {
             //self.HPGapList.itemRenderer += (index, item) => { Log.Info("血条更新了"); };
             

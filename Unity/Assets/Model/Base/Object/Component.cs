@@ -107,9 +107,7 @@ namespace ETModel
                 this.GameObject = new GameObject();
                 this.GameObject.name = this.GetType().Name;
                 this.GameObject.transform.SetParent(Global.transform, false);
-#if UNITY_EDITOR
                 this.GameObject.AddComponent<ComponentView>().Component = this;
-#endif
             }
 #endif
         }

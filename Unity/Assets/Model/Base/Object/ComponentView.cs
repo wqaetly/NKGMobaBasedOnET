@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Reflection;
 using Sirenix.OdinInspector;
@@ -7,19 +6,23 @@ using UnityEngine;
 
 namespace ETModel
 {
-    public class ComponentView : SerializedMonoBehaviour
+    public class ComponentView: SerializedMonoBehaviour
     {
-        [HideInInspector] public object Component;
-
+        [HideInInspector]
+        public object Component;
+#if UNITY_EDITOR
         [InfoBox("注意，这将十分消耗性能。默认递归一次，可更改下面的递归次数来改变递归深度", InfoMessageType.Warning)]
         [LabelText("是否强制获取所有成员(递归)")]
         [OnValueChanged("TryGetAllPrivateMemberDeeply")]
         public bool GetAllPrivateMemberDeeply;
 
-        [OnValueChanged("TryGetAllPrivateMemberDeeply")] [LabelText("反射层次数")] [PropertyRange(0, 6)]
+        [OnValueChanged("TryGetAllPrivateMemberDeeply")]
+        [LabelText("反射层次数")]
+        [PropertyRange(0, 6)]
         public int ReflectCount = 0;
 
-        [ShowIf("GetAllPrivateMemberDeeply")] [LabelText("所有成员")]
+        [ShowIf("GetAllPrivateMemberDeeply")]
+        [LabelText("所有成员")]
         public Dictionary<string, object> AllMembers_Deeply;
 
         public void TryGetAllPrivateMemberDeeply()
@@ -40,7 +43,7 @@ namespace ETModel
         {
             //获取类中的字段
             FieldInfo[] fields = targetObject.GetType()
-                .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (var fieldInfo in fields)
             {
                 targetDic.Add(fieldInfo.GetNiceName(),
@@ -49,7 +52,7 @@ namespace ETModel
 
             //获取类中的屬性
             PropertyInfo[] propertyInfos = targetObject.GetType()
-                .GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    .GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (var propertyInfo in propertyInfos)
             {
                 targetDic.Add(propertyInfo.GetNiceName(),
@@ -75,6 +78,6 @@ namespace ETModel
 
             return result;
         }
+#endif
     }
 }
-#endif

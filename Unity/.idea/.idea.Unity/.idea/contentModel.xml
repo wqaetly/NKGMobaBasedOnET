@@ -248,7 +248,7 @@
                 <e p="FUIHeadBar" t="Include">
                   <e p="Bar_HP.cs" t="Include" />
                   <e p="Bar_MP.cs" t="Include" />
-                  <e p="HeadBar.cs" t="Include" />
+                  <e p="FUIHeadBar.cs" t="Include" />
                   <e p="PackageFUIHeadBar.cs" t="Include" />
                 </e>
                 <e p="FUILobby" t="Include">
@@ -453,6 +453,7 @@
             <e p="ETModel_AsyncETTaskMethodBuilder_Binding.cs" t="Include" />
             <e p="ETModel_AsyncETVoidMethodBuilder_Binding.cs" t="Include" />
             <e p="ETModel_B2S_DebuggerComponent_Binding.cs" t="Include" />
+            <e p="ETModel_BuffPoolComponent_Binding.cs" t="Include" />
             <e p="ETModel_ByteHelper_Binding.cs" t="Include" />
             <e p="ETModel_C2G_EnterMap_Binding.cs" t="Include" />
             <e p="ETModel_Component_Binding.cs" t="Include" />
@@ -471,8 +472,10 @@
             <e p="ETModel_ETTask_Binding.cs" t="Include" />
             <e p="ETModel_ETTask_Binding_Awaiter_Binding.cs" t="Include" />
             <e p="ETModel_ETTaskCompletionSource_1_Google_Protobuf_Adapt_IMessage_Binding_Adapt_t.cs" t="Include" />
+            <e p="ETModel_ETTaskCompletionSource_1_ILTypeInstance_Binding.cs" t="Include" />
             <e p="ETModel_ETVoid_Binding.cs" t="Include" />
             <e p="ETModel_EventAttribute_Binding.cs" t="Include" />
+            <e p="ETModel_EventProxy_Binding.cs" t="Include" />
             <e p="ETModel_EventSystem_Binding.cs" t="Include" />
             <e p="ETModel_Frame_ClickMap_Binding.cs" t="Include" />
             <e p="ETModel_FUIPackageComponent_Binding.cs" t="Include" />
@@ -489,6 +492,7 @@
             <e p="ETModel_IFixedUpdateSystem_Binding.cs" t="Include" />
             <e p="ETModel_IMessagePacker_Binding.cs" t="Include" />
             <e p="ETModel_Log_Binding.cs" t="Include" />
+            <e p="ETModel_M2C_CreateSpilings_Binding.cs" t="Include" />
             <e p="ETModel_M2C_CreateUnits_Binding.cs" t="Include" />
             <e p="ETModel_M2C_PathfindingResult_Binding.cs" t="Include" />
             <e p="ETModel_MessageAttribute_Binding.cs" t="Include" />
@@ -498,6 +502,11 @@
             <e p="ETModel_MongoHelper_Binding.cs" t="Include" />
             <e p="ETModel_NetworkComponent_Binding.cs" t="Include" />
             <e p="ETModel_NodeDataForHero_Binding.cs" t="Include" />
+            <e p="ETModel_NodeDataForSkillBuff_Binding.cs" t="Include" />
+            <e p="ETModel_NP_DataSupportor_Binding.cs" t="Include" />
+            <e p="ETModel_NP_RuntimeTree_Binding.cs" t="Include" />
+            <e p="ETModel_NP_RuntimeTreeFactory_Binding.cs" t="Include" />
+            <e p="ETModel_NP_RuntimeTreeManager_Binding.cs" t="Include" />
             <e p="ETModel_OpcodeHelper_Binding.cs" t="Include" />
             <e p="ETModel_OpcodeTypeComponent_Binding.cs" t="Include" />
             <e p="ETModel_Player_Binding.cs" t="Include" />
@@ -508,9 +517,11 @@
             <e p="ETModel_Session_Binding.cs" t="Include" />
             <e p="ETModel_SessionCallbackComponent_Binding.cs" t="Include" />
             <e p="ETModel_SessionComponent_Binding.cs" t="Include" />
+            <e p="ETModel_SpilingInfo_Binding.cs" t="Include" />
             <e p="ETModel_StringHelper_Binding.cs" t="Include" />
             <e p="ETModel_Unit_Binding.cs" t="Include" />
             <e p="ETModel_UnitComponent_Binding.cs" t="Include" />
+            <e p="ETModel_UnitFactory_Binding.cs" t="Include" />
             <e p="ETModel_UnitInfo_Binding.cs" t="Include" />
             <e p="ETModel_UnitPathComponent_Binding.cs" t="Include" />
             <e p="ETModel_UnOrderMultiMap_2_Type_IFixedUpdateSystem_Binding.cs" t="Include" />
@@ -519,6 +530,7 @@
             <e p="FairyGUI_EventContext_Binding.cs" t="Include" />
             <e p="FairyGUI_EventListener_Binding.cs" t="Include" />
             <e p="FairyGUI_GComponent_Binding.cs" t="Include" />
+            <e p="FairyGUI_GList_Binding.cs" t="Include" />
             <e p="FairyGUI_GLoader_Binding.cs" t="Include" />
             <e p="FairyGUI_GObject_Binding.cs" t="Include" />
             <e p="FairyGUI_GProgressBar_Binding.cs" t="Include" />
@@ -542,6 +554,8 @@
             <e p="Google_Protobuf_MessageParser_1_Google_Protobuf_Adapt_IMessage_Binding_Adapto_t.cs" t="Include" />
             <e p="Google_Protobuf_ProtoPreconditions_Binding.cs" t="Include" />
             <e p="LitJson_JsonMapper_Binding.cs" t="Include" />
+            <e p="NPBehave_Blackboard_Binding.cs" t="Include" />
+            <e p="NPBehave_Node_Binding.cs" t="Include" />
             <e p="System_Action_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.cs" t="Include" />
             <e p="System_Activator_Binding.cs" t="Include" />
             <e p="System_Array_Binding.cs" t="Include" />
@@ -549,6 +563,9 @@
             <e p="System_Collections_Generic_Dictionary_2_Int32_Action_1_Google_Protobuf_Adapt__t.cs" t="Include" />
             <e p="System_Collections_Generic_Dictionary_2_Int64_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Dictionary_2_Int64_ILTypeInstance_Binding_Enumerat_t.cs" t="Include" />
+            <e p="System_Collections_Generic_Dictionary_2_Int64_NP_RuntimeTree_Binding.cs" t="Include" />
+            <e p="System_Collections_Generic_Dictionary_2_Int64_NP_RuntimeTree_Binding_Enumerat_t.cs" t="Include" />
+            <e p="System_Collections_Generic_Dictionary_2_Int64_SkillBaseNodeData_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Dictionary_2_String_List_1_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Dictionary_2_Type_ILTypeInstance_Binding.cs" t="Include" />
@@ -563,18 +580,22 @@
             <e p="System_Collections_Generic_IEnumerator_1_Google_Protobuf_Adapt_IMessage_Bindi_t.cs" t="Include" />
             <e p="System_Collections_Generic_IEnumerator_1_UnitInfo_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_KeyValuePair_2_Int64_ILTypeInstance_Binding.cs" t="Include" />
+            <e p="System_Collections_Generic_KeyValuePair_2_Int64_NP_RuntimeTree_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_KeyValuePair_2_Type_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_IFixedUpdateSystem_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_IFixedUpdateSystem_Binding_Enumerator_Bindi_t.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_ILTypeInstance_Binding_Enumerator_Binding.cs" t="Include" />
+            <e p="System_Collections_Generic_List_1_Object_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_Type_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_Type_Binding_Enumerator_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_Vector2_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_List_1_Vector3_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Queue_1_ILTypeInstance_Binding.cs" t="Include" />
+            <e p="System_Collections_Generic_Queue_1_ILTypeInstance_Binding_Enumerator_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Queue_1_Int64_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Queue_1_Object_Binding.cs" t="Include" />
+            <e p="System_Collections_Generic_Queue_1_String_Binding.cs" t="Include" />
             <e p="System_Collections_Generic_Stack_1_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Collections_IDictionary_Binding.cs" t="Include" />
             <e p="System_Collections_IEnumerable_Binding.cs" t="Include" />
@@ -594,7 +615,6 @@
             <e p="System_String_Binding.cs" t="Include" />
             <e p="System_Text_StringBuilder_Binding.cs" t="Include" />
             <e p="System_Threading_CancellationToken_Binding.cs" t="Include" />
-            <e p="System_Threading_Tasks_TaskCompletionSource_1_ILTypeInstance_Binding.cs" t="Include" />
             <e p="System_Type_Binding.cs" t="Include" />
             <e p="UnityEngine_Camera_Binding.cs" t="Include" />
             <e p="UnityEngine_Debug_Binding.cs" t="Include" />
