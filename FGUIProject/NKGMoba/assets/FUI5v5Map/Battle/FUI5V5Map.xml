@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1280,720" opaque="false" adaptationTest="FitSize">
+  <displayList>
+    <image id="n12_clst" name="SkillAndStateBackGround" src="clst1u" fileName="Clarity_HUDAtlas/Skill.PNG" xy="419,599" size="392,116" group="n60_qraf"/>
+    <component id="n15_clst" name="RedProBar" src="clst5j" fileName="Battle/HpProcessBar.xml" xy="466,677" size="329,14" group="n60_qraf" touchable="false">
+      <ProgressBar value="100" max="100"/>
+    </component>
+    <text id="n73_qraf" name="RedText" xy="466,675" size="327,15" group="n60_qraf" fontSize="13" color="#cccccc" align="center" autoSize="none" bold="true" text="999/999"/>
+    <component id="n16_clst" name="BlueProBar" src="clst5k" fileName="Battle/OtherBar.xml" xy="466,692" size="328,14" group="n60_qraf">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <text id="n74_qraf" name="BlueText" xy="466,692" size="327,15" group="n60_qraf" fontSize="13" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="999/999"/>
+    <loader id="n141_o6w9" name="SkillQ_Loader" xy="505,616" size="45,44" group="n67_qraf" fill="scale"/>
+    <component id="n79_qraf" name="SkillQ_Bar" src="qraf6d" fileName="Battle/SkillProBar.xml" xy="505,616" size="46,45" group="n67_qraf">
+      <ProgressBar value="100" max="100"/>
+    </component>
+    <text id="n136_o6w9" name="SkillQ_CDInfo" xy="505,616" size="46,44" group="n67_qraf" fontSize="20" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <text id="n61_qraf" name="SkillQ_Text" xy="538,644" size="16,23" group="n67_qraf" fontSize="13" color="#cccccc" align="center" vAlign="middle" bold="true" text="Q"/>
+    <group id="n67_qraf" name="SkillQ" xy="505,616" size="46,51" group="n60_qraf" advanced="true"/>
+    <loader id="n142_o6w9" name="SkillE_Loader" xy="610,616" size="45,44" group="n68_qraf" fill="scale"/>
+    <component id="n80_qraf" name="SkillE_Bar" src="qraf6d" fileName="Battle/SkillProBar.xml" xy="610,616" size="46,45" group="n68_qraf">
+      <ProgressBar value="100" max="100"/>
+    </component>
+    <text id="n63_qraf" name="SkillE_Text" xy="644,646" size="12,23" group="n68_qraf" fontSize="13" color="#cccccc" align="center" vAlign="middle" bold="true" text="E"/>
+    <text id="n137_o6w9" name="SkillE_CDInfo" xy="610,616" size="46,45" group="n68_qraf" fontSize="20" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <group id="n68_qraf" name="SkillE" xy="610,616" size="46,53" group="n60_qraf" advanced="true"/>
+    <loader id="n144_o6w9" name="SkillW_Loader" xy="557,617" size="45,44" group="n69_qraf" fill="scale"/>
+    <component id="n81_qraf" name="SkillW_Bar" src="qraf6d" fileName="Battle/SkillProBar.xml" xy="557,616" group="n69_qraf">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <text id="n62_qraf" name="SkillW_Text" xy="589,645" size="19,23" group="n69_qraf" fontSize="13" color="#cccccc" align="center" vAlign="middle" bold="true" text="W"/>
+    <text id="n138_o6w9" name="SkillW_CDInfo" xy="558,617" size="46,45" group="n69_qraf" fontSize="20" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <group id="n69_qraf" name="SkillW" xy="559,617" size="48,51" group="n60_qraf" advanced="true"/>
+    <loader id="n145_o6w9" name="SkillR_Loader" xy="663,618" size="45,44" group="n72_qraf" fill="scale"/>
+    <component id="n82_qraf" name="SkillR_Bar" src="qraf6d" fileName="Battle/SkillProBar.xml" xy="661,615" group="n72_qraf">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <text id="n64_qraf" name="SkillR_Text" xy="696,645" size="14,23" group="n72_qraf" fontSize="13" color="#cccccc" align="center" vAlign="middle" bold="true" text="R"/>
+    <text id="n139_o6w9" name="SkillR_CDInfo" xy="661,616" size="46,45" group="n72_qraf" fontSize="20" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <group id="n72_qraf" name="SkillR" xy="661,615" size="49,53" group="n60_qraf" advanced="true"/>
+    <loader id="n158_o6w9" name="SkillTalent_Loader" xy="467,615" size="32,33" group="n157_o6w9" fill="scale"/>
+    <component id="n155_o6w9" name="SkillTalent_Bar" src="o6w975" fileName="Battle/SkillSmallProBar.xml" xy="467,615" group="n157_o6w9">
+      <ProgressBar value="40" max="100"/>
+    </component>
+    <text id="n156_o6w9" name="SkillTalent_CDInfo" xy="467,615" size="33,33" group="n157_o6w9" fontSize="13" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <group id="n157_o6w9" name="SkillTalent" xy="467,615" size="34,34" group="n60_qraf" advanced="true"/>
+    <loader id="n159_o6w9" name="SkillD_Loader" xy="721,615" size="32,33" group="n162_o6w9" fill="scale"/>
+    <component id="n160_o6w9" name="SkillD_Bar" src="o6w975" fileName="Battle/SkillSmallProBar.xml" xy="721,615" group="n162_o6w9">
+      <ProgressBar value="59" max="100"/>
+    </component>
+    <text id="n161_o6w9" name="SkillD_CDInfo" xy="721,615" size="33,33" group="n162_o6w9" fontSize="13" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <text id="n167_o6w9" name="SkillD_Text" xy="741,635" size="15,23" group="n162_o6w9" fontSize="13" color="#cccccc" align="center" vAlign="middle" bold="true" text="D"/>
+    <group id="n162_o6w9" name="SkillD" xy="721,615" size="34,34" group="n60_qraf" advanced="true"/>
+    <loader id="n163_o6w9" name="SkillF_Loader" xy="761,615" size="32,33" group="n166_o6w9" fill="scale"/>
+    <component id="n164_o6w9" name="SkillF_Bar" src="o6w975" fileName="Battle/SkillSmallProBar.xml" xy="761,615" group="n166_o6w9">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <text id="n165_o6w9" name="SkillF_CDInfo" xy="761,615" size="33,33" group="n166_o6w9" fontSize="13" color="#cccccc" align="center" vAlign="middle" autoSize="none" bold="true" text="120"/>
+    <text id="n169_rjfs" name="SkillF_Text" xy="783,634" size="19,23" group="n166_o6w9" fontSize="13" color="#cccccc" autoSize="none" bold="true" text="F"/>
+    <group id="n166_o6w9" name="SkillF" xy="761,615" size="42,42" group="n60_qraf" advanced="true"/>
+    <group id="n60_qraf" name="SkillAndState" xy="419,599" size="392,116" group="n13_clst" advanced="true"/>
+    <image id="n96_qraf" name="n96" src="qraf6h" fileName="Clarity_HUDAtlas/PerksAtlas_11.PNG" xy="209,599" size="192,119" group="n130_qraf"/>
+    <image id="n101_qraf" name="Attack" src="qraf6k" fileName="Clarity_HUDAtlas/PerksAtlas_15.PNG" xy="211,601" size="19,19" group="n130_qraf"/>
+    <image id="n102_qraf" name="Magic" src="qraf6l" fileName="Clarity_HUDAtlas/PerksAtlas_16.PNG" xy="211,620" size="19,19" group="n130_qraf"/>
+    <image id="n103_qraf" name="Armorpenetration" src="qraf6m" fileName="Clarity_HUDAtlas/PerksAtlas_17.PNG" xy="284,639" size="19,19" group="n130_qraf"/>
+    <image id="n104_qraf" name="Magicpenetration" src="qraf6n" fileName="Clarity_HUDAtlas/PerksAtlas_18.PNG" xy="284,658" size="19,19" group="n130_qraf"/>
+    <image id="n105_qraf" name="Armor" src="qraf6o" fileName="Clarity_HUDAtlas/PerksAtlas_19.PNG" xy="211,639" size="19,19" group="n130_qraf"/>
+    <image id="n106_qraf" name="SpellResistance" src="qraf6p" fileName="Clarity_HUDAtlas/PerksAtlas_20.PNG" xy="211,658" size="19,19" group="n130_qraf"/>
+    <image id="n107_qraf" name="AttackSpeed" src="qraf6q" fileName="Clarity_HUDAtlas/PerksAtlas_21.PNG" xy="211,677" size="19,19" group="n130_qraf"/>
+    <image id="n108_qraf" name="ExtraMagic" src="qraf6r" fileName="Clarity_HUDAtlas/PerksAtlas_22.PNG" xy="284,620" size="19,19" group="n130_qraf"/>
+    <image id="n109_qraf" name="ExtraAttack" src="qraf6s" fileName="Clarity_HUDAtlas/PerksAtlas_23.PNG" xy="284,601" size="19,19" group="n130_qraf"/>
+    <image id="n110_qraf" name="SkillCD" src="qraf6t" fileName="Clarity_HUDAtlas/PerksAtlas_24.PNG" xy="284,677" size="19,19" group="n130_qraf"/>
+    <image id="n111_qraf" name="Criticalstrike" src="qraf6u" fileName="Clarity_HUDAtlas/PerksAtlas_25.PNG" xy="211,696" size="19,19" group="n130_qraf"/>
+    <text id="n118_qraf" name="AttackInfo" xy="230,601" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <image id="n113_qraf" name="MoveSpeed" src="qraf6w" fileName="Clarity_HUDAtlas/PerksAtlas_27.PNG" xy="284,696" size="19,19" group="n130_qraf"/>
+    <text id="n119_qraf" name="SkillCDInfo" xy="303,677" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n120_qraf" name="MagicpenetrationInfo" xy="303,658" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n121_qraf" name="ArmorpenetrationInfo" xy="303,639" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n122_qraf" name="ExtraMagicInfo" xy="303,620" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n123_qraf" name="ExtraAttackInfo" xy="303,601" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n124_qraf" name="CriticalstrikeInfo" xy="230,696" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n125_qraf" name="AttackSpeedInfo" xy="230,677" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n126_qraf" name="SpellResistanceInfo" xy="230,658" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n127_qraf" name="ArmorInfo" xy="230,639" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n128_qraf" name="MagicInfo" xy="230,620" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <text id="n129_qraf" name="MoveSpeedInfo" xy="303,696" size="54,19" group="n130_qraf" fontSize="11" color="#33ffff" align="right" vAlign="middle" autoSize="none" bold="true" text="999"/>
+    <group id="n130_qraf" name="DetailData" xy="209,599" size="193,120" group="n19_clst" advanced="true"/>
+    <loader id="n134_r5zk" name="HeroAvatarLoader" xy="365,620" size="83,78" group="n19_clst" url="ui://9sdz56q4clst2" fill="scale" shrinkOnly="true"/>
+    <image id="n11_clst" name="AvatarBack" src="clst1t" fileName="Clarity_HUDAtlas/Avatar.PNG" xy="347,599" size="118,126" group="n19_clst"/>
+    <text id="n59_qraf" name="HeroLevel" xy="413,686" size="30,30" group="n19_clst" fontSize="13" color="#ffcc66" align="center" vAlign="bottom" autoSize="none" bold="true" text="18"/>
+    <component id="n117_qraf" name="ExpBar" src="qraf6y" fileName="Battle/ProgressBar1.xml" xy="427,613" size="33,85" group="n19_clst">
+      <ProgressBar value="60" max="100"/>
+    </component>
+    <group id="n19_clst" name="Avatar" xy="209,599" size="256,126" group="n13_clst" advanced="true"/>
+    <image id="n10_clst" name="UIBack" src="clstv" fileName="Clarity_HUDAtlas/Back.PNG" xy="808,599" size="155,117" group="n41_qraf"/>
+    <text id="n46_qraf" name="t1" xy="840,633" size="13,19" group="n54_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="1"/>
+    <text id="n47_qraf" name="t6" xy="874,668" size="13,19" group="n54_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="6"/>
+    <text id="n48_qraf" name="t5" xy="840,669" size="13,19" group="n54_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="5"/>
+    <text id="n49_qraf" name="t3" xy="907,633" size="13,19" group="n54_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="3"/>
+    <text id="n50_qraf" name="t2" xy="874,633" size="13,19" group="n54_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="2"/>
+    <text id="n51_qraf" name="t7" xy="907,668" size="13,19" group="n54_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="7"/>
+    <group id="n54_qraf" name="Zhuangbei" xy="821,617" size="99,71" group="n41_qraf" advanced="true" collapsed="true"/>
+    <text id="n52_qraf" name="t4" xy="949,631" size="13,19" group="n55_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="4"/>
+    <text id="n53_qraf" name="tB" xy="949,664" size="13,19" group="n55_qraf" fontSize="10" color="#cccccc" autoSize="none" bold="true" text="B"/>
+    <group id="n55_qraf" name="BasicSkills" xy="927,618" size="35,65" group="n41_qraf" advanced="true"/>
+    <component id="n58_qraf" name="n58" src="qraf69" fileName="Battle/GoldenToShopBtn.xml" xy="813,689" size="137,26" group="n57_qraf"/>
+    <text id="n56_qraf" name="GoldenCount" xy="869,691" size="74,19" group="n57_qraf" fontSize="15" color="#ffcc66" align="right" vAlign="middle" autoSize="none" bold="true" text="999999999"/>
+    <group id="n57_qraf" name="Golden" xy="813,689" size="137,26" group="n41_qraf" advanced="true"/>
+    <group id="n41_qraf" name="ShopAndBack" xy="808,599" size="155,117" group="n13_clst" advanced="true" collapsed="true"/>
+    <group id="n13_clst" name="Bottom" xy="209,599" size="754,126" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </group>
+    <list id="n75_qraf" name="BuffList" xy="420,457" size="209,140" scale="0.99,1" touchable="false" layout="flow_hz" selectionMode="none" overflow="hidden" lineGap="1" colGap="1" lineItemCount="6" defaultItem="ui://9sdz56q4qraf6c" vAlign="bottom" autoClearItems="true">
+      <relation target="n13_clst" sidePair="bottom-top,left-left"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <list id="n78_qraf" name="DeBuffList" xy="627,457" size="183,140" scale="0.99,1" touchable="false" layout="flow_hz" selectionMode="none" overflow="hidden" lineGap="1" colGap="1" lineItemCount="6" defaultItem="ui://9sdz56q4qraf6c" align="right" vAlign="bottom" autoClearItems="true">
+      <relation target="n13_clst" sidePair="bottom-top,right-right"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <loader id="n132_fr12" name="SmallMapSprite" xy="1081,521" size="200,200" group="n133_fr12" url="ui://9sdz56q4no4t6z" fill="scaleFree"/>
+    <image id="n131_fr12" name="SmallMapFrame" src="no4t72" fileName="Clarity_HUDAtlas/Clarity_HUDAtlas_8.PNG" xy="1081,520" size="200,200" group="n133_fr12"/>
+    <group id="n133_fr12" name="SmallMap" xy="1081,520" size="200,201" advanced="true" collapsed="true">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </group>
+    <image id="n178_u6tf" name="GM_BackGround" src="u6tf7n" fileName="GM_UI/685118BEA34057F4_10.png" xy="56,80" size="406,57" group="n182_u6tf" rotation="90"/>
+    <component id="n185_u6tf" name="Btn_NoMPCost" src="u6tf7q" fileName="GM_UI/Btn_NoMPCost.xml" xy="15,106" group="n182_u6tf"/>
+    <component id="n186_u6tf" name="Btn_NoHPCost" src="u6tf7t" fileName="GM_UI/Btn_NoHPCost.xml" xy="15,150" group="n182_u6tf"/>
+    <component id="n190_brag" name="Btn_CreateSpiling" src="brag7y" fileName="GM_UI/Btn_CreateSpiling.xml" xy="17,372" group="n182_u6tf"/>
+    <component id="n189_u6tf" name="Btn_GMController_Disable" src="u6tf7v" fileName="GM_UI/Btn_GMController_Disable.xml" xy="61,254" group="n182_u6tf" rotation="90"/>
+    <component id="n187_u6tf" name="Btn_NoCDCost" src="u6tf7u" fileName="GM_UI/Btn_NoCDCost.xml" xy="15,194" group="n182_u6tf"/>
+    <component id="n188_u6tf" name="Btn_GMController_Enable" src="u6tf7v" fileName="GM_UI/Btn_GMController_Disable.xml" xy="51,299" group="n182_u6tf" rotation="-90"/>
+    <group id="n182_u6tf" name="GM" xy="15,80" size="447,315" advanced="true">
+      <relation target="" sidePair="left-left,middle-middle"/>
+    </group>
+  </displayList>
+  <transition name="Par_GMControllerDis">
+    <item time="0" type="XY" target="n182_u6tf" tween="true" startValue="15,118" endValue="-41,118" duration="6"/>
+  </transition>
+  <transition name="Part_GMControllerEnable">
+    <item time="0" type="XY" target="n182_u6tf" tween="true" startValue="-41,118" endValue="16,118" duration="6"/>
+  </transition>
+</component>

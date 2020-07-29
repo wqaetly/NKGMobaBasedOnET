@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1280,720" adaptationTest="FitSize">
+  <displayList>
+    <image id="n0_ifyf" name="n0" src="ifyf0" fileName="banzi_da.png" xy="348,139">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n1_ifyf" name="Tittle" xy="367,146" size="573,53" fontSize="30" color="#66ffff" align="center" vAlign="middle" autoSize="none" bold="true" text="标题">
+      <relation target="n0_ifyf" sidePair="center-center,top-top"/>
+    </text>
+    <text id="n2_ifyf" name="Conten" xy="401,200" size="510,281" fontSize="25" color="#66ffff" align="center" vAlign="middle" autoSize="none" text="内容">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n7_ifyf" name="tow_cancel" src="ifyf5" fileName="tow_cancel.xml" xy="439,487" group="n9_ifyf"/>
+    <component id="n8_ifyf" name="tow_confirm" src="ifyf2" fileName="one_confirm.xml" xy="708,487" group="n9_ifyf"/>
+    <group id="n9_ifyf" name="towmode" xy="438,486" size="432,55" advanced="true">
+      <relation target="n0_ifyf" sidePair="bottom-bottom,center-center"/>
+    </group>
+    <component id="n3_ifyf" name="one_confirm" src="ifyf2" fileName="one_confirm.xml" xy="572,487" group="n10_ifyf"/>
+    <group id="n10_ifyf" name="onemode" xy="572,487" size="163,54" advanced="true">
+      <relation target="n0_ifyf" sidePair="center-center,bottom-bottom"/>
+    </group>
+  </displayList>
+</component>

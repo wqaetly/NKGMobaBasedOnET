@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,100" opaque="false" adaptationTest="FitSize">
+  <displayList>
+    <text id="n1_h2bc" name="Tex_ValueToFall" xy="0,53" size="100,39" fontSize="21" color="#cc0000" align="right" vAlign="middle" autoSize="none" shadowColor="#000000" shadowOffset="1,1" text="300"/>
+    <image id="n3_ijkg" name="n3" src="ijkg1" fileName="BarBlack.png" xy="69,34" size="13,8" visible="false"/>
+  </displayList>
+  <transition name="FallingBleed">
+    <item time="0" type="Alpha" target="n1_h2bc" tween="true" startValue="1" endValue="1" duration="10"/>
+    <item time="0" type="XY" target="n1_h2bc" tween="true" startValue="0.76,56.29" endValue="-23.56,32.39" duration="6"/>
+    <item time="6" type="XY" target="n1_h2bc" tween="true" startValue="-23.56,32.39" endValue="-30,33" duration="9" ease="Sine.Out"/>
+    <item time="10" type="Alpha" target="n1_h2bc" tween="true" startValue="1" endValue="1" duration="7"/>
+    <item time="15" type="XY" target="n1_h2bc" tween="true" startValue="-30,33" endValue="-50.29,51.4" duration="9"/>
+    <item time="17" type="Alpha" target="n1_h2bc" tween="true" startValue="1" endValue="0" duration="7"/>
+    <item time="24" type="XY" target="n1_h2bc" tween="true" startValue="-50.29,51.4" ease="Circ.Out"/>
+  </transition>
+</component>

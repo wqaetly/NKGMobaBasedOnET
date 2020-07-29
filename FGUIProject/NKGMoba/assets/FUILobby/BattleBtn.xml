@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,20" extention="Button">
+  <Button/>
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver"/>
+  <displayList>
+    <graph id="n0_rfuv" name="n0" xy="0,0" size="100,20" type="rect" lineSize="0" fillColor="#F0F0F0" touchable="false">
+      <gearDisplay controller="button" pages="0"/>
+      <relation target="" sidePair="width,height"/>
+    </graph>
+    <graph id="n1_rfuv" name="n1" xy="0,0" size="100,20" type="rect" lineSize="0" fillColor="#FAFAFA" touchable="false">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width,height"/>
+    </graph>
+    <graph id="n2_rfuv" name="n2" xy="0,0" size="100,20" type="rect" lineSize="0" fillColor="#CCCCCC" touchable="false">
+      <gearDisplay controller="button" pages="1,3"/>
+      <relation target="" sidePair="width,height"/>
+    </graph>
+  </displayList>
+</component>
