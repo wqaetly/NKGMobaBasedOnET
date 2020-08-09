@@ -6,18 +6,18 @@ using ETModel;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class loginBtnAwakeSystem : AwakeSystem<loginBtn, GObject>
+    public class Btn_ToTestSceneAwakeSystem : AwakeSystem<Btn_ToTestScene, GObject>
     {
-        public override void Awake(loginBtn self, GObject go)
+        public override void Awake(Btn_ToTestScene self, GObject go)
         {
             self.Awake(go);
         }
     }
         
-    public sealed class loginBtn : FUI
+    public sealed class Btn_ToTestScene : FUI
     {	
         public const string UIPackageName = "FUILogin";
-        public const string UIResName = "loginBtn";
+        public const string UIResName = "Btn_ToTestScene";
         
         /// <summary>
         /// {uiResName}的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
@@ -28,7 +28,7 @@ namespace ETHotfix
     public GImage n0;
     public GImage n1;
     public GTextField title;
-    public const string URL = "ui://2jxt4hn8pdjlb";
+    public const string URL = "ui://2jxt4hn810qrsd";
 
     private static GObject CreateGObject()
     {
@@ -40,32 +40,32 @@ namespace ETHotfix
         UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
     }
         
-    public static loginBtn CreateInstance()
+    public static Btn_ToTestScene CreateInstance()
     {			
-        return ComponentFactory.Create<loginBtn, GObject>(CreateGObject());
+        return ComponentFactory.Create<Btn_ToTestScene, GObject>(CreateGObject());
     }
         
-    public static ETTask<loginBtn> CreateInstanceAsync(Entity domain)
+    public static ETTask<Btn_ToTestScene> CreateInstanceAsync(Entity domain)
     {
-        ETTaskCompletionSource<loginBtn> tcs = new ETTaskCompletionSource<loginBtn>();
+        ETTaskCompletionSource<Btn_ToTestScene> tcs = new ETTaskCompletionSource<Btn_ToTestScene>();
         CreateGObjectAsync((go) =>
         {
-            tcs.SetResult(ComponentFactory.Create<loginBtn, GObject>(go));
+            tcs.SetResult(ComponentFactory.Create<Btn_ToTestScene, GObject>(go));
         });
         return tcs.Task;
     }
         
-    public static loginBtn Create(GObject go)
+    public static Btn_ToTestScene Create(GObject go)
     {
-        return ComponentFactory.Create<loginBtn, GObject>(go);
+        return ComponentFactory.Create<Btn_ToTestScene, GObject>(go);
     }
         
     /// <summary>
     /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
     /// </summary>
-    public static loginBtn GetFormPool(GObject go)
+    public static Btn_ToTestScene GetFormPool(GObject go)
     {
-        var fui = go.Get<loginBtn>();
+        var fui = go.Get<Btn_ToTestScene>();
         if(fui == null)
         {
             fui = Create(go);

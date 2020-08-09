@@ -1,9 +1,9 @@
-local function genCode(handler)
+local function genCode(handler,customSettingTable)
     local settings = handler.project:GetSettings("Publish").codeGeneration
     local codePkgName = handler:ToFilename(handler.pkg.name); --convert chinese to pinyin, remove special chars etc.
     local exportCodePath = handler.exportCodePath .. '/' .. codePkgName
     local namespaceName = codePkgName
-
+    
     if settings.packageName ~= nil and settings.packageName ~= '' then
         namespaceName = settings.packageName .. '.' .. namespaceName;
     end

@@ -11,7 +11,7 @@ namespace ETModel
     {
         public override void Awake(FUILoadingComponent self)
         {
-            self.FuiLoading = (FUILoading.UI_FUILoading) Game.Scene.GetComponent<FUIComponent>().Get("FUILoading").GObject;
+            self.FuiLoading = (FUILoading) Game.Scene.GetComponent<FUIComponent>().Get("FUILoading").GObject;
         }
     }
 }

@@ -15,21 +15,21 @@ namespace ETHotfix
     {
         public override void Start(FUILogin self)
         {
-            self.loginInfo.alpha = 0;
-            self.loginBtn.self.onClick.Add(() => LoginBtnOnClick(self));
-            self.registBtn.self.onClick.Add(() => RegisterBtnOnClick(self));
+            self.Tex_LoginInfo.alpha = 0;
+            self.Btn_Login.self.onClick.Add(() => LoginBtnOnClick(self));
+            self.Btn_Registe.self.onClick.Add(() => RegisterBtnOnClick(self));
             self.ToTestSceneBtn.self.onClick.Add(() => ToTestSceneBtnBtnOnClick(self));
         }
 
         private void RegisterBtnOnClick(FUILogin self)
         {
-            self.registBtn.self.visible = false;
+            self.Btn_Registe.self.visible = false;
             RegisterHelper.OnRegisterAsync(self.accountText.text, self.passwordText.text).Coroutine();
         }
 
         public void LoginBtnOnClick(FUILogin self)
         {
-            self.loginBtn.self.visible = false;
+            self.Btn_Login.self.visible = false;
             LoginHelper.OnLoginAsync(self.accountText.text, self.passwordText.text).Coroutine();
         }
 
@@ -39,7 +39,7 @@ namespace ETHotfix
         /// <param name="self"></param>
         public void ToTestSceneBtnBtnOnClick(FUILogin self)
         {
-            self.loginBtn.self.visible = false;
+            self.Btn_Login.self.visible = false;
             LoginHelper.OnLoginAsync("Test123", "Test123").Coroutine();
         }
     }

@@ -2,14 +2,14 @@
 
 using FairyGUI;
 
-namespace ETModel.FUICheckForResUpdate
+namespace ETModel
 {
-	public class FUICheckForResUpdateBinder
-	{
-		public static void BindAll()
-		{
-			UIObjectFactory.SetPackageItemExtension(UI_FUICheckForResUpdate.URL, typeof(UI_FUICheckForResUpdate));
-			UIObjectFactory.SetPackageItemExtension(UI_CheckForResUpdateBar.URL, typeof(UI_CheckForResUpdateBar));
-		}
-	}
+    public class FUICheckForResUpdateBinder
+    {
+        public static void BindAll()
+        {
+            UIObjectFactory.SetPackageItemExtension(FUICheckForResUpdate.URL, typeof(FUICheckForResUpdate));
+            UIObjectFactory.SetPackageItemExtension(CheckForResUpdateBar.URL, typeof(CheckForResUpdateBar));
+        }
+    }
 }

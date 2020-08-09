@@ -1,7 +1,6 @@
 local genModelCode = require(PluginPath..'/NKG_GenerateModelCode')
 local genHotfixCode = require(PluginPath..'/NKG_GenerateHotfixCode')
 
-
 function onPublish(handler)
     if not handler.genCode then 
         handler.genCode = false

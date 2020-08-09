@@ -12,7 +12,7 @@ namespace ETModel
     {
         public static FUI Create()
         {
-            FUI fui = ComponentFactory.Create<FUI, GObject>(FUICheckForResUpdate.UI_FUICheckForResUpdate.CreateInstance());
+            FUI fui = ComponentFactory.Create<FUI, GObject>(FUICheckForResUpdate.CreateInstance());
             fui.Name = "FUICheckForResUpdate";
             fui.MakeFullScreen();
             return fui;

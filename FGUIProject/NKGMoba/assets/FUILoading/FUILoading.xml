@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1280,720" bgColor="#666666" adaptationTest="FitSize">
+<component size="1280,720" bgColor="#666666">
   <displayList>
     <image id="n1_pxxk" name="n1" src="pxxk1" fileName="UIMajorCity_48.PNG" xy="593,300" pivot="0.5,0.5" size="77,79">
       <relation target="" sidePair="center-center,middle-middle"/>
     </image>
   </displayList>
-  <relation target="" sidePair="width-width,height-height"/>
   <transition name="t0" autoPlay="true">
     <item time="0" type="Rotation" target="n1_pxxk" tween="true" startValue="0" endValue="360" duration="18" ease="Back.InOut" repeat="-1"/>
-    <item time="18" type="Rotation" target="n1_pxxk" tween="true" startValue="360"/>
+    <item time="18" type="Rotation" target="n1_pxxk" value="360"/>
   </transition>
 </component>

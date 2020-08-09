@@ -1,5 +1,4 @@
-﻿using ETModel.FUICheckForResUpdate;
-using ETModel.FUILoading;
+﻿
 using FairyGUI;
 
 namespace ETModel

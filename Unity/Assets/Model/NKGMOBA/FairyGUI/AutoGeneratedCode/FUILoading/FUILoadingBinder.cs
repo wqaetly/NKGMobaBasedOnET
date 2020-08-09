@@ -2,13 +2,13 @@
 
 using FairyGUI;
 
-namespace ETModel.FUILoading
+namespace ETModel
 {
-	public class FUILoadingBinder
-	{
-		public static void BindAll()
-		{
-			UIObjectFactory.SetPackageItemExtension(UI_FUILoading.URL, typeof(UI_FUILoading));
-		}
-	}
+    public class FUILoadingBinder
+    {
+        public static void BindAll()
+        {
+            UIObjectFactory.SetPackageItemExtension(FUILoading.URL, typeof(FUILoading));
+        }
+    }
 }

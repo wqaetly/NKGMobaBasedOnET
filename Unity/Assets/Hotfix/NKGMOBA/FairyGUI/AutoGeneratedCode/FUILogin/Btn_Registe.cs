@@ -6,18 +6,18 @@ using ETModel;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class RegistBtnAwakeSystem : AwakeSystem<RegistBtn, GObject>
+    public class Btn_RegisteAwakeSystem : AwakeSystem<Btn_Registe, GObject>
     {
-        public override void Awake(RegistBtn self, GObject go)
+        public override void Awake(Btn_Registe self, GObject go)
         {
             self.Awake(go);
         }
     }
         
-    public sealed class RegistBtn : FUI
+    public sealed class Btn_Registe : FUI
     {	
         public const string UIPackageName = "FUILogin";
-        public const string UIResName = "RegistBtn";
+        public const string UIResName = "Btn_Registe";
         
         /// <summary>
         /// {uiResName}的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
@@ -40,32 +40,32 @@ namespace ETHotfix
         UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
     }
         
-    public static RegistBtn CreateInstance()
+    public static Btn_Registe CreateInstance()
     {			
-        return ComponentFactory.Create<RegistBtn, GObject>(CreateGObject());
+        return ComponentFactory.Create<Btn_Registe, GObject>(CreateGObject());
     }
         
-    public static ETTask<RegistBtn> CreateInstanceAsync(Entity domain)
+    public static ETTask<Btn_Registe> CreateInstanceAsync(Entity domain)
     {
-        ETTaskCompletionSource<RegistBtn> tcs = new ETTaskCompletionSource<RegistBtn>();
+        ETTaskCompletionSource<Btn_Registe> tcs = new ETTaskCompletionSource<Btn_Registe>();
         CreateGObjectAsync((go) =>
         {
-            tcs.SetResult(ComponentFactory.Create<RegistBtn, GObject>(go));
+            tcs.SetResult(ComponentFactory.Create<Btn_Registe, GObject>(go));
         });
         return tcs.Task;
     }
         
-    public static RegistBtn Create(GObject go)
+    public static Btn_Registe Create(GObject go)
     {
-        return ComponentFactory.Create<RegistBtn, GObject>(go);
+        return ComponentFactory.Create<Btn_Registe, GObject>(go);
     }
         
     /// <summary>
     /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
     /// </summary>
-    public static RegistBtn GetFormPool(GObject go)
+    public static Btn_Registe GetFormPool(GObject go)
     {
-        var fui = go.Get<RegistBtn>();
+        var fui = go.Get<Btn_Registe>();
         if(fui == null)
         {
             fui = Create(go);

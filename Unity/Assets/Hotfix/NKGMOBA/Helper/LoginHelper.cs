@@ -92,7 +92,7 @@ namespace ETHotfix
             //设置登录处理完成状态
             isLogining = false;
             if (((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)) != null)
-                ((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)).loginBtn.GObject.asButton
+                ((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)).Btn_Login.GObject.asButton
                         .visible =
                         true;
             // 关闭加载UI

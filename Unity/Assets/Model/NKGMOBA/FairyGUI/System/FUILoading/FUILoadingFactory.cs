@@ -12,7 +12,7 @@ namespace ETModel
     {
         public static FUI Create()
         {
-            FUI fui = ComponentFactory.Create<FUI, GObject>(FUILoading.UI_FUILoading.CreateInstance());
+            FUI fui = ComponentFactory.Create<FUI, GObject>(FUILoading.CreateInstance());
             fui.Name = "FUILoading";
             fui.GObject.sortingOrder = 99999;
             fui.MakeFullScreen();

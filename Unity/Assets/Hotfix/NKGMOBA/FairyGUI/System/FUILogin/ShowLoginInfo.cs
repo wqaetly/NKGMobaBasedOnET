@@ -16,7 +16,7 @@ namespace ETHotfix
     {
         public override void Run(string info)
         {
-            ((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)).loginInfo.text = info;
+            ((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)).Tex_LoginInfo.text = info;
             ((FUILogin) Game.Scene.GetComponent<FUIComponent>().Get(FUILogin.UIPackageName)).t1.Play();
         }
     }
