@@ -47,9 +47,35 @@ local function genCode(handler)
             ]], classInfo.className, codePkgName, classInfo.resName, classInfo.superClassName)
 
         local memberCnt = members.Count
-        for j = 0, memberCnt - 1 do
+        -- 是否为自定义类型组件标记数组
+        local customComponentFlagsArray = {}
+        -- 是否为跨包组件标记数组
+        local crossPackageFlagsArray = {}
+
+        for j = 0, memberCnt - 1 
+        do
             local memberInfo = members[j]
-            writer:writeln('public %s %s;', memberInfo.type, memberInfo.varName)
+            customComponentFlagsArray[j] = false
+            crossPackageFlagsArray[j] = false
+
+            -- 判断是不是我们自定义类型组件
+            local typeName = memberInfo.type
+            for k = 0, classCnt - 1 
+            do
+                if typeName == classes[k].className 
+                then
+                    customComponentFlagsArray[j] = true
+                    break
+                end
+            end
+
+            -- 判断是不是跨包类型组件
+            if memberInfo.res ~= nil then
+                typeName = memberInfo.res.name
+                crossPackageFlagsArray[j] = true
+            end
+
+            writer:writeln('public %s %s;', typeName, memberInfo.varName)
         end
         writer:writeln('public const string URL = "ui://%s%s";', handler.pkg.id, classInfo.resId)
         writer:writeln()
@@ -127,47 +153,46 @@ local function genCode(handler)
         {	
             ]], classInfo.superClassName)
 
-        fprint(classInfo.className)
-        for j = 0, memberCnt - 1 do
+        for j = 0, memberCnt - 1
+        do
             local memberInfo = members[j]
             local typeName = memberInfo.type
-            if memberInfo.group == 0 then
-                if getMemberByName then
-                    -- 判断是不是我们自定义类型
-                    local isCustomComponent = false
-                    for i = 0, classCnt - 1 do
-                        if typeName == classes[i].className then
-                            isCustomComponent = true
-                            break
-                        end
-                    end
-                    if isCustomComponent then
+            if memberInfo.group == 0
+            then
+                if getMemberByName
+                then
+                    if customComponentFlagsArray[j]
+                    then
                         writer:writeln('\t\t%s = %s.Create(com.GetChild("%s"));', memberInfo.varName, memberInfo.type, memberInfo.name)
+                    elseif crossPackageFlagsArray[j]
+                    then
+                        writer:writeln('\t\t%s = %s.Create(com.GetChild("%s"));', memberInfo.varName, memberInfo.res.name, memberInfo.name)
                     else
                         writer:writeln('\t\t%s = (%s)com.GetChild("%s");', memberInfo.varName, memberInfo.type, memberInfo.name)
                     end
+                    
                 else
-                    local isCustomComponent = false
-                    for i = 0, classCnt - 1 do
-                        if typeName == classes[i].className then
-                            isCustomComponent = true
-                            break
-                        end
-                    end
-                    if isCustomComponent then
+                    if customComponentFlagsArray[j]
+                    then
                         writer:writeln('\t\t%s = %s.Create(com.GetChildAt(%s));', memberInfo.varName, memberInfo.type, memberInfo.index)
+                    elseif crossPackageFlagsArray[j]
+                    then
+                        writer:writeln('\t\t%s = %s.Create(com.GetChildAt(%s));', memberInfo.varName, memberInfo.res.name, memberInfo.index)
                     else
                         writer:writeln('\t\t%s = (%s)com.GetChildAt(%s);', memberInfo.varName, memberInfo.type, memberInfo.index)
                     end
                 end
-            elseif memberInfo.group == 1 then
-                if getMemberByName then
+            elseif memberInfo.group == 1
+            then
+                if getMemberByName
+                then
                     writer:writeln('\t\t%s = com.GetController("%s");', memberInfo.varName, memberInfo.name)
                 else
                     writer:writeln('\t\t%s = com.GetControllerAt(%s);', memberInfo.varName, memberInfo.index)
                 end
             else
-                if getMemberByName then
+                if getMemberByName
+                then
                     writer:writeln('\t\t%s = com.GetTransition("%s");', memberInfo.varName, memberInfo.name)
                 else
                     writer:writeln('\t\t%s = com.GetTransitionAt(%s);', memberInfo.varName, memberInfo.index)
