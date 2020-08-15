@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MongoDB.Bson;
 using UnityEngine;
 using static UnityEngine.GameObject;
@@ -7,7 +8,7 @@ using static UnityEngine.GameObject;
 namespace ETModel
 {
     // 游戏对象缓存队列
-    public class GameObjectQueue: Component
+    public class GameObjectQueue : Component
     {
         private readonly Queue<GameObject> queue = new Queue<GameObject>();
 
@@ -28,10 +29,7 @@ namespace ETModel
 
         public int Count
         {
-            get
-            {
-                return this.queue.Count;
-            }
+            get { return this.queue.Count; }
         }
 
         public override void Dispose()
@@ -52,14 +50,25 @@ namespace ETModel
         }
     }
 
+    [ObjectSystem]
+    public class GameObjectPoolFixedUpdateSystem : UpdateSystem<GameObjectPool>
+    {
+        public override void Update(GameObjectPool self)
+        {
+            self.Update();
+        }
+    }
+
     /// <summary>
     /// 对象池组件
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class GameObjectPool<T>: Component where T : Entity
+    public class GameObjectPool : Component
     {
         private readonly Dictionary<String, GameObjectQueue> dictionary = new Dictionary<String, GameObjectQueue>();
         private readonly Dictionary<String, GameObject> prefabDict = new Dictionary<String, GameObject>();
+
+        private readonly List<Unit> AllEntityToBeRecycledInNextFrame = new List<Unit>();
 
         // 初始化预制体
         public void Add(string gameObjectType, GameObject goPrefab)
@@ -87,14 +96,18 @@ namespace ETModel
             return false;
         }
 
-        public T FetchEntity(string type)
+        public Unit FetchEntity(string type)
         {
-            return ComponentFactory.Create<T, GameObject>(FetchGameObject(type));
+            GameObject gameObject = FetchGameObject(type);
+            Unit unit = ComponentFactory.Create<Unit, GameObject>(gameObject);
+            return unit;
         }
 
-        public T FetchEntityWithId(long Id, string type)
+        public Unit FetchEntityWithId(long Id, string type)
         {
-            return ComponentFactory.CreateWithId<T, GameObject>(Id, FetchGameObject(type));
+            GameObject gameObject = FetchGameObject(type);
+            Unit unit = ComponentFactory.CreateWithId<Unit, GameObject>(Id, gameObject);
+            return unit;
         }
 
         /// <summary>
@@ -111,8 +124,8 @@ namespace ETModel
                 this.prefabDict.TryGetValue(type, out prefab);
                 if (prefab == null)
                 {
-                    Log.Error($"对象池没有初始化{type}类型的预制体");
-                    throw new Exception($"对象池没有初始化{type}类型的预制体");
+                    Log.Warning($"对象池没有初始化{type}类型的预制体，请在外层确保注册");
+                    return null;
                 }
 
                 tempGameObject = UnityEngine.Object.Instantiate(prefab);
@@ -124,8 +137,8 @@ namespace ETModel
                 this.prefabDict.TryGetValue(type, out prefab);
                 if (prefab == null)
                 {
-                    Log.Error($"对象池没有初始化{type}类型的预制体");
-                    throw new Exception($"对象池没有初始化{type}类型的预制体");
+                    Log.Warning($"对象池没有初始化{type}类型的预制体，请在外层确保注册");
+                    return null;
                 }
 
                 tempGameObject = UnityEngine.Object.Instantiate(prefab);
@@ -137,25 +150,27 @@ namespace ETModel
                 tempGameObject.SetActive(true);
             }
 
-            tempGameObject.tag = type;
             tempGameObject.transform.position = prefabDict[type].transform.position;
             tempGameObject.transform.rotation = prefabDict[type].transform.rotation;
             tempGameObject.transform.localScale = prefabDict[type].transform.localScale;
             return tempGameObject;
         }
 
+        public Dictionary<long, long> hasRe = new Dictionary<long, long>();
+
         /// <summary>
-        /// Dispose并回收Entity到对象池。
+        /// Dispose并回收Entity到对象池。TODO 封装到UnitFactory中
         /// </summary>
         /// <param name="entity"></param>
-        public void Recycle(T entity)
+        public void Recycle(Unit entity)
         {
+            if (entity == null || entity.IsDisposed) return;
             // 根据tag进行分类，将Entity放到不同的Queue当中
-            String type = entity.GameObject.tag;
+            String type = entity.GameObject.GetComponent<MonoBridge>()?.CustomTag;
 
-            if (type == "Untagged")
+            if (type == "")
             {
-                throw new Exception("未添加tag的gameobject不能使用对象池，因为不同tag的gameobject，身上的资源不同，若混在一起则无法复用gameobject");
+                throw new Exception("未添加tag的gameobject不能使用对象池，请为目标物体添加Collider Bridge组件，并设置CustomTag");
             }
 
             GameObjectQueue queue;
@@ -166,11 +181,20 @@ namespace ETModel
                 queue.GameObject.name = $"{type}--Pool";
                 this.dictionary.Add(type, queue);
             }
-            entity.Dispose();
+
+            Game.Scene.GetComponent<UnitComponent>().Remove(entity.Id);
             entity.GameObject.SetActive(false);
             entity.GameObject.transform.SetParent(queue.GameObject.transform);
             queue.Enqueue(entity.GameObject);
+        }
 
+        /// <summary>
+        /// 下一帧回收Entity TODO 封装到UnitFactory中
+        /// </summary>
+        public void Recycle_NextFrame(Unit entity)
+        {
+            if (AllEntityToBeRecycledInNextFrame.Contains(entity)) return;
+            AllEntityToBeRecycledInNextFrame.Add(entity);
         }
 
         public override void Dispose()
@@ -182,12 +206,31 @@ namespace ETModel
                 kv.Value.Dispose(); // 调用GameObjectQueue<T>的Dispose()，再对其中的所有对象进行回收
             }
 
-            foreach (var VARIABLE in prefabDict)
+            if (AllEntityToBeRecycledInNextFrame.Count > 0)
             {
-                UnityEngine.Object.Destroy(VARIABLE.Value);
+                foreach (var VARIABLE in AllEntityToBeRecycledInNextFrame)
+                {
+                    Recycle(VARIABLE);
+                }
+
+                AllEntityToBeRecycledInNextFrame.Clear();
             }
 
             this.dictionary.Clear();
+            prefabDict.Clear();
+        }
+
+        public void Update()
+        {
+            if (AllEntityToBeRecycledInNextFrame.Count > 0)
+            {
+                foreach (var VARIABLE in AllEntityToBeRecycledInNextFrame)
+                {
+                    Recycle(VARIABLE);
+                }
+
+                AllEntityToBeRecycledInNextFrame.Clear();
+            }
         }
     }
 }

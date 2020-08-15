@@ -44,7 +44,7 @@ namespace ETModel
                 //用户输入管理组件
                 Game.Scene.AddComponent<UserInputComponent>();
 
-                Game.Scene.AddComponent<GameObjectPool<Unit>>();
+                Game.Scene.AddComponent<GameObjectPool>();
 
                 // 下载ab包 
                 await BundleHelper.DownloadBundle();
