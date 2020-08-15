@@ -82,7 +82,7 @@ namespace ETModel
             //如果想要播放的特效正在播放，就返回
             if (theUnitBelongto.GetComponent<EffectComponent>().CheckState(targetEffectName)) return;
 
-            GameObjectPool<Unit> gameObjectPool = Game.Scene.GetComponent<GameObjectPool<Unit>>();
+            GameObjectPool gameObjectPool = Game.Scene.GetComponent<GameObjectPool>();
 
             if (!gameObjectPool.HasRegisteredPrefab(targetEffectName))
             {

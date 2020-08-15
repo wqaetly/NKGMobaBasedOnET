@@ -45,7 +45,7 @@ namespace ETModel
                 VARIABLE.Dispose();
             }
 #elif !SERVER
-                        GameObjectPool<Unit> gameObjectPool = Game.Scene.GetComponent<GameObjectPool<Unit>>();
+                        GameObjectPool gameObjectPool = Game.Scene.GetComponent<GameObjectPool>();
             foreach (var VARIABLE in ChildrenUnit)
             {
                 gameObjectPool.Recycle(VARIABLE);

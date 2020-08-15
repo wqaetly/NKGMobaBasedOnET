@@ -9,7 +9,7 @@ namespace ETModel
         {
             PrepareHeroRes(unitType);
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
-            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchEntityWithId(id, unitType);
+            Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(id, unitType);
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
 
             //增加子实体组件，用于管理子实体
@@ -40,7 +40,7 @@ namespace ETModel
             PrepareHeroRes("NuoKe");
 
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
-            Unit unit = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchEntityWithId(selfId, "NuoKe");
+            Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(selfId, "NuoKe");
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
 
             //增加子实体组件，用于管理子实体
@@ -68,7 +68,7 @@ namespace ETModel
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
             GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
             GameObject prefab = bundleGameObject.Get<GameObject>(heroType);
-            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add(heroType, prefab);
+            Game.Scene.GetComponent<GameObjectPool>().Add(heroType, prefab);
         }
 
         /// <summary>

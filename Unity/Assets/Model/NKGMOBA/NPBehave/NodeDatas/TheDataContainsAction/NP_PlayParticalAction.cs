@@ -41,9 +41,9 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
         public override Action GetActionToBeDone()
         {
             BelongUnit = Game.Scene.GetComponent<UnitComponent>().Get(Unitid);
-            Game.Scene.GetComponent<GameObjectPool<Unit>>().Add(ParticalName,
+            Game.Scene.GetComponent<GameObjectPool>().Add(ParticalName,
                 this.BelongUnit.GameObject.GetComponent<ReferenceCollector>().Get<GameObject>(ParticalName));
-            Partical = Game.Scene.GetComponent<GameObjectPool<Unit>>().FetchEntity(ParticalName);
+            Partical = Game.Scene.GetComponent<GameObjectPool>().FetchEntity(ParticalName);
             if (this.FollowUnit)
             {
                 Partical.GameObject.transform.SetParent(this.BelongUnit.GetComponent<HeroTransformComponent>().GetTranform(PosType));

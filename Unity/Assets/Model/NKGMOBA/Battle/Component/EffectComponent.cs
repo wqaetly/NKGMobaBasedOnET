@@ -53,7 +53,7 @@ namespace ETModel
             {
                 tempUnit.GameObject.GetComponent<ParticleSystem>().Stop();
                 AllEffects.Remove(name);
-                Game.Scene.GetComponent<GameObjectPool<Unit>>().Recycle(tempUnit);
+                Game.Scene.GetComponent<GameObjectPool>().Recycle(tempUnit);
             }
         }
 
