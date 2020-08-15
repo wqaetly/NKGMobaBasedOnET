@@ -285,8 +285,6 @@ namespace NodeEditorFramework
             knob.styleID = StyleID;
             knob.maxConnectionCount = MaxConnectionCount;
             knob.side = NodeSide;
-            if (NodeSidePos != 0)
-                knob.sidePosition = NodeSidePos;
             knob.sideOffset = 0;
         }
     }
