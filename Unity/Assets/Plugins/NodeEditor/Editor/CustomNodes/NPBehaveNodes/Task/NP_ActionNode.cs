@@ -15,8 +15,8 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/CommonAction", typeof (NPBehaveCanvas))]
-    public class NP_ActionNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Task/CommonAction", typeof(NPBehaveCanvas))]
+    public class NP_ActionNode : NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -27,15 +27,14 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-
-        [LabelText("行为结点数据")]
+        
         public NP_ActionNodeData NP_ActionNodeData;
 
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData{NodeType = NodeType.Task};
+                this.NP_ActionNodeData = new NP_ActionNodeData {NodeType = NodeType.Task};
             }
         }
 
@@ -46,7 +45,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_ActionNodeData.NodeDes);
+            NP_ActionNodeData.NodeDes = EditorGUILayout.TextField(NP_ActionNodeData.NodeDes);
         }
     }
 }

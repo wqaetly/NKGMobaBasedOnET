@@ -9,9 +9,10 @@ using Sirenix.OdinInspector;
 
 namespace ETModel.TheDataContainsAction
 {
+    [Title("打印信息",TitleAlignment = TitleAlignments.Centered)]
     public class NP_LogAction:NP_ClassForStoreAction
     {
-        [LabelText("打印信息")]
+        [LabelText("信息")]
         public string LogInfo;
         
         public override Action GetActionToBeDone()

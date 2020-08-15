@@ -8,7 +8,7 @@
             this.sucessWhenStopped = sucessWhenStopped;
         }
 
-        protected override void DoStop()
+        protected override void DoCancel()
         {
             this.Stopped(sucessWhenStopped);
         }

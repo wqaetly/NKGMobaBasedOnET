@@ -19,6 +19,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
     /// <summary>
     /// 这个结点中的动画默认是不可被打断的
     /// </summary>
+    [Title("播放动画",TitleAlignment = TitleAlignments.Centered)]
     public class NP_PlayAnimationAction: NP_ClassForStoreAction
     {
         [LabelText("要播放的动画数据")]
@@ -80,7 +81,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 
             //在播放完成后，每帧都会调用OnEnd委托，由于行为树中的FixedUpdate与Unity的Update频率不一致，所以需要作特殊处理
             this.belongtoUnit.GetComponent<AnimationComponent>()
-                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes, NodeDataForPlayAnims[flag].FadeOutTime)
+                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes)
                             .OnEnd =
                     this.FlagIncrease;
             //Log.Info("这次播放的是Q技能动画");

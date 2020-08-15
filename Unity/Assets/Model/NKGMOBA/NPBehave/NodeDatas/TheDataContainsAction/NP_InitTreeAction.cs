@@ -15,6 +15,7 @@ namespace ETModel.TheDataContainsAction
     /// 注意，里面的所有action只能是Action()，不能是Func这种
     /// 并且默认只能是加给自己的Buff
     /// </summary>
+    [Title("用于初始化行为树",TitleAlignment = TitleAlignments.Centered)]
     public class NP_InitTreeAction: NP_ClassForStoreAction
     {
         [LabelText("初始化行为节点集合")]
@@ -23,7 +24,7 @@ namespace ETModel.TheDataContainsAction
         public override Action GetActionToBeDone()
         {
             Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_InitCacheComponent>()
-                    .AdvanceAddInitData(this.RuntimeTreeID, "InitTree", true);
+                    .AdvanceAddInitData(this.RuntimeTreeID, "HasInitTree", false);
 
             foreach (var VARIABLE in NpClassForStoreActions)
             {
@@ -42,6 +43,10 @@ namespace ETModel.TheDataContainsAction
             {
                 VARIABLE.GetActionToBeDone().Invoke();
             }
+            Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
+                .GetComponent<NP_RuntimeTreeManager>()
+                .GetTreeByRuntimeID(this.RuntimeTreeID)
+                .GetBlackboard()["HasInitTree"] = true;
         }
     }
 }

@@ -65,12 +65,26 @@ namespace ETModel
         {
             if (RuntimeTrees.ContainsKey(id))
             {
+                RuntimeTrees[id].Dispose();
                 RuntimeTrees.Remove(id);
             }
             else
             {
                 Log.Error($"请求删除的ID不存在，id是{id}");
             }
+        }
+
+        public override void Dispose()
+        {
+            if(IsDisposed)
+                return;
+            base.Dispose();
+            foreach (var VARIABLE in RuntimeTrees)
+            {
+                VARIABLE.Value.Dispose();
+            }
+            RuntimeTrees.Clear();
+            hasAddedTrees.Clear();
         }
     }
 }

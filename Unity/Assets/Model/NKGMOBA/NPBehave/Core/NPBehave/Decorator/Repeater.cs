@@ -30,13 +30,13 @@
             }
         }
 
-        override protected void DoStop()
+        override protected void DoCancel()
         {
             this.Clock.RemoveTimer(restartDecoratee);
             
             if (Decoratee.IsActive)
             {
-                Decoratee.Stop();
+                Decoratee.CancelWithoutReturnResult();
             }
             else
             {

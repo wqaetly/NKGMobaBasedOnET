@@ -49,6 +49,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         
         private void AutoSetSkillData_NodeData()
         {
+            if(MNpDataSupportor.mSkillDataDic == null) return;
             MNpDataSupportor.mSkillDataDic.Clear();
 
             foreach (var VARIABLE in this.nodes)

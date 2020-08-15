@@ -1,4 +1,6 @@
-﻿namespace NPBehave
+﻿using ETModel;
+
+namespace NPBehave
 {
     public class Service : Decorator
     {
@@ -20,7 +22,7 @@
         {
             this.serviceMethod = service;
             this.interval = interval;
-            this.randomVariation = interval * 0.05f;
+            this.randomVariation = -1;
             this.Label = "" + (interval - randomVariation) + "..." + (interval + randomVariation) + "s";
         }
 
@@ -41,6 +43,7 @@
             {
                 this.Clock.AddTimer(this.interval, -1, serviceMethod);
                 serviceMethod();
+                Log.Info("注册Timer--------------");
             }
             else
             {
@@ -49,9 +52,9 @@
             Decoratee.Start();
         }
 
-        override protected void DoStop()
+        override protected void DoCancel()
         {
-            Decoratee.Stop();
+            Decoratee.CancelWithoutReturnResult();
         }
 
         protected override void DoChildStopped(Node child, bool result)
@@ -63,6 +66,7 @@
             else if (randomVariation <= 0f)
             {
                 this.Clock.RemoveTimer(serviceMethod);
+                Log.Info("移除Timer----------------");
             }
             else
             {

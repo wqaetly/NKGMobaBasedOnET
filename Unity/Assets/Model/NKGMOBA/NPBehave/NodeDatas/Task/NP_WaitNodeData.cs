@@ -10,13 +10,14 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_WaitNodeData: NP_NodeDataBase
+    [BoxGroup("等待结点数据")]
+    [HideReferenceObjectPicker]
+    [HideLabel]
+    public class NP_WaitNodeData : NP_NodeDataBase
     {
-        [HideInEditorMode]
-        public Wait mWaitNode;
+        [HideInEditorMode] public Wait mWaitNode;
 
-        [LabelText("等待时间")]
-        public float waitTime;
+        [LabelText("等待时间")] public float waitTime;
 
         public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {

@@ -10,9 +10,9 @@ using Action = System.Action;
 
 namespace ETModel.TheDataContainsAction
 {
+    [Title("修改黑板值",TitleAlignment = TitleAlignments.Centered)]
     public class NP_ChangeBlackValue: NP_ClassForStoreAction
     {
-        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Action GetActionToBeDone()
@@ -23,20 +23,11 @@ namespace ETModel.TheDataContainsAction
 
         public void ChangeBlackBoard()
         {
+            //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.m_CompareType}  黑板值:Bool：{m_NPBalckBoardRelationData.theBoolValue}\n");
             this.m_NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                     .GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
                     .GetBlackboard());
-            switch (m_NPBalckBoardRelationData.m_CompareType)
-            {
-                case CompareType._Bool:
-                    //Log.Info($"修改Bool黑板数据为{m_NPBalckBoardRelationData.theBoolValue}");
-                    break;
-                case CompareType._String:
-                    //Log.Info($"修改string黑板数据为{m_NPBalckBoardRelationData.theStringValue}");
-                    break;
-            }
-
         }
     }
 }

@@ -9,11 +9,12 @@ using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEngine;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Composite/Parallel", typeof (NPBehaveCanvas))]
-    public class NP_ParallelNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Composite/Parallel", typeof(NPBehaveCanvas))]
+    public class NP_ParallelNode : NP_CompositeNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -25,14 +26,16 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("并行结点数据")]
+        [BoxGroup("并行结点数据")] [HideReferenceObjectPicker] [HideLabel]
         public NP_ParallelNodeData NP_ParallelNodeData;
 
         private void OnEnable()
         {
             if (NP_ParallelNodeData == null)
             {
-                this.NP_ParallelNodeData = new NP_ParallelNodeData { NodeType = NodeType.Composite };
+                this.NP_ParallelNodeData = new NP_ParallelNodeData {NodeType = NodeType.Composite};
+                NP_ParallelNodeData.NodeDes = "并行组合器";
+                backgroundColor = new Color(205 / 255f, 92 / 255f, 92 / 255f);
             }
         }
 
@@ -43,7 +46,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_ParallelNodeData.NodeDes);
+            NP_ParallelNodeData.NodeDes = EditorGUILayout.TextField(NP_ParallelNodeData.NodeDes);
         }
     }
 }

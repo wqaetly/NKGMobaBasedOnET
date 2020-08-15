@@ -64,11 +64,11 @@ namespace NPBehave
             this.mainNode.Start();
         }
 
-        override protected void DoStop()
+        override protected void DoCancel()
         {
             if (this.mainNode.IsActive)
             {
-                this.mainNode.Stop();
+                this.mainNode.CancelWithoutReturnResult();
             }
             else
             {

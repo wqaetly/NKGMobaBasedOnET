@@ -12,6 +12,8 @@ namespace ETModel
     /// <summary>
     /// 与黑板节点相关的数据
     /// </summary>
+    [BoxGroup("黑板数据配置"),GUIColor(0.961f, 0.902f, 0.788f, 1f)]
+    [HideLabel]
     public class NP_BlackBoardRelationData
     {
         [LabelText("字典键")]

@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel.TheDataContainsAction
 {
+    [Title("添加一个Buff",TitleAlignment = TitleAlignments.Centered)]
     public class NP_AddBuffAction: NP_ClassForStoreAction
     {
         [LabelText("要执行的Buff数据ID")]

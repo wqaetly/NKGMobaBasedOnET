@@ -27,12 +27,6 @@ namespace ETModel
     /// </summary>
     public class NP_TreeDataRepository: Component
     {
-#if SERVER
-        public const string NPDataPath = "../Config/SkillConfigs/Server/";
-#else
-        public const string NPDataPath = "../Config/SkillConfigs/Client/";
-#endif
-
         /// <summary>
         /// 运行时的行为树仓库，注意，一定不能对这些数据做修改
         /// </summary>
@@ -53,32 +47,6 @@ namespace ETModel
                 BsonClassMap.LookupClassMap(type);
             }
 
-#if SERVER
-            DirectoryInfo directory = new DirectoryInfo(NPDataPath);
-            FileInfo[] fileInfos = directory.GetFiles();
-
-            foreach (var VARIABLE in fileInfos)
-            {
-                byte[] mfile = File.ReadAllBytes(VARIABLE.FullName);
-
-                if (mfile.Length == 0) Log.Info("没有读取到文件");
-
-                try
-                {
-                    NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
-
-                    Log.Info($"反序列化行为树:{VARIABLE.FullName}完成");
-
-                    NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
-#else
-
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
             resourcesComponent.LoadBundle("skillconfigs.unity3d");
             GameObject skillConfigs = (GameObject) resourcesComponent.GetAsset("skillconfigs.unity3d", "SkillConfigs");
@@ -92,18 +60,16 @@ namespace ETModel
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(textAsset.bytes);
 
-                    Log.Info($"反序列化行为树:{VARIABLE.key}完成");
+                    Log.Info($"反序列化行为树:{VARIABLE.key}完成，Id为{MnNpDataSupportor.RootId}");
 
                     NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Log.Error(e);
                     throw;
                 }
             }
-
-#endif
         }
 
         /// <summary>

@@ -8,15 +8,17 @@ using System.Collections.Generic;
 using ETModel.TheDataContainsAction;
 using NPBehave;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace ETModel
 {
-    public class NP_ActionNodeData: NP_NodeDataBase
+    [BoxGroup("行为结点数据")]
+    [HideReferenceObjectPicker]
+    [HideLabel]
+    public class NP_ActionNodeData : NP_NodeDataBase
     {
-        [HideInEditorMode]
-        public Action m_ActionNode;
-
-        [LabelText("承载Action的数据结构")]
+        [HideInEditorMode] public Action m_ActionNode;
+        
         public NP_ClassForStoreAction MNpClassForStoreAction;
 
         public override Task CreateTask(long UnitId, long RuntimeTreeID)

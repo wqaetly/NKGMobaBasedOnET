@@ -7,8 +7,11 @@
 using System;
 using Sirenix.OdinInspector;
 
+
 namespace ETModel.TheDataContainsAction
 {
+    [BoxGroup("用于包含Action的数据类"),GUIColor(0.961f, 0.902f, 0.788f, 1f)]
+    [HideLabel]
     public class NP_ClassForStoreAction
     {
         /// <summary>

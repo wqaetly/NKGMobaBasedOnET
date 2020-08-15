@@ -12,9 +12,9 @@ namespace ETModel.TheDataContainsAction
     /// <summary>
     /// 提前增加黑板数据，用于初始化操作
     /// </summary>
+    [Title("提前增加黑板数据，用于初始化操作",TitleAlignment = TitleAlignments.Centered)]
     public class NP_AdvanceAddBlackBoardValue: NP_ClassForStoreAction
     {
-        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Action GetActionToBeDone()

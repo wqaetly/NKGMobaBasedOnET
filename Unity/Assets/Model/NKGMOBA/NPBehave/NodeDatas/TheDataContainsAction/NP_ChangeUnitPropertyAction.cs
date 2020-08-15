@@ -14,9 +14,9 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
     /// <summary>
     /// 改变Unit属性
     /// </summary>
+    [Title("改变Unit属性",TitleAlignment = TitleAlignments.Centered)]
     public class NP_ChangeUnitPropertyAction: NP_ClassForStoreAction
     {
-        [LabelText("黑板节点相关的数据")]
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         [LabelText("要更改的Unit属性为")]

@@ -61,7 +61,7 @@ namespace NPBehave
             }
         }
 
-        protected override void DoStop()
+        protected override void DoCancel()
         {
             Debug.Assert(runningCount + succeededCount + failedCount == childrenCount);
 
@@ -69,7 +69,7 @@ namespace NPBehave
             {
                 if (child.IsActive)
                 {
-                    child.Stop();
+                    child.CancelWithoutReturnResult();
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace NPBehave
                         {
                             if (currentChild.IsActive)
                             {
-                                currentChild.Stop();
+                                currentChild.CancelWithoutReturnResult();
                             }
                         }
                     }

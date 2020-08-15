@@ -125,7 +125,7 @@ namespace NPBehave
             }
         }
 
-        protected override void DoStop()
+        protected override void DoCancel()
         {
             if (this.multiFrameFunc != null)
             {

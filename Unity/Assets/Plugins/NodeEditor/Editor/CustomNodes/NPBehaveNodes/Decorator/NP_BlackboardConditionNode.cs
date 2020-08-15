@@ -13,7 +13,7 @@ using UnityEditor;
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
     [Node(false, "NPBehave行为树/Decorator/BlackboardCondition", typeof (NPBehaveCanvas))]
-    public class NP_BlackboardConditionNode: NP_NodeBase
+    public class NP_BlackboardConditionNode: NP_DecoratorNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -24,8 +24,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-
-        [LabelText("黑板条件结点数据")]
+        
         public NP_BlackboardConditionNodeData NP_BlackboardConditionNodeData;
 
         private void OnEnable()
@@ -33,6 +32,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
             if (NP_BlackboardConditionNodeData == null)
             {
                 this.NP_BlackboardConditionNodeData = new NP_BlackboardConditionNodeData { NodeType = NodeType.Decorator};
+                NP_BlackboardConditionNodeData.NodeDes = "黑板条件结点";
             }
         }
 
@@ -43,7 +43,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_BlackboardConditionNodeData.NodeDes);
+            NP_BlackboardConditionNodeData.NodeDes=  EditorGUILayout.TextField(NP_BlackboardConditionNodeData.NodeDes);
         }
     }
 }

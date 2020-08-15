@@ -43,5 +43,15 @@ namespace ETModel
         {
             return m_NPRuntimeTreeRootNode.Blackboard;
         }
+
+        public override void Dispose()
+        {
+            if(IsDisposed)
+                return;
+            base.Dispose();
+            m_NPRuntimeTreeRootNode.CancelWithoutReturnResult();
+            m_NPRuntimeTreeRootNode = null;
+            m_BelongNP_DataSupportor = null;
+        }
     }
 }

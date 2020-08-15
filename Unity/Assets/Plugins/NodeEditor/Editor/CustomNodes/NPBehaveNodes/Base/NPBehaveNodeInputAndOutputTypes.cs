@@ -11,20 +11,20 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    public class NPBehave_PreNode: ValueConnectionType //: IConnectionTypeDeclaration
+    public class NPBehave_PreNode : ValueConnectionType //: IConnectionTypeDeclaration
     {
         public override string Identifier => "NPBehave_PrevNodeDatas";
 
-        public override Type Type => typeof (Node);
+        public override Type Type => typeof(Node);
 
         public override Color Color => Color.yellow;
     }
 
-    public class NPBehave_NextNode: ValueConnectionType // : IConnectionTypeDeclaration
+    public class NPBehave_NextNode : ValueConnectionType // : IConnectionTypeDeclaration
     {
         public override string Identifier => "NPBehave_NextNodeDatas";
 
-        public override Type Type => typeof (Node);
+        public override Type Type => typeof(Node);
 
         public override Color Color => Color.cyan;
     }

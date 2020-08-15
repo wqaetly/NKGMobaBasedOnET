@@ -15,10 +15,7 @@ namespace NPBehave
 
         public State CurrentState
         {
-            get
-            {
-                return currentState;
-            }
+            get { return currentState; }
         }
 
         public Root RootNode;
@@ -27,66 +24,42 @@ namespace NPBehave
 
         public Container ParentNode
         {
-            get
-            {
-                return parentNode;
-            }
+            get { return parentNode; }
         }
 
         public string label;
 
         public string Label
         {
-            get
-            {
-                return label;
-            }
-            set
-            {
-                label = value;
-            }
+            get { return label; }
+            set { label = value; }
         }
 
         public string name;
 
         public string Name
         {
-            get
-            {
-                return name;
-            }
+            get { return name; }
         }
 
         public virtual Blackboard Blackboard
         {
-            get
-            {
-                return RootNode.Blackboard;
-            }
+            get { return RootNode.Blackboard; }
         }
 
         public virtual Clock Clock
         {
-            get
-            {
-                return RootNode.Clock;
-            }
+            get { return RootNode.Clock; }
         }
 
         public bool IsStopRequested
         {
-            get
-            {
-                return this.currentState == State.STOP_REQUESTED;
-            }
+            get { return this.currentState == State.STOP_REQUESTED; }
         }
 
         public bool IsActive
         {
-            get
-            {
-                return this.currentState == State.ACTIVE;
-            }
+            get { return this.currentState == State.ACTIVE; }
         }
 
         public Node(string name)
@@ -113,30 +86,33 @@ namespace NPBehave
         }
 
         /// <summary>
-        /// TODO: Rename to "Cancel" in next API-Incompatible version
+        /// 取消当前节点的执行，但并不返回状态结果
         /// </summary>
-        public void Stop()
+        public void CancelWithoutReturnResult()
         {
             // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
             Debug.Assert(this.currentState == State.ACTIVE, "can only stop active nodes, tried to stop");
             this.currentState = State.STOP_REQUESTED;
-            DoStop();
+            DoCancel();
         }
 
         protected virtual void DoStart()
         {
         }
 
-        protected virtual void DoStop()
+        protected virtual void DoCancel()
         {
         }
 
-        /// THIS ABSOLUTLY HAS TO BE THE LAST CALL IN YOUR FUNCTION, NEVER MODIFY
-        /// ANY STATE AFTER CALLING Stopped !!!!
+        /// <summary>
+        /// 节点被终止，内含状态，成功或失败
+        /// </summary>
+        /// <param name="success"></param>
         protected virtual void Stopped(bool success)
         {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
-            Debug.Assert(this.currentState != State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
+            Debug.Assert(this.currentState != State.INACTIVE,
+                "Called 'Stopped' while in state INACTIVE, something is wrong!");
             this.currentState = State.INACTIVE;
             if (this.ParentNode != null)
             {
@@ -173,7 +149,7 @@ namespace NPBehave
 
         override public string ToString()
         {
-            return !string.IsNullOrEmpty(Label)? (this.Name + "{" + Label + "}") : this.Name;
+            return !string.IsNullOrEmpty(Label) ? (this.Name + "{" + Label + "}") : this.Name;
         }
 
         protected string GetPath()

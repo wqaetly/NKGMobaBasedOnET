@@ -11,9 +11,9 @@
             Decoratee.Start();
         }
 
-        override protected void DoStop()
+        override protected void DoCancel()
         {
-            Decoratee.Stop();
+            Decoratee.CancelWithoutReturnResult();
         }
 
         protected override void DoChildStopped(Node child, bool result)

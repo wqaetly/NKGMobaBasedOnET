@@ -10,7 +10,6 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [BsonIgnoreExtraElements]
     public class NP_SelectorNodeData:NP_NodeDataBase
     {
         [HideInEditorMode]

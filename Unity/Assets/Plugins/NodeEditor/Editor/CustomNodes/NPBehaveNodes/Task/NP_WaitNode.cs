@@ -12,8 +12,8 @@ using UnityEditor;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/Wait", typeof (NPBehaveCanvas))]
-    public class NP_WaitNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Task/Wait", typeof(NPBehaveCanvas))]
+    public class NP_WaitNode : NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -24,15 +24,14 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-
-        [LabelText("等待结点数据")]
+        
         public NP_WaitNodeData NP_WaitNodeData;
 
         private void OnEnable()
         {
             if (NP_WaitNodeData == null)
             {
-                this.NP_WaitNodeData = new NP_WaitNodeData { NodeType = NodeType.Task };
+                this.NP_WaitNodeData = new NP_WaitNodeData {NodeType = NodeType.Task};
             }
         }
 
@@ -43,7 +42,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_WaitNodeData.NodeDes);
+            NP_WaitNodeData.NodeDes = EditorGUILayout.TextField(NP_WaitNodeData.NodeDes);
         }
     }
 }

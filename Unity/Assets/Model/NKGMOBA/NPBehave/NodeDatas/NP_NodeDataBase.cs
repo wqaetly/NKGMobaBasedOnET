@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using NPBehave;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -30,7 +31,9 @@ namespace ETModel
         [HideInEditorMode]
         public List<long> linkedID = new List<long>();
 
-        [LabelText("结点信息描述")]
+        [BoxGroup("结点信息描述")]
+        [TextArea(2,2)]
+        [HideLabel]
         public string NodeDes;
 
         /// <summary>

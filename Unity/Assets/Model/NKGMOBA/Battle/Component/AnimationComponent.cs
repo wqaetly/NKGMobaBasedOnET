@@ -71,7 +71,7 @@ namespace ETModel
         /// <param name="currentStateTypes"></param>
         /// <param name="fadeOutTime"></param>
         /// <returns></returns>
-        public AnimancerState PlayAnimAndAllowRegisterNext(StateTypes currentStateTypes, float fadeOutTime)
+        public AnimancerState PlayAnimAndAllowRegisterNext(StateTypes currentStateTypes, float fadeOutTime = 0.3f)
         {
             return AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[currentStateTypes]], fadeOutTime);
         }

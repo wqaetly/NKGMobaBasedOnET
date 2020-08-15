@@ -12,8 +12,8 @@ using UnityEditor;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Decorator/Service", typeof (NPBehaveCanvas))]
-    public class NP_ServiceNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Decorator/Service", typeof(NPBehaveCanvas))]
+    public class NP_ServiceNode : NP_DecoratorNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -25,16 +25,15 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("服务结点数据")]
+        [BoxGroup("服务结点数据")] [HideReferenceObjectPicker] [HideLabel]
         public NP_ServiceNodeData NP_ServiceNodeData;
 
         private void OnEnable()
         {
             if (NP_ServiceNodeData == null)
             {
-                this.NP_ServiceNodeData = new NP_ServiceNodeData { NodeType = NodeType.Decorator};
+                this.NP_ServiceNodeData = new NP_ServiceNodeData {NodeType = NodeType.Decorator};
             }
-
         }
 
         public override NP_NodeDataBase NP_GetNodeData()

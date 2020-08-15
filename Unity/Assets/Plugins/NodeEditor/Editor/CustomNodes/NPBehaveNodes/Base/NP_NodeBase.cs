@@ -7,13 +7,14 @@
 using System.Collections.Generic;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树结点", typeof (NeverbeUsedCanvas))]
-    public abstract class NP_NodeBase: Node
+    [Node(false, "NPBehave行为树结点", typeof(NeverbeUsedCanvas))]
+    public abstract class NP_NodeBase : Node
     {
         /// <summary>
         /// 内部ID
@@ -25,17 +26,23 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        public override Vector2 DefaultSize => new Vector2(150, 60);
+        public override Vector2 DefaultSize => NodeSize;
 
-        [ValueConnectionKnob("NPBehave_PreNode", Direction.In, "NPBehave_PrevNodeDatas", NodeSide.Top, 75)]
-        public ValueConnectionKnob PrevNode;
+        [LabelText("结点大小")] [OnValueChanged("ApplyNodeSize")]
+        public Vector2 NodeSize = new Vector2(150, 60);
 
-        [ValueConnectionKnob("NPBehave_NextNode", Direction.Out, "NPBehave_NextNodeDatas", NodeSide.Bottom, 75)]
-        public ValueConnectionKnob NextNode;
         public virtual void AutoBindAllDelegate()
         {
         }
-        
+
+        /// <summary>
+        /// 获取下面链接的节点
+        /// </summary>
+        /// <returns></returns>
+        public abstract ValueConnectionKnob GetNextNodes();
+
+        public abstract void ApplyNodeSize();
+
         public override void NodeGUI()
         {
             EditorGUILayout.TextField("不允许使用此结点");

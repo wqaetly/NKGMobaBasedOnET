@@ -9,11 +9,12 @@ using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEngine;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Composite/Selector", typeof (NPBehaveCanvas))]
-    public class NP_SelectorNode: NP_NodeBase
+    [Node(false, "NPBehave行为树/Composite/Selector", typeof(NPBehaveCanvas))]
+    public class NP_SelectorNode : NP_CompositeNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -25,14 +26,16 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("Selector结点数据")]
+        [BoxGroup("Selector结点数据")] [HideReferenceObjectPicker] [HideLabel]
         public NP_SelectorNodeData NP_SelectorNodeData;
 
         private void OnEnable()
         {
             if (NP_SelectorNodeData == null)
             {
-                this.NP_SelectorNodeData = new NP_SelectorNodeData { NodeType = NodeType.Composite};
+                this.NP_SelectorNodeData = new NP_SelectorNodeData {NodeType = NodeType.Composite};
+                NP_SelectorNodeData.NodeDes = "选择组合器";
+                this.backgroundColor = new Color(127 / 255f, 1f, 0f);
             }
         }
 
@@ -43,7 +46,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NP_SelectorNodeData.NodeDes);
+            NP_SelectorNodeData.NodeDes = EditorGUILayout.TextField(NP_SelectorNodeData.NodeDes);
         }
     }
 }

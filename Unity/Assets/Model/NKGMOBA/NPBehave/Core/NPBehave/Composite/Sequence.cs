@@ -25,9 +25,9 @@ namespace NPBehave
             ProcessChildren();
         }
 
-        protected override void DoStop()
+        protected override void DoCancel()
         {
-            Children[currentIndex].Stop();
+            Children[currentIndex].CancelWithoutReturnResult();
         }
 
 
@@ -42,6 +42,7 @@ namespace NPBehave
                 Stopped(false);
             }
         }
+        
 
         private void ProcessChildren()
         {
@@ -86,7 +87,7 @@ namespace NPBehave
                     {
                         currentIndex = Children.Length;
                     }
-                    currentChild.Stop();
+                    currentChild.CancelWithoutReturnResult();
                     break;
                 }
             }

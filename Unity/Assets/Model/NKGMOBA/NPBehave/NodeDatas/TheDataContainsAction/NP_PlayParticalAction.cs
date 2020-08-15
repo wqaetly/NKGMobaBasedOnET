@@ -12,6 +12,7 @@ using UnityEngine;
 
 namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 {
+    [Title("播放特效",TitleAlignment = TitleAlignments.Centered)]
     public class NP_PlayParticalAction: NP_ClassForStoreAction
     {
         [LabelText("要播放的特效名称")]

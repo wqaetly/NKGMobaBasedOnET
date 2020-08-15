@@ -16,6 +16,7 @@ namespace ETModel
     /// <summary>
     /// 检查技能是否能释放
     /// </summary>
+    [Title("检查技能是否能释放",TitleAlignment = TitleAlignments.Centered)]
     public class NP_CheckAction: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
@@ -26,8 +27,7 @@ namespace ETModel
 
         [LabelText("将要检查的技能ID（QWER：0123）")]
         public int theSkillIDBelongTo;
-
-        [LabelText("黑板节点相关的数据")]
+        
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Func<bool> GetFunc1ToBeDone()

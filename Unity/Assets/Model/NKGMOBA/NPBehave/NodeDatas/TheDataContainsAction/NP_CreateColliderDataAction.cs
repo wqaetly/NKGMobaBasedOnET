@@ -11,6 +11,7 @@ using Sirenix.OdinInspector;
 
 namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 {
+    [Title("创建一个碰撞体",TitleAlignment = TitleAlignments.Centered)]
     public class NP_CreateColliderData: NP_ClassForStoreAction
     {
         [LabelText("要生成的碰撞数据载体ID")]

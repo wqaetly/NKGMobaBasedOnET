@@ -13,7 +13,7 @@ using UnityEditor;
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
     [Node(false, "NPBehave行为树/Decorator/Repeater", typeof (NPBehaveCanvas))]
-    public class NP_RepeaterNode: NP_NodeBase
+    public class NP_RepeaterNode: NP_DecoratorNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -25,7 +25,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("重复执行结点数据")]
+        [BoxGroup("重复执行结点数据")] [HideReferenceObjectPicker] [HideLabel] 
         public NP_RepeaterNodeData NpRepeaterNodeData;
 
         private void OnEnable()

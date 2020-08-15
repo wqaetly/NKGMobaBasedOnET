@@ -13,7 +13,7 @@ using UnityEditor;
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
     [Node(false, "NPBehave行为树/Task/WaitUntilStopped", typeof (NPBehaveCanvas))]
-    public class NP_WaitUntilStoppedNode:NP_NodeBase
+    public class NP_WaitUntilStoppedNode:NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -25,9 +25,9 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [LabelText("结点数据")]
+           [BoxGroup("结点数据")] [HideReferenceObjectPicker] [HideLabel]
         public NP_WaitUntilStoppedData NpWaitUntilStoppedData;
-
+        
         private void OnEnable()
         {
             if (NpWaitUntilStoppedData == null)

@@ -1063,6 +1063,7 @@
             </e>
             <e p="Mono" t="Include">
               <e p="Effect_Special_Mono.cs" t="Include" />
+              <e p="MonoBridge.cs" t="Include" />
             </e>
             <e p="NPBehave" t="Include">
               <e p="Component" t="Include">
@@ -1160,6 +1161,8 @@
                   <e p="NP_CheckAction.cs" t="Include" />
                   <e p="NP_ClassForStoreAction.cs" t="Include" />
                   <e p="NP_CreateColliderDataAction.cs" t="Include" />
+                  <e p="NP_GetAndSetDistanceToPlayer.cs" t="Include" />
+                  <e p="NP_GetAndSetSelfHealthPercentageAction.cs" t="Include" />
                   <e p="NP_InitTreeAction.cs" t="Include" />
                   <e p="NP_LogAction.cs" t="Include" />
                   <e p="NP_PlayAnimationAction.cs" t="Include" />
@@ -1602,6 +1605,13 @@
                   <e p="HeroDataNode.cs" t="Include" />
                 </e>
                 <e p="NPBehaveNodes" t="Include">
+                  <e p="Base" t="Include">
+                    <e p="NP_CompositeNodeBase.cs" t="Include" />
+                    <e p="NP_DecoratorNodeBase.cs" t="Include" />
+                    <e p="NP_NodeBase.cs" t="Include" />
+                    <e p="NP_TaskNodeBase.cs" t="Include" />
+                    <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
+                  </e>
                   <e p="Composite" t="Include">
                     <e p="NP_ParallelNode.cs" t="Include" />
                     <e p="NP_SelectorNode.cs" t="Include" />
@@ -1610,11 +1620,9 @@
                   <e p="Decorator" t="Include">
                     <e p="NP_BlackboardConditionNode.cs" t="Include" />
                     <e p="NP_RepeaterNode.cs" t="Include" />
+                    <e p="NP_RootNode.cs" t="Include" />
                     <e p="NP_ServiceNode.cs" t="Include" />
                   </e>
-                  <e p="NP_NodeBase.cs" t="Include" />
-                  <e p="NP_RootNode.cs" t="Include" />
-                  <e p="NPBehaveNodeInputAndOutputTypes.cs" t="Include" />
                   <e p="Task" t="Include">
                     <e p="NP_ActionNode.cs" t="Include" />
                     <e p="NP_WaitNode.cs" t="Include" />

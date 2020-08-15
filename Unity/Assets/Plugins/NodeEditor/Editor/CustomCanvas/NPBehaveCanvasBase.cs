@@ -28,18 +28,16 @@ namespace Plugins.NodeEditor.Editor.Canvas
     /// 要在NPBehaveNodes文件夹下面的除了NP_NodeBase之外的所有Node的Node特性的type里加上自定义的Canvas的Type，不然创建不了行为树组件
     /// 推荐的按钮样式：[Button("XXX", 25), GUIColor(0.4f, 0.8f, 1)]
     /// </summary>
-    public abstract class NPBehaveCanvasBase: NodeCanvas
+    public abstract class NPBehaveCanvasBase : NodeCanvas
     {
         public override string canvasName => Name;
-        
-        [Title("本Canvas所有数据整理部分")]
-        [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
-        public string Name = "";
 
-        [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
-        [FolderPath]
+        [Title("本Canvas所有数据整理部分")] [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
+        public string Name;
+
+        [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)] [FolderPath]
         public string SavePath;
-        
+
         /// <summary>
         /// 自动配置当前图所有结点
         /// </summary>
@@ -55,19 +53,25 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
         public virtual void Save(NP_DataSupportorBase npDataSupportorBase)
         {
+            if (string.IsNullOrEmpty(SavePath) || string.IsNullOrEmpty(Name))
+            {
+                Log.Error("保存路径或文件名不能为空，请检查配置");
+                return;
+            }
+
             using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
             {
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), npDataSupportorBase);
             }
 
-            Debug.Log("保存成功");
+            Debug.Log($"保存 {SavePath}/{this.Name}.bytes 成功");
         }
 
         /// <summary>
         /// 测试反序列化
         /// </summary>
         /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
-        public virtual T TestDe<T>(T npDataSupportorBase) where T:NP_DataSupportorBase
+        public virtual T TestDe<T>(T npDataSupportorBase) where T : NP_DataSupportorBase
         {
             byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
 
@@ -83,7 +87,6 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 Debug.Log(e);
                 throw;
             }
-
         }
 
         /// <summary>
@@ -94,47 +97,61 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             npDataSupportorBase.mNP_DataSupportorDic.Clear();
 
-            List<NP_NodeBase> tempNode1 = new List<NP_NodeBase>();
+            //当前Canvas所有NP_Node
+            List<NP_NodeBase> allNodes = new List<NP_NodeBase>();
 
-            foreach (var VARIABLE in this.nodes)
+            foreach (var node in this.nodes)
             {
-                if (VARIABLE is NP_NodeBase mNode)
+                if (node is NP_NodeBase mNode)
                 {
-                    tempNode1.Add(mNode);
+                    allNodes.Add(mNode);
                 }
             }
 
-            tempNode1.Sort((x, y) => -x.position.y.CompareTo(y.position.y));
+            //排序
+            allNodes.Sort((x, y) => -x.position.y.CompareTo(y.position.y));
 
-            foreach (var VARIABLE in tempNode1)
+            //配置每个节点Id
+            foreach (var node in allNodes)
             {
-                VARIABLE.NP_GetNodeData().id = IdGenerater.GenerateId();
+                node.NP_GetNodeData().id = IdGenerater.GenerateId();
             }
 
-            npDataSupportorBase.RootId = tempNode1[tempNode1.Count - 1].NP_GetNodeData().id;
+            //设置根结点Id
+            npDataSupportorBase.RootId = allNodes[allNodes.Count - 1].NP_GetNodeData().id;
 
-            foreach (var VARIABLE1 in tempNode1)
+            foreach (var node in allNodes)
             {
-                NP_NodeDataBase mNodeData = VARIABLE1.NP_GetNodeData();
+                //获取结点对应的NPData
+                NP_NodeDataBase mNodeData = node.NP_GetNodeData();
                 mNodeData.linkedID.Clear();
-                long mNodeDataID = mNodeData.id;
-                List<NP_NodeBase> tempNode = new List<NP_NodeBase>();
-                foreach (var VARIABLE2 in VARIABLE1.NextNode.connections)
+
+                //出结点连接的Nodes
+                List<NP_NodeBase> theNodesConnectedToOutNode = new List<NP_NodeBase>();
+
+                List<ValueConnectionKnob> valueConnectionKnobs = node.GetNextNodes()?.connections;
+
+                if (valueConnectionKnobs != null)
                 {
-                    tempNode.Add((NP_NodeBase) VARIABLE2.body);
+                    foreach (var valueConnectionKnob in valueConnectionKnobs)
+                    {
+                        theNodesConnectedToOutNode.Add((NP_NodeBase) valueConnectionKnob.body);
+                    }
+
+                    //对所连接的节点们进行排序
+                    theNodesConnectedToOutNode.Sort((x, y) => x.position.x.CompareTo(y.position.x));
+
+                    //配置连接的Id，运行时实时构建行为树
+                    foreach (var npNodeBase in theNodesConnectedToOutNode)
+                    {
+                        mNodeData.linkedID.Add(npNodeBase.NP_GetNodeData().id);
+                    }
                 }
 
-                tempNode.Sort((x, y) => x.position.x.CompareTo(y.position.x));
 
-                foreach (var np_NodeBase in tempNode)
-                {
-                    mNodeData.linkedID.Add(np_NodeBase.NP_GetNodeData().id);
-                }
-
-                //Log.Info($"y:{VARIABLE1.position.y},x:{VARIABLE1.position.x},id:{mNodeDataID}");
-                npDataSupportorBase.mNP_DataSupportorDic.Add(mNodeDataID, mNodeData);
+                //将此结点数据写入字典
+                npDataSupportorBase.mNP_DataSupportorDic.Add(mNodeData.id, mNodeData);
             }
         }
-        
     }
 }
