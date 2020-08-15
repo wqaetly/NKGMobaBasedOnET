@@ -47,7 +47,7 @@ namespace NodeEditorFramework.Standard
 
             if (GUILayout.Button("File", NodeEditorGUI.toolbarDropdown, GUILayout.Width(50)))
             {
-                GenericMenu menu = new GenericMenu(!Application.isPlaying);
+                GenericMenu menu = new GenericMenu();
 
                 // New Canvas filled with canvas types
                 NodeCanvasManager.FillCanvasTypeMenu(ref menu, NewNodeCanvas, "New Canvas/");
@@ -69,30 +69,30 @@ namespace NodeEditorFramework.Standard
                     menu.AddItem(new GUIContent("Save Canvas As"), false, SaveCanvasAs);
                 }
 
-                menu.AddSeparator("");
+                // menu.AddSeparator("");
 #endif
 
-                // Import / Export filled with import/export types
-                ImportExportManager.FillImportFormatMenu(ref menu, ImportCanvasCallback, "Import/");
-                if (canvasCache.nodeCanvas.allowSceneSaveOnly)
-                {
-                    menu.AddDisabledItem(new GUIContent("Export"));
-                }
-                else
-                {
-                    ImportExportManager.FillExportFormatMenu(ref menu, ExportCanvasCallback, "Export/");
-                }
-
-                menu.AddSeparator("");
-
-                // Scene Saving
-                string[] sceneSaves = NodeEditorSaveManager.GetSceneSaves();
-                if (sceneSaves.Length <= 0) // Display disabled item
-                    menu.AddItem(new GUIContent("Load Canvas from Scene"), false, null);
-                else
-                    foreach (string sceneSave in sceneSaves) // Display scene saves to load
-                        menu.AddItem(new GUIContent("Load Canvas from Scene/" + sceneSave), false, LoadSceneCanvasCallback, sceneSave);
-                menu.AddItem(new GUIContent("Save Canvas to Scene"), false, SaveSceneCanvasCallback);
+                // // Import / Export filled with import/export types
+                // ImportExportManager.FillImportFormatMenu(ref menu, ImportCanvasCallback, "Import/");
+                // if (canvasCache.nodeCanvas.allowSceneSaveOnly)
+                // {
+                //     menu.AddDisabledItem(new GUIContent("Export"));
+                // }
+                // else
+                // {
+                //     ImportExportManager.FillExportFormatMenu(ref menu, ExportCanvasCallback, "Export/");
+                // }
+                //
+                // menu.AddSeparator("");
+                //
+                // // Scene Saving
+                // string[] sceneSaves = NodeEditorSaveManager.GetSceneSaves();
+                // if (sceneSaves.Length <= 0) // Display disabled item
+                //     menu.AddItem(new GUIContent("Load Canvas from Scene"), false, null);
+                // else
+                //     foreach (string sceneSave in sceneSaves) // Display scene saves to load
+                //         menu.AddItem(new GUIContent("Load Canvas from Scene/" + sceneSave), false, LoadSceneCanvasCallback, sceneSave);
+                // menu.AddItem(new GUIContent("Save Canvas to Scene"), false, SaveSceneCanvasCallback);
 
                 // Show dropdown
                 menu.Show(new Vector2(5, toolbarHeight));

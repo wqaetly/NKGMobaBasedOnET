@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using NodeEditorFramework.IO;
+using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
 
 namespace NodeEditorFramework
@@ -322,25 +323,30 @@ namespace NodeEditorFramework
             Rect nodeRect = rect;
             Vector2 pos = NodeEditor.curEditorState.zoomPanAdjust + NodeEditor.curEditorState.panOffset;
             nodeRect.position = new Vector2((int) (nodeRect.x + pos.x), (int) (nodeRect.y + pos.y));
+
+            GUIStyle targetNodeBoxStyle =
+                    NodeEditor.curEditorState.selectedNode == this
+                            ? NodeEditorGUI.nodeBox_HighLight
+                            : NodeEditorGUI.nodeBox;
+
+            GUI.Box(nodeRect, GUIContent.none, targetNodeBoxStyle);
             contentOffset = new Vector2(0, 20);
 
             GUI.color = backgroundColor;
 
             // Create a headerRect out of the previous rect and draw it, marking the selected node as such by making the header bold
             Rect headerRect = new Rect(nodeRect.x, nodeRect.y, nodeRect.width, contentOffset.y);
-            GUI.color = backgroundColor;
-            GUI.Box(headerRect, GUIContent.none, GUI.skin.box);
             GUI.color = Color.white;
-            GUI.Label(headerRect, Title,
-                NodeEditor.curEditorState.selectedNode == this
-                        ? NodeEditorGUI.nodeLabelBoldCentered
-                        : NodeEditorGUI.nodeLabelCentered);
+            GUI.Label(headerRect, Title, NodeEditorGUI.nodeLabelCentered);
+
+            RTEditorGUI.Seperator(new Rect(nodeRect.x, nodeRect.y + contentOffset.y - 1, nodeRect.width, 0));
 
             // Begin the body frame around the NodeGUI
             Rect bodyRect = new Rect(nodeRect.x, nodeRect.y + contentOffset.y, nodeRect.width,
                 nodeRect.height - contentOffset.y);
-            GUI.color = backgroundColor;
-            GUI.BeginGroup(bodyRect, GUI.skin.box);
+
+            GUI.BeginGroup(bodyRect);
+
             GUI.color = Color.white;
             bodyRect.position = Vector2.zero;
             GUILayout.BeginArea(bodyRect);
