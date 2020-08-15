@@ -190,8 +190,19 @@ namespace NodeEditorFramework
             editorStates = editorStates.Where((NodeEditorState state) => state != null).ToArray();
             foreach (NodeEditorState state in editorStates)
             {
-                if (!nodes.Contains(state.selectedNode))
-                    state.selectedNode = null;
+                bool isValidate = true;
+                foreach (var node in state.selectedNodes)
+                {
+                    if (!nodes.Contains(node))
+                    {
+                        isValidate = false;
+                    }
+                }
+
+                if (!isValidate)
+                {
+                    state.selectedNodes.Clear();
+                }
             }
 
             // Validate CanvasType-specific stuff

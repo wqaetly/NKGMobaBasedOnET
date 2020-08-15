@@ -325,13 +325,13 @@ namespace NodeEditorFramework
             nodeRect.position = new Vector2((int) (nodeRect.x + pos.x), (int) (nodeRect.y + pos.y));
 
             GUIStyle targetNodeBoxStyle =
-                    NodeEditor.curEditorState.selectedNode == this
+                    NodeEditor.CheckNodeIsSelected(this)
                             ? NodeEditorGUI.nodeBox_HighLight
                             : NodeEditorGUI.nodeBox;
             GUI.color = backgroundColor;
             GUI.Box(nodeRect, GUIContent.none, targetNodeBoxStyle);
             contentOffset = new Vector2(0, 20);
-            
+
             // Create a headerRect out of the previous rect and draw it, marking the selected node as such by making the header bold
             Rect headerRect = new Rect(nodeRect.x, nodeRect.y, nodeRect.width, contentOffset.y);
             GUI.color = Color.white;

@@ -50,8 +50,19 @@ namespace NodeEditorFramework
         {
             if (inputInfo.editorState.focusedNode != null)
             {
-                Undo.RecordObject(inputInfo.editorState.canvas,"删除保存");
-                inputInfo.editorState.focusedNode.Delete();
+                Undo.RecordObject(inputInfo.editorState.canvas, "删除保存");
+                List<Node> temp = new List<Node>();
+                foreach (var node in inputInfo.editorState.selectedNodes)
+                {
+                    temp.Add(node);
+                }
+
+                foreach (var node in temp)
+                {
+                    node.Delete();
+                }
+                inputInfo.editorState.selectedNodes.Clear();
+
                 inputInfo.inputEvent.Use();
             }
         }
@@ -60,13 +71,14 @@ namespace NodeEditorFramework
         private static void DuplicateNode(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
-            Undo.RecordObject(inputInfo.editorState.canvas,"新增保存");
-            if (state.focusedNode != null && state.canvas.CanAddNode(state.focusedNode.GetID))
+            Undo.RecordObject(inputInfo.editorState.canvas, "新增保存");
+            if (state.focusedNode != null && state.selectedNodes.Count > 0 && state.canvas.CanAddNode(state.focusedNode.GetID))
             {
+                //TODO 支持多个Node复制操作
                 // Create new node of same type
                 Node duplicatedNode = Node.Create(state.focusedNode.GetID, NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), state.canvas,
                     state.connectKnob);
-                state.selectedNode = state.focusedNode = duplicatedNode;
+                state.selectedNodes[0] = state.focusedNode = duplicatedNode;
                 state.connectKnob = null;
                 inputInfo.inputEvent.Use();
             }
@@ -86,37 +98,44 @@ namespace NodeEditorFramework
 
         #endregion
 
-        #region Node Keyboard Control
+        #region 框选多个Node
 
-        // Main Keyboard_Move method
-        [HotkeyAttribute(KeyCode.UpArrow, EventType.KeyDown)]
-        [HotkeyAttribute(KeyCode.LeftArrow, EventType.KeyDown)]
-        [HotkeyAttribute(KeyCode.RightArrow, EventType.KeyDown)]
-        [HotkeyAttribute(KeyCode.DownArrow, EventType.KeyDown)]
-        private static void KB_MoveNode(NodeEditorInputInfo inputInfo)
+        public static Vector2 startSelectionPos;
+
+        [EventHandlerAttribute(EventType.MouseDown, 95)] // Priority over hundred to make it call after the GUI
+        private static void HandleWindowSelectionStart(NodeEditorInputInfo inputInfo)
         {
-            if (GUIUtility.keyboardControl > 0)
-                return;
+            if (GUIUtility.hotControl > 0)
+                return; // GUI has control
+
             NodeEditorState state = inputInfo.editorState;
-            if (state.selectedNode != null)
+            if (inputInfo.inputEvent.button == 0 && state.focusedNode == null)
             {
-                Vector2 pos = state.selectedNode.rect.position;
-                int shiftAmount = inputInfo.inputEvent.shift? 50 : 10;
-
-                if (inputInfo.inputEvent.keyCode == KeyCode.RightArrow)
-                    pos = new Vector2(pos.x + shiftAmount, pos.y);
-                else if (inputInfo.inputEvent.keyCode == KeyCode.LeftArrow)
-                    pos = new Vector2(pos.x - shiftAmount, pos.y);
-                else if (inputInfo.inputEvent.keyCode == KeyCode.DownArrow)
-                    pos = new Vector2(pos.x, pos.y + shiftAmount);
-                else if (inputInfo.inputEvent.keyCode == KeyCode.UpArrow)
-                    pos = new Vector2(pos.x, pos.y - shiftAmount);
-
-                state.selectedNode.position = pos;
-                inputInfo.inputEvent.Use();
+                // Left clicked on the empty canvas -> Start the selection process
+                state.boxSelecting = true;
+                startSelectionPos = inputInfo.inputPos;
             }
+        }
 
-            NodeEditor.RepaintClients();
+        [EventHandlerAttribute(EventType.MouseDrag)]
+        private static void HandleWindowSelection(NodeEditorInputInfo inputInfo)
+        {
+            NodeEditorState state = inputInfo.editorState;
+            if (state.boxSelecting)
+            {
+                NodeEditor.RepaintClients();
+            }
+        }
+
+        [EventHandlerAttribute(EventType.MouseDown)]
+        [EventHandlerAttribute(EventType.MouseUp)]
+        private static void HandleWindowSelectionEnd(NodeEditorInputInfo inputInfo)
+        {
+            if (inputInfo.editorState.boxSelecting)
+            {
+                inputInfo.editorState.boxSelecting = false;
+                NodeEditor.RepaintClients();
+            }
         }
 
         #endregion
@@ -130,7 +149,7 @@ namespace NodeEditorFramework
                 return; // GUI has control
 
             NodeEditorState state = inputInfo.editorState;
-            if (inputInfo.inputEvent.button == 0 && state.focusedNode != null && state.focusedNode == state.selectedNode &&
+            if (inputInfo.inputEvent.button == 0 && state.focusedNode != null && NodeEditor.CheckNodeIsSelected(state.focusedNode) &&
                 state.focusedConnectionKnob == null)
             {
                 // Clicked inside the selected Node, so start dragging it
@@ -146,11 +165,15 @@ namespace NodeEditorFramework
             if (state.dragNode)
             {
                 // If conditions apply, drag the selected node, else disable dragging
-                if (state.selectedNode != null && inputInfo.editorState.dragUserID == "node")
+                if (state.selectedNodes.Count > 0 && inputInfo.editorState.dragUserID == "node")
                 {
                     // Apply new position for the dragged node
-                    state.UpdateDrag("node", inputInfo.inputPos);
-                    state.selectedNode.position = state.dragObjectPos;
+                    Vector2 newOffset = state.UpdateDrag("node", inputInfo.inputPos);
+                    foreach (var node in state.selectedNodes)
+                    {
+                        node.position += newOffset;
+                    }
+
                     NodeEditor.RepaintClients();
                 }
                 else
@@ -165,10 +188,13 @@ namespace NodeEditorFramework
             if (inputInfo.editorState.dragUserID == "node")
             {
                 Vector2 totalDrag = inputInfo.editorState.EndDrag("node");
-                if (inputInfo.editorState.dragNode && inputInfo.editorState.selectedNode != null)
+                if (inputInfo.editorState.dragNode && inputInfo.editorState.selectedNodes.Count > 0)
                 {
-                    inputInfo.editorState.selectedNode.position = totalDrag;
-                    NodeEditorCallbacks.IssueOnMoveNode(inputInfo.editorState.selectedNode);
+                    foreach (var node in inputInfo.editorState.selectedNodes)
+                    {
+                        node.position += inputInfo.editorState.dragOffset;
+                        NodeEditorCallbacks.IssueOnMoveNode(node);
+                    }
                 }
             }
 
@@ -186,7 +212,7 @@ namespace NodeEditorFramework
                 return; // GUI has control
 
             NodeEditorState state = inputInfo.editorState;
-            if ((inputInfo.inputEvent.button == 0 || inputInfo.inputEvent.button == 2) && state.focusedNode == null)
+            if ((inputInfo.inputEvent.button == 2) && state.focusedNode == null)
             {
                 // Left- or Middle clicked on the empty canvas -> Start panning
                 state.panWindow = true;
@@ -305,7 +331,7 @@ namespace NodeEditorFramework
 
         #endregion
 
-        #region Node Snap
+        #region 整格移动Node
 
         [EventHandlerAttribute(EventType.MouseUp, 60)]
         [EventHandlerAttribute(EventType.MouseDown, 60)]
@@ -316,11 +342,11 @@ namespace NodeEditorFramework
             if (inputInfo.inputEvent.modifiers == EventModifiers.Control || inputInfo.inputEvent.keyCode == KeyCode.LeftControl)
             {
                 NodeEditorState state = inputInfo.editorState;
-                if (state.selectedNode != null)
+                foreach (var node in state.selectedNodes)
                 {
                     // Snap selected Node's position to multiples of 10
-                    state.selectedNode.position.x = Mathf.Round(state.selectedNode.rect.x / 10) * 10;
-                    state.selectedNode.position.y = Mathf.Round(state.selectedNode.rect.y / 10) * 10;
+                    node.position.x = Mathf.Round(node.rect.x / 10) * 10;
+                    node.position.y = Mathf.Round(node.rect.y / 10) * 10;
                     NodeEditor.RepaintClients();
                 }
 

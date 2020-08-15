@@ -58,8 +58,6 @@ namespace NodeEditorFramework.Standard
 
             return _editor;
         }
-        
-        
 
         /// <summary>
         /// Assures that the canvas is opened when double-clicking a canvas asset
@@ -219,8 +217,8 @@ namespace NodeEditorFramework.Standard
         private void OnSceneGUI(SceneView sceneview)
         {
             AssureSetup();
-            if (canvasCache.editorState != null && canvasCache.editorState.selectedNode != null)
-                canvasCache.editorState.selectedNode.OnSceneGUI();
+            if (canvasCache.editorState != null && canvasCache.editorState.selectedNodes.Count > 0)
+                canvasCache.editorState.selectedNodes[0].OnSceneGUI();
             SceneView.lastActiveSceneView.Repaint();
         }
 

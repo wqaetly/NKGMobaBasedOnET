@@ -13,7 +13,10 @@ namespace NodeEditorFramework
 		[NonSerialized] public bool drawing = true; // whether to draw the canvas
 
 		// Selection State
-		public Node selectedNode; // selected Node
+		/// <summary>
+		/// 所有选中的Nodes
+		/// </summary>
+		public List<Node> selectedNodes = new List<Node>(); // selected Node
 		[NonSerialized] public Node focusedNode; // Node under mouse
 		[NonSerialized] public ConnectionKnob focusedConnectionKnob; // ConnectionKnob under mouse
 		[NonSerialized] public NodeGroup activeGroup; // NodeGroup that is currently interacted with
@@ -41,7 +44,8 @@ namespace NodeEditorFramework
 		[NonSerialized] public string dragUserID; // dragging source
 		[NonSerialized] public Vector2 dragMouseStart; // drag start position (mouse)
 		[NonSerialized] public Vector2 dragObjectStart; // start position of the dragged object
-		[NonSerialized] public Vector2 dragOffset; // offset for both node dragging and window panning
+		[NonSerialized] public Vector2 dragOffset; // offset for both node dragging and window panning(总共的)
+		public bool boxSelecting;
 		public Vector2 dragObjectPos { get { return dragObjectStart + dragOffset; } } // position of the dragged object
 
 		/// <summary>
