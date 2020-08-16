@@ -299,12 +299,19 @@ namespace NodeEditorFramework
                 // Handle context clicks on Node and canvas
                 if (inputInfo.editorState.focusedNode != null) // Node Context Click
                 {
+                    if (!NodeEditor.CheckNodeIsSelected(inputInfo.editorState.focusedNode))
+                    {
+                        inputInfo.editorState.selectedNodes.Clear();
+                        inputInfo.editorState.selectedNodes.Add(inputInfo.editorState.focusedNode);
+                    }
+
                     GenericMenu contextMenu = new GenericMenu();
                     FillContextMenu(inputInfo, contextMenu, ContextType.Node);
                     contextMenu.ShowAsContext();
                 }
                 else // Editor Context Click
                 {
+                    inputInfo.editorState.selectedNodes.Clear();
                     CreateNodesAdvancedDropdown.ShowDropdown(new Rect(inputInfo.inputPos, Vector2.zero));
                 }
 

@@ -50,8 +50,9 @@ namespace NodeEditorFramework
         {
             if (inputInfo.editorState.focusedNode != null)
             {
-                Undo.RecordObject(inputInfo.editorState.canvas, "删除保存");
                 List<Node> temp = new List<Node>();
+                Undo.RecordObject(inputInfo.editorState.canvas, "删除保存");
+
                 foreach (var node in inputInfo.editorState.selectedNodes)
                 {
                     temp.Add(node);
@@ -61,8 +62,8 @@ namespace NodeEditorFramework
                 {
                     node.Delete();
                 }
-                inputInfo.editorState.selectedNodes.Clear();
 
+                inputInfo.editorState.selectedNodes.Clear();
                 inputInfo.inputEvent.Use();
             }
         }
