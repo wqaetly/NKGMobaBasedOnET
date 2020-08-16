@@ -21,13 +21,62 @@ namespace Sirenix.OdinInspector
         }
     }
 
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public class TitleAttribute: System.Attribute
+    public enum TitleAlignments
     {
+        /// <summary>Title and subtitle left aligned.</summary>
+        Left,
+
+        /// <summary>Title and subtitle centered aligned.</summary>
+        Centered,
+
+        /// <summary>Title and subtitle right aligned.</summary>
+        Right,
+
+        /// <summary>Title on the left, subtitle on the right.</summary>
+        Split,
+    }
+
+    public class TitleAttribute: Attribute
+    {
+        /// <summary>
+        /// The title displayed above the property in the inspector.
+        /// </summary>
+        public string Title;
+
+        /// <summary>Optional subtitle.</summary>
+        public string Subtitle;
+
+        /// <summary>
+        /// If <c>true</c> the title will be displayed with a bold font.
+        /// </summary>
         public bool Bold;
 
-        public TitleAttribute(string value)
+        /// <summary>
+        /// Gets a value indicating whether or not to draw a horizontal line below the title.
+        /// </summary>
+        public bool HorizontalLine;
+
+        /// <summary>Title alignment.</summary>
+        public TitleAlignments TitleAlignment;
+
+        /// <summary>Creates a title above any property in the inspector.</summary>
+        /// <param name="title">The title displayed above the property in the inspector.</param>
+        /// <param name="subtitle">Optional subtitle</param>
+        /// <param name="titleAlignment">Title alignment</param>
+        /// <param name="horizontalLine">Horizontal line</param>
+        /// <param name="bold">If <c>true</c> the title will be drawn with a bold font.</param>
+        public TitleAttribute(
+        string title,
+        string subtitle = null,
+        TitleAlignments titleAlignment = TitleAlignments.Left,
+        bool horizontalLine = true,
+        bool bold = true)
         {
+            this.Title = title ?? "null";
+            this.Subtitle = subtitle;
+            this.Bold = bold;
+            this.TitleAlignment = titleAlignment;
+            this.HorizontalLine = horizontalLine;
         }
     }
 
@@ -117,7 +166,7 @@ namespace Sirenix.OdinInspector
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public class GUIColorAttribute: System.Attribute
     {
-        public GUIColorAttribute(float r, float g, float b)
+        public GUIColorAttribute(float r, float g, float b,float a = 0)
         {
         }
     }
@@ -170,5 +219,189 @@ namespace Sirenix.OdinInspector
         public MinValueAttribute(int i)
         {
         }
+    }
+
+    public class BoxGroupAttribute: PropertyGroupAttribute
+    {
+        /// <summary>
+        /// If <c>true</c> a label for the group will be drawn on top.
+        /// </summary>
+        public bool ShowLabel;
+
+        /// <summary>
+        /// If <c>true</c> the header label will be places in the center of the group header. Otherwise it will be in left side.
+        /// </summary>
+        public bool CenterLabel;
+
+        /// <summary>Adds the property to the specified box group.</summary>
+        /// <param name="group">The box group.</param>
+        /// <param name="showLabel">If <c>true</c> a label will be drawn for the group.</param>
+        /// <param name="centerLabel">If set to <c>true</c> the header label will be centered.</param>
+        /// <param name="order">The order of the group in the inspector.</param>
+        public BoxGroupAttribute(string group, bool showLabel = true, bool centerLabel = false, int order = 0)
+                : base(group, order)
+        {
+            this.ShowLabel = showLabel;
+            this.CenterLabel = centerLabel;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.BoxGroupAttribute" /> class. Use the other constructor overloads in order to show a header-label on the box group.
+        /// </summary>
+        public BoxGroupAttribute()
+                : this("_DefaultBoxGroup", false, false, 0)
+        {
+        }
+
+        /// <summary>Combines the box group with another group.</summary>
+        /// <param name="other">The other group.</param>
+        protected override void CombineValuesWith(PropertyGroupAttribute other)
+        {
+            BoxGroupAttribute boxGroupAttribute = other as BoxGroupAttribute;
+            if (!this.ShowLabel || !boxGroupAttribute.ShowLabel)
+            {
+                this.ShowLabel = false;
+                boxGroupAttribute.ShowLabel = false;
+            }
+
+            this.CenterLabel |= boxGroupAttribute.CenterLabel;
+        }
+    }
+
+    public abstract class PropertyGroupAttribute: Attribute
+    {
+        /// <summary>The ID used to grouping properties together.</summary>
+        public string GroupID;
+
+        /// <summary>
+        /// The name of the group. This is the last part of the group ID if there is a path, otherwise it is just the group ID.
+        /// </summary>
+        public string GroupName;
+
+        /// <summary>The order of the group.</summary>
+        public int Order;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.PropertyGroupAttribute" /> class.
+        /// </summary>
+        /// <param name="groupId">The group identifier.</param>
+        /// <param name="order">The group order.</param>
+        public PropertyGroupAttribute(string groupId, int order)
+        {
+            this.GroupID = groupId;
+            this.Order = order;
+            int num = groupId.LastIndexOf('/');
+            this.GroupName = num < 0 || num >= groupId.Length? groupId : groupId.Substring(num + 1);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.PropertyGroupAttribute" /> class.
+        /// </summary>
+        /// <param name="groupId">The group identifier.</param>
+        public PropertyGroupAttribute(string groupId)
+                : this(groupId, 0)
+        {
+        }
+
+        /// <summary>
+        /// <para>Combines this attribute with another attribute of the same type.
+        /// This method invokes the virtual <see cref="M:Sirenix.OdinInspector.PropertyGroupAttribute.CombineValuesWith(Sirenix.OdinInspector.PropertyGroupAttribute)" /> method to invoke custom combine logic.</para>
+        /// <para>All group attributes are combined to one attribute used by a single OdinGroupDrawer.</para>
+        /// <para>Example: <code>protected override void CombineValuesWith(PropertyGroupAttribute other) { this.Title = this.Title ?? (other as MyGroupAttribute).Title; }</code></para>
+        /// </summary>
+        /// <param name="other">The attribute to combine with.</param>
+        /// <returns>The instance that the method was invoked on.</returns>
+        /// <exception cref="T:System.ArgumentNullException">The argument 'other' was null.</exception>
+        /// <exception cref="T:System.ArgumentException">
+        /// Attributes to combine are not of the same type.
+        /// or
+        /// PropertyGroupAttributes to combine must have the same group id.
+        /// </exception>
+        public PropertyGroupAttribute Combine(PropertyGroupAttribute other)
+        {
+            if (other == null)
+                throw new ArgumentNullException(nameof (other));
+            if (other.GetType() != this.GetType())
+                throw new ArgumentException("Attributes to combine are not of the same type.");
+            if (other.GroupID != this.GroupID)
+                throw new ArgumentException("PropertyGroupAttributes to combine must have the same group id.");
+            if (this.Order == 0)
+                this.Order = other.Order;
+            else if (other.Order != 0)
+                this.Order = Math.Min(this.Order, other.Order);
+            this.CombineValuesWith(other);
+            return this;
+        }
+
+        /// <summary>
+        /// <para>Override this method to add custom combine logic to your group attribute. This method determines how your group's parameters combine when spread across multiple attribute declarations in the same class.</para>
+        /// <para>Remember, in .NET, member order is not guaranteed, so you never know which order your attributes will be combined in.</para>
+        /// </summary>
+        /// <param name="other">The attribute to combine with. This parameter is guaranteed to be of the correct attribute type.</param>
+        /// <example>
+        /// <para>This example shows how <see cref="T:Sirenix.OdinInspector.BoxGroupAttribute" /> attributes are combined.</para>
+        /// <code>
+        /// protected override void CombineValuesWith(PropertyGroupAttribute other)
+        /// {
+        ///     // The given attribute parameter is *guaranteed* to be of type BoxGroupAttribute.
+        ///     var attr = other as BoxGroupAttribute;
+        /// 
+        ///     // If this attribute has no label, we the other group's label, thus preserving the label across combines.
+        ///     if (this.Label == null)
+        ///     {
+        ///         this.Label = attr.Label;
+        ///     }
+        /// 
+        ///     // Combine ShowLabel and CenterLabel parameters.
+        ///     this.ShowLabel |= attr.ShowLabel;
+        ///     this.CenterLabel |= attr.CenterLabel;
+        /// }
+        /// </code>
+        /// </example>
+        protected virtual void CombineValuesWith(PropertyGroupAttribute other)
+        {
+        }
+    }
+    
+    public sealed class TextAreaAttribute : PropertyAttribute
+    {
+        /// <summary>
+        ///   <para>The minimum amount of lines the text area will use.</para>
+        /// </summary>
+        public readonly int minLines;
+        /// <summary>
+        ///   <para>The maximum amount of lines the text area can show before it starts using a scrollbar.</para>
+        /// </summary>
+        public readonly int maxLines;
+
+        /// <summary>
+        ///   <para>Attribute to make a string be edited with a height-flexible and scrollable text area.</para>
+        /// </summary>
+        /// <param name="minLines">The minimum amount of lines the text area will use.</param>
+        /// <param name="maxLines">The maximum amount of lines the text area can show before it starts using a scrollbar.</param>
+        public TextAreaAttribute()
+        {
+            this.minLines = 3;
+            this.maxLines = 3;
+        }
+
+        /// <summary>
+        ///   <para>Attribute to make a string be edited with a height-flexible and scrollable text area.</para>
+        /// </summary>
+        /// <param name="minLines">The minimum amount of lines the text area will use.</param>
+        /// <param name="maxLines">The maximum amount of lines the text area can show before it starts using a scrollbar.</param>
+        public TextAreaAttribute(int minLines, int maxLines)
+        {
+            this.minLines = minLines;
+            this.maxLines = maxLines;
+        }
+    }
+    
+    public abstract class PropertyAttribute : Attribute
+    {
+        /// <summary>
+        ///   <para>Optional field to specify the order that multiple DecorationDrawers should be drawn in.</para>
+        /// </summary>
+        public int order { get; set; }
     }
 }

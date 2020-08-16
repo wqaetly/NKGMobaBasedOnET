@@ -13,7 +13,6 @@ using UnityEngine;
 namespace ETModel
 {
     [BoxGroup("行为结点数据")]
-    [HideReferenceObjectPicker]
     [HideLabel]
     public class NP_ActionNodeData : NP_NodeDataBase
     {

@@ -39,7 +39,7 @@ namespace ETHotfix
             
             try
             {
-                NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Server_TreeIds.Darius_Q_Server);
+                NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Server);
                 Log.Info("行为树创建完成");
                 npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
             }

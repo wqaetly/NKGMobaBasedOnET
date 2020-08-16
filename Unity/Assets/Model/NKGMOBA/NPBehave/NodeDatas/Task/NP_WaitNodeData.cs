@@ -11,7 +11,6 @@ using Sirenix.OdinInspector;
 namespace ETModel
 {
     [BoxGroup("等待结点数据")]
-    [HideReferenceObjectPicker]
     [HideLabel]
     public class NP_WaitNodeData : NP_NodeDataBase
     {

@@ -53,7 +53,7 @@ namespace ETHotfix
                     Unit unit = ((B2S_ColliderEntity) this.Entity).m_BelongUnit;
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
                             unit.GetComponent<NP_RuntimeTreeManager>()
-                                    .GetTreeByPrefabID(NP_Server_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
+                                    .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
                     sw.Stop();
                     TimeSpan ts = sw.Elapsed;
                     Console.WriteLine("DateTime costed for Shuffle function is: {0}ms", ts.TotalMilliseconds);
