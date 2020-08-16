@@ -8,6 +8,6 @@ namespace ETModel
 	/// </summary>
 	public class ConfigComponent: Component
 	{
-		public Dictionary<Type, ACategory> AllConfig = new Dictionary<Type, ACategory>();
+		public Dictionary<Type, ACategoryBase> AllConfig = new Dictionary<Type, ACategoryBase>();
 	}
 }

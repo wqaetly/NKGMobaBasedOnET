@@ -53,7 +53,7 @@ namespace ETHotfix
 				
 				object obj = Activator.CreateInstance(type);
 
-				ACategory iCategory = obj as ACategory;
+				ACategoryBase iCategory = obj as ACategoryBase;
 				if (iCategory == null)
 				{
 					throw new Exception($"class: {type.Name} not inherit from ACategory");
@@ -65,52 +65,50 @@ namespace ETHotfix
 			}
 		}
 
-		public static IConfig GetOne(this ConfigComponent self, Type type)
+		public static T GetOne<T>(this ConfigComponent self) where T : IConfig
 		{
-			ACategory configCategory;
-			if (!self.AllConfig.TryGetValue(type, out configCategory))
+			Type type = typeof(T);
+			if (self.AllConfig.TryGetValue(type, out var aCategoryBase))
 			{
-				throw new Exception($"ConfigComponent not found key: {type.FullName}");
+				return ((ACategory<T>) aCategoryBase).GetOne();
 			}
-			return configCategory.GetOne();
-		}
-
-		public static IConfig Get(this ConfigComponent self, Type type, int id)
-		{
-			ACategory configCategory;
-			if (!self.AllConfig.TryGetValue(type, out configCategory))
+			else
 			{
 				throw new Exception($"ConfigComponent not found key: {type.FullName}");
 			}
 
-			return configCategory.TryGet(id);
+			return default;
 		}
 
-		public static IConfig TryGet(this ConfigComponent self, Type type, int id)
+		public static T Get<T>(this ConfigComponent self,int id) where T : IConfig
 		{
-			ACategory configCategory;
-			if (!self.AllConfig.TryGetValue(type, out configCategory))
+			Type type = typeof(T);
+			if (self.AllConfig.TryGetValue(type, out var aCategoryBase))
 			{
-				return null;
+				return ((ACategory<T>) aCategoryBase).TryGet(id);
 			}
-			return configCategory.TryGet(id);
-		}
-
-		public static IConfig[] GetAll(this ConfigComponent self, Type type)
-		{
-			ACategory configCategory;
-			if (!self.AllConfig.TryGetValue(type, out configCategory))
+			else
 			{
 				throw new Exception($"ConfigComponent not found key: {type.FullName}");
 			}
-			return configCategory.GetAll();
+
+			return default;
 		}
 
-		public static ACategory GetCategory(this ConfigComponent self, Type type)
+
+		public static List<T> GetAll<T>(this ConfigComponent self) where T : IConfig
 		{
-			ACategory configCategory;
-			bool ret = self.AllConfig.TryGetValue(type, out configCategory);
-			return ret ? configCategory : null;
+			Type type = typeof(T);
+			if (self.AllConfig.TryGetValue(type, out var aCategoryBase))
+			{
+				return ((ACategory<T>) aCategoryBase).GetAll();
+			}
+			else
+			{
+				throw new Exception($"ConfigComponent not found key: {type.FullName}");
+			}
+
+			return default;
 		}
 	}
 }
