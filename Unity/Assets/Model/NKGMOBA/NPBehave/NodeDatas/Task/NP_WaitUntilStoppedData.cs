@@ -10,7 +10,6 @@ using Sirenix.OdinInspector;
 namespace ETModel
 {
     [BoxGroup("等待到停止节点数据")]
-    [HideReferenceObjectPicker]
     [HideLabel]
     public class NP_WaitUntilStoppedData: NP_NodeDataBase
     {

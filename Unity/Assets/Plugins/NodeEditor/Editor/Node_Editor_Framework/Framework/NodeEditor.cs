@@ -337,9 +337,7 @@ namespace NodeEditorFramework
 
                 handleRect.min = NodeEditorInputControls.startSelectionPos;
                 handleRect.max = Event.current.mousePosition;
-
-                //handleRect.position += state.zoomPanAdjust + state.panOffset;
-
+                
                 GUI.Box(handleRect, GUIContent.none, NodeEditorGUI.nodeBox);
 
                 Rect canvasRect = new Rect();
@@ -355,7 +353,6 @@ namespace NodeEditorFramework
                     if (canvasRect.Contains(node.position))
                     {
                         curEditorState.selectedNodes.Add(node);
-                        Log.Info($"节点-----{node.name}------被框选了，坐标为{node.position}");
                     }
                 }
             }

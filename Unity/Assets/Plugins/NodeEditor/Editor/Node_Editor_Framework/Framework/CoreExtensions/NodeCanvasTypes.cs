@@ -84,6 +84,7 @@ namespace NodeEditorFramework
 
         /// <summary>
         /// Checks whether the süecified nodeID is compatible with the given canvas type
+        /// 检测制定的Node ID是否与当前Canvas相匹配
         /// </summary>
         public static bool CheckCanvasCompability(string nodeID, Type canvasType)
         {

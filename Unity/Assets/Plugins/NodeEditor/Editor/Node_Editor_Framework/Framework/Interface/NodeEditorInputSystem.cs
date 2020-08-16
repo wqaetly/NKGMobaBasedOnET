@@ -4,6 +4,8 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using NodeEditorFramework.Utilities;
+using NodeEditorFramework.Utilities.CreateNodesWindow;
+using UnityEditor.IMGUI.Controls;
 #if UNITY_EDITOR
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 using MenuFunctionData = UnityEditor.GenericMenu.MenuFunction2;
@@ -295,12 +297,17 @@ namespace NodeEditorFramework
             if (Event.current.button == 1)
             {
                 // Handle context clicks on Node and canvas
-                GenericMenu contextMenu = new GenericMenu();
                 if (inputInfo.editorState.focusedNode != null) // Node Context Click
+                {
+                    GenericMenu contextMenu = new GenericMenu();
                     FillContextMenu(inputInfo, contextMenu, ContextType.Node);
+                    contextMenu.ShowAsContext();
+                }
                 else // Editor Context Click
-                    FillContextMenu(inputInfo, contextMenu, ContextType.Canvas);
-                contextMenu.ShowAsContext();
+                {
+                    CreateNodesAdvancedDropdown.ShowDropdown(new Rect(inputInfo.inputPos, Vector2.zero));
+                }
+
                 Event.current.Use();
             }
         }
