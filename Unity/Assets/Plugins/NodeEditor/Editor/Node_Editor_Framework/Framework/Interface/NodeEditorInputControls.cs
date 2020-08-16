@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using NodeEditorFramework.Utilities.CreateNodesWindow;
 using UnityEditor;
 using GenericMenu = NodeEditorFramework.Utilities.GenericMenu;
 
@@ -287,11 +288,19 @@ namespace NodeEditorFramework
         private static void HandleApplyConnection(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
-            if (inputInfo.inputEvent.button == 0 && state.connectKnob != null && state.focusedNode != null && state.focusedConnectionKnob != null &&
-                state.focusedConnectionKnob != state.connectKnob)
+            if (inputInfo.inputEvent.button == 0 && state.connectKnob != null)
             {
-                // A connection curve was dragged and released onto a connection knob
-                state.focusedConnectionKnob.TryApplyConnection(state.connectKnob);
+                if (state.focusedNode != null && state.focusedConnectionKnob != null &&
+                    state.focusedConnectionKnob != state.connectKnob)
+                {
+                    // A connection curve was dragged and released onto a connection knob
+                    state.focusedConnectionKnob.TryApplyConnection(state.connectKnob);
+                }
+                else
+                {
+                    CreateNodesAdvancedDropdown.ShowDropdown(new Rect(inputInfo.inputPos, Vector2.zero), state.connectKnob);
+                }
+
                 inputInfo.inputEvent.Use();
             }
 

@@ -22,15 +22,25 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
         private static Vector2 m_Pos = Vector2.zero;
 
         /// <summary>
+        /// 从哪个端口引过来的连线
+        /// </summary>
+        private static ConnectionKnob s_FromConnectionKnob;
+
+        /// <summary>
         /// 展示下拉框
         /// </summary>
         /// <param name="position"></param>
-        public static CreateNodesAdvancedDropdown ShowDropdown(Rect position)
+        public static CreateNodesAdvancedDropdown ShowDropdown(Rect position, ConnectionKnob fromConnectionKnob = null)
         {
             CreateNodesAdvancedDropdown window = new CreateNodesAdvancedDropdown(new AdvancedDropdownState());
             window.minimumSize = WindowSize;
             window.Show(position);
             m_Pos = NodeEditor.ScreenToCanvasSpace(position.position);
+            if (fromConnectionKnob != null)
+            {
+                s_FromConnectionKnob = fromConnectionKnob;
+            }
+
             return window;
         }
 
@@ -55,8 +65,13 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
                 return;
             }
 
-            Node.Create(nodeItem.NodeId, m_Pos, NodeEditor.curEditorState.canvas, NodeEditor.curEditorState.connectKnob);
-            NodeEditor.curEditorState.connectKnob = null;
+            Node node = Node.Create(nodeItem.NodeId, m_Pos, NodeEditor.curEditorState.canvas, NodeEditor.curEditorState.connectKnob);
+            if (s_FromConnectionKnob != null && node.connectionKnobs.Count > 0)
+            {
+                s_FromConnectionKnob.TryApplyConnection(node.connectionKnobs[0]);
+                s_FromConnectionKnob = null;
+            }
+
             NodeEditor.RepaintClients();
         }
 
@@ -72,7 +87,7 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
             }
         }
 
-        private void BuildSingleCategory(NodeItem root, string targetContent,string nodeId)
+        private void BuildSingleCategory(NodeItem root, string targetContent, string nodeId)
         {
             string[] items = targetContent.Split('/');
             NodeItem parentItem = root;
