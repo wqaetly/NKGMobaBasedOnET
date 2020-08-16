@@ -101,8 +101,6 @@ namespace NodeEditorFramework.Standard
             EditorLoadingControl.justLeftPlayMode += NormalReInit;
             EditorLoadingControl.justOpenedNewScene -= NormalReInit;
             EditorLoadingControl.justOpenedNewScene += NormalReInit;
-            SceneView.duringSceneGui -= OnSceneGUI;
-            SceneView.duringSceneGui += OnSceneGUI;
         }
 
         private void OnDestroy()
@@ -119,25 +117,24 @@ namespace NodeEditorFramework.Standard
             NodeEditor.ClientRepaints -= Repaint;
             EditorLoadingControl.justLeftPlayMode -= NormalReInit;
             EditorLoadingControl.justOpenedNewScene -= NormalReInit;
-            SceneView.duringSceneGui -= OnSceneGUI;
 
             // Clear Cache
             canvasCache.ClearCacheEvents();
             this.canvasCache = null;
         }
 
-        private void OnLostFocus()
-        {
-            // Save any changes made while focussing this window
-            // Will also save before possible assembly reload, scene switch, etc. because these require focussing of a different window
-            canvasCache.SaveCache();
-        }
-
-        private void OnFocus()
-        {
-            // Make sure the canvas hasn't been corrupted externally
-            NormalReInit();
-        }
+        // private void OnLostFocus()
+        // {
+        //     // Save any changes made while focussing this window
+        //     // Will also save before possible assembly reload, scene switch, etc. because these require focussing of a different window
+        //     canvasCache.SaveCache();
+        // }
+        //
+        // private void OnFocus()
+        // {
+        //     // Make sure the canvas hasn't been corrupted externally
+        //     NormalReInit();
+        // }
 
         private void NormalReInit()
         {
@@ -212,14 +209,6 @@ namespace NodeEditorFramework.Standard
 
             // END ROOT: End Overlay GUI and draw popups
             OverlayGUI.EndOverlayGUI();
-        }
-
-        private void OnSceneGUI(SceneView sceneview)
-        {
-            AssureSetup();
-            if (canvasCache.editorState != null && canvasCache.editorState.selectedNodes.Count > 0)
-                canvasCache.editorState.selectedNodes[0].OnSceneGUI();
-            SceneView.lastActiveSceneView.Repaint();
         }
 
         #endregion
