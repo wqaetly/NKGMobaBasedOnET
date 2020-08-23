@@ -7,6 +7,7 @@ using NodeEditorFramework.Utilities;
 using NodeEditorFramework.Utilities.CreateNodesWindow;
 using UnityEditor.IMGUI.Controls;
 #if UNITY_EDITOR
+using Plugins.NodeEditor.Editor.Canvas;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 using MenuFunctionData = UnityEditor.GenericMenu.MenuFunction2;
 
@@ -278,11 +279,16 @@ namespace NodeEditorFramework
                 NodeEditor.RepaintClients();
             }
 #if UNITY_EDITOR
-            if (state.selectedNodes.Count > 0)
+            if (state.selectedNodes.Count > 0 && state.focusedNode != null)
                 UnityEditor.Selection.activeObject = state.selectedNodes[0];
-            else if (UnityEditor.Selection.activeObject is Node)
+            else if (state.focusedNode == null)
             {
                 state.selectedNodes.Clear();
+                if (state.canvas is NPBehaveCanvas npBehaveCanvas)
+                {
+                    npBehaveCanvas.SyncBBValueFromManager();
+                }
+
                 UnityEditor.Selection.activeObject = state.canvas;
             }
 
