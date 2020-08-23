@@ -110,10 +110,9 @@ namespace NodeEditorFramework.Standard
             curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
 
             GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
-            if (GUILayout.Button("Force Re-init", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
+            if (GUILayout.Button("Blackboard", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
             {
-                NodeEditor.ReInit(true);
-                canvasCache.nodeCanvas.Validate();
+                
             }
 #if !UNITY_EDITOR
 			GUILayout.Space(5);
