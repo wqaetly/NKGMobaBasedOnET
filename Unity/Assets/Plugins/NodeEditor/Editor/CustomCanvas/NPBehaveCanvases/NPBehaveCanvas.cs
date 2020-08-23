@@ -13,6 +13,7 @@ using NodeEditorFramework;
 using NPBehave;
 using Plugins.NodeEditor.Editor.NPBehaveNodes;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 using Node = NPBehave.Node;
@@ -27,11 +28,11 @@ namespace Plugins.NodeEditor.Editor.Canvas
 
         [LabelText("反序列化测试")]
         public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
-
+        
         [Button("自动配置所有结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AddAllNodeData()
         {
-            base.AddAllNodeData(MNpDataSupportor);
+            base.AutoSetCanvasDatas(MNpDataSupportor);
             this.AutoSetSkillData_NodeData();
         }
 
@@ -40,7 +41,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             base.Save(MNpDataSupportor);
         }
-
+        
         [Button("测试反序列化", 25), GUIColor(0.4f, 0.8f, 1)]
         public void TestDe()
         {

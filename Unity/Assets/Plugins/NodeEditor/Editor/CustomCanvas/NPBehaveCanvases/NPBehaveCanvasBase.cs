@@ -8,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using ETModel;
+using ETModel.BBValues;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.NPBehaveNodes;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Plugins.NodeEditor.Editor.Canvas
@@ -28,35 +30,78 @@ namespace Plugins.NodeEditor.Editor.Canvas
     /// 要在NPBehaveNodes文件夹下面的除了NP_NodeBase之外的所有Node的Node特性的type里加上自定义的Canvas的Type，不然创建不了行为树组件
     /// 推荐的按钮样式：[Button("XXX", 25), GUIColor(0.4f, 0.8f, 1)]
     /// </summary>
-    public abstract class NPBehaveCanvasBase : NodeCanvas
+    public abstract class NPBehaveCanvasBase: NodeCanvas
     {
         public override string canvasName => Name;
 
-        [Title("本Canvas所有数据整理部分")] [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
+        [Title("本Canvas所有数据整理部分")]
+        [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
         public string Name;
 
-        [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)] [FolderPath]
+        [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
+        [FolderPath]
         public string SavePath;
-
+        
+        /// <summary>
+        /// TODO 不知道为什么，每次运行Unity之后这个SO就被GC掉了，但是他是被这个Canvas SO引用的
+        /// TODO 不能用HideFlags.HideAndDontSave;，因为会无法编辑
+        /// TODO 使用AssetDatabase.AddObjectToAsset();把它添加到Canvas SO下会有报错
+        /// TODO 又不想单独创建一个asset文件，暂时就先这样吧，麻了
+        /// TODO 有关Unity序列化更多内容，参照https://blogs.unity3d.com/2012/10/25/unity-serialization/?_ga=2.170661992.937300808.1598090338-209452367.1582274518
+        /// </summary>
         [HideInInspector]
         public NP_BBDataManager NpBbDataManager;
 
+        /// <summary>
+        /// 用于做黑板数据同步的
+        /// </summary>
+        [Title("黑板数据", TitleAlignment = TitleAlignments.Centered)]
+        [LabelText("内容")]
+        [BoxGroup]
+        [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
+        [OnValueChanged("SyncBBValueFromData",true)]
+        public Dictionary<string, ANP_BBValue> FinalBBValues = new Dictionary<string, ANP_BBValue>();
+        
         private void OnEnable()
         {
             if (NpBbDataManager == null)
             {
                 NpBbDataManager = CreateInstance<NP_BBDataManager>();
                 NpBbDataManager.name = "黑板数据管理器";
+                NpBbDataManager.NpBehaveCanvasBase = this;
             }
         }
+        
+        public void SyncBBValueFromData()
+        {
+            NpBbDataManager.BBValues.Clear();
 
+            foreach (var bbValue in this.FinalBBValues)
+            {
+                NpBbDataManager.BBValues.Add(bbValue.Key, bbValue.Value);
+            }
+
+            NP_BlackBoardRelationData.BBKeys = this.FinalBBValues.Keys;
+        }
+
+        public void SyncBBValueFromManager()
+        {
+            this.FinalBBValues.Clear();
+            foreach (var bbValue in NpBbDataManager.BBValues)
+            {
+                this.FinalBBValues.Add(bbValue.Key, bbValue.Value);
+            }
+            NP_BlackBoardRelationData.BBKeys = this.FinalBBValues.Keys;
+        }
+        
         /// <summary>
-        /// 自动配置当前图所有结点
+        /// 自动配置当前图所有数据（结点，黑板）
         /// </summary>
         /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
-        public virtual void AddAllNodeData(NP_DataSupportorBase npDataSupportorBase)
+        public virtual void AutoSetCanvasDatas(NP_DataSupportorBase npDataSupportorBase)
         {
             this.AutoSetNP_NodeData(npDataSupportorBase);
+            this.AutoSetNP_BBDatas(npDataSupportorBase);
         }
 
         /// <summary>
@@ -107,7 +152,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
         private void AutoSetNP_NodeData(NP_DataSupportorBase npDataSupportorBase)
         {
-            npDataSupportorBase.mNP_DataSupportorDic.Clear();
+            npDataSupportorBase.NP_DataSupportorDic.Clear();
 
             //当前Canvas所有NP_Node
             List<NP_NodeBase> allNodes = new List<NP_NodeBase>();
@@ -160,9 +205,22 @@ namespace Plugins.NodeEditor.Editor.Canvas
                     }
                 }
 
-
                 //将此结点数据写入字典
-                npDataSupportorBase.mNP_DataSupportorDic.Add(mNodeData.id, mNodeData);
+                npDataSupportorBase.NP_DataSupportorDic.Add(mNodeData.id, mNodeData);
+            }
+        }
+
+        /// <summary>
+        /// 自动配置黑板数据
+        /// </summary>
+        /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
+        private void AutoSetNP_BBDatas(NP_DataSupportorBase npDataSupportorBase)
+        {
+            npDataSupportorBase.NP_BBValueManager.Clear();
+            //设置黑板数据
+            foreach (var bbvalues in this.FinalBBValues)
+            {
+                npDataSupportorBase.NP_BBValueManager.Add(bbvalues.Key, bbvalues.Value);
             }
         }
     }

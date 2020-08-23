@@ -4,9 +4,11 @@
 // Data: 2019年9月25日 13:59:03
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using ETModel.BBValues;
 using NPBehave;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -18,6 +20,7 @@ namespace ETModel
     public class NP_BlackBoardRelationData
     {
         [LabelText("字典键")]
+        [ValueDropdown("GetBBKeys")]
         public string DicKey;
 
         [LabelText("指定的值类型")]
@@ -40,6 +43,13 @@ namespace ETModel
         public NP_BBValue_Vector3 Vector3Value;
 
 #if !SERVER
+        public static IEnumerable<string> BBKeys;
+
+        private static IEnumerable<string> GetBBKeys()
+        {
+            return BBKeys;
+        }
+
         public void ApplyValueTypeChange()
         {
             StringValue = null;
@@ -67,7 +77,7 @@ namespace ETModel
             }
         }
 #endif
-        
+
         /// <summary>
         /// 自动根据预先设定的值设置值
         /// </summary>

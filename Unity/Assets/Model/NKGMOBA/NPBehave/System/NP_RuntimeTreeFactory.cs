@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using ETModel.BBValues;
 using NPBehave;
 using Exception = NPBehave.Exception;
 
@@ -22,12 +23,13 @@ namespace ETModel
         public static NP_RuntimeTree CreateNpRuntimeTree(Unit unit, long NPDataId)
         {
             NP_DataSupportor npDataSupportor =
-                Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(NPDataId);
+                    Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(NPDataId);
 
             long theRuntimeTreeID = IdGenerater.GenerateId();
 
             //Log.Info($"运行时id为{theRuntimeTreeID}");
-            foreach (var nodeDateBase in npDataSupportor.mNP_DataSupportorDic)
+            //配置节点数据
+            foreach (var nodeDateBase in npDataSupportor.NP_DataSupportorDic)
             {
                 switch (nodeDateBase.Value.NodeType)
                 {
@@ -47,7 +49,7 @@ namespace ETModel
                         try
                         {
                             nodeDateBase.Value.CreateDecoratorNode(unit.Id, theRuntimeTreeID,
-                                npDataSupportor.mNP_DataSupportorDic[nodeDateBase.Value.linkedID[0]].NP_GetNode());
+                                npDataSupportor.NP_DataSupportorDic[nodeDateBase.Value.linkedID[0]].NP_GetNode());
                         }
                         catch (Exception e)
                         {
@@ -62,8 +64,9 @@ namespace ETModel
                             List<Node> temp = new List<Node>();
                             foreach (var VARIABLE1 in nodeDateBase.Value.linkedID)
                             {
-                                temp.Add(npDataSupportor.mNP_DataSupportorDic[VARIABLE1].NP_GetNode());
+                                temp.Add(npDataSupportor.NP_DataSupportorDic[VARIABLE1].NP_GetNode());
                             }
+
                             nodeDateBase.Value.CreateComposite(temp.ToArray());
                         }
                         catch (Exception e)
@@ -76,11 +79,17 @@ namespace ETModel
                 }
             }
 
-            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, NP_DataSupportor>(
-                theRuntimeTreeID,
-                (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), npDataSupportor);
+            NP_RuntimeTree tempTree = ComponentFactory.CreateWithId<NP_RuntimeTree, Root, NP_DataSupportor>(theRuntimeTreeID,
+                (Root) npDataSupportor.NP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), npDataSupportor);
 
             unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, npDataSupportor.RootId, tempTree);
+
+            //配置黑板数据
+            Dictionary<string, ANP_BBValue> bbvaluesManager = tempTree.GetBlackboard().GetDatas();
+            foreach (var bbValues in npDataSupportor.NP_BBValueManager)
+            {
+                bbvaluesManager.Add(bbValues.Key, bbValues.Value);
+            }
 
             return tempTree;
         }

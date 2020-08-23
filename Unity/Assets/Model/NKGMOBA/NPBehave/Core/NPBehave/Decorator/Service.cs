@@ -43,7 +43,7 @@ namespace NPBehave
             {
                 this.Clock.AddTimer(this.interval, -1, serviceMethod);
                 serviceMethod();
-                Log.Info("注册Timer--------------");
+                //Log.Info("注册Timer--------------");
             }
             else
             {

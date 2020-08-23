@@ -53,7 +53,7 @@ namespace ETModel
                 case NP_BBValueType._Bool:
                     this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey,
                         this.mOpe,
-                        this.m_NPBalckBoardRelationData.Vector3Value, this.stop, node);
+                        this.m_NPBalckBoardRelationData.BoolValue, this.stop, node);
                     break;
             }
 

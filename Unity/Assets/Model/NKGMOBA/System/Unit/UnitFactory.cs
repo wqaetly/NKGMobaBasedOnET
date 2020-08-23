@@ -51,7 +51,7 @@ namespace ETModel
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<EffectComponent>();
             unit.AddComponent<HeroTransformComponent>();
-            
+
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
 
@@ -76,12 +76,13 @@ namespace ETModel
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static Unit NPBehaveTestCreate()
+        public static void NPBehaveTestCreate()
         {
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
             Unit unit = ComponentFactory.Create<Unit>();
+            unit.AddComponent<NP_RuntimeTreeManager>();
             unitComponent.Add(unit);
-            return unit;
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, 104738820390934).m_NPRuntimeTreeRootNode.Start();
         }
     }
 }

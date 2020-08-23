@@ -116,7 +116,7 @@ namespace NodeEditorFramework.Standard
                 if (GUILayout.Button("Blackboard", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
                 {
                     NPBehaveCanvas npBehaveCanvas = NodeEditor.curNodeCanvas as NPBehaveCanvas;
-
+                    npBehaveCanvas.SyncBBValueFromData();
                     UnityEditor.Selection.activeObject = npBehaveCanvas.NpBbDataManager;
                 }
             }
