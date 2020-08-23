@@ -4,6 +4,7 @@
 // Data: 2019年9月25日 13:59:03
 //------------------------------------------------------------
 
+using ETModel.BBValues;
 using NPBehave;
 using Sirenix.OdinInspector;
 
@@ -12,7 +13,7 @@ namespace ETModel
     /// <summary>
     /// 与黑板节点相关的数据
     /// </summary>
-    [BoxGroup("黑板数据配置"),GUIColor(0.961f, 0.902f, 0.788f, 1f)]
+    [BoxGroup("黑板数据配置"), GUIColor(0.961f, 0.902f, 0.788f, 1f)]
     [HideLabel]
     public class NP_BlackBoardRelationData
     {
@@ -20,39 +21,75 @@ namespace ETModel
         public string DicKey;
 
         [LabelText("指定的值类型")]
-        public CompareType m_CompareType;
+        [OnValueChanged("ApplyValueTypeChange")]
+        public NP_BBValueType NP_BBValueType;
 
-        [ShowIf("m_CompareType", CompareType._String)]
-        public string theStringValue;
+        [ShowIf("NP_BBValueType", NP_BBValueType._String)]
+        public NP_BBValue_String StringValue;
 
-        [ShowIf("m_CompareType", CompareType._Float)]
-        public float theFloatValue;
+        [ShowIf("NP_BBValueType", NP_BBValueType._Float)]
+        public NP_BBValue_Float FloatValue;
 
-        [ShowIf("m_CompareType", CompareType._Int)]
-        public int theIntValue;
+        [ShowIf("NP_BBValueType", NP_BBValueType._Int)]
+        public NP_BBValue_Int IntValue;
 
-        [ShowIf("m_CompareType", CompareType._Bool)]
-        public bool theBoolValue;
+        [ShowIf("NP_BBValueType", NP_BBValueType._Bool)]
+        public NP_BBValue_Bool BoolValue;
 
+        [ShowIf("NP_BBValueType", NP_BBValueType._Vector3)]
+        public NP_BBValue_Vector3 Vector3Value;
+
+#if !SERVER
+        public void ApplyValueTypeChange()
+        {
+            StringValue = null;
+            FloatValue = null;
+            IntValue = null;
+            BoolValue = null;
+            Vector3Value = null;
+            switch (this.NP_BBValueType)
+            {
+                case NP_BBValueType._String:
+                    StringValue = new NP_BBValue_String();
+                    break;
+                case NP_BBValueType._Float:
+                    this.FloatValue = new NP_BBValue_Float();
+                    break;
+                case NP_BBValueType._Int:
+                    this.IntValue = new NP_BBValue_Int();
+                    break;
+                case NP_BBValueType._Bool:
+                    this.BoolValue = new NP_BBValue_Bool();
+                    break;
+                case NP_BBValueType._Vector3:
+                    this.Vector3Value = new NP_BBValue_Vector3();
+                    break;
+            }
+        }
+#endif
+        
         /// <summary>
         /// 自动根据预先设定的值设置值
         /// </summary>
         /// <param name="blackboard">要修改的黑板</param>
         public void SetBlackBoardValue(Blackboard blackboard)
         {
-            switch (m_CompareType)
+            switch (this.NP_BBValueType)
             {
-                case CompareType._String:
-                    blackboard[DicKey] = this.theStringValue;
+                case NP_BBValueType._String:
+                    blackboard.GetDatas()[DicKey] = this.StringValue;
                     break;
-                case CompareType._Float:
-                    blackboard[DicKey] = this.theFloatValue;
+                case NP_BBValueType._Float:
+                    blackboard.GetDatas()[DicKey] = this.FloatValue;
                     break;
-                case CompareType._Int:
-                    blackboard[DicKey] = this.theIntValue;
+                case NP_BBValueType._Int:
+                    blackboard.GetDatas()[DicKey] = this.IntValue;
                     break;
-                case CompareType._Bool:
-                    blackboard[DicKey] = this.theBoolValue;
+                case NP_BBValueType._Bool:
+                    blackboard.GetDatas()[DicKey] = this.BoolValue;
+                    break;
+                case NP_BBValueType._Vector3:
+                    blackboard.GetDatas()[DicKey] = this.Vector3Value;
                     break;
             }
         }
@@ -63,15 +100,9 @@ namespace ETModel
         /// <param name="blackboard">将要改变的黑板值</param>
         /// <param name="compareType">值类型</param>
         /// <param name="value">值</param>
-        public void SetBlackBoardValue(Blackboard blackboard, CompareType compareType, object value)
+        public void SetBlackBoardValue<T>(Blackboard blackboard, T value)
         {
-            if (compareType != this.m_CompareType)
-            {
-                Log.Error("要修改的值与预设类型不符");
-                return;
-            }
-
-            blackboard[DicKey] = value;
+            blackboard.Set(this.DicKey, value);
         }
     }
 }

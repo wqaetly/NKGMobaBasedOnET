@@ -46,12 +46,13 @@ namespace NodeEditorFramework
         public string savePath;
 
         public bool livesInScene = false;
-
+        [LabelText("所有Nodes")]
         public List<Node> nodes = new List<Node>();
 
         /// <summary>
         /// 待删除的结点，用于Undo
         /// </summary>
+        [LabelText("待删除的结点，用于Undo")]
         public List<Node> nodesForDelete = new List<Node>();
 
         [LabelText("右击Group的顶部标题即可弹出删除选项")]

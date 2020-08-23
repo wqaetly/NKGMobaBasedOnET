@@ -16,7 +16,7 @@ namespace ETModel
     /// <summary>
     /// 检查技能是否能释放
     /// </summary>
-    [Title("检查技能是否能释放",TitleAlignment = TitleAlignments.Centered)]
+    [Title("检查技能是否能释放", TitleAlignment = TitleAlignments.Centered)]
     public class NP_CheckAction: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
@@ -27,7 +27,7 @@ namespace ETModel
 
         [LabelText("将要检查的技能ID（QWER：0123）")]
         public int theSkillIDBelongTo;
-        
+
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 
         public override Func<bool> GetFunc1ToBeDone()
@@ -38,7 +38,8 @@ namespace ETModel
 
         private bool CheckCostToSpanSkill()
         {
-            this.m_NodeDataForStartSkill = (NodeDataForStartSkill)Game.Scene.GetComponent<UnitComponent>().Get(Unitid).GetComponent<NP_RuntimeTreeManager>()
+            this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
+                    .GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.mSkillDataDic[this.dataId];
             //TODO 相关状态检测，例如沉默，眩晕等,下面是示例代码
             /*
@@ -53,13 +54,13 @@ namespace ETModel
             m_NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                         .GetComponent<NP_RuntimeTreeManager>()
                         .GetTreeByRuntimeID(this.RuntimeTreeID)
-                        .GetBlackboard(), m_NPBalckBoardRelationData.m_CompareType,
+                        .GetBlackboard(),
                 m_NodeDataForStartSkill.SkillCost[heroDataComponent.GetSkillLevel(theSkillIDBelongTo)]);
             switch (m_NodeDataForStartSkill.SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:
                     //依据技能具体消耗来进行属性改变操作
-                    if (heroDataComponent.CurrentMagicValue > m_NPBalckBoardRelationData.theFloatValue)
+                    if (heroDataComponent.CurrentMagicValue > m_NPBalckBoardRelationData.FloatValue.GetValue())
                         return true;
                     else
                     {
@@ -68,7 +69,7 @@ namespace ETModel
                 case SkillCostTypes.Other:
                     return true;
                 case SkillCostTypes.HPValue:
-                    if (heroDataComponent.CurrentLifeValue > m_NPBalckBoardRelationData.theFloatValue)
+                    if (heroDataComponent.CurrentLifeValue > m_NPBalckBoardRelationData.FloatValue.GetValue())
                         return true;
                     else
                     {

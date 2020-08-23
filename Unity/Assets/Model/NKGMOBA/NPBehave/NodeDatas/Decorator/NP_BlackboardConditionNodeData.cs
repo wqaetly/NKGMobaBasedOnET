@@ -10,12 +10,13 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public enum CompareType : byte
+    public enum NP_BBValueType : byte
     {
-        [LabelText("字符串")] _String,
-        [LabelText("浮点数")] _Float,
-        [LabelText("整数")] _Int,
-        [LabelText("布尔")] _Bool
+        [LabelText("string")] _String,
+        [LabelText("float")] _Float,
+        [LabelText("int")] _Int,
+        [LabelText("bool")] _Bool,
+        [LabelText("Vector3")] _Vector3
     }
     
     [BoxGroup("黑板条件节点配置"),GUIColor(0.961f, 0.902f, 0.788f, 1f)]
@@ -32,27 +33,27 @@ namespace ETModel
 
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
         {
-            switch (m_NPBalckBoardRelationData.m_CompareType)
+            switch (m_NPBalckBoardRelationData.NP_BBValueType)
             {
-                case CompareType._String:
+                case NP_BBValueType._String:
                     this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey,
                         this.mOpe,
-                        this.m_NPBalckBoardRelationData.theStringValue, this.stop, node);
+                        this.m_NPBalckBoardRelationData.StringValue, this.stop, node);
                     break;
-                case CompareType._Float:
+                case NP_BBValueType._Float:
                     this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey,
                         this.mOpe,
-                        this.m_NPBalckBoardRelationData.theFloatValue, this.stop, node);
+                        this.m_NPBalckBoardRelationData.FloatValue, this.stop, node);
                     break;
-                case CompareType._Int:
+                case NP_BBValueType._Int:
                     this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey,
                         this.mOpe,
-                        this.m_NPBalckBoardRelationData.theIntValue, this.stop, node);
+                        this.m_NPBalckBoardRelationData.IntValue, this.stop, node);
                     break;
-                case CompareType._Bool:
+                case NP_BBValueType._Bool:
                     this.mBlackboardConditionNode = new BlackboardCondition(m_NPBalckBoardRelationData.DicKey,
                         this.mOpe,
-                        this.m_NPBalckBoardRelationData.theBoolValue, this.stop, node);
+                        this.m_NPBalckBoardRelationData.Vector3Value, this.stop, node);
                     break;
             }
 

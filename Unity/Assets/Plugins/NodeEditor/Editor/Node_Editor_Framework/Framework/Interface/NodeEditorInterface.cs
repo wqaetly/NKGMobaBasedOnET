@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using NodeEditorFramework.IO;
+using Plugins.NodeEditor.Editor.Canvas;
 using GenericMenu = NodeEditorFramework.Utilities.GenericMenu;
 
 namespace NodeEditorFramework.Standard
@@ -110,10 +111,16 @@ namespace NodeEditorFramework.Standard
             curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
 
             GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
-            if (GUILayout.Button("Blackboard", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
+            if (NodeEditor.curNodeCanvas is NPBehaveCanvas)
             {
-                
+                if (GUILayout.Button("Blackboard", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
+                {
+                    NPBehaveCanvas npBehaveCanvas = NodeEditor.curNodeCanvas as NPBehaveCanvas;
+
+                    UnityEditor.Selection.activeObject = npBehaveCanvas.NpBbDataManager;
+                }
             }
+
 #if !UNITY_EDITOR
 			GUILayout.Space(5);
 			if (GUILayout.Button("Quit", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
@@ -237,6 +244,7 @@ namespace NodeEditorFramework.Standard
             {
                 UnityEngine.Object.DestroyImmediate(VARIABLE, true);
             }
+
             canvasCache.nodeCanvas.nodesForDelete.Clear();
 
             if (!string.IsNullOrEmpty(path))

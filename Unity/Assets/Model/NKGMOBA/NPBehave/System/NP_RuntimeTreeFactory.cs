@@ -81,9 +81,7 @@ namespace ETModel
                 (Root) npDataSupportor.mNP_DataSupportorDic[npDataSupportor.RootId].NP_GetNode(), npDataSupportor);
 
             unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, npDataSupportor.RootId, tempTree);
-            
-            //把提前缓存的数据注入黑板
-            unit.GetComponent<NP_InitCacheComponent>()?.AddCacheDatas2RuntimeTree(tempTree);
+
             return tempTree;
         }
     }

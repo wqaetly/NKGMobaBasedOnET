@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using ETModel;
+using ETModel.BBValues;
 using Log = NPBehave_Core.Log;
 
 namespace NPBehave
@@ -7,7 +8,7 @@ namespace NPBehave
     public class BlackboardCondition: ObservingDecorator
     {
         private string key;
-        private object value;
+        private ANP_BBValue value;
         private Operator op;
 
         public string Key
@@ -18,7 +19,7 @@ namespace NPBehave
             }
         }
 
-        public object Value
+        public ANP_BBValue Value
         {
             get
             {
@@ -38,7 +39,7 @@ namespace NPBehave
             }
         }
 
-        public BlackboardCondition(string key, Operator op, object value, Stops stopsOnChange, Node decoratee): base("BlackboardCondition",
+        public BlackboardCondition(string key, Operator op, ANP_BBValue value, Stops stopsOnChange, Node decoratee): base("BlackboardCondition",
             stopsOnChange, decoratee)
         {
             this.op = op;
@@ -65,7 +66,7 @@ namespace NPBehave
             this.RootNode.Blackboard.RemoveObserver(key, onValueChanged);
         }
 
-        private void onValueChanged(Blackboard.Type type, object newValue)
+        private void onValueChanged(Blackboard.Type type, ANP_BBValue newValue)
         {
             Evaluate();
         }
@@ -82,72 +83,123 @@ namespace NPBehave
                 return op == Operator.IS_NOT_SET;
             }
 
-            object o = this.RootNode.Blackboard.Get(key);
+            ANP_BBValue bbValue = this.RootNode.Blackboard.Get(key);
 
             switch (this.op)
             {
                 case Operator.IS_SET: return true;
-                case Operator.IS_EQUAL: return object.Equals(o, value);
-                case Operator.IS_NOT_EQUAL: return !object.Equals(o, value);
+                case Operator.IS_EQUAL:
+                {
+                    switch (this.value)
+                    {
+                        case NP_BBValue_Bool npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_Bool;
+                        case NP_BBValue_Float npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_Float;
+                        case NP_BBValue_Int npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_Int;
+                        case NP_BBValue_String npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_String;
+                        case NP_BBValue_Vector3 npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_Vector3;
+                        default:
+                            Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
+                            return false;
+                    }
+                }
+                case Operator.IS_NOT_EQUAL:
+                {
+                    switch (this.value)
+                    {
+                        case NP_BBValue_Bool npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_Bool;
+                        case NP_BBValue_Float npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_Float;
+                        case NP_BBValue_Int npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_Int;
+                        case NP_BBValue_String npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_String;
+                        case NP_BBValue_Vector3 npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_Vector3;
+                        default:
+                            Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
+                            return false;
+                    }
+                }
 
                 case Operator.IS_GREATER_OR_EQUAL:
-                    if (o is float)
+                {
+                    switch (this.value)
                     {
-                        return (float) o >= (float) this.value;
+                        case NP_BBValue_Bool npBbValue:
+                            return npBbValue >= (bbValue as NP_BBValue_Bool);
+                        case NP_BBValue_Float npBbValue:
+                            return npBbValue >= (bbValue as NP_BBValue_Float);
+                        case NP_BBValue_Int npBbValue:
+                            return npBbValue >= (bbValue as NP_BBValue_Int);
+                        case NP_BBValue_String npBbValue:
+                            return npBbValue >= (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Vector3 npBbValue:
+                            return npBbValue >= (bbValue as NP_BBValue_Vector3);
+                        default:
+                            Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
+                            return false;
                     }
-                    else if (o is int)
-                    {
-                        return (int) o >= (int) this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
+                }
 
                 case Operator.IS_GREATER:
-                    if (o is float)
+                {
+                    switch (this.value)
                     {
-                        return (float) o > (float) this.value;
+                        case NP_BBValue_Bool npBbValue:
+                            return npBbValue > (bbValue as NP_BBValue_Bool);
+                        case NP_BBValue_Float npBbValue:
+                            return npBbValue > (bbValue as NP_BBValue_Float);
+                        case NP_BBValue_Int npBbValue:
+                            return npBbValue > (bbValue as NP_BBValue_Int);
+                        case NP_BBValue_String npBbValue:
+                            return npBbValue > (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Vector3 npBbValue:
+                            return npBbValue > (bbValue as NP_BBValue_Vector3);
+                        default:
+                            Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
+                            return false;
                     }
-                    else if (o is int)
-                    {
-                        return (int) o > (int) this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
+                }
 
                 case Operator.IS_SMALLER_OR_EQUAL:
-                    if (o is float)
+                    switch (this.value)
                     {
-                        return (float) o <= (float) this.value;
+                        case NP_BBValue_Bool npBbValue:
+                            return npBbValue <= (bbValue as NP_BBValue_Bool);
+                        case NP_BBValue_Float npBbValue:
+                            return npBbValue <= (bbValue as NP_BBValue_Float);
+                        case NP_BBValue_Int npBbValue:
+                            return npBbValue <= (bbValue as NP_BBValue_Int);
+                        case NP_BBValue_String npBbValue:
+                            return npBbValue <= (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Vector3 npBbValue:
+                            return npBbValue <= (bbValue as NP_BBValue_Vector3);
+                        default:
+                            Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
+                            return false;
                     }
-                    else if (o is int)
-                    {
-                        return (int) o <= (int) this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
-                    }
-
                 case Operator.IS_SMALLER:
-                    if (o is float)
+                    switch (this.value)
                     {
-                        return (float) o < (float) this.value;
-                    }
-                    else if (o is int)
-                    {
-                        return (int) o < (int) this.value;
-                    }
-                    else
-                    {
-                        Log.Error("Type not compareable: " + o.GetType());
-                        return false;
+                        case NP_BBValue_Bool npBbValue:
+                            return npBbValue < (bbValue as NP_BBValue_Bool);
+                        case NP_BBValue_Float npBbValue:
+                            return npBbValue < (bbValue as NP_BBValue_Float);
+                        case NP_BBValue_Int npBbValue:
+                            return npBbValue < (bbValue as NP_BBValue_Int);
+                        case NP_BBValue_String npBbValue:
+                            return npBbValue < (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Vector3 npBbValue:
+                            return npBbValue < (bbValue as NP_BBValue_Vector3);
+                        default:
+                            Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
+                            return false;
                     }
 
                 default: return false;

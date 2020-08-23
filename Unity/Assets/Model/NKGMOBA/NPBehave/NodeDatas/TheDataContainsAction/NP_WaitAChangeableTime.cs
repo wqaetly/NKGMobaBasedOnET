@@ -16,7 +16,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
     /// <summary>
     /// 等待一个可变化的时间，用于处理突如其来的CD变化
     /// </summary>
-    [Title("等待一个可变化的时间",TitleAlignment = TitleAlignments.Centered)]
+    [Title("等待一个可变化的时间", TitleAlignment = TitleAlignments.Centered)]
     public class NP_WaitAChangeableTime: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
@@ -27,7 +27,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
 
         [HideInEditorMode]
         public NodeDataForStartSkill m_NodeDataForStartSkill;
-        
+
         public NP_BlackBoardRelationData NpBlackBoardRelationData;
 
         [HideInEditorMode]
@@ -44,19 +44,20 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
             this.m_Func2 = WaitTime;
             return this.m_Func2;
         }
-        
+
         public global::NPBehave.Action.Result WaitTime(bool hasDown)
         {
             if (!this.hasInit)
             {
                 this.m_Unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-                tempBlackboard =  this.m_Unit.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard();
+                tempBlackboard = this.m_Unit.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard();
 
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
-                this.m_NodeDataForStartSkill = (NodeDataForStartSkill)Game.Scene.GetComponent<UnitComponent>().Get(Unitid).GetComponent<NP_RuntimeTreeManager>()
+                this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
+                        .GetComponent<NP_RuntimeTreeManager>()
                         .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.mSkillDataDic[this.dataId];
-                tempBlackboard[NpBlackBoardRelationData.DicKey] =
-                        m_NodeDataForStartSkill.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.theSkillIDBelongTo)];
+                tempBlackboard.Set(NpBlackBoardRelationData.DicKey,
+                    m_NodeDataForStartSkill.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.theSkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }
@@ -77,6 +78,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                 this.hasInit = false;
                 return global::NPBehave.Action.Result.FAILED;
             }
+
             return global::NPBehave.Action.Result.PROGRESS;
         }
     }
