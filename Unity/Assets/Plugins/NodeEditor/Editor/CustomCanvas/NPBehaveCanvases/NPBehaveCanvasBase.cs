@@ -41,7 +41,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
         [FolderPath]
         public string SavePath;
-        
+
         /// <summary>
         /// TODO 不知道为什么，每次运行Unity之后这个SO就被GC掉了，但是他是被这个Canvas SO引用的
         /// TODO 不能用HideFlags.HideAndDontSave;，因为会无法编辑
@@ -53,15 +53,21 @@ namespace Plugins.NodeEditor.Editor.Canvas
         public NP_BBDataManager NpBbDataManager;
 
         /// <summary>
+        /// 版本号，数据同步时以高版本号为准
+        /// </summary>
+        [HideInInspector]
+        public int Version = 0;
+
+        /// <summary>
         /// 用于做黑板数据同步的
         /// </summary>
         [Title("黑板数据", TitleAlignment = TitleAlignments.Centered)]
         [LabelText("内容")]
         [BoxGroup]
         [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
-        [OnValueChanged("SyncBBValueFromData",true)]
+        [OnValueChanged("IncreaseVersion", true)]
         public Dictionary<string, ANP_BBValue> FinalBBValues = new Dictionary<string, ANP_BBValue>();
-        
+
         private void OnEnable()
         {
             if (NpBbDataManager == null)
@@ -69,11 +75,20 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 NpBbDataManager = CreateInstance<NP_BBDataManager>();
                 NpBbDataManager.name = "黑板数据管理器";
                 NpBbDataManager.NpBehaveCanvasBase = this;
+                NpBbDataManager.Version = 0;
             }
         }
-        
+
+        public void IncreaseVersion()
+        {
+            Version++;
+        }
+
         public void SyncBBValueFromData()
         {
+            if (Version < NpBbDataManager.Version) return;
+            NpBbDataManager.Version = this.Version;
+
             NpBbDataManager.BBValues.Clear();
 
             foreach (var bbValue in this.FinalBBValues)
@@ -86,14 +101,17 @@ namespace Plugins.NodeEditor.Editor.Canvas
 
         public void SyncBBValueFromManager()
         {
+            if (NpBbDataManager.Version < this.Version) return;
+            this.Version = NpBbDataManager.Version;
             this.FinalBBValues.Clear();
             foreach (var bbValue in NpBbDataManager.BBValues)
             {
                 this.FinalBBValues.Add(bbValue.Key, bbValue.Value);
             }
+
             NP_BlackBoardRelationData.BBKeys = this.FinalBBValues.Keys;
         }
-        
+
         /// <summary>
         /// 自动配置当前图所有数据（结点，黑板）
         /// </summary>
