@@ -2,6 +2,7 @@
 using System.Numerics;
 using ETModel;
 using ETModel.BBValues;
+using UnityEngine.Profiling;
 using Vector3 = UnityEngine.Vector3;
 
 namespace NPBehave
@@ -48,16 +49,20 @@ namespace NPBehave
         private Blackboard m_ParentBlackboard;
         private HashSet<Blackboard> m_Children = new HashSet<Blackboard>();
 
+        private System.Action NotifiyObserversActionCache;
+        
         public Blackboard(Blackboard mParent, Clock mClock)
         {
             this.m_Clock = mClock;
             this.m_ParentBlackboard = mParent;
+            NotifiyObserversActionCache = NotifiyObservers;
         }
 
         public Blackboard(Clock mClock)
         {
             this.m_ParentBlackboard = null;
             this.m_Clock = mClock;
+            NotifiyObserversActionCache = NotifiyObservers;
         }
 
         public void Enable()
@@ -110,7 +115,7 @@ namespace NPBehave
                     ANP_BBValue newBBValue = AutoCreateNPBBValueFromTValue(value);
                     this.m_Data.Add(key, newBBValue);
                     this.m_Notifications.Add(new Notification(key, Type.ADD, newBBValue));
-                    this.m_Clock.AddTimer(0f, 0, NotifiyObservers);
+                    this.m_Clock.AddTimer(0f, 0, NotifiyObserversActionCache);
                 }
                 else
                 {
@@ -120,7 +125,7 @@ namespace NPBehave
                     {
                         targetBBValue.SetValue(value);
                         this.m_Notifications.Add(new Notification(key, Type.CHANGE, targetBBValue));
-                        this.m_Clock.AddTimer(0f, 0, NotifiyObservers);
+                        this.m_Clock.AddTimer(0f, 0, NotifiyObserversActionCache);
                     }
                 }
             }

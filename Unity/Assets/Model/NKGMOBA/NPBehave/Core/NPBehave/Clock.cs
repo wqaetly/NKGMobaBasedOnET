@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using NPBehave_Core;
+using UnityEngine.Profiling;
 
 namespace NPBehave
 {
@@ -51,7 +52,7 @@ namespace NPBehave
         public void AddTimer(float delay, float randomVariance, int repeat, System.Action action)
         {
             Timer timer = null;
-
+            
             if (!isInUpdate)
             {
                 if (!this.timers.ContainsKey(action))
@@ -75,7 +76,6 @@ namespace NPBehave
                     this.removeTimers.Remove(action);
                 }
             }
-
             Debug.Assert(timer.used);
 
             timer.delay = delay;
@@ -315,14 +315,12 @@ namespace NPBehave
 
                 i++;
             }
-
             if (timer == null)
             {
                 timer = new Timer();
                 currentTimerPoolIndex = 0;
                 timerPool.Add(timer);
             }
-
             timer.used = true;
             return timer;
         }
