@@ -16,7 +16,7 @@ namespace ETHotfix
             M2C_UserInput_SkillCmd m2CUserInputSkillCmd = new M2C_UserInput_SkillCmd() { Message = message.Message, Id = entity.Id };
             foreach (var VARIABLE in entity.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
             {
-                VARIABLE.Value.GetBlackboard()["PlayerInput"] = message.Message;
+                VARIABLE.Value.GetBlackboard().Set("PlayerInput",message.Message);
             }
             //广播技能指令(BroadcastSkillCmd),让客户端行为树做出反应
             MessageHelper.Broadcast(m2CUserInputSkillCmd);

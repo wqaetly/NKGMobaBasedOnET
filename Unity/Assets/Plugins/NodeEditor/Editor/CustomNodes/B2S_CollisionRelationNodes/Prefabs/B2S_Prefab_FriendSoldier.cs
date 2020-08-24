@@ -5,11 +5,11 @@
 //------------------------------------------------------------
 
 using B2S_CollisionRelation;
-using ETMode;
 using NodeEditorFramework;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using ETModel;
 
 namespace Plugins.NodeEditor
 {

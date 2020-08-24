@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using NodeEditorFramework.IO;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
+using UnityEditor;
 
 namespace NodeEditorFramework
 {
@@ -238,7 +239,6 @@ namespace NodeEditorFramework
             if (!hostCanvas.CanAddNode(nodeID))
                 throw new UnityException("Cannot create Node with ID '" + nodeID + "' on the current canvas of type (" +
                     hostCanvas.GetType().ToString() + ")!");
-
             // Create node from data
             NodeTypeData data = NodeTypes.getNodeData(nodeID);
             Node node = (Node) CreateInstance(data.type);

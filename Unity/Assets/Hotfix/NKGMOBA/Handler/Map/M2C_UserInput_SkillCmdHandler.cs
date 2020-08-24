@@ -16,7 +16,7 @@ namespace ETHotfix
             Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
             foreach (var VARIABLE in unit.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
             {
-                VARIABLE.Value.GetBlackboard()["PlayerInput"] = message.Message;
+                VARIABLE.Value.GetBlackboard().Set("PlayerInput",message.Message);
             }
             await ETTask.CompletedTask;
         }

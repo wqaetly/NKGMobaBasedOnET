@@ -5,7 +5,6 @@
 //------------------------------------------------------------
 
 using System.IO;
-using ETMode;
 using ETModel;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;

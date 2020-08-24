@@ -61,8 +61,9 @@
      <Compile Include="Assets\Plugins\Box2DSharpVisual\Editor\B2S_ColliderEditor.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\B2S_CollisionRelationCanvas.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\HeroDataNodeCanvas.cs" />
-     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvas.cs" />
-     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvasBase.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvases\NPBehaveCanvas.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvases\NPBehaveCanvasBase.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvases\NP_BBDataManager.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NeverbeUsedCanvas.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\B2S_CollisionRelationNodes\B2S_CollisionRelationForOneHero.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\B2S_CollisionRelationNodes\B2S_NodeInputAndOutPutTypes.cs" />
@@ -407,6 +408,9 @@
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>

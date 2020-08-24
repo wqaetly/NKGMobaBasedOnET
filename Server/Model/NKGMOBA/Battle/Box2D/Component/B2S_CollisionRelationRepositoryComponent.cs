@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 using System.IO;
-using ETMode;
+using ETModel;
 using MongoDB.Bson.Serialization;
 
 namespace ETModel

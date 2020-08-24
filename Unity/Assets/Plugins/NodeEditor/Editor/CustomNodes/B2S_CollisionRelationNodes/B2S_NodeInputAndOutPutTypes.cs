@@ -5,7 +5,6 @@
 //------------------------------------------------------------
 
 using System;
-using ETMode;
 using ETModel;
 using NodeEditorFramework;
 using Sirenix.OdinInspector;
