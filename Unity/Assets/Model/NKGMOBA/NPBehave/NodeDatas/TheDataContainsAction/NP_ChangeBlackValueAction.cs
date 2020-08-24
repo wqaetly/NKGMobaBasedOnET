@@ -23,7 +23,7 @@ namespace ETModel.TheDataContainsAction
 
         public void ChangeBlackBoard()
         {
-            //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.m_CompareType}  黑板值:Bool：{m_NPBalckBoardRelationData.theBoolValue}\n");
+            //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.NP_BBValueType}  黑板值:Bool：{m_NPBalckBoardRelationData.BoolValue.GetValue()}\n");
             this.m_NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                     .GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)

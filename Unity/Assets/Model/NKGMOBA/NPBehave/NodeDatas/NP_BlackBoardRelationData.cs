@@ -87,19 +87,19 @@ namespace ETModel
             switch (this.NP_BBValueType)
             {
                 case NP_BBValueType._String:
-                    blackboard.GetDatas()[DicKey] = this.StringValue;
+                    blackboard.Set(DicKey,this.StringValue.GetValue());
                     break;
                 case NP_BBValueType._Float:
-                    blackboard.GetDatas()[DicKey] = this.FloatValue;
+                    blackboard.Set(DicKey,this.FloatValue.GetValue());
                     break;
                 case NP_BBValueType._Int:
-                    blackboard.GetDatas()[DicKey] = this.IntValue;
+                    blackboard.Set(DicKey,this.IntValue.GetValue());
                     break;
                 case NP_BBValueType._Bool:
-                    blackboard.GetDatas()[DicKey] = this.BoolValue;
+                    blackboard.Set(DicKey,this.BoolValue.GetValue());
                     break;
                 case NP_BBValueType._Vector3:
-                    blackboard.GetDatas()[DicKey] = this.Vector3Value;
+                    blackboard.Set(DicKey,this.Vector3Value.GetValue());
                     break;
             }
         }

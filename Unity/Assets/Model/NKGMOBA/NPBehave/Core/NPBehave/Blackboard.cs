@@ -69,7 +69,7 @@ namespace NPBehave
         }
 
         /// <summary>
-        /// 获取所有键值对
+        /// 获取所有键值对,注意，请不要通过这个API获取的data进行黑板数据的修改，否则不会正常触发相关黑板监控行为
         /// </summary>
         /// <returns></returns>
         public Dictionary<string, ANP_BBValue> GetDatas()
@@ -91,7 +91,8 @@ namespace NPBehave
         }
 
         /// <summary>
-        /// 设置黑板值，注意此处的T需要是已注册的黑板类型（例如NP_BBValue_Int）
+        /// 设置黑板值，
+        /// 注意此处的T需要是被已注册的黑板类型包裹的，例如这里的T为int，那么必须存在一个例如NP_BBValue_Int
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
