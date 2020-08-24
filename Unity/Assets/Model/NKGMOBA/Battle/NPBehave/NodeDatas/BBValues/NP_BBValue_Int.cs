@@ -1,7 +1,7 @@
 //------------------------------------------------------------
 // Author: 烟雨迷离半世殇
 // Mail: 1778139321@qq.com
-// Data: 2020年8月23日 15:39:04
+// Data: 2020年8月23日 14:03:00
 //------------------------------------------------------------
 
 using System;
@@ -9,21 +9,21 @@ using Sirenix.OdinInspector;
 
 namespace ETModel.BBValues
 {
-    [HideReferenceObjectPicker]
     [HideLabel]
-    public class NP_BBValue_Bool: NP_BBValueBase<bool>, IEquatable<NP_BBValue_Bool>
+    [HideReferenceObjectPicker]
+    public class NP_BBValue_Int: NP_BBValueBase<int>, IEquatable<NP_BBValue_Int>
     {
         public override Type NP_BBValueType
         {
             get
             {
-                return typeof (bool);
+                return typeof (int);
             }
         }
 
         #region 对比函数
 
-         public bool Equals(NP_BBValue_Bool other)
+        public bool Equals(NP_BBValue_Int other)
         {
             // If parameter is null, return false.
             if (Object.ReferenceEquals(other, null))
@@ -66,7 +66,7 @@ namespace ETModel.BBValues
                 return false;
             }
 
-            return Equals((NP_BBValue_Bool) obj);
+            return Equals((NP_BBValue_Int) obj);
         }
 
         public override int GetHashCode()
@@ -74,7 +74,7 @@ namespace ETModel.BBValues
             return this.Value.GetHashCode();
         }
 
-        public static bool operator ==(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
+        public static bool operator ==(NP_BBValue_Int lhs, NP_BBValue_Int rhs)
         {
             // Check for null on left side.
             if (Object.ReferenceEquals(lhs, null))
@@ -93,29 +93,29 @@ namespace ETModel.BBValues
             return lhs.Equals(rhs);
         }
 
-        public static bool operator !=(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
+        public static bool operator !=(NP_BBValue_Int lhs, NP_BBValue_Int rhs)
         {
             return !(lhs == rhs);
         }
 
-        public static bool operator >(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
+        public static bool operator >(NP_BBValue_Int lhs, NP_BBValue_Int rhs)
         {
-            return false;
+            return lhs.GetValue() > rhs.GetValue();
         }
 
-        public static bool operator <(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
+        public static bool operator <(NP_BBValue_Int lhs, NP_BBValue_Int rhs)
         {
-            return false;
+            return lhs.GetValue() < rhs.GetValue();
         }
 
-        public static bool operator >=(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
+        public static bool operator >=(NP_BBValue_Int lhs, NP_BBValue_Int rhs)
         {
-            return false;
+            return lhs.GetValue() >= rhs.GetValue();
         }
 
-        public static bool operator <=(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
+        public static bool operator <=(NP_BBValue_Int lhs, NP_BBValue_Int rhs)
         {
-            return false;
+            return lhs.GetValue() <= rhs.GetValue();
         }
 
         #endregion

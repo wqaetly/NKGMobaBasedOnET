@@ -5,7 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using ETMode;
+using ETModel;
 
 namespace ETModel
 {

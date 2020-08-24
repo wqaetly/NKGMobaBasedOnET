@@ -7,7 +7,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace ETMode
+namespace ETModel
 {
     [Flags]
     public enum B2S_AllCollideableObject

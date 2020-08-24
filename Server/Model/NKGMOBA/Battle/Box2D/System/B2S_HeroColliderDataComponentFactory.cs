@@ -4,7 +4,7 @@
 // Data: 2019年8月5日 19:43:34
 //------------------------------------------------------------
 
-using ETMode;
+using ETModel;
 
 namespace ETModel
 {

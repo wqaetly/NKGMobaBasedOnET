@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
 
-namespace ETMode
+namespace ETModel
 {
     /// <summary>
     /// 碰撞实例

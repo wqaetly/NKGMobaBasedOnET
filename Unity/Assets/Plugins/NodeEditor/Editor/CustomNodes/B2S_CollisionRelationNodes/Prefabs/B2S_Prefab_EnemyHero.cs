@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 using B2S_CollisionRelation;
-using ETMode;
+using ETModel;
 using NodeEditorFramework;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;

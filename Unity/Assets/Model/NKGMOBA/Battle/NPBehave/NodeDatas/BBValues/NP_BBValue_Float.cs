@@ -9,8 +9,8 @@ using Sirenix.OdinInspector;
 
 namespace ETModel.BBValues
 {
-    [HideReferenceObjectPicker]
     [HideLabel]
+    [HideReferenceObjectPicker]
     public class NP_BBValue_Float: NP_BBValueBase<float>, IEquatable<NP_BBValue_Float>
     {
         public override Type NP_BBValueType

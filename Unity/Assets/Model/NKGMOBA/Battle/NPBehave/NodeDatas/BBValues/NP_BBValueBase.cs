@@ -5,7 +5,6 @@
 //------------------------------------------------------------
 
 using System;
-using Animancer.FSM;
 using Sirenix.OdinInspector;
 
 namespace ETModel.BBValues

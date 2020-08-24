@@ -166,7 +166,7 @@ namespace Sirenix.OdinInspector
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public class GUIColorAttribute: System.Attribute
     {
-        public GUIColorAttribute(float r, float g, float b,float a = 0)
+        public GUIColorAttribute(float r, float g, float b, float a = 0)
         {
         }
     }
@@ -268,6 +268,116 @@ namespace Sirenix.OdinInspector
         }
     }
 
+    public class ValueDropdownAttribute: Attribute
+    {
+        /// <summary>
+        /// Name of any field, property or method member that implements IList. E.g. arrays or Lists.
+        /// </summary>
+        public string MemberName;
+
+        /// <summary>
+        /// The number of items before enabling search. Default is 10.
+        /// </summary>
+        public int NumberOfItemsBeforeEnablingSearch;
+
+        /// <summary>False by default.</summary>
+        public bool IsUniqueList;
+
+        /// <summary>
+        /// True by default. If the ValueDropdown attribute is applied to a list, then disabling this,
+        /// will render all child elements normally without using the ValueDropdown. The ValueDropdown will
+        /// still show up when you click the add button on the list drawer, unless <see cref="F:Sirenix.OdinInspector.ValueDropdownAttribute.DisableListAddButtonBehaviour" /> is true.
+        /// </summary>
+        public bool DrawDropdownForListElements;
+
+        /// <summary>False by default.</summary>
+        public bool DisableListAddButtonBehaviour;
+
+        /// <summary>
+        /// If the ValueDropdown attribute is applied to a list, and <see cref="F:Sirenix.OdinInspector.ValueDropdownAttribute.IsUniqueList" /> is set to true, then enabling this,
+        /// will exclude existing values, instead of rendering a checkbox indicating whether the item is already included or not.
+        /// </summary>
+        public bool ExcludeExistingValuesInList;
+
+        /// <summary>
+        /// If the dropdown renders a tree-view, then setting this to true will ensure everything is expanded by default.
+        /// </summary>
+        public bool ExpandAllMenuItems;
+
+        /// <summary>
+        /// If true, instead of replacing the drawer with a wide dropdown-field, the dropdown button will be a little button, drawn next to the other drawer.
+        /// </summary>
+        public bool AppendNextDrawer;
+
+        /// <summary>
+        /// Disables the the GUI for the appended drawer. False by default.
+        /// </summary>
+        public bool DisableGUIInAppendedDrawer;
+
+        /// <summary>
+        /// By default, a single click selects and confirms the selection.
+        /// </summary>
+        public bool DoubleClickToConfirm;
+
+        /// <summary>By default, the dropdown will create a tree view.</summary>
+        public bool FlattenTreeView;
+
+        /// <summary>
+        /// Gets or sets the width of the dropdown. Default is zero.
+        /// </summary>
+        public int DropdownWidth;
+
+        /// <summary>
+        /// Gets or sets the height of the dropdown. Default is zero.
+        /// </summary>
+        public int DropdownHeight;
+
+        /// <summary>
+        /// Gets or sets the title for the dropdown. Null by default.
+        /// </summary>
+        public string DropdownTitle;
+
+        /// <summary>False by default.</summary>
+        public bool SortDropdownItems;
+
+        /// <summary>Whether to draw all child properties in a foldout.</summary>
+        public bool HideChildProperties;
+
+        /// <summary>Creates a dropdown menu for a property.</summary>
+        /// <param name="memberName">Name of any field, property or method member that implements IList. E.g. arrays or Lists.</param>
+        public ValueDropdownAttribute(string memberName)
+        {
+            this.NumberOfItemsBeforeEnablingSearch = 10;
+            this.MemberName = memberName;
+            this.DrawDropdownForListElements = true;
+        }
+    }
+    
+    public sealed class OnValueChangedAttribute : Attribute
+    {
+        /// <summary>Name of callback member function.</summary>
+        public string MethodName;
+        /// <summary>
+        /// Whether to invoke the method when a child value of the property is changed.
+        /// </summary>
+        public bool IncludeChildren;
+
+        /// <summary>
+        /// Adds a callback for when the property's value is changed.
+        /// </summary>
+        /// <param name="methodName">Name of the method.</param>
+        /// <param name="includeChildren">Whether to invoke the method when a child value of the property is changed.</param>
+        public OnValueChangedAttribute(string methodName, bool includeChildren = false)
+        {
+            this.MethodName = methodName;
+            this.IncludeChildren = includeChildren;
+        }
+    }
+    
+    public class HideReferenceObjectPickerAttribute : Attribute
+    {
+    }
+
     public abstract class PropertyGroupAttribute: Attribute
     {
         /// <summary>The ID used to grouping properties together.</summary>
@@ -362,13 +472,14 @@ namespace Sirenix.OdinInspector
         {
         }
     }
-    
-    public sealed class TextAreaAttribute : PropertyAttribute
+
+    public sealed class TextAreaAttribute: PropertyAttribute
     {
         /// <summary>
         ///   <para>The minimum amount of lines the text area will use.</para>
         /// </summary>
         public readonly int minLines;
+
         /// <summary>
         ///   <para>The maximum amount of lines the text area can show before it starts using a scrollbar.</para>
         /// </summary>
@@ -396,8 +507,8 @@ namespace Sirenix.OdinInspector
             this.maxLines = maxLines;
         }
     }
-    
-    public abstract class PropertyAttribute : Attribute
+
+    public abstract class PropertyAttribute: Attribute
     {
         /// <summary>
         ///   <para>Optional field to specify the order that multiple DecorationDrawers should be drawn in.</para>

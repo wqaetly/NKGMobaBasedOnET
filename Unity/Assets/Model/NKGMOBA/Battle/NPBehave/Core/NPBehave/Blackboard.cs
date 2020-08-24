@@ -2,7 +2,6 @@
 using System.Numerics;
 using ETModel;
 using ETModel.BBValues;
-using UnityEngine.Profiling;
 using Vector3 = UnityEngine.Vector3;
 
 namespace NPBehave
@@ -50,7 +49,7 @@ namespace NPBehave
         private HashSet<Blackboard> m_Children = new HashSet<Blackboard>();
 
         private System.Action NotifiyObserversActionCache;
-        
+
         public Blackboard(Blackboard mParent, Clock mClock)
         {
             this.m_Clock = mClock;
@@ -81,7 +80,7 @@ namespace NPBehave
         {
             return this.m_Data;
         }
-        
+
         public void Disable()
         {
             if (this.m_ParentBlackboard != null)
@@ -112,16 +111,17 @@ namespace NPBehave
             {
                 if (!this.m_Data.ContainsKey(key))
                 {
-                    ANP_BBValue newBBValue = AutoCreateNPBBValueFromTValue(value);
-                    this.m_Data.Add(key, newBBValue);
-                    this.m_Notifications.Add(new Notification(key, Type.ADD, newBBValue));
-                    this.m_Clock.AddTimer(0f, 0, NotifiyObserversActionCache);
+                    // ANP_BBValue newBBValue = AutoCreateNPBBValueFromTValue(value);
+                    // this.m_Data.Add(key, newBBValue);
+                    // this.m_Notifications.Add(new Notification(key, Type.ADD, newBBValue));
+                    // this.m_Clock.AddTimer(0f, 0, NotifiyObserversActionCache);
+                    Log.Error($"黑板中未注册key为{key}的键值对");
                 }
                 else
                 {
                     NP_BBValueBase<T> targetBBValue = this.m_Data[key] as NP_BBValueBase<T>;
                     if ((targetBBValue == null && value != null) ||
-                        (targetBBValue != null && !targetBBValue.GetValue().Equals(value)))
+                        (targetBBValue != null && (targetBBValue.GetValue() == null || !targetBBValue.GetValue().Equals(value))))
                     {
                         targetBBValue.SetValue(value);
                         this.m_Notifications.Add(new Notification(key, Type.CHANGE, targetBBValue));
@@ -304,27 +304,27 @@ namespace NPBehave
             return observers;
         }
 
-        /// <summary>
-        /// 自动从T创建一个NP_BBValue
-        /// </summary>
-        private static ANP_BBValue AutoCreateNPBBValueFromTValue<T>(T value)
-        {
-            string valueType = typeof (T).ToString();
-            object targetValue = value;
-            switch (valueType)
-            {
-                case "int":
-                    NP_BBValue_Int npBbValueInt = new NP_BBValue_Int();
-                    npBbValueInt.SetValue((int) targetValue);
-                    return npBbValueInt;
-                case "Vector3":
-                    NP_BBValue_Vector3 npBbValueVector3 = new NP_BBValue_Vector3();
-                    npBbValueVector3.SetValue((Vector3) targetValue);
-                    return npBbValueVector3;
-                default:
-                    Log.Error($"未找到类型为{valueType}的NP_BBValue类型");
-                    return null;
-            }
-        }
+        // /// <summary>
+        // /// 自动从T创建一个NP_BBValue
+        // /// </summary>
+        // private static ANP_BBValue AutoCreateNPBBValueFromTValue<T>(T value)
+        // {
+        //     string valueType = typeof (T).ToString();
+        //     object targetValue = value;
+        //     switch (valueType)
+        //     {
+        //         case "int":
+        //             NP_BBValue_Int npBbValueInt = new NP_BBValue_Int();
+        //             npBbValueInt.SetValue((int) targetValue);
+        //             return npBbValueInt;
+        //         case "Vector3":
+        //             NP_BBValue_Vector3 npBbValueVector3 = new NP_BBValue_Vector3();
+        //             npBbValueVector3.SetValue((Vector3) targetValue);
+        //             return npBbValueVector3;
+        //         default:
+        //             Log.Error($"未找到类型为{valueType}的NP_BBValue类型");
+        //             return null;
+        //     }
+        // }
     }
 }

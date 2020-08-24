@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using NPBehave_Core;
-using UnityEngine.Profiling;
 
 namespace NPBehave
 {

@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 using Box2DSharp.Dynamics;
-using ETMode;
+using ETModel;
 
 namespace ETModel
 {

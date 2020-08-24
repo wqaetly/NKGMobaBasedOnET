@@ -284,7 +284,6 @@
                 <e p="B2S_RoleCastComponent.cs" t="Include" />
                 <e p="B2S_WorldComponent.cs" t="Include" />
               </e>
-              <e p="Core" t="Include" />
               <e p="Entity" t="Include">
                 <e p="B2S_ColliderEntity.cs" t="Include" />
               </e>
@@ -297,7 +296,32 @@
                 <e p="B2S_WorldUtility.cs" t="Include" />
               </e>
             </e>
+            <e p="Box2DSharp" t="Include">
+              <e p="CollisionRelations" t="Include" />
+              <e p="DataStructure" t="Include" />
+            </e>
             <e p="HeroData" t="Include" />
+            <e p="NPBehave" t="Include">
+              <e p="Component" t="Include" />
+              <e p="Core" t="Include">
+                <e p="Log" t="Include" />
+                <e p="NPBehave" t="Include">
+                  <e p="Composite" t="Include" />
+                  <e p="Decorator" t="Include" />
+                  <e p="Task" t="Include" />
+                </e>
+                <e p="UnityMath" t="Include" />
+                <e p="UpdateModule" t="Include" />
+              </e>
+              <e p="NodeDatas" t="Include">
+                <e p="BBValues" t="Include" />
+                <e p="Composite" t="Include" />
+                <e p="Decorator" t="Include" />
+                <e p="Task" t="Include" />
+                <e p="TheDataContainsAction" t="Include" />
+              </e>
+              <e p="system" t="Include" />
+            </e>
             <e p="SkillSystem" t="Include">
               <e p="BuffSystem" t="Include">
                 <e p="Core" t="Include">
@@ -312,9 +336,6 @@
                 <e p="SkillEnums" t="Include" />
               </e>
             </e>
-          </e>
-          <e p="Box2D" t="Include">
-            <e p="ColliderData" t="Include" />
           </e>
           <e p="Component" t="Include">
             <e p="Gate" t="Include">
@@ -342,26 +363,6 @@
           <e p="GateSessionKeyComponent.cs" t="Include" />
           <e p="Helper" t="Include" />
           <e p="MoveComponent.cs" t="Include" />
-          <e p="NPBehave" t="Include">
-            <e p="Component" t="Include" />
-            <e p="Core" t="Include">
-              <e p="Log" t="Include" />
-              <e p="NPBehave" t="Include">
-                <e p="Composite" t="Include" />
-                <e p="Decorator" t="Include" />
-                <e p="Task" t="Include" />
-              </e>
-              <e p="UnityMath" t="Include" />
-              <e p="UpdateModule" t="Include" />
-            </e>
-            <e p="NodeDatas" t="Include">
-              <e p="Composite" t="Include" />
-              <e p="Decorator" t="Include" />
-              <e p="Task" t="Include" />
-              <e p="TheDataContainsAction" t="Include" />
-            </e>
-            <e p="system" t="Include" />
-          </e>
           <e p="OdinAttribute" t="Include">
             <e p="OdinAttr.cs" t="Include" />
           </e>
@@ -2146,11 +2147,100 @@
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_AllCollideableObject.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_CollisionInstance.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_CollisionRelationSupport.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_BoxColliderDataStructure.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_CircleColliderDataStructure.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_ColliderDataStructureBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_DataSupporter.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_PrefabData.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\HeroData\HeroBaseDataRepositoryComponent.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\HeroData\HeroDataComponent.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\HeroData\HeroDataSupportor.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\HeroData\HeroProfession.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\HeroData\NodeDataForHero.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_RuntimeTree.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_RuntimeTreeManager.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_SyncComponent.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_TreeIds.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_TreeRepository.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\Log\Log.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Blackboard.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Clock.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\Composite.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\Parallel.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\RandomSelector.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\RandomSequence.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\Selector.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\Sequence.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Container.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\BlackboardCondition.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\BlackboardQuery.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Condition.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Cooldown.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Decorator.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Failer.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Inverter.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Observer.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\ObservingDecorator.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Random.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Repeater.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Service.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\Succeeder.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\TimeMax.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\TimeMin.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\WaitForCondition.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Exception.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Node.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Operator.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Root.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Stops.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\SyncContext.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Task\Action.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Task\Task.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Task\Wait.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Task\WaitUntilStopped.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\UnityMath\Mathf.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\UpdateModule\FixedUpdate.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\UpdateModule\GameTime.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\Core\UpdateModule\TimerTicker.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\ANP_BBValue.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\INP_BBValue.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValue_Bool.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValue_Float.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValue_Int.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValue_String.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValue_Vector3.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValueBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Composite\NP_ParallelNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Composite\NP_SelectorNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Composite\NP_SequenceNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Decorator\NP_BlackboardConditionNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Decorator\NP_RepeaterNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Decorator\NP_ServiceNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\NodeType.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\NP_BlackBoardRelationData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\NP_DataSupportor.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\NP_DataSupportorBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\NP_NodeDataBase.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\NP_RootNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Task\NP_ActionNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Task\NP_WaitNodeData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Task\NP_WaitUntilStoppedData.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_AddBuffAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_AdvanceAddBlackBoardValueAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValueAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeUnitPropertyAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_CreateColliderDataAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_InitTreeAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_WaitAChangeableTime.cs" t="Include" />
+    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\NPBehave\system\NP_RuntimeTreeFactory.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\BindStateBuffSystem.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ChangePlayerPropertyBuffSystem.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BattleEventSystem.cs" t="Include" />
@@ -2185,96 +2275,10 @@
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillEnums\SkillCostTypes.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillEnums\SkillReleaseMode.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\SkillSystem\Core\SkillEnums\SkillTypes.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Box2DSharp\CollisionRelations" t="Include">
-      <e p="B2S_AllCollideableObject.cs" t="Include" />
-      <e p="B2S_CollisionInstance.cs" t="Include" />
-      <e p="B2S_CollisionRelationSupport.cs" t="Include" />
-    </e>
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Box2DSharp\DataStructure" t="Include">
-      <e p="B2S_BoxColliderDataStructure.cs" t="Include" />
-      <e p="B2S_CircleColliderDataStructure.cs" t="Include" />
-      <e p="B2S_ColliderDataStructureBase.cs" t="Include" />
-      <e p="B2S_DataSupporter.cs" t="Include" />
-      <e p="B2S_PolygonColliderDataStructure.cs" t="Include" />
-      <e p="B2S_PrefabData.cs" t="Include" />
-    </e>
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Component\ChildrenUnitComponent.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\BenchmarkHelper.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\BsonHelper.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_InitCacheComponent.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTree.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_RuntimeTreeManager.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_SyncComponent.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_TreeIds.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Component\NP_TreeRepository.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\Log\Log.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Blackboard.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Clock.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Composite.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Parallel.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\RandomSelector.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\RandomSequence.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Selector.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Composite\Sequence.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Container.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\BlackboardCondition.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\BlackboardQuery.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Condition.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Cooldown.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Decorator.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Failer.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Inverter.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Observer.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\ObservingDecorator.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Random.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Repeater.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Service.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\Succeeder.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\TimeMax.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\TimeMin.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Decorator\WaitForCondition.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Exception.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Node.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Operator.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Root.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Stops.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\SyncContext.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\Action.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\Task.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\Wait.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\NPBehave\Task\WaitUntilStopped.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UnityMath\Mathf.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UpdateModule\FixedUpdate.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UpdateModule\GameTime.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\Core\UpdateModule\TimerTicker.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_ParallelNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_SelectorNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Composite\NP_SequenceNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardConditionNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_RepeaterNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Decorator\NP_ServiceNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NodeType.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_BlackBoardRelationData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_DataSupportor.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_DataSupportorBase.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_NodeDataBase.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\NP_RootNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_ActionNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitNodeData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\Task\NP_WaitUntilStoppedData.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_AddBuffAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_AdvanceAddBlackBoardValueAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeBlackValueAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ChangeUnitPropertyAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_ClassForStoreAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_CreateColliderDataAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_InitTreeAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_LogAction.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\NodeDatas\TheDataContainsAction\NP_WaitAChangeableTime.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\NPBehave\system\NP_RuntimeTreeFactory.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Other\AppType.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Plugins\x86_64\kcp.dll" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\ByteArray.cs" t="Include" />

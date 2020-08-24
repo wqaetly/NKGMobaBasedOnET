@@ -72,7 +72,7 @@ namespace ETModel
                 //Buff池组件
                 Game.Scene.AddComponent<BuffPoolComponent>();
                 
-                UnitFactory.NPBehaveTestCreate();
+                //UnitFactory.NPBehaveTestCreate();
             }
             catch (Exception e)
             {
