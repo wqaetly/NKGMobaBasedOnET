@@ -38,6 +38,7 @@ namespace ETModel
     /// </summary>
     public class ListenBuffEvent_CheckOverlay: ListenBuffEventBase
     {
+        [LabelText("目标层数")]
         public int targetOverlay;
 
         public override void Run(BuffSystemBase a)
@@ -59,13 +60,15 @@ namespace ETModel
     /// </summary>
     public class ListenBuffDataBase: BuffDataBase
     {
+        [BoxGroup("自定义项")]
         [LabelText("要监听的事件ID标识")]
         public List<string> EventIds;
 
         /// <summary>
         /// Buff事件
         /// </summary>
-        [LabelText("Buff回调条件达成时会添加的Buff")]
+        [BoxGroup("自定义项")]
+        [HideLabel]
         public ListenBuffEventBase ListenBuffEventBase;
     }
     

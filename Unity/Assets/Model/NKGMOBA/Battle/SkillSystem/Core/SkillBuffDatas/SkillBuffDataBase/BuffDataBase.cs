@@ -12,61 +12,77 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [GUIColor(193 / 255f, 255 / 255f, 193 / 255f)]
+    [Title("Buff数据块",TitleAlignment = TitleAlignments.Centered)]
+    [HideLabel]
     public class BuffDataBase
     {
-        [Title("Buff基本信息")]
-        [LabelText("Buff是否状态栏可见")]
-        public bool Base_isVisualable;
-
         [LabelText("Buff的标识ID，用以区分不同Buff")]
+        [BoxGroup("必填项")]
         public int FlagId;
 
         [LabelText("归属的技能ID")]
+        [BoxGroup("必填项")]
         public int BelongSkillId;
 
-        [LabelText("要抛出的事件ID，如果有的话")]
-        public string theEventID;
-
         [LabelText("归属的BuffSystem类型")]
+        [BoxGroup("必填项")]
         public BuffSystemType BelongBuffSystemType;
 
         [LabelText("Buff的添加目标")]
+        [BoxGroup("必填项")]
         public BuffTargetTypes BuffTargetTypes;
+        
+        [LabelText("Buff的基本特征")]
+        [BoxGroup("必填项")]
+        public BuffBaseType BuffBaseType;
+
+        [ShowIf("Base_isVisualable")]
+        [LabelText("Buff图标的名称")]
+        [BoxGroup("选填项")]
+        public string SpriteABInfo;
+        
+        [BoxGroup("选填项")]
+        [LabelText("Buff是否状态栏可见")]
+        public bool Base_isVisualable;
+
+        [LabelText("要抛出的事件ID，如果有的话")]
+        [BoxGroup("选填项")]
+        public string theEventID;
 
         [LabelText("是否可以叠加(不能叠加就刷新，叠加满也刷新)")]
+        [BoxGroup("选填项")]
         public bool CanOverlay;
 
         [ShowIf("CanOverlay")]
         [LabelText("叠加层数")]
         [MinValue(1)]
+        [BoxGroup("选填项")]
         public int TargetOverlay = 1;
 
         [ShowIf("CanOverlay")]
         [LabelText("最大叠加数")]
+        [BoxGroup("选填项")]
         public int MaxOverlay;
 
-        [ShowIf("Base_isVisualable")]
-        [LabelText("Buff图标的名称")]
-        public string SpriteABInfo;
-
-        [LabelText("Buff的基本特征")]
-        public BuffBaseType BuffBaseType;
-
+        [LabelText("Buff持续时间,-1代表永久,0代表此处设置无效")]
+        [BoxGroup("选填项")]
+        public long SustainTime;
+        
         [LabelText("Buff效果为")]
+        [BoxGroup("选填项")]
         public BuffWorkTypes BuffWorkType;
 
-        [LabelText("Buff持续时间,-1代表永久,0代表此处设置无效")]
-        public long SustainTime;
-
         [LabelText("Buff基础数值影响者")]
+        [BoxGroup("选填项")]
         public BuffBaseDataEffectTypes BaseBuffBaseDataEffectTypes;
 
         [LabelText("将要被改变的基础数值")]
+        [BoxGroup("选填项")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<int, float> ValueToBeChanged = new Dictionary<int, float>();
 
         [LabelText("具体的加成(可能会一个效果多种加成方式)")]
+        [BoxGroup("选填项")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<BuffAdditionTypes, float> additionValue;
     }

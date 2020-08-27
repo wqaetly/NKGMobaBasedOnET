@@ -10,12 +10,15 @@ namespace ETModel
 {
     public class SustainDamageBuffData: BuffDataBase
     {
+        [BoxGroup("自定义项")]
         [LabelText("伤害类型")]
         public BuffDamageTypes BuffDamageTypes;
         
+        [BoxGroup("自定义项")]
         [LabelText("预伤害修正")]
         public float damageFix = 1.0f;
 
+        [BoxGroup("自定义项")]
         [LabelText("作用间隔")]
         public long WorkInternal = 0;
     }

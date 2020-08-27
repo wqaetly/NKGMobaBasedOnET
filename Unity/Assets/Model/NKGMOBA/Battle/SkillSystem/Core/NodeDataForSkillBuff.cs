@@ -8,13 +8,13 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    [Title("Buff节点数据块",TitleAlignment = TitleAlignments.Centered)]
+    [HideLabel]
     public class NodeDataForSkillBuff: SkillBaseNodeData
     {
         [LabelText("Buff描述")]
         public string BuffDes;
         
-        [HideLabel]
-        [Title("技能Buff模块")]
         public BuffDataBase SkillBuffBases;
     }
 }

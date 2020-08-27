@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9004766819571182139
+--- !u!114 &-9208408634092080299
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
+  m_Script: {fileID: 11500000, guid: c199e724d0624e0b91cafcea0227ab0d, type: 3}
+  m_Name: "\u5E76\u884C\u8282\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,161 +21,27 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: b2sInfo
+    - Name: NP_ParallelNodeData
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: -8443077512293653920}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: -4505753474148600574}
-  - {fileID: 7589765272704387384}
-  - {fileID: 7342781215348671503}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-8793766611959849764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 3412483526674719943}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: 8432237453074646287}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-8784046701556040403
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: -1252815773571531440}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: -752818327228206896}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-8443077512293653920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1b7334dc4097f4983e31d4320a9a08, type: 3}
-  m_Name: "\u961F\u5217\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_SequenceNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_SequenceNodeData, Unity.Model
+      Data: 0|ETModel.NP_ParallelNodeData, Unity.Model
     - Name: id
+      Entry: 3
+      Data: 104743873347594
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104743873347591
+    - Name: 
       Entry: 3
       Data: 104743873347592
-    - Name: NodeType
-      Entry: 3
-      Data: 0
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 104743873347589
-    - Name: 
-      Entry: 3
-      Data: 104743873347588
-    - Name: 
-      Entry: 3
-      Data: 104743873347587
     - Name: 
       Entry: 13
       Data: 
@@ -184,193 +50,27 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u5904\u7406\u52A8\u753B\u64AD\u653E"
-    - Name: mSequenceNode
+      Data: "\u5F00\u59CB\u6267\u884C\u903B\u8F91"
+    - Name: mParallelNode
       Entry: 6
       Data: 
+    - Name: SuccessPolicy
+      Entry: 3
+      Data: 1
+    - Name: FailurePolicy
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -963.5999, y: -116.600174}
+  canvas: {fileID: 0}
+  position: {x: -1204.6, y: -229.00017}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -3884361136316823571}
-  NextNode: {fileID: -9004766819571182139}
---- !u!114 &-7106478559465199541
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 3158050854859953465}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: -6443506156883300247}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-6702482989530130186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 9115436630935965176}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: -4197360526329137702}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-6646742489982291233
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 5797704688829017282}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: -4197360526329137702}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-6443506156883300247
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 2594287610714836020}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: -7106478559465199541}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-5679352363563869762
+  PrevNode: {fileID: 883656195879074574}
+  NextNode: {fileID: -5594940743031344722}
+--- !u!114 &-8630658095083998528
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -396,7 +96,7 @@ MonoBehaviour:
       Data: 0|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104743873347586
+      Data: 104743873347585
     - Name: NodeType
       Entry: 3
       Data: 2
@@ -414,13 +114,14 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u963B\u6B62\u64AD\u653E\u7279\u6548"
+      Data: "\u64AD\u653E\u7279\u6548"
     - Name: m_ActionNode
       Entry: 6
       Data: 
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 2|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+      Data: 2|Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction.NP_PlayParticalAction,
+        Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -436,145 +137,19 @@ MonoBehaviour:
     - Name: m_Func2
       Entry: 6
       Data: 
-    - Name: m_NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
+    - Name: ParticalName
       Entry: 1
       Data: Darius_Q_Effect
-    - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
-      Entry: 6
-      Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1298.2, y: 117.19983}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -284179219806096954}
---- !u!114 &-4964394132542070364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347587
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u5141\u8BB8\u64AD\u653E\u7279\u6548"
-    - Name: m_ActionNode
-      Entry: 6
-      Data: 
-    - Name: MNpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: RuntimeTreeID
-      Entry: 3
-      Data: 0
-    - Name: m_Action
-      Entry: 6
-      Data: 
-    - Name: m_Func1
-      Entry: 6
-      Data: 
-    - Name: m_Func2
-      Entry: 6
-      Data: 
-    - Name: m_NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: Darius_Q_Effect
-    - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
-      Entry: 6
-      Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
+    - Name: FollowUnit
       Entry: 5
       Data: true
-    - Name: 
-      Entry: 8
+    - Name: PosType
+      Entry: 3
+      Data: 1
+    - Name: BelongUnit
+      Entry: 6
       Data: 
-    - Name: Vector3Value
+    - Name: Partical
       Entry: 6
       Data: 
     - Name: 
@@ -583,16 +158,13 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -780.19995, y: 11.799823}
+  canvas: {fileID: 0}
+  position: {x: -1484.4001, y: 118.9998}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 7342781215348671503}
---- !u!114 &-4505753474148600574
+  PrevNode: {fileID: -1411818630268345733}
+--- !u!114 &-8626107394198632753
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -601,8 +173,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
+  m_Script: {fileID: 11500000, guid: 362e3c2ba9ef48b8816fab010bbed3b8, type: 3}
+  m_Name: "\u884C\u4E3A\u6811\u6839\u8282\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -613,151 +185,24 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: b2sInfo
+    - Name: MRootNodeData
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: -1756461798501343119}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: -9004766819571182139}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-4197360526329137702
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 3158050854859953465}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: -6646742489982291233}
-  - {fileID: -6702482989530130186}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-3884361136316823571
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: -8443077512293653920}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: 1689111204119890120}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &-2786017514708130772
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 0|ETModel.NP_RootNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104743873347588
+      Data: 104743873347598
     - Name: NodeType
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: linkedID
       Entry: 7
       Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 104743873347597
     - Name: 
       Entry: 13
       Data: 
@@ -766,74 +211,63 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u91CD\u7F6E\u8F93\u5165\u9ED1\u677F\u6570\u636E"
-    - Name: m_ActionNode
-      Entry: 6
-      Data: 
-    - Name: MNpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: RuntimeTreeID
-      Entry: 3
-      Data: 0
-    - Name: m_Action
-      Entry: 6
-      Data: 
-    - Name: m_Func1
-      Entry: 6
-      Data: 
-    - Name: m_Func2
-      Entry: 6
-      Data: 
-    - Name: m_NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: PlayerInput
-    - Name: NP_BBValueType
-      Entry: 3
-      Data: 0
-    - Name: StringValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_String, Unity.Model
-    - Name: Value
+      Data: "\u6839\u7ED3\u70B9"
+    - Name: m_Root
       Entry: 6
       Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 6
-      Data: 
-    - Name: Vector3Value
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -945.39984, y: 10.199831}
+  canvas: {fileID: 0}
+  position: {x: -1419.0005, y: -559.9999}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 7589765272704387384}
---- !u!114 &-2045931797427996929
+  NextNode: {fileID: 5714779358155457027}
+--- !u!114 &-7945255926709050327
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -126888644089843531}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: 2995365733277873128}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-7819237010695439854
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -890,14 +324,14 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   position: {x: -1399.3999, y: 1.7998238}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -752818327228206896}
-  NextNode: {fileID: 3120275033174692465}
---- !u!114 &-1908176433591999189
+  PrevNode: {fileID: 3567642423821851321}
+  NextNode: {fileID: 2995365733277873128}
+--- !u!114 &-7156771840790039578
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -906,17 +340,399 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
-  m_Name: MainEditorState
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 2256538573152678102}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: 3567642423821851321}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-7060872448970633308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 2168369492059760421}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: 883656195879074574}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-6900956310134165740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a76df7ad194f4fb27c7cf808370fd4, type: 3}
+  m_Name: "\u9009\u62E9\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_SelectorNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_SelectorNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347597
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104743873347596
+    - Name: 
+      Entry: 3
+      Data: 104743873347595
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: mSelectorNode
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   canvas: {fileID: 0}
-  parentEditor: {fileID: 0}
-  selectedNodes:
-  - {fileID: 8359552418355642718}
-  panOffset: {x: 1696.7999, y: -429.59973}
-  zoom: 1
-  boxSelecting: 0
---- !u!114 &-1756461798501343119
+  position: {x: -1421.3999, y: -443.0002}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -3012341045387088292}
+  NextNode: {fileID: -2448216067240597155}
+--- !u!114 &-6629840160034200870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -2501375545849582918}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: 8884112901400839642}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-5594940743031344722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -9208408634092080299}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: 1091412846512969319}
+  - {fileID: 6896623909163273070}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-5317911723968561548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
+  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|ETModel.NodeDataForSkillBuff, Unity.Model
+    - Name: NodeID
+      Entry: 3
+      Data: 10003
+    - Name: BuffDes
+      Entry: 1
+      Data: "\u5916\u5708\u522E\u9020\u6210\u7684\u6548\u679C"
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 1|ETModel.BindStateBuffData, Unity.Model
+    - Name: FlagId
+      Entry: 3
+      Data: 20009
+    - Name: BelongSkillId
+      Entry: 3
+      Data: 0
+    - Name: BelongBuffSystemType
+      Entry: 3
+      Data: 3
+    - Name: BuffTargetTypes
+      Entry: 3
+      Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: QOutHit
+    - Name: CanOverlay
+      Entry: 5
+      Data: false
+    - Name: TargetOverlay
+      Entry: 3
+      Data: 0
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 0
+    - Name: SustainTime
+      Entry: 3
+      Data: 0
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
+    - Name: BaseBuffBaseDataEffectTypes
+      Entry: 3
+      Data: 0
+    - Name: ValueToBeChanged
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: additionValue
+      Entry: 6
+      Data: 
+    - Name: OriBuff
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[ETModel.BuffDataBase, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -2124.2002, y: 453.39996}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &-3012341045387088292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -6900956310134165740}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: 5714779358155457027}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-2501375545849582918
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1041,13 +857,13 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   position: {x: -1110.9999, y: 7.399849}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -4505753474148600574}
---- !u!114 &-1252815773571531440
+  PrevNode: {fileID: -6629840160034200870}
+--- !u!114 &-2448216067240597155
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1056,8 +872,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b4a4df8ee4bae93c0dba11eae2097, type: 3}
-  m_Name: "\u9ED1\u677F\u6761\u4EF6\u7ED3\u70B9"
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -1068,86 +884,30 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: NP_BlackboardConditionNodeData
+    - Name: b2sInfo
       Entry: 7
-      Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347591
-    - Name: NodeType
-      Entry: 3
-      Data: 1
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 104743873347590
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u662F\u5426\u9700\u8981\u64AD\u653E\u7279\u6548"
-    - Name: mBlackboardConditionNode
-      Entry: 6
-      Data: 
-    - Name: mOpe
-      Entry: 3
-      Data: 2
-    - Name: stop
-      Entry: 3
-      Data: 4
-    - Name: m_NPBalckBoardRelationData
-      Entry: 7
-      Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: Darius_Q_Effect
-    - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
-      Entry: 6
-      Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1394.7999, y: -112.00018}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 4284251426152000197}
-  NextNode: {fileID: -8784046701556040403}
---- !u!114 &-945685007389453587
+  body: {fileID: -6900956310134165740}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: -1746696680405710634}
+  - {fileID: 2109869140864175506}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-1986407701358544465
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1180,24 +940,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 1|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20003
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1207,18 +973,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: -1
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1273,24 +1033,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 7|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20004
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1300,18 +1066,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1352,24 +1112,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 9|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20005
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1379,18 +1145,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1431,24 +1191,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 11|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20006
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 1
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1458,18 +1224,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 1
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1506,24 +1266,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 15|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20007
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1533,18 +1299,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1599,24 +1359,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 21|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 90022
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -1626,18 +1392,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1682,24 +1442,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 24|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20004
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1709,18 +1475,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1765,24 +1525,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 27|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20005
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1792,18 +1558,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -1848,24 +1608,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 30|ETModel.RefreshTargetBuffTimeBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 60001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 7
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -1875,16 +1641,10 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
+    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BaseBuffBaseDataEffectTypes
@@ -1970,11 +1730,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   position: {x: -1724.2, y: 515.39984}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &-752818327228206896
+--- !u!114 &-1746696680405710634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2008,16 +1768,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -2045931797427996929}
+  body: {fileID: 812160285480100212}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   _connections:
-  - {fileID: -8784046701556040403}
+  - {fileID: -2448216067240597155}
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &-284179219806096954
+--- !u!114 &-1411818630268345733
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2051,16 +1811,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -5679352363563869762}
+  body: {fileID: -8630658095083998528}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   _connections:
-  - {fileID: 3120275033174692465}
+  - {fileID: 2995365733277873128}
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &-74907998544786256
+--- !u!114 &-350908907640877211
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2093,24 +1853,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 1|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -2120,18 +1886,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: -1
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -2186,24 +1946,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 7|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20002
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: LiuXueBuffAdded
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: LiuXueBuffAdded
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -2213,18 +1979,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -2261,24 +2021,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 11|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 30001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -2288,18 +2054,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -2365,10 +2125,121 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   position: {x: -1728.2001, y: 384.4}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &-126888644089843531
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
+  m_Name: "\u884C\u4E3A\u8282\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347586
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u963B\u6B62\u64AD\u653E\u7279\u6548"
+    - Name: m_ActionNode
+      Entry: 6
+      Data: 
+    - Name: MNpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: RuntimeTreeID
+      Entry: 3
+      Data: 0
+    - Name: m_Action
+      Entry: 6
+      Data: 
+    - Name: m_Func1
+      Entry: 6
+      Data: 
+    - Name: m_Func2
+      Entry: 6
+      Data: 
+    - Name: m_NPBalckBoardRelationData
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: DicKey
+      Entry: 1
+      Data: Darius_Q_Effect
+    - Name: NP_BBValueType
+      Entry: 3
+      Data: 3
+    - Name: StringValue
+      Entry: 6
+      Data: 
+    - Name: FloatValue
+      Entry: 6
+      Data: 
+    - Name: IntValue
+      Entry: 6
+      Data: 
+    - Name: BoolValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Vector3Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -1298.2, y: 117.19983}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -7945255926709050327}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3722,24 +3593,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 69|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20009
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: QOutHit
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: QOutHit
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -3749,16 +3626,10 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
+    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BaseBuffBaseDataEffectTypes
@@ -3827,24 +3698,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 74|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -3854,18 +3731,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: -1
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -3920,24 +3791,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 80|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20002
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: LiuXueBuffAdded
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: LiuXueBuffAdded
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -3947,18 +3824,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -3995,24 +3866,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 84|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 30001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -4022,18 +3899,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4120,24 +3991,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 88|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20003
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4147,18 +4024,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: -1
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4213,24 +4084,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 94|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20004
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4240,18 +4117,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4292,24 +4163,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 96|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20005
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4319,18 +4196,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4371,24 +4242,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 98|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20006
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 1
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4398,18 +4275,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 1
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4446,24 +4317,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 102|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20007
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4473,18 +4350,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4539,24 +4410,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 108|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 90022
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -4566,18 +4443,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4622,24 +4493,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 111|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20004
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4649,18 +4526,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4705,24 +4576,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 114|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20005
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4732,18 +4609,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -4788,24 +4659,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 117|ETModel.RefreshTargetBuffTimeBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 60001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 7
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -4815,16 +4692,10 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
+    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BaseBuffBaseDataEffectTypes
@@ -6191,24 +6062,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 187|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20009
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: QOutHit
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: QOutHit
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6218,16 +6095,10 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
+    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BaseBuffBaseDataEffectTypes
@@ -6296,24 +6167,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 192|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6323,18 +6200,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: -1
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6385,24 +6256,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 197|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20002
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: LiuXueBuffAdded
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: LiuXueBuffAdded
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -6412,18 +6289,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6456,24 +6327,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 200|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 30001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -6483,18 +6360,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6577,24 +6448,30 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 203|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20003
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6604,18 +6481,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: -1
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6666,24 +6537,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 208|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20004
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6693,18 +6570,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6745,24 +6616,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 210|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20005
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6772,18 +6649,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6824,24 +6695,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 212|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20006
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 3
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 1
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6851,18 +6728,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 1
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6895,24 +6766,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 215|ETModel.ListenBuffDataBase, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20007
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 2
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -6922,18 +6799,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -6984,24 +6855,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 220|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 90022
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 1
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: true
@@ -7011,18 +6888,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 5
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -7063,24 +6934,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 222|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20004
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -7090,18 +6967,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -7142,24 +7013,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 224|ETModel.PlayEffectBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 20005
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 6
     - Name: BuffTargetTypes
       Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -7169,18 +7046,12 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
     - Name: SustainTime
       Entry: 3
       Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
       Data: 0
@@ -7221,24 +7092,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 226|ETModel.RefreshTargetBuffTimeBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
     - Name: FlagId
       Entry: 3
       Data: 60001
     - Name: BelongSkillId
       Entry: 3
       Data: 0
-    - Name: theEventID
-      Entry: 6
-      Data: 
     - Name: BelongBuffSystemType
       Entry: 3
       Data: 7
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: theEventID
+      Entry: 6
+      Data: 
     - Name: CanOverlay
       Entry: 5
       Data: false
@@ -7248,16 +7125,10 @@ MonoBehaviour:
     - Name: MaxOverlay
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
+    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
       Entry: 3
       Data: 0
     - Name: BaseBuffBaseDataEffectTypes
@@ -7352,28 +7223,28 @@ MonoBehaviour:
       Entry: 8
       Data: 
   editorStates:
-  - {fileID: -1908176433591999189}
+  - {fileID: 922231953523134018}
   saveName: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_Client\NP_DariusSkills_Client
   savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_Client\NP_DariusSkills_Client.asset
   livesInScene: 0
   nodes:
-  - {fileID: 4399868869712822676}
-  - {fileID: -74907998544786256}
-  - {fileID: -945685007389453587}
-  - {fileID: 7955474271653176558}
-  - {fileID: 2594287610714836020}
-  - {fileID: 3158050854859953465}
-  - {fileID: -2045931797427996929}
-  - {fileID: 3412483526674719943}
-  - {fileID: -5679352363563869762}
-  - {fileID: -4964394132542070364}
-  - {fileID: -1756461798501343119}
-  - {fileID: -2786017514708130772}
-  - {fileID: -8443077512293653920}
-  - {fileID: 5797704688829017282}
-  - {fileID: -1252815773571531440}
-  - {fileID: 9115436630935965176}
-  - {fileID: 8359552418355642718}
+  - {fileID: -8630658095083998528}
+  - {fileID: -9208408634092080299}
+  - {fileID: -8626107394198632753}
+  - {fileID: -6900956310134165740}
+  - {fileID: -7819237010695439854}
+  - {fileID: 958321526705749925}
+  - {fileID: -126888644089843531}
+  - {fileID: 7104071487941776097}
+  - {fileID: -2501375545849582918}
+  - {fileID: 8191548880709618933}
+  - {fileID: 6284552185133785033}
+  - {fileID: 812160285480100212}
+  - {fileID: 2256538573152678102}
+  - {fileID: 2168369492059760421}
+  - {fileID: -350908907640877211}
+  - {fileID: -1986407701358544465}
+  - {fileID: -5317911723968561548}
   nodesForDelete: []
   groups:
   - rect:
@@ -7432,7 +7303,107 @@ MonoBehaviour:
     g: 1
     b: 1
     a: 1
---- !u!114 &422084140184790776
+--- !u!114 &812160285480100212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7b4a4df8ee4bae93c0dba11eae2097, type: 3}
+  m_Name: "\u9ED1\u677F\u6761\u4EF6\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_BlackboardConditionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347596
+    - Name: NodeType
+      Entry: 3
+      Data: 1
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 104743873347593
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u521D\u59CB\u4E00\u4E9B\u64CD\u4F5C"
+    - Name: mBlackboardConditionNode
+      Entry: 6
+      Data: 
+    - Name: mOpe
+      Entry: 3
+      Data: 2
+    - Name: stop
+      Entry: 3
+      Data: 4
+    - Name: m_NPBalckBoardRelationData
+      Entry: 7
+      Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: DicKey
+      Entry: 1
+      Data: HasInitTree
+    - Name: NP_BBValueType
+      Entry: 3
+      Data: 3
+    - Name: StringValue
+      Entry: 6
+      Data: 
+    - Name: FloatValue
+      Entry: 6
+      Data: 
+    - Name: IntValue
+      Entry: 6
+      Data: 
+    - Name: BoolValue
+      Entry: 7
+      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Vector3Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -1952.5999, y: -347.40018}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -1746696680405710634}
+  NextNode: {fileID: 4376288352701014394}
+--- !u!114 &883656195879074574
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7466,16 +7437,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 4399868869712822676}
+  body: {fileID: -9208408634092080299}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   _connections:
-  - {fileID: 3120275033174692465}
+  - {fileID: -7060872448970633308}
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &1689111204119890120
+--- !u!114 &922231953523134018
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7484,210 +7455,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 7955474271653176558}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: -3884361136316823571}
-  - {fileID: 4284251426152000197}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &2594287610714836020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362e3c2ba9ef48b8816fab010bbed3b8, type: 3}
-  m_Name: "\u884C\u4E3A\u6811\u6839\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: MRootNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_RootNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347598
-    - Name: NodeType
-      Entry: 3
-      Data: 1
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 104743873347597
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u6839\u7ED3\u70B9"
-    - Name: m_Root
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1419.0005, y: -559.9999}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  NextNode: {fileID: -6443506156883300247}
---- !u!114 &3120275033174692465
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: -2045931797427996929}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: 422084140184790776}
-  - {fileID: -284179219806096954}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &3158050854859953465
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a76df7ad194f4fb27c7cf808370fd4, type: 3}
-  m_Name: "\u9009\u62E9\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_SelectorNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_SelectorNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347597
-    - Name: NodeType
-      Entry: 3
-      Data: 0
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 104743873347596
-    - Name: 
-      Entry: 3
-      Data: 104743873347595
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 6
-      Data: 
-    - Name: mSelectorNode
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1421.3999, y: -443.0002}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -7106478559465199541}
-  NextNode: {fileID: -4197360526329137702}
---- !u!114 &3412483526674719943
+  canvas: {fileID: 0}
+  parentEditor: {fileID: 0}
+  selectedNodes:
+  - {fileID: -5317911723968561548}
+  panOffset: {x: 1696.7999, y: -429.59973}
+  zoom: 1
+  boxSelecting: 0
+--- !u!114 &958321526705749925
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7874,13 +7652,13 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   position: {x: -1950, y: -220}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -8793766611959849764}
---- !u!114 &3665544014686223722
+  PrevNode: {fileID: 3047037748533598589}
+--- !u!114 &961180946014071688
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7914,16 +7692,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 7955474271653176558}
+  body: {fileID: 8191548880709618933}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   _connections:
-  - {fileID: 7963031458200414562}
+  - {fileID: 8884112901400839642}
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &4284251426152000197
+--- !u!114 &1091412846512969319
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7957,210 +7735,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -1252815773571531440}
+  body: {fileID: 6284552185133785033}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   _connections:
-  - {fileID: 1689111204119890120}
+  - {fileID: -5594940743031344722}
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &4399868869712822676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347585
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u64AD\u653E\u7279\u6548"
-    - Name: m_ActionNode
-      Entry: 6
-      Data: 
-    - Name: MNpClassForStoreAction
-      Entry: 7
-      Data: 2|Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction.NP_PlayParticalAction,
-        Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: RuntimeTreeID
-      Entry: 3
-      Data: 0
-    - Name: m_Action
-      Entry: 6
-      Data: 
-    - Name: m_Func1
-      Entry: 6
-      Data: 
-    - Name: m_Func2
-      Entry: 6
-      Data: 
-    - Name: ParticalName
-      Entry: 1
-      Data: Darius_Q_Effect
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: PosType
-      Entry: 3
-      Data: 1
-    - Name: BelongUnit
-      Entry: 6
-      Data: 
-    - Name: Partical
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1484.4001, y: 118.9998}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 422084140184790776}
---- !u!114 &5797704688829017282
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b4a4df8ee4bae93c0dba11eae2097, type: 3}
-  m_Name: "\u9ED1\u677F\u6761\u4EF6\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_BlackboardConditionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347596
-    - Name: NodeType
-      Entry: 3
-      Data: 1
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 104743873347593
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u521D\u59CB\u4E00\u4E9B\u64CD\u4F5C"
-    - Name: mBlackboardConditionNode
-      Entry: 6
-      Data: 
-    - Name: mOpe
-      Entry: 3
-      Data: 2
-    - Name: stop
-      Entry: 3
-      Data: 4
-    - Name: m_NPBalckBoardRelationData
-      Entry: 7
-      Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: HasInitTree
-    - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
-      Entry: 6
-      Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1952.5999, y: -347.40018}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -6646742489982291233}
-  NextNode: {fileID: 8432237453074646287}
---- !u!114 &7342781215348671503
+--- !u!114 &2109869140864175506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8194,336 +7778,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -4964394132542070364}
+  body: {fileID: 2168369492059760421}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   _connections:
-  - {fileID: -9004766819571182139}
+  - {fileID: -2448216067240597155}
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &7589765272704387384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: -2786017514708130772}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  _connections:
-  - {fileID: -9004766819571182139}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &7955474271653176558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c199e724d0624e0b91cafcea0227ab0d, type: 3}
-  m_Name: "\u5E76\u884C\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ParallelNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ParallelNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743873347594
-    - Name: NodeType
-      Entry: 3
-      Data: 0
-    - Name: linkedID
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 104743873347591
-    - Name: 
-      Entry: 3
-      Data: 104743873347592
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u5F00\u59CB\u6267\u884C\u903B\u8F91"
-    - Name: mParallelNode
-      Entry: 6
-      Data: 
-    - Name: SuccessPolicy
-      Entry: 3
-      Data: 1
-    - Name: FailurePolicy
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1204.6, y: -229.00017}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 3665544014686223722}
-  NextNode: {fileID: 1689111204119890120}
---- !u!114 &7963031458200414562
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 9115436630935965176}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: 3665544014686223722}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &8359552418355642718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fe7e5ec1b94dc6aced04cb533883fa, type: 3}
-  m_Name: "\u6280\u80FD\u6240\u884D\u751F\u7684Buff\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: SkillBuffBases
-      Entry: 7
-      Data: 0|ETModel.NodeDataForSkillBuff, Unity.Model
-    - Name: NodeID
-      Entry: 3
-      Data: 10003
-    - Name: BuffDes
-      Entry: 1
-      Data: "\u5916\u5708\u522E\u9020\u6210\u7684\u6548\u679C"
-    - Name: SkillBuffBases
-      Entry: 7
-      Data: 1|ETModel.BindStateBuffData, Unity.Model
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
-    - Name: FlagId
-      Entry: 3
-      Data: 20009
-    - Name: BelongSkillId
-      Entry: 3
-      Data: 0
-    - Name: theEventID
-      Entry: 1
-      Data: QOutHit
-    - Name: BelongBuffSystemType
-      Entry: 3
-      Data: 3
-    - Name: BuffTargetTypes
-      Entry: 3
-      Data: 4
-    - Name: CanOverlay
-      Entry: 5
-      Data: false
-    - Name: TargetOverlay
-      Entry: 3
-      Data: 0
-    - Name: MaxOverlay
-      Entry: 3
-      Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
-      Entry: 3
-      Data: 0
-    - Name: BaseBuffBaseDataEffectTypes
-      Entry: 3
-      Data: 0
-    - Name: ValueToBeChanged
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: additionValue
-      Entry: 6
-      Data: 
-    - Name: OriBuff
-      Entry: 7
-      Data: 4|System.Collections.Generic.List`1[[ETModel.BuffDataBase, Unity.Model]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -2124.2002, y: 453.39996}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &8432237453074646287
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_NextNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: b2sInfo
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  body: {fileID: 5797704688829017282}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NPBehave_NextNodeDatas
-  _connections:
-  - {fileID: -8793766611959849764}
-  side: 1
-  sidePosition: 75
-  sideOffset: 0
---- !u!114 &9115436630935965176
+--- !u!114 &2168369492059760421
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8640,10 +7904,746 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   position: {x: -1206.6005, y: -340.19998}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -6702482989530130186}
-  NextNode: {fileID: 7963031458200414562}
+  PrevNode: {fileID: 2109869140864175506}
+  NextNode: {fileID: -7060872448970633308}
+--- !u!114 &2256538573152678102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7b4a4df8ee4bae93c0dba11eae2097, type: 3}
+  m_Name: "\u9ED1\u677F\u6761\u4EF6\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_BlackboardConditionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347591
+    - Name: NodeType
+      Entry: 3
+      Data: 1
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 104743873347590
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u662F\u5426\u9700\u8981\u64AD\u653E\u7279\u6548"
+    - Name: mBlackboardConditionNode
+      Entry: 6
+      Data: 
+    - Name: mOpe
+      Entry: 3
+      Data: 2
+    - Name: stop
+      Entry: 3
+      Data: 4
+    - Name: m_NPBalckBoardRelationData
+      Entry: 7
+      Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: DicKey
+      Entry: 1
+      Data: Darius_Q_Effect
+    - Name: NP_BBValueType
+      Entry: 3
+      Data: 3
+    - Name: StringValue
+      Entry: 6
+      Data: 
+    - Name: FloatValue
+      Entry: 6
+      Data: 
+    - Name: IntValue
+      Entry: 6
+      Data: 
+    - Name: BoolValue
+      Entry: 7
+      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Vector3Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -1394.7999, y: -112.00018}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 6896623909163273070}
+  NextNode: {fileID: -7156771840790039578}
+--- !u!114 &2995365733277873128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -7819237010695439854}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: -1411818630268345733}
+  - {fileID: -7945255926709050327}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &3047037748533598589
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 958321526705749925}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: 4376288352701014394}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &3567642423821851321
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -7819237010695439854}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: -7156771840790039578}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &4376288352701014394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 812160285480100212}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: 3047037748533598589}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &4661057224441875467
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 7104071487941776097}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: 8884112901400839642}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &5714779358155457027
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -8626107394198632753}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: -3012341045387088292}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &6284552185133785033
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1b7334dc4097f4983e31d4320a9a08, type: 3}
+  m_Name: "\u961F\u5217\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_SequenceNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_SequenceNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347592
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 104743873347589
+    - Name: 
+      Entry: 3
+      Data: 104743873347588
+    - Name: 
+      Entry: 3
+      Data: 104743873347587
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5904\u7406\u52A8\u753B\u64AD\u653E"
+    - Name: mSequenceNode
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -963.5999, y: -116.600174}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 1091412846512969319}
+  NextNode: {fileID: 8884112901400839642}
+--- !u!114 &6896623909163273070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 2256538573152678102}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections:
+  - {fileID: -5594940743031344722}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &7104071487941776097
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
+  m_Name: "\u884C\u4E3A\u8282\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347587
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5141\u8BB8\u64AD\u653E\u7279\u6548"
+    - Name: m_ActionNode
+      Entry: 6
+      Data: 
+    - Name: MNpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: RuntimeTreeID
+      Entry: 3
+      Data: 0
+    - Name: m_Action
+      Entry: 6
+      Data: 
+    - Name: m_Func1
+      Entry: 6
+      Data: 
+    - Name: m_Func2
+      Entry: 6
+      Data: 
+    - Name: m_NPBalckBoardRelationData
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: DicKey
+      Entry: 1
+      Data: Darius_Q_Effect
+    - Name: NP_BBValueType
+      Entry: 3
+      Data: 3
+    - Name: StringValue
+      Entry: 6
+      Data: 
+    - Name: FloatValue
+      Entry: 6
+      Data: 
+    - Name: IntValue
+      Entry: 6
+      Data: 
+    - Name: BoolValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Vector3Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -780.19995, y: 11.799823}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 4661057224441875467}
+--- !u!114 &8191548880709618933
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
+  m_Name: "\u884C\u4E3A\u8282\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104743873347588
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u91CD\u7F6E\u8F93\u5165\u9ED1\u677F\u6570\u636E"
+    - Name: m_ActionNode
+      Entry: 6
+      Data: 
+    - Name: MNpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: RuntimeTreeID
+      Entry: 3
+      Data: 0
+    - Name: m_Action
+      Entry: 6
+      Data: 
+    - Name: m_Func1
+      Entry: 6
+      Data: 
+    - Name: m_Func2
+      Entry: 6
+      Data: 
+    - Name: m_NPBalckBoardRelationData
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: DicKey
+      Entry: 1
+      Data: PlayerInput
+    - Name: NP_BBValueType
+      Entry: 3
+      Data: 0
+    - Name: StringValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_String, Unity.Model
+    - Name: Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: FloatValue
+      Entry: 6
+      Data: 
+    - Name: IntValue
+      Entry: 6
+      Data: 
+    - Name: BoolValue
+      Entry: 6
+      Data: 
+    - Name: Vector3Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 0}
+  position: {x: -945.39984, y: 10.199831}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 961180946014071688}
+--- !u!114 &8884112901400839642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 6284552185133785033}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  _connections:
+  - {fileID: -6629840160034200870}
+  - {fileID: 961180946014071688}
+  - {fileID: 4661057224441875467}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0

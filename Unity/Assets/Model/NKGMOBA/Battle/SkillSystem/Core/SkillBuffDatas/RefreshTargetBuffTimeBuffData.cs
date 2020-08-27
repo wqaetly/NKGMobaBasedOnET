@@ -14,6 +14,7 @@ namespace ETModel
     /// </summary>
     public class RefreshTargetBuffTimeBuffData: BuffDataBase
     {
+        [BoxGroup("自定义项")]
         [LabelText("要刷新的BuffID")]
         public List<int> TheBuffsIDToBeRefreshed = new List<int>();
     }
