@@ -782,7 +782,7 @@
             PropertyInfo method extensions.
             </summary>
         </member>
-        <member name="M:Sirenix.Utilities.PropertyInfoExtensions.IsAutoProperty(System.Reflection.PropertyInfo)">
+        <member name="M:Sirenix.Utilities.PropertyInfoExtensions.IsAutoProperty(System.Reflection.PropertyInfo,System.Boolean)">
             <summary>
             Determines whether a property is an auto property.
             </summary>
@@ -1381,6 +1381,7 @@
              <remarks>
              <para>Note that in the special case of the type <see cref="T:UnityEngine.Quaternion"/>, a special equality comparer is returned that only checks whether all the Quaternion components are equal.</para>
              <para>This is because, by default, Quaternion's equality operator is broken when operating on invalid quaternions; "default(Quaternion) == default(Quaternion)" evaluates to false, and this causes a multitude of problems.</para>
+             <para>Special delegates are also returned for float and double, that consider float.NaN to be equal to float.NaN, and double.NaN to be equal to double.NaN.</para>
              </remarks>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetAttribute``1(System.Type,System.Boolean)">
