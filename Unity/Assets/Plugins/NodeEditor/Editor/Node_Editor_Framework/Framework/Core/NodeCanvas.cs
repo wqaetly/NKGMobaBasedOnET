@@ -20,14 +20,6 @@ namespace NodeEditorFramework
             }
         }
 
-        public virtual bool allowSceneSaveOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
-
         public virtual bool allowRecursion
         {
             get
@@ -45,7 +37,6 @@ namespace NodeEditorFramework
         public string saveName;
         public string savePath;
 
-        public bool livesInScene = false;
         [LabelText("所有Nodes")]
         public List<Node> nodes = new List<Node>();
 
@@ -61,32 +52,33 @@ namespace NodeEditorFramework
         #region 生成一个Canvas
 
         /// <summary>
-        /// Creates a canvas of the specified generic type
-        /// </summary>
-        public static T CreateCanvas<T>() where T : NodeCanvas
-        {
-            if (typeof (T) == typeof (NodeCanvas))
-                throw new Exception("Cannot create canvas of type 'NodeCanvas' as that is only the base class. Please specify a valid subclass!");
-            T canvas = ScriptableObject.CreateInstance<T>();
-            canvas.name = canvas.saveName = "New " + canvas.canvasName;
-
-            NodeEditor.BeginEditingCanvas(canvas);
-            canvas.OnCreate();
-            NodeEditor.EndEditingCanvas();
-            return canvas;
-        }
-
-        /// <summary>
         /// Creates a canvas of the specified canvasType as long as it is a subclass of NodeCanvas
         /// </summary>
         public static NodeCanvas CreateCanvas(Type canvasType)
         {
             NodeCanvas canvas;
             if (canvasType != null && canvasType.IsSubclassOf(typeof (NodeCanvas)))
-                canvas = ScriptableObject.CreateInstance(canvasType) as NodeCanvas;
+                canvas = CreateInstance(canvasType) as NodeCanvas;
             else
-                canvas = ScriptableObject.CreateInstance<DefaultCanvas>();
+            {
+                canvas = CreateInstance<DefaultCanvas>();
+            }
+
             canvas.name = canvas.saveName = "New " + canvas.canvasName;
+
+            if (canvas is DefaultCanvas)
+            {
+                canvas.savePath = NodeEditor.editorPath + "Resources/Saves/DefaultCanvas.asset";
+                NodeEditorSaveManager.SaveNodeCanvas(canvas.savePath, ref canvas);
+            }
+            else
+            {
+                string panelPath = NodeEditor.editorPath + "Resources/Saves/";
+                string panelFileName = "Node Canvas";
+                string path = UnityEditor.EditorUtility.SaveFilePanelInProject("Save Node Canvas", panelFileName, "asset", "", panelPath);
+                canvas.savePath = path;
+                NodeEditorSaveManager.SaveNodeCanvas(canvas.savePath, ref canvas);
+            }
 
             NodeEditor.BeginEditingCanvas(canvas);
             canvas.OnCreate();
@@ -108,7 +100,6 @@ namespace NodeEditorFramework
 
         protected virtual void ValidateSelf()
         {
-
         }
 
         public virtual void OnBeforeSavingCanvas()
@@ -123,23 +114,6 @@ namespace NodeEditorFramework
         // GUI
 
         public virtual void DrawCanvasPropertyEditor()
-        {
-        }
-
-        // ADDITIONAL SERIALIZATION
-
-        /// <summary>
-        /// Should return all additional ScriptableObjects this Node references
-        /// </summary>
-        public virtual ScriptableObject[] GetScriptableObjects()
-        {
-            return new ScriptableObject[0];
-        }
-
-        /// <summary>
-        /// Replaces all references to any ScriptableObjects this Node holds with the cloned versions in the serialization process.
-        /// </summary>
-        protected internal virtual void CopyScriptableObjects(System.Func<ScriptableObject, ScriptableObject> replaceSO)
         {
         }
 
@@ -237,22 +211,12 @@ namespace NodeEditorFramework
             if (path == savePath)
                 return;
             string newName;
-            if (path.StartsWith("SCENE/"))
-            {
-                newName = path.Substring(6);
-            }
-            else
-            {
-                int nameStart = path.LastIndexOf('/') + 1;
-                newName = path.Substring(nameStart, path.Length - nameStart - 6);
-            }
 
-            if (!newName.ToLower().Contains("lastsession"))
-            {
-                savePath = path;
-                saveName = newName;
-                livesInScene = path.StartsWith("SCENE/");
-            }
+            int nameStart = path.LastIndexOf('/') + 1;
+            newName = path.Substring(nameStart, path.Length - nameStart - 6);
+
+            savePath = path;
+            saveName = newName;
 
             return;
         }

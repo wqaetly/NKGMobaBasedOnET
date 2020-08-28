@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: m_HeroData
       Entry: 6
       Data: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: 148, y: -80}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -52,7 +52,7 @@ MonoBehaviour:
     - Name: m_HeroData
       Entry: 6
       Data: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: 152, y: 45}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -68,9 +68,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
   m_Name: MainEditorState
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes: []
+  selectedNodes:
+  - {fileID: -6011939355466017145}
+  - {fileID: -7569159269872257673}
+  - {fileID: 6037758617077892593}
   panOffset: {x: 0, y: 0}
   zoom: 1
   boxSelecting: 0
@@ -133,12 +136,11 @@ MonoBehaviour:
     Canvas
   savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\Node
     Canvas.asset
-  livesInScene: 0
   nodes:
-  - {fileID: 6037758617077892593}
+  - {fileID: 6152009975585842860}
   - {fileID: -6011939355466017145}
   - {fileID: -7569159269872257673}
-  - {fileID: 6152009975585842860}
+  - {fileID: 6037758617077892593}
   nodesForDelete: []
   groups: []
   Name: HeroData
@@ -167,7 +169,7 @@ MonoBehaviour:
     - Name: m_HeroData
       Entry: 6
       Data: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: -178, y: -157}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -195,7 +197,7 @@ MonoBehaviour:
     - Name: m_HeroData
       Entry: 6
       Data: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: -267, y: -35}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}

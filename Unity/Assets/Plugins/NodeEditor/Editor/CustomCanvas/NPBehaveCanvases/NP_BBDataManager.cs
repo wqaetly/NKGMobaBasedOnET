@@ -24,21 +24,6 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [LabelText("内容")]
         [BoxGroup]
         [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
-        [OnValueChanged("IncreaseVersion",true)]
         public Dictionary<string, ANP_BBValue> BBValues = new Dictionary<string, ANP_BBValue>();
-
-        [HideInInspector]
-        public NPBehaveCanvasBase NpBehaveCanvasBase;
-
-        /// <summary>
-        /// 版本号，数据同步时以高版本号为准
-        /// </summary>
-        [HideInInspector]
-        public int Version;
-        
-        public void IncreaseVersion()
-        {
-            Version++;
-        }
     }
 }

@@ -273,6 +273,7 @@ namespace NodeEditorFramework.IO
                 state.canvas = nodeCanvas;
                 state.name = "EditorState";
                 nodeCanvas.editorStates[i] = state;
+                
             }
 
             NodeEditor.EndEditingCanvas();

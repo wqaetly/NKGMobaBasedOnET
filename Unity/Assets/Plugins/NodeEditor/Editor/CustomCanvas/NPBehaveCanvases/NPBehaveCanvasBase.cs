@@ -16,6 +16,7 @@ using Plugins.NodeEditor.Editor.NPBehaveNodes;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Plugins.NodeEditor.Editor.Canvas
 {
@@ -43,74 +44,36 @@ namespace Plugins.NodeEditor.Editor.Canvas
         public string SavePath;
 
         /// <summary>
-        /// TODO 不知道为什么，每次运行Unity之后这个SO就被GC掉了，但是他是被这个Canvas SO引用的
-        /// TODO 不能用HideFlags.HideAndDontSave;，因为会无法编辑
-        /// TODO 使用AssetDatabase.AddObjectToAsset();把它添加到Canvas SO下会有报错
-        /// TODO 又不想单独创建一个asset文件，暂时就先这样吧，麻了
-        /// TODO 有关Unity序列化更多内容，参照https://blogs.unity3d.com/2012/10/25/unity-serialization/?_ga=2.170661992.937300808.1598090338-209452367.1582274518
+        /// 黑板数据管理器
         /// </summary>
-        [HideInInspector]
+        [LabelText("黑板数据管理器")]
         public NP_BBDataManager NpBbDataManager;
 
-        /// <summary>
-        /// 版本号，数据同步时以高版本号为准
-        /// </summary>
-        [HideInInspector]
-        public int Version = 0;
-
-        /// <summary>
-        /// 用于做黑板数据同步的
-        /// </summary>
-        [Title("黑板数据", TitleAlignment = TitleAlignments.Centered)]
-        [LabelText("内容")]
-        [BoxGroup]
-        [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
-        [OnValueChanged("IncreaseVersion", true)]
-        public Dictionary<string, ANP_BBValue> FinalBBValues = new Dictionary<string, ANP_BBValue>();
-
-        private void OnEnable()
+        public NP_BBDataManager GetBBValues()
         {
             if (NpBbDataManager == null)
             {
+                Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(this.savePath);
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is NP_BBDataManager npBbDataManager)
+                    {
+                        return npBbDataManager;
+                    }
+                }
+
                 NpBbDataManager = CreateInstance<NP_BBDataManager>();
                 NpBbDataManager.name = "黑板数据管理器";
-                NpBbDataManager.NpBehaveCanvasBase = this;
-                NpBbDataManager.Version = 0;
-            }
-        }
-
-        public void IncreaseVersion()
-        {
-            Version++;
-        }
-
-        public void SyncBBValueFromData()
-        {
-            if (Version < NpBbDataManager.Version) return;
-            NpBbDataManager.Version = this.Version;
-
-            NpBbDataManager.BBValues.Clear();
-
-            foreach (var bbValue in this.FinalBBValues)
-            {
-                NpBbDataManager.BBValues.Add(bbValue.Key, bbValue.Value);
+                NodeEditorSaveManager.AddSubAsset(NpBbDataManager, this);
             }
 
-            NP_BlackBoardRelationData.BBKeys = this.FinalBBValues.Keys;
+            return NpBbDataManager;
         }
 
-        public void SyncBBValueFromManager()
-        {
-            if (NpBbDataManager.Version < this.Version) return;
-            this.Version = NpBbDataManager.Version;
-            this.FinalBBValues.Clear();
-            foreach (var bbValue in NpBbDataManager.BBValues)
-            {
-                this.FinalBBValues.Add(bbValue.Key, bbValue.Value);
-            }
-
-            NP_BlackBoardRelationData.BBKeys = this.FinalBBValues.Keys;
-        }
+        // public override ScriptableObject[] GetScriptableObjects()
+        // {
+        //     return new ScriptableObject[] { NpBbDataManager };
+        // }
 
         /// <summary>
         /// 自动配置当前图所有数据（结点，黑板）
@@ -236,7 +199,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             npDataSupportorBase.NP_BBValueManager.Clear();
             //设置黑板数据
-            foreach (var bbvalues in this.FinalBBValues)
+            foreach (var bbvalues in this.GetBBValues().BBValues)
             {
                 npDataSupportorBase.NP_BBValueManager.Add(bbvalues.Key, bbvalues.Value);
             }

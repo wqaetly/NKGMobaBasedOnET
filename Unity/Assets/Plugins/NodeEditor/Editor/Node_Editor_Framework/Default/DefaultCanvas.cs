@@ -17,10 +17,5 @@ namespace Plugins.NodeEditor.Node_Editor.Default
         public override string canvasName => Name;
         
         public string Name = "默认Canvas";
-        
-        protected override void OnCreate()
-        {
-            Log.Error("当你来到这个默认Canvas界面，证明你可能遇到了问题，因为这个界面默认是不使用的，所以请先尝试在当前这个编辑器界面Load你想打开的Canvas吧！");
-        }
     }
 }

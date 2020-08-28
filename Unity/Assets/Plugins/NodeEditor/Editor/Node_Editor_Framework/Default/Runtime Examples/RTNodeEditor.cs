@@ -43,14 +43,6 @@ namespace NodeEditorFramework.Standard
 
 		private void AssureSetup()
 		{
-			if (canvasCache == null)
-			{ // Create cache and load startup-canvas
-				canvasCache = new NodeEditorUserCache();
-				if (canvas != null)
-					canvasCache.SetCanvas(NodeEditorSaveManager.CreateWorkingCopy(canvas));
-				else if (!string.IsNullOrEmpty (loadSceneName))
-					canvasCache.LoadSceneNodeCanvas(loadSceneName);
-			}
 			canvasCache.AssureCanvas();
 			if (editorInterface == null)
 			{ // Setup editor interface

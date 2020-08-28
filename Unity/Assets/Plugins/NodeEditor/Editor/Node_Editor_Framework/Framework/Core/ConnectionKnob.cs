@@ -347,6 +347,7 @@ namespace NodeEditorFramework
 			knob.Init (body, Name, Direction, NodeSide, NodeSidePos);
 			knob.styleID = StyleID;
 			knob.maxConnectionCount = MaxConnectionCount;
+			NodeEditorSaveManager.AddSubAsset(knob,body);
 			return knob;
 		}
 

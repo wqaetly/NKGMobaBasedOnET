@@ -234,7 +234,7 @@ namespace NodeEditorFramework
             if (curEditorState.navigate)
             {
                 // Draw a curve to the origin/active node for orientation purposes
-                Vector2 startPos = (curEditorState.selectedNodes.Count>0 ? curEditorState.selectedNodes[0].rect.center : curEditorState.panOffset) +
+                Vector2 startPos = (curEditorState.selectedNodes.Count > 0? curEditorState.selectedNodes[0].rect.center : curEditorState.panOffset) +
                         curEditorState.zoomPanAdjust;
                 Vector2 endPos = Event.current.mousePosition;
                 RTEditorGUI.DrawLine(startPos, endPos, Color.green, null, 3);
@@ -311,7 +311,7 @@ namespace NodeEditorFramework
         /// </summary>
         public static void BeginEditingCanvas(NodeCanvas canvas, NodeEditorState state)
         {
-            if (state != null && state.canvas != canvas)
+            if (state != null && state.canvas != null && state.canvas.name != canvas.name)
                 state = null; // State does not belong to the canvas
 
             editCanvasStack.Push(canvas);
@@ -337,7 +337,7 @@ namespace NodeEditorFramework
 
                 handleRect.min = NodeEditorInputControls.startSelectionPos;
                 handleRect.max = Event.current.mousePosition;
-                
+
                 GUI.Box(handleRect, GUIContent.none, NodeEditorGUI.nodeBox);
 
                 Rect canvasRect = new Rect();
@@ -346,7 +346,7 @@ namespace NodeEditorFramework
 
                 canvasRect.min = Vector2.Min(start, end);
                 canvasRect.max = Vector2.Max(start, end);
-                
+
                 curEditorState.selectedNodes.Clear();
                 foreach (var node in curNodeCanvas.nodes)
                 {

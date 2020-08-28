@@ -92,36 +92,6 @@ namespace NodeEditorFramework
             return data.limitToCanvasTypes == null || data.limitToCanvasTypes.Length == 0 || data.limitToCanvasTypes.Contains(canvasType);
         }
 
-        /// <summary>
-        /// Converts the given canvas to the specified type
-        /// </summary>
-        public static NodeCanvas ConvertCanvasType(NodeCanvas canvas, Type newType)
-        {
-            NodeCanvas convertedCanvas = canvas;
-            if (canvas.GetType() != newType && newType.IsSubclassOf(typeof (NodeCanvas)))
-            {
-                canvas.Validate();
-                canvas = NodeEditorSaveManager.CreateWorkingCopy(canvas);
-                convertedCanvas = NodeCanvas.CreateCanvas(newType);
-                convertedCanvas.nodes = canvas.nodes;
-                convertedCanvas.groups = canvas.groups;
-                convertedCanvas.editorStates = canvas.editorStates;
-                for (int i = 0; i < convertedCanvas.nodes.Count; i++)
-                {
-                    if (!CheckCanvasCompability(convertedCanvas.nodes[i].GetID, newType))
-                    {
-                        // Check if nodes is even compatible with the canvas, if not delete it
-                        convertedCanvas.nodes[i].Delete();
-                        i--;
-                    }
-                }
-
-                convertedCanvas.Validate();
-            }
-
-            return convertedCanvas;
-        }
-
         #region Canvas Type Menu
 
         public static void FillCanvasTypeMenu(ref GenericMenu menu, Action<Type> NodeCanvasSelection, string path = "")

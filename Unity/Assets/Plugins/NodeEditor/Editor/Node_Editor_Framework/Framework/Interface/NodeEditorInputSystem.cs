@@ -284,11 +284,6 @@ namespace NodeEditorFramework
             else if (state.focusedNode == null)
             {
                 state.selectedNodes.Clear();
-                if (state.canvas is NPBehaveCanvas npBehaveCanvas)
-                {
-                    npBehaveCanvas.SyncBBValueFromManager();
-                }
-
                 UnityEditor.Selection.activeObject = state.canvas;
             }
 

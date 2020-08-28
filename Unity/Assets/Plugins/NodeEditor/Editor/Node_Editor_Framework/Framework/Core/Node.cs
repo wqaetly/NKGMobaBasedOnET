@@ -250,6 +250,8 @@ namespace NodeEditorFramework
             node.name = node.Title;
             node.autoSize = node.DefaultSize;
             node.position = pos;
+
+            AssetDatabase.AddObjectToAsset(node, hostCanvas);
             ConnectionPortManager.UpdateConnectionPorts(node);
             if (init)
                 node.OnCreate();

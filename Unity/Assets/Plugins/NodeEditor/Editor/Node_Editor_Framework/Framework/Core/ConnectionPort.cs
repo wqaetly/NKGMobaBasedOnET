@@ -299,6 +299,7 @@ namespace NodeEditorFramework
 			port.direction = Direction;
 			port.styleID = StyleID;
 			port.maxConnectionCount = MaxConnectionCount;
+			NodeEditorSaveManager.AddSubAsset(port,body);
 			return port;
 		}
 

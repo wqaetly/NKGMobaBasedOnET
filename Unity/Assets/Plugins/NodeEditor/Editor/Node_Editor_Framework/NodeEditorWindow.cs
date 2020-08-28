@@ -94,13 +94,15 @@ namespace NodeEditorFramework.Standard
             _editor = this;
             NormalReInit();
 
+            string lastCanvasPath = NodeEditorSaveManager.GetLastCanvasPath();
+            if (!string.IsNullOrEmpty(lastCanvasPath))
+            {
+                _editor.canvasCache.LoadNodeCanvas(lastCanvasPath);
+            }
+            
             // Subscribe to events
             NodeEditor.ClientRepaints -= Repaint;
             NodeEditor.ClientRepaints += Repaint;
-            EditorLoadingControl.justLeftPlayMode -= NormalReInit;
-            EditorLoadingControl.justLeftPlayMode += NormalReInit;
-            EditorLoadingControl.justOpenedNewScene -= NormalReInit;
-            EditorLoadingControl.justOpenedNewScene += NormalReInit;
         }
 
         private void OnDestroy()
@@ -115,26 +117,8 @@ namespace NodeEditorFramework.Standard
 
             // Unsubscribe from events
             NodeEditor.ClientRepaints -= Repaint;
-            EditorLoadingControl.justLeftPlayMode -= NormalReInit;
-            EditorLoadingControl.justOpenedNewScene -= NormalReInit;
-
-            // Clear Cache
-            canvasCache.ClearCacheEvents();
             this.canvasCache = null;
         }
-
-        // private void OnLostFocus()
-        // {
-        //     // Save any changes made while focussing this window
-        //     // Will also save before possible assembly reload, scene switch, etc. because these require focussing of a different window
-        //     canvasCache.SaveCache();
-        // }
-        //
-        // private void OnFocus()
-        // {
-        //     // Make sure the canvas hasn't been corrupted externally
-        //     NormalReInit();
-        // }
 
         private void NormalReInit()
         {
@@ -149,7 +133,7 @@ namespace NodeEditorFramework.Standard
             if (canvasCache == null)
             {
                 // Create cache
-                canvasCache = new NodeEditorUserCache(Path.GetDirectoryName(AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this))));
+                canvasCache = new NodeEditorUserCache();
             }
 
             canvasCache.AssureCanvas();

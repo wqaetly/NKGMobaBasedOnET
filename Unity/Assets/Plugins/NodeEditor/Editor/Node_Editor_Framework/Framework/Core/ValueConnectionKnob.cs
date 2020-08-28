@@ -274,6 +274,7 @@ namespace NodeEditorFramework
             ValueConnectionKnob knob = ScriptableObject.CreateInstance<ValueConnectionKnob>();
             knob.Init(body, Name, Direction, StyleID, NodeSide, NodeSidePos);
             knob.maxConnectionCount = MaxConnectionCount;
+            NodeEditorSaveManager.AddSubAsset(knob,body);
             return knob;
         }
 
