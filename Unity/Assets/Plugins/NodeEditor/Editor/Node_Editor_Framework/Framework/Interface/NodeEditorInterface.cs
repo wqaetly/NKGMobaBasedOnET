@@ -1,6 +1,6 @@
 ﻿using System;
+using System.IO;
 using UnityEngine;
-using NodeEditorFramework.IO;
 using Plugins.NodeEditor.Editor.Canvas;
 using Plugins.NodeEditor.Node_Editor.Default;
 using GenericMenu = NodeEditorFramework.Utilities.GenericMenu;
@@ -20,18 +20,7 @@ namespace NodeEditorFramework.Standard
         public bool showModalPanel;
         public Rect modalPanelRect = new Rect(20, 50, 250, 70);
         public Action modalPanelContent;
-
-        // IO Format modal panel
-        private ImportExportFormat IOFormat;
-        private object[] IOLocationArgs;
-
-        private delegate bool? DefExportLocationGUI(string canvasName, ref object[] locationArgs);
-
-        private delegate bool? DefImportLocationGUI(ref object[] locationArgs);
-
-        private DefImportLocationGUI ImportLocationGUI;
-        private DefExportLocationGUI ExportLocationGUI;
-
+        
         public void ShowNotification(GUIContent message)
         {
             if (ShowNotificationAction != null)
@@ -66,30 +55,6 @@ namespace NodeEditorFramework.Standard
 
                 // menu.AddSeparator("");
 #endif
-
-                // // Import / Export filled with import/export types
-                // ImportExportManager.FillImportFormatMenu(ref menu, ImportCanvasCallback, "Import/");
-                // if (canvasCache.nodeCanvas.allowSceneSaveOnly)
-                // {
-                //     menu.AddDisabledItem(new GUIContent("Export"));
-                // }
-                // else
-                // {
-                //     ImportExportManager.FillExportFormatMenu(ref menu, ExportCanvasCallback, "Export/");
-                // }
-                //
-                // menu.AddSeparator("");
-                //
-                // // Scene Saving
-                // string[] sceneSaves = NodeEditorSaveManager.GetSceneSaves();
-                // if (sceneSaves.Length <= 0) // Display disabled item
-                //     menu.AddItem(new GUIContent("Load Canvas from Scene"), false, null);
-                // else
-                //     foreach (string sceneSave in sceneSaves) // Display scene saves to load
-                //         menu.AddItem(new GUIContent("Load Canvas from Scene/" + sceneSave), false, LoadSceneCanvasCallback, sceneSave);
-                // menu.AddItem(new GUIContent("Save Canvas to Scene"), false, SaveSceneCanvasCallback);
-
-                // Show dropdown
                 menu.Show(new Vector2(5, toolbarHeight));
             }
 
@@ -98,9 +63,8 @@ namespace NodeEditorFramework.Standard
             GUILayout.Space(10);
             GUILayout.FlexibleSpace();
 
-            GUILayout.Label(new GUIContent("" + canvasCache.nodeCanvas.saveName + " (" + "Asset Save" + ")",
-                "Opened Canvas path: " + canvasCache.nodeCanvas.savePath), NodeEditorGUI.toolbarLabel);
-            GUILayout.Label("Type: " + canvasCache.typeData.DisplayString, NodeEditorGUI.toolbarLabel);
+            GUILayout.Label(new GUIContent(this.canvasCache.openedCanvasPath), NodeEditorGUI.toolbarLabel);
+            GUILayout.Label(this.canvasCache.typeData.DisplayString, NodeEditorGUI.toolbarLabel);
             curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
 
             GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
@@ -108,7 +72,7 @@ namespace NodeEditorFramework.Standard
             {
                 if (GUILayout.Button("Blackboard", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
                 {
-                    NPBehaveCanvas npBehaveCanvas = NodeEditor.curNodeCanvas as NPBehaveCanvas;
+                    NPBehaveCanvas npBehaveCanvas = this.canvasCache.nodeCanvas as NPBehaveCanvas;
                     UnityEditor.Selection.activeObject = npBehaveCanvas.GetBBValues();
                 }
             }
@@ -159,6 +123,7 @@ namespace NodeEditorFramework.Standard
             else
             {
                 this.AssertSavaCanvasSuccessfully();
+                path = path.Replace("/",@"\");
                 canvasCache.LoadNodeCanvas(path);
             }
         }
@@ -197,10 +162,11 @@ namespace NodeEditorFramework.Standard
         /// <returns></returns>
         public bool AssertSavaCanvasSuccessfully()
         {
-            if (canvasCache.nodeCanvas is DefaultCanvas)
+            if (canvasCache.nodeCanvas is DefaultCanvas || !File.Exists(NodeEditorSaveManager.GetLastCanvasPath()))
             {
                 return true;
             }
+
             string path = canvasCache.nodeCanvas.savePath;
             //清理要删掉的Node
             foreach (var VARIABLE in canvasCache.nodeCanvas.nodesForDelete)

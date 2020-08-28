@@ -76,7 +76,6 @@ namespace NodeEditorFramework
             nodeCanvas.Validate();
 
             NodeEditorCallbacks.IssueOnLoadCanvas(nodeCanvas);
-            SetLastCanvasPath(path);
             return nodeCanvas;
 #endif
         }
@@ -162,24 +161,6 @@ namespace NodeEditorFramework
             return state;
         }
 
-        /// <summary>
-        /// Overwrites canvas with the contents of canvasData, so that all references to canvas will be remained, but both canvases are still seperate.
-        /// Only works in the editor!
-        /// </summary>
-        public static void OverwriteCanvas(ref NodeCanvas targetCanvas, NodeCanvas canvasData)
-        {
-#if UNITY_EDITOR
-            if (canvasData == null)
-                throw new System.ArgumentNullException("Cannot overwrite canvas as data is null!");
-            if (targetCanvas == null)
-                targetCanvas = NodeCanvas.CreateCanvas(canvasData.GetType());
-            UnityEditor.EditorUtility.CopySerialized(canvasData, targetCanvas);
-            targetCanvas.name = canvasData.name;
-#else
-			throw new System.NotSupportedException ("Cannot overwrite canvas in player!");
-#endif
-        }
-
         public static void SetLastCanvasPath(string path)
         {
             UnityEngine.PlayerPrefs.SetString("LastCanvasPath", path);
@@ -187,7 +168,8 @@ namespace NodeEditorFramework
 
         public static string GetLastCanvasPath()
         {
-            return UnityEngine.PlayerPrefs.GetString("LastCanvasPath", "");
+            string result = UnityEngine.PlayerPrefs.GetString("LastCanvasPath", "");
+            return result;
         }
 
         #endregion

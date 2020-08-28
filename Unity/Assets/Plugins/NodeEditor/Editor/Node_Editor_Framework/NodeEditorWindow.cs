@@ -74,7 +74,8 @@ namespace NodeEditorFramework.Standard
                         AssureEditor();
                         editorInterface.AssertSavaCanvasSuccessfully();
                         string NodeCanvasPath = AssetDatabase.GetAssetPath(instanceID);
-                        OpenNodeEditor().canvasCache.LoadNodeCanvas(NodeCanvasPath);
+                        NodeCanvasPath = NodeCanvasPath.Replace("/", @"\");
+                        _editor.canvasCache.LoadNodeCanvas(NodeCanvasPath);
                         //需要重新为editorInterface绑定canvasCache，所以这里要置空，留给框架底层自行检测然后绑定
                         editorInterface = null;
                         return true;
@@ -91,32 +92,24 @@ namespace NodeEditorFramework.Standard
 
         private void OnEnable()
         {
-            _editor = this;
-            NormalReInit();
-
-            string lastCanvasPath = NodeEditorSaveManager.GetLastCanvasPath();
-            if (!string.IsNullOrEmpty(lastCanvasPath))
-            {
-                _editor.canvasCache.LoadNodeCanvas(lastCanvasPath);
-            }
-            
             // Subscribe to events
             NodeEditor.ClientRepaints -= Repaint;
             NodeEditor.ClientRepaints += Repaint;
+
+            _editor = this;
+            NormalReInit();
         }
 
         private void OnDestroy()
         {
-            //因为支持双击打开目标Canvas的自动保存当前Canvas的功能，所以这里要做一下调整
-            //BUG具体表现为：假如新建了一个Canvas，此时双击打开Canvas会失效
-            if (!editorInterface.AssertSavaCanvasSuccessfully())
-            {
-                Debug.LogError("安全起见！需要先把当前Canvas保存，所以会有刚刚的保存窗口！");
-                editorInterface.SaveCanvasAs();
-            }
+            editorInterface.AssertSavaCanvasSuccessfully();
 
             // Unsubscribe from events
             NodeEditor.ClientRepaints -= Repaint;
+            NodeEditor.curEditorState = null;
+            NodeEditor.curNodeCanvas = null;
+            editorInterface = null;
+            _editor = null;
             this.canvasCache = null;
         }
 

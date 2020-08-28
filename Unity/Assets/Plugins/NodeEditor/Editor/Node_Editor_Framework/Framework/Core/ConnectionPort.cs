@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
 
@@ -197,7 +196,6 @@ namespace NodeEditorFramework
 				port.body.OnAddConnection (port, this);
 				body.OnAddConnection (this, port);
 				NodeEditorCallbacks.IssueOnAddConnection (this, port);
-				body.canvas.OnNodeChange(direction == Direction.In? port.body : body);
 			}
 		}
 
@@ -224,8 +222,6 @@ namespace NodeEditorFramework
 			if (!silent) NodeEditorCallbacks.IssueOnRemoveConnection (this, port);
 			port.connections.Remove (this);
 			connections.Remove (port);
-
-			if (!silent) body.canvas.OnNodeChange (body);
 		}
 
 		#endregion

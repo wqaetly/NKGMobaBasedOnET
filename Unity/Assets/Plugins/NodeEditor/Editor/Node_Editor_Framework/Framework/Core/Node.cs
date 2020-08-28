@@ -2,10 +2,8 @@ using UnityEngine;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using NodeEditorFramework.IO;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
-using UnityEditor;
 
 namespace NodeEditorFramework
 {
@@ -251,7 +249,7 @@ namespace NodeEditorFramework
             node.autoSize = node.DefaultSize;
             node.position = pos;
 
-            AssetDatabase.AddObjectToAsset(node, hostCanvas);
+            NodeEditorSaveManager.AddSubAsset(node,hostCanvas);
             ConnectionPortManager.UpdateConnectionPorts(node);
             if (init)
                 node.OnCreate();
@@ -271,7 +269,6 @@ namespace NodeEditorFramework
             if (!silent)
             {
                 // Callbacks
-                hostCanvas.OnNodeChange(connectingPort != null? connectingPort.body : node);
                 NodeEditorCallbacks.IssueOnAddNode(node);
                 hostCanvas.Validate();
                 NodeEditor.RepaintClients();

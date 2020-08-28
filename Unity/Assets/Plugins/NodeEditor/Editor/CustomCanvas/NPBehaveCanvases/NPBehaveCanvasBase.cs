@@ -46,7 +46,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// <summary>
         /// 黑板数据管理器
         /// </summary>
-        [LabelText("黑板数据管理器")]
+        [HideInInspector]
         public NP_BBDataManager NpBbDataManager;
 
         public NP_BBDataManager GetBBValues()

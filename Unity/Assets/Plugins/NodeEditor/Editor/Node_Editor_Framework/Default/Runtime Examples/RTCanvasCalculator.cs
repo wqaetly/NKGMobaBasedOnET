@@ -28,7 +28,6 @@ namespace NodeEditorFramework.Standard
 			AssureCanvas ();
 			NodeEditor.checkInit (false);
 			canvas.Validate ();
-			canvas.TraverseAll ();
 			DebugOutputResults ();
 		}
 

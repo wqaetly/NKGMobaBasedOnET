@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework.Utilities;
-using NodeEditorFramework.IO;
-using UnityEngine.EventSystems;
 using Object = UnityEngine.Object;
 
 namespace NodeEditorFramework
@@ -95,8 +93,6 @@ namespace NodeEditorFramework
             NodeTypes.FetchNodeTypes();
             NodeCanvasManager.FetchCanvasTypes();
             ConnectionPortManager.FetchNodeConnectionDeclarations();
-            ImportExportManager.FetchIOFormats();
-
             // Setup Callback system
             NodeEditorCallbacks.SetupReceivers();
             NodeEditorCallbacks.IssueOnEditorStartUp();

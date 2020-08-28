@@ -4,12 +4,16 @@
 
 using System;
 using System.IO;
+using NodeEditorFramework.Standard;
 using UnityEngine;
 using NodeEditorFramework.Utilities;
 using UnityEditor;
 
 namespace NodeEditorFramework
 {
+    /// <summary>
+    /// 用户缓存，包含nodeCanvas和editorState
+    /// </summary>
     public class NodeEditorUserCache
     {
         public NodeCanvas nodeCanvas;
@@ -33,7 +37,10 @@ namespace NodeEditorFramework
         public void AssureCanvas()
         {
             if (nodeCanvas == null)
-                NewNodeCanvas();
+            {
+                LoadNodeCanvas(NodeEditorSaveManager.GetLastCanvasPath());
+            }
+
             if (editorState == null)
                 NewEditorState();
         }
@@ -49,15 +56,24 @@ namespace NodeEditorFramework
         {
             nodeCanvas.editorStates = new NodeEditorState[] { editorState };
             NodeEditorSaveManager.SaveNodeCanvas(path, ref nodeCanvas);
-            NodeEditor.RepaintClients();
         }
 
         /// <summary>
         /// Loads the mainNodeCanvas and it's associated mainEditorState from an asset at path
+        /// 加载一个Canvas
         /// </summary>
         public void LoadNodeCanvas(string path)
         {
-            // Try to load the NodeCanvas
+            //如果路径一致，说明是同一个canvas
+            if (NodeEditor.curEditorState != null && NodeEditor.curEditorState.canvas != null && (NodeEditor.curEditorState.canvas.savePath == path ||
+                path.Contains(NodeEditor.curEditorState.canvas.savePath)) && (
+                NodeEditorSaveManager.GetLastCanvasPath() == path || path.Contains(NodeEditorSaveManager.GetLastCanvasPath())))
+            {
+                this.nodeCanvas = NodeEditor.curEditorState.canvas;
+                return;
+            }
+
+            //如果不存在路径，则新建一个DefaultCanvas
             if (!File.Exists(path) || (nodeCanvas = NodeEditorSaveManager.LoadNodeCanvas(path)) == null)
             {
                 NewNodeCanvas();
@@ -65,11 +81,8 @@ namespace NodeEditorFramework
             }
 
             editorState = NodeEditorSaveManager.ExtractEditorState(nodeCanvas, MainEditorStateIdentifier);
-
-            openedCanvasPath = path;
             nodeCanvas.Validate();
             UpdateCanvasInfo();
-            nodeCanvas.TraverseAll();
             NodeEditor.RepaintClients();
             Debug.Log($"加载{path}成功");
         }
@@ -82,9 +95,8 @@ namespace NodeEditorFramework
             canvasType = canvasType ?? defaultNodeCanvasType;
             nodeCanvas = NodeCanvas.CreateCanvas(canvasType);
             NewEditorState();
-
-            openedCanvasPath = "";
             UpdateCanvasInfo();
+            LoadNodeCanvas(nodeCanvas.savePath);
         }
 
         /// <summary>
@@ -108,6 +120,10 @@ namespace NodeEditorFramework
         private void UpdateCanvasInfo()
         {
             typeData = NodeCanvasManager.GetCanvasTypeData(nodeCanvas);
+            openedCanvasPath = nodeCanvas.savePath;
+            this.editorState.canvas = nodeCanvas;
+            NodeEditor.curEditorState = this.editorState;
+            NodeEditorSaveManager.SetLastCanvasPath(openedCanvasPath);
         }
 
         #endregion

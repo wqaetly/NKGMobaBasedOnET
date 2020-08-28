@@ -29,9 +29,6 @@ namespace NodeEditorFramework
         }
 
         [HideInEditorMode]
-        public NodeCanvasTraversal Traversal;
-
-        [HideInEditorMode]
         public NodeEditorState[] editorStates = new NodeEditorState[0];
 
         public string saveName;
@@ -79,12 +76,8 @@ namespace NodeEditorFramework
                 canvas.savePath = path;
                 NodeEditorSaveManager.SaveNodeCanvas(canvas.savePath, ref canvas);
             }
-
-            NodeEditor.BeginEditingCanvas(canvas);
+            
             canvas.OnCreate();
-            NodeEditor.EndEditingCanvas();
-            //要重绘一遍
-            NodeEditor.RepaintClients();
             return canvas;
         }
 
@@ -120,24 +113,6 @@ namespace NodeEditorFramework
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// Trigger traversal of the whole canvas
-        /// </summary>
-        public void TraverseAll()
-        {
-            if (Traversal != null)
-                Traversal.TraverseAll();
-        }
-
-        /// <summary>
-        /// Specifies a node change, usually triggering traversal from that node
-        /// </summary>
-        public void OnNodeChange(Node node)
-        {
-            if (Traversal != null && node != null)
-                Traversal.OnChange(node);
-        }
 
         /// <summary>
         /// Validates this canvas, checking for any broken nodes or references and cleans them.
