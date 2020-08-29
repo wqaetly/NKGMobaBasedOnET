@@ -24,6 +24,13 @@ namespace Plugins.NodeEditor.Editor.Canvas
         [LabelText("内容")]
         [BoxGroup]
         [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
+        [OnValueChanged("ApplyBBValue")]
         public Dictionary<string, ANP_BBValue> BBValues = new Dictionary<string, ANP_BBValue>();
+
+        [Button("同步数据",25),GUIColor(	0,191/255F,1)]
+        public void ApplyBBValue()
+        {
+            NP_BlackBoardRelationData.BBKeys = BBValues.Keys;
+        }
     }
 }
