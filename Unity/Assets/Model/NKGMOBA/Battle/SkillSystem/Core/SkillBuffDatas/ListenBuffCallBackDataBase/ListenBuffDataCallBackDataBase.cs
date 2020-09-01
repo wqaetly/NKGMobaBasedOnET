@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
+
 #endif
 
 namespace ETModel
@@ -35,7 +36,6 @@ namespace ETModel
             }
         }
     }
-    
 
     /// <summary>
     /// 监听Buff事件数据基类，用以监听指定事件
@@ -86,7 +86,7 @@ namespace ETModel
                 {
                     if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
                     {
-                        return npBehaveCanvasDataManager.EventValues.Keys;
+                        return npBehaveCanvasDataManager.EventValues;
                     }
                 }
             }
@@ -95,5 +95,4 @@ namespace ETModel
         }
 #endif
     }
-    
 }

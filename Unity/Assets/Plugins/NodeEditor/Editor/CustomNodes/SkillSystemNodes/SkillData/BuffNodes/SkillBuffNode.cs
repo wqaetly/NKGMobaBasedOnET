@@ -29,7 +29,7 @@ namespace SkillDemo
 
         public const string Id = "技能所衍生的Buff结点";
 
-        public NodeDataForSkillBuff SkillBuffBases;
+        public NodeDataForSkillBuff SkillBuffBases = new NodeDataForSkillBuff();
         
         public override SkillBaseNodeData Skill_GetNodeData()
         {

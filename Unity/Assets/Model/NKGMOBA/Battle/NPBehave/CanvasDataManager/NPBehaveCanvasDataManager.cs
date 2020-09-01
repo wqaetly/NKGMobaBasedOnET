@@ -27,12 +27,11 @@ namespace ETModel
         [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
         public Dictionary<string, ANP_BBValue> BBValues = new Dictionary<string, ANP_BBValue>();
         
-        [InfoBox("这是这个NPBehaveCanvas的所有事件数据\n键为string，值为string\n")]
+        [InfoBox("这是这个NPBehaveCanvas的所有事件数据")]
         [Title("事件名", TitleAlignment = TitleAlignments.Centered)]
         [LabelText("事件内容")]
         [BoxGroup]
-        [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(string)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
-        public Dictionary<string, string> EventValues = new Dictionary<string, string>();
+        public List<string> EventValues = new List<string>();
     }
 #endif
 }

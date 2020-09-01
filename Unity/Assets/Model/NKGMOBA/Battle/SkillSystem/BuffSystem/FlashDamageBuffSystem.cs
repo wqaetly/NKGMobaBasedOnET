@@ -46,10 +46,13 @@ namespace ETModel
 
             //抛出Buff奏效事件
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
-            if (this.MSkillBuffDataBase.theEventID != null)
+            if (this.MSkillBuffDataBase.EventIDs != null)
             {
-                Game.Scene.GetComponent<BattleEventSystem>().Run($"{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}", this);
-                // Log.Info($"抛出了EventID为{this.MSkillBuffDataBase.theEventID}的事件");
+                foreach (var eventId in this.MSkillBuffDataBase.EventIDs)
+                {
+                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.theUnitFrom.Id}", this);
+                    //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
+                }
             }
 
             this.MBuffState = BuffState.Finished;
