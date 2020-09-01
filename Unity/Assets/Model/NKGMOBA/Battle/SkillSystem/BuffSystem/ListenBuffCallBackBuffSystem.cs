@@ -25,11 +25,8 @@ namespace ETModel
         {
             //强制类型转换为Buff事件
             ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
-            foreach (var VARIABLE in temp.EventIds)
-            {
-                //Log.Info($"订阅了{VARIABLE}{this.theUnitFrom.Id}");
-                Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
-            }
+
+            Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{temp.EventId}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
 
             this.MBuffState = BuffState.Running;
         }
@@ -50,10 +47,7 @@ namespace ETModel
         {
             //强制类型转换为Buff事件
             ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
-            foreach (var VARIABLE in temp.EventIds)
-            {
-                Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{VARIABLE}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
-            }
+            Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{temp.EventId}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
         }
     }
 }

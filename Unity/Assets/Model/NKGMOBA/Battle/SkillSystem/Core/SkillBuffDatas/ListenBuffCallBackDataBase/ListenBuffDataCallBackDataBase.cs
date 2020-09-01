@@ -7,6 +7,10 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
+#endif
 
 namespace ETModel
 {
@@ -62,7 +66,8 @@ namespace ETModel
     {
         [BoxGroup("自定义项")]
         [LabelText("要监听的事件ID标识")]
-        public List<string> EventIds;
+        [ValueDropdown("GetEventIds")]
+        public string EventId;
 
         /// <summary>
         /// Buff事件
@@ -70,6 +75,25 @@ namespace ETModel
         [BoxGroup("自定义项")]
         [HideLabel]
         public ListenBuffEventBase ListenBuffEventBase;
+
+#if UNITY_EDITOR
+        private IEnumerable<string> GetEventIds()
+        {
+            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(UnityEngine.PlayerPrefs.GetString("LastCanvasPath"));
+            if (subAssets != null)
+            {
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    {
+                        return npBehaveCanvasDataManager.EventValues.Keys;
+                    }
+                }
+            }
+
+            return null;
+        }
+#endif
     }
     
 }

@@ -8,7 +8,10 @@ using System.Collections.Generic;
 using ETModel.BBValues;
 using NPBehave;
 using Sirenix.OdinInspector;
+#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
+#endif
 
 namespace ETModel
 {
@@ -44,11 +47,23 @@ namespace ETModel
         public NP_BBValue_Vector3 Vector3Value;
 
 #if UNITY_EDITOR
-        public static IEnumerable<string> BBKeys;
 
-        private static IEnumerable<string> GetBBKeys()
+        private IEnumerable<string> GetBBKeys()
         {
-            return BBKeys;
+            string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
+            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
+            if (subAssets != null)
+            {
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    {
+                        return npBehaveCanvasDataManager.BBValues.Keys;
+                    }
+                }
+            }
+
+            return null;
         }
 
         public void ApplyValueTypeChange()
@@ -88,19 +103,19 @@ namespace ETModel
             switch (this.NP_BBValueType)
             {
                 case NP_BBValueType._String:
-                    blackboard.Set(DicKey,this.StringValue.GetValue());
+                    blackboard.Set(DicKey, this.StringValue.GetValue());
                     break;
                 case NP_BBValueType._Float:
-                    blackboard.Set(DicKey,this.FloatValue.GetValue());
+                    blackboard.Set(DicKey, this.FloatValue.GetValue());
                     break;
                 case NP_BBValueType._Int:
-                    blackboard.Set(DicKey,this.IntValue.GetValue());
+                    blackboard.Set(DicKey, this.IntValue.GetValue());
                     break;
                 case NP_BBValueType._Bool:
-                    blackboard.Set(DicKey,this.BoolValue.GetValue());
+                    blackboard.Set(DicKey, this.BoolValue.GetValue());
                     break;
                 case NP_BBValueType._Vector3:
-                    blackboard.Set(DicKey,this.Vector3Value.GetValue());
+                    blackboard.Set(DicKey, this.Vector3Value.GetValue());
                     break;
             }
         }

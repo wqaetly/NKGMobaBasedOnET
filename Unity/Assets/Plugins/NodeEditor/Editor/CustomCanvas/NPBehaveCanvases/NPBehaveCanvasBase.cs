@@ -46,34 +46,28 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// <summary>
         /// 黑板数据管理器
         /// </summary>
-        [HideInInspector]
-        public NP_BBDataManager NpBbDataManager;
+        private NPBehaveCanvasDataManager npBehaveCanvasDataManager;
 
-        public NP_BBDataManager GetBBValues()
+        public NPBehaveCanvasDataManager GetCurrentCanvasDatas()
         {
-            if (NpBbDataManager == null)
+            if (this.npBehaveCanvasDataManager == null)
             {
                 Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(this.savePath);
                 foreach (var subAsset in subAssets)
                 {
-                    if (subAsset is NP_BBDataManager npBbDataManager)
+                    if (subAsset is NPBehaveCanvasDataManager npBbDataManager)
                     {
                         return npBbDataManager;
                     }
                 }
 
-                NpBbDataManager = CreateInstance<NP_BBDataManager>();
-                NpBbDataManager.name = "黑板数据管理器";
-                NodeEditorSaveManager.AddSubAsset(NpBbDataManager, this);
+                this.npBehaveCanvasDataManager = CreateInstance<NPBehaveCanvasDataManager>();
+                this.npBehaveCanvasDataManager.name = "黑板数据管理器";
+                NodeEditorSaveManager.AddSubAsset(this.npBehaveCanvasDataManager, this);
             }
 
-            return NpBbDataManager;
+            return this.npBehaveCanvasDataManager;
         }
-
-        // public override ScriptableObject[] GetScriptableObjects()
-        // {
-        //     return new ScriptableObject[] { NpBbDataManager };
-        // }
 
         /// <summary>
         /// 自动配置当前图所有数据（结点，黑板）
@@ -199,7 +193,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         {
             npDataSupportorBase.NP_BBValueManager.Clear();
             //设置黑板数据
-            foreach (var bbvalues in this.GetBBValues().BBValues)
+            foreach (var bbvalues in this.GetCurrentCanvasDatas().BBValues)
             {
                 npDataSupportorBase.NP_BBValueManager.Add(bbvalues.Key, bbvalues.Value);
             }

@@ -12,25 +12,27 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
-namespace Plugins.NodeEditor.Editor.Canvas
+namespace ETModel
 {
+#if UNITY_EDITOR
     /// <summary>
-    /// 黑板数据管理器
+    /// 单个Canvas数据管理器，包括但不限于黑板数据，常用字符串数据等
     /// </summary>
-    public class NP_BBDataManager: SerializedScriptableObject
+    public class NPBehaveCanvasDataManager: SerializedScriptableObject
     {
         [InfoBox("这是这个NPBehaveCanvas的所有黑板数据\n键为string，值为NP_BBValue子类\n如果要添加新的黑板数据类型，请参照BBValues文件夹下的定义")]
         [Title("黑板数据", TitleAlignment = TitleAlignments.Centered)]
-        [LabelText("内容")]
+        [LabelText("黑板内容")]
         [BoxGroup]
         [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(NP_BBValue)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
-        [OnValueChanged("ApplyBBValue")]
         public Dictionary<string, ANP_BBValue> BBValues = new Dictionary<string, ANP_BBValue>();
-
-        [Button("同步数据",25),GUIColor(	0,191/255F,1)]
-        public void ApplyBBValue()
-        {
-            NP_BlackBoardRelationData.BBKeys = BBValues.Keys;
-        }
+        
+        [InfoBox("这是这个NPBehaveCanvas的所有事件数据\n键为string，值为string\n")]
+        [Title("事件名", TitleAlignment = TitleAlignments.Centered)]
+        [LabelText("事件内容")]
+        [BoxGroup]
+        [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(string)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
+        public Dictionary<string, string> EventValues = new Dictionary<string, string>();
     }
+#endif
 }
