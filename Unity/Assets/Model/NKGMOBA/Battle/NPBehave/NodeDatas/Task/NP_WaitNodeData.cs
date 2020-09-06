@@ -15,12 +15,12 @@ namespace ETModel
     public class NP_WaitNodeData : NP_NodeDataBase
     {
         [HideInEditorMode] public Wait mWaitNode;
-
-        [LabelText("等待时间")] public float waitTime;
-
+        
+        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
+        
         public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {
-            mWaitNode = new Wait(this.waitTime);
+            mWaitNode = new Wait(this.NPBalckBoardRelationData.BBKey);
             return mWaitNode;
         }
 

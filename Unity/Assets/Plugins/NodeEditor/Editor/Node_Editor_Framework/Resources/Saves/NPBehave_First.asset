@@ -103,31 +103,13 @@ MonoBehaviour:
     - Name: m_NPBalckBoardRelationData
       Entry: 7
       Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -372,6 +354,48 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &-3564846138261319025
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -2022956650844313321}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  _connections: []
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
 --- !u!114 &-2915057846330861545
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,6 +507,78 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &-2022956650844313321
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee77fff79443e1a04fd2c28674b934, type: 3}
+  m_Name: "\u7B49\u5F85\u8282\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_WaitNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_WaitNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 0
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: linkedID
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: mWaitNode
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: e
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Int32
+    - Name: NP_BBValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -431.09973, y: 487.50003}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -3564846138261319025}
 --- !u!114 &-1500668543681386422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -849,31 +945,13 @@ MonoBehaviour:
     - Name: m_NPBalckBoardRelationData
       Entry: 7
       Data: 11|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 12|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -896,7 +974,7 @@ MonoBehaviour:
       Data: 104738820390927
     - Name: $v
       Entry: 7
-      Data: 13|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 12|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390927
@@ -905,7 +983,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 14|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 13|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -923,7 +1001,7 @@ MonoBehaviour:
       Data: 
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 15|ETModel.TheDataContainsAction.NP_LogAction, Unity.Model
+      Data: 14|ETModel.TheDataContainsAction.NP_LogAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -959,7 +1037,7 @@ MonoBehaviour:
       Data: 104738820390928
     - Name: $v
       Entry: 7
-      Data: 16|ETModel.NP_WaitUntilStoppedData, Unity.Model
+      Data: 15|ETModel.NP_WaitUntilStoppedData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390928
@@ -968,7 +1046,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 17|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 16|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -998,7 +1076,7 @@ MonoBehaviour:
       Data: 104738820390929
     - Name: $v
       Entry: 7
-      Data: 18|ETModel.NP_SequenceNodeData, Unity.Model
+      Data: 17|ETModel.NP_SequenceNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390929
@@ -1007,7 +1085,7 @@ MonoBehaviour:
       Data: 0
     - Name: linkedID
       Entry: 7
-      Data: 19|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 18|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
@@ -1046,7 +1124,7 @@ MonoBehaviour:
       Data: 104738820390930
     - Name: $v
       Entry: 7
-      Data: 20|ETModel.NP_SequenceNodeData, Unity.Model
+      Data: 19|ETModel.NP_SequenceNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390930
@@ -1055,7 +1133,7 @@ MonoBehaviour:
       Data: 0
     - Name: linkedID
       Entry: 7
-      Data: 21|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 20|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -1091,7 +1169,7 @@ MonoBehaviour:
       Data: 104738820390931
     - Name: $v
       Entry: 7
-      Data: 22|ETModel.NP_BlackboardConditionNodeData, Unity.Model
+      Data: 21|ETModel.NP_BlackboardConditionNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390931
@@ -1100,7 +1178,7 @@ MonoBehaviour:
       Data: 1
     - Name: linkedID
       Entry: 7
-      Data: 23|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 22|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1127,32 +1205,14 @@ MonoBehaviour:
       Data: 4
     - Name: m_NPBalckBoardRelationData
       Entry: 7
-      Data: 24|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+      Data: 23|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 25|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -1172,7 +1232,7 @@ MonoBehaviour:
       Data: 104738820390932
     - Name: $v
       Entry: 7
-      Data: 26|ETModel.NP_SelectorNodeData, Unity.Model
+      Data: 24|ETModel.NP_SelectorNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390932
@@ -1181,7 +1241,7 @@ MonoBehaviour:
       Data: 0
     - Name: linkedID
       Entry: 7
-      Data: 27|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 25|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -1217,7 +1277,7 @@ MonoBehaviour:
       Data: 104738820390933
     - Name: $v
       Entry: 7
-      Data: 28|ETModel.NP_ServiceNodeData, Unity.Model
+      Data: 26|ETModel.NP_ServiceNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390933
@@ -1226,7 +1286,7 @@ MonoBehaviour:
       Data: 1
     - Name: linkedID
       Entry: 7
-      Data: 29|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 27|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1250,7 +1310,7 @@ MonoBehaviour:
       Data: 0.5
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 30|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+      Data: 28|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1268,32 +1328,14 @@ MonoBehaviour:
       Data: 
     - Name: m_NPBalckBoardRelationData
       Entry: 7
-      Data: 31|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+      Data: 29|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 32|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -1316,7 +1358,7 @@ MonoBehaviour:
       Data: 104738820390934
     - Name: $v
       Entry: 7
-      Data: 33|ETModel.NP_RootNodeData, Unity.Model
+      Data: 30|ETModel.NP_RootNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390934
@@ -1325,7 +1367,7 @@ MonoBehaviour:
       Data: 1
     - Name: linkedID
       Entry: 7
-      Data: 34|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 31|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1358,11 +1400,11 @@ MonoBehaviour:
       Data: 
     - Name: NP_BBValueManager
       Entry: 7
-      Data: 35|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
+      Data: 32|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 36|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 33|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -1378,7 +1420,7 @@ MonoBehaviour:
       Data: ShouldRefresh
     - Name: $v
       Entry: 7
-      Data: 37|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 34|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: true
@@ -1396,7 +1438,7 @@ MonoBehaviour:
       Data: 
     - Name: mSkillDataDic
       Entry: 7
-      Data: 38|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.SkillBaseNodeData,
+      Data: 35|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.SkillBaseNodeData,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 9
@@ -1415,17 +1457,17 @@ MonoBehaviour:
       Data: 
     - Name: MNpDataSupportor1
       Entry: 7
-      Data: 39|ETModel.NP_DataSupportor, Unity.Model
+      Data: 36|ETModel.NP_DataSupportor, Unity.Model
     - Name: RootId
       Entry: 3
       Data: 104738820390934
     - Name: NP_DataSupportorDic
       Entry: 7
-      Data: 40|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
+      Data: 37|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 41|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
+      Data: 38|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -1441,7 +1483,7 @@ MonoBehaviour:
       Data: 104738820390924
     - Name: $v
       Entry: 7
-      Data: 42|ETModel.NP_WaitUntilStoppedData, Unity.Model
+      Data: 39|ETModel.NP_WaitUntilStoppedData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390924
@@ -1450,7 +1492,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 43|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 40|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1480,7 +1522,7 @@ MonoBehaviour:
       Data: 104738820390925
     - Name: $v
       Entry: 7
-      Data: 44|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 41|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390925
@@ -1489,7 +1531,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 45|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 42|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1507,7 +1549,7 @@ MonoBehaviour:
       Data: 
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 46|ETModel.TheDataContainsAction.NP_LogAction, Unity.Model
+      Data: 43|ETModel.TheDataContainsAction.NP_LogAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1543,7 +1585,7 @@ MonoBehaviour:
       Data: 104738820390926
     - Name: $v
       Entry: 7
-      Data: 47|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 44|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390926
@@ -1552,7 +1594,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 48|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 45|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1570,7 +1612,7 @@ MonoBehaviour:
       Data: 
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 49|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+      Data: 46|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1588,32 +1630,14 @@ MonoBehaviour:
       Data: 
     - Name: m_NPBalckBoardRelationData
       Entry: 7
-      Data: 50|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+      Data: 47|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 51|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -1636,7 +1660,7 @@ MonoBehaviour:
       Data: 104738820390927
     - Name: $v
       Entry: 7
-      Data: 52|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 48|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390927
@@ -1645,7 +1669,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 53|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 49|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1663,7 +1687,7 @@ MonoBehaviour:
       Data: 
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 54|ETModel.TheDataContainsAction.NP_LogAction, Unity.Model
+      Data: 50|ETModel.TheDataContainsAction.NP_LogAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1699,7 +1723,7 @@ MonoBehaviour:
       Data: 104738820390928
     - Name: $v
       Entry: 7
-      Data: 55|ETModel.NP_WaitUntilStoppedData, Unity.Model
+      Data: 51|ETModel.NP_WaitUntilStoppedData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390928
@@ -1708,7 +1732,7 @@ MonoBehaviour:
       Data: 2
     - Name: linkedID
       Entry: 7
-      Data: 56|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 52|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1738,7 +1762,7 @@ MonoBehaviour:
       Data: 104738820390929
     - Name: $v
       Entry: 7
-      Data: 57|ETModel.NP_SequenceNodeData, Unity.Model
+      Data: 53|ETModel.NP_SequenceNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390929
@@ -1747,7 +1771,7 @@ MonoBehaviour:
       Data: 0
     - Name: linkedID
       Entry: 7
-      Data: 58|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 54|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
@@ -1786,7 +1810,7 @@ MonoBehaviour:
       Data: 104738820390930
     - Name: $v
       Entry: 7
-      Data: 59|ETModel.NP_SequenceNodeData, Unity.Model
+      Data: 55|ETModel.NP_SequenceNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390930
@@ -1795,7 +1819,7 @@ MonoBehaviour:
       Data: 0
     - Name: linkedID
       Entry: 7
-      Data: 60|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 56|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -1831,7 +1855,7 @@ MonoBehaviour:
       Data: 104738820390931
     - Name: $v
       Entry: 7
-      Data: 61|ETModel.NP_BlackboardConditionNodeData, Unity.Model
+      Data: 57|ETModel.NP_BlackboardConditionNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390931
@@ -1840,7 +1864,7 @@ MonoBehaviour:
       Data: 1
     - Name: linkedID
       Entry: 7
-      Data: 62|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 58|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1867,32 +1891,14 @@ MonoBehaviour:
       Data: 4
     - Name: m_NPBalckBoardRelationData
       Entry: 7
-      Data: 63|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+      Data: 59|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 64|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -1912,7 +1918,7 @@ MonoBehaviour:
       Data: 104738820390932
     - Name: $v
       Entry: 7
-      Data: 65|ETModel.NP_SelectorNodeData, Unity.Model
+      Data: 60|ETModel.NP_SelectorNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390932
@@ -1921,7 +1927,7 @@ MonoBehaviour:
       Data: 0
     - Name: linkedID
       Entry: 7
-      Data: 66|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 61|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -1957,7 +1963,7 @@ MonoBehaviour:
       Data: 104738820390933
     - Name: $v
       Entry: 7
-      Data: 67|ETModel.NP_ServiceNodeData, Unity.Model
+      Data: 62|ETModel.NP_ServiceNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390933
@@ -1966,7 +1972,7 @@ MonoBehaviour:
       Data: 1
     - Name: linkedID
       Entry: 7
-      Data: 68|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 63|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1990,7 +1996,7 @@ MonoBehaviour:
       Data: 0.5
     - Name: MNpClassForStoreAction
       Entry: 7
-      Data: 69|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
+      Data: 64|ETModel.TheDataContainsAction.NP_ChangeBlackValue, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -2008,32 +2014,14 @@ MonoBehaviour:
       Data: 
     - Name: m_NPBalckBoardRelationData
       Entry: 7
-      Data: 70|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+      Data: 65|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 71|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -2056,7 +2044,7 @@ MonoBehaviour:
       Data: 104738820390934
     - Name: $v
       Entry: 7
-      Data: 72|ETModel.NP_RootNodeData, Unity.Model
+      Data: 66|ETModel.NP_RootNodeData, Unity.Model
     - Name: id
       Entry: 3
       Data: 104738820390934
@@ -2065,7 +2053,7 @@ MonoBehaviour:
       Data: 1
     - Name: linkedID
       Entry: 7
-      Data: 73|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 67|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -2098,11 +2086,11 @@ MonoBehaviour:
       Data: 
     - Name: NP_BBValueManager
       Entry: 7
-      Data: 74|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
+      Data: 68|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 75|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 69|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -2118,7 +2106,7 @@ MonoBehaviour:
       Data: ShouldRefresh
     - Name: $v
       Entry: 7
-      Data: 76|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 70|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: true
@@ -2136,11 +2124,11 @@ MonoBehaviour:
       Data: 
     - Name: mSkillDataDic
       Entry: 7
-      Data: 77|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.SkillBaseNodeData,
+      Data: 71|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.SkillBaseNodeData,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 41
+      Data: 38
     - Name: 
       Entry: 12
       Data: 0
@@ -2158,17 +2146,18 @@ MonoBehaviour:
   saveName: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_First
   savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_First.asset
   nodes:
-  - {fileID: -776142626453650475}
   - {fileID: 3067071690832771444}
   - {fileID: 2076639347781620077}
-  - {fileID: -5986680032188856261}
   - {fileID: -2915057846330861545}
   - {fileID: 5184259662829691520}
-  - {fileID: 8917161694242092858}
-  - {fileID: -7092496806289944322}
-  - {fileID: 4374940285360050679}
   - {fileID: 1949107399713928639}
   - {fileID: 9026827050987560290}
+  - {fileID: -7092496806289944322}
+  - {fileID: 4374940285360050679}
+  - {fileID: 8917161694242092858}
+  - {fileID: -776142626453650475}
+  - {fileID: -5986680032188856261}
+  - {fileID: -2022956650844313321}
   nodesForDelete: []
   groups: []
   Name: NPBehaveDataTest
@@ -2216,6 +2205,96 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &1071152567568582576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87cd5d12e7ee4f008af867f79f76d888, type: 3}
+  m_Name: "\u9ED1\u677F\u6570\u636E\u7BA1\u7406\u5668"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: BBValues
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
+        Unity.Model]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: e
+    - Name: $v
+      Entry: 7
+      Data: 2|ETModel.BBValues.NP_BBValue_Vector3, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: System.Numerics.Vector3, System.Numerics
+    - Name: X
+      Entry: 4
+      Data: 12
+    - Name: Y
+      Entry: 4
+      Data: 3
+    - Name: Z
+      Entry: 4
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: a
+    - Name: $v
+      Entry: 7
+      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  EventValues: []
 --- !u!114 &1822469043458360751
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2602,31 +2681,13 @@ MonoBehaviour:
     - Name: m_NPBalckBoardRelationData
       Entry: 7
       Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 
@@ -2870,7 +2931,7 @@ MonoBehaviour:
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
   selectedNodes:
-  - {fileID: 9026827050987560290}
+  - {fileID: -2022956650844313321}
   panOffset: {x: 602.59973, y: -232.00003}
   zoom: 1.4
   boxSelecting: 0
@@ -3049,31 +3110,13 @@ MonoBehaviour:
     - Name: m_NPBalckBoardRelationData
       Entry: 7
       Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: DicKey
-      Entry: 1
-      Data: ShouldRefresh
+    - Name: BBKey
+      Entry: 6
+      Data: 
     - Name: NP_BBValueType
-      Entry: 3
-      Data: 3
-    - Name: StringValue
       Entry: 6
       Data: 
-    - Name: FloatValue
-      Entry: 6
-      Data: 
-    - Name: IntValue
-      Entry: 6
-      Data: 
-    - Name: BoolValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Vector3Value
+    - Name: NP_BBValue
       Entry: 6
       Data: 
     - Name: 

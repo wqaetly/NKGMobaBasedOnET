@@ -37,7 +37,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                     float tobeReMagicValue = (float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                             .GetComponent<NP_RuntimeTreeManager>()
                             .GetTreeByRuntimeID(this.RuntimeTreeID)
-                            .GetBlackboard().Get<float>(m_NPBalckBoardRelationData.DicKey);
+                            .GetBlackboard().Get<float>(m_NPBalckBoardRelationData.BBKey);
                     heroDataComponent.CurrentMagicValue -= tobeReMagicValue;
                     try
                     {
@@ -56,7 +56,7 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                     heroDataComponent.CurrentLifeValue -= Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                             .GetComponent<NP_RuntimeTreeManager>()
                             .GetTreeByRuntimeID(this.RuntimeTreeID)
-                            .GetBlackboard().Get<float>(m_NPBalckBoardRelationData.DicKey);
+                            .GetBlackboard().Get<float>(m_NPBalckBoardRelationData.BBKey);
                     break;
             }
         }

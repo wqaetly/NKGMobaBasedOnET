@@ -6,9 +6,9 @@
 
 using System.Numerics;
 using MongoDB.Bson.Serialization;
-
 #if UNITY_EDITOR
-using UnityEditor;    
+using UnityEditor;
+
 #endif
 
 namespace ETModel
@@ -33,6 +33,7 @@ namespace ETModel
         public static void RegisterStructSerializer()
         {
             BsonSerializer.RegisterSerializer(typeof (Vector2), new StructBsonSerialize<Vector2>());
+            BsonSerializer.RegisterSerializer(typeof (Vector3), new StructBsonSerialize<Vector3>());
         }
 
         /// <summary>

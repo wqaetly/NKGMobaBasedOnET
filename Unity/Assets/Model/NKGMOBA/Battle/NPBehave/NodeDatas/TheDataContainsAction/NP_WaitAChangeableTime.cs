@@ -56,21 +56,21 @@ namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
                 this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
                         .GetComponent<NP_RuntimeTreeManager>()
                         .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.mSkillDataDic[this.dataId];
-                tempBlackboard.Set(NpBlackBoardRelationData.DicKey,
+                tempBlackboard.Set(NpBlackBoardRelationData.BBKey,
                     m_NodeDataForStartSkill.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.theSkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }
 
             //刷新黑板上的CD信息
-            tempBlackboard.Set(this.NpBlackBoardRelationData.DicKey,
-                tempBlackboard.Get<float>(this.NpBlackBoardRelationData.DicKey) -
+            tempBlackboard.Set(this.NpBlackBoardRelationData.BBKey,
+                tempBlackboard.Get<float>(this.NpBlackBoardRelationData.BBKey) -
                 (float) (SyncContext.Instance.GetClock().ElapsedTime - lastElapsedTime));
 
             this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
             /*Log.Info(
                 $"在执行改变CD逻辑，此时剩余CD为{tempBlackboard.Get<float>(this.NpBlackBoardRelationData.DicKey)}");*/
-            if (tempBlackboard.Get<float>(this.NpBlackBoardRelationData.DicKey) <= 0)
+            if (tempBlackboard.Get<float>(this.NpBlackBoardRelationData.BBKey) <= 0)
             {
                 //Log.Info("CD刷新完成");
                 lastElapsedTime = -1;

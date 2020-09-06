@@ -5,8 +5,8 @@
 //------------------------------------------------------------
 
 using System;
+using System.Numerics;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace ETModel.BBValues
 {

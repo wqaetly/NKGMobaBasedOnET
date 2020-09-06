@@ -38,8 +38,9 @@ namespace ETModel
                     return  BsonSerializer.Deserialize<T>(stream);
                 }
             }
-            catch
+            catch(Exception e)
             {
+                Log.Error(e.Message);
                 return null;
             }
         }

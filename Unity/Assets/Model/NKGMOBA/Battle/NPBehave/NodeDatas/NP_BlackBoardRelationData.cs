@@ -11,6 +11,7 @@ using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
+
 #endif
 
 namespace ETModel
@@ -25,29 +26,15 @@ namespace ETModel
         [InfoBox("如果发现下拉框选项为空，或者内容不是自己想要的，请点击可视化节点编辑器中右上角的Balckboard添加内容或点击同步数据按钮")]
         [LabelText("字典键")]
         [ValueDropdown("GetBBKeys")]
-        public string DicKey;
+        [OnValueChanged("OnBBKeySelected")]
+        public string BBKey;
 
         [LabelText("指定的值类型")]
-        [OnValueChanged("ApplyValueTypeChange")]
-        public NP_BBValueType NP_BBValueType;
+        [ReadOnly]
+        public string NP_BBValueType;
 
-        [ShowIf("NP_BBValueType", NP_BBValueType._String)]
-        public NP_BBValue_String StringValue;
-
-        [ShowIf("NP_BBValueType", NP_BBValueType._Float)]
-        public NP_BBValue_Float FloatValue;
-
-        [ShowIf("NP_BBValueType", NP_BBValueType._Int)]
-        public NP_BBValue_Int IntValue;
-
-        [ShowIf("NP_BBValueType", NP_BBValueType._Bool)]
-        public NP_BBValue_Bool BoolValue;
-
-        [ShowIf("NP_BBValueType", NP_BBValueType._Vector3)]
-        public NP_BBValue_Vector3 Vector3Value;
-
+        public ANP_BBValue NP_BBValue;
 #if UNITY_EDITOR
-
         private IEnumerable<string> GetBBKeys()
         {
             string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
@@ -66,33 +53,39 @@ namespace ETModel
             return null;
         }
 
-        public void ApplyValueTypeChange()
+        private void OnBBKeySelected()
         {
-            StringValue = null;
-            FloatValue = null;
-            IntValue = null;
-            BoolValue = null;
-            Vector3Value = null;
-            switch (this.NP_BBValueType)
+            string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
+            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
+            if (subAssets != null)
             {
-                case NP_BBValueType._String:
-                    StringValue = new NP_BBValue_String();
-                    break;
-                case NP_BBValueType._Float:
-                    this.FloatValue = new NP_BBValue_Float();
-                    break;
-                case NP_BBValueType._Int:
-                    this.IntValue = new NP_BBValue_Int();
-                    break;
-                case NP_BBValueType._Bool:
-                    this.BoolValue = new NP_BBValue_Bool();
-                    break;
-                case NP_BBValueType._Vector3:
-                    this.Vector3Value = new NP_BBValue_Vector3();
-                    break;
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    {
+                        foreach (var bbValues in npBehaveCanvasDataManager.BBValues)
+                        {
+                            if (bbValues.Key == this.BBKey)
+                            {
+                                NP_BBValue = bbValues.Value.DeepCopy();
+                                NP_BBValueType = this.NP_BBValue.NP_BBValueType.ToString();
+                            }
+                        }
+                    }
+                }
             }
         }
 #endif
+        
+        /// <summary>
+        /// 获取预先设定的值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetBlackBoardValue<T>()
+        {
+            return (this.NP_BBValue as NP_BBValueBase<T>).GetValue();
+        }
 
         /// <summary>
         /// 自动根据预先设定的值设置值
@@ -102,20 +95,20 @@ namespace ETModel
         {
             switch (this.NP_BBValueType)
             {
-                case NP_BBValueType._String:
-                    blackboard.Set(DicKey, this.StringValue.GetValue());
+                case "System.String":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_String).GetValue());
                     break;
-                case NP_BBValueType._Float:
-                    blackboard.Set(DicKey, this.FloatValue.GetValue());
+                case "System.Single":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Float).GetValue());
                     break;
-                case NP_BBValueType._Int:
-                    blackboard.Set(DicKey, this.IntValue.GetValue());
+                case "System.Int32":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Int).GetValue());
                     break;
-                case NP_BBValueType._Bool:
-                    blackboard.Set(DicKey, this.BoolValue.GetValue());
+                case "System.Boolean":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Bool).GetValue());
                     break;
-                case NP_BBValueType._Vector3:
-                    blackboard.Set(DicKey, this.Vector3Value.GetValue());
+                case "System.Numerics.Vector3":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Vector3).GetValue());
                     break;
             }
         }
@@ -128,7 +121,7 @@ namespace ETModel
         /// <param name="value">值</param>
         public void SetBlackBoardValue<T>(Blackboard blackboard, T value)
         {
-            blackboard.Set(this.DicKey, value);
+            blackboard.Set(this.BBKey, value);
         }
     }
 }
