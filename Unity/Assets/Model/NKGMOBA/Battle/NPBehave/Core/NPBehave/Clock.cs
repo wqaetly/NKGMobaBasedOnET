@@ -15,12 +15,34 @@ namespace NPBehave
         private Dictionary<System.Action, Timer> addTimers = new Dictionary<System.Action, Timer>();
         private bool isInUpdate = false;
 
+        /// <summary>
+        /// 单个计时器
+        /// </summary>
         class Timer
         {
+            /// <summary>
+            /// 预定目标时间
+            /// </summary>
             public double scheduledTime = 0f;
+
+            /// <summary>
+            /// 重复次数
+            /// </summary>
             public int repeat = 0;
+
+            /// <summary>
+            /// 是否被使用
+            /// </summary>
             public bool used = false;
+
+            /// <summary>
+            /// 计时器时长
+            /// </summary>
             public double delay = 0f;
+
+            /// <summary>
+            /// 随机时差
+            /// </summary>
             public float randomVariance = 0.0f;
 
             public void ScheduleAbsoluteTime(double elapsedTime)
@@ -51,7 +73,7 @@ namespace NPBehave
         public void AddTimer(float delay, float randomVariance, int repeat, System.Action action)
         {
             Timer timer = null;
-            
+
             if (!isInUpdate)
             {
                 if (!this.timers.ContainsKey(action))
@@ -75,6 +97,7 @@ namespace NPBehave
                     this.removeTimers.Remove(action);
                 }
             }
+
             Debug.Assert(timer.used);
 
             timer.delay = delay;
@@ -314,12 +337,14 @@ namespace NPBehave
 
                 i++;
             }
+
             if (timer == null)
             {
                 timer = new Timer();
                 currentTimerPoolIndex = 0;
                 timerPool.Add(timer);
             }
+
             timer.used = true;
             return timer;
         }

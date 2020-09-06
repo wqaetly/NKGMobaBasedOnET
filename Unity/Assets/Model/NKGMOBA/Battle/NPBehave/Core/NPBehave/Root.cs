@@ -7,6 +7,8 @@ namespace NPBehave
     {
         public Node mainNode;
 
+        private System.Action m_MainNodeStartActionCache;
+
         //private Node inProgressNode;
 
         public Blackboard blackboard;
@@ -31,6 +33,7 @@ namespace NPBehave
         public Root(Node mainNode) : base("Root", mainNode)
         {
             this.mainNode = mainNode;
+            m_MainNodeStartActionCache = this.mainNode.Start;
             this.clock = SyncContext.Instance.GetClock();
             this.blackboard = new Blackboard(this.clock);
             this.SetRoot(this);
@@ -39,6 +42,7 @@ namespace NPBehave
         {
             this.blackboard = blackboard;
             this.mainNode = mainNode;
+            m_MainNodeStartActionCache = this.mainNode.Start;
             this.clock = SyncContext.Instance.GetClock();
             this.SetRoot(this);
         }
@@ -47,6 +51,7 @@ namespace NPBehave
         {
             this.blackboard = blackboard;
             this.mainNode = mainNode;
+            m_MainNodeStartActionCache = this.mainNode.Start;
             this.clock = clock;
             this.SetRoot(this);
         }
@@ -72,17 +77,16 @@ namespace NPBehave
             }
             else
             {
-                this.clock.RemoveTimer(this.mainNode.Start);
+                this.clock.RemoveTimer(this.m_MainNodeStartActionCache);
             }
         }
-
-
+        
         override protected void DoChildStopped(Node node, bool success)
         {
             if (!IsStopRequested)
             {
                 // wait one tick, to prevent endless recursions
-                this.clock.AddTimer(0, 0, this.mainNode.Start);
+                this.clock.AddTimer(0, 0, this.m_MainNodeStartActionCache);
             }
             else
             {
