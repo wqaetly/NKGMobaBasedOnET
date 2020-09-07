@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace ETModel.TheDataContainsAction
+namespace ETModel
 {
     /// <summary>
     /// 用于初始化行为树的结点,去执行那些只会执行一次的初始化操作

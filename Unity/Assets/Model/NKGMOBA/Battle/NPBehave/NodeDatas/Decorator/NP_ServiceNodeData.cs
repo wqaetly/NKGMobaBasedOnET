@@ -4,7 +4,6 @@
 // Data: 2019年8月22日 20:32:18
 //------------------------------------------------------------
 
-using ETModel.TheDataContainsAction;
 using NPBehave;
 using Sirenix.OdinInspector;
 using Action = System.Action;

@@ -5,14 +5,12 @@
 //------------------------------------------------------------
 
 using System;
-using ETModel;
-using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
 
-namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
+namespace ETModel
 {
     [Title("创建一个碰撞体",TitleAlignment = TitleAlignments.Centered)]
-    public class NP_CreateColliderData: NP_ClassForStoreAction
+    public class NP_CreateColliderAction: NP_ClassForStoreAction
     {
         [LabelText("要生成的碰撞数据载体ID")]
         public long supportDataID;

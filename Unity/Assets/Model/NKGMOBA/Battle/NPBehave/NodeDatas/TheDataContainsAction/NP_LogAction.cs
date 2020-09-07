@@ -7,7 +7,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace ETModel.TheDataContainsAction
+namespace ETModel
 {
     [Title("打印信息",TitleAlignment = TitleAlignments.Centered)]
     public class NP_LogAction:NP_ClassForStoreAction

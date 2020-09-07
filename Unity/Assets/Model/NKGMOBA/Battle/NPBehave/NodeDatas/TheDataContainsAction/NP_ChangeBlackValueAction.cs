@@ -8,10 +8,10 @@ using NPBehave;
 using Sirenix.OdinInspector;
 using Action = System.Action;
 
-namespace ETModel.TheDataContainsAction
+namespace ETModel
 {
     [Title("修改黑板值",TitleAlignment = TitleAlignments.Centered)]
-    public class NP_ChangeBlackValue: NP_ClassForStoreAction
+    public class NP_ChangeBlackValueAction: NP_ClassForStoreAction
     {
         public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
 

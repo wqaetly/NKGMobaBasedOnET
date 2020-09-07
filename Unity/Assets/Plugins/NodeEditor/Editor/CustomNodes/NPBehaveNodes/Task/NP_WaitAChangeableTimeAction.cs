@@ -1,40 +1,39 @@
 //------------------------------------------------------------
-// Author: 烟雨迷离半世殇
-// Mail: 1778139321@qq.com
-// Data: 2019年8月21日 8:18:19
+// 代码由工具自动生成，请勿手动修改
+// 代码由工具自动生成，请勿手动修改
+// 代码由工具自动生成，请勿手动修改
 //------------------------------------------------------------
 
 using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
-using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/Log", typeof (NPBehaveCanvas))]
-    public class NP_LogActionNode: NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/等待一个可变的时间", typeof(NPBehaveCanvas))]
+    public class NP_WaitAChangeableTimeActionNode : NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "行为节点";
+        private const string Id = "等待一个可变的时间";
 
         /// <summary>
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-
-        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP_LogAction() };
+        
+        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP_WaitAChangeableTimeAction() };
 
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData { NodeType = NodeType.Task };
+                this.NP_ActionNodeData = new NP_ActionNodeData {NodeType = NodeType.Task};
             }
         }
 

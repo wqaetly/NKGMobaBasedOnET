@@ -4,11 +4,8 @@
 // Data: 2019年8月21日 7:13:30
 //------------------------------------------------------------
 
-using System.Collections.Generic;
-using ETModel.TheDataContainsAction;
 using NPBehave;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace ETModel
 {

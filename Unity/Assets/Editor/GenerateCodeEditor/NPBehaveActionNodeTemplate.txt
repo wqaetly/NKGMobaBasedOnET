@@ -16,7 +16,7 @@ using Node = NPBehave.Node;
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
     [Node(false, "NPBehave行为树/Task/_ACTIONDES_", typeof(NPBehaveCanvas))]
-    public class NP__ACTIONNAME_ActionNode : NP_TaskNodeBase
+    public class NP__ACTIONNAME_Node : NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -28,7 +28,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
         
-        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP__ACTIONNAME_Action() };
+        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP__ACTIONNAME_() };
 
         private void OnEnable()
         {

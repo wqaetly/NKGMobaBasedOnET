@@ -5,10 +5,6 @@
 //------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using ETModel.TheDataContainsAction;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 
 namespace ETModel
@@ -17,7 +13,7 @@ namespace ETModel
     /// 检查技能是否能释放
     /// </summary>
     [Title("检查技能是否能释放", TitleAlignment = TitleAlignments.Centered)]
-    public class NP_CheckAction: NP_ClassForStoreAction
+    public class NP_CheckSkillCanBeCastAction: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
         public long dataId;

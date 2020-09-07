@@ -5,12 +5,10 @@
 //------------------------------------------------------------
 
 using System;
-using ETModel;
-using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
+namespace ETModel
 {
     [Title("播放特效",TitleAlignment = TitleAlignments.Centered)]
     public class NP_PlayParticalAction: NP_ClassForStoreAction

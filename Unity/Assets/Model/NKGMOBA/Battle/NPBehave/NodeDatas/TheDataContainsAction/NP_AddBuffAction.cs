@@ -7,7 +7,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace ETModel.TheDataContainsAction
+namespace ETModel
 {
     [Title("添加一个Buff",TitleAlignment = TitleAlignments.Centered)]
     public class NP_AddBuffAction: NP_ClassForStoreAction

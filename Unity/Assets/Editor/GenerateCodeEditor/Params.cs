@@ -101,7 +101,7 @@ namespace ETEditor
     public class Params_GenerateNPBehaveActionNode: AParams_GenerateBase
     {
         [LabelText("Action名")]
-        [InfoBox("示例：Log")]
+        [InfoBox("示例：LogAction")]
         public string ActionName;
 
         [LabelText("Action描述")]

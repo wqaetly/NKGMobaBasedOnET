@@ -5,19 +5,16 @@
 //------------------------------------------------------------
 
 using System;
-using ETModel;
-using ETModel.TheDataContainsAction;
 using NPBehave;
 using Sirenix.OdinInspector;
-using Action = System.Action;
 
-namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
+namespace ETModel
 {
     /// <summary>
     /// 等待一个可变化的时间，用于处理突如其来的CD变化
     /// </summary>
     [Title("等待一个可变化的时间", TitleAlignment = TitleAlignments.Centered)]
-    public class NP_WaitAChangeableTime: NP_ClassForStoreAction
+    public class NP_WaitAChangeableTimeAction: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
         public long dataId;

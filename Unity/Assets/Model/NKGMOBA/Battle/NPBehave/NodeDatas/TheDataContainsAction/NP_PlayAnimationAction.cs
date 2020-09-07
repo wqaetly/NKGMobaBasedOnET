@@ -6,15 +6,11 @@
 
 using System;
 using System.Collections.Generic;
-using Animancer;
 using DefaultNamespace;
-using ETModel;
 using ETModel.NKGMOBA.Battle.State;
-using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
-namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
+namespace ETModel
 {
     /// <summary>
     /// 这个结点中的动画默认是不可被打断的

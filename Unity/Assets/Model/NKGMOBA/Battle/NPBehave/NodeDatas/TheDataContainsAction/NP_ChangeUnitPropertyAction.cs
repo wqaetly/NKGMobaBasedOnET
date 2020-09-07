@@ -5,11 +5,9 @@
 //------------------------------------------------------------
 
 using System;
-using ETModel;
-using ETModel.TheDataContainsAction;
 using Sirenix.OdinInspector;
 
-namespace Model.NKGMOBA.NPBehave.NodeDatas.TheDataContainsAction
+namespace ETModel
 {
     /// <summary>
     /// 改变Unit属性
