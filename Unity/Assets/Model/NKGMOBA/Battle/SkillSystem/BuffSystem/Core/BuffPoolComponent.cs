@@ -14,7 +14,7 @@ namespace ETModel
     /// </summary>
     public class BuffPoolComponent: Component
     {
-        public Dictionary<Type, Queue<BuffSystemBase>> BuffSystemBases = new Dictionary<Type, Queue<BuffSystemBase>>();
+        public Dictionary<Type, Queue<ABuffSystemBase>> BuffSystemBases = new Dictionary<Type, Queue<ABuffSystemBase>>();
 
         /// <summary>
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
@@ -24,9 +24,9 @@ namespace ETModel
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <typeparam name="T">要取得的具体Buff</typeparam>
         /// <returns></returns>
-        public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : BuffSystemBase
+        public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : ABuffSystemBase
         {
-            Queue<BuffSystemBase> buffBase;
+            Queue<ABuffSystemBase> buffBase;
             if (this.BuffSystemBases.TryGetValue(typeof (T), out buffBase))
             {
                 if (buffBase.Count > 0)
@@ -49,35 +49,35 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public BuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
+        public ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
         {
-            Queue<BuffSystemBase> buffBase;
-            Type tempType = typeof (BuffSystemBase);
+            Queue<ABuffSystemBase> buffBase;
+            Type tempType = typeof (ABuffSystemBase);
             switch (buffDataBase.BelongBuffSystemType)
             {
                 case BuffSystemType.FlashDamageBuffSystem:
-                    tempType = typeof (FlashDamageBuffSystem);
+                    tempType = typeof (FlashDamageABuffSystem);
                     break;
                 case BuffSystemType.SustainDamageBuffSystem:
-                    tempType = typeof (SustainDamageBuffSystem);
+                    tempType = typeof (SustainDamageABuffSystem);
                     break;
                 case BuffSystemType.ChangePropertyBuffSystem:
-                    tempType = typeof (ChangePropertyBuffSystem);
+                    tempType = typeof (ChangePropertyABuffSystem);
                     break;
                 case BuffSystemType.ListenBuffCallBackBuffSystem:
-                    tempType = typeof (ListenBuffCallBackBuffSystem);
+                    tempType = typeof (ListenABuffCallBackABuffSystem);
                     break;
                 case BuffSystemType.BindStateBuffSystem:
-                    tempType = typeof (BindStateBuffSystem);
+                    tempType = typeof (BindStateABuffSystem);
                     break;
                 case BuffSystemType.TreatmentBuffSystem:
-                    tempType = typeof (TreatmentBuffSystem);
+                    tempType = typeof (TreatmentABuffSystem);
                     break;
                 case BuffSystemType.PlayEffectBuffSystem:
-                    tempType = typeof (PlayEffectBuffSystem);
+                    tempType = typeof (PlayEffectABuffSystem);
                     break;
                 case BuffSystemType.RefreshTargetBuffTimeBuffSystem:
-                    tempType = typeof (RefreshTargetBuffTimeBuffSystem);
+                    tempType = typeof (RefreshTargetABuffTimeABuffSystem);
                     break;
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
@@ -86,27 +86,27 @@ namespace ETModel
             {
                 if (buffBase.Count > 0)
                 {
-                    BuffSystemBase tempBuffBase = buffBase.Dequeue();
-                    tempBuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-                    return tempBuffBase;
+                    ABuffSystemBase tempABuffBase = buffBase.Dequeue();
+                    tempABuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+                    return tempABuffBase;
                 }
             }
 
-            BuffSystemBase temp = (BuffSystemBase) Activator.CreateInstance(tempType);
+            ABuffSystemBase temp = (ABuffSystemBase) Activator.CreateInstance(tempType);
             temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return temp;
         }
 
-        public void RecycleBuff(BuffSystemBase buffSystemBase)
+        public void RecycleBuff(ABuffSystemBase aBuffSystemBase)
         {
-            if (this.BuffSystemBases.TryGetValue(buffSystemBase.GetType(), out Queue<BuffSystemBase> temp))
+            if (this.BuffSystemBases.TryGetValue(aBuffSystemBase.GetType(), out Queue<ABuffSystemBase> temp))
             {
-                temp.Enqueue(buffSystemBase);
+                temp.Enqueue(aBuffSystemBase);
             }
             else
             {
-                this.BuffSystemBases.Add(buffSystemBase.GetType(), new Queue<BuffSystemBase>());
-                this.BuffSystemBases[buffSystemBase.GetType()].Enqueue(buffSystemBase);
+                this.BuffSystemBases.Add(aBuffSystemBase.GetType(), new Queue<ABuffSystemBase>());
+                this.BuffSystemBases[aBuffSystemBase.GetType()].Enqueue(aBuffSystemBase);
             }
         }
     }

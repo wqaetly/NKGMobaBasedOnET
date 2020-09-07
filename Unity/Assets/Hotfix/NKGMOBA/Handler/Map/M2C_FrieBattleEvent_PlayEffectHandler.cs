@@ -22,7 +22,7 @@ namespace ETHotfix
                     Unit unit = unitComponent.Get(message.FromUnitId);
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
                             unit.GetComponent<NP_RuntimeTreeManager>()
-                                    .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Client).m_BelongNP_DataSupportor.mSkillDataDic;
+                                    .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Client).m_BelongNP_DataSupportor.SkillDataDic;
                     ETModel.Game.Scene.GetComponent<BuffPoolComponent>()
                             .AcquireBuff(((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases, unit,
                                 unitComponent.Get(message.BelongToUnitId));

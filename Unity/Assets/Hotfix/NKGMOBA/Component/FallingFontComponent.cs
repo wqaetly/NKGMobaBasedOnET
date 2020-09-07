@@ -109,7 +109,7 @@ namespace ETHotfix
 
         public void Update()
         {
-            foreach (var VARIABLE in this.RunnningFuiFallBleedQue)
+            foreach (var fuiFallBleed in this.RunnningFuiFallBleedQue)
             {
                 // 游戏物体的世界坐标转屏幕坐标
                 Vector2 m_Hero2Screen =
@@ -121,9 +121,9 @@ namespace ETHotfix
                 m_Hero2Screen.y = Screen.height - m_Hero2Screen.y;
 
                 // FGUI全局坐标转头顶血条本地坐标
-                VARIABLE.GObject.position = GRoot.inst.GlobalToLocal(m_Hero2Screen);
-                VARIABLE.GObject.x -= GetOffsetX(m_Hero2Screen);
-                VARIABLE.GObject.y -= 100;
+                fuiFallBleed.GObject.position = GRoot.inst.GlobalToLocal(m_Hero2Screen);
+                fuiFallBleed.GObject.x -= GetOffsetX(m_Hero2Screen);
+                fuiFallBleed.GObject.y -= 100;
             }
         }
     }

@@ -16,7 +16,7 @@ namespace ETModel
         [LabelText("目标层数")]
         public int targetOverlay;
 
-        public override void Run(BuffSystemBase a)
+        public override void Run(ABuffSystemBase a)
         {
             //Log.Info($"层数判定_通过监听机制添加Buff");
             if (a.CurrentOverlay == this.targetOverlay)
@@ -24,7 +24,7 @@ namespace ETModel
                 foreach (var VARIABLE in m_BuffsWillBeAdded)
                 {
                     //Log.Info($"层数判定_通过监听机制添加id为{VARIABLE.FlagId}的Buff");
-                    Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.theUnitFrom, a.theUnitBelongto);
+                    Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.TheUnitFrom, a.TheUnitBelongto);
                 }
             }
         }

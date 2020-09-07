@@ -9,34 +9,34 @@ namespace ETModel
     /// <summary>
     /// 这里使用的瞬时治疗，如果要做持续治疗，参考持续伤害部分
     /// </summary>
-    public class TreatmentBuffSystem: BuffSystemBase
+    public class TreatmentABuffSystem: ABuffSystemBase
     {
         /// <summary>
         /// 最终治疗量
         /// </summary>
         public float FinalTreatValue;
 
-        public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
+        public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
-            this.theUnitFrom = theUnitFrom;
-            this.theUnitBelongto = theUnitBelongto;
-            this.MSkillBuffDataBase = BuffDataBase;
+            this.TheUnitFrom = theUnitFrom;
+            this.TheUnitBelongto = theUnitBelongto;
+            this.BuffData = buffData;
 
-            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.BuffData);
         }
 
         public override void OnExecute()
         {
-            this.FinalTreatValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
+            this.FinalTreatValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
 
             //TODO:进行相关治疗影响操作，例如减疗，增疗等
 
-            this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue += this.FinalTreatValue;
-            Game.EventSystem.Run(EventIdType.ChangeMP, this.theUnitBelongto.Id, this.FinalTreatValue);
+            this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue += this.FinalTreatValue;
+            Game.EventSystem.Run(EventIdType.ChangeMP, this.TheUnitBelongto.Id, this.FinalTreatValue);
             Log.Info($"受到了治疗，治疗量为{FinalTreatValue}");
 
-            this.MBuffState = BuffState.Finished;
+            this.BuffState = BuffState.Finished;
         }
 
         public override void OnFinished()

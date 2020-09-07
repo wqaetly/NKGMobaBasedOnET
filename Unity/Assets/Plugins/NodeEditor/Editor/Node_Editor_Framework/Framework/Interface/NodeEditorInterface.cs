@@ -169,9 +169,9 @@ namespace NodeEditorFramework.Standard
 
             string path = canvasCache.nodeCanvas.savePath;
             //清理要删掉的Node
-            foreach (var VARIABLE in canvasCache.nodeCanvas.nodesForDelete)
+            foreach (var nodeForDelete in canvasCache.nodeCanvas.nodesForDelete)
             {
-                UnityEngine.Object.DestroyImmediate(VARIABLE, true);
+                UnityEngine.Object.DestroyImmediate(nodeForDelete, true);
             }
 
             canvasCache.nodeCanvas.nodesForDelete.Clear();

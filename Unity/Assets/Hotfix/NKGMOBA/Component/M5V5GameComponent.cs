@@ -76,9 +76,9 @@ namespace ETHotfix
             }
 
             base.Dispose();
-            foreach (KeyValuePair<long, HotfixUnit> VARIABLE in this.m_HotfixUnits)
+            foreach (KeyValuePair<long, HotfixUnit> hotfixUnit in this.m_HotfixUnits)
             {
-                VARIABLE.Value.Dispose();
+                hotfixUnit.Value.Dispose();
             }
 
             this.m_5V5Game.Dispose();

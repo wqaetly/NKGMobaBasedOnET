@@ -11,28 +11,28 @@ namespace ETModel
     /// <summary>
     /// 瞬时伤害
     /// </summary>
-    public class FlashDamageBuffSystem: BuffSystemBase
+    public class FlashDamageABuffSystem: ABuffSystemBase
     {
         /// <summary>
         /// 最终伤害值
         /// </summary>
         private float finalDamageValue;
 
-        public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
+        public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
-            this.theUnitFrom = theUnitFrom;
-            this.theUnitBelongto = theUnitBelongto;
-            this.MSkillBuffDataBase = BuffDataBase;
+            this.TheUnitFrom = theUnitFrom;
+            this.TheUnitBelongto = theUnitBelongto;
+            this.BuffData = buffData;
 
-            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.BuffData);
         }
 
         public override void OnExecute()
         {
-            float tempFinalData = BuffDataCalculateHelper.CalculateCurrentData(this, this.MSkillBuffDataBase);
+            float tempFinalData = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
 
-            tempFinalData *= (MSkillBuffDataBase as FlashDamageBuffData).damageFix;
+            tempFinalData *= (this.BuffData as FlashDamageBuffData).damageFix;
 
             Log.Info($"瞬时预计造成{tempFinalData}伤害");
 
@@ -40,22 +40,22 @@ namespace ETModel
 
             this.finalDamageValue = tempFinalData;
 
-            this.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
+            this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
 
-            Game.EventSystem.Run(EventIdType.ChangeHP, this.theUnitBelongto.Id, -this.finalDamageValue);
+            Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.finalDamageValue);
 
             //抛出Buff奏效事件
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
-            if (this.MSkillBuffDataBase.EventIDs != null)
+            if (this.BuffData.EventIDs != null)
             {
-                foreach (var eventId in this.MSkillBuffDataBase.EventIDs)
+                foreach (var eventId in this.BuffData.EventIDs)
                 {
-                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.theUnitFrom.Id}", this);
+                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
                 }
             }
 
-            this.MBuffState = BuffState.Finished;
+            this.BuffState = BuffState.Finished;
             //Log.Info($"设置瞬时伤害Buff：{this.MSkillBuffDataBase.FlagId}状态为Finshed");
         }
 

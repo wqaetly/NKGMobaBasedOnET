@@ -8,12 +8,12 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public abstract class BuffSystemBase
+    public abstract class ABuffSystemBase
     {
         /// <summary>
         /// Buff当前状态
         /// </summary>
-        public BuffState MBuffState;
+        public BuffState BuffState;
 
         /// <summary>
         /// 当前叠加数
@@ -28,27 +28,27 @@ namespace ETModel
         /// <summary>
         /// Buff数据
         /// </summary>
-        public BuffDataBase MSkillBuffDataBase;
+        public BuffDataBase BuffData;
 
         /// <summary>
         /// 来自哪个Unit
         /// </summary>
         [DisableInEditorMode]
-        public Unit theUnitFrom;
+        public Unit TheUnitFrom;
 
         /// <summary>
         /// 寄生于哪个Unit
         /// </summary>
         [DisableInEditorMode]
-        public Unit theUnitBelongto;
+        public Unit TheUnitBelongto;
         
         /// <summary>
         /// 初始化buff数据
         /// </summary>
-        /// <param name="BuffDataBase">Buff数据</param>
+        /// <param name="buffData">Buff数据</param>
         /// <param name="theUnitFrom">来自哪个Unit</param>
         /// <param name="theUnitBelongto">寄生于哪个Unit</param>
-        public abstract void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto);
+        public abstract void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto);
 
         /// <summary>
         /// Buff触发

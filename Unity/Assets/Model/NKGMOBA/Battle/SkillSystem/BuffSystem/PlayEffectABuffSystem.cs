@@ -8,75 +8,75 @@ using UnityEngine;
 
 namespace ETModel
 {
-    public class PlayEffectBuffSystem: BuffSystemBase
+    public class PlayEffectABuffSystem: ABuffSystemBase
     {
-        public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
+        public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
-            this.theUnitFrom = theUnitFrom;
-            this.theUnitBelongto = theUnitBelongto;
-            this.MSkillBuffDataBase = BuffDataBase;
+            this.TheUnitFrom = theUnitFrom;
+            this.TheUnitBelongto = theUnitBelongto;
+            this.BuffData = buffData;
 
-            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.BuffData);
         }
 
         public override void OnExecute()
         {
             PlayEffect();
-            if (this.MSkillBuffDataBase.EventIDs != null)
+            if (this.BuffData.EventIDs != null)
             {
-                foreach (var eventId in this.MSkillBuffDataBase.EventIDs)
+                foreach (var eventId in this.BuffData.EventIDs)
                 {
-                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.theUnitFrom.Id}", this);
+                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
                 }
             }
 
-            this.MBuffState = BuffState.Running;
+            this.BuffState = BuffState.Running;
         }
 
         public override void OnUpdate()
         {
             //只有不是永久Buff的情况下才会执行Update判断
-            if (this.MSkillBuffDataBase.SustainTime + 1 > 0)
+            if (this.BuffData.SustainTime + 1 > 0)
             {
                 if (TimeHelper.Now() > this.MaxLimitTime)
                 {
-                    this.MBuffState = BuffState.Finished;
+                    this.BuffState = BuffState.Finished;
                 }
             }
         }
 
         public override void OnFinished()
         {
-            PlayEffectBuffData playEffectBuffData = MSkillBuffDataBase as PlayEffectBuffData;
+            PlayEffectBuffData playEffectBuffData = this.BuffData as PlayEffectBuffData;
             string targetEffectName = playEffectBuffData.EffectName;
             if (playEffectBuffData.CanChangeNameByCurrentOverlay)
             {
                 targetEffectName = $"{playEffectBuffData.EffectName}{this.CurrentOverlay}";
             }
 
-            theUnitBelongto.GetComponent<EffectComponent>()
+            this.TheUnitBelongto.GetComponent<EffectComponent>()
                     .Remove(targetEffectName);
         }
 
         public override void OnRefresh()
         {
             PlayEffect();
-            if (this.MSkillBuffDataBase.EventIDs != null)
+            if (this.BuffData.EventIDs != null)
             {
-                foreach (var eventId in this.MSkillBuffDataBase.EventIDs)
+                foreach (var eventId in this.BuffData.EventIDs)
                 {
-                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.theUnitFrom.Id}", this);
+                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
                 }
             }
-            this.MBuffState = BuffState.Running;
+            this.BuffState = BuffState.Running;
         }
 
         void PlayEffect()
         {
-            PlayEffectBuffData playEffectBuffData = MSkillBuffDataBase as PlayEffectBuffData;
+            PlayEffectBuffData playEffectBuffData = this.BuffData as PlayEffectBuffData;
             string targetEffectName = playEffectBuffData.EffectName;
 
             if (playEffectBuffData.CanChangeNameByCurrentOverlay)
@@ -86,14 +86,14 @@ namespace ETModel
             }
 
             //如果想要播放的特效正在播放，就返回
-            if (theUnitBelongto.GetComponent<EffectComponent>().CheckState(targetEffectName)) return;
+            if (this.TheUnitBelongto.GetComponent<EffectComponent>().CheckState(targetEffectName)) return;
 
             GameObjectPool gameObjectPool = Game.Scene.GetComponent<GameObjectPool>();
 
             if (!gameObjectPool.HasRegisteredPrefab(targetEffectName))
             {
                 gameObjectPool.Add(targetEffectName,
-                    this.theUnitFrom.GameObject.GetComponent<ReferenceCollector>()
+                    this.TheUnitFrom.GameObject.GetComponent<ReferenceCollector>()
                             .Get<GameObject>(targetEffectName));
             }
 
@@ -103,19 +103,19 @@ namespace ETModel
             {
                 if (playEffectBuffData.BuffTargetTypes == BuffTargetTypes.Self)
                 {
-                    effectUnit.GameObject.transform.SetParent(this.theUnitFrom.GetComponent<HeroTransformComponent>()
+                    effectUnit.GameObject.transform.SetParent(this.TheUnitFrom.GetComponent<HeroTransformComponent>()
                             .GetTranform(playEffectBuffData.PosType));
                 }
                 else
                 {
-                    effectUnit.GameObject.transform.SetParent(this.theUnitBelongto.GetComponent<HeroTransformComponent>()
+                    effectUnit.GameObject.transform.SetParent(this.TheUnitBelongto.GetComponent<HeroTransformComponent>()
                             .GetTranform(playEffectBuffData.PosType));
                 }
 
                 effectUnit.GameObject.transform.localPosition = Vector3.zero;
             }
 
-            theUnitBelongto.GetComponent<EffectComponent>()
+            this.TheUnitBelongto.GetComponent<EffectComponent>()
                     .Play(targetEffectName, effectUnit);
         }
     }

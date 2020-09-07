@@ -56,19 +56,19 @@ namespace B2S_CollisionRelation
         [Button("自动配置所有Node所有数据", 25), GUIColor(0.4f, 0.8f, 1)]
         public void AutoSetNodeData()
         {
-            foreach (var VARIABLE in nodes)
+            foreach (var node in nodes)
             {
-                if (VARIABLE is B2S_CollisionRelationForOneHero)
+                if (node is B2S_CollisionRelationForOneHero)
                 {
-                    ((B2S_CollisionRelationForOneHero) VARIABLE).AutoSetCollisionRelations();
+                    ((B2S_CollisionRelationForOneHero) node).AutoSetCollisionRelations();
                 }
             }
 
-            foreach (var VARIABLE in this.groups)
+            foreach (var nodeGroup in this.groups)
             {
-                foreach (var VARIABLE1 in VARIABLE.pinnedNodes)
+                foreach (var VARIABLE1 in nodeGroup.pinnedNodes)
                 {
-                    VARIABLE1.B2SCollisionRelation_GetNodeData().BelongGroup = VARIABLE.title;
+                    VARIABLE1.B2SCollisionRelation_GetNodeData().BelongGroup = nodeGroup.title;
                 }
             }
         }
@@ -80,17 +80,17 @@ namespace B2S_CollisionRelation
             this.m_MainDataDic.B2S_CollisionsRelationDic.Clear();
             this.m_PrefabDic.B2S_CollisionsRelationDic.Clear();
             this.m_PrefabDataDic.Clear();
-            foreach (var VARIABLE in this.groups)
+            foreach (var nodeGroup in this.groups)
             {
-                if (VARIABLE.title == "GenerateCollision" || VARIABLE.title == "NoGenerateCollision")
-                    foreach (var VARIABLE1 in VARIABLE.pinnedNodes)
+                if (nodeGroup.title == "GenerateCollision" || nodeGroup.title == "NoGenerateCollision")
+                    foreach (var VARIABLE1 in nodeGroup.pinnedNodes)
                     {
                         this.m_MainDataDic.B2S_CollisionsRelationDic.Add(VARIABLE1.B2SCollisionRelation_GetNodeData().nodeDataId,
                             VARIABLE1.B2SCollisionRelation_GetNodeData());
                     }
                 else
                 {
-                    foreach (var VARIABLE2 in VARIABLE.pinnedNodes)
+                    foreach (var VARIABLE2 in nodeGroup.pinnedNodes)
                     {
                         this.m_PrefabDic.B2S_CollisionsRelationDic.Add(VARIABLE2.B2SCollisionRelation_GetNodeData().nodeDataId,
                             VARIABLE2.B2SCollisionRelation_GetNodeData());
@@ -115,7 +115,7 @@ namespace B2S_CollisionRelation
 
         [TabGroup("自动生成代码部分")]
         [LabelText("Key为结点flag，value为保存的类名")]
-        public Dictionary<(string, B2S_CollisionInstance), string> className = new Dictionary<(string, B2S_CollisionInstance), string>();
+        public Dictionary<(string, B2S_CollisionInstance), string> ClassName = new Dictionary<(string, B2S_CollisionInstance), string>();
 
         [TabGroup("自动生成代码部分")]
         [LabelText("碰撞关系代码保存路径")]
@@ -135,24 +135,24 @@ namespace B2S_CollisionRelation
         public void ReadAllNodeFlag()
         {
             this.AddAllNodeData();
-            if (className == null) className = new Dictionary<(string, B2S_CollisionInstance), string>();
+            if (ClassName == null) ClassName = new Dictionary<(string, B2S_CollisionInstance), string>();
             var tempSave = new Dictionary<string, string>();
-            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in className)
+            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> className in ClassName)
             {
-                tempSave.Add(VARIABLE.Key.Item1, VARIABLE.Value);
+                tempSave.Add(className.Key.Item1, className.Value);
             }
 
-            this.className.Clear();
-            foreach (KeyValuePair<long, B2S_CollisionInstance> VARIABLE in this.m_MainDataDic.B2S_CollisionsRelationDic)
+            this.ClassName.Clear();
+            foreach (KeyValuePair<long, B2S_CollisionInstance> b2SCollisionInstance in this.m_MainDataDic.B2S_CollisionsRelationDic)
             {
-                if (VARIABLE.Value.BelongGroup == "GenerateCollision")
-                    if (tempSave.ContainsKey(VARIABLE.Value.Flag))
+                if (b2SCollisionInstance.Value.BelongGroup == "GenerateCollision")
+                    if (tempSave.ContainsKey(b2SCollisionInstance.Value.Flag))
                     {
-                        this.className.Add((VARIABLE.Value.Flag, VARIABLE.Value), tempSave[VARIABLE.Value.Flag]);
+                        this.ClassName.Add((b2SCollisionInstance.Value.Flag, b2SCollisionInstance.Value), tempSave[b2SCollisionInstance.Value.Flag]);
                     }
                     else
                     {
-                        this.className.Add((VARIABLE.Value.Flag, VARIABLE.Value), "");
+                        this.ClassName.Add((b2SCollisionInstance.Value.Flag, b2SCollisionInstance.Value), "");
                     }
             }
         }
@@ -175,10 +175,10 @@ namespace B2S_CollisionRelation
             sb1.AppendLine("{");
             sb1.AppendLine("    public static class EventIdType_Collision");
             sb1.AppendLine("    {");
-            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in this.className)
+            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> className in this.ClassName)
             {
-                if (VARIABLE.Value == "") continue;
-                sb1.AppendLine($"        public const string {VARIABLE.Value} = \"{VARIABLE.Key.Item2.nodeDataId}\";");
+                if (className.Value == "") continue;
+                sb1.AppendLine($"        public const string {className.Value} = \"{className.Key.Item2.nodeDataId}\";");
             }
 
             sb1.AppendLine("    }");
@@ -188,14 +188,14 @@ namespace B2S_CollisionRelation
             #endregion //添加碰撞组件ID部分
 
             //碰撞关系代码部分
-            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> VARIABLE in this.className)
+            foreach (KeyValuePair<(string, B2S_CollisionInstance), string> className in this.ClassName)
             {
-                if (VARIABLE.Value == "") continue;
+                if (className.Value == "") continue;
                 hasRegisterIDs.Clear();
                 List<string> GroupInfo = new List<string>();
                 //string为group名称，List为group中结点id
                 Dictionary<string, List<long>> Group_IDInfo = new Dictionary<string, List<long>>();
-                this.CollectGroupInfos(VARIABLE.Key.Item2, GroupInfo, Group_IDInfo);
+                this.CollectGroupInfos(className.Key.Item2, GroupInfo, Group_IDInfo);
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("//------------------------------------------------------------");
                 sb.AppendLine("// Author: 烟雨迷离半世殇");
@@ -209,19 +209,19 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("namespace ETHotfix");
                 sb.AppendLine("{");
 
-                sb.AppendLine($"    [Event(EventIdType_Collision.{VARIABLE.Value})]");
-                sb.AppendLine($"    public class Add{VARIABLE.Value}System: AEvent<Entity>");
+                sb.AppendLine($"    [Event(EventIdType_Collision.{className.Value})]");
+                sb.AppendLine($"    public class Add{className.Value}System: AEvent<Entity>");
                 sb.AppendLine("    {");
                 sb.AppendLine("        public override void Run(Entity a)");
                 sb.AppendLine("        {");
-                sb.AppendLine($"            a.AddComponent<{VARIABLE.Value}>();");
+                sb.AppendLine($"            a.AddComponent<{className.Value}>();");
                 sb.AppendLine("        }");
                 sb.AppendLine("    }");
 
                 sb.AppendLine($"    [ObjectSystem]");
-                sb.AppendLine($"    public class {VARIABLE.Value}AwakeSystem: AwakeSystem<{VARIABLE.Value}>");
+                sb.AppendLine($"    public class {className.Value}AwakeSystem: AwakeSystem<{className.Value}>");
                 sb.AppendLine("    {");
-                sb.AppendLine($"        public override void Awake({VARIABLE.Value} self)");
+                sb.AppendLine($"        public override void Awake({className.Value} self)");
                 sb.AppendLine("        {");
                 sb.AppendLine("            self.Entity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStartAction += self.OnCollideStart;");
                 sb.AppendLine(
@@ -231,7 +231,7 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("        }");
                 sb.AppendLine("    }");
 
-                sb.AppendLine($"    public class {VARIABLE.Value} : Component");
+                sb.AppendLine($"    public class {className.Value} : Component");
                 sb.AppendLine("    {");
                 sb.AppendLine("        public void OnCollideStart(B2S_HeroColliderData b2SHeroColliderData)");
                 sb.AppendLine("        {");
@@ -248,7 +248,7 @@ namespace B2S_CollisionRelation
                             foreach (var VARIABLE3 in VARIABLE2.Value)
                             {
                                 //如果有联系
-                                if (VARIABLE.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE3))
+                                if (className.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE3))
                                 {
                                     //对于此预制数据结点所包含的所有node信息
                                     foreach (var VARIABLE4 in this.m_PrefabDataDic[VARIABLE3])
@@ -262,7 +262,7 @@ namespace B2S_CollisionRelation
                                         sb.AppendLine($"                case {VARIABLE4}://{this.m_MainDataDic.B2S_CollisionsRelationDic[VARIABLE4].Flag}");
                                         foreach (var VARIABLE6 in VARIABLE2.Value)
                                         {
-                                            if (VARIABLE.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE6) &&
+                                            if (className.Key.Item2.CollisionRelations.Exists(t => t == VARIABLE6) &&
                                                 this.m_PrefabDataDic[VARIABLE6].Exists(t => t == VARIABLE4))
                                             {
                                                 sb.AppendLine(
@@ -295,13 +295,13 @@ namespace B2S_CollisionRelation
                 sb.AppendLine("        }");
                 sb.AppendLine("    }");
                 sb.AppendLine("}");
-                string tempFileInfo = $"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}.cs";
+                string tempFileInfo = $"{this.theCollisionPathWillBeSaved}/{className.Value}.cs";
                 int GS = 0;
                 Log.Info(tempFileInfo);
                 while (File.Exists(tempFileInfo))
                 {
                     GS++;
-                    tempFileInfo=$"{this.theCollisionPathWillBeSaved}/{VARIABLE.Value}_{GS}.cs";
+                    tempFileInfo=$"{this.theCollisionPathWillBeSaved}/{className.Value}_{GS}.cs";
                 }
                 File.WriteAllText(tempFileInfo, sb.ToString());
             }
@@ -316,10 +316,10 @@ namespace B2S_CollisionRelation
             groupInfo.Clear();
             group_IDInfo.Clear();
 
-            foreach (var VARIABLE in b2SCollisionInstance.CollisionRelations)
+            foreach (var collisionRelation in b2SCollisionInstance.CollisionRelations)
             {
                 var b2stemp = new B2S_CollisionInstance();
-                this.m_PrefabDic.B2S_CollisionsRelationDic.TryGetValue(VARIABLE, out b2stemp);
+                this.m_PrefabDic.B2S_CollisionsRelationDic.TryGetValue(collisionRelation, out b2stemp);
                 if (!groupInfo.Exists(t => t == b2stemp.BelongGroup))
                     groupInfo.Add(b2stemp.BelongGroup);
             }

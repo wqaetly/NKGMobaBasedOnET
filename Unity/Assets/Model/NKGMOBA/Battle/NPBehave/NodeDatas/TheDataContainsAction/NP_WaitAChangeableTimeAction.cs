@@ -52,7 +52,7 @@ namespace ETModel
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
                 this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
                         .GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.mSkillDataDic[this.dataId];
+                        .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.SkillDataDic[this.dataId];
                 tempBlackboard.Set(NpBlackBoardRelationData.BBKey,
                     m_NodeDataForStartSkill.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.theSkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");

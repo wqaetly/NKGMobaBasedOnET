@@ -14,9 +14,9 @@ namespace ETHotfix
         protected override async ETTask Run(ETModel.Session session, M2C_UserInput_SkillCmd message)
         {
             Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
-            foreach (var VARIABLE in unit.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
+            foreach (var runtimeTree in unit.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
             {
-                VARIABLE.Value.GetBlackboard().Set("PlayerInput",message.Message);
+                runtimeTree.Value.GetBlackboard().Set("PlayerInput",message.Message);
             }
             await ETTask.CompletedTask;
         }

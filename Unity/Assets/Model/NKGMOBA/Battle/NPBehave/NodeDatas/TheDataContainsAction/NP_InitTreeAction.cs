@@ -40,11 +40,6 @@ namespace ETModel
             {
                 VARIABLE.GetActionToBeDone().Invoke();
             }
-
-            Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
-                    .GetComponent<NP_RuntimeTreeManager>()
-                    .GetTreeByRuntimeID(this.RuntimeTreeID)
-                    .GetBlackboard().Set("HasInitTree", true);
         }
     }
 }

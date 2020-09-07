@@ -4,13 +4,10 @@
 // Data: 2019年5月14日 22:44:27
 //------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -23,7 +20,7 @@ namespace ETModel
     {
         [LabelText("Buff的标识ID，用以区分不同Buff")]
         [BoxGroup("必填项")]
-        public int FlagId;
+        public long BuffId;
 
         [LabelText("归属的技能ID")]
         [BoxGroup("必填项")]
@@ -89,7 +86,7 @@ namespace ETModel
         [LabelText("具体的加成(可能会一个效果多种加成方式)")]
         [BoxGroup("选填项")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<BuffAdditionTypes, float> additionValue = new Dictionary<BuffAdditionTypes, float>();
+        public Dictionary<BuffAdditionTypes, float> AdditionValue = new Dictionary<BuffAdditionTypes, float>();
 
 #if UNITY_EDITOR
         private IEnumerable<string> GetEventIds()
@@ -107,6 +104,51 @@ namespace ETModel
             }
 
             return null;
+        }
+        
+        [LabelText("此节点ID在数据仓库中的Key")]
+        [ValueDropdown("GetIdKey")]
+        [OnValueChanged("ApplayId")]
+        [BsonIgnore]
+        public string NodeIdKey;
+        
+        private IEnumerable<string> GetIdKey()
+        {
+            string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
+
+            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
+            if (subAssets != null)
+            {
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    {
+                        return npBehaveCanvasDataManager.NodeIds.Keys;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private void ApplayId()
+        {
+            string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
+
+            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
+            if (subAssets != null)
+            {
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    {
+                        if (npBehaveCanvasDataManager.NodeIds.TryGetValue(NodeIdKey, out var targetId))
+                        {
+                            BuffId = targetId;
+                        }
+                    }
+                }
+            }
         }
 #endif
     }

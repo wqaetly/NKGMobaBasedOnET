@@ -41,9 +41,9 @@ namespace ETModel
 
             base.Dispose();
 
-            foreach (var VARIABLE in this.queue)
+            foreach (var go in this.queue)
             {
-                UnityEngine.Object.Destroy(VARIABLE);
+                UnityEngine.Object.Destroy(go);
             }
 
             queue.Clear();
@@ -208,9 +208,9 @@ namespace ETModel
 
             if (AllEntityToBeRecycledInNextFrame.Count > 0)
             {
-                foreach (var VARIABLE in AllEntityToBeRecycledInNextFrame)
+                foreach (var entity in AllEntityToBeRecycledInNextFrame)
                 {
-                    Recycle(VARIABLE);
+                    Recycle(entity);
                 }
 
                 AllEntityToBeRecycledInNextFrame.Clear();
@@ -224,9 +224,9 @@ namespace ETModel
         {
             if (AllEntityToBeRecycledInNextFrame.Count > 0)
             {
-                foreach (var VARIABLE in AllEntityToBeRecycledInNextFrame)
+                foreach (var entity in AllEntityToBeRecycledInNextFrame)
                 {
-                    Recycle(VARIABLE);
+                    Recycle(entity);
                 }
 
                 AllEntityToBeRecycledInNextFrame.Clear();

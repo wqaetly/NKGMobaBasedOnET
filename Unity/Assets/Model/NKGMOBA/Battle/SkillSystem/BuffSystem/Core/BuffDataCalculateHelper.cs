@@ -11,10 +11,10 @@ namespace ETModel
     /// </summary>
     public static class BuffDataCalculateHelper
     {
-        public static float CalculateCurrentData<A, B>(A BuffSystemBase, B BuffDataBase) where A : BuffSystemBase where B : BuffDataBase
+        public static float CalculateCurrentData<A, B>(A BuffSystemBase, B BuffDataBase) where A : ABuffSystemBase where B : BuffDataBase
         {
             //取得归属Unit的Hero数据
-            HeroDataComponent theUnitFromHeroData = BuffSystemBase.theUnitFrom.GetComponent<HeroDataComponent>();
+            HeroDataComponent theUnitFromHeroData = BuffSystemBase.TheUnitFrom.GetComponent<HeroDataComponent>();
 
             float tempData = 0;
 
@@ -28,8 +28,8 @@ namespace ETModel
                     tempData = BuffDataBase.ValueToBeChanged[theUnitFromHeroData.GetSkillLevel(BuffDataBase.BelongSkillId)];
                     break;
                 case BuffBaseDataEffectTypes.FromHasLostLifeValue:
-                    tempData = BuffSystemBase.theUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
-                            BuffSystemBase.theUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue;
+                    tempData = BuffSystemBase.TheUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
+                            BuffSystemBase.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue;
                     break;
                 case BuffBaseDataEffectTypes.FromCurrentOverlay:
                     tempData = BuffDataBase.ValueToBeChanged[BuffSystemBase.CurrentOverlay];
@@ -37,23 +37,23 @@ namespace ETModel
             }
 
             //依据加成方式对伤害进行加成
-            foreach (var VARIABLE in BuffDataBase.additionValue)
+            foreach (var additionValue in BuffDataBase.AdditionValue)
             {
-                switch (VARIABLE.Key)
+                switch (additionValue.Key)
                 {
                     case BuffAdditionTypes.Percentage_Physical:
-                        tempData += VARIABLE.Value *
+                        tempData += additionValue.Value *
                                 theUnitFromHeroData.CurrentAttackValue;
                         break;
                     case BuffAdditionTypes.Percentage_Magic:
-                        tempData += VARIABLE.Value *
+                        tempData += additionValue.Value *
                                 theUnitFromHeroData.CurrentSpellpower;
                         break;
                     case BuffAdditionTypes.SelfOverlay_Mul:
-                        tempData *= VARIABLE.Value * BuffSystemBase.CurrentOverlay;
+                        tempData *= additionValue.Value * BuffSystemBase.CurrentOverlay;
                         break;
                     case BuffAdditionTypes.SelfOverlay_Plu:
-                        tempData += VARIABLE.Value * BuffSystemBase.CurrentOverlay;
+                        tempData += additionValue.Value * BuffSystemBase.CurrentOverlay;
                         break;
                 }
             }

@@ -28,7 +28,7 @@ namespace ETModel
             Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((unit.GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
                     .m_BelongNP_DataSupportor
-                    .mSkillDataDic[this.BuffDataID] as NodeDataForSkillBuff).SkillBuffBases, unit, unit);
+                    .SkillDataDic[this.BuffDataID] as NodeDataForSkillBuff).SkillBuffBases, unit, unit);
             //Log.Info("Buff添加完成");
         }
     }

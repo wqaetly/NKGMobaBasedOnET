@@ -18,39 +18,39 @@ namespace ETModel
         /// <param name="buffDataBase">Buff数据类</param>
         /// <typeparam name="A"></typeparam>
         /// <typeparam name="B"></typeparam>
-        public static void CalculateTimerAndOverlay<A, B>(A buffSystemBase, B buffDataBase) where A : BuffSystemBase where B : BuffDataBase
+        public static void CalculateTimerAndOverlay<A, B>(A buffSystemBase, B buffDataBase) where A : ABuffSystemBase where B : BuffDataBase
         {
             BuffManagerComponent buffManagerComponent;
             buffManagerComponent = buffDataBase.BuffTargetTypes == BuffTargetTypes.Self
-                    ? buffSystemBase.theUnitFrom.GetComponent<BuffManagerComponent>()
-                    : buffSystemBase.theUnitBelongto.GetComponent<BuffManagerComponent>();
+                    ? buffSystemBase.TheUnitFrom.GetComponent<BuffManagerComponent>()
+                    : buffSystemBase.TheUnitBelongto.GetComponent<BuffManagerComponent>();
 
             //先尝试从真正的Buff链表取得Buff
-            BuffSystemBase targetBuffSystemBase = buffManagerComponent.GetBuffByFlagID(buffDataBase.FlagId);
+            ABuffSystemBase targetABuffSystemBase = buffManagerComponent.GetBuffById(buffDataBase.BuffId);
 
-            if (targetBuffSystemBase != null)
+            if (targetABuffSystemBase != null)
             {
-                CalculateTimerAndOverlayHelper(targetBuffSystemBase, buffDataBase);
+                CalculateTimerAndOverlayHelper(targetABuffSystemBase, buffDataBase);
                 //Log.Info($"本次续命BuffID为{buffDataBase.FlagId}，当前层数{temp.CurrentOverlay}，最高层为{temp.MSkillBuffDataBase.MaxOverlay}");
 
                 //刷新当前已有的Buff
-                targetBuffSystemBase.OnRefresh();
+                targetABuffSystemBase.OnRefresh();
 
                 //TODO 把这个临时的回收，因为已经用不到他了
             }
             else
             {
                 //尝试从临时Buff字典取
-                targetBuffSystemBase = buffManagerComponent.FindBuffByFlagID_FromTempDic(buffDataBase.FlagId);
+                targetABuffSystemBase = buffManagerComponent.GetBuffById_FromTempDic(buffDataBase.BuffId);
 
                 //如果有，那就计算层数与时间，并且替换临时字典中
-                if (targetBuffSystemBase != null)
+                if (targetABuffSystemBase != null)
                 {
-                    CalculateTimerAndOverlayHelper(targetBuffSystemBase, buffDataBase);
+                    CalculateTimerAndOverlayHelper(targetABuffSystemBase, buffDataBase);
                     //Log.Info($"本次续命BuffID为{buffDataBase.FlagId}，当前层数{temp.CurrentOverlay}，最高层为{temp.MSkillBuffDataBase.MaxOverlay}");
 
                     //刷新当前已有的Buff
-                    targetBuffSystemBase.OnRefresh();
+                    targetABuffSystemBase.OnRefresh();
 
                     //TODO 把这个临时的回收，因为已经用不到他了
                 }
@@ -59,8 +59,8 @@ namespace ETModel
                     CalculateTimerAndOverlayHelper(buffSystemBase, buffDataBase);
 
                     //Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
-                    buffSystemBase.MBuffState = BuffState.Waiting;
-                    buffManagerComponent.m_TempBuffsToBeAdded.Add(buffDataBase.FlagId, buffSystemBase);
+                    buffSystemBase.BuffState = BuffState.Waiting;
+                    buffManagerComponent.TempBuffsToBeAdded.Add(buffDataBase.BuffId, buffSystemBase);
                 }
             }
         }
@@ -68,27 +68,27 @@ namespace ETModel
         /// <summary>
         /// 计算刷新的持续时间和层数
         /// </summary>
-        private static void CalculateTimerAndOverlayHelper(BuffSystemBase targetBuffSystemBase, BuffDataBase targetBuffDataBase)
+        private static void CalculateTimerAndOverlayHelper(ABuffSystemBase targetABuffSystemBase, BuffDataBase targetBuffDataBase)
         {
             //可以叠加，并且当前层数加上要添加Buff的目标层数未达到最高层
-            if (targetBuffSystemBase.MSkillBuffDataBase.CanOverlay)
+            if (targetABuffSystemBase.BuffData.CanOverlay)
             {
-                if (targetBuffSystemBase.CurrentOverlay + targetBuffSystemBase.MSkillBuffDataBase.TargetOverlay <=
-                    targetBuffSystemBase.MSkillBuffDataBase.MaxOverlay)
+                if (targetABuffSystemBase.CurrentOverlay + targetABuffSystemBase.BuffData.TargetOverlay <=
+                    targetABuffSystemBase.BuffData.MaxOverlay)
                 {
-                    targetBuffSystemBase.CurrentOverlay += targetBuffSystemBase.MSkillBuffDataBase.TargetOverlay;
+                    targetABuffSystemBase.CurrentOverlay += targetABuffSystemBase.BuffData.TargetOverlay;
                 }
                 else
                 {
-                    targetBuffSystemBase.CurrentOverlay = targetBuffSystemBase.MSkillBuffDataBase.MaxOverlay;
+                    targetABuffSystemBase.CurrentOverlay = targetABuffSystemBase.BuffData.MaxOverlay;
                 }
             }
 
             //如果是有限时长的 TODO:这里考虑处理持续时间和Buff层数挂钩的情况（比如磕了5瓶药，就是5*单瓶药的持续时间）
-            if (targetBuffSystemBase.MSkillBuffDataBase.SustainTime + 1 > 0)
+            if (targetABuffSystemBase.BuffData.SustainTime + 1 > 0)
             {
                 //Log.Info($"原本结束时间：{temp.MaxLimitTime},续命之后的结束时间{TimeHelper.Now() + buffDataBase.SustainTime}");
-                targetBuffSystemBase.MaxLimitTime = TimeHelper.Now() + targetBuffDataBase.SustainTime;
+                targetABuffSystemBase.MaxLimitTime = TimeHelper.Now() + targetBuffDataBase.SustainTime;
             }
         }
     }

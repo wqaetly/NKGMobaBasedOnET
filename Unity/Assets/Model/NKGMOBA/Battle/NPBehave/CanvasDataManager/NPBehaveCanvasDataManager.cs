@@ -15,6 +15,7 @@ using UnityEngine;
 namespace ETModel
 {
 #if UNITY_EDITOR
+    //TODO 我们是不是可以把所有数据都做到这里，实现编辑时逻辑数据分离，也就可以做到Excel和节点编辑器数据互相导出
     /// <summary>
     /// 单个Canvas数据管理器，包括但不限于黑板数据，常用字符串数据等
     /// </summary>
@@ -32,6 +33,12 @@ namespace ETModel
         [LabelText("事件内容")]
         [BoxGroup]
         public List<string> EventValues = new List<string>();
+        
+        [InfoBox("这是这个NPBehaveCanvas的所有ID相关的映射数据，key为ID描述，value为Id")]
+        [Title("Id描述映射", TitleAlignment = TitleAlignments.Centered)]
+        [LabelText("Id")]
+        [BoxGroup]
+        public Dictionary<string,long> NodeIds = new Dictionary<string, long>();
     }
 #endif
 }

@@ -6,49 +6,49 @@
 
 namespace ETModel
 {
-    public class ChangePropertyBuffSystem: BuffSystemBase
+    public class ChangePropertyABuffSystem: ABuffSystemBase
     {
-        public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
+        public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
-            this.theUnitFrom = theUnitFrom;
-            this.theUnitBelongto = theUnitBelongto;
-            this.MSkillBuffDataBase = BuffDataBase;
-            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.MSkillBuffDataBase);
+            this.TheUnitFrom = theUnitFrom;
+            this.TheUnitBelongto = theUnitBelongto;
+            this.BuffData = buffData;
+            BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.BuffData);
         }
 
         public override void OnExecute()
         {
             //Log.Info("自身添加了血怒Buff!!!!!!!!!!!!!!!!!!!!!");
-            HeroDataComponent tempHeroDataComponent = this.theUnitBelongto.GetComponent<HeroDataComponent>();
-            ChangePropertyBuffData tempChangePropertyBuffData = this.MSkillBuffDataBase as ChangePropertyBuffData;
-            switch (this.MSkillBuffDataBase.BuffWorkType)
+            HeroDataComponent tempHeroDataComponent = this.TheUnitBelongto.GetComponent<HeroDataComponent>();
+            ChangePropertyBuffData tempChangePropertyBuffData = this.BuffData as ChangePropertyBuffData;
+            switch (this.BuffData.BuffWorkType)
             {
                 case BuffWorkTypes.ChangeAttackValue:
                     tempHeroDataComponent.CurrentAttackValue += tempChangePropertyBuffData.theValueWillBeAdded;
                     break;
             }
 
-            this.MBuffState = BuffState.Running;
+            this.BuffState = BuffState.Running;
         }
 
         public override void OnUpdate()
         {
             //只有不是永久Buff的情况下才会执行Update判断
-            if (this.MSkillBuffDataBase.SustainTime + 1 > 0)
+            if (this.BuffData.SustainTime + 1 > 0)
             {
                 if (TimeHelper.Now() >= this.MaxLimitTime)
                 {
-                    HeroDataComponent tempHeroDataComponent = this.theUnitBelongto.GetComponent<HeroDataComponent>();
-                    ChangePropertyBuffData tempChangePropertyBuffData = this.MSkillBuffDataBase as ChangePropertyBuffData;
-                    switch (this.MSkillBuffDataBase.BuffWorkType)
+                    HeroDataComponent tempHeroDataComponent = this.TheUnitBelongto.GetComponent<HeroDataComponent>();
+                    ChangePropertyBuffData tempChangePropertyBuffData = this.BuffData as ChangePropertyBuffData;
+                    switch (this.BuffData.BuffWorkType)
                     {
                         case BuffWorkTypes.ChangeAttackValue:
                             tempHeroDataComponent.CurrentAttackValue -= tempChangePropertyBuffData.theValueWillBeAdded;
                             break;
                     }
 
-                    this.MBuffState = BuffState.Finished;
+                    this.BuffState = BuffState.Finished;
                 }
             }
         }
