@@ -36,13 +36,13 @@ namespace ETModel
         /// 改变某个属性，硬性改变，不考虑任何额外影响
         /// </summary>
         [LabelText("强制改变属性Buff")]
-        ChangePlayerPropertyBuffSystem,
+        ChangePropertyBuffSystem,
 
         /// <summary>
         /// 治疗
         /// </summary>
         [LabelText("治疗Buff")]
-        TreatmenBuffSystem,
+        TreatmentBuffSystem,
 
         /// <summary>
         /// 播放特效

@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Plugins
 {
     [Node(false, "技能数据结点", typeof (NeverbeUsedCanvas))]
-    public class SkillNodeBase:Node
+    public class SkillNodeBase: Node
     {
         /// <summary>
         /// 内部ID
@@ -20,9 +20,9 @@ namespace Plugins
         private const string Id = "技能数据结点";
 
         public override string GetID => Id;
-        
+
         public override Vector2 DefaultSize => new Vector2(150, 60);
-        
+
         public override void NodeGUI()
         {
             EditorGUILayout.TextField("不允许使用此结点");

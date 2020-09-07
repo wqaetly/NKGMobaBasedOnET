@@ -18,13 +18,13 @@ namespace ETModel
     {
         [HideInEditorMode] public Action m_ActionNode;
         
-        public NP_ClassForStoreAction MNpClassForStoreAction;
+        public NP_ClassForStoreAction NpClassForStoreAction;
 
         public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {
-            MNpClassForStoreAction.Unitid = UnitId;
-            MNpClassForStoreAction.RuntimeTreeID = RuntimeTreeID;
-            this.m_ActionNode = MNpClassForStoreAction._CreateNPBehaveAction();
+            this.NpClassForStoreAction.Unitid = UnitId;
+            this.NpClassForStoreAction.RuntimeTreeID = RuntimeTreeID;
+            this.m_ActionNode = this.NpClassForStoreAction._CreateNPBehaveAction();
             return this.m_ActionNode;
         }
 

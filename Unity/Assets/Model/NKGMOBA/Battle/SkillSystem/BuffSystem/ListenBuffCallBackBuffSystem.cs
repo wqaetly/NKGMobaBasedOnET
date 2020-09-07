@@ -24,7 +24,7 @@ namespace ETModel
         public override void OnExecute()
         {
             //强制类型转换为Buff事件
-            ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
+            ListenBuffCallBackBuffData temp = (ListenBuffCallBackBuffData) MSkillBuffDataBase;
 
             Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{temp.EventId}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
 
@@ -46,7 +46,7 @@ namespace ETModel
         public override void OnFinished()
         {
             //强制类型转换为Buff事件
-            ListenBuffDataBase temp = (ListenBuffDataBase) MSkillBuffDataBase;
+            ListenBuffCallBackBuffData temp = (ListenBuffCallBackBuffData) MSkillBuffDataBase;
             Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{temp.EventId}{this.theUnitFrom.Id}", temp.ListenBuffEventBase);
         }
     }

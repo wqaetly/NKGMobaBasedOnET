@@ -1,7 +1,7 @@
 //------------------------------------------------------------
-// Author: 烟雨迷离半世殇
-// Mail: 1778139321@qq.com
-// Data: 2019年8月21日 8:18:19
+// 代码由工具自动生成，请勿手动修改
+// 代码由工具自动生成，请勿手动修改
+// 代码由工具自动生成，请勿手动修改
 //------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -15,20 +15,20 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/CommonAction", typeof(NPBehaveCanvas))]
-    public class NP_ActionNode : NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/_ACTIONDES_", typeof(NPBehaveCanvas))]
+    public class NP__ACTIONNAME_ActionNode : NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "行为节点";
+        private const string Id = "_ACTIONDES_";
 
         /// <summary>
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
         
-        public NP_ActionNodeData NP_ActionNodeData;
+        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP__ACTIONNAME_Action() };
 
         private void OnEnable()
         {

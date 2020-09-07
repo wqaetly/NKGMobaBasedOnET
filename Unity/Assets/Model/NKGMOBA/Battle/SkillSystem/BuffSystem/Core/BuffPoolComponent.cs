@@ -61,8 +61,8 @@ namespace ETModel
                 case BuffSystemType.SustainDamageBuffSystem:
                     tempType = typeof (SustainDamageBuffSystem);
                     break;
-                case BuffSystemType.ChangePlayerPropertyBuffSystem:
-                    tempType = typeof (ChangePlayerPropertyBuffSystem);
+                case BuffSystemType.ChangePropertyBuffSystem:
+                    tempType = typeof (ChangePropertyBuffSystem);
                     break;
                 case BuffSystemType.ListenBuffCallBackBuffSystem:
                     tempType = typeof (ListenBuffCallBackBuffSystem);
@@ -70,7 +70,7 @@ namespace ETModel
                 case BuffSystemType.BindStateBuffSystem:
                     tempType = typeof (BindStateBuffSystem);
                     break;
-                case BuffSystemType.TreatmenBuffSystem:
+                case BuffSystemType.TreatmentBuffSystem:
                     tempType = typeof (TreatmentBuffSystem);
                     break;
                 case BuffSystemType.PlayEffectBuffSystem:

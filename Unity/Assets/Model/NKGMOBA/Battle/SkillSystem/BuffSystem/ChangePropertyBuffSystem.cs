@@ -6,7 +6,7 @@
 
 namespace ETModel
 {
-    public class ChangePlayerPropertyBuffSystem: BuffSystemBase
+    public class ChangePropertyBuffSystem: BuffSystemBase
     {
         public override void OnInit(BuffDataBase BuffDataBase, Unit theUnitFrom, Unit theUnitBelongto)
         {
@@ -19,13 +19,13 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            Log.Info("自身添加了血怒Buff!!!!!!!!!!!!!!!!!!!!!");
+            //Log.Info("自身添加了血怒Buff!!!!!!!!!!!!!!!!!!!!!");
             HeroDataComponent tempHeroDataComponent = this.theUnitBelongto.GetComponent<HeroDataComponent>();
-            ChangePlayerPropertyBuffData tempChangePlayerPropertyBuffData = this.MSkillBuffDataBase as ChangePlayerPropertyBuffData;
+            ChangePropertyBuffData tempChangePropertyBuffData = this.MSkillBuffDataBase as ChangePropertyBuffData;
             switch (this.MSkillBuffDataBase.BuffWorkType)
             {
                 case BuffWorkTypes.ChangeAttackValue:
-                    tempHeroDataComponent.CurrentAttackValue += tempChangePlayerPropertyBuffData.theValueWillBeAdded;
+                    tempHeroDataComponent.CurrentAttackValue += tempChangePropertyBuffData.theValueWillBeAdded;
                     break;
             }
 
@@ -40,11 +40,11 @@ namespace ETModel
                 if (TimeHelper.Now() >= this.MaxLimitTime)
                 {
                     HeroDataComponent tempHeroDataComponent = this.theUnitBelongto.GetComponent<HeroDataComponent>();
-                    ChangePlayerPropertyBuffData tempChangePlayerPropertyBuffData = this.MSkillBuffDataBase as ChangePlayerPropertyBuffData;
+                    ChangePropertyBuffData tempChangePropertyBuffData = this.MSkillBuffDataBase as ChangePropertyBuffData;
                     switch (this.MSkillBuffDataBase.BuffWorkType)
                     {
                         case BuffWorkTypes.ChangeAttackValue:
-                            tempHeroDataComponent.CurrentAttackValue -= tempChangePlayerPropertyBuffData.theValueWillBeAdded;
+                            tempHeroDataComponent.CurrentAttackValue -= tempChangePropertyBuffData.theValueWillBeAdded;
                             break;
                     }
 

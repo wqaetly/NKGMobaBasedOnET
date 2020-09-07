@@ -62,7 +62,7 @@ namespace ETModel
     /// <summary>
     /// 监听Buff事件数据基类，用以监听指定事件
     /// </summary>
-    public class ListenBuffDataBase: BuffDataBase
+    public class ListenBuffCallBackBuffData: BuffDataBase
     {
         [BoxGroup("自定义项")]
         [LabelText("要监听的事件ID标识")]

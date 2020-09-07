@@ -114,7 +114,8 @@
      <Compile Include="Assets\Editor\FGUIEditor\Editor\UIContentScalerEditor.cs" />
      <Compile Include="Assets\Editor\FGUIEditor\Editor\UIPainterEditor.cs" />
      <Compile Include="Assets\Editor\FGUIEditor\Editor\UIPanelEditor.cs" />
-     <Compile Include="Assets\Editor\GenerateComponentEditor\GenerateComponentEditor.cs" />
+     <Compile Include="Assets\Editor\GenerateCodeEditor\GenerateComponentEditor.cs" />
+     <Compile Include="Assets\Editor\GenerateCodeEditor\Params.cs" />
      <Compile Include="Assets\Editor\GlobalConfigEditor\GlobalConfigEditor.cs" />
      <Compile Include="Assets\Editor\Helper\EditorResHelper.cs" />
      <Compile Include="Assets\Editor\ILRuntimeEditor\ILRuntimeCLRBinding.cs" />
@@ -129,11 +130,13 @@
      <Compile Include="Assets\Editor\RsyncEditor\RsyncEditor.cs" />
      <Compile Include="Assets\Editor\ServerCommandLineEditor\ServerCommandLineEditor.cs" />
      <Compile Include="Assets\Editor\ServerManagerEditor\ServerManagerEditor.cs" />
+     <None Include="Assets\Editor\GenerateCodeEditor\NPBehaveActionNodeTemplate.txt" />
      <None Include="Assets\Editor\Unity.Editor.asmdef" />
+     <None Include="Assets\Editor\GenerateCodeEditor\BuffDataNodeTemplate.txt" />
      <None Include="Assets\Editor\AstarPathfindingProject\EditorAssets\Materials\Navmesh.cginc" />
      <None Include="Assets\Editor\AstarPathfindingProject\EditorAssets\Materials\NavmeshOutline.shader" />
      <None Include="Assets\Editor\AstarPathfindingProject\EditorAssets\Materials\Navmesh.shader" />
-     <None Include="Assets\Editor\GenerateComponentEditor\Template.txt" />
+     <None Include="Assets\Editor\GenerateCodeEditor\ETModelComponentTemplate.txt" />
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>

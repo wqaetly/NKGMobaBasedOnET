@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -27,8 +29,7 @@ namespace ETModel
         [BoxGroup("必填项")]
         public int BelongSkillId;
 
-        [LabelText("归属的BuffSystem类型")]
-        [BoxGroup("必填项")]
+        [ReadOnly]
         public BuffSystemType BelongBuffSystemType;
 
         [LabelText("Buff的添加目标")]

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ETModel;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -15,64 +16,48 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace ETModel
+namespace ETEditor
 {
-    public class GenerateComponentEditor : OdinEditorWindow
+    public class GenerateComponentEditor: OdinEditorWindow
     {
-        /// <summary>
-        /// 用于生成Component的结构体
-        /// </summary>
-        public struct StructForGenerateComponent
-        {
-            [LabelText("组件名，不含Component")] public string ComponentName;
-            [LabelText("目标文件夹")] [FolderPath] public string FoldName;
-        }
-
         /// <summary>
         /// 所有需要生成的类
         /// </summary>
-        [LabelText("所有需要生成的Component配置")] [ListDrawerSettings(Expanded = true)]
-        public List<StructForGenerateComponent> AllComponentsForGenerate = new List<StructForGenerateComponent>();
+        [LabelText("所有需要生成Code配置")]
+        [ListDrawerSettings(Expanded = true)]
+        public List<AParams_GenerateBase> TargetsForGenerate = new List<AParams_GenerateBase>();
 
-        [LabelText("目标模板")] public TextAsset TargetTemplate;
-
-        [MenuItem("NKGTools/一键生成类工具/Component生成工具")]
+        [MenuItem("NKGTools/一键生成类工具/代码生成工具")]
         private static void OpenWindow()
         {
             var window = GetWindow<GenerateComponentEditor>();
             window.position = GUIHelper.GetEditorWindowRect().AlignCenter(600, 600);
-            window.titleContent = new GUIContent("Component生成工具");
-        }
-
-        private void OnEnable()
-        {
-            this.TargetTemplate =
-                AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Editor/GenerateComponentEditor/Template.txt");
-            if (AllComponentsForGenerate.Count == 0)
-            {
-                AllComponentsForGenerate.Add(new StructForGenerateComponent());
-            }
+            window.titleContent = new GUIContent("代码生成工具");
         }
 
         [Button("开始生成", 25), GUIColor(100 / 255f, 149 / 255f, 237 / 255f)]
         public void StartGenerate()
         {
-            if (TargetTemplate == null)
+            if (this.TargetsForGenerate.Count == 0)
             {
-                Log.Error("目标模板为空");
                 return;
             }
 
-            string templateContent = TargetTemplate.text;
-            foreach (var componentConfig in AllComponentsForGenerate)
+            foreach (var mParams in TargetsForGenerate)
             {
-                string temp = templateContent;
-                string finalFileName = $"{componentConfig.FoldName}/{componentConfig.ComponentName}Component.cs";
+                string templateContent = AssetDatabase.LoadAssetAtPath<TextAsset>(mParams.TemplateAssetPath).text;
 
-                temp = temp.Replace("_ComponentName_", componentConfig.ComponentName);
-                if (!Directory.Exists(componentConfig.FoldName))
+                string temp = templateContent;
+                string finalFileName = $"{mParams.FoldName}/{mParams.FileName}.cs";
+
+                foreach (var kParam in mParams.GetAllParams())
                 {
-                    Directory.CreateDirectory(componentConfig.FoldName);
+                    temp = temp.Replace(kParam.Key, kParam.Value);
+                }
+
+                if (!Directory.Exists(mParams.FoldName))
+                {
+                    Directory.CreateDirectory(mParams.FoldName);
                 }
 
                 while (File.Exists(finalFileName))

@@ -23,7 +23,6 @@ namespace ETModel
     [HideLabel]
     public class NP_BlackBoardRelationData
     {
-        [InfoBox("如果发现下拉框选项为空，或者内容不是自己想要的，请点击可视化节点编辑器中右上角的Balckboard添加内容或点击同步数据按钮")]
         [LabelText("字典键")]
         [ValueDropdown("GetBBKeys")]
         [OnValueChanged("OnBBKeySelected")]

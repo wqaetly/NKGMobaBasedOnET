@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class ChangePlayerPropertyBuffData: BuffDataBase
+    public class ChangePropertyBuffData: BuffDataBase
     {
         /// <summary>
         /// 将要被添加的值
