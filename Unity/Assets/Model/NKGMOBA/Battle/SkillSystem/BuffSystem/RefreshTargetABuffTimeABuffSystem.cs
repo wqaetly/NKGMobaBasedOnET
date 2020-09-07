@@ -34,7 +34,7 @@ namespace ETModel
             foreach (var buffId in refreshTargetBuffTimeBuffData.TheBuffsIDToBeRefreshed)
             {
                 //Log.Info($"准备刷新指定Buff——{buffId}持续时间");
-                ABuffSystemBase aBuffSystemBase = buffManagerComponent.GetBuffById(buffId);
+                ABuffSystemBase aBuffSystemBase = buffManagerComponent.GetBuffById(buffId.Value);
                 if (aBuffSystemBase != null && aBuffSystemBase.BuffData.SustainTime + 1 > 0)
                 {
                     // Log.Info(

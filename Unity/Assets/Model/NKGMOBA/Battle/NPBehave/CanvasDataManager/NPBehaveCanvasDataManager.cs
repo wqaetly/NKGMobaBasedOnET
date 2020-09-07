@@ -34,11 +34,12 @@ namespace ETModel
         [BoxGroup]
         public List<string> EventValues = new List<string>();
         
-        [InfoBox("这是这个NPBehaveCanvas的所有ID相关的映射数据，key为ID描述，value为Id")]
+        [InfoBox("这是这个NPBehaveCanvas的所有ID相关的映射数据，key为ID描述，value为Id的值")]
         [Title("Id描述映射", TitleAlignment = TitleAlignments.Centered)]
-        [LabelText("Id")]
+        [LabelText("Id描述与值")]
         [BoxGroup]
-        public Dictionary<string,long> NodeIds = new Dictionary<string, long>();
+        [DictionaryDrawerSettings(KeyLabel = "键(string)", ValueLabel = "值(long)", DisplayMode = DictionaryDisplayOptions.CollapsedFoldout)]
+        public Dictionary<string,long> Ids = new Dictionary<string, long>();
     }
 #endif
 }

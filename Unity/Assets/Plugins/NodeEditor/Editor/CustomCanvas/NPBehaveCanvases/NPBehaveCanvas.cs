@@ -57,7 +57,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 if (VARIABLE is SkillNodeBase mNode)
                 {
-                    this.MNpDataSupportor.SkillDataDic.Add(mNode.Skill_GetNodeData().NodeID, mNode.Skill_GetNodeData());
+                    this.MNpDataSupportor.SkillDataDic.Add(mNode.Skill_GetNodeData().NodeId.Value, mNode.Skill_GetNodeData());
                 }
             }
         }

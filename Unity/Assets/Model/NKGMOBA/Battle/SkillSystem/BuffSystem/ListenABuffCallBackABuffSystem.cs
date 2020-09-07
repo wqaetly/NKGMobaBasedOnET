@@ -26,7 +26,7 @@ namespace ETModel
             //强制类型转换为Buff事件
             ListenBuffCallBackBuffData temp = (ListenBuffCallBackBuffData) this.BuffData;
 
-            Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{temp.EventId}{this.TheUnitFrom.Id}", temp.ListenBuffEventBase);
+            Game.Scene.GetComponent<BattleEventSystem>().RegisterEvent($"{temp.EventId}{this.TheUnitFrom.Id}", temp.ListenBuffEventNormal);
 
             this.BuffState = BuffState.Running;
         }
@@ -47,7 +47,7 @@ namespace ETModel
         {
             //强制类型转换为Buff事件
             ListenBuffCallBackBuffData temp = (ListenBuffCallBackBuffData) this.BuffData;
-            Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{temp.EventId}{this.TheUnitFrom.Id}", temp.ListenBuffEventBase);
+            Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{temp.EventId}{this.TheUnitFrom.Id}", temp.ListenBuffEventNormal);
         }
     }
 }

@@ -542,7 +542,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: IDMap
+    - Name: Ids
       Entry: 7
       Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib
@@ -781,6 +781,9 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 0|ETModel.NodeDataForSkillBuff, Unity.Model
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
     - Name: NodeID
       Entry: 3
       Data: 10003
@@ -790,9 +793,12 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 1|ETModel.BindStateBuffData, Unity.Model
-    - Name: FlagId
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
+    - Name: BuffId
       Entry: 3
-      Data: 20009
+      Data: 0
     - Name: BelongSkillId
       Entry: 3
       Data: 0
@@ -864,7 +870,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: additionValue
+    - Name: AdditionValue
       Entry: 6
       Data: 
     - Name: OriBuff
@@ -1009,6 +1015,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 4|DefaultNamespace.NodeDataForPlayAnim, Unity.Model
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
     - Name: NodeID
       Entry: 3
       Data: 0
@@ -1113,6 +1122,9 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 0|ETModel.NodeDataForSkillBuff, Unity.Model
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
     - Name: NodeID
       Entry: 3
       Data: 10002
@@ -1122,9 +1134,12 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 1|ETModel.BuffDataBase, Unity.Model
-    - Name: FlagId
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
+    - Name: BuffId
       Entry: 3
-      Data: 20003
+      Data: 0
     - Name: BelongSkillId
       Entry: 3
       Data: 0
@@ -1184,7 +1199,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: additionValue
+    - Name: AdditionValue
       Entry: 6
       Data: 
     - Name: 
@@ -1307,6 +1322,9 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 0|ETModel.NodeDataForSkillBuff, Unity.Model
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
     - Name: NodeID
       Entry: 3
       Data: 10001
@@ -1316,9 +1334,12 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 1|ETModel.BuffDataBase, Unity.Model
-    - Name: FlagId
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
+    - Name: BuffId
       Entry: 3
-      Data: 20001
+      Data: 0
     - Name: BelongSkillId
       Entry: 3
       Data: 0
@@ -1387,7 +1408,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: additionValue
+    - Name: AdditionValue
       Entry: 6
       Data: 
     - Name: 
@@ -3098,8 +3119,6 @@ MonoBehaviour:
   - {fileID: -126888644089843531}
   - {fileID: 2256538573152678102}
   - {fileID: -9208408634092080299}
-  - {fileID: 2168369492059760421}
-  - {fileID: 7434868914806881213}
   - {fileID: 8191548880709618933}
   - {fileID: -2501375545849582918}
   - {fileID: 7104071487941776097}
@@ -3107,6 +3126,8 @@ MonoBehaviour:
   - {fileID: -8630658095083998528}
   - {fileID: 958321526705749925}
   - {fileID: 812160285480100212}
+  - {fileID: 2168369492059760421}
+  - {fileID: 7434868914806881213}
   nodesForDelete: []
   groups:
   - rect:
@@ -3411,8 +3432,8 @@ MonoBehaviour:
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
   selectedNodes:
-  - {fileID: 812160285480100212}
-  panOffset: {x: 1515.3995, y: -132.99973}
+  - {fileID: 7434868914806881213}
+  panOffset: {x: 1277.3995, y: 154.00027}
   zoom: 1.4
   boxSelecting: 0
 --- !u!114 &958321526705749925
@@ -4255,7 +4276,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: IDMap
+    - Name: Ids
       Entry: 7
       Data: 5|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib
@@ -4268,7 +4289,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "Node_\u76D1\u542C\u5916\u5708Q\u4E8B\u4EF6"
+    - Name: $v
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -4651,6 +4684,9 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 0|ETModel.NodeDataForSkillBuff, Unity.Model
+    - Name: NodeIdKey
+      Entry: 1
+      Data: "\u76D1\u542CQ\u5916\u56F4Buff"
     - Name: NodeID
       Entry: 3
       Data: 10001
@@ -4660,7 +4696,10 @@ MonoBehaviour:
     - Name: SkillBuffBases
       Entry: 7
       Data: 1|ETModel.ListenBuffCallBackBuffData, Unity.Model
-    - Name: FlagId
+    - Name: NodeIdKey
+      Entry: 6
+      Data: 
+    - Name: BuffId
       Entry: 3
       Data: 0
     - Name: BelongSkillId
@@ -4731,31 +4770,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: additionValue
-      Entry: 7
-      Data: 5|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
-        Unity.Model],[System.Single, mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
-        Unity.Model]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+    - Name: AdditionValue
+      Entry: 6
       Data: 
     - Name: EventId
       Entry: 6
@@ -4770,7 +4786,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -1987.2998, y: 402.69977}
+  position: {x: -1371.2998, y: -456.9002}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7807866776835166879
@@ -4814,7 +4830,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: IDMap
+    - Name: Ids
       Entry: 7
       Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib

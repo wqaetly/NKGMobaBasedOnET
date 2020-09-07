@@ -16,6 +16,6 @@ namespace ETModel
     {
         [BoxGroup("自定义项")]
         [LabelText("要刷新的BuffID")]
-        public List<int> TheBuffsIDToBeRefreshed = new List<int>();
+        public List<VTD_Id> TheBuffsIDToBeRefreshed = new List<VTD_Id>();
     }
 }

@@ -11,7 +11,7 @@ namespace ETModel
     /// <summary>
     /// 会检查一次是否达到指定层数，然后再决定是否触发事件
     /// </summary>
-    public class ListenBuffEvent_CheckOverlay: ListenBuffEventBase
+    public class ListenBuffEvent_CheckOverlay: ListenBuffEvent_Normal
     {
         [LabelText("目标层数")]
         public int targetOverlay;
@@ -21,7 +21,7 @@ namespace ETModel
             //Log.Info($"层数判定_通过监听机制添加Buff");
             if (a.CurrentOverlay == this.targetOverlay)
             {
-                foreach (var VARIABLE in m_BuffsWillBeAdded)
+                foreach (var VARIABLE in this.BuffsWillBeAdded)
                 {
                     //Log.Info($"层数判定_通过监听机制添加id为{VARIABLE.FlagId}的Buff");
                     Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.TheUnitFrom, a.TheUnitBelongto);

@@ -71,9 +71,9 @@ namespace ETModel
                     next = current.Next;
                     m_Buffs.Remove(current);
                     m_BuffsForFind_BuffWorkType.Remove(current.Value.BuffData.BuffWorkType);
-                    m_BuffsForFind_BuffFlagID.Remove(current.Value.BuffData.BuffId);
+                    m_BuffsForFind_BuffFlagID.Remove(current.Value.BuffData.BuffId.Value);
                     Log.Info(
-                        $"移除一个Buff，ID为{current.Value.BuffData.BuffId},BuffManager是否还有?:{this.FindBuffById(current.Value.BuffData.BuffId)}");
+                        $"移除一个Buff，ID为{current.Value.BuffData.BuffId},BuffManager是否还有?:{this.FindBuffById(current.Value.BuffData.BuffId.Value)}");
                     current = next;
                 }
             }
@@ -96,13 +96,13 @@ namespace ETModel
                 m_BuffsForFind_BuffWorkType.Add(aBuff.BuffData.BuffWorkType, aBuff);
             }
 
-            if (this.m_BuffsForFind_BuffFlagID.ContainsKey(aBuff.BuffData.BuffId))
+            if (this.m_BuffsForFind_BuffFlagID.ContainsKey(aBuff.BuffData.BuffId.Value))
             {
-                m_BuffsForFind_BuffFlagID[aBuff.BuffData.BuffId] = aBuff;
+                m_BuffsForFind_BuffFlagID[aBuff.BuffData.BuffId.Value] = aBuff;
             }
             else
             {
-                m_BuffsForFind_BuffFlagID.Add(aBuff.BuffData.BuffId, aBuff);
+                m_BuffsForFind_BuffFlagID.Add(aBuff.BuffData.BuffId.Value, aBuff);
             }
             Log.Info($"把ID为{aBuff.BuffData.BuffId}的buff加入检索表");
         }

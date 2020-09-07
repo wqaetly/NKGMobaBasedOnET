@@ -17,33 +17,13 @@ namespace ETModel
     {
         [BoxGroup("自定义项")]
         [LabelText("要监听的事件ID标识")]
-        [ValueDropdown("GetEventIds")]
-        public string EventId;
+        public VTD_EventId EventId;
 
         /// <summary>
         /// Buff事件
         /// </summary>
         [BoxGroup("自定义项")]
         [HideLabel]
-        public ListenBuffEventBase ListenBuffEventBase;
-
-#if UNITY_EDITOR
-        private IEnumerable<string> GetEventIds()
-        {
-            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(UnityEngine.PlayerPrefs.GetString("LastCanvasPath"));
-            if (subAssets != null)
-            {
-                foreach (var subAsset in subAssets)
-                {
-                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
-                    {
-                        return npBehaveCanvasDataManager.EventValues;
-                    }
-                }
-            }
-
-            return null;
-        }
-#endif
+        public ListenBuffEvent_Normal ListenBuffEventNormal;
     }
 }
