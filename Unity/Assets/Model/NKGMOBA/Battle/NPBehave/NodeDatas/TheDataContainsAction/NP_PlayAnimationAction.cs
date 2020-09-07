@@ -53,10 +53,10 @@ namespace ETModel
             };
             this.TheUnitBelongTo = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             //进行数据的装入
-            foreach (var VARIABLE in NodeDataForPlayAnims)
+            foreach (var playAnimInfo in NodeDataForPlayAnims)
             {
-                this.TheUnitBelongTo.GetComponent<AnimationComponent>().RuntimeAnimationClips[VARIABLE.StateTypes] =
-                        VARIABLE.AnimationClipName;
+                this.TheUnitBelongTo.GetComponent<AnimationComponent>().RuntimeAnimationClips[playAnimInfo.StateTypes] =
+                        playAnimInfo.AnimationClipName;
             }
 
             this.m_Func1 = this.PlayAnimation;

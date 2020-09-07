@@ -23,10 +23,10 @@ namespace ETModel
 
         public override Action GetActionToBeDone()
         {
-            foreach (var VARIABLE in NpClassForStoreActions)
+            foreach (var npClassForStoreAction in NpClassForStoreActions)
             {
-                VARIABLE.Unitid = this.Unitid;
-                VARIABLE.RuntimeTreeID = this.RuntimeTreeID;
+                npClassForStoreAction.Unitid = this.Unitid;
+                npClassForStoreAction.RuntimeTreeID = this.RuntimeTreeID;
             }
 
             this.m_Action = this.DoInit;
@@ -36,9 +36,9 @@ namespace ETModel
         public void DoInit()
         {
             //Log.Info("准备执行初始化的行为操作");
-            foreach (var VARIABLE in NpClassForStoreActions)
+            foreach (var classForStoreAction in NpClassForStoreActions)
             {
-                VARIABLE.GetActionToBeDone().Invoke();
+                classForStoreAction.GetActionToBeDone().Invoke();
             }
         }
     }

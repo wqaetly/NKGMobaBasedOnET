@@ -79,9 +79,9 @@ namespace ETModel
             if(IsDisposed)
                 return;
             base.Dispose();
-            foreach (var VARIABLE in RuntimeTrees)
+            foreach (var runtimeTree in RuntimeTrees)
             {
-                VARIABLE.Value.Dispose();
+                runtimeTree.Value.Dispose();
             }
             RuntimeTrees.Clear();
             hasAddedTrees.Clear();

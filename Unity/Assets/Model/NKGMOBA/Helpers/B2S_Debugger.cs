@@ -59,9 +59,9 @@ namespace ETModel
 
             this.mVexs.Clear();
 
-            foreach (var VARIABLE in vexs)
+            foreach (var vex in vexs)
             {
-                mVexs.Add(new Vector3(VARIABLE.x, 1.0f, VARIABLE.y));
+                mVexs.Add(new Vector3(vex.x, 1.0f, vex.y));
             }
 
             mVexs.Add(mVexs[0]);

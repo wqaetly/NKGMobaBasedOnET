@@ -324,19 +324,19 @@ namespace B2S_CollisionRelation
                     groupInfo.Add(b2stemp.BelongGroup);
             }
 
-            foreach (var VARIABLE in groupInfo)
+            foreach (var group in groupInfo)
             {
                 foreach (KeyValuePair<long, B2S_CollisionInstance> VARIABLE2 in this.m_PrefabDic.B2S_CollisionsRelationDic)
                 {
-                    if (VARIABLE2.Value.BelongGroup == VARIABLE)
+                    if (VARIABLE2.Value.BelongGroup == group)
                     {
-                        if (group_IDInfo.ContainsKey(VARIABLE))
+                        if (group_IDInfo.ContainsKey(group))
                         {
-                            group_IDInfo[VARIABLE].Add(VARIABLE2.Value.nodeDataId);
+                            group_IDInfo[group].Add(VARIABLE2.Value.nodeDataId);
                         }
                         else
                         {
-                            group_IDInfo.Add(VARIABLE, new List<long>() { VARIABLE2.Value.nodeDataId });
+                            group_IDInfo.Add(group, new List<long>() { VARIABLE2.Value.nodeDataId });
                         }
                     }
                 }

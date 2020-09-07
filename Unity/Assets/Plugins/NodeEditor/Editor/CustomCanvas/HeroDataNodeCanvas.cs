@@ -37,9 +37,9 @@ namespace Plugins.NodeEditor.Editor.Canvas
         public void AddAllNodeData()
         {
             m_TestDic.MHeroDataSupportorDic.Clear();
-            foreach (var VARIABLE in nodes)
+            foreach (var node in nodes)
             {
-                m_TestDic.MHeroDataSupportorDic.Add(VARIABLE.HeroData_GetNodeData().HeroID, VARIABLE.HeroData_GetNodeData());
+                m_TestDic.MHeroDataSupportorDic.Add(node.HeroData_GetNodeData().HeroID, node.HeroData_GetNodeData());
             }
         }
 

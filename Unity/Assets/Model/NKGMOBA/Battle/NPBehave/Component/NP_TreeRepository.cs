@@ -55,9 +55,9 @@ namespace ETModel
             DirectoryInfo directory = new DirectoryInfo(NPDataPath);
             FileInfo[] fileInfos = directory.GetFiles();
 
-            foreach (var VARIABLE in fileInfos)
+            foreach (var fileInfo in fileInfos)
             {
-                byte[] mfile = File.ReadAllBytes(VARIABLE.FullName);
+                byte[] mfile = File.ReadAllBytes(fileInfo.FullName);
 
                 if (mfile.Length == 0) Log.Info("没有读取到文件");
 
@@ -65,7 +65,7 @@ namespace ETModel
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
 
-                    Log.Info($"反序列化行为树:{VARIABLE.FullName}完成");
+                    Log.Info($"反序列化行为树:{fileInfo.FullName}完成");
 
                     NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }
@@ -80,9 +80,9 @@ namespace ETModel
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
             resourcesComponent.LoadBundle("skillconfigs.unity3d");
             GameObject skillConfigs = (GameObject) resourcesComponent.GetAsset("skillconfigs.unity3d", "SkillConfigs");
-            foreach (var VARIABLE in skillConfigs.GetComponent<ReferenceCollector>().data)
+            foreach (var referenceCollectorData in skillConfigs.GetComponent<ReferenceCollector>().data)
             {
-                TextAsset textAsset = skillConfigs.Get<TextAsset>(VARIABLE.key);
+                TextAsset textAsset = skillConfigs.Get<TextAsset>(referenceCollectorData.key);
 
                 if (textAsset.bytes.Length == 0) Log.Info("没有读取到文件");
 
@@ -90,7 +90,7 @@ namespace ETModel
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(textAsset.bytes);
 
-                    Log.Info($"反序列化行为树:{VARIABLE.key}完成");
+                    Log.Info($"反序列化行为树:{referenceCollectorData.key}完成");
 
                     NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }

@@ -43,9 +43,9 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <returns></returns>
         private bool HasState(string stateName)
         {
-            foreach (var VARIABLE in this.m_FsmStateBases)
+            foreach (var fsmStateBase in this.m_FsmStateBases)
             {
-                if (VARIABLE.StateName == stateName)
+                if (fsmStateBase.StateName == stateName)
                 {
                     return true;
                 }
