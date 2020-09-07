@@ -15,15 +15,15 @@ namespace ETModel
     [Title("改变Unit属性",TitleAlignment = TitleAlignments.Centered)]
     public class NP_ChangeUnitPropertyAction: NP_ClassForStoreAction
     {
-        public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
+        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
 
         [LabelText("要更改的Unit属性为")]
         public BuffWorkTypes BuffWorkTypes;
 
         public override Action GetActionToBeDone()
         {
-            this.m_Action = this.ChangeUnitProperty;
-            return this.m_Action;
+            this.Action = this.ChangeUnitProperty;
+            return this.Action;
         }
 
         public void ChangeUnitProperty()
@@ -35,7 +35,7 @@ namespace ETModel
                     float tobeReMagicValue = (float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                             .GetComponent<NP_RuntimeTreeManager>()
                             .GetTreeByRuntimeID(this.RuntimeTreeID)
-                            .GetBlackboard().Get<float>(m_NPBalckBoardRelationData.BBKey);
+                            .GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);
                     heroDataComponent.CurrentMagicValue -= tobeReMagicValue;
                     try
                     {
@@ -54,7 +54,7 @@ namespace ETModel
                     heroDataComponent.CurrentLifeValue -= Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                             .GetComponent<NP_RuntimeTreeManager>()
                             .GetTreeByRuntimeID(this.RuntimeTreeID)
-                            .GetBlackboard().Get<float>(m_NPBalckBoardRelationData.BBKey);
+                            .GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);
                     break;
             }
         }

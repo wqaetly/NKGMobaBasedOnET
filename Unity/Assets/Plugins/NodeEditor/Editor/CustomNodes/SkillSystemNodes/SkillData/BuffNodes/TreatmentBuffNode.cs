@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "治疗Buff",
-                    SkillBuffBases = new TreatmentBuffData() { BelongBuffSystemType = BuffSystemType.TreatmentBuffSystem }
+                    BuffData = new TreatmentBuffData() { BelongBuffSystemType = BuffSystemType.TreatmentBuffSystem }
                 };
 
 

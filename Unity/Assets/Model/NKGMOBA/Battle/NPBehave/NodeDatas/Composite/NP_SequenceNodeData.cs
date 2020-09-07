@@ -13,17 +13,17 @@ namespace ETModel
     public class NP_SequenceNodeData: NP_NodeDataBase
     {
         [HideInEditorMode]
-        public Sequence mSequenceNode;
+        private Sequence m_SequenceNode;
 
         public override Node NP_GetNode()
         {
-            return this.mSequenceNode;
+            return this.m_SequenceNode;
         }
 
         public override Composite CreateComposite(Node[] nodes)
         {
-            mSequenceNode = new Sequence(nodes);
-            return mSequenceNode;
+            this.m_SequenceNode = new Sequence(nodes);
+            return this.m_SequenceNode;
         }
     }
 }

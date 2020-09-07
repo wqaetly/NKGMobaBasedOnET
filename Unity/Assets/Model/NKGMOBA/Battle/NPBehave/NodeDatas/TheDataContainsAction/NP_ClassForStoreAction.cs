@@ -27,13 +27,13 @@ namespace ETModel
         public long RuntimeTreeID;
 
         [HideInEditorMode]
-        public Action m_Action;
+        public Action Action;
 
         [HideInEditorMode]
-        public Func<bool> m_Func1;
+        public Func<bool> Func1;
 
         [HideInEditorMode]
-        public Func<bool, NPBehave.Action.Result> m_Func2;
+        public Func<bool, NPBehave.Action.Result> Func2;
 
         /// <summary>
         /// 获取将要执行的委托函数，也可以在这里面做一些初始化操作
@@ -57,21 +57,21 @@ namespace ETModel
         public NPBehave.Action _CreateNPBehaveAction()
         {
             GetActionToBeDone();
-            if (m_Action != null)
+            if (this.Action != null)
             {
-                return new NPBehave.Action(this.m_Action);
+                return new NPBehave.Action(this.Action);
             }
 
             GetFunc1ToBeDone();
-            if (m_Func1 != null)
+            if (this.Func1 != null)
             {
-                return new NPBehave.Action(m_Func1);
+                return new NPBehave.Action(this.Func1);
             }
 
             GetFunc2ToBeDone();
-            if (m_Func2 != null)
+            if (this.Func2 != null)
             {
-                return new NPBehave.Action(m_Func2);
+                return new NPBehave.Action(this.Func2);
             }
 
             Log.Info("_CreateNPBehaveAction失败，因为没有找到可以绑定的委托");

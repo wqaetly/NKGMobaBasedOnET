@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "刷新指定Buff时间Buff",
-                    SkillBuffBases = new RefreshTargetBuffTimeBuffData() { BelongBuffSystemType = BuffSystemType.RefreshTargetBuffTimeBuffSystem }
+                    BuffData = new RefreshTargetBuffTimeBuffData() { BelongBuffSystemType = BuffSystemType.RefreshTargetBuffTimeBuffSystem }
                 };
 
 

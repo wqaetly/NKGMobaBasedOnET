@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "修改属性Buff",
-                    SkillBuffBases = new ChangePropertyBuffData() { BelongBuffSystemType = BuffSystemType.ChangePropertyBuffSystem }
+                    BuffData = new ChangePropertyBuffData() { BelongBuffSystemType = BuffSystemType.ChangePropertyBuffSystem }
                 };
 
 

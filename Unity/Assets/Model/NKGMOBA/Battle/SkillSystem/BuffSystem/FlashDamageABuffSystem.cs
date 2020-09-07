@@ -32,7 +32,7 @@ namespace ETModel
         {
             float tempFinalData = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
 
-            tempFinalData *= (this.BuffData as FlashDamageBuffData).damageFix;
+            tempFinalData *= (this.BuffData as FlashDamageBuffData).DamageFix;
 
             Log.Info($"瞬时预计造成{tempFinalData}伤害");
 
@@ -46,9 +46,9 @@ namespace ETModel
 
             //抛出Buff奏效事件
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
-            if (this.BuffData.EventIDs != null)
+            if (this.BuffData.EventIds != null)
             {
-                foreach (var eventId in this.BuffData.EventIDs)
+                foreach (var eventId in this.BuffData.EventIds)
                 {
                     Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");

@@ -11,33 +11,33 @@ namespace ETModel
     /// </summary>
     public static class BuffDataCalculateHelper
     {
-        public static float CalculateCurrentData<A, B>(A BuffSystemBase, B BuffDataBase) where A : ABuffSystemBase where B : BuffDataBase
+        public static float CalculateCurrentData<A, B>(A buffSystem, B buffData) where A : ABuffSystemBase where B : BuffDataBase
         {
             //取得归属Unit的Hero数据
-            HeroDataComponent theUnitFromHeroData = BuffSystemBase.TheUnitFrom.GetComponent<HeroDataComponent>();
+            HeroDataComponent theUnitFromHeroData = buffSystem.TheUnitFrom.GetComponent<HeroDataComponent>();
 
             float tempData = 0;
 
             //依据基础数值的加成方式来获取对应伤害数据
-            switch (BuffDataBase.BaseBuffBaseDataEffectTypes)
+            switch (buffData.BaseBuffBaseDataEffectTypes)
             {
                 case BuffBaseDataEffectTypes.FromHeroLevel:
-                    tempData = BuffDataBase.ValueToBeChanged[theUnitFromHeroData.CurrentLevel];
+                    tempData = buffData.ValueToBeChanged[theUnitFromHeroData.CurrentLevel];
                     break;
                 case BuffBaseDataEffectTypes.FromSkillLevel:
-                    tempData = BuffDataBase.ValueToBeChanged[theUnitFromHeroData.GetSkillLevel(BuffDataBase.BelongSkillId)];
+                    tempData = buffData.ValueToBeChanged[theUnitFromHeroData.GetSkillLevel(buffData.BelongSkillId)];
                     break;
                 case BuffBaseDataEffectTypes.FromHasLostLifeValue:
-                    tempData = BuffSystemBase.TheUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
-                            BuffSystemBase.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue;
+                    tempData = buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
+                            buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue;
                     break;
                 case BuffBaseDataEffectTypes.FromCurrentOverlay:
-                    tempData = BuffDataBase.ValueToBeChanged[BuffSystemBase.CurrentOverlay];
+                    tempData = buffData.ValueToBeChanged[buffSystem.CurrentOverlay];
                     break;
             }
 
             //依据加成方式对伤害进行加成
-            foreach (var additionValue in BuffDataBase.AdditionValue)
+            foreach (var additionValue in buffData.AdditionValue)
             {
                 switch (additionValue.Key)
                 {
@@ -50,10 +50,10 @@ namespace ETModel
                                 theUnitFromHeroData.CurrentSpellpower;
                         break;
                     case BuffAdditionTypes.SelfOverlay_Mul:
-                        tempData *= additionValue.Value * BuffSystemBase.CurrentOverlay;
+                        tempData *= additionValue.Value * buffSystem.CurrentOverlay;
                         break;
                     case BuffAdditionTypes.SelfOverlay_Plu:
-                        tempData += additionValue.Value * BuffSystemBase.CurrentOverlay;
+                        tempData += additionValue.Value * buffSystem.CurrentOverlay;
                         break;
                 }
             }

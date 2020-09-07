@@ -156,7 +156,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 //获取结点对应的NPData
                 NP_NodeDataBase mNodeData = node.NP_GetNodeData();
-                mNodeData.linkedID.Clear();
+                mNodeData.LinkedIds.Clear();
 
                 //出结点连接的Nodes
                 List<NP_NodeBase> theNodesConnectedToOutNode = new List<NP_NodeBase>();
@@ -176,7 +176,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                     //配置连接的Id，运行时实时构建行为树
                     foreach (var npNodeBase in theNodesConnectedToOutNode)
                     {
-                        mNodeData.linkedID.Add(npNodeBase.NP_GetNodeData().id);
+                        mNodeData.LinkedIds.Add(npNodeBase.NP_GetNodeData().id);
                     }
                 }
 

@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "瞬时伤害Buff",
-                    SkillBuffBases = new FlashDamageBuffData() { BelongBuffSystemType = BuffSystemType.FlashDamageBuffSystem }
+                    BuffData = new FlashDamageBuffData() { BelongBuffSystemType = BuffSystemType.FlashDamageBuffSystem }
                 };
 
 

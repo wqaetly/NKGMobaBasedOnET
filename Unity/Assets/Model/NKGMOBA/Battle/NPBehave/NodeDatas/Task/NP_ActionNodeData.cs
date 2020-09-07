@@ -13,7 +13,7 @@ namespace ETModel
     [HideLabel]
     public class NP_ActionNodeData : NP_NodeDataBase
     {
-        [HideInEditorMode] public Action m_ActionNode;
+        [HideInEditorMode] private Action m_ActionNode;
         
         public NP_ClassForStoreAction NpClassForStoreAction;
 
@@ -27,7 +27,7 @@ namespace ETModel
 
         public override Node NP_GetNode()
         {
-            return m_ActionNode;
+            return this.m_ActionNode;
         }
     }
 }

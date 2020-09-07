@@ -13,12 +13,12 @@ namespace ETModel
     public class NP_AddBuffAction: NP_ClassForStoreAction
     {
         [LabelText("要执行的Buff数据ID")]
-        public long BuffDataID;
+        public VTD_Id BuffDataID;
 
         public override Action GetActionToBeDone()
         {
-            this.m_Action = this.AddBuff;
-            return this.m_Action;
+            this.Action = this.AddBuff;
+            return this.Action;
         }
 
         public void AddBuff()
@@ -27,8 +27,8 @@ namespace ETModel
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((unit.GetComponent<NP_RuntimeTreeManager>()
                     .GetTreeByRuntimeID(this.RuntimeTreeID)
-                    .m_BelongNP_DataSupportor
-                    .SkillDataDic[this.BuffDataID] as NodeDataForSkillBuff).SkillBuffBases, unit, unit);
+                    .BelongNP_DataSupportor
+                    .SkillDataDic[this.BuffDataID.Value] as NodeDataForSkillBuff).BuffData, unit, unit);
             //Log.Info("Buff添加完成");
         }
     }

@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "监听Buff",
-                    SkillBuffBases = new ListenBuffCallBackBuffData() { BelongBuffSystemType = BuffSystemType.ListenBuffCallBackBuffSystem }
+                    BuffData = new ListenBuffCallBackBuffData() { BelongBuffSystemType = BuffSystemType.ListenBuffCallBackBuffSystem }
                 };
 
 

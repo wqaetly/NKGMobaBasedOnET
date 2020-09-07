@@ -18,12 +18,12 @@ namespace ETModel
         /// 创建一个行为树实例
         /// </summary>
         /// <param name="unit">行为树所归属unit</param>
-        /// <param name="NPDataId">行为树数据id</param>
+        /// <param name="nPDataId">行为树数据id</param>
         /// <returns></returns>
-        public static NP_RuntimeTree CreateNpRuntimeTree(Unit unit, long NPDataId)
+        public static NP_RuntimeTree CreateNpRuntimeTree(Unit unit, long nPDataId)
         {
             NP_DataSupportor npDataSupportor =
-                    Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(NPDataId);
+                    Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(nPDataId);
 
             long theRuntimeTreeID = IdGenerater.GenerateId();
 
@@ -49,7 +49,7 @@ namespace ETModel
                         try
                         {
                             nodeDateBase.Value.CreateDecoratorNode(unit.Id, theRuntimeTreeID,
-                                npDataSupportor.NP_DataSupportorDic[nodeDateBase.Value.linkedID[0]].NP_GetNode());
+                                npDataSupportor.NP_DataSupportorDic[nodeDateBase.Value.LinkedIds[0]].NP_GetNode());
                         }
                         catch (Exception e)
                         {
@@ -62,9 +62,9 @@ namespace ETModel
                         try
                         {
                             List<Node> temp = new List<Node>();
-                            foreach (var VARIABLE1 in nodeDateBase.Value.linkedID)
+                            foreach (var linkedId in nodeDateBase.Value.LinkedIds)
                             {
-                                temp.Add(npDataSupportor.NP_DataSupportorDic[VARIABLE1].NP_GetNode());
+                                temp.Add(npDataSupportor.NP_DataSupportorDic[linkedId].NP_GetNode());
                             }
 
                             nodeDateBase.Value.CreateComposite(temp.ToArray());

@@ -49,8 +49,8 @@ namespace ETModel
                 Partical.GameObject.transform.localPosition = Vector3.zero;
             }
 
-            this.m_Action = this.PlayPartical;
-            return this.m_Action;
+            this.Action = this.PlayPartical;
+            return this.Action;
         }
 
         private void PlayPartical()

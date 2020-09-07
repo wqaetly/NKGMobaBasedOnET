@@ -24,32 +24,32 @@ namespace ETModel
         /// <summary>
         /// 用于标识当前播放到哪一个动画的flag
         /// </summary>
-        private int flag = 0;
+        private int m_Flag = 0;
 
         /// <summary>
         /// 是否已经被调用过一次
         /// </summary>
-        private bool hasInvoked = false;
+        private bool m_HasInvoked = false;
         
         /// <summary>
         /// 避免GC，缓存委托
         /// </summary>
-        private Action FlagIncrease;
+        private Action m_FlagIncrease;
 
         [HideInEditorMode]
         public Unit TheUnitBelongTo;
 
         public override Func<bool> GetFunc1ToBeDone()
         {
-            this.FlagIncrease = () =>
+            this.m_FlagIncrease = () =>
             {
-                if (this.hasInvoked)
+                if (this.m_HasInvoked)
                 {
                     return;
                 }
-                this.flag++;
-                Log.Info($"第{this.flag}个动画播放完成");
-                hasInvoked = true;
+                this.m_Flag++;
+                Log.Info($"第{this.m_Flag}个动画播放完成");
+                this.m_HasInvoked = true;
             };
             this.TheUnitBelongTo = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             //进行数据的装入
@@ -59,27 +59,27 @@ namespace ETModel
                         playAnimInfo.AnimationClipName;
             }
 
-            this.m_Func1 = this.PlayAnimation;
-            return this.m_Func1;
+            this.Func1 = this.PlayAnimation;
+            return this.Func1;
         }
 
         private bool PlayAnimation()
         {
-            hasInvoked = false;
+            this.m_HasInvoked = false;
 
-            if (this.flag >= NodeDataForPlayAnims.Count)
+            if (this.m_Flag >= NodeDataForPlayAnims.Count)
             {
                 this.TheUnitBelongTo.GetComponent<StackFsmComponent>().RefreshState();
                 Log.Info("栈式状态机已刷新，应该会衔接切换到正确的动画");
-                this.flag = 0;
+                this.m_Flag = 0;
                 return true;
             }
 
             //在播放完成后，每帧都会调用OnEnd委托，由于行为树中的FixedUpdate与Unity的Update频率不一致，所以需要作特殊处理
             this.TheUnitBelongTo.GetComponent<AnimationComponent>()
-                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes)
+                            .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[this.m_Flag].StateTypes)
                             .OnEnd =
-                    this.FlagIncrease;
+                    this.m_FlagIncrease;
             //Log.Info("这次播放的是Q技能动画");
             return false;
         }

@@ -13,11 +13,11 @@ namespace ETModel
     public class NP_BlackboardQueryNodeData: NP_NodeDataBase
     {
         [HideInEditorMode]
-        public BlackboardQuery mBlackboardQueryNode;
+        private BlackboardQuery m_BlackboardQueryNode;
 
         public override Node NP_GetNode()
         {
-            return mBlackboardQueryNode;
+            return this.m_BlackboardQueryNode;
         }
 
         public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)

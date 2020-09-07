@@ -16,7 +16,7 @@ namespace ETModel
         
         [BoxGroup("自定义项")]
         [LabelText("预伤害修正")]
-        public float damageFix = 1.0f;
+        public float DamageFix = 1.0f;
 
         [BoxGroup("自定义项")]
         [LabelText("作用间隔")]

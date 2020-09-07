@@ -17,8 +17,8 @@ namespace ETModel
         
         public override Action GetActionToBeDone()
         {
-            this.m_Action = this.TestLog;
-            return this.m_Action;
+            this.Action = this.TestLog;
+            return this.Action;
         }
 
         public void TestLog()

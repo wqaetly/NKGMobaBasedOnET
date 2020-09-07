@@ -49,7 +49,7 @@ namespace ETModel
 
         [LabelText("要抛出的事件ID，如果有的话")]
         [BoxGroup("选填项")]
-        public List<VTD_EventId> EventIDs = new List<VTD_EventId>();
+        public List<VTD_EventId> EventIds = new List<VTD_EventId>();
 
         [LabelText("是否可以叠加(不能叠加就刷新，叠加满也刷新)")]
         [BoxGroup("选填项")]

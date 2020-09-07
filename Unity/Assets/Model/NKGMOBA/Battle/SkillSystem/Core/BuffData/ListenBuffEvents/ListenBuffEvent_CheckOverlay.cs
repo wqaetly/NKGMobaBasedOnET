@@ -14,12 +14,12 @@ namespace ETModel
     public class ListenBuffEvent_CheckOverlay: ListenBuffEvent_Normal
     {
         [LabelText("目标层数")]
-        public int targetOverlay;
+        public int TargetOverlay;
 
         public override void Run(ABuffSystemBase a)
         {
             //Log.Info($"层数判定_通过监听机制添加Buff");
-            if (a.CurrentOverlay == this.targetOverlay)
+            if (a.CurrentOverlay == this.TargetOverlay)
             {
                 foreach (var VARIABLE in this.BuffsWillBeAdded)
                 {

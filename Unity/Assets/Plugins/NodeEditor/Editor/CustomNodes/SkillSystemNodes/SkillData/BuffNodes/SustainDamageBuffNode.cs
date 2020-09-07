@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "持续伤害Buff",
-                    SkillBuffBases = new SustainDamageBuffData() { BelongBuffSystemType = BuffSystemType.SustainDamageBuffSystem }
+                    BuffData = new SustainDamageBuffData() { BelongBuffSystemType = BuffSystemType.SustainDamageBuffSystem }
                 };
 
 

@@ -29,8 +29,8 @@ namespace ETModel
                 npClassForStoreAction.RuntimeTreeID = this.RuntimeTreeID;
             }
 
-            this.m_Action = this.DoInit;
-            return this.m_Action;
+            this.Action = this.DoInit;
+            return this.Action;
         }
 
         public void DoInit()

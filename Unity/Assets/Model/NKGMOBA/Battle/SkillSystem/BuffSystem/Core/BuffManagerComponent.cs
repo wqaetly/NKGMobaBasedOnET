@@ -39,7 +39,7 @@ namespace ETModel
         /// </summary>
         private Dictionary<long, ABuffSystemBase> m_BuffsForFind_BuffFlagID = new Dictionary<long, ABuffSystemBase>();
 
-        private LinkedListNode<ABuffSystemBase> current, next;
+        private LinkedListNode<ABuffSystemBase> m_Current, m_Next;
 
         public void Update()
         {
@@ -51,11 +51,11 @@ namespace ETModel
 
             this.TempBuffsToBeAdded.Clear();
 
-            current = m_Buffs.First;
+            this.m_Current = m_Buffs.First;
             //轮询链表
-            while (current != null)
+            while (this.m_Current != null)
             {
-                ABuffSystemBase aBuff = current.Value;
+                ABuffSystemBase aBuff = this.m_Current.Value;
                 if (aBuff.BuffState == BuffState.Waiting)
                 {
                     aBuff.OnExecute();
@@ -63,18 +63,18 @@ namespace ETModel
                 else if (aBuff.BuffState == BuffState.Running)
                 {
                     aBuff.OnUpdate();
-                    current = current.Next;
+                    this.m_Current = this.m_Current.Next;
                 }
                 else
                 {
                     aBuff.OnFinished();
-                    next = current.Next;
-                    m_Buffs.Remove(current);
-                    m_BuffsForFind_BuffWorkType.Remove(current.Value.BuffData.BuffWorkType);
-                    m_BuffsForFind_BuffFlagID.Remove(current.Value.BuffData.BuffId.Value);
+                    this.m_Next = this.m_Current.Next;
+                    m_Buffs.Remove(this.m_Current);
+                    m_BuffsForFind_BuffWorkType.Remove(this.m_Current.Value.BuffData.BuffWorkType);
+                    m_BuffsForFind_BuffFlagID.Remove(this.m_Current.Value.BuffData.BuffId.Value);
                     Log.Info(
-                        $"移除一个Buff，ID为{current.Value.BuffData.BuffId},BuffManager是否还有?:{this.FindBuffById(current.Value.BuffData.BuffId.Value)}");
-                    current = next;
+                        $"移除一个Buff，ID为{this.m_Current.Value.BuffData.BuffId},BuffManager是否还有?:{this.FindBuffById(this.m_Current.Value.BuffData.BuffId.Value)}");
+                    this.m_Current = this.m_Next;
                 }
             }
         }

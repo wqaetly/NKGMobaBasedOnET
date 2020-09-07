@@ -15,7 +15,7 @@ namespace ETModel
         /// <summary>
         /// 已经添加过的行为树，第一个id为配置id，第二个id为运行时id
         /// </summary>
-        public Dictionary<long, long> hasAddedTrees = new Dictionary<long, long>();
+        private Dictionary<long, long> m_HasAddedTrees = new Dictionary<long, long>();
 
         /// <summary>
         /// 添加行为树
@@ -26,7 +26,7 @@ namespace ETModel
         public void AddTree(long runTimeID, long prefabID, NP_RuntimeTree npRuntimeTree)
         {
             RuntimeTrees.Add(runTimeID, npRuntimeTree);
-            this.hasAddedTrees.Add(prefabID, runTimeID);
+            this.m_HasAddedTrees.Add(prefabID, runTimeID);
         }
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace ETModel
         /// <returns></returns>
         public NP_RuntimeTree GetTreeByPrefabID(long prefabid)
         {
-            if (this.hasAddedTrees.ContainsKey(prefabid))
+            if (this.m_HasAddedTrees.ContainsKey(prefabid))
             {
-                return RuntimeTrees[hasAddedTrees[prefabid]];
+                return RuntimeTrees[this.m_HasAddedTrees[prefabid]];
             }
 
             Log.Error($"通过预制id请求行为树,请求的ID不存在，id是{prefabid}");
@@ -84,7 +84,7 @@ namespace ETModel
                 runtimeTree.Value.Dispose();
             }
             RuntimeTrees.Clear();
-            hasAddedTrees.Clear();
+            this.m_HasAddedTrees.Clear();
         }
     }
 }

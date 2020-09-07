@@ -13,17 +13,17 @@ namespace ETModel
     public class NP_SelectorNodeData:NP_NodeDataBase
     {
         [HideInEditorMode]
-        public Selector mSelectorNode;
+        private Selector m_SelectorNode;
 
         public override Composite CreateComposite(Node[] nodes)
         {
-            mSelectorNode = new Selector(nodes);
-            return mSelectorNode;
+            this.m_SelectorNode = new Selector(nodes);
+            return this.m_SelectorNode;
         }
 
         public override Node NP_GetNode()
         {
-            return this.mSelectorNode;
+            return this.m_SelectorNode;
         }
     }
 }

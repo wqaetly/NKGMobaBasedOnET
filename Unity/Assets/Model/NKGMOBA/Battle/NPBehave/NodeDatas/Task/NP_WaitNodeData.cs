@@ -14,19 +14,19 @@ namespace ETModel
     [HideLabel]
     public class NP_WaitNodeData : NP_NodeDataBase
     {
-        [HideInEditorMode] public Wait mWaitNode;
+        [HideInEditorMode] private Wait m_WaitNode;
         
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
         
         public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {
-            mWaitNode = new Wait(this.NPBalckBoardRelationData.BBKey);
-            return mWaitNode;
+            this.m_WaitNode = new Wait(this.NPBalckBoardRelationData.BBKey);
+            return this.m_WaitNode;
         }
 
         public override Node NP_GetNode()
         {
-            return this.mWaitNode;
+            return this.m_WaitNode;
         }
     }
 }

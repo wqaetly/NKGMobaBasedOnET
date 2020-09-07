@@ -38,8 +38,8 @@ namespace ETModel
 
         public override Func<bool, global::NPBehave.Action.Result> GetFunc2ToBeDone()
         {
-            this.m_Func2 = WaitTime;
-            return this.m_Func2;
+            this.Func2 = WaitTime;
+            return this.Func2;
         }
 
         public global::NPBehave.Action.Result WaitTime(bool hasDown)
@@ -52,7 +52,7 @@ namespace ETModel
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
                 this.SkillDesNodeData = (SkillDesNodeData) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
                         .GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
+                        .GetTreeByRuntimeID(this.RuntimeTreeID).BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
                 tempBlackboard.Set(NpBlackBoardRelationData.BBKey,
                     this.SkillDesNodeData.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");

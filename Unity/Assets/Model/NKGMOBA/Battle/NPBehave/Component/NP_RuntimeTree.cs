@@ -22,17 +22,17 @@ namespace ETModel
         /// <summary>
         /// NP行为树根结点
         /// </summary>
-        public Root m_NPRuntimeTreeRootNode;
+        public Root RootNode;
 
         /// <summary>
         /// 所归属的数据块
         /// </summary>
-        public NP_DataSupportor m_BelongNP_DataSupportor;
+        public NP_DataSupportor BelongNP_DataSupportor;
 
         public void Awake(Root mRoot,NP_DataSupportor m_BelongNP_DataSupportor)
         {
-            this.m_NPRuntimeTreeRootNode = mRoot;
-            this.m_BelongNP_DataSupportor = m_BelongNP_DataSupportor;
+            this.RootNode = mRoot;
+            this.BelongNP_DataSupportor = m_BelongNP_DataSupportor;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace ETModel
         /// <returns></returns>
         public Blackboard GetBlackboard()
         {
-            return m_NPRuntimeTreeRootNode.Blackboard;
+            return this.RootNode.Blackboard;
         }
 
         public override void Dispose()
@@ -49,9 +49,9 @@ namespace ETModel
             if(IsDisposed)
                 return;
             base.Dispose();
-            m_NPRuntimeTreeRootNode.CancelWithoutReturnResult();
-            m_NPRuntimeTreeRootNode = null;
-            m_BelongNP_DataSupportor = null;
+            this.RootNode.CancelWithoutReturnResult();
+            this.RootNode = null;
+            this.BelongNP_DataSupportor = null;
         }
     }
 }

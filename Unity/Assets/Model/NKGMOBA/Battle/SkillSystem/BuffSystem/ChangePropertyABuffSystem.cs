@@ -25,7 +25,7 @@ namespace ETModel
             switch (this.BuffData.BuffWorkType)
             {
                 case BuffWorkTypes.ChangeAttackValue:
-                    tempHeroDataComponent.CurrentAttackValue += tempChangePropertyBuffData.theValueWillBeAdded;
+                    tempHeroDataComponent.CurrentAttackValue += tempChangePropertyBuffData.TheValueWillBeAdded;
                     break;
             }
 
@@ -44,7 +44,7 @@ namespace ETModel
                     switch (this.BuffData.BuffWorkType)
                     {
                         case BuffWorkTypes.ChangeAttackValue:
-                            tempHeroDataComponent.CurrentAttackValue -= tempChangePropertyBuffData.theValueWillBeAdded;
+                            tempHeroDataComponent.CurrentAttackValue -= tempChangePropertyBuffData.TheValueWillBeAdded;
                             break;
                     }
 

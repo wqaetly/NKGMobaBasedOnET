@@ -14,17 +14,17 @@ namespace ETModel
     public class NP_WaitUntilStoppedData: NP_NodeDataBase
     {
         [HideInEditorMode]
-        public WaitUntilStopped MWaitUntilStopped;
+        private WaitUntilStopped m_WaitUntilStopped;
 
         public override Node NP_GetNode()
         {
-            return this.MWaitUntilStopped;
+            return this.m_WaitUntilStopped;
         }
 
         public override Task CreateTask(long UnitId, long RuntimeTreeID)
         {
-            MWaitUntilStopped = new WaitUntilStopped();
-            return MWaitUntilStopped;
+            this.m_WaitUntilStopped = new WaitUntilStopped();
+            return this.m_WaitUntilStopped;
         }
     }
 }

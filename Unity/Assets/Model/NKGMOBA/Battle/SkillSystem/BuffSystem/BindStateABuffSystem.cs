@@ -30,9 +30,9 @@ namespace ETModel
                 Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(buffData, this.TheUnitFrom, this.TheUnitBelongto);
             }
 
-            if (this.BuffData.EventIDs != null)
+            if (this.BuffData.EventIds != null)
             {
-                foreach (var eventId in this.BuffData.EventIDs)
+                foreach (var eventId in this.BuffData.EventIds)
                 {
                     Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
@@ -67,9 +67,9 @@ namespace ETModel
                 Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(buffData, this.TheUnitFrom, this.TheUnitBelongto);
             }
             
-            if (this.BuffData.EventIDs != null)
+            if (this.BuffData.EventIds != null)
             {
-                foreach (var eventId in this.BuffData.EventIDs)
+                foreach (var eventId in this.BuffData.EventIds)
                 {
                     Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");

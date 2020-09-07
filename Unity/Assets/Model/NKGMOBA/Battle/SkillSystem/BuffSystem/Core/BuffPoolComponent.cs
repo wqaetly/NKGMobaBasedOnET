@@ -14,7 +14,7 @@ namespace ETModel
     /// </summary>
     public class BuffPoolComponent: Component
     {
-        public Dictionary<Type, Queue<ABuffSystemBase>> BuffSystemBases = new Dictionary<Type, Queue<ABuffSystemBase>>();
+        public Dictionary<Type, Queue<ABuffSystemBase>> BuffSystems = new Dictionary<Type, Queue<ABuffSystemBase>>();
 
         /// <summary>
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
@@ -27,7 +27,7 @@ namespace ETModel
         public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : ABuffSystemBase
         {
             Queue<ABuffSystemBase> buffBase;
-            if (this.BuffSystemBases.TryGetValue(typeof (T), out buffBase))
+            if (this.BuffSystems.TryGetValue(typeof (T), out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
@@ -82,7 +82,7 @@ namespace ETModel
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
 
-            if (this.BuffSystemBases.TryGetValue(tempType, out buffBase))
+            if (this.BuffSystems.TryGetValue(tempType, out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
@@ -99,14 +99,14 @@ namespace ETModel
 
         public void RecycleBuff(ABuffSystemBase aBuffSystemBase)
         {
-            if (this.BuffSystemBases.TryGetValue(aBuffSystemBase.GetType(), out Queue<ABuffSystemBase> temp))
+            if (this.BuffSystems.TryGetValue(aBuffSystemBase.GetType(), out Queue<ABuffSystemBase> temp))
             {
                 temp.Enqueue(aBuffSystemBase);
             }
             else
             {
-                this.BuffSystemBases.Add(aBuffSystemBase.GetType(), new Queue<ABuffSystemBase>());
-                this.BuffSystemBases[aBuffSystemBase.GetType()].Enqueue(aBuffSystemBase);
+                this.BuffSystems.Add(aBuffSystemBase.GetType(), new Queue<ABuffSystemBase>());
+                this.BuffSystems[aBuffSystemBase.GetType()].Enqueue(aBuffSystemBase);
             }
         }
     }

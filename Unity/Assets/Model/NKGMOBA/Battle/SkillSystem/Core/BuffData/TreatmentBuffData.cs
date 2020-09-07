@@ -12,6 +12,6 @@ namespace ETModel
     {
         [BoxGroup("自定义项")]
         [LabelText("预治疗修正")]
-        public float treatmentFix = 1.0f;
+        public float TreatmentFix = 1.0f;
     }
 }

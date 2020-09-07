@@ -14,7 +14,7 @@ namespace ETModel
         /// <summary>
         /// 最终治疗量
         /// </summary>
-        public float FinalTreatValue;
+        private float m_FinalTreatValue;
 
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
@@ -28,13 +28,13 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            this.FinalTreatValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+            this.m_FinalTreatValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
 
             //TODO:进行相关治疗影响操作，例如减疗，增疗等
 
-            this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue += this.FinalTreatValue;
-            Game.EventSystem.Run(EventIdType.ChangeMP, this.TheUnitBelongto.Id, this.FinalTreatValue);
-            Log.Info($"受到了治疗，治疗量为{FinalTreatValue}");
+            this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue += this.m_FinalTreatValue;
+            Game.EventSystem.Run(EventIdType.ChangeMP, this.TheUnitBelongto.Id, this.m_FinalTreatValue);
+            Log.Info($"受到了治疗，治疗量为{this.m_FinalTreatValue}");
 
             this.BuffState = BuffState.Finished;
         }

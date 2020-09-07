@@ -13,7 +13,7 @@ namespace ETModel
     public class NP_ParallelNodeData: NP_NodeDataBase
     {
         [HideInEditorMode]
-        public Parallel mParallelNode;
+        private Parallel m_ParallelNode;
 
         [LabelText("成功政策")]
         public Parallel.Policy SuccessPolicy;
@@ -23,13 +23,13 @@ namespace ETModel
         
         public override Composite CreateComposite(Node[] nodes)
         {
-            this.mParallelNode = new Parallel(SuccessPolicy, FailurePolicy, nodes);
-            return mParallelNode;
+            this.m_ParallelNode = new Parallel(SuccessPolicy, FailurePolicy, nodes);
+            return this.m_ParallelNode;
         }
 
         public override Node NP_GetNode()
         {
-            return this.mParallelNode;
+            return this.m_ParallelNode;
         }
     }
 }

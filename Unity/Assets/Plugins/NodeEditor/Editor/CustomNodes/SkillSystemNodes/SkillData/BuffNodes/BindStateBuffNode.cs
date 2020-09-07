@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "绑定一个状态Buff",
-                    SkillBuffBases = new BindStateBuffData() { BelongBuffSystemType = BuffSystemType.BindStateBuffSystem }
+                    BuffData = new BindStateBuffData() { BelongBuffSystemType = BuffSystemType.BindStateBuffSystem }
                 };
 
 

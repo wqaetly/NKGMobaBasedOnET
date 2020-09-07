@@ -15,6 +15,6 @@ namespace ETModel
         [LabelText("Buff描述")]
         public string BuffDes;
         
-        public BuffDataBase SkillBuffBases;
+        public BuffDataBase BuffData;
     }
 }

@@ -23,7 +23,7 @@ namespace SkillDemo
                 new NodeDataForSkillBuff()
                 {
                     BuffDes = "播放特效Buff",
-                    SkillBuffBases = new PlayEffectBuffData() { BelongBuffSystemType = BuffSystemType.PlayEffectBuffSystem }
+                    BuffData = new PlayEffectBuffData() { BelongBuffSystemType = BuffSystemType.PlayEffectBuffSystem }
                 };
 
 

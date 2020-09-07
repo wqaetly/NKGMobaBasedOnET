@@ -14,7 +14,7 @@ namespace ETModel
     /// </summary>
     public class BattleEventSystem: Component
     {
-        private readonly Dictionary<string, LinkedList<IEvent>> allEvents = new Dictionary<string, LinkedList<IEvent>>();
+        private readonly Dictionary<string, LinkedList<IEvent>> m_AllEvents = new Dictionary<string, LinkedList<IEvent>>();
 
         /// <summary>
         /// 缓存的结点字典
@@ -28,12 +28,12 @@ namespace ETModel
 
         public void RegisterEvent(string eventId, IEvent e)
         {
-            if (!this.allEvents.ContainsKey(eventId))
+            if (!this.m_AllEvents.ContainsKey(eventId))
             {
-                this.allEvents.Add(eventId, new LinkedList<IEvent>());
+                this.m_AllEvents.Add(eventId, new LinkedList<IEvent>());
             }
 
-            this.allEvents[eventId].AddLast(e);
+            this.m_AllEvents[eventId].AddLast(e);
         }
 
         public void UnRegisterEvent(string eventId, IEvent e)
@@ -63,16 +63,16 @@ namespace ETModel
                 }
             }
 
-            if (this.allEvents.ContainsKey(eventId))
+            if (this.m_AllEvents.ContainsKey(eventId))
             {
-                this.allEvents[eventId].Remove(e);
+                this.m_AllEvents[eventId].Remove(e);
             }
         }
 
         public void Run(string type)
         {
             LinkedList<IEvent> iEvents;
-            if (!this.allEvents.TryGetValue(type, out iEvents))
+            if (!this.m_AllEvents.TryGetValue(type, out iEvents))
             {
                 return;
             }
@@ -100,7 +100,7 @@ namespace ETModel
         public void Run<A>(string type, A a)
         {
             LinkedList<IEvent> iEvents;
-            if (!this.allEvents.TryGetValue(type, out iEvents))
+            if (!this.m_AllEvents.TryGetValue(type, out iEvents))
             {
                 return;
             }
@@ -128,7 +128,7 @@ namespace ETModel
         public void Run<A, B>(string type, A a, B b)
         {
             LinkedList<IEvent> iEvents;
-            if (!this.allEvents.TryGetValue(type, out iEvents))
+            if (!this.m_AllEvents.TryGetValue(type, out iEvents))
             {
                 return;
             }
@@ -156,7 +156,7 @@ namespace ETModel
         public void Run<A, B, C>(string type, A a, B b, C c)
         {
             LinkedList<IEvent> iEvents;
-            if (!this.allEvents.TryGetValue(type, out iEvents))
+            if (!this.m_AllEvents.TryGetValue(type, out iEvents))
             {
                 return;
             }

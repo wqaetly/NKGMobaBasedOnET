@@ -34,7 +34,7 @@ namespace ETModel
         /// <summary>
         /// 运行时的行为树仓库，注意，一定不能对这些数据做修改
         /// </summary>
-        public Dictionary<long, NP_DataSupportor> NpRuntimeTreesDatas = new Dictionary<long, NP_DataSupportor>();
+        private Dictionary<long, NP_DataSupportor> m_NpRuntimeTreesDatas = new Dictionary<long, NP_DataSupportor>();
 
         public void Awake()
         {
@@ -92,7 +92,7 @@ namespace ETModel
 
                     Log.Info($"反序列化行为树:{referenceCollectorData.key}完成");
 
-                    NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
+                    this.m_NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
                 }
                 catch (Exception e)
                 {
@@ -111,9 +111,9 @@ namespace ETModel
         /// <returns></returns>
         public NP_DataSupportor GetNP_TreeData_DeepCopy(long id)
         {
-            if (this.NpRuntimeTreesDatas.ContainsKey(id))
+            if (this.m_NpRuntimeTreesDatas.ContainsKey(id))
             {
-                return NpRuntimeTreesDatas[id].DeepCopy();
+                return this.m_NpRuntimeTreesDatas[id].DeepCopy();
             }
 
             Log.Error($"请求的行为树id不存在，id为{id}");

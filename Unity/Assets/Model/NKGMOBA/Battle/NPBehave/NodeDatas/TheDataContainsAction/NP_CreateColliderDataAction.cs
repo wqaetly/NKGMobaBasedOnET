@@ -13,20 +13,20 @@ namespace ETModel
     public class NP_CreateColliderAction: NP_ClassForStoreAction
     {
         [LabelText("要生成的碰撞数据载体ID")]
-        public long supportDataID;
+        public long SupportDataID;
 
         [LabelText("要生成的碰撞数据ID")]
-        public long colliderDataID;
+        public long ColliderDataID;
 
         public override Action GetActionToBeDone()
         {
-            this.m_Action = this.CreateColliderData;
-            return this.m_Action;
+            this.Action = this.CreateColliderData;
+            return this.Action;
         }
 
         public void CreateColliderData()
         {
-            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.supportDataID, this.colliderDataID);
+            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.SupportDataID, this.ColliderDataID);
         }
     }
 }

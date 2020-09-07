@@ -16,12 +16,12 @@ namespace ETModel
         /// <summary>
         /// 本次伤害值
         /// </summary>
-        private float currentDamageValue;
+        private float m_CurrentDamageValue;
 
         /// <summary>
         /// 自身下一个时间点
         /// </summary>
-        private long selfNextimer;
+        private long m_SelfNextimer;
 
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
@@ -39,17 +39,17 @@ namespace ETModel
             try
             {
                 //Log.Info("进入持续伤害的Execute");
-                currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+                this.m_CurrentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
                 //强制类型转换为伤害Buff数据
                 SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
 
                 //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
-                this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
-                Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.currentDamageValue);
+                this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.m_CurrentDamageValue;
+                Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.m_CurrentDamageValue);
                 //Log.Info($"来自持续伤害ExeCute的数据:{this.currentDamageValue}");
                 //设置下一个时间点
-                this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
+                this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
                 //Log.Info($"作用间隔为{selfNextimer - TimeHelper.Now()},持续时间为{temp.SustainTime},持续到{this.selfNextimer}");
                 this.BuffState = BuffState.Running;
             }
@@ -71,21 +71,21 @@ namespace ETModel
                     this.BuffState = BuffState.Finished;
                     //Log.Info("持续伤害结束了");
                 }
-                else if (TimeHelper.Now() > this.selfNextimer)
+                else if (TimeHelper.Now() > this.m_SelfNextimer)
                 {
                     try
                     {
-                        currentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+                        this.m_CurrentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
                         //强制类型转换为伤害Buff数据
                         SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
 
                         //TODO 对受方的伤害结算，此时finalDamageValue为最终值
 
-                        this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.currentDamageValue;
-                        Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.currentDamageValue);
+                        this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.m_CurrentDamageValue;
+                        Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.m_CurrentDamageValue);
                         //Log.Info($"来自持续伤害Update的数据:{this.currentDamageValue},结束时间为{MaxLimitTime},当前层数为{this.CurrentOverlay}");
                         //设置下一个时间点
-                        this.selfNextimer = TimeHelper.Now() + temp.WorkInternal;
+                        this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
                     }
                     catch (Exception e)
                     {

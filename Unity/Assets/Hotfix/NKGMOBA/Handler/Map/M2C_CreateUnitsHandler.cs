@@ -31,7 +31,7 @@ namespace ETHotfix
                 //Log.Info("开始创建行为树");
                 NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client);
                 //Log.Info("行为树创建完成");
-                npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
+                npRuntimeTree.RootNode.Start();
 
                 //添加英雄数据
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
