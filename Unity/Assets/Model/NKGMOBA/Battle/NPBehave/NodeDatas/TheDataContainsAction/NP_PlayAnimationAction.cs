@@ -19,7 +19,7 @@ namespace ETModel
     public class NP_PlayAnimationAction: NP_ClassForStoreAction
     {
         [LabelText("要播放的动画数据")]
-        public List<NodeDataForPlayAnim> NodeDataForPlayAnims;
+        public List<PlayAnimInfo> NodeDataForPlayAnims;
 
         /// <summary>
         /// 用于标识当前播放到哪一个动画的flag
@@ -37,7 +37,7 @@ namespace ETModel
         private Action FlagIncrease;
 
         [HideInEditorMode]
-        public Unit belongtoUnit;
+        public Unit TheUnitBelongTo;
 
         public override Func<bool> GetFunc1ToBeDone()
         {
@@ -51,11 +51,11 @@ namespace ETModel
                 Log.Info($"第{this.flag}个动画播放完成");
                 hasInvoked = true;
             };
-            this.belongtoUnit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
+            this.TheUnitBelongTo = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             //进行数据的装入
             foreach (var VARIABLE in NodeDataForPlayAnims)
             {
-                this.belongtoUnit.GetComponent<AnimationComponent>().RuntimeAnimationClips[VARIABLE.StateTypes] =
+                this.TheUnitBelongTo.GetComponent<AnimationComponent>().RuntimeAnimationClips[VARIABLE.StateTypes] =
                         VARIABLE.AnimationClipName;
             }
 
@@ -69,14 +69,14 @@ namespace ETModel
 
             if (this.flag >= NodeDataForPlayAnims.Count)
             {
-                this.belongtoUnit.GetComponent<StackFsmComponent>().RefreshState();
+                this.TheUnitBelongTo.GetComponent<StackFsmComponent>().RefreshState();
                 Log.Info("栈式状态机已刷新，应该会衔接切换到正确的动画");
                 this.flag = 0;
                 return true;
             }
 
             //在播放完成后，每帧都会调用OnEnd委托，由于行为树中的FixedUpdate与Unity的Update频率不一致，所以需要作特殊处理
-            this.belongtoUnit.GetComponent<AnimationComponent>()
+            this.TheUnitBelongTo.GetComponent<AnimationComponent>()
                             .PlayAnimAndAllowRegisterNext(NodeDataForPlayAnims[flag].StateTypes)
                             .OnEnd =
                     this.FlagIncrease;

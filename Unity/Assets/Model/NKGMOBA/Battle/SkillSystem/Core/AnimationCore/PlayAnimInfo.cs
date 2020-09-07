@@ -10,13 +10,14 @@ using Sirenix.OdinInspector;
 
 namespace DefaultNamespace
 {
-    public class NodeDataForPlayAnim: SkillBaseNodeData
+    public class PlayAnimInfo
     {
         /// <summary>
         /// 要设置的运行时动画机的类型
         /// </summary>
         [LabelText("要设置的运行时动画机的类型")]
         public StateTypes StateTypes;
+
         /// <summary>
         /// 要播放的动画名称
         /// </summary>

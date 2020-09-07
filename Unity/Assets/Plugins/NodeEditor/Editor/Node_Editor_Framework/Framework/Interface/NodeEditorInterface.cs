@@ -70,7 +70,7 @@ namespace NodeEditorFramework.Standard
             GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
             if (NodeEditor.curNodeCanvas is NPBehaveCanvas)
             {
-                if (GUILayout.Button("Blackboard", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
+                if (GUILayout.Button("DataBase", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
                 {
                     NPBehaveCanvas npBehaveCanvas = this.canvasCache.nodeCanvas as NPBehaveCanvas;
                     UnityEditor.Selection.activeObject = npBehaveCanvas.GetCurrentCanvasDatas();

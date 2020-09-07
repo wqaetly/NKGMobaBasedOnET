@@ -62,7 +62,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 }
 
                 this.npBehaveCanvasDataManager = CreateInstance<NPBehaveCanvasDataManager>();
-                this.npBehaveCanvasDataManager.name = "黑板数据管理器";
+                this.npBehaveCanvasDataManager.name = "当前Canvas数据库";
                 NodeEditorSaveManager.AddSubAsset(this.npBehaveCanvasDataManager, this);
             }
 

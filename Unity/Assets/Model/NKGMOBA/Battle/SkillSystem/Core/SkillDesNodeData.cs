@@ -14,7 +14,7 @@ namespace ETModel
 {
     [BsonIgnoreExtraElements]
     [GUIColor(0.4f, 0.8f, 1)]
-    public class NodeDataForStartSkill: SkillBaseNodeData
+    public class SkillDesNodeData: SkillBaseNodeData
     {
         [TabGroup("基础信息")]
         [LabelText("技能名称")]

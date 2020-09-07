@@ -17,15 +17,15 @@ namespace ETModel
     public class NP_WaitAChangeableTimeAction: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
-        public long dataId;
+        public VTD_Id DataId;
 
         [LabelText("将要检查的技能ID（QWER：0123）")]
-        public int theSkillIDBelongTo;
+        public int SkillIDBelongTo;
 
         [HideInEditorMode]
-        public NodeDataForStartSkill m_NodeDataForStartSkill;
+        public SkillDesNodeData SkillDesNodeData;
 
-        public NP_BlackBoardRelationData NpBlackBoardRelationData;
+        public NP_BlackBoardRelationData NpBlackBoardRelationData = new NP_BlackBoardRelationData();
 
         [HideInEditorMode]
         public Unit m_Unit;
@@ -50,11 +50,11 @@ namespace ETModel
                 tempBlackboard = this.m_Unit.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard();
 
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
-                this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
+                this.SkillDesNodeData = (SkillDesNodeData) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
                         .GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.SkillDataDic[this.dataId];
+                        .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
                 tempBlackboard.Set(NpBlackBoardRelationData.BBKey,
-                    m_NodeDataForStartSkill.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.theSkillIDBelongTo)]);
+                    this.SkillDesNodeData.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }

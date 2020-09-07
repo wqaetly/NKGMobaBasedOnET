@@ -17,7 +17,7 @@ namespace Plugins
     public class SkillDescriptionNode: SkillNodeBase
     {
         [LabelText("技能描述数据")]
-        public NodeDataForStartSkill MNodeDataForStartSkill;
+        public SkillDesNodeData mSkillDesNodeData;
 
         public override string GetID => Id;
 
@@ -25,7 +25,7 @@ namespace Plugins
 
         public override SkillBaseNodeData Skill_GetNodeData()
         {
-            return MNodeDataForStartSkill;
+            return this.mSkillDesNodeData;
         }
 
         public override void NodeGUI()

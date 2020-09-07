@@ -16,15 +16,15 @@ namespace ETModel
     public class NP_CheckSkillCanBeCastAction: NP_ClassForStoreAction
     {
         [LabelText("要引用的的数据结点ID")]
-        public long dataId;
+        public VTD_Id DataId;
 
         [HideInEditorMode]
-        public NodeDataForStartSkill m_NodeDataForStartSkill;
+        public SkillDesNodeData SkillDesNodeData;
 
         [LabelText("将要检查的技能ID（QWER：0123）")]
-        public int theSkillIDBelongTo;
+        public int SkillIDBelongTo;
 
-        public NP_BlackBoardRelationData m_NPBalckBoardRelationData;
+        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
 
         public override Func<bool> GetFunc1ToBeDone()
         {
@@ -34,9 +34,9 @@ namespace ETModel
 
         private bool CheckCostToSpanSkill()
         {
-            this.m_NodeDataForStartSkill = (NodeDataForStartSkill) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
+            this.SkillDesNodeData = (SkillDesNodeData) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
                     .GetComponent<NP_RuntimeTreeManager>()
-                    .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.SkillDataDic[this.dataId];
+                    .GetTreeByRuntimeID(this.RuntimeTreeID).m_BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
             //TODO 相关状态检测，例如沉默，眩晕等,下面是示例代码
             /*
             if (Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<BuffManagerComponent>()
@@ -47,16 +47,16 @@ namespace ETModel
             */
             //给要修改的黑板节点进行赋值
             HeroDataComponent heroDataComponent = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<HeroDataComponent>();
-            m_NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
+            this.NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
                         .GetComponent<NP_RuntimeTreeManager>()
                         .GetTreeByRuntimeID(this.RuntimeTreeID)
                         .GetBlackboard(),
-                m_NodeDataForStartSkill.SkillCost[heroDataComponent.GetSkillLevel(theSkillIDBelongTo)]);
-            switch (m_NodeDataForStartSkill.SkillCostTypes)
+                this.SkillDesNodeData.SkillCost[heroDataComponent.GetSkillLevel(this.SkillIDBelongTo)]);
+            switch (this.SkillDesNodeData.SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:
                     //依据技能具体消耗来进行属性改变操作
-                    if (heroDataComponent.CurrentMagicValue > m_NPBalckBoardRelationData.GetBlackBoardValue<float>())
+                    if (heroDataComponent.CurrentMagicValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>())
                         return true;
                     else
                     {
@@ -65,7 +65,7 @@ namespace ETModel
                 case SkillCostTypes.Other:
                     return true;
                 case SkillCostTypes.HPValue:
-                    if (heroDataComponent.CurrentLifeValue > m_NPBalckBoardRelationData.GetBlackBoardValue<float>())
+                    if (heroDataComponent.CurrentLifeValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>())
                         return true;
                     else
                     {
