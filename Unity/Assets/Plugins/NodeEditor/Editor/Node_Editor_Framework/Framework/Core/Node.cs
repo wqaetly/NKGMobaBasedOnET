@@ -249,7 +249,7 @@ namespace NodeEditorFramework
             node.autoSize = node.DefaultSize;
             node.position = pos;
 
-            NodeEditorSaveManager.AddSubAsset(node,hostCanvas);
+            NodeEditorSaveManager.AddSubAsset(node, hostCanvas);
             ConnectionPortManager.UpdateConnectionPorts(node);
             if (init)
                 node.OnCreate();

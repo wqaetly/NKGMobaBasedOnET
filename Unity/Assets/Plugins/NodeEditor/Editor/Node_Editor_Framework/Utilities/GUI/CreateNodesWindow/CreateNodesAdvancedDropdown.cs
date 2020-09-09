@@ -19,7 +19,7 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
         /// </summary>
         private static Dictionary<string, NodeItem> s_AllItems = new Dictionary<string, NodeItem>();
 
-        private static Vector2 m_Pos = Vector2.zero;
+        private static Vector2 m_CanvasPos = Vector2.zero;
 
         /// <summary>
         /// 从哪个端口引过来的连线
@@ -35,7 +35,7 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
             CreateNodesAdvancedDropdown window = new CreateNodesAdvancedDropdown(new AdvancedDropdownState());
             window.minimumSize = WindowSize;
             window.Show(position);
-            m_Pos = NodeEditor.ScreenToCanvasSpace(position.position);
+            m_CanvasPos = NodeEditor.ScreenToCanvasSpace(position.position);
             if (fromConnectionKnob != null)
             {
                 s_FromConnectionKnob = fromConnectionKnob;
@@ -53,6 +53,8 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
             var root = new NodeItem("添加内容");
             s_AllItems.Clear();
             BuildResources(root);
+            NodeItem groupItem = new NodeItem("创建Group", "创建Group");
+            root.AddChild(groupItem);
             return root;
         }
 
@@ -65,13 +67,20 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
                 return;
             }
 
-            Node node = Node.Create(nodeItem.NodeId, m_Pos, NodeEditor.curEditorState.canvas, NodeEditor.curEditorState.connectKnob);
-            if (s_FromConnectionKnob != null && node.connectionKnobs.Count > 0)
+            if (item.name == "创建Group")
             {
-                s_FromConnectionKnob.TryApplyConnection(node.connectionKnobs[0]);
-                s_FromConnectionKnob = null;
+                new NodeGroup("Group", m_CanvasPos);
             }
-
+            else
+            {
+                Node node = Node.Create(nodeItem.NodeId, m_CanvasPos, NodeEditor.curEditorState.canvas, NodeEditor.curEditorState.connectKnob);
+                if (s_FromConnectionKnob != null && node.connectionKnobs.Count > 0)
+                {
+                    s_FromConnectionKnob.TryApplyConnection(node.connectionKnobs[0]);
+                    s_FromConnectionKnob = null;
+                }
+            }
+            
             NodeEditor.RepaintClients();
         }
 
