@@ -14,7 +14,7 @@ using UnityEngine;
 namespace Plugins
 {
     [Node(false, "技能数据部分/技能描述结点", typeof (NPBehaveCanvas))]
-    public class SkillDescriptionNode: SkillNodeBase
+    public class BuffDescriptionNode: BuffNodeBase
     {
         [LabelText("技能描述数据")]
         public SkillDesNodeData mSkillDesNodeData;

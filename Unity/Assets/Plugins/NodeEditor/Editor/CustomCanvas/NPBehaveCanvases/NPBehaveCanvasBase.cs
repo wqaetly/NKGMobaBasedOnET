@@ -46,7 +46,8 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// <summary>
         /// 黑板数据管理器
         /// </summary>
-        private NPBehaveCanvasDataManager npBehaveCanvasDataManager;
+        [HideInInspector]
+        public NPBehaveCanvasDataManager npBehaveCanvasDataManager;
 
         public NPBehaveCanvasDataManager GetCurrentCanvasDatas()
         {
@@ -62,6 +63,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 }
 
                 this.npBehaveCanvasDataManager = CreateInstance<NPBehaveCanvasDataManager>();
+                //Log.Info("新建数据仓库");
                 this.npBehaveCanvasDataManager.name = "当前Canvas数据库";
                 NodeEditorSaveManager.AddSubAsset(this.npBehaveCanvasDataManager, this);
             }
