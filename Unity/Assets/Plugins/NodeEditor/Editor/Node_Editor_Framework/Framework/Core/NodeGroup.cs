@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using ETModel;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
 
@@ -43,7 +44,7 @@ namespace NodeEditorFramework
         }
 
         [SerializeField]
-        private Color _color = Color.cyan;
+        private Color _color;
 
         internal bool isClipped;
 
@@ -107,6 +108,7 @@ namespace NodeEditorFramework
             title = groupTitle;
             rect = new Rect(pos.x, pos.y, 400, 400);
             GenerateStyles();
+            _color = new Color(RandomHelper.RandFloat(),RandomHelper.RandFloat(),RandomHelper.RandFloat());
             NodeEditor.curNodeCanvas.groups.Add(this);
             UpdateGroupOrder();
         }

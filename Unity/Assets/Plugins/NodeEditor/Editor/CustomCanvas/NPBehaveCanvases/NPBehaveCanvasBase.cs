@@ -158,6 +158,10 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 //获取结点对应的NPData
                 NP_NodeDataBase mNodeData = node.NP_GetNodeData();
+                if (mNodeData.LinkedIds == null)
+                {
+                    mNodeData.LinkedIds = new List<long>();
+                }
                 mNodeData.LinkedIds.Clear();
 
                 //出结点连接的Nodes

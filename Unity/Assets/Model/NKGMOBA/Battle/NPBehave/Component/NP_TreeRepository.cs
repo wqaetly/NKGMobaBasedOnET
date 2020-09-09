@@ -6,11 +6,14 @@
 
 using System;
 using System.Collections.Generic;
+using ETModel.BBValues;
 using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Attributes;
 using UnityEngine;
 
 namespace ETModel
 {
+    [BsonKnownTypes()]
     [ObjectSystem]
     public class NP_RuntimeTreeRepositoryAwakeSystem: AwakeSystem<NP_TreeDataRepository>
     {
@@ -41,16 +44,19 @@ namespace ETModel
             Type[] types = typeof (NodeType).Assembly.GetTypes();
             foreach (Type type in types)
             {
-                if (!type.IsSubclassOf(typeof (NP_NodeDataBase)) && !type.IsSubclassOf(typeof (NP_ClassForStoreAction)) &&
-                    !type.IsSubclassOf(typeof (BuffNodeDataBase)) && !type.IsSubclassOf(typeof (BuffDataBase)) &&
-                    !type.IsSubclassOf(typeof (ListenBuffEvent_Normal)))
+                if (type.IsSubclassOf(typeof (NP_NodeDataBase)) || type.IsSubclassOf(typeof (NP_ClassForStoreAction)) ||
+                    type.IsSubclassOf(typeof (BuffNodeDataBase)) || type.IsSubclassOf(typeof (BuffDataBase)) ||
+                    type.IsSubclassOf(typeof (ListenBuffEvent_Normal)) || type.IsSubclassOf(typeof (NP_DataSupportorBase)))
                 {
-                    continue;
+                    BsonClassMap.LookupClassMap(type);
                 }
-
-                BsonClassMap.LookupClassMap(type);
             }
-
+            
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_Int));
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_Bool));
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_Float));
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_String));
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_Vector3));
 #if SERVER
             DirectoryInfo directory = new DirectoryInfo(NPDataPath);
             FileInfo[] fileInfos = directory.GetFiles();
@@ -96,7 +102,7 @@ namespace ETModel
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Log.Error(e);
                     throw;
                 }
             }

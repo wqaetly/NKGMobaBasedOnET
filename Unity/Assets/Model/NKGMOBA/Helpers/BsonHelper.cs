@@ -34,6 +34,8 @@ namespace ETModel
         {
             BsonSerializer.RegisterSerializer(typeof (Vector2), new StructBsonSerialize<Vector2>());
             BsonSerializer.RegisterSerializer(typeof (Vector3), new StructBsonSerialize<Vector3>());
+            BsonSerializer.RegisterSerializer(typeof (VTD_Id), new StructBsonSerialize<VTD_Id>());
+            BsonSerializer.RegisterSerializer(typeof (VTD_EventId), new StructBsonSerialize<VTD_EventId>());
         }
 
         /// <summary>
