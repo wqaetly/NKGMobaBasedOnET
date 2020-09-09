@@ -8,15 +8,14 @@ using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
-
 using UnityEditor;
 using UnityEngine;
 using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/检查技能能否释放", typeof(NPBehaveCanvas))]
-    public class NP_CheckSkillCanBeCastActionNode : NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/检查技能能否释放", typeof (NPBehaveCanvas))]
+    public class NP_CheckSkillCanBeCastActionNode: NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -27,14 +26,16 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-        
-        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP_CheckSkillCanBeCastAction() };
+
+        public NP_ActionNodeData NP_ActionNodeData =
+                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_CheckSkillCanBeCastAction() };
 
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData {NodeType = NodeType.Task};
+                this.NP_ActionNodeData = 
+                        new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_CheckSkillCanBeCastAction() };
             }
         }
 

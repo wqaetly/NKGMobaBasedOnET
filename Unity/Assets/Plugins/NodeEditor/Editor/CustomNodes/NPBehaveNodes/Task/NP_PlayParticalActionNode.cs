@@ -11,8 +11,8 @@ using UnityEditor;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/播放特效", typeof(NPBehaveCanvas))]
-    public class NP_PlayParticalActionNode : NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/播放特效", typeof (NPBehaveCanvas))]
+    public class NP_PlayParticalActionNode: NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -23,14 +23,16 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-        
-        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP_PlayParticalAction() };
+
+        public NP_ActionNodeData NP_ActionNodeData =
+                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_PlayParticalAction() };
 
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData {NodeType = NodeType.Task};
+                this.NP_ActionNodeData =
+                        new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_PlayParticalAction() };
             }
         }
 

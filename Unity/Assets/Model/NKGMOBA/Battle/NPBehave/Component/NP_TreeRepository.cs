@@ -13,7 +13,6 @@ using UnityEngine;
 
 namespace ETModel
 {
-    [BsonKnownTypes()]
     [ObjectSystem]
     public class NP_RuntimeTreeRepositoryAwakeSystem: AwakeSystem<NP_TreeDataRepository>
     {

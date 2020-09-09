@@ -14,8 +14,8 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/修改黑板值", typeof(NPBehaveCanvas))]
-    public class NP_ChangeBlackValueActionNode : NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/修改黑板值", typeof (NPBehaveCanvas))]
+    public class NP_ChangeBlackValueActionNode: NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -26,14 +26,16 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-        
-        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP_ChangeBlackValueAction() };
+
+        public NP_ActionNodeData NP_ActionNodeData =
+                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_ChangeBlackValueAction() };
 
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData {NodeType = NodeType.Task};
+                this.NP_ActionNodeData =
+                        new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_ChangeBlackValueAction() };
             }
         }
 

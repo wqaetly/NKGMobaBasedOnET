@@ -28,13 +28,14 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
         
-        public NP_ActionNodeData NP_ActionNodeData = new NP_ActionNodeData() { NpClassForStoreAction = new NP_CreateColliderAction() };
-
+        public NP_ActionNodeData NP_ActionNodeData =
+                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_CreateColliderAction() };
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
-                this.NP_ActionNodeData = new NP_ActionNodeData {NodeType = NodeType.Task};
+                this.NP_ActionNodeData = 
+                        new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_CreateColliderAction() };
             }
         }
 
