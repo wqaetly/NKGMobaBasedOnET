@@ -16,6 +16,8 @@ namespace NodeEditorFramework
         // static GUI settings, textures and styles
         public static int knobSize = 16;
 
+        private static ConnectionDrawMethod s_ConnectionDrawMethod = ConnectionDrawMethod.StraightLine;
+
         public static Color NE_LightColor = new Color(0.4f, 0.4f, 0.4f);
         public static Color NE_TextColor = new Color(0.8f, 0.8f, 0.8f);
 
@@ -174,11 +176,7 @@ namespace NodeEditorFramework
         /// </summary>
         public static void DrawConnection(Vector2 startPos, Vector2 startDir, Vector2 endPos, Vector2 endDir, Color col)
         {
-#if NODE_EDITOR_LINE_CONNECTION
-			DrawConnection (startPos, startDir, endPos, endDir, ConnectionDrawMethod.StraightLine, col);
-#else
-            DrawConnection(startPos, startDir, endPos, endDir, ConnectionDrawMethod.Bezier, col);
-#endif
+            DrawConnection(startPos, startDir, endPos, endDir, s_ConnectionDrawMethod, col);
         }
 
         /// <summary>
