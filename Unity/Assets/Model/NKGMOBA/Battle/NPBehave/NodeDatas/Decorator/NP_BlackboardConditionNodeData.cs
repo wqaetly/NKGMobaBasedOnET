@@ -16,9 +16,9 @@ namespace ETModel
     {
         [HideInEditorMode] private BlackboardCondition m_BlackboardConditionNode;
 
-        [LabelText("运算符号")] public Operator Ope;
+        [LabelText("运算符号")] public Operator Ope = Operator.IS_EQUAL;
 
-        [LabelText("终止条件")] public Stops Stop;
+        [LabelText("终止条件")] public Stops Stop = Stops.IMMEDIATE_RESTART;
         
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
         
