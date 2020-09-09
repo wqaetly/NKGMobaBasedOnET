@@ -250,6 +250,8 @@ namespace NodeEditorFramework
 
         #region Connection
 
+        private static bool CreateConnection = false;
+
         [EventHandlerAttribute(EventType.MouseDown)]
         private static void HandleConnectionDrawing(NodeEditorInputInfo inputInfo)
         {
@@ -262,6 +264,7 @@ namespace NodeEditorFramework
                 {
                     // Knob with multiple connections clicked -> Draw new connection from it
                     state.connectKnob = state.focusedConnectionKnob;
+                    CreateConnection = true;
                     inputInfo.inputEvent.Use();
                 }
                 else if (state.focusedConnectionKnob.maxConnectionCount == ConnectionCount.Single)
@@ -272,12 +275,14 @@ namespace NodeEditorFramework
                         // Loose and edit existing connection from it
                         state.connectKnob = state.focusedConnectionKnob.connection(0);
                         state.focusedConnectionKnob.RemoveConnection(state.connectKnob);
+                        CreateConnection = false;
                         inputInfo.inputEvent.Use();
                     }
                     else
                     {
                         // Not connected, draw a new connection from it
                         state.connectKnob = state.focusedConnectionKnob;
+                        CreateConnection = true;
                         inputInfo.inputEvent.Use();
                     }
                 }
@@ -296,8 +301,9 @@ namespace NodeEditorFramework
                     // A connection curve was dragged and released onto a connection knob
                     state.focusedConnectionKnob.TryApplyConnection(state.connectKnob);
                 }
-                else
+                else if (CreateConnection)
                 {
+                    CreateConnection = false;
                     CreateNodesAdvancedDropdown.ShowDropdown(new Rect(inputInfo.inputPos, Vector2.zero), state.connectKnob);
                 }
 
