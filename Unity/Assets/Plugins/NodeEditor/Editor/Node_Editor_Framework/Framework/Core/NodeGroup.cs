@@ -108,7 +108,7 @@ namespace NodeEditorFramework
             title = groupTitle;
             rect = new Rect(pos.x, pos.y, 400, 400);
             GenerateStyles();
-            _color = new Color(RandomHelper.RandFloat(),RandomHelper.RandFloat(),RandomHelper.RandFloat());
+            _color = RandomHelper.RandColor();
             NodeEditor.curNodeCanvas.groups.Add(this);
             UpdateGroupOrder();
         }

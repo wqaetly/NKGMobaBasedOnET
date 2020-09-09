@@ -59,7 +59,8 @@ namespace NodeEditorFramework
 
         private void OnEnable()
         {
-            color = new Color(RandomHelper.RandFloat(), RandomHelper.RandFloat(), RandomHelper.RandFloat());
+            if (this.color == default)
+                color = RandomHelper.RandColor();
         }
 
         protected ConnectionPortStyle ConnectionStyle
