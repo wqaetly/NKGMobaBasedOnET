@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class SkillBaseNodeData
+    public class BuffNodeDataBase
     {
         [LabelText("节点Id")]
         public VTD_Id NodeId;

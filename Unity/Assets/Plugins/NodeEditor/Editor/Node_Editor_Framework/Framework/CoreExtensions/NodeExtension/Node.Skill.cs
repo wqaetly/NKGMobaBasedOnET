@@ -15,7 +15,7 @@ namespace NodeEditorFramework
         /// 获取结点数据
         /// </summary>
         /// <returns></returns>
-        public virtual SkillBaseNodeData Skill_GetNodeData()
+        public virtual BuffNodeDataBase Skill_GetNodeData()
         {
             return null;
         }

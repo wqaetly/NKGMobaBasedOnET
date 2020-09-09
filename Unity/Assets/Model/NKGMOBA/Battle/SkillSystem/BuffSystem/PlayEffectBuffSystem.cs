@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ETModel
 {
-    public class PlayEffectABuffSystem: ABuffSystemBase
+    public class PlayEffectBuffSystem: ABuffSystemBase
     {
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {

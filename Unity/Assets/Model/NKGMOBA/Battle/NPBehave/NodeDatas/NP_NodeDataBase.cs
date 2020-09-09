@@ -32,7 +32,7 @@ namespace ETModel
         public List<long> LinkedIds = new List<long>();
 
         [BoxGroup("结点信息描述")]
-        [TextArea(2,2)]
+        [TextArea(2, 2)]
         [HideLabel]
         public string NodeDes;
 
@@ -42,7 +42,6 @@ namespace ETModel
         /// <returns></returns>
         public abstract Node NP_GetNode();
 
-        
         /// <summary>
         /// 创建组合结点
         /// </summary>
@@ -56,10 +55,10 @@ namespace ETModel
         /// 创建装饰结点
         /// </summary>
         /// <param name="UnitId">行为树归属的UnitID</param>
-        /// <param name="RuntimeTreeID">运行时归属的行为树ID</param>
+        /// <param name="runtimeTree">运行时归属的行为树</param>
         /// <param name="node">所装饰的结点</param>
         /// <returns></returns>
-        public virtual Decorator CreateDecoratorNode(long UnitId,long RuntimeTreeID,Node node)
+        public virtual Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
         {
             return null;
         }
@@ -67,10 +66,10 @@ namespace ETModel
         /// <summary>
         /// 创建任务节点
         /// </summary>
-        /// <param name="UnitId">行为树归属的UnitID</param>
-        /// <param name="RuntimeTreeID">运行时归属的行为树ID</param>
+        /// <param name="unitId">行为树归属的UnitID</param>
+        /// <param name="runtimeTree">运行时归属的行为树</param>
         /// <returns></returns>
-        public virtual Task CreateTask(long UnitId,long RuntimeTreeID)
+        public virtual Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
         {
             return null;
         }

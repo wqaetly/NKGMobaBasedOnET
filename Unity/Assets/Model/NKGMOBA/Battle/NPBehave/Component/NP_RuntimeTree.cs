@@ -9,11 +9,11 @@ using NPBehave;
 namespace ETModel
 {
     [ObjectSystem]
-    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, Root, NP_DataSupportor>
+    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, NP_DataSupportor>
     {
-        public override void Awake(NP_RuntimeTree self, Root mRoot, NP_DataSupportor m_BelongNP_DataSupportor)
+        public override void Awake(NP_RuntimeTree self, NP_DataSupportor m_BelongNP_DataSupportor)
         {
-            self.Awake(mRoot, m_BelongNP_DataSupportor);
+            self.Awake(m_BelongNP_DataSupportor);
         }
     }
 
@@ -22,26 +22,50 @@ namespace ETModel
         /// <summary>
         /// NP行为树根结点
         /// </summary>
-        public Root RootNode;
+        private Root m_RootNode;
 
         /// <summary>
         /// 所归属的数据块
         /// </summary>
         public NP_DataSupportor BelongNP_DataSupportor;
 
-        public void Awake(Root mRoot,NP_DataSupportor m_BelongNP_DataSupportor)
+        public void Awake(NP_DataSupportor m_BelongNP_DataSupportor)
         {
-            this.RootNode = mRoot;
             this.BelongNP_DataSupportor = m_BelongNP_DataSupportor;
         }
 
         /// <summary>
-        /// 获取黑板结点
+        /// 设置根结点
+        /// </summary>
+        /// <param name="rootNode"></param>
+        public void SetRootNode(Root rootNode)
+        {
+            this.m_RootNode = rootNode;
+        }
+        
+        /// <summary>
+        /// 获取黑板
         /// </summary>
         /// <returns></returns>
         public Blackboard GetBlackboard()
         {
-            return this.RootNode.Blackboard;
+            return this.m_RootNode.Blackboard;
+        }
+
+        /// <summary>
+        /// 开始运行行为树
+        /// </summary>
+        public void Start()
+        {
+            this.m_RootNode.Start();
+        }
+
+        /// <summary>
+        /// 终止行为树
+        /// </summary>
+        public void Finish()
+        {
+            this.m_RootNode.CancelWithoutReturnResult();
         }
 
         public override void Dispose()
@@ -49,8 +73,9 @@ namespace ETModel
             if(IsDisposed)
                 return;
             base.Dispose();
-            this.RootNode.CancelWithoutReturnResult();
-            this.RootNode = null;
+            
+            this.Finish();
+            this.m_RootNode = null;
             this.BelongNP_DataSupportor = null;
         }
     }

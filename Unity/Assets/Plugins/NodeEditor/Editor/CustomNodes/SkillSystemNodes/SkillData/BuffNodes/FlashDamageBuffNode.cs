@@ -13,21 +13,21 @@ using Plugins.NodeEditor.Editor.Canvas;
 namespace SkillDemo
 {
     [Node(false, "技能数据部分/瞬时伤害Buff", typeof (NPBehaveCanvas))]
-    public class FlashDamageBuffNode: SkillNodeBase
+    public class FlashDamageBuffNode: BuffNodeBase
     {
         public override string GetID => Id;
 
         public const string Id = "瞬时伤害Buff";
 
-        public NodeDataForSkillBuff SkillBuffBases =
-                new NodeDataForSkillBuff()
+        public ForBuffNodeDataBuff SkillBuffBases =
+                new ForBuffNodeDataBuff()
                 {
                     BuffDes = "瞬时伤害Buff",
                     BuffData = new FlashDamageBuffData() { BelongBuffSystemType = BuffSystemType.FlashDamageBuffSystem }
                 };
 
 
-        public override SkillBaseNodeData Skill_GetNodeData()
+        public override BuffNodeDataBase Skill_GetNodeData()
         {
             return SkillBuffBases;
         }

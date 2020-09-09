@@ -6,7 +6,7 @@
 
 namespace ETModel
 {
-    public class RefreshTargetABuffTimeABuffSystem: ABuffSystemBase
+    public class RefreshTargetABuffTimeBuffSystem: ABuffSystemBase
     {
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {

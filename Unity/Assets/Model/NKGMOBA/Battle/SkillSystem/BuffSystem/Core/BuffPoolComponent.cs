@@ -56,28 +56,28 @@ namespace ETModel
             switch (buffDataBase.BelongBuffSystemType)
             {
                 case BuffSystemType.FlashDamageBuffSystem:
-                    tempType = typeof (FlashDamageABuffSystem);
+                    tempType = typeof (FlashDamageBuffSystem);
                     break;
                 case BuffSystemType.SustainDamageBuffSystem:
-                    tempType = typeof (SustainDamageABuffSystem);
+                    tempType = typeof (SustainDamageBuffSystem);
                     break;
                 case BuffSystemType.ChangePropertyBuffSystem:
-                    tempType = typeof (ChangePropertyABuffSystem);
+                    tempType = typeof (ChangePropertyBuffSystem);
                     break;
                 case BuffSystemType.ListenBuffCallBackBuffSystem:
-                    tempType = typeof (ListenABuffCallBackABuffSystem);
+                    tempType = typeof (ListenABuffCallBackBuffSystem);
                     break;
                 case BuffSystemType.BindStateBuffSystem:
-                    tempType = typeof (BindStateABuffSystem);
+                    tempType = typeof (BindStateBuffSystem);
                     break;
                 case BuffSystemType.TreatmentBuffSystem:
-                    tempType = typeof (TreatmentABuffSystem);
+                    tempType = typeof (TreatmentBuffSystem);
                     break;
                 case BuffSystemType.PlayEffectBuffSystem:
-                    tempType = typeof (PlayEffectABuffSystem);
+                    tempType = typeof (PlayEffectBuffSystem);
                     break;
                 case BuffSystemType.RefreshTargetBuffTimeBuffSystem:
-                    tempType = typeof (RefreshTargetABuffTimeABuffSystem);
+                    tempType = typeof (RefreshTargetABuffTimeBuffSystem);
                     break;
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }

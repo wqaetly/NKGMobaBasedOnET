@@ -24,10 +24,7 @@ namespace ETModel
         public void ChangeBlackBoard()
         {
             //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.NP_BBValueType}  黑板值:Bool：{m_NPBalckBoardRelationData.BoolValue.GetValue()}\n");
-            this.NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
-                    .GetComponent<NP_RuntimeTreeManager>()
-                    .GetTreeByRuntimeID(this.RuntimeTreeID)
-                    .GetBlackboard());
+            this.NPBalckBoardRelationData.SetBlackBoardValue(this.BelongtoRuntimeTree.GetBlackboard());
         }
     }
 }

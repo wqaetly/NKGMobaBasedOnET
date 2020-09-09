@@ -21,7 +21,7 @@ namespace ETModel
             return this.m_WaitUntilStopped;
         }
 
-        public override Task CreateTask(long UnitId, long RuntimeTreeID)
+        public override Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
         {
             this.m_WaitUntilStopped = new WaitUntilStopped();
             return this.m_WaitUntilStopped;

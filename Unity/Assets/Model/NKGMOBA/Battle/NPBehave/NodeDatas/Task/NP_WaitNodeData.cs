@@ -18,7 +18,7 @@ namespace ETModel
         
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
         
-        public override Task CreateTask(long UnitId, long RuntimeTreeID)
+        public override Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
         {
             this.m_WaitNode = new Wait(this.NPBalckBoardRelationData.BBKey);
             return this.m_WaitNode;

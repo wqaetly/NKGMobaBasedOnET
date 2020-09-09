@@ -26,7 +26,7 @@ namespace ETModel
             foreach (var npClassForStoreAction in NpClassForStoreActions)
             {
                 npClassForStoreAction.Unitid = this.Unitid;
-                npClassForStoreAction.RuntimeTreeID = this.RuntimeTreeID;
+                npClassForStoreAction.BelongtoRuntimeTree = this.BelongtoRuntimeTree;
             }
 
             this.Action = this.DoInit;

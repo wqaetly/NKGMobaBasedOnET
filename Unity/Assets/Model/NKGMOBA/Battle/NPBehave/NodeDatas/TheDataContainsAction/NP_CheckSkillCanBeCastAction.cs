@@ -19,7 +19,7 @@ namespace ETModel
         public VTD_Id DataId;
 
         [HideInEditorMode]
-        public SkillDesNodeData SkillDesNodeData;
+        public BuffNodeDataDes BuffNodeDataDes;
 
         [LabelText("将要检查的技能ID（QWER：0123）")]
         public int SkillIDBelongTo;
@@ -34,9 +34,7 @@ namespace ETModel
 
         private bool CheckCostToSpanSkill()
         {
-            this.SkillDesNodeData = (SkillDesNodeData) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
-                    .GetComponent<NP_RuntimeTreeManager>()
-                    .GetTreeByRuntimeID(this.RuntimeTreeID).BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
+            this.BuffNodeDataDes = (BuffNodeDataDes) this.BelongtoRuntimeTree.BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
             //TODO 相关状态检测，例如沉默，眩晕等,下面是示例代码
             /*
             if (Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<BuffManagerComponent>()
@@ -47,12 +45,9 @@ namespace ETModel
             */
             //给要修改的黑板节点进行赋值
             HeroDataComponent heroDataComponent = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<HeroDataComponent>();
-            this.NPBalckBoardRelationData.SetBlackBoardValue(Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid)
-                        .GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID)
-                        .GetBlackboard(),
-                this.SkillDesNodeData.SkillCost[heroDataComponent.GetSkillLevel(this.SkillIDBelongTo)]);
-            switch (this.SkillDesNodeData.SkillCostTypes)
+            this.NPBalckBoardRelationData.SetBlackBoardValue(this.BelongtoRuntimeTree.GetBlackboard(),
+                this.BuffNodeDataDes.SkillCost[heroDataComponent.GetSkillLevel(this.SkillIDBelongTo)]);
+            switch (this.BuffNodeDataDes.SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:
                     //依据技能具体消耗来进行属性改变操作

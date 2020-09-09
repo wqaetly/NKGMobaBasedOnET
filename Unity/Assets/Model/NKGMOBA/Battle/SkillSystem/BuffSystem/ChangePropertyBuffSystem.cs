@@ -6,7 +6,7 @@
 
 namespace ETModel
 {
-    public class ChangePropertyABuffSystem: ABuffSystemBase
+    public class ChangePropertyBuffSystem: ABuffSystemBase
     {
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {

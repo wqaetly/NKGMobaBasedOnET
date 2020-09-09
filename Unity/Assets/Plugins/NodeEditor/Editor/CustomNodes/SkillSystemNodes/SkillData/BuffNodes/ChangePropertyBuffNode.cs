@@ -13,21 +13,21 @@ using Plugins.NodeEditor.Editor.Canvas;
 namespace SkillDemo
 {
     [Node(false, "技能数据部分/修改属性Buff", typeof (NPBehaveCanvas))]
-    public class ChangePropertyBuffNode: SkillNodeBase
+    public class ChangePropertyBuffNode: BuffNodeBase
     {
         public override string GetID => Id;
 
         public const string Id = "修改属性Buff";
 
-        public NodeDataForSkillBuff SkillBuffBases =
-                new NodeDataForSkillBuff()
+        public ForBuffNodeDataBuff SkillBuffBases =
+                new ForBuffNodeDataBuff()
                 {
                     BuffDes = "修改属性Buff",
                     BuffData = new ChangePropertyBuffData() { BelongBuffSystemType = BuffSystemType.ChangePropertyBuffSystem }
                 };
 
 
-        public override SkillBaseNodeData Skill_GetNodeData()
+        public override BuffNodeDataBase Skill_GetNodeData()
         {
             return SkillBuffBases;
         }

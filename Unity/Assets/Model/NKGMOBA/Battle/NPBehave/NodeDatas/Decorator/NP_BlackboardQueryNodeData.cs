@@ -19,10 +19,11 @@ namespace ETModel
         {
             return this.m_BlackboardQueryNode;
         }
-
-        public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
+        
+        public override Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
         {
-            return base.CreateDecoratorNode(UnitId, RuntimeTreeID, node);
+            return base.CreateDecoratorNode(UnitId, runtimeTree, node);
         }
+
     }
 }

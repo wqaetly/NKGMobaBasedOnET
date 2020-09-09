@@ -21,10 +21,10 @@ namespace ETModel
         public long Unitid;
 
         /// <summary>
-        /// 归属的运行时行为树id
+        /// 归属的运行时行为树实例
         /// </summary>
         [HideInEditorMode]
-        public long RuntimeTreeID;
+        public NP_RuntimeTree BelongtoRuntimeTree;
 
         [HideInEditorMode]
         public Action Action;

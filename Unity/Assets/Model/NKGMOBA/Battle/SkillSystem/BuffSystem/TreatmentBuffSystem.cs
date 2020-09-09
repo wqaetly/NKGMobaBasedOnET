@@ -9,7 +9,7 @@ namespace ETModel
     /// <summary>
     /// 这里使用的瞬时治疗，如果要做持续治疗，参考持续伤害部分
     /// </summary>
-    public class TreatmentABuffSystem: ABuffSystemBase
+    public class TreatmentBuffSystem: ABuffSystemBase
     {
         /// <summary>
         /// 最终治疗量

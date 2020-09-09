@@ -17,10 +17,10 @@ namespace ETModel
         
         public NP_ClassForStoreAction NpClassForStoreAction;
 
-        public override Task CreateTask(long UnitId, long RuntimeTreeID)
+        public override Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
         {
-            this.NpClassForStoreAction.Unitid = UnitId;
-            this.NpClassForStoreAction.RuntimeTreeID = RuntimeTreeID;
+            this.NpClassForStoreAction.Unitid = unitId;
+            this.NpClassForStoreAction.BelongtoRuntimeTree = runtimeTree;
             this.m_ActionNode = this.NpClassForStoreAction._CreateNPBehaveAction();
             return this.m_ActionNode;
         }

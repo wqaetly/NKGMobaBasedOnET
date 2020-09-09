@@ -13,21 +13,21 @@ using Plugins.NodeEditor.Editor.Canvas;
 namespace SkillDemo
 {
     [Node(false, "技能数据部分/监听Buff", typeof (NPBehaveCanvas))]
-    public class ListenBuffCallBackBuffNode: SkillNodeBase
+    public class ListenBuffCallBackBuffNode: BuffNodeBase
     {
         public override string GetID => Id;
 
         public const string Id = "监听Buff";
 
-        public NodeDataForSkillBuff SkillBuffBases =
-                new NodeDataForSkillBuff()
+        public ForBuffNodeDataBuff SkillBuffBases =
+                new ForBuffNodeDataBuff()
                 {
                     BuffDes = "监听Buff",
                     BuffData = new ListenBuffCallBackBuffData() { BelongBuffSystemType = BuffSystemType.ListenBuffCallBackBuffSystem }
                 };
 
 
-        public override SkillBaseNodeData Skill_GetNodeData()
+        public override BuffNodeDataBase Skill_GetNodeData()
         {
             return SkillBuffBases;
         }

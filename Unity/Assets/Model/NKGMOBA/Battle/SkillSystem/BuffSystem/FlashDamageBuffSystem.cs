@@ -11,7 +11,7 @@ namespace ETModel
     /// <summary>
     /// 瞬时伤害
     /// </summary>
-    public class FlashDamageABuffSystem: ABuffSystemBase
+    public class FlashDamageBuffSystem: ABuffSystemBase
     {
         /// <summary>
         /// 最终伤害值

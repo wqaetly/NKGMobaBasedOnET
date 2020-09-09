@@ -9,7 +9,7 @@ namespace ETModel
     /// <summary>
     /// 监听Buff回调
     /// </summary>
-    public class ListenABuffCallBackABuffSystem: ABuffSystemBase
+    public class ListenABuffCallBackBuffSystem: ABuffSystemBase
     {
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {

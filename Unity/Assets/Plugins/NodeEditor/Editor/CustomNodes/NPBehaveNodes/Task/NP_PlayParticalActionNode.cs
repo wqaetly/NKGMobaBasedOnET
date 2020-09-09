@@ -4,13 +4,10 @@
 // 代码由工具自动生成，请勿手动修改
 //------------------------------------------------------------
 
-using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework;
 using Plugins.NodeEditor.Editor.Canvas;
 using UnityEditor;
-using UnityEngine;
-using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {

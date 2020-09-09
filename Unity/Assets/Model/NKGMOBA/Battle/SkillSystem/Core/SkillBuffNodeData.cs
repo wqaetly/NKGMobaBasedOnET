@@ -10,7 +10,7 @@ namespace ETModel
 {
     [Title("Buff节点数据块",TitleAlignment = TitleAlignments.Centered)]
     [HideLabel]
-    public class NodeDataForSkillBuff: SkillBaseNodeData
+    public class ForBuffNodeDataBuff: BuffNodeDataBase
     {
         [LabelText("Buff描述")]
         public string BuffDes;

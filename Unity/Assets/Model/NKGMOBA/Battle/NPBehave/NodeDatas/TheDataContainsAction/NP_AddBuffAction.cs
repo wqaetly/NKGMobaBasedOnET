@@ -9,10 +9,10 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [Title("添加一个Buff",TitleAlignment = TitleAlignments.Centered)]
+    [Title("添加一个Buff", TitleAlignment = TitleAlignments.Centered)]
     public class NP_AddBuffAction: NP_ClassForStoreAction
     {
-        [LabelText("要执行的Buff数据ID")]
+        [LabelText("要添加的Buff的Id")]
         public VTD_Id BuffDataID;
 
         public override Action GetActionToBeDone()
@@ -23,13 +23,10 @@ namespace ETModel
 
         public void AddBuff()
         {
-            //Log.Info("行为树添加Buff");
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-            Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((unit.GetComponent<NP_RuntimeTreeManager>()
-                    .GetTreeByRuntimeID(this.RuntimeTreeID)
+            Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((this.BelongtoRuntimeTree
                     .BelongNP_DataSupportor
-                    .SkillDataDic[this.BuffDataID.Value] as NodeDataForSkillBuff).BuffData, unit, unit);
-            //Log.Info("Buff添加完成");
+                    .SkillDataDic[this.BuffDataID.Value] as ForBuffNodeDataBuff).BuffData, unit, unit);
         }
     }
 }

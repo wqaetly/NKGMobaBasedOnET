@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Plugins
 {
     [Node(false, "技能数据结点", typeof (NeverbeUsedCanvas))]
-    public class SkillNodeBase: Node
+    public class BuffNodeBase: Node
     {
         /// <summary>
         /// 内部ID
@@ -22,6 +22,12 @@ namespace Plugins
         public override string GetID => Id;
 
         public override Vector2 DefaultSize => new Vector2(150, 60);
+        
+        [ValueConnectionKnob("PrevBuffType", Direction.In, "PrevNodeDatas", NodeSide.Left, 30)]
+        public ValueConnectionKnob PrevNode;
+
+        [ValueConnectionKnob("NextBuffType", Direction.Out, "NextNodeDatas", NodeSide.Right, 30)]
+        public ValueConnectionKnob NextNode;
 
         public override void NodeGUI()
         {

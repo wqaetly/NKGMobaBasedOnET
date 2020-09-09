@@ -23,7 +23,7 @@ namespace ETModel
         public int SkillIDBelongTo;
 
         [HideInEditorMode]
-        public SkillDesNodeData SkillDesNodeData;
+        public BuffNodeDataDes BuffNodeDataDes;
 
         public NP_BlackBoardRelationData NpBlackBoardRelationData = new NP_BlackBoardRelationData();
 
@@ -47,14 +47,12 @@ namespace ETModel
             if (!this.hasInit)
             {
                 this.m_Unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-                tempBlackboard = this.m_Unit.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard();
+                tempBlackboard = this.BelongtoRuntimeTree.GetBlackboard();
 
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
-                this.SkillDesNodeData = (SkillDesNodeData) Game.Scene.GetComponent<UnitComponent>().Get(Unitid)
-                        .GetComponent<NP_RuntimeTreeManager>()
-                        .GetTreeByRuntimeID(this.RuntimeTreeID).BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
+                this.BuffNodeDataDes = (BuffNodeDataDes) this.BelongtoRuntimeTree.BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
                 tempBlackboard.Set(NpBlackBoardRelationData.BBKey,
-                    this.SkillDesNodeData.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIDBelongTo)]);
+                    this.BuffNodeDataDes.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }

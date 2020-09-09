@@ -9,7 +9,7 @@ namespace ETModel
     /// <summary>
     /// 绑定一个状态
     /// </summary>
-    public class BindStateABuffSystem: ABuffSystemBase
+    public class BindStateBuffSystem: ABuffSystemBase
     {
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {

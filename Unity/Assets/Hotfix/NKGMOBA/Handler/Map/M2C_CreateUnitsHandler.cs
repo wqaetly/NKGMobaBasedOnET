@@ -29,9 +29,8 @@ namespace ETHotfix
                 unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
                 unit.AddComponent<NP_RuntimeTreeManager>();
                 //Log.Info("开始创建行为树");
-                NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client);
+                NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client).Start();
                 //Log.Info("行为树创建完成");
-                npRuntimeTree.RootNode.Start();
 
                 //添加英雄数据
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()

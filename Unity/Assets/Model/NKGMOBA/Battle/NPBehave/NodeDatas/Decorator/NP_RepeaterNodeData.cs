@@ -18,11 +18,12 @@ namespace ETModel
         {
             return this.m_Repeater;
         }
-
-        public override Decorator CreateDecoratorNode(long UnitId, long RuntimeTreeID, Node node)
+        
+        public override Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
         {
             this.m_Repeater = new Repeater(node);
             return this.m_Repeater;
         }
+
     }
 }

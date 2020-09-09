@@ -42,7 +42,7 @@ namespace ETModel
             foreach (Type type in types)
             {
                 if (!type.IsSubclassOf(typeof (NP_NodeDataBase)) && !type.IsSubclassOf(typeof (NP_ClassForStoreAction)) &&
-                    !type.IsSubclassOf(typeof (SkillBaseNodeData)) && !type.IsSubclassOf(typeof (BuffDataBase)) &&
+                    !type.IsSubclassOf(typeof (BuffNodeDataBase)) && !type.IsSubclassOf(typeof (BuffDataBase)) &&
                     !type.IsSubclassOf(typeof (ListenBuffEvent_Normal)))
                 {
                     continue;

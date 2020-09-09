@@ -26,9 +26,6 @@ namespace NodeEditorFramework
         /// </summary>
         public static void SaveNodeCanvas(string path, ref NodeCanvas nodeCanvas)
         {
-#if !UNITY_EDITOR
-			throw new System.NotImplementedException ();
-#else
             if (string.IsNullOrEmpty(path)) throw new System.ArgumentNullException("Cannot save NodeCanvas: No path specified!");
             if (nodeCanvas == null)
                 throw new System.ArgumentNullException("Cannot save NodeCanvas: The specified NodeCanvas that should be saved to path '" + path +
@@ -48,7 +45,6 @@ namespace NodeEditorFramework
             UnityEditor.AssetDatabase.Refresh();
 
             NodeEditorCallbacks.IssueOnSaveCanvas(nodeCanvas);
-#endif
         }
 
         /// <summary>
@@ -107,7 +103,6 @@ namespace NodeEditorFramework
                 }
                 UnityEditor.AssetDatabase.AddObjectToAsset(subAsset, mainAsset);
                 subAsset.hideFlags = HideFlags.HideInHierarchy;
-                AssetDatabase.Refresh();
             }
         }
 

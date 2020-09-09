@@ -16,6 +16,6 @@ namespace ETModel
     {
         [LabelText("技能数据所有结点")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<long, SkillBaseNodeData> SkillDataDic = new Dictionary<long, SkillBaseNodeData>();
+        public Dictionary<long, BuffNodeDataBase> SkillDataDic = new Dictionary<long, BuffNodeDataBase>();
     }
 }

@@ -53,9 +53,9 @@ namespace Plugins.NodeEditor.Editor.Canvas
             if(MNpDataSupportor.SkillDataDic == null) return;
             MNpDataSupportor.SkillDataDic.Clear();
 
-            foreach (var VARIABLE in this.nodes)
+            foreach (var node in this.nodes)
             {
-                if (VARIABLE is SkillNodeBase mNode)
+                if (node is BuffNodeBase mNode)
                 {
                     this.MNpDataSupportor.SkillDataDic.Add(mNode.Skill_GetNodeData().NodeId.Value, mNode.Skill_GetNodeData());
                 }

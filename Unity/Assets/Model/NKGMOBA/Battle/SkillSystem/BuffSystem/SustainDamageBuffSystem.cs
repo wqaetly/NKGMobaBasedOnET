@@ -11,7 +11,7 @@ namespace ETModel
     /// <summary>
     /// 持续伤害，一般描述为X秒内造成Y伤害，或者每X秒造成Y伤害
     /// </summary>
-    public class SustainDamageABuffSystem: ABuffSystemBase
+    public class SustainDamageBuffSystem: ABuffSystemBase
     {
         /// <summary>
         /// 本次伤害值
