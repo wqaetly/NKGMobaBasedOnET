@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "监听Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "监听Buff",
                     BuffData = new ListenBuffCallBackBuffData() { BelongBuffSystemType = BuffSystemType.ListenBuffCallBackBuffSystem }

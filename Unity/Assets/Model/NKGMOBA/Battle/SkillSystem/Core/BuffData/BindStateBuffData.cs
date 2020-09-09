@@ -17,7 +17,8 @@ namespace ETModel
     public class BindStateBuffData: BuffDataBase
     {
         [BoxGroup("自定义项")]
-        [LabelText("此状态自带的Buff")]
-        public List<BuffDataBase> OriBuff = new List<BuffDataBase>();
+        [InfoBox("注意，是在节点编辑器中的Buff节点Id，而不是Buff自身的Id，别搞错了！")]
+        [LabelText("此状态自带的Buff节点Id")]
+        public List<VTD_Id> OriBuff = new List<VTD_Id>();
     }
 }

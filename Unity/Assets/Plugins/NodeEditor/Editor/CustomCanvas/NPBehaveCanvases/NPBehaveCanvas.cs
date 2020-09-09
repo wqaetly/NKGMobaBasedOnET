@@ -50,14 +50,14 @@ namespace Plugins.NodeEditor.Editor.Canvas
         
         private void AutoSetSkillData_NodeData()
         {
-            if(MNpDataSupportor.SkillDataDic == null) return;
-            MNpDataSupportor.SkillDataDic.Clear();
+            if(MNpDataSupportor.BuffDataDic == null) return;
+            MNpDataSupportor.BuffDataDic.Clear();
 
             foreach (var node in this.nodes)
             {
                 if (node is BuffNodeBase mNode)
                 {
-                    this.MNpDataSupportor.SkillDataDic.Add(mNode.Skill_GetNodeData().NodeId.Value, mNode.Skill_GetNodeData());
+                    this.MNpDataSupportor.BuffDataDic.Add(mNode.Skill_GetNodeData().NodeId.Value, mNode.Skill_GetNodeData());
                 }
             }
         }

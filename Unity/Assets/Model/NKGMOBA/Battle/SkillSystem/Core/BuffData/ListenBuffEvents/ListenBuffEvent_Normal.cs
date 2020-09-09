@@ -21,18 +21,22 @@ namespace ETModel
     public class ListenBuffEvent_Normal: AEvent<ABuffSystemBase>
     {
         /// <summary>
-        /// Buff回调条件达成时会添加的Buff
+        /// Buff回调条件达成时会添加的Buff的节点Id
         /// </summary>
-        [LabelText("Buff回调条件达成时会添加的Buff")]
-        public List<BuffDataBase> BuffsWillBeAdded = new List<BuffDataBase>();
+        [InfoBox("注意，是在节点编辑器中的Buff节点Id，而不是Buff自身的Id，别搞错了！")]
+        [LabelText("Buff回调条件达成时会添加的Buff的节点Id")]
+        public List<VTD_Id> BuffsIdWillBeAdded = new List<VTD_Id>();
 
         public override void Run(ABuffSystemBase a)
         {
             //Log.Info($"直接添加_通过监听机制增加Buff");
-            foreach (var buffData in this.BuffsWillBeAdded)
+            foreach (var buffDataVTDId in this.BuffsIdWillBeAdded)
             {
                 //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
-                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(buffData, a.TheUnitFrom, a.TheUnitBelongto);
+                Game.Scene.GetComponent<BuffPoolComponent>()
+                        .AcquireBuff(
+                            (a.BuffData.BelongToRuntiemTree.BelongNP_DataSupportor.BuffDataDic[buffDataVTDId.Value] as NormalBuffNodeData).BuffData,
+                            a.TheUnitFrom, a.TheUnitBelongto);
             }
         }
     }

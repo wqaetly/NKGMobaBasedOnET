@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "刷新指定Buff时间Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "刷新指定Buff时间Buff",
                     BuffData = new RefreshTargetBuffTimeBuffData() { BelongBuffSystemType = BuffSystemType.RefreshTargetBuffTimeBuffSystem }

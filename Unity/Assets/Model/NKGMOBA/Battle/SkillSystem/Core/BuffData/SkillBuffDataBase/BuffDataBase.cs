@@ -8,10 +8,7 @@ using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
-#if UNITY_EDITOR
-using UnityEditor;
-
-#endif
+using UnityEngine;
 
 namespace ETModel
 {
@@ -19,10 +16,20 @@ namespace ETModel
     [HideLabel]
     public class BuffDataBase
     {
-        [LabelText("Buff的Id")]
-        [BoxGroup("必填项")]
-        public VTD_Id BuffId = new VTD_Id();
-        
+        /// <summary>
+        /// 归属的运行时行为树实例
+        /// </summary>
+        [HideInInspector]
+        [BsonIgnore]
+        public NP_RuntimeTree BelongToRuntiemTree;
+
+        /// <summary>
+        /// 用于区分Buff，每个Buff Id都是独一无二的
+        /// 因为我们不能，也不应该关心具体Buff的Id，所以这里直接自动生成
+        /// </summary>
+        [HideInInspector]
+        public long BuffId = IdGenerater.GenerateId();
+
         [LabelText("归属的技能ID")]
         [BoxGroup("必填项")]
         public int BelongSkillId;

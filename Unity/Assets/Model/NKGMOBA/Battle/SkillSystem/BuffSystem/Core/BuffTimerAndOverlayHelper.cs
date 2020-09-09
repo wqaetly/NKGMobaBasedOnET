@@ -26,7 +26,7 @@ namespace ETModel
                     : buffSystemBase.TheUnitBelongto.GetComponent<BuffManagerComponent>();
 
             //先尝试从真正的Buff链表取得Buff
-            ABuffSystemBase targetBuffSystemBase = buffManagerComponent.GetBuffById(buffDataBase.BuffId.Value);
+            ABuffSystemBase targetBuffSystemBase = buffManagerComponent.GetBuffById(buffDataBase.BuffId);
 
             if (targetBuffSystemBase != null)
             {
@@ -41,7 +41,7 @@ namespace ETModel
             else
             {
                 //尝试从临时Buff字典取
-                targetBuffSystemBase = buffManagerComponent.GetBuffById_FromTempDic(buffDataBase.BuffId.Value);
+                targetBuffSystemBase = buffManagerComponent.GetBuffById_FromTempDic(buffDataBase.BuffId);
 
                 //如果有，那就计算层数与时间，并且替换临时字典中
                 if (targetBuffSystemBase != null)
@@ -60,7 +60,7 @@ namespace ETModel
 
                     //Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
                     buffSystemBase.BuffState = BuffState.Waiting;
-                    buffManagerComponent.TempBuffsToBeAdded.Add(buffDataBase.BuffId.Value, buffSystemBase);
+                    buffManagerComponent.TempBuffsToBeAdded.Add(buffDataBase.BuffId, buffSystemBase);
                 }
             }
         }

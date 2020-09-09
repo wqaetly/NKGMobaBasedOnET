@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "绑定一个状态Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "绑定一个状态Buff",
                     BuffData = new BindStateBuffData() { BelongBuffSystemType = BuffSystemType.BindStateBuffSystem }

@@ -26,7 +26,7 @@ namespace ETModel
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((this.BelongtoRuntimeTree
                     .BelongNP_DataSupportor
-                    .SkillDataDic[this.BuffDataID.Value] as ForBuffNodeDataBuff).BuffData, unit, unit);
+                    .BuffDataDic[this.BuffDataID.Value] as NormalBuffNodeData).BuffData, unit, unit);
         }
     }
 }

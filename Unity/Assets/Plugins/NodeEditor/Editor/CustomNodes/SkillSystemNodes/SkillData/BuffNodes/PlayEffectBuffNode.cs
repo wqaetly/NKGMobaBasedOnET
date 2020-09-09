@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "播放特效Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "播放特效Buff",
                     BuffData = new PlayEffectBuffData() { BelongBuffSystemType = BuffSystemType.PlayEffectBuffSystem }

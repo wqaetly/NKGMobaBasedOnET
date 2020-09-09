@@ -17,17 +17,19 @@ namespace ETModel
             this.TheUnitFrom = theUnitFrom;
             this.TheUnitBelongto = theUnitBelongto;
             this.BuffData = buffData;
-            
+
             BuffTimerAndOverlayHelper.CalculateTimerAndOverlay(this, this.BuffData);
         }
 
         public override void OnExecute()
         {
             BindStateBuffData tempData = this.BuffData as BindStateBuffData;
-            
+
             foreach (var buffData in tempData.OriBuff)
             {
-                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(buffData, this.TheUnitFrom, this.TheUnitBelongto);
+                Game.Scene.GetComponent<BuffPoolComponent>()
+                        .AcquireBuff((tempData.BelongToRuntiemTree.BelongNP_DataSupportor.BuffDataDic[buffData.Value] as NormalBuffNodeData).BuffData,
+                            this.TheUnitFrom, this.TheUnitBelongto);
             }
 
             if (this.BuffData.EventIds != null)
@@ -61,12 +63,14 @@ namespace ETModel
         public override void OnRefresh()
         {
             BindStateBuffData tempData = this.BuffData as BindStateBuffData;
-            
+
             foreach (var buffData in tempData.OriBuff)
             {
-                Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(buffData, this.TheUnitFrom, this.TheUnitBelongto);
+                Game.Scene.GetComponent<BuffPoolComponent>()
+                        .AcquireBuff((tempData.BelongToRuntiemTree.BelongNP_DataSupportor.BuffDataDic[buffData.Value] as NormalBuffNodeData).BuffData,
+                            this.TheUnitFrom, this.TheUnitBelongto);
             }
-            
+
             if (this.BuffData.EventIds != null)
             {
                 foreach (var eventId in this.BuffData.EventIds)

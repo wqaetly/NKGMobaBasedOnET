@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "修改属性Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "修改属性Buff",
                     BuffData = new ChangePropertyBuffData() { BelongBuffSystemType = BuffSystemType.ChangePropertyBuffSystem }

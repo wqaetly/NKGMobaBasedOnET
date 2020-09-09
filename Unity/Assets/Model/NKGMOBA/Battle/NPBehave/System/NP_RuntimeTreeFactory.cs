@@ -87,6 +87,15 @@ namespace ETModel
             //配置根结点
             tempTree.SetRootNode(npDataSupportor.NP_DataSupportorDic[rootId].NP_GetNode() as Root);
 
+            //配置Buff数据归属的NP_RuntimeTree实例
+            foreach (var buffNodeDataBase in npDataSupportor.BuffDataDic)
+            {
+                if (buffNodeDataBase.Value is NormalBuffNodeData normalBuffNodeData)
+                {
+                    normalBuffNodeData.BuffData.BelongToRuntiemTree = tempTree;
+                }
+            }
+            
             //配置黑板数据
             Dictionary<string, ANP_BBValue> bbvaluesManager = tempTree.GetBlackboard().GetDatas();
             foreach (var bbValues in npDataSupportor.NP_BBValueManager)

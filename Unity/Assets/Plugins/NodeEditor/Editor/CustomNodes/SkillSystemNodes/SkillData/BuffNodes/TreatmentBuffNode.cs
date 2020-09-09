@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "治疗Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "治疗Buff",
                     BuffData = new TreatmentBuffData() { BelongBuffSystemType = BuffSystemType.TreatmentBuffSystem }

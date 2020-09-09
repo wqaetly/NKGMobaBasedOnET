@@ -21,10 +21,13 @@ namespace ETModel
             //Log.Info($"层数判定_通过监听机制添加Buff");
             if (a.CurrentOverlay == this.TargetOverlay)
             {
-                foreach (var VARIABLE in this.BuffsWillBeAdded)
+                foreach (var buffDataVtdId in this.BuffsIdWillBeAdded)
                 {
                     //Log.Info($"层数判定_通过监听机制添加id为{VARIABLE.FlagId}的Buff");
-                    Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff(VARIABLE, a.TheUnitFrom, a.TheUnitBelongto);
+                    Game.Scene.GetComponent<BuffPoolComponent>()
+                            .AcquireBuff(
+                                (a.BuffData.BelongToRuntiemTree.BelongNP_DataSupportor.BuffDataDic[buffDataVtdId.Value] as NormalBuffNodeData).BuffData,
+                                a.TheUnitFrom, a.TheUnitBelongto);
                 }
             }
         }

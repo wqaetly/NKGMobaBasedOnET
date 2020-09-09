@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "瞬时伤害Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "瞬时伤害Buff",
                     BuffData = new FlashDamageBuffData() { BelongBuffSystemType = BuffSystemType.FlashDamageBuffSystem }

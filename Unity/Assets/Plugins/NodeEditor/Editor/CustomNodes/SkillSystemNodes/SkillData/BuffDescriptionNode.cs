@@ -17,7 +17,7 @@ namespace Plugins
     public class BuffDescriptionNode: BuffNodeBase
     {
         [LabelText("技能描述数据")]
-        public BuffNodeDataDes mBuffNodeDataDes;
+        public SkillDesNodeData mSkillDesNodeData;
 
         public override string GetID => Id;
 
@@ -25,7 +25,7 @@ namespace Plugins
 
         public override BuffNodeDataBase Skill_GetNodeData()
         {
-            return this.mBuffNodeDataDes;
+            return this.mSkillDesNodeData;
         }
 
         public override void NodeGUI()

@@ -7,6 +7,7 @@
 using System;
 using NPBehave;
 using Sirenix.OdinInspector;
+using Action = NPBehave.Action;
 
 namespace ETModel
 {
@@ -23,7 +24,7 @@ namespace ETModel
         public int SkillIDBelongTo;
 
         [HideInEditorMode]
-        public BuffNodeDataDes BuffNodeDataDes;
+        public SkillDesNodeData SkillDesNodeData;
 
         public NP_BlackBoardRelationData NpBlackBoardRelationData = new NP_BlackBoardRelationData();
 
@@ -42,7 +43,7 @@ namespace ETModel
             return this.Func2;
         }
 
-        public global::NPBehave.Action.Result WaitTime(bool hasDown)
+        public Action.Result WaitTime(bool hasDown)
         {
             if (!this.hasInit)
             {
@@ -50,9 +51,9 @@ namespace ETModel
                 tempBlackboard = this.BelongtoRuntimeTree.GetBlackboard();
 
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
-                this.BuffNodeDataDes = (BuffNodeDataDes) this.BelongtoRuntimeTree.BelongNP_DataSupportor.SkillDataDic[this.DataId.Value];
+                this.SkillDesNodeData = (SkillDesNodeData) this.BelongtoRuntimeTree.BelongNP_DataSupportor.BuffDataDic[this.DataId.Value];
                 tempBlackboard.Set(NpBlackBoardRelationData.BBKey,
-                    this.BuffNodeDataDes.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIDBelongTo)]);
+                    this.SkillDesNodeData.SkillCD[this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIDBelongTo)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }
@@ -71,10 +72,10 @@ namespace ETModel
                 lastElapsedTime = -1;
                 //下次再运行就会初始化了
                 this.hasInit = false;
-                return global::NPBehave.Action.Result.FAILED;
+                return NPBehave.Action.Result.FAILED;
             }
 
-            return global::NPBehave.Action.Result.PROGRESS;
+            return NPBehave.Action.Result.PROGRESS;
         }
     }
 }

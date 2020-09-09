@@ -19,8 +19,8 @@ namespace SkillDemo
 
         public const string Id = "持续伤害Buff";
 
-        public ForBuffNodeDataBuff SkillBuffBases =
-                new ForBuffNodeDataBuff()
+        public NormalBuffNodeData SkillBuffBases =
+                new NormalBuffNodeData()
                 {
                     BuffDes = "持续伤害Buff",
                     BuffData = new SustainDamageBuffData() { BelongBuffSystemType = BuffSystemType.SustainDamageBuffSystem }
