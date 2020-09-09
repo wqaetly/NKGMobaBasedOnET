@@ -90,6 +90,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -428,6 +429,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 729893900992427736}
   side: 3
@@ -561,6 +563,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 0.8207547, g: 0.112273075, b: 0.31889653, a: 1}
   _connections:
   - {fileID: -2448216067240597155}
   side: 3
@@ -604,6 +607,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -646,6 +650,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -1204774783641763277}
   side: 4
@@ -689,6 +694,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 2995365733277873128}
   side: 3
@@ -732,10 +738,83 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 1
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &-7911519750514681845
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 9033681409139099894}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
+  _connections: []
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-7888206384679779284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ee340166e146ed96ad698245a89ede, type: 3}
+  m_Name: "\u5B50\u56FE\u2014\u2014\u751F\u6210\u7684\u78B0\u649E\u4F53"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: ChildrenNodeDatas
+      Entry: 6
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -1760.7001, y: 37.599613}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 0, b: 1, a: 1}
+  PrevNode: {fileID: -7037842969263747217}
 --- !u!114 &-7819237010695439854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -916,6 +995,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -1013,6 +1093,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 3047037748533598589}
   - {fileID: 5642952113989883674}
@@ -1057,6 +1138,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -1099,6 +1181,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 3567642423821851321}
   side: 1
@@ -1142,9 +1225,54 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 883656195879074574}
   side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-7037842969263747217
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -7888206384679779284}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -3630814636448638973}
+  side: 3
   sidePosition: 75
   sideOffset: 0
 --- !u!114 &-6931705126339769420
@@ -1293,6 +1421,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 8884112901400839642}
   side: 3
@@ -1336,6 +1465,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections:
   - {fileID: -798739630575195638}
   side: 3
@@ -1379,6 +1509,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -1421,6 +1552,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -1463,6 +1595,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 1091412846512969319}
   - {fileID: 6896623909163273070}
@@ -1616,6 +1749,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -1658,6 +1792,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -1700,6 +1835,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -798739630575195638}
   side: 3
@@ -1910,7 +2046,9 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
-  _connections: []
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections:
+  - {fileID: -7037842969263747217}
   side: 1
   sidePosition: 75
   sideOffset: 0
@@ -1952,6 +2090,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 75
@@ -2076,6 +2215,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -2118,6 +2258,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 5714779358155457027}
   side: 3
@@ -2258,6 +2399,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 0.8207547, g: 0.2748754, b: 0.2748754, a: 1}
   _connections:
   - {fileID: 2109869140864175506}
   - {fileID: 7482883856165815287}
@@ -2303,6 +2445,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -2396,6 +2539,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -2514,6 +2658,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 2995365733277873128}
   side: 3
@@ -2557,6 +2702,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 75
@@ -2599,6 +2745,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -7950768380487745168}
   side: 2
@@ -2642,6 +2789,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -2684,9 +2832,10 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
-  - {fileID: -6392686632026477640}
   - {fileID: -4130071083102535509}
+  - {fileID: -6392686632026477640}
   side: 1
   sidePosition: 75
   sideOffset: 0
@@ -2728,6 +2877,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -2938,6 +3088,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 1
   sidePosition: 75
@@ -4126,16 +4277,18 @@ MonoBehaviour:
   - {fileID: -7724972869442728877}
   - {fileID: -3443925661964463458}
   - {fileID: -7596603565189237152}
-  - {fileID: -6900956310134165740}
-  - {fileID: -1597327665281772361}
-  - {fileID: 6150072516974356161}
   - {fileID: -8236112097638631402}
   - {fileID: 958321526705749925}
   - {fileID: -8988674204920513138}
   - {fileID: -3667170864583704158}
   - {fileID: 6284552185133785033}
+  - {fileID: -1597327665281772361}
   - {fileID: 7742475961635966900}
-  nodesForDelete: []
+  - {fileID: -7888206384679779284}
+  - {fileID: 6150072516974356161}
+  - {fileID: -6900956310134165740}
+  nodesForDelete:
+  - {fileID: 9033681409139099894}
   groups:
   - rect:
       serializedVersion: 2
@@ -4452,6 +4605,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -4494,6 +4648,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -8330255054397273630}
   side: 1
@@ -4537,6 +4692,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -7060872448970633308}
   side: 3
@@ -4556,9 +4712,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes: []
-  panOffset: {x: 1789.3999, y: 100.60039}
-  zoom: 2.6
+  selectedNodes:
+  - {fileID: -6900956310134165740}
+  panOffset: {x: 1587.7999, y: -19.399612}
+  zoom: 1.4
   boxSelecting: 0
 --- !u!114 &958321526705749925
 MonoBehaviour:
@@ -4710,6 +4867,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 8884112901400839642}
   side: 3
@@ -4753,6 +4911,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -5594940743031344722}
   side: 3
@@ -4796,6 +4955,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -4838,6 +4998,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -4880,6 +5041,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 75
@@ -4922,6 +5084,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 7934941942575451351}
   side: 1
@@ -4965,6 +5128,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -2448216067240597155}
   side: 3
@@ -5118,6 +5282,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 8680842299895521062}
   side: 3
@@ -5161,6 +5326,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 10
@@ -5203,6 +5369,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -1411818630268345733}
   - {fileID: -7945255926709050327}
@@ -5247,6 +5414,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -7553181593905441832}
   side: 3
@@ -5290,6 +5458,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -5332,6 +5501,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -5374,6 +5544,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 75
@@ -5416,6 +5587,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -7156771840790039578}
   side: 3
@@ -5459,6 +5631,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -5501,6 +5674,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -5717,6 +5891,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 1
   sidePosition: 75
@@ -5759,6 +5934,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -5801,6 +5977,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 8884112901400839642}
   side: 3
@@ -5844,6 +6021,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -5886,6 +6064,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -7553181593905441832}
   side: 3
@@ -5929,6 +6108,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -3012341045387088292}
   side: 1
@@ -6101,6 +6281,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 3
   sidePosition: 75
@@ -6265,6 +6446,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -5594940743031344722}
   side: 3
@@ -6377,6 +6559,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -6488,6 +6671,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 4
   sidePosition: 30
@@ -6548,6 +6732,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -6590,6 +6775,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -2448216067240597155}
   side: 3
@@ -6867,6 +7053,7 @@ MonoBehaviour:
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections:
   - {fileID: 1868006183887077942}
   side: 3
@@ -6979,6 +7166,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
   sidePosition: 30
@@ -7021,6 +7209,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 2512119160715421980}
   side: 1
@@ -7064,6 +7253,7 @@ MonoBehaviour:
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
+  color: {r: 1, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: -6629840160034200870}
   - {fileID: 961180946014071688}
@@ -7071,3 +7261,84 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &9033681409139099894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1a32d6bc770fe4e9c28bb9c9c44f44, type: 3}
+  m_Name: "\u521B\u5EFA\u78B0\u649E\u4F53"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 0
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.NP_CreateColliderAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: SupportDataID
+      Entry: 3
+      Data: 0
+    - Name: ColliderDataID
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -1639.7999, y: 69.79965}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -7911519750514681845}

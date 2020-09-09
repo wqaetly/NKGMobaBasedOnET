@@ -19,6 +19,11 @@ namespace ETModel
 			random.NextBytes(bytes);
 			return BitConverter.ToInt64(bytes, 0);
 		}
+		
+		public static float RandFloat()
+		{
+			return (float)random.NextDouble();
+		}
 
 		/// <summary>
 		/// 获取lower与Upper之间的随机数

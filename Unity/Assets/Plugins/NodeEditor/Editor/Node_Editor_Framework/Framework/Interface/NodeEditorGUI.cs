@@ -190,10 +190,11 @@ namespace NodeEditorFramework
                 NodeEditorGUI.OptimiseBezierDirections(startPos, ref startDir, endPos, ref endDir);
                 float dirFactor = 80; //Mathf.Pow ((startPos-endPos).magnitude, 0.3f) * 20;
                 //Debug.Log ("DirFactor is " + dirFactor + "with a bezier lenght of " + (startPos-endPos).magnitude);
-                RTEditorGUI.DrawBezier(startPos, endPos, startPos + startDir * dirFactor, endPos + endDir * dirFactor, col * Color.gray, null, 3);
+                RTEditorGUI.DrawBezier(startPos, endPos, startPos + startDir * dirFactor, endPos + endDir * dirFactor, col, null,
+                    NodeEditor.curEditorState.zoom * 3);
             }
             else if (drawMethod == ConnectionDrawMethod.StraightLine)
-                RTEditorGUI.DrawLine(startPos, endPos, col * Color.gray, null, 3);
+                RTEditorGUI.DrawLine(startPos, endPos, col, null, NodeEditor.curEditorState.zoom * 3);
         }
 
         /// <summary>
