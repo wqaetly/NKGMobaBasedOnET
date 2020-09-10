@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System;
+using ETModel.BBValues;
 using Sirenix.OdinInspector;
 
 namespace ETModel
@@ -15,6 +16,9 @@ namespace ETModel
         [LabelText("要添加的Buff的Id")]
         public VTD_Id BuffDataID;
 
+        [LabelText("添加层数")]
+        public NP_BlackBoardRelationData Layers;
+
         public override Action GetActionToBeDone()
         {
             this.Action = this.AddBuff;
@@ -24,9 +28,13 @@ namespace ETModel
         public void AddBuff()
         {
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-            Game.Scene.GetComponent<BuffPoolComponent>().AcquireBuff((this.BelongtoRuntimeTree
-                    .BelongNP_DataSupportor
-                    .BuffDataDic[this.BuffDataID.Value] as NormalBuffNodeData).BuffData, unit, unit);
+            BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
+            for (int i = 0; i < this.Layers.GetBlackBoardValue<int>(this.BelongtoRuntimeTree.GetBlackboard()); i++)
+            {
+                buffPoolComponent.AcquireBuff((this.BelongtoRuntimeTree
+                        .BelongNP_DataSupportor
+                        .BuffDataDic[this.BuffDataID.Value] as NormalBuffNodeData).BuffData, unit, unit);
+            }
         }
     }
 }

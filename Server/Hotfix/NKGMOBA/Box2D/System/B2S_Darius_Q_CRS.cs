@@ -47,17 +47,12 @@ namespace ETHotfix
                 case 10006: //诺克：自身
                     //TODO:这一步需要在结点编辑器配好支持自动升成
                     if (b2SColliderEntity.m_BelongUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
-                    Stopwatch sw = new Stopwatch();
 
-                    sw.Start();
                     Unit unit = ((B2S_ColliderEntity) this.Entity).m_BelongUnit;
                     Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
                             unit.GetComponent<NP_RuntimeTreeManager>()
                                     .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
-                    sw.Stop();
-                    TimeSpan ts = sw.Elapsed;
-                    Console.WriteLine("DateTime costed for Shuffle function is: {0}ms", ts.TotalMilliseconds);
-
+   
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
 

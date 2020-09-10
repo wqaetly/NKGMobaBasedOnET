@@ -51,7 +51,7 @@ namespace ETModel
             {
                 case SkillCostTypes.MagicValue:
                     //依据技能具体消耗来进行属性改变操作
-                    if (heroDataComponent.CurrentMagicValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>())
+                    if (heroDataComponent.CurrentMagicValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
                         return true;
                     else
                     {
@@ -60,7 +60,7 @@ namespace ETModel
                 case SkillCostTypes.Other:
                     return true;
                 case SkillCostTypes.HPValue:
-                    if (heroDataComponent.CurrentLifeValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>())
+                    if (heroDataComponent.CurrentLifeValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
                         return true;
                     else
                     {
