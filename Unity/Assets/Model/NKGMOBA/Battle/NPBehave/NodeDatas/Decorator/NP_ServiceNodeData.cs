@@ -18,18 +18,18 @@ namespace ETModel
         [LabelText("委托执行时间间隔")]
         public float interval;
 
-        public NP_ClassForStoreAction MNpClassForStoreAction;
+        public NP_ClassForStoreAction NpClassForStoreAction;
 
         public override Node NP_GetNode()
         {
             return this.m_Service;
         }
 
-        public override Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
+        public override Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
         {
-            this.MNpClassForStoreAction.Unitid = UnitId;
-            this.MNpClassForStoreAction.BelongtoRuntimeTree = runtimeTree;
-            this.m_Service = new Service(interval, MNpClassForStoreAction.GetActionToBeDone(), node);
+            this.NpClassForStoreAction.Unitid = unitId;
+            this.NpClassForStoreAction.BelongtoRuntimeTree = runtimeTree;
+            this.m_Service = new Service(interval, this.NpClassForStoreAction.GetActionToBeDone(), node);
             return this.m_Service;
         }
     }

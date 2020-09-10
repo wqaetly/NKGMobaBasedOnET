@@ -15,7 +15,7 @@ namespace ETModel
         [HideInEditorMode]
         public Root m_Root;
 
-        public override Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
+        public override Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
         {
             this.m_Root = new Root(node);
             return this.m_Root;

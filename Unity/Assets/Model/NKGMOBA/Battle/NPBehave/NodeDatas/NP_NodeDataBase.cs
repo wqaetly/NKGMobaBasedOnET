@@ -54,11 +54,11 @@ namespace ETModel
         /// <summary>
         /// 创建装饰结点
         /// </summary>
-        /// <param name="UnitId">行为树归属的UnitID</param>
+        /// <param name="unitId">行为树归属的UnitID</param>
         /// <param name="runtimeTree">运行时归属的行为树</param>
         /// <param name="node">所装饰的结点</param>
         /// <returns></returns>
-        public virtual Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
+        public virtual Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
         {
             return null;
         }

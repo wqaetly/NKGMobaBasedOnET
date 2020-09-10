@@ -22,7 +22,7 @@ namespace ETModel
         
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
         
-        public override Decorator CreateDecoratorNode(long UnitId, NP_RuntimeTree runtimeTree, Node node)
+        public override Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
         {
             this.m_BlackboardConditionNode = new BlackboardCondition(this.NPBalckBoardRelationData.BBKey,
                 this.Ope,
