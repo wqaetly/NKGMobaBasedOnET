@@ -28,14 +28,28 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         public override string GetID => Id;
 
         public NP_ActionNodeData NP_ActionNodeData =
-                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_ChangeBlackValueAction() };
+                new NP_ActionNodeData()
+                {
+                    NodeType = NodeType.Task,
+                    NpClassForStoreAction = new NP_ChangeBlackValueAction()
+                    {
+                        NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteToBB = true }
+                    }
+                };
 
         private void OnEnable()
         {
             if (NP_ActionNodeData == null)
             {
                 this.NP_ActionNodeData =
-                        new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_ChangeBlackValueAction() };
+                        new NP_ActionNodeData()
+                        {
+                            NodeType = NodeType.Task,
+                            NpClassForStoreAction = new NP_ChangeBlackValueAction()
+                            {
+                                NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteToBB = true}
+                            }
+                        };
             }
         }
 

@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using ETModel.BBValues;
+using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
@@ -26,13 +27,20 @@ namespace ETModel
         [LabelText("字典键")]
         [ValueDropdown("GetBBKeys")]
         [OnValueChanged("OnBBKeySelected")]
+        [BsonIgnore]
         public string BBKey;
 
         [LabelText("指定的值类型")]
         [ReadOnly]
         public string NP_BBValueType;
 
+        [HideInInspector]
+        [LabelText("是否可以把值写入黑板")]
+        public bool WriteToBB;
+
+        [ShowIf("WriteToBB")]
         public ANP_BBValue NP_BBValue;
+
 #if UNITY_EDITOR
         private IEnumerable<string> GetBBKeys()
         {
@@ -75,13 +83,18 @@ namespace ETModel
             }
         }
 #endif
-        
+
         /// <summary>
-        /// 获取预先设定的值
+        /// 获取目标黑板对应的此处的键的值
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T GetBlackBoardValue<T>()
+        public T GetBlackBoardValue<T>(Blackboard blackboard)
+        {
+            return blackboard.Get<T>(this.BBKey);
+        }
+
+        public T GetTheBBDataValue<T>()
         {
             return (this.NP_BBValue as NP_BBValueBase<T>).GetValue();
         }
