@@ -25,16 +25,10 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        [BoxGroup("重复执行结点数据")] [HideReferenceObjectPicker] [HideLabel] 
-        public NP_RepeaterNodeData NpRepeaterNodeData;
-
-        private void OnEnable()
-        {
-            if (NpRepeaterNodeData == null)
-            {
-                this.NpRepeaterNodeData = new NP_RepeaterNodeData { NodeType = NodeType.Decorator };
-            }
-        }
+        [BoxGroup("重复执行结点数据")]
+        [HideReferenceObjectPicker]
+        [HideLabel]
+        public NP_RepeaterNodeData NpRepeaterNodeData = new NP_RepeaterNodeData { NodeType = NodeType.Decorator, NodeDes = "重复执行结点数据" };
 
         public override NP_NodeDataBase NP_GetNodeData()
         {

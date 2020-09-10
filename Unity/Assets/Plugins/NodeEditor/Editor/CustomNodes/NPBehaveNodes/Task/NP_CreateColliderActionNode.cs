@@ -30,14 +30,6 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         
         public NP_ActionNodeData NP_ActionNodeData =
                 new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_CreateColliderAction() };
-        private void OnEnable()
-        {
-            if (NP_ActionNodeData == null)
-            {
-                this.NP_ActionNodeData = 
-                        new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_CreateColliderAction() };
-            }
-        }
 
         public override NP_NodeDataBase NP_GetNodeData()
         {

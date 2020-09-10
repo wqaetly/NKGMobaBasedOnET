@@ -24,17 +24,9 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-        
-        public NP_BlackboardConditionNodeData NP_BlackboardConditionNodeData;
 
-        private void OnEnable()
-        {
-            if (NP_BlackboardConditionNodeData == null)
-            {
-                this.NP_BlackboardConditionNodeData = new NP_BlackboardConditionNodeData { NodeType = NodeType.Decorator};
-                NP_BlackboardConditionNodeData.NodeDes = "黑板条件结点";
-            }
-        }
+        public NP_BlackboardConditionNodeData NP_BlackboardConditionNodeData =
+                new NP_BlackboardConditionNodeData { NodeType = NodeType.Decorator, NodeDes = "黑板条件结点" };
 
         public override NP_NodeDataBase NP_GetNodeData()
         {
@@ -43,7 +35,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            NP_BlackboardConditionNodeData.NodeDes=  EditorGUILayout.TextField(NP_BlackboardConditionNodeData.NodeDes);
+            NP_BlackboardConditionNodeData.NodeDes = EditorGUILayout.TextField(NP_BlackboardConditionNodeData.NodeDes);
         }
     }
 }

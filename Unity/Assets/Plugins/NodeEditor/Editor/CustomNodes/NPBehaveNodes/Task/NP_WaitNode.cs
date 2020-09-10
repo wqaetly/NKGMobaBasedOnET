@@ -12,8 +12,8 @@ using UnityEditor;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/Wait", typeof(NPBehaveCanvas))]
-    public class NP_WaitNode : NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/Wait", typeof (NPBehaveCanvas))]
+    public class NP_WaitNode: NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
@@ -24,16 +24,8 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-        
-        public NP_WaitNodeData NP_WaitNodeData;
 
-        private void OnEnable()
-        {
-            if (NP_WaitNodeData == null)
-            {
-                this.NP_WaitNodeData = new NP_WaitNodeData {NodeType = NodeType.Task};
-            }
-        }
+        public NP_WaitNodeData NP_WaitNodeData = new NP_WaitNodeData { NodeType = NodeType.Task };
 
         public override NP_NodeDataBase NP_GetNodeData()
         {

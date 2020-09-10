@@ -33,25 +33,9 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
                     NodeType = NodeType.Task,
                     NpClassForStoreAction = new NP_ChangeBlackValueAction()
                     {
-                        NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteToBB = true }
+                        NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteOrCompareToBB = true }
                     }
                 };
-
-        private void OnEnable()
-        {
-            if (NP_ActionNodeData == null)
-            {
-                this.NP_ActionNodeData =
-                        new NP_ActionNodeData()
-                        {
-                            NodeType = NodeType.Task,
-                            NpClassForStoreAction = new NP_ChangeBlackValueAction()
-                            {
-                                NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteToBB = true}
-                            }
-                        };
-            }
-        }
 
         public override NP_NodeDataBase NP_GetNodeData()
         {

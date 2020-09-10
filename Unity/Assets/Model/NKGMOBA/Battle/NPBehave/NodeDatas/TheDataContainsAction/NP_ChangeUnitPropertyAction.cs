@@ -12,7 +12,7 @@ namespace ETModel
     /// <summary>
     /// 改变Unit属性
     /// </summary>
-    [Title("改变Unit属性",TitleAlignment = TitleAlignments.Centered)]
+    [Title("改变Unit属性", TitleAlignment = TitleAlignments.Centered)]
     public class NP_ChangeUnitPropertyAction: NP_ClassForStoreAction
     {
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();

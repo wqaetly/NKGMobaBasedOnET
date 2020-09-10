@@ -24,16 +24,8 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// 内部ID
         /// </summary>
         public override string GetID => Id;
-        
-        public NP_WaitUntilStoppedData NpWaitUntilStoppedData;
 
-        private void OnEnable()
-        {
-            if (NpWaitUntilStoppedData == null)
-            {
-                this.NpWaitUntilStoppedData = new NP_WaitUntilStoppedData { NodeType = NodeType.Task };
-            }
-        }
+        public NP_WaitUntilStoppedData NpWaitUntilStoppedData = new NP_WaitUntilStoppedData { NodeType = NodeType.Task };
 
         public override NP_NodeDataBase NP_GetNodeData()
         {

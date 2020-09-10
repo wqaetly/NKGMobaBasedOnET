@@ -40,6 +40,8 @@ namespace ETModel
             {
                 classForStoreAction.GetActionToBeDone().Invoke();
             }
+
+            this.BelongtoRuntimeTree.GetBlackboard().Set("HasInitTree", true);
         }
     }
 }

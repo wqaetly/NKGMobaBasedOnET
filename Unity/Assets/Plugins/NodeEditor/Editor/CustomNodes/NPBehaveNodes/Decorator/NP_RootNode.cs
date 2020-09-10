@@ -16,8 +16,8 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/根结点", typeof(NPBehaveCanvas))]
-    public class NP_RootNode : NP_NodeBase
+    [Node(false, "NPBehave行为树/根结点", typeof (NPBehaveCanvas))]
+    public class NP_RootNode: NP_NodeBase
     {
         /// <summary>
         /// 内部ID
@@ -32,15 +32,16 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         [ValueConnectionKnob("NPBehave_NextNode", Direction.Out, "NPBehave_NextNodeDatas", NodeSide.Bottom, 75)]
         public ValueConnectionKnob NextNode;
 
-        [BoxGroup("根结点数据")] [HideReferenceObjectPicker] [HideLabel]
+        [BoxGroup("根结点数据")]
+        [HideReferenceObjectPicker]
+        [HideLabel]
         public NP_RootNodeData MRootNodeData;
-
 
         private void OnEnable()
         {
             if (MRootNodeData == null)
             {
-                this.MRootNodeData = new NP_RootNodeData {NodeType = NodeType.Decorator};
+                this.MRootNodeData = new NP_RootNodeData { NodeType = NodeType.Decorator };
                 backgroundColor = new Color(0, 191 / 255f, 1);
             }
         }

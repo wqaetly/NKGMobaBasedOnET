@@ -24,7 +24,7 @@ namespace ETModel
         [LabelText("将要检查的技能ID（QWER：0123）")]
         public int SkillIDBelongTo;
 
-        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
+        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteOrCompareToBB = true };
 
         public override Func<bool> GetFunc1ToBeDone()
         {
@@ -51,7 +51,8 @@ namespace ETModel
             {
                 case SkillCostTypes.MagicValue:
                     //依据技能具体消耗来进行属性改变操作
-                    if (heroDataComponent.CurrentMagicValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
+                    if (heroDataComponent.CurrentMagicValue >
+                        this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
                         return true;
                     else
                     {
@@ -60,7 +61,8 @@ namespace ETModel
                 case SkillCostTypes.Other:
                     return true;
                 case SkillCostTypes.HPValue:
-                    if (heroDataComponent.CurrentLifeValue > this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
+                    if (heroDataComponent.CurrentLifeValue >
+                        this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
                         return true;
                     else
                     {

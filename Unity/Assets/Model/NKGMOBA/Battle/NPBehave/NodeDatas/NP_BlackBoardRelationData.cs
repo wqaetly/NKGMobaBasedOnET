@@ -35,10 +35,11 @@ namespace ETModel
         public string NP_BBValueType;
 
         [HideInInspector]
-        [LabelText("是否可以把值写入黑板")]
-        public bool WriteToBB;
+        [LabelText("是否可以把值写入黑板，或者是否与黑板进行值对比")]
+        [BsonIgnore]
+        public bool WriteOrCompareToBB;
 
-        [ShowIf("WriteToBB")]
+        [ShowIf("WriteOrCompareToBB")]
         public ANP_BBValue NP_BBValue;
 
 #if UNITY_EDITOR
