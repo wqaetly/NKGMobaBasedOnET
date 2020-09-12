@@ -238,7 +238,7 @@ namespace NodeEditorFramework
                 throw new UnityException("Cannot create Node with ID '" + nodeID + "' on the current canvas of type (" +
                     hostCanvas.GetType().ToString() + ")!");
             // Create node from data
-            NodeTypeData data = NodeTypes.getNodeData(nodeID);
+            NodeTypeData data = NodeTypes.GetNodeData(nodeID);
             Node node = (Node) CreateInstance(data.type);
             if (node == null)
                 return null;

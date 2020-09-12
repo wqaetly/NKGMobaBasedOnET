@@ -390,10 +390,21 @@ namespace NodeEditorFramework
         }
     }
 
+    /// <summary>
+    /// 端口风格，我们如果想在Node上描述一个端口，需要定义一个继承自ConnectionPortStyle的类
+    /// 然后给Node添加ValueConnectionKnob字段并为其加上ValueConnectionKnobAttribute
+    /// </summary>
     [ReflectionUtility.ReflectionSearchIgnoreAttribute()]
     public class ConnectionPortStyle
     {
+        /// <summary>
+        /// 名称定义
+        /// </summary>
         protected string identifier;
+
+        /// <summary>
+        /// 颜色
+        /// </summary>
         protected Color color;
 
         public virtual string Identifier

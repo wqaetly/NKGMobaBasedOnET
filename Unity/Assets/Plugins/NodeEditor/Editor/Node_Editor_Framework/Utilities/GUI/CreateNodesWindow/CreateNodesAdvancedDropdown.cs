@@ -86,12 +86,12 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
 
         private void BuildResources(NodeItem root)
         {
-            foreach (var nodeID in NodeTypes.getCompatibleNodes(null))
+            foreach (var nodeID in NodeTypes.GetCompatibleNodes(null))
             {
                 if (NodeCanvasManager.CheckCanvasCompability(nodeID, NodeEditor.curNodeCanvas.GetType()))
                 {
-                    NodeTypeData nodeTypeData = NodeTypes.getNodeData(nodeID);
-                    BuildSingleCategory(root, NodeTypes.getNodeData(nodeID).adress, nodeTypeData.typeID);
+                    NodeTypeData nodeTypeData = NodeTypes.GetNodeData(nodeID);
+                    BuildSingleCategory(root, NodeTypes.GetNodeData(nodeID).adress, nodeTypeData.typeID);
                 }
             }
         }

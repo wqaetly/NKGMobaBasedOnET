@@ -19,7 +19,7 @@ namespace NodeEditorFramework
 		public static void FetchNodeConnectionDeclarations()
 		{
 			nodePortDeclarations = new Dictionary<string, ConnectionPortDeclaration[]> ();
-			foreach (NodeTypeData nodeData in NodeTypes.getNodeDefinitions ())	
+			foreach (NodeTypeData nodeData in NodeTypes.GetAllNodeTypeData ())	
 			{
 				Type nodeType = nodeData.type;
 				List<ConnectionPortDeclaration> declarations = new List<ConnectionPortDeclaration> ();
@@ -41,7 +41,7 @@ namespace NodeEditorFramework
 		}
 
 		/// <summary>
-		/// Updates all node connection ports in the given node and creates or adjusts them according to the declaration
+		/// 依据ConnectionPortAttribute更新目标Node所有端口（新建或修改）
 		/// </summary>
 		public static void UpdateConnectionPorts (Node node)
 		{
@@ -59,19 +59,9 @@ namespace NodeEditorFramework
 				}
 			}
 		}
-
+		
 		/// <summary>
-		/// Updates the connectionPorts and connectionKnobs lists of the given node with all declared nodes
-		/// </summary>
-		public static void UpdatePortLists (Node node) 
-		{
-			// Triggering is enough to update the list
-			IEnumerator enumerator = GetPortDeclarationEnumerator(node, true).GetEnumerator();
-			while (enumerator.MoveNext()) { }
-		}
-
-		/// <summary>
-		/// Returns the ConnectionPortDeclarations for the given node type
+		/// 通过传递的NodeTypeID获取ConnectionPortAttribute信息
 		/// </summary>
 		public static ConnectionPortDeclaration[] GetPortDeclarations (string nodeTypeID) 
 		{

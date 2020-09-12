@@ -34,7 +34,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 3930956645420261655}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -232,6 +232,50 @@ MonoBehaviour:
   side: 4
   sidePosition: 30
   sideOffset: 0
+--- !u!114 &-8129992383054500205
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: -951732092025761755}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -5998696999111863576}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
 --- !u!114 &-8039192485442537358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,7 +431,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -1473.1, y: -13.600281}
+  position: {x: -1447.8995, y: -9.400281}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
@@ -426,7 +470,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -3412300466571392941}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -512,7 +556,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 6580306617055698006}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -706,7 +750,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -1269.1, y: -23.60028}
+  position: {x: -1227.0997, y: -6.800286}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
@@ -752,11 +796,9 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
   - {fileID: 4847647864451492300}
-  - {fileID: 4964082491966562917}
-  - {fileID: 2808066680793470562}
-  - {fileID: 7435439764692297010}
   - {fileID: 1242212202815656394}
   - {fileID: -6445037236655816754}
+  - {fileID: -8129992383054500205}
   side: 1
   sidePosition: 75
   sideOffset: 0
@@ -804,54 +846,6 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &-5558457072538226599
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292101
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u751F\u6210\u78B0\u649E\u4F53"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1020.8002, y: 147.20001}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 7055011698421947253}
 --- !u!114 &-5497964640072302306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -895,54 +889,6 @@ MonoBehaviour:
   side: 2
   sidePosition: 30
   sideOffset: 0
---- !u!114 &-5449778908617461815
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292110
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u91CD\u7F6ECD\u4FE1\u606F"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1500, y: -150}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 167554237937814895}
 --- !u!114 &-5249470397598219631
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -994,108 +940,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevNode: {fileID: -8225728155575815804}
   NextNode: {fileID: 2068288125860551724}
---- !u!114 &-4957308916983458135
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe19422e5ac098418fe6326711ece4e, type: 3}
-  m_Name: "\u4FEE\u6539\u5C5E\u6027"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 0
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u8017\u84DD"
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_ChangeUnitPropertyAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: QCost
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Single
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: true
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Float, Unity.Model
-    - Name: Value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BuffWorkTypes
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1283.1, y: -16.60028}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 2650670932335922594}
 --- !u!114 &-4873104619433883930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1273,7 +1117,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -2876527349877078630}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -1349,59 +1193,11 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -1211.1, y: 145.39972}
+  position: {x: -1178.8998, y: 153.7997}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: 4430674525185785102}
---- !u!114 &-4227893324071761357
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292108
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u7B49\u5F85\u6280\u80FDCD"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1834, y: -134}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -1210181944019189593}
 --- !u!114 &-4093251512936989055
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1611,198 +1407,6 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
---- !u!114 &-3412300466571392941
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe19422e5ac098418fe6326711ece4e, type: 3}
-  m_Name: "\u4FEE\u6539\u5C5E\u6027"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 0
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 6
-      Data: 
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_ChangeUnitPropertyAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 6
-      Data: 
-    - Name: NP_BBValueType
-      Entry: 6
-      Data: 
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BuffWorkTypes
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1291.1, y: -15.600281}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -7774028626737712204}
---- !u!114 &-2876527349877078630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292102
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u68C0\u67E5\u662F\u5426\u53EF\u4EE5\u91CA\u653E\u6280\u80FD"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1464.0005, y: -5.600006}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -4593773959573937254}
---- !u!114 &-2794979995056495727
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292103
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u6263\u9664\u6280\u80FD\u82B1\u8D39"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1272.6003, y: -12.200001}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -813075781107341141}
 --- !u!114 &-2737065518962830474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1933,55 +1537,6 @@ MonoBehaviour:
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: -5654534960570757774}
   NextNode: {fileID: -8626799459949657226}
---- !u!114 &-2535080668899811286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f034d35a618453d95fbe2201154fd1c, type: 3}
-  m_Name: "\u91CD\u590D\u6267\u884C\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NpRepeaterNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_RepeaterNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292109
-    - Name: NodeType
-      Entry: 3
-      Data: 1
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u4E00\u76F4\u51CF\u5C11CD"
-    - Name: m_Repeater
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1836.7994, y: -131.20015}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -1727266687244539752}
-  NextNode: {fileID: 1756647440423910291}
 --- !u!114 &-2223023861471356050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2060,7 +1615,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 3023827845258835854}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -2199,7 +1754,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -2535080668899811286}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -2328,7 +1883,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -4227893324071761357}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -2371,7 +1926,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 3483521505557556901}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -2380,6 +1935,105 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &-951732092025761755
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d2282f3876e6c4592a04861d147f33, type: 3}
+  m_Name: "\u4FEE\u6539\u9ED1\u677F\u503C"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 0
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5C06\u6B64\u6280\u80FD\u8F93\u5165\u4FE1\u606F\u91CD\u7F6E"
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: PlayerInput
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.String
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_String, Unity.Model
+    - Name: Value
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -793.6999, y: -2.6002822}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -8129992383054500205}
 --- !u!114 &-813075781107341141
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2414,7 +2068,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -2794979995056495727}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -4139,40 +3793,22 @@ MonoBehaviour:
   - {fileID: 7525698382536449613}
   - {fileID: -2641056732363677884}
   - {fileID: -1915436632494826604}
-  - {fileID: 5126322786122011151}
-  - {fileID: 5524222006998630059}
   - {fileID: -3578900822012187708}
   - {fileID: 5617964831247548499}
-  - {fileID: 3432867627013438249}
-  - {fileID: 3868329310801621421}
   - {fileID: 49696458652929467}
   - {fileID: -694837067192052580}
   - {fileID: 4402087689374166816}
   - {fileID: -4873104619433883930}
   - {fileID: -7783136981240607285}
   - {fileID: 1276551358208590150}
-  - {fileID: -6125117084619955957}
-  - {fileID: -4485931205248124411}
+  - {fileID: 3868329310801621421}
+  - {fileID: -951732092025761755}
   - {fileID: 2900185650029442437}
   - {fileID: 4067221516687465122}
-  - {fileID: 466349293842869261}
-  nodesForDelete:
-  - {fileID: 6607677854559069293}
-  - {fileID: -5449778908617461815}
-  - {fileID: -2535080668899811286}
-  - {fileID: -4227893324071761357}
-  - {fileID: 3483521505557556901}
-  - {fileID: -2876527349877078630}
-  - {fileID: -2794979995056495727}
-  - {fileID: 8490382317656287888}
-  - {fileID: 3023827845258835854}
-  - {fileID: 6580306617055698006}
-  - {fileID: 6026292927222609934}
-  - {fileID: -4957308916983458135}
-  - {fileID: -3412300466571392941}
-  - {fileID: 3930956645420261655}
-  - {fileID: -5558457072538226599}
-  - {fileID: 785036384932873708}
+  - {fileID: 3432867627013438249}
+  - {fileID: -6125117084619955957}
+  - {fileID: -4485931205248124411}
+  nodesForDelete: []
   groups:
   - rect:
       serializedVersion: 2
@@ -4330,7 +3966,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -5449778908617461815}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -4417,7 +4053,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 785036384932873708}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -4426,54 +4062,6 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &466349293842869261
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292107
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u51C6\u5907\u540E\u4E8B"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -940, y: -20}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 7435439764692297010}
 --- !u!114 &499738385869676514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4508,7 +4096,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 8490382317656287888}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -4560,54 +4148,6 @@ MonoBehaviour:
   side: 2
   sidePosition: 30
   sideOffset: 0
---- !u!114 &785036384932873708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ee340166e146ed96ad698245a89ede, type: 3}
-  m_Name: "\u5B50\u56FE\u2014\u2014\u751F\u6210\u7684\u78B0\u649E\u4F53"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: ChildrenNodeDatas
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Plugins.NodeEditor.Editor.ChildrenNodes.ChildrenNodeDatas,
-        Assembly-CSharp-Editor-firstpass]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 1|Plugins.NodeEditor.Editor.ChildrenNodes.ChildrenNodeDatas, Assembly-CSharp-Editor-firstpass
-    - Name: ChildrenCanvas
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1007.1, y: 145.39972}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 0, b: 1, a: 1}
-  PrevNode: {fileID: 418351873436562066}
 --- !u!114 &1142659352231455692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4842,8 +4382,8 @@ MonoBehaviour:
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
   selectedNodes:
-  - {fileID: 466349293842869261}
-  panOffset: {x: 1309.6, y: 72.60028}
+  - {fileID: -4485931205248124411}
+  panOffset: {x: 1166.6, y: 44.000305}
   zoom: 1
   boxSelecting: 0
 --- !u!114 &1756647440423910291
@@ -4880,7 +4420,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -2535080668899811286}
+  body: {fileID: 0}
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
@@ -5053,7 +4593,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: 
@@ -5145,6 +4685,24 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: QDelay
+    - Name: $v
+      Entry: 7
+      Data: 7|ETModel.BBValues.NP_BBValue_Float, Unity.Model
+    - Name: Value
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -5152,11 +4710,11 @@ MonoBehaviour:
       Data: 
     - Name: Ids
       Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
+      Data: 8|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 8|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 9|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -5205,7 +4763,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -4957308916983458135}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -5248,13 +4806,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 5126322786122011151}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections:
-  - {fileID: -5998696999111863576}
+  _connections: []
   side: 3
   sidePosition: 75
   sideOffset: 0
@@ -5298,88 +4855,12 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -1098.6003, y: -14.000002}
+  position: {x: -1008.99976, y: -8.4000025}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: 4847647864451492300}
   NextNode: {fileID: -577982309259542929}
---- !u!114 &3023827845258835854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b4a4df8ee4bae93c0dba11eae2097, type: 3}
-  m_Name: "\u9ED1\u677F\u6761\u4EF6\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_BlackboardConditionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292115
-    - Name: NodeType
-      Entry: 3
-      Data: 1
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u73A9\u5BB6\u8F93\u5165\u6307\u4EE4"
-    - Name: Ope
-      Entry: 3
-      Data: 2
-    - Name: Stop
-      Entry: 3
-      Data: 4
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 1|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: PlayerInput
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.String
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 2|ETModel.BBValues.NP_BBValue_String, Unity.Model
-    - Name: Value
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1075.4004, y: -365.4}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -2079140943667440151}
-  NextNode: {fileID: 4230993266014588287}
 --- !u!114 &3174493522060492323
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5500,7 +4981,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 6607677854559069293}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -5543,7 +5024,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 6026292927222609934}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -5595,8 +5076,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: NodeDes
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: "\u7B49\u5F85\u6280\u80FDCD"
     - Name: NpClassForStoreAction
       Entry: 7
       Data: 2|ETModel.NP_WaitAChangeableTimeAction, Unity.Model
@@ -5672,52 +5153,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: -2223023861471356050}
---- !u!114 &3483521505557556901
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a76df7ad194f4fb27c7cf808370fd4, type: 3}
-  m_Name: "\u9009\u62E9\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_SelectorNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_SelectorNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292113
-    - Name: NodeType
-      Entry: 3
-      Data: 0
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "CD\u90E8\u5206\u903B\u8F91"
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1652.9995, y: -243.00018}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -1090042474618695534}
-  NextNode: {fileID: 8201037337234983808}
 --- !u!114 &3868329310801621421
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5817,54 +5252,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: 6946419322555105273}
---- !u!114 &3930956645420261655
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ee77fff79443e1a04fd2c28674b934, type: 3}
-  m_Name: "\u7B49\u5F85\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_WaitNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_WaitNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292100
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u5EF6\u8FDF\u79D2\u6570"
-    - Name: NPBalckBoardRelationData
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1204.9998, y: 154.99994}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -9070292694929534814}
 --- !u!114 &4067221516687465122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5941,7 +5328,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -996.1, y: 141.39972}
+  position: {x: -844.8999, y: 153.99979}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
@@ -6067,7 +5454,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 3023827845258835854}
+  body: {fileID: 0}
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
@@ -6244,13 +5631,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 5524222006998630059}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections:
-  - {fileID: -5998696999111863576}
+  _connections: []
   side: 3
   sidePosition: 75
   sideOffset: 0
@@ -6298,54 +5684,6 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &5126322786122011151
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292104
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u5C06\u6B64\u6280\u80FD\u8F93\u5165\u4FE1\u606F\u91CD\u7F6E"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -776.5994, y: -13.400158}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 2808066680793470562}
 --- !u!114 &5210237325739122980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6432,54 +5770,6 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
---- !u!114 &5524222006998630059
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597622815e619cc46840c0a99e899475, type: 3}
-  m_Name: "\u884C\u4E3A\u8282\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292106
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u8FDB\u5165\u51B7\u5374"
-    - Name: NpClassForStoreAction
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -617.0003, y: -14.400003}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 4964082491966562917}
 --- !u!114 &5572343511587538724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6574,286 +5864,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevNode: {fileID: -1251562281798757821}
   NextNode: {fileID: -8039192485442537358}
---- !u!114 &6026292927222609934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe19422e5ac098418fe6326711ece4e, type: 3}
-  m_Name: "\u4FEE\u6539\u5C5E\u6027"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 0
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 6
-      Data: 
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_ChangeUnitPropertyAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: QCost
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Single
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Float, Unity.Model
-    - Name: Value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BuffWorkTypes
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1281.1, y: -15.600281}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 3421964271389132751}
---- !u!114 &6580306617055698006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe19422e5ac098418fe6326711ece4e, type: 3}
-  m_Name: "\u4FEE\u6539\u5C5E\u6027"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 0
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 6
-      Data: 
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_ChangeUnitPropertyAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: QCost
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Single
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Float, Unity.Model
-    - Name: Value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BuffWorkTypes
-      Entry: 3
-      Data: 67108864
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1280.1, y: -8.600281}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -6883490917803522490}
---- !u!114 &6607677854559069293
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b4a4df8ee4bae93c0dba11eae2097, type: 3}
-  m_Name: "\u9ED1\u677F\u6761\u4EF6\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_BlackboardConditionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104743884292114
-    - Name: NodeType
-      Entry: 3
-      Data: 1
-    - Name: LinkedIds
-      Entry: 6
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u662F\u5426\u9700\u8981\u8FDB\u5165CD"
-    - Name: Ope
-      Entry: 3
-      Data: 2
-    - Name: Stop
-      Entry: 3
-      Data: 4
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 1|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: QCD
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Single
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 2|ETModel.BBValues.NP_BBValue_Float, Unity.Model
-    - Name: Value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1654.1998, y: -339.90018}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 3405466856104541516}
-  NextNode: {fileID: 7402049498801101051}
 --- !u!114 &6663436164170220001
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6975,7 +5985,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: -5558457072538226599}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
@@ -7062,7 +6072,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 6607677854559069293}
+  body: {fileID: 0}
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
@@ -7105,13 +6115,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 466349293842869261}
+  body: {fileID: 0}
   direction: 1
   maxConnectionCount: 0
   styleID: NPBehave_PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections:
-  - {fileID: -5998696999111863576}
+  _connections: []
   side: 3
   sidePosition: 75
   sideOffset: 0
@@ -7288,7 +6297,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  body: {fileID: 3483521505557556901}
+  body: {fileID: 0}
   direction: 2
   maxConnectionCount: 1
   styleID: NPBehave_NextNodeDatas
@@ -7297,123 +6306,6 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
---- !u!114 &8490382317656287888
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad3ace56e4ccb64ba0555138d32e1ed, type: 3}
-  m_Name: "\u68C0\u67E5\u6280\u80FD\u80FD\u5426\u91CA\u653E"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 0
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 6
-      Data: 
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_CheckSkillCanBeCastAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: DataId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 6
-      Data: 
-    - Name: Value
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: SkillDesNodeData
-      Entry: 6
-      Data: 
-    - Name: SkillIDBelongTo
-      Entry: 3
-      Data: 0
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: InCD
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Boolean
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: -1465.1, y: -12.600281}
-  dynamicConnectionPorts: []
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 499738385869676514}
 --- !u!114 &8660603331456038406
 MonoBehaviour:
   m_ObjectHideFlags: 1

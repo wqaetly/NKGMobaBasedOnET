@@ -88,7 +88,7 @@ namespace NodeEditorFramework
         /// </summary>
         public static bool CheckCanvasCompability(string nodeID, Type canvasType)
         {
-            NodeTypeData data = NodeTypes.getNodeData(nodeID);
+            NodeTypeData data = NodeTypes.GetNodeData(nodeID);
             return data.limitToCanvasTypes == null || data.limitToCanvasTypes.Length == 0 || data.limitToCanvasTypes.Contains(canvasType);
         }
 

@@ -290,6 +290,9 @@ namespace NodeEditorFramework
         }
     }
 
+    /// <summary>
+    /// 值连接类型
+    /// </summary>
     [ReflectionUtility.ReflectionSearchIgnoreAttribute()]
     public class ValueConnectionType: ConnectionKnobStyle
     {
