@@ -25,7 +25,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        public NP_WaitUntilStoppedData NpWaitUntilStoppedData = new NP_WaitUntilStoppedData { NodeType = NodeType.Task };
+        public NP_WaitUntilStoppedData NpWaitUntilStoppedData = new NP_WaitUntilStoppedData { NodeType = NodeType.Task, NodeDes = "阻止轮询，提高效率" };
 
         public override NP_NodeDataBase NP_GetNodeData()
         {
@@ -34,7 +34,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            EditorGUILayout.TextField(NpWaitUntilStoppedData.NodeDes);
+            NpWaitUntilStoppedData.NodeDes = EditorGUILayout.TextField(NpWaitUntilStoppedData.NodeDes);
         }
     }
 }

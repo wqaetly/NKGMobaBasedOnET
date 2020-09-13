@@ -10,10 +10,10 @@ using Action = System.Action;
 
 namespace ETModel
 {
-    [Title("修改黑板值",TitleAlignment = TitleAlignments.Centered)]
+    [Title("修改黑板值", TitleAlignment = TitleAlignments.Centered)]
     public class NP_ChangeBlackValueAction: NP_ClassForStoreAction
     {
-        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
+        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteOrCompareToBB = true };
 
         public override Action GetActionToBeDone()
         {

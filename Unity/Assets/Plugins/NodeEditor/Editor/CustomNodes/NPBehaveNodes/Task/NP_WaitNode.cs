@@ -25,7 +25,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         /// </summary>
         public override string GetID => Id;
 
-        public NP_WaitNodeData NP_WaitNodeData = new NP_WaitNodeData { NodeType = NodeType.Task };
+        public NP_WaitNodeData NP_WaitNodeData = new NP_WaitNodeData { NodeType = NodeType.Task};
 
         public override NP_NodeDataBase NP_GetNodeData()
         {

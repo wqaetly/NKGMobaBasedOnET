@@ -19,7 +19,7 @@ namespace ETModel
     public class NP_PlayAnimationAction: NP_ClassForStoreAction
     {
         [LabelText("要播放的动画数据")]
-        public List<PlayAnimInfo> NodeDataForPlayAnims;
+        public List<PlayAnimInfo> NodeDataForPlayAnims = new List<PlayAnimInfo>();
 
         /// <summary>
         /// 用于标识当前播放到哪一个动画的flag
