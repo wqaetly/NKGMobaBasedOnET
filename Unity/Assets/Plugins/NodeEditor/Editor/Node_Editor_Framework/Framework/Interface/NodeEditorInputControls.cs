@@ -255,25 +255,35 @@ namespace NodeEditorFramework
         [EventHandlerAttribute(EventType.MouseDown)]
         private static void HandleConnectionDrawing(NodeEditorInputInfo inputInfo)
         {
-            // TODO: Revamp Multi-Multi knob editing
             NodeEditorState state = inputInfo.editorState;
             if (inputInfo.inputEvent.button == 0 && state.focusedConnectionKnob != null)
             {
-                // Knob with single connection clicked
-                if (state.focusedConnectionKnob.connected())
+                // Left-Clicked on a ConnectionKnob, handle editing
+                if (state.focusedConnectionKnob.direction == Direction.Out)
                 {
-                    // Loose and edit existing connection from it
-                    state.connectKnob = state.focusedConnectionKnob.connection(0);
-                    state.focusedConnectionKnob.RemoveConnection(state.connectKnob);
-                    CreateConnection = false;
-                    inputInfo.inputEvent.Use();
-                }
-                else
-                {
-                    // Not connected, draw a new connection from it
+                    // Knob with multiple connections clicked -> Draw new connection from it
                     state.connectKnob = state.focusedConnectionKnob;
                     CreateConnection = true;
                     inputInfo.inputEvent.Use();
+                }
+                else if (state.focusedConnectionKnob.direction == Direction.In)
+                {
+                    // Knob with single connection clicked
+                    if (state.focusedConnectionKnob.connected())
+                    {
+                        // Loose and edit existing connection from it
+                        state.connectKnob = state.focusedConnectionKnob.connection(0);
+                        state.focusedConnectionKnob.RemoveConnection(state.connectKnob);
+                        CreateConnection = false;
+                        inputInfo.inputEvent.Use();
+                    }
+                    else
+                    {
+                        // Not connected, draw a new connection from it
+                        state.connectKnob = state.focusedConnectionKnob;
+                        CreateConnection = true;
+                        inputInfo.inputEvent.Use();
+                    }
                 }
             }
         }
