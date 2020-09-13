@@ -6,6 +6,9 @@ using NodeEditorFramework.Utilities;
 
 namespace NodeEditorFramework
 {
+    /// <summary>
+    /// 偏逻辑的端口类
+    /// </summary>
     [System.Serializable]
     public partial class ValueConnectionKnob: ConnectionKnob
     {

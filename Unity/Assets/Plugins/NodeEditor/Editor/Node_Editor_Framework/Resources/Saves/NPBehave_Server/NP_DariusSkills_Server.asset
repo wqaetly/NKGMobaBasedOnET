@@ -225,7 +225,7 @@ MonoBehaviour:
       Data: 
   body: {fileID: -5249470397598219631}
   direction: 1
-  maxConnectionCount: 0
+  maxConnectionCount: 1
   styleID: PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections: []
@@ -315,7 +315,8 @@ MonoBehaviour:
   maxConnectionCount: 1
   styleID: NextNodeDatas
   color: {r: 0, g: 1, b: 1, a: 1}
-  _connections: []
+  _connections:
+  - {fileID: -7012523200909135564}
   side: 2
   sidePosition: 30
   sideOffset: 0
@@ -515,10 +516,12 @@ MonoBehaviour:
       Data: 
   body: {fileID: 7525698382536449613}
   direction: 1
-  maxConnectionCount: 0
+  maxConnectionCount: 1
   styleID: PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections: []
+  _connections:
+  - {fileID: -8039192485442537358}
+  - {fileID: 2068288125860551724}
   side: 4
   sidePosition: 30
   sideOffset: 0
@@ -608,6 +611,49 @@ MonoBehaviour:
   - {fileID: -3458657040550746004}
   side: 3
   sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-6448164455860270999
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 0}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections: []
+  side: 4
+  sidePosition: 30
   sideOffset: 0
 --- !u!114 &-6445037236655816754
 MonoBehaviour:
@@ -1175,16 +1221,22 @@ MonoBehaviour:
       Entry: 7
       Data: 2|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: QDelay
     - Name: NP_BBValueType
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: System.Single
     - Name: WriteOrCompareToBB
       Entry: 5
       Data: false
     - Name: NP_BBValue
-      Entry: 6
+      Entry: 7
+      Data: 3|ETModel.BBValues.NP_BBValue_Float, Unity.Model
+    - Name: Value
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -1246,6 +1298,49 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   NextNode: {fileID: -104704998535608371}
+--- !u!114 &-3941073666577341339
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 0}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections: []
+  side: 2
+  sidePosition: 30
+  sideOffset: 0
 --- !u!114 &-3779023101560738705
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1356,7 +1451,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -2131.6006, y: 531.2004}
+  position: {x: -2096.6003, y: 529.8004}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevNode: {fileID: 6663436164170220001}
@@ -1842,7 +1937,7 @@ MonoBehaviour:
       Data: 
   body: {fileID: 5617964831247548499}
   direction: 1
-  maxConnectionCount: 0
+  maxConnectionCount: 1
   styleID: PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections: []
@@ -3787,14 +3882,9 @@ MonoBehaviour:
   savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_Server\NP_DariusSkills_Server.asset
   nodes:
   - {fileID: -4093251512936989055}
-  - {fileID: -8245700201111521883}
-  - {fileID: -5249470397598219631}
   - {fileID: -8711415881336056319}
-  - {fileID: 7525698382536449613}
   - {fileID: -2641056732363677884}
   - {fileID: -1915436632494826604}
-  - {fileID: -3578900822012187708}
-  - {fileID: 5617964831247548499}
   - {fileID: 49696458652929467}
   - {fileID: -694837067192052580}
   - {fileID: 4402087689374166816}
@@ -3802,12 +3892,17 @@ MonoBehaviour:
   - {fileID: -7783136981240607285}
   - {fileID: 1276551358208590150}
   - {fileID: 3868329310801621421}
-  - {fileID: -951732092025761755}
-  - {fileID: 2900185650029442437}
-  - {fileID: 4067221516687465122}
   - {fileID: 3432867627013438249}
+  - {fileID: -951732092025761755}
   - {fileID: -6125117084619955957}
+  - {fileID: 4067221516687465122}
   - {fileID: -4485931205248124411}
+  - {fileID: 2900185650029442437}
+  - {fileID: 7525698382536449613}
+  - {fileID: -3578900822012187708}
+  - {fileID: 5617964831247548499}
+  - {fileID: -5249470397598219631}
+  - {fileID: -8245700201111521883}
   nodesForDelete: []
   groups:
   - rect:
@@ -4381,10 +4476,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes:
-  - {fileID: -4485931205248124411}
-  panOffset: {x: 1166.6, y: 44.000305}
-  zoom: 1
+  selectedNodes: []
+  panOffset: {x: 1687.4001, y: -475.9997}
+  zoom: 1.4
   boxSelecting: 0
 --- !u!114 &1756647440423910291
 MonoBehaviour:
@@ -4428,6 +4522,49 @@ MonoBehaviour:
   _connections: []
   side: 1
   sidePosition: 75
+  sideOffset: 0
+--- !u!114 &1818134385158919114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 0}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections: []
+  side: 2
+  sidePosition: 30
   sideOffset: 0
 --- !u!114 &1822766957768744525
 MonoBehaviour:
@@ -4512,7 +4649,9 @@ MonoBehaviour:
   maxConnectionCount: 1
   styleID: NextNodeDatas
   color: {r: 0, g: 1, b: 1, a: 1}
-  _connections: []
+  _connections:
+  - {fileID: -7012523200909135564}
+  - {fileID: 9170210088150690288}
   side: 2
   sidePosition: 30
   sideOffset: 0
@@ -4989,6 +5128,49 @@ MonoBehaviour:
   _connections: []
   side: 3
   sidePosition: 75
+  sideOffset: 0
+--- !u!114 &3418078667779334894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: b2sInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[NodeEditorFramework.InfoWithDeleteBtn,
+        Assembly-CSharp-Editor-firstpass]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  body: {fileID: 0}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections: []
+  side: 4
+  sidePosition: 30
   sideOffset: 0
 --- !u!114 &3421964271389132751
 MonoBehaviour:
@@ -5806,7 +5988,7 @@ MonoBehaviour:
       Data: 
   body: {fileID: -8711415881336056319}
   direction: 1
-  maxConnectionCount: 0
+  maxConnectionCount: 1
   styleID: PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections: []
@@ -5900,7 +6082,7 @@ MonoBehaviour:
       Data: 
   body: {fileID: -3578900822012187708}
   direction: 1
-  maxConnectionCount: 0
+  maxConnectionCount: 1
   styleID: PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections: []
@@ -6385,10 +6567,11 @@ MonoBehaviour:
       Data: 
   body: {fileID: -8245700201111521883}
   direction: 1
-  maxConnectionCount: 0
+  maxConnectionCount: 1
   styleID: PrevNodeDatas
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections: []
+  _connections:
+  - {fileID: 2068288125860551724}
   side: 4
   sidePosition: 30
   sideOffset: 0
