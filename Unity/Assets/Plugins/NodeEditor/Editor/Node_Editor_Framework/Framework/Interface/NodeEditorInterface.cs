@@ -20,7 +20,7 @@ namespace NodeEditorFramework.Standard
         public bool showModalPanel;
         public Rect modalPanelRect = new Rect(20, 50, 250, 70);
         public Action modalPanelContent;
-        
+
         public void ShowNotification(GUIContent message)
         {
             if (ShowNotificationAction != null)
@@ -123,7 +123,7 @@ namespace NodeEditorFramework.Standard
             else
             {
                 this.AssertSavaCanvasSuccessfully();
-                path = path.Replace("/",@"\");
+                path = path.Replace("/", @"\");
                 canvasCache.LoadNodeCanvas(path);
             }
         }
@@ -171,6 +171,11 @@ namespace NodeEditorFramework.Standard
             //清理要删掉的Node
             foreach (var nodeForDelete in canvasCache.nodeCanvas.nodesForDelete)
             {
+                //去除Node附带的端口
+                foreach (var connectPort in nodeForDelete.connectionPorts)
+                {
+                    UnityEngine.Object.DestroyImmediate(connectPort, true);
+                }
                 UnityEngine.Object.DestroyImmediate(nodeForDelete, true);
             }
 
