@@ -62,9 +62,9 @@ namespace NodeEditorFramework
                     {
                         UnityEngine.Object.DestroyImmediate(subAsset, true);
                     }
-                    else if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    else if (subAsset is NPBehaveCanvasDataManager)
                     {
-                        if (hasInitOneCanvasDataManager == true)
+                        if (hasInitOneCanvasDataManager)
                         {
                             UnityEngine.Object.DestroyImmediate(subAsset, true);
                         }
@@ -73,9 +73,9 @@ namespace NodeEditorFramework
                             hasInitOneCanvasDataManager = true;
                         }
                     }
-                    else if (subAsset is NodeEditorState nodeEditorState)
+                    else if (subAsset is NodeEditorState)
                     {
-                        if (hasInitCanvasEditorState == true)
+                        if (hasInitCanvasEditorState)
                         {
                             UnityEngine.Object.DestroyImmediate(subAsset, true);
                         }

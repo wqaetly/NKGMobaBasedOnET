@@ -27,7 +27,6 @@ namespace ETModel
         [LabelText("字典键")]
         [ValueDropdown("GetBBKeys")]
         [OnValueChanged("OnBBKeySelected")]
-        [BsonIgnore]
         public string BBKey;
 
         [LabelText("指定的值类型")]

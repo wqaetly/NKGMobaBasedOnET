@@ -40,7 +40,7 @@ namespace NodeEditorFramework
         /// <summary>
         /// 待删除的结点，用于Undo
         /// </summary>
-        [LabelText("待删除的结点，用于Undo")]
+        [HideInInspector]
         public List<Node> nodesForDelete = new List<Node>();
 
         [LabelText("右击Group的顶部标题即可弹出删除选项")]

@@ -18,7 +18,8 @@ namespace ETModel
         [LabelText("委托执行时间间隔")]
         public float interval;
 
-        public NP_ClassForStoreAction NpClassForStoreAction;
+        public NP_ClassForStoreAction NpClassForStoreAction =
+                new NP_ChangeBlackValueAction() { NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteOrCompareToBB = true } };
 
         public override Node NP_GetNode()
         {
