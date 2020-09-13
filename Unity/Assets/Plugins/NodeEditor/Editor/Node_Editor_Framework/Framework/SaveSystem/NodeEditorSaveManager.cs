@@ -40,13 +40,59 @@ namespace NodeEditorFramework
             {
                 UnityEditor.AssetDatabase.CreateAsset(nodeCanvas, path);
             }
-
             UnityEditor.AssetDatabase.SaveAssets();
             UnityEditor.AssetDatabase.Refresh();
 
             NodeEditorCallbacks.IssueOnSaveCanvas(nodeCanvas);
         }
 
+        /// <summary>
+        /// 净化Canvas中的数据（一般不用，这是在开发期去除一些残余数据）
+        /// </summary>
+        /// <param name="path"></param>
+        private static void PurifyCanvas(string path)
+        {
+            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
+            bool hasInitOneCanvasDataManager = false, hasInitCanvasEditorState = false;
+            if (subAssets != null)
+            {
+                foreach (var subAsset in subAssets)
+                {
+                    if (subAsset is ConnectionPort connection && connection.body == null)
+                    {
+                        UnityEngine.Object.DestroyImmediate(subAsset, true);
+                    }
+                    else if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
+                    {
+                        if (hasInitOneCanvasDataManager == true)
+                        {
+                            UnityEngine.Object.DestroyImmediate(subAsset, true);
+                        }
+                        else
+                        {
+                            hasInitOneCanvasDataManager = true;
+                        }
+                    }
+                    else if (subAsset is NodeEditorState nodeEditorState)
+                    {
+                        if (hasInitCanvasEditorState == true)
+                        {
+                            UnityEngine.Object.DestroyImmediate(subAsset, true);
+                        }
+                        else
+                        {
+                            hasInitCanvasEditorState = true;
+                        }
+                    }
+                    else if (subAsset == null)
+                    {
+                        UnityEngine.Object.DestroyImmediate(subAsset, true);
+                    }
+                }
+            }
+        }
+
+        
         /// <summary>
         /// Loads the NodeCanvas from the asset file at path and optionally creates a working copy of it before returning
         /// </summary>
@@ -101,6 +147,7 @@ namespace NodeEditorFramework
                 {
                     return;
                 }
+
                 UnityEditor.AssetDatabase.AddObjectToAsset(subAsset, mainAsset);
                 subAsset.hideFlags = HideFlags.HideInHierarchy;
             }
@@ -151,6 +198,7 @@ namespace NodeEditorFramework
                 UnityEditor.EditorUtility.SetDirty(canvas);
 #endif
             }
+
             state.canvas = canvas;
             state.name = stateName;
             return state;

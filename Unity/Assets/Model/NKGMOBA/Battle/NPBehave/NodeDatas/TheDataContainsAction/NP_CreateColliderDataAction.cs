@@ -5,11 +5,13 @@
 //------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [Title("创建一个碰撞体",TitleAlignment = TitleAlignments.Centered)]
+    [Title("创建一个碰撞体", TitleAlignment = TitleAlignments.Centered)]
     public class NP_CreateColliderAction: NP_ClassForStoreAction
     {
         [LabelText("要生成的碰撞数据载体ID")]

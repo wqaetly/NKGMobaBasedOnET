@@ -22,10 +22,10 @@ namespace Plugins
         public override string GetID => Id;
 
         public override Vector2 DefaultSize => new Vector2(150, 60);
-
+        
         [ValueConnectionKnob("PrevBuffType", Direction.In, "PrevNodeDatas", NodeSide.Left, 30, MaxConnectionCount = ConnectionCount.Multi)]
         public ValueConnectionKnob PrevNode;
-
+        
         [ValueConnectionKnob("NextBuffType", Direction.Out, "NextNodeDatas", NodeSide.Right, 30)]
         public ValueConnectionKnob NextNode;
 
