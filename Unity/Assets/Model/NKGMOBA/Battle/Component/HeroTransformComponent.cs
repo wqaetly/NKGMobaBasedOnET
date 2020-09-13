@@ -59,10 +59,10 @@ namespace ETModel
         public void Awake()
         {
             this.MyHero = this.GetParent<Unit>();
-            this.headPos = this.MyHero.GameObject.Get<GameObject>("C_BuffBone_Glb_Overhead_Loc").transform;
-            this.groundPos = this.MyHero.GameObject.Get<GameObject>("BUFFBONE_GLB_GROUND_LOC").transform;
-            this.channelPos = this.MyHero.GameObject.Get<GameObject>("BUFFBONE_GLB_CHANNEL_LOC").transform;
-            this.centerPos = this.MyHero.GameObject.Get<GameObject>("C_BUFFBONE_GLB_CENTER_LOC").transform;
+            this.headPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("C_BuffBone_Glb_Overhead_Loc");
+            this.groundPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BUFFBONE_GLB_GROUND_LOC");
+            this.channelPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BUFFBONE_GLB_CHANNEL_LOC");
+            this.centerPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("C_BUFFBONE_GLB_CENTER_LOC");
         }
 
         /// <summary>

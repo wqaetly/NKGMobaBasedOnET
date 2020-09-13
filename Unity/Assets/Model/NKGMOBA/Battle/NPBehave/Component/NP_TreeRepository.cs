@@ -87,7 +87,7 @@ namespace ETModel
             GameObject skillConfigs = (GameObject) resourcesComponent.GetAsset("skillconfigs.unity3d", "SkillConfigs");
             foreach (var referenceCollectorData in skillConfigs.GetComponent<ReferenceCollector>().data)
             {
-                TextAsset textAsset = skillConfigs.Get<TextAsset>(referenceCollectorData.key);
+                TextAsset textAsset = skillConfigs.GetTargetObjectFromRC<TextAsset>(referenceCollectorData.key);
 
                 if (textAsset.bytes.Length == 0) Log.Info("没有读取到文件");
 

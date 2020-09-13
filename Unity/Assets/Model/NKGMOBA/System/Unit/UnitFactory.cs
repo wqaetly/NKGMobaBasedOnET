@@ -67,7 +67,7 @@ namespace ETModel
         {
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
             GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            GameObject prefab = bundleGameObject.Get<GameObject>(heroType);
+            GameObject prefab = bundleGameObject.GetTargetObjectFromRC<GameObject>(heroType);
             Game.Scene.GetComponent<GameObjectPool>().Add(heroType, prefab);
         }
 

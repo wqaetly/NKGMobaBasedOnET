@@ -45,8 +45,8 @@ namespace ETModel
 			Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"code.unity3d");
 			GameObject code = (GameObject)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("code.unity3d", "Code");
 			
-			byte[] assBytes = code.Get<TextAsset>("Hotfix.dll").bytes;
-			byte[] pdbBytes = code.Get<TextAsset>("Hotfix.pdb").bytes;
+			byte[] assBytes = code.GetTargetObjectFromRC<TextAsset>("Hotfix.dll").bytes;
+			byte[] pdbBytes = code.GetTargetObjectFromRC<TextAsset>("Hotfix.pdb").bytes;
 			
 #if ILRuntime
 			Log.Debug($"当前使用的是ILRuntime模式");

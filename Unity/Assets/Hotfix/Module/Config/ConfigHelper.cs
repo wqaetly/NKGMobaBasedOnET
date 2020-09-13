@@ -11,7 +11,7 @@ namespace ETHotfix
 			try
 			{
 				GameObject config = (GameObject)ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("config.unity3d", "Config");
-				string configStr = config.Get<TextAsset>(key).text;
+				string configStr = config.GetTargetObjectFromRC<TextAsset>(key).text;
 				return configStr;
 			}
 			catch (Exception e)

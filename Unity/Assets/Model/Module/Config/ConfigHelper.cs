@@ -10,7 +10,7 @@ namespace ETModel
 			try
 			{
 				GameObject config = (GameObject)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("config.unity3d", "Config");
-				string configStr = config.Get<TextAsset>(key).text;
+				string configStr = config.GetTargetObjectFromRC<TextAsset>(key).text;
 				return configStr;
 			}
 			catch (Exception e)
@@ -24,7 +24,7 @@ namespace ETModel
 			try
 			{
 				GameObject config = (GameObject)ResourcesHelper.Load("KV");
-				string configStr = config.Get<TextAsset>("GlobalProto").text;
+				string configStr = config.GetTargetObjectFromRC<TextAsset>("GlobalProto").text;
 				return configStr;
 			}
 			catch (Exception e)

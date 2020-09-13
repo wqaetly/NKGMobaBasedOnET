@@ -213,7 +213,7 @@ namespace ETModel
                 abSounds.Add(soundName,
                     UnityEngine.Object.Instantiate(
                             ((GameObject) resourcesComponent.GetAsset("sounds.unity3d", "Sounds"))
-                            .Get<GameObject>(soundName))
+                            .GetTargetObjectFromRC<GameObject>(soundName))
                         .GetComponent<SoundData>());
             }
 

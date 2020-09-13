@@ -53,12 +53,12 @@ namespace ETHotfix
             GameObject HeroSkillIcons =
                     (GameObject) ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroskillicons.unity3d", "HeroSkillIcons");
 
-            self.HeroAvatarLoader.texture = new NTexture(HeroAvatars.Get<Sprite>(mNodeDataForHero.HeroAvatar).texture);
-            self.SkillTalent_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>(mNodeDataForHero.Talent_SkillSprite).texture);
-            self.SkillQ_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>(mNodeDataForHero.Q_SkillSprite).texture);
-            self.SkillW_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>(mNodeDataForHero.W_SkillSprite).texture);
-            self.SkillE_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>(mNodeDataForHero.E_SkillSprite).texture);
-            self.SkillR_Loader.texture = new NTexture(HeroSkillIcons.Get<Sprite>(mNodeDataForHero.R_SkillSprite).texture);
+            self.HeroAvatarLoader.texture = new NTexture(HeroAvatars.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.HeroAvatar).texture);
+            self.SkillTalent_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.Talent_SkillSprite).texture);
+            self.SkillQ_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.Q_SkillSprite).texture);
+            self.SkillW_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.W_SkillSprite).texture);
+            self.SkillE_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.E_SkillSprite).texture);
+            self.SkillR_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.R_SkillSprite).texture);
 
             self.AttackInfo.text = (mNodeDataForHero.OriAttackValue + mNodeDataForHero.ExtAttackValue).ToString();
             self.ExtraAttackInfo.text = mNodeDataForHero.ExtAttackValue.ToString();
