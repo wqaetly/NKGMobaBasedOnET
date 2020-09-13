@@ -30,7 +30,6 @@ namespace NodeEditorFramework
         public List<ConnectionPort> staticConnectionPorts = new List<ConnectionPort>();
 
         // Representative lists of static port declarations aswell as dynamic ports
-        [NonSerialized]
         public List<ConnectionPort> connectionPorts = new List<ConnectionPort>();
 
         [NonSerialized]
