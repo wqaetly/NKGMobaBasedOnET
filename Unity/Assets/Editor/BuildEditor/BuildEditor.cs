@@ -47,7 +47,7 @@ namespace ETEditor
         List<string> FUIRes = new List<string>();
 
         [LabelText("平台选择")]
-        public PlatformType platformType;
+        public PlatformType platformType = PlatformType.PC;
 
         [LabelText("出包模式")]
         public BuildType buildType;
@@ -73,10 +73,10 @@ namespace ETEditor
         [LabelText("AB包配置文件")]
         public BuildData m_BuildData = new BuildData();
 
-        [LabelText("是否打Exe包")]
+        [LabelText("是否打可执行文件")]
         public bool isBuildExe;
 
-        [LabelText("Exe是否包含AB包")]
+        [LabelText("可执行文件是否包含AB包")]
         public bool isContainAB;
 
         private BuildAssetBundleOptions buildAssetBundleOptions = BuildAssetBundleOptions.None;
