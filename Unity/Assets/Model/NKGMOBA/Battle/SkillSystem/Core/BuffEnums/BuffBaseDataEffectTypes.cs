@@ -18,9 +18,9 @@ namespace ETModel
         FromSkillLevel = 1 << 2,
 
         [LabelText("已损失生命值")]
-        FromHasLostLifeValue = 1<<3,
-        
+        FromHasLostLifeValue = 1 << 3,
+
         [LabelText("当前Buff叠加层数")]
-        FromCurrentOverlay = 1<<4,
+        FromCurrentOverlay = 1 << 4,
     }
 }
