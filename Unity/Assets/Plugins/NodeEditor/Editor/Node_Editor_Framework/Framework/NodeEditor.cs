@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework.Utilities;
+using UnityEditor;
 using Object = UnityEngine.Object;
 
 namespace NodeEditorFramework
@@ -334,7 +335,7 @@ namespace NodeEditorFramework
                 handleRect.min = NodeEditorInputControls.startSelectionPos;
                 handleRect.max = Event.current.mousePosition;
 
-                GUI.Box(handleRect, GUIContent.none, NodeEditorGUI.nodeBox);
+                Handles.DrawSolidRectangleWithOutline(handleRect, new Color(0, 0, 0, 0.1f), new Color(1, 1, 1, 0.6f));
 
                 Rect canvasRect = new Rect();
                 Vector2 start = ScreenToCanvasSpace(NodeEditorInputControls.startSelectionPos);
