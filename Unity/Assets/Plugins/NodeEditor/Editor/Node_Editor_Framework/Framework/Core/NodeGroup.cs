@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace NodeEditorFramework
         /// Represents selected borders as a flag in order to support corners
         /// </summary>
         [Flags]
-        enum BorderSelection
+        enum BorderSelection: byte
         {
             None = 0,
             Left = 1,
@@ -48,8 +48,7 @@ namespace NodeEditorFramework
 
         internal bool isClipped;
 
-        [LabelText("顶部大小（高度）")]
-        public int headerHeight = 30;
+        private static int s_HeaderHeight = 30;
 
         [LabelText("字体大小")]
         public int TextSize = 25;
@@ -64,8 +63,11 @@ namespace NodeEditorFramework
         private List<NodeGroup> pinnedGroups = new List<NodeGroup>();
 
         // Settings
-        private static bool headerFree = true;
+        /// <summary>
+        /// 对Group进行缩放时高亮条宽度
+        /// </summary>
         private const int borderWidth = 15;
+
         private const int minGroupSize = 150;
 
         // Accessors
@@ -73,7 +75,7 @@ namespace NodeEditorFramework
         {
             get
             {
-                return new Rect(rect.x, rect.y - (headerFree? headerHeight : 0), rect.width, headerHeight);
+                return new Rect(rect.x, rect.y, rect.width, s_HeaderHeight);
             }
         }
 
@@ -81,7 +83,7 @@ namespace NodeEditorFramework
         {
             get
             {
-                return new Rect(rect.x, rect.y + (headerFree? 0 : headerHeight), rect.width, rect.height - (headerFree? 0 : headerHeight));
+                return new Rect(rect.x, rect.y + s_HeaderHeight, rect.width, rect.height);
             }
         }
 
@@ -89,7 +91,7 @@ namespace NodeEditorFramework
         {
             get
             {
-                return new Rect(rect.x, rect.y - (headerFree? headerHeight : 0), rect.width, rect.height + (headerFree? headerHeight : 0));
+                return new Rect(rect.x, rect.y, rect.width, rect.height);
             }
         }
 
@@ -163,12 +165,21 @@ namespace NodeEditorFramework
 
         #region GUI
 
+        /// <summary>
+        /// GroupBody风格
+        /// </summary>
         [NonSerialized]
         private GUIStyle backgroundStyle;
 
+        /// <summary>
+        /// GroupHeader风格
+        /// </summary>
         [NonSerialized]
         private GUIStyle altBackgroundStyle;
 
+        /// <summary>
+        /// 进行Group缩放时的颜色风格
+        /// </summary>
         [NonSerialized]
         private GUIStyle opBackgroundStyle;
 
@@ -176,9 +187,6 @@ namespace NodeEditorFramework
         //		private GUIStyle dragHandleStyle;
         [NonSerialized]
         private GUIStyle headerTitleStyle;
-
-        [NonSerialized]
-        private GUIStyle headerTitleEditStyle;
 
         /// <summary>
         /// Generates all the styles for this node group based of the color
@@ -194,29 +202,19 @@ namespace NodeEditorFramework
 
             backgroundStyle = new GUIStyle();
             backgroundStyle.normal.background = background;
-            backgroundStyle.padding = new RectOffset(10, 10, 5, 5);
+            backgroundStyle.padding = new RectOffset(10, 10, 0, 0);
 
             altBackgroundStyle = new GUIStyle();
             altBackgroundStyle.normal.background = altBackground;
-            altBackgroundStyle.padding = new RectOffset(10, 10, 10, 10);
+            altBackgroundStyle.padding = new RectOffset(10, 10, 0, 0);
 
             opBackgroundStyle = new GUIStyle();
             opBackgroundStyle.normal.background = opBackground;
             opBackgroundStyle.padding = new RectOffset(10, 10, 5, 5);
 
-            //			dragHandleStyle = new GUIStyle ();
-            //			dragHandleStyle.normal.background = background;
-            //			//dragHandleStyle.hover.background = altBackground;
-            //			dragHandleStyle.padding = new RectOffset (10, 10, 5, 5);
-
             headerTitleStyle = new GUIStyle();
             headerTitleStyle.fontSize = this.TextSize;
             headerTitleStyle.normal.textColor = Color.white;
-
-            headerTitleEditStyle = new GUIStyle(headerTitleStyle);
-            headerTitleEditStyle.normal.background = background;
-            headerTitleEditStyle.focused.background = background;
-            headerTitleEditStyle.focused.textColor = Color.white;
         }
 
         /// <summary>
@@ -230,45 +228,31 @@ namespace NodeEditorFramework
             // Create a rect that is adjusted to the editor zoom
             Rect groupRect = rect;
             groupRect.position += state.zoomPanAdjust + state.panOffset;
-
-            // Resize handles
-            //Rect leftSideRect = new Rect(groupRect.x, groupRect.y, borderWidth, groupRect.height);
-            //Rect rightSideRect = new Rect(groupRect.x + groupRect.width - borderWidth, groupRect.y, borderWidth, groupRect.height);
-            //Rect topSideRect = new Rect(groupRect.x, groupRect.y, groupRect.width, borderWidth);
-            //Rect bottomSideRect = new Rect(groupRect.x, groupRect.y + groupRect.height - borderWidth, groupRect.width, borderWidth);
-
-            //GUI.Box(leftSideRect, GUIContent.none, dragHandleStyle);
-            //GUI.Box(rightSideRect, GUIContent.none, dragHandleStyle);
-            //GUI.Box(topSideRect, GUIContent.none, dragHandleStyle);
-            //GUI.Box(bottomSideRect, GUIContent.none, dragHandleStyle);
-
+            
             if (state.activeGroup == this && state.resizeGroup)
             {
                 // Highlight the currently resized border
-                Rect handleRect = getBorderRect(rect, NodeGroup.resizeDir);
+                Rect handleRect = getBorderRect(this.bodyRect, NodeGroup.resizeDir);
                 handleRect.position += state.zoomPanAdjust + state.panOffset;
                 GUI.Box(handleRect, GUIContent.none, opBackgroundStyle);
             }
+
+            // Header
+            Rect groupHeaderRect = headerRect;
+            groupHeaderRect.position += state.zoomPanAdjust + state.panOffset;
 
             // Body
             Rect groupBodyRect = bodyRect;
             groupBodyRect.position += state.zoomPanAdjust + state.panOffset;
             GUI.Box(groupBodyRect, GUIContent.none, backgroundStyle);
 
-            // Header
-            Rect groupHeaderRect = headerRect;
-            groupHeaderRect.position += state.zoomPanAdjust + state.panOffset + new Vector2(0, -10);
-
-            GUILayout.BeginArea(groupHeaderRect, headerFree? GUIStyle.none : altBackgroundStyle);
+            GUILayout.BeginArea(groupHeaderRect, altBackgroundStyle);
             GUILayout.BeginHorizontal();
 
             GUILayout.Space(8);
 
             // Header Title
-
-            title = GUILayout.TextField(title, headerTitleEditStyle, GUILayout.MinWidth(40));
-
-            GUILayout.Space(10);
+            title = GUILayout.TextField(title, headerTitleStyle, GUILayout.MinWidth(40));
 
             // Header Color Edit
             color = this._color;
@@ -286,7 +270,7 @@ namespace NodeEditorFramework
         /// <summary>
         /// Gets a NodeGroup which has it's header under the mouse. If multiple groups are adressed, the smallest is returned.
         /// </summary>
-        private static NodeGroup HeaderAtPosition(NodeEditorState state, Vector2 canvasPos)
+        public static NodeGroup HeaderAtPosition(NodeEditorState state, Vector2 canvasPos)
         {
             if (NodeEditorInputSystem.shouldIgnoreInput(state))
                 return null;
@@ -303,7 +287,7 @@ namespace NodeEditorFramework
         /// <summary>
         /// Gets a NodeGroup under the mouse. If multiple groups are adressed, the group lowest in the pin hierarchy is returned.
         /// </summary>
-        private static NodeGroup GroupAtPosition(NodeEditorState state, Vector2 canvasPos)
+        public static NodeGroup GroupAtPosition(NodeEditorState state, Vector2 canvasPos)
         {
             if (NodeEditorInputSystem.shouldIgnoreInput(state))
                 return null;
@@ -319,6 +303,7 @@ namespace NodeEditorFramework
 
         /// <summary>
         /// Gets a NodeGroup under the mouse that requires input (header or border). If multiple groups are adressed, the group lowest in the pin hierarchy is returned.
+        /// 获取鼠标点击的需要执行操作的Group（Header或Border），如果找到了多个group，则只处理第一个group
         /// </summary>
         private static NodeGroup GroupAtPositionInput(NodeEditorState state, Vector2 canvasPos)
         {
@@ -328,7 +313,7 @@ namespace NodeEditorFramework
             {
                 NodeGroup group = state.canvas.groups[i];
                 BorderSelection border;
-                if (group.headerRect.Contains(canvasPos) || CheckBorderSelection(state, group.rect, canvasPos, out border))
+                if (group.headerRect.Contains(canvasPos) || CheckBorderSelection(state, group.bodyRect, canvasPos, out border))
                     return group;
             }
 
@@ -337,6 +322,8 @@ namespace NodeEditorFramework
 
         /// <summary>
         /// Returns true if the mouse position is on the border of the focused node and outputs the border as a flag in selection
+        /// 如果鼠标选中边界Border，就返回true，并且改变BorderSelection的值
+        /// 这里的rect是整个Group
         /// </summary>
         private static bool CheckBorderSelection(NodeEditorState state, Rect rect, Vector2 canvasPos, out BorderSelection selection)
         {
@@ -344,6 +331,7 @@ namespace NodeEditorFramework
             if (!rect.Contains(canvasPos))
                 return false;
 
+            //这里的min和max是指Top，Right为Max，Bottom，Left为Min（你呀，总是能给我整出点新花样）
             Vector2 min = new Vector2(rect.xMin + borderWidth, rect.yMax - borderWidth);
             Vector2 max = new Vector2(rect.xMax - borderWidth, rect.yMin + borderWidth);
 
@@ -368,14 +356,25 @@ namespace NodeEditorFramework
         {
             Rect borderRect = rect;
             if ((border & BorderSelection.Left) != 0)
+            {
                 borderRect.xMax = borderRect.xMin + borderWidth;
+            }
+
             else if ((border & BorderSelection.Right) != 0)
+            {
                 borderRect.xMin = borderRect.xMax - borderWidth;
+            }
 
             if ((border & BorderSelection.Top) != 0)
+            {
                 borderRect.yMax = borderRect.yMin + borderWidth;
+            }
+
             else if ((border & BorderSelection.Bottom) != 0)
+            {
                 borderRect.yMin = borderRect.yMax - borderWidth;
+            }
+
             return borderRect;
         }
 
@@ -439,7 +438,7 @@ namespace NodeEditorFramework
                     // Start dragging the focused group
                     UpdateGroupOrder();
                     Vector2 canvasInputPos = NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos);
-                    if (CheckBorderSelection(state, focusedGroup.rect, canvasInputPos, out NodeGroup.resizeDir))
+                    if (CheckBorderSelection(state, focusedGroup.bodyRect, canvasInputPos, out NodeGroup.resizeDir))
                     {
                         // Resizing
                         state.activeGroup = focusedGroup;

@@ -111,7 +111,8 @@ namespace NodeEditorFramework
                 return; // GUI has control
 
             NodeEditorState state = inputInfo.editorState;
-            if (inputInfo.inputEvent.button == 0 && state.focusedNode == null)
+            if (inputInfo.inputEvent.button == 0 && state.focusedNode == null &&
+                NodeGroup.HeaderAtPosition(state, NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos)) == null)
             {
                 // Left clicked on the empty canvas -> Start the selection process
                 state.boxSelecting = true;
