@@ -31,9 +31,7 @@ namespace ETModel
             BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
             for (int i = 0; i < this.Layers.GetBlackBoardValue<int>(this.BelongtoRuntimeTree.GetBlackboard()); i++)
             {
-                buffPoolComponent.AcquireBuff((this.BelongtoRuntimeTree
-                        .BelongNP_DataSupportor
-                        .BuffDataDic[this.BuffDataID.Value] as NormalBuffNodeData).BuffData, unit, unit);
+                buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, BuffDataID.Value, unit, unit);
             }
         }
     }

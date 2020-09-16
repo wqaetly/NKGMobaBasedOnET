@@ -19,27 +19,31 @@ namespace ETModel
         /// <summary>
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
-        /// <param name="buffDataBase">Buff数据</param>
+        /// <param name="dataId">Buff数据归属的数据块Id</param>
+        /// <param name="buffId">Buff的Id</param>
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
-        /// <typeparam name="T">要取得的具体Buff</typeparam>
         /// <returns></returns>
-        public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : ABuffSystemBase
+        public ABuffSystemBase AcquireBuff(long dataId, long buffId, Unit theUnitFrom, Unit theUnitBelongTo)
         {
-            Queue<ABuffSystemBase> buffBase;
-            if (this.BuffSystems.TryGetValue(typeof (T), out buffBase))
-            {
-                if (buffBase.Count > 0)
-                {
-                    T tempBuffBase = (T) buffBase.Dequeue();
-                    tempBuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-                    return tempBuffBase;
-                }
-            }
+            BuffDataBase buffDataBase =
+                    (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffDataDic[buffId] as NormalBuffNodeData).BuffData;
 
-            T temp = (T) Activator.CreateInstance(typeof (T));
-            temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-            return temp;
+            return AcquireBuff(buffDataBase, theUnitFrom, theUnitBelongTo);
+        }
+
+        /// <summary>
+        /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
+        /// </summary>
+        /// <param name="npDataSupportor">Buff数据归属的数据块</param>
+        /// <param name="buffId">Buff的Id</param>
+        /// <param name="theUnitFrom">Buff来源者</param>
+        /// <param name="theUnitBelongTo">Buff寄生者</param>
+        /// <returns></returns>
+        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffId, Unit theUnitFrom, Unit theUnitBelongTo)
+        {
+            BuffDataBase buffDataBase = (npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData;
+            return AcquireBuff(buffDataBase, theUnitFrom, theUnitBelongTo);
         }
 
         /// <summary>
@@ -82,19 +86,22 @@ namespace ETModel
                 //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
             }
 
+            ABuffSystemBase resultBuff;
             if (this.BuffSystems.TryGetValue(tempType, out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
-                    ABuffSystemBase tempABuffBase = buffBase.Dequeue();
-                    tempABuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-                    return tempABuffBase;
+                    resultBuff = buffBase.Dequeue();
+                    resultBuff.BelongToBuffDataSupportorId = buffDataBase.BuffId;
+                    resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+                    return resultBuff;
                 }
             }
 
-            ABuffSystemBase temp = (ABuffSystemBase) Activator.CreateInstance(tempType);
-            temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-            return temp;
+            resultBuff = (ABuffSystemBase) Activator.CreateInstance(tempType);
+            resultBuff.BelongToBuffDataSupportorId = buffDataBase.BuffId;
+            resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+            return resultBuff;
         }
 
         public void RecycleBuff(ABuffSystemBase aBuffSystemBase)

@@ -17,13 +17,6 @@ namespace ETModel
     public class BuffDataBase
     {
         /// <summary>
-        /// 归属的运行时行为树实例
-        /// </summary>
-        [HideInInspector]
-        [BsonIgnore]
-        public NP_RuntimeTree BelongToRuntiemTree;
-
-        /// <summary>
         /// 用于区分Buff，每个Buff Id都是独一无二的
         /// 因为我们不能，也不应该关心具体Buff的Id，所以这里直接自动生成
         /// </summary>
