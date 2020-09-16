@@ -23,7 +23,7 @@ namespace ETModel
         public static NP_RuntimeTree CreateNpRuntimeTree(Unit unit, long nPDataId)
         {
             NP_DataSupportor npDataSupportor =
-                    Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopy(nPDataId);
+                    Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopyBaseOnly(nPDataId);
 
             NP_RuntimeTree tempTree =
                     ComponentFactory.Create<NP_RuntimeTree, NP_DataSupportor>(npDataSupportor);
@@ -87,15 +87,6 @@ namespace ETModel
             //配置根结点
             tempTree.SetRootNode(npDataSupportor.NP_DataSupportorDic[rootId].NP_GetNode() as Root);
 
-            //配置Buff数据归属的NP_RuntimeTree实例
-            foreach (var buffNodeDataBase in npDataSupportor.BuffDataDic)
-            {
-                if (buffNodeDataBase.Value is NormalBuffNodeData normalBuffNodeData)
-                {
-                    normalBuffNodeData.BuffData.BelongToRuntiemTree = tempTree;
-                }
-            }
-            
             //配置黑板数据
             Dictionary<string, ANP_BBValue> bbvaluesManager = tempTree.GetBlackboard().GetDatas();
             foreach (var bbValues in npDataSupportor.NP_BBValueManager)

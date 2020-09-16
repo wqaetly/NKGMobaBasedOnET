@@ -108,7 +108,44 @@ namespace ETModel
 
 #endif
         }
+        
+        /// <summary>
+        /// 获取一棵树的所有数据（默认形式）
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public NP_DataSupportor GetNP_TreeData(long id)
+        {
+            if (this.m_NpRuntimeTreesDatas.ContainsKey(id))
+            {
+                return this.m_NpRuntimeTreesDatas[id];
+            }
 
+            Log.Error($"请求的行为树id不存在，id为{id}");
+            return null;
+        }
+
+        /// <summary>
+        /// 获取一棵树的所有数据（仅深拷贝基础数据内容，而忽略例如BuffDataDic的数据内容）
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public NP_DataSupportor GetNP_TreeData_DeepCopyBaseOnly(long id)
+        {
+            NP_DataSupportor result = null;
+            if (this.m_NpRuntimeTreesDatas.ContainsKey(id))
+            {
+                result.BuffDataDic = this.m_NpRuntimeTreesDatas[id].BuffDataDic;
+                result.RootId = this.m_NpRuntimeTreesDatas[id].RootId;
+                result.NP_DataSupportorDic = this.m_NpRuntimeTreesDatas[id].NP_DataSupportorDic.DeepCopy();
+                result.NP_BBValueManager = this.m_NpRuntimeTreesDatas[id].NP_BBValueManager.DeepCopy();
+                return result;
+            }
+
+            Log.Error($"请求的行为树id不存在，id为{id}");
+            return null;
+        }
+        
         /// <summary>
         /// 获取一棵树的所有数据（通过深拷贝形式）
         /// </summary>
