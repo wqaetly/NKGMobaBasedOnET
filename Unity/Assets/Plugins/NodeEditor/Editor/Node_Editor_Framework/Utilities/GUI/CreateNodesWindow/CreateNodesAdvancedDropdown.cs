@@ -27,7 +27,7 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
         private static ConnectionKnob s_FromConnectionKnob;
 
         /// <summary>
-        /// 展示下拉框
+        /// 展示下拉框，这个
         /// </summary>
         /// <param name="position"></param>
         public static CreateNodesAdvancedDropdown ShowDropdown(Rect position, ConnectionKnob fromConnectionKnob = null)
@@ -36,6 +36,7 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
             window.minimumSize = WindowSize;
             window.Show(position);
             m_CanvasPos = NodeEditor.ScreenToCanvasSpace(position.position);
+            s_FromConnectionKnob = null;
             if (fromConnectionKnob != null)
             {
                 s_FromConnectionKnob = fromConnectionKnob;
@@ -80,7 +81,7 @@ namespace NodeEditorFramework.Utilities.CreateNodesWindow
                     s_FromConnectionKnob = null;
                 }
             }
-            
+
             NodeEditor.RepaintClients();
         }
 

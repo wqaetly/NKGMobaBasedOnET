@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using ETModel;
 using NodeEditorFramework.Utilities.CreateNodesWindow;
 using UnityEditor;
 using GenericMenu = NodeEditorFramework.Utilities.GenericMenu;
