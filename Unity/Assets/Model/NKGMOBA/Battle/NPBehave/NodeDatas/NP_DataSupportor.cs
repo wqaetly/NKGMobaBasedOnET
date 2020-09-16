@@ -12,10 +12,13 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public class NP_DataSupportor: NP_DataSupportorBase
+    public class NP_DataSupportor
     {
         [LabelText("技能数据所有Buff结点")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<long, BuffNodeDataBase> BuffDataDic = new Dictionary<long, BuffNodeDataBase>();
+
+        [LabelText("NPBehave行为树通用基础数据")]
+        public NP_DataSupportorBase NpDataSupportorBase = new NP_DataSupportorBase();
     }
 }

@@ -97,7 +97,7 @@ namespace ETModel
 
                     Log.Info($"反序列化行为树:{referenceCollectorData.key}完成");
 
-                    this.m_NpRuntimeTreesDatas.Add(MnNpDataSupportor.RootId, MnNpDataSupportor);
+                    this.m_NpRuntimeTreesDatas.Add(MnNpDataSupportor.NpDataSupportorBase.RootId, MnNpDataSupportor);
                 }
                 catch (Exception e)
                 {
@@ -126,19 +126,17 @@ namespace ETModel
         }
 
         /// <summary>
-        /// 获取一棵树的所有数据（仅深拷贝基础数据内容，而忽略例如BuffDataDic的数据内容）
+        /// 获取一棵树的所有数据（仅深拷贝黑板数据内容，而忽略例如BuffDataDic的数据内容）
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public NP_DataSupportor GetNP_TreeData_DeepCopyBaseOnly(long id)
+        public NP_DataSupportor GetNP_TreeData_DeepCopyBBValuesOnly(long id)
         {
-            NP_DataSupportor result = null;
+            NP_DataSupportor result = new NP_DataSupportor();
             if (this.m_NpRuntimeTreesDatas.ContainsKey(id))
             {
                 result.BuffDataDic = this.m_NpRuntimeTreesDatas[id].BuffDataDic;
-                result.RootId = this.m_NpRuntimeTreesDatas[id].RootId;
-                result.NP_DataSupportorDic = this.m_NpRuntimeTreesDatas[id].NP_DataSupportorDic.DeepCopy();
-                result.NP_BBValueManager = this.m_NpRuntimeTreesDatas[id].NP_BBValueManager.DeepCopy();
+                result.NpDataSupportorBase = this.m_NpRuntimeTreesDatas[id].NpDataSupportorBase.DeepCopy();
                 return result;
             }
 

@@ -82,48 +82,6 @@ namespace Plugins.NodeEditor.Editor.Canvas
         }
 
         /// <summary>
-        /// 保存当前所有结点信息为二进制文件
-        /// </summary>
-        /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
-        public virtual void Save(NP_DataSupportorBase npDataSupportorBase)
-        {
-            if (string.IsNullOrEmpty(SavePath) || string.IsNullOrEmpty(Name))
-            {
-                Log.Error("保存路径或文件名不能为空，请检查配置");
-                return;
-            }
-
-            using (FileStream file = File.Create($"{SavePath}/{this.Name}.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), npDataSupportorBase);
-            }
-
-            Debug.Log($"保存 {SavePath}/{this.Name}.bytes 成功");
-        }
-
-        /// <summary>
-        /// 测试反序列化
-        /// </summary>
-        /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
-        public virtual T TestDe<T>(T npDataSupportorBase) where T : NP_DataSupportorBase
-        {
-            byte[] mfile = File.ReadAllBytes($"{SavePath}/{this.Name}.bytes");
-
-            if (mfile.Length == 0) Debug.Log("没有读取到文件");
-
-            try
-            {
-                npDataSupportorBase = BsonSerializer.Deserialize<T>(mfile);
-                return npDataSupportorBase;
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-                throw;
-            }
-        }
-
-        /// <summary>
         /// 自动配置所有行为树结点
         /// </summary>
         /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
