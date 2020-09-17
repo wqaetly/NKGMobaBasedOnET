@@ -11,11 +11,6 @@ namespace ETModel
     public abstract class ABuffSystemBase
     {
         /// <summary>
-        /// 归属的BuffData的Id,不是buff的Id，是buff数据所在的数据块Id
-        /// </summary>
-        public long BelongToBuffDataSupportorId;
-        
-        /// <summary>
         /// Buff当前状态
         /// </summary>
         public BuffState BuffState;

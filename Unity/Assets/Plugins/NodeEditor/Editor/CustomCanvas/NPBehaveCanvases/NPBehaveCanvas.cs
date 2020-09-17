@@ -23,10 +23,10 @@ namespace Plugins.NodeEditor.Editor.Canvas
     [NodeCanvasType("NP行为树Canvas")]
     public class NPBehaveCanvas: NPBehaveCanvasBase
     {
-        [LabelText("此行为树数据载体")]
+        [BoxGroup("此行为树数据载体")]
         public NP_DataSupportor MNpDataSupportor = new NP_DataSupportor();
-
-        [LabelText("反序列化测试")]
+        
+        [BoxGroup("反序列化测试")]
         public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
 
         [Button("自动配置所有结点数据", 25), GUIColor(0.4f, 0.8f, 1)]
@@ -80,6 +80,10 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 if (node is BuffNodeBase mNode)
                 {
+                    if (node.Skill_GetNodeData() is NormalBuffNodeData normalBuffNodeData)
+                    {
+                        normalBuffNodeData.BuffData.BelongToBuffDataSupportorId = MNpDataSupportor.NpDataSupportorBase.RootId;
+                    }
                     this.MNpDataSupportor.BuffDataDic.Add(mNode.Skill_GetNodeData().NodeId.Value, mNode.Skill_GetNodeData());
                 }
             }

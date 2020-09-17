@@ -26,10 +26,9 @@ namespace ETModel
         /// <returns></returns>
         public ABuffSystemBase AcquireBuff(long dataId, long buffId, Unit theUnitFrom, Unit theUnitBelongTo)
         {
-            BuffDataBase buffDataBase =
-                    (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffDataDic[buffId] as NormalBuffNodeData).BuffData;
-
-            return AcquireBuff(buffDataBase, theUnitFrom, theUnitBelongTo);
+            return AcquireBuff(
+                (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffDataDic[buffId] as NormalBuffNodeData).BuffData,
+                theUnitFrom, theUnitBelongTo);
         }
 
         /// <summary>
@@ -42,8 +41,7 @@ namespace ETModel
         /// <returns></returns>
         public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffId, Unit theUnitFrom, Unit theUnitBelongTo)
         {
-            BuffDataBase buffDataBase = (npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData;
-            return AcquireBuff(buffDataBase, theUnitFrom, theUnitBelongTo);
+            return AcquireBuff((npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo);
         }
 
         /// <summary>
@@ -92,14 +90,12 @@ namespace ETModel
                 if (buffBase.Count > 0)
                 {
                     resultBuff = buffBase.Dequeue();
-                    resultBuff.BelongToBuffDataSupportorId = buffDataBase.BuffId;
                     resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
                     return resultBuff;
                 }
             }
 
             resultBuff = (ABuffSystemBase) Activator.CreateInstance(tempType);
-            resultBuff.BelongToBuffDataSupportorId = buffDataBase.BuffId;
             resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return resultBuff;
         }

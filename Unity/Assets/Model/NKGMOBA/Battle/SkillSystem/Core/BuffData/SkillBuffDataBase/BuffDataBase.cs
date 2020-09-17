@@ -17,6 +17,14 @@ namespace ETModel
     public class BuffDataBase
     {
         /// <summary>
+        /// Buff归属的数据块的Id,不是buff的Id，是buff数据所在的数据块Id(也就是NP_DataSupportor的Id)
+        /// </summary>
+        [ReadOnly]
+        [BoxGroup("必填项")]
+        [LabelText("Buff归属的数据块Id")]
+        public long BelongToBuffDataSupportorId;
+        
+        /// <summary>
         /// 用于区分Buff，每个Buff Id都是独一无二的
         /// 因为我们不能，也不应该关心具体Buff的Id，所以这里直接自动生成
         /// </summary>

@@ -25,7 +25,7 @@ namespace ETModel
                 {
                     //Log.Info($"层数判定_通过监听机制添加id为{VARIABLE.FlagId}的Buff");
                     Game.Scene.GetComponent<BuffPoolComponent>()
-                            .AcquireBuff(a.BelongToBuffDataSupportorId, buffDataVtdId.Value,a.TheUnitFrom, a.TheUnitBelongto);
+                            .AcquireBuff(a.BuffData.BelongToBuffDataSupportorId, buffDataVtdId.Value,a.TheUnitFrom, a.TheUnitBelongto);
                 }
             }
         }

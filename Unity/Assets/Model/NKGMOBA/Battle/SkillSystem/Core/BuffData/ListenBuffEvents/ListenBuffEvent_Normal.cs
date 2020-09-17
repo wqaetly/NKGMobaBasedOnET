@@ -34,7 +34,7 @@ namespace ETModel
             {
                 //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
                 Game.Scene.GetComponent<BuffPoolComponent>()
-                        .AcquireBuff(a.BelongToBuffDataSupportorId, buffDataVTDId.Value, a.TheUnitFrom, a.TheUnitBelongto);
+                        .AcquireBuff(a.BuffData.BelongToBuffDataSupportorId, buffDataVTDId.Value, a.TheUnitFrom, a.TheUnitBelongto);
             }
         }
     }
