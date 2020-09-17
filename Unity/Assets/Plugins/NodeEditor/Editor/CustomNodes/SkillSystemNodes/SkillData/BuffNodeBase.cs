@@ -29,6 +29,11 @@ namespace Plugins
         [ValueConnectionKnob("NextBuffType", Direction.Out, "NextNodeDatas", NodeSide.Right, 30)]
         public ValueConnectionKnob NextNode;
 
+        public virtual void AutoAddLinkedBuffs()
+        {
+            
+        }
+
         public override void NodeGUI()
         {
             EditorGUILayout.TextField("不允许使用此结点");

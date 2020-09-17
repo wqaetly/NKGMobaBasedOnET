@@ -25,7 +25,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
     {
         [BoxGroup("此行为树数据载体")]
         public NP_DataSupportor MNpDataSupportor = new NP_DataSupportor();
-        
+
         [BoxGroup("反序列化测试")]
         public NP_DataSupportor MNpDataSupportor1 = new NP_DataSupportor();
 
@@ -80,11 +80,13 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 if (node is BuffNodeBase mNode)
                 {
-                    if (node.Skill_GetNodeData() is NormalBuffNodeData normalBuffNodeData)
+                    BuffNodeDataBase buffNodeDataBase = mNode.Skill_GetNodeData();
+                    if (buffNodeDataBase is NormalBuffNodeData normalBuffNodeData)
                     {
                         normalBuffNodeData.BuffData.BelongToBuffDataSupportorId = MNpDataSupportor.NpDataSupportorBase.RootId;
                     }
-                    this.MNpDataSupportor.BuffDataDic.Add(mNode.Skill_GetNodeData().NodeId.Value, mNode.Skill_GetNodeData());
+
+                    this.MNpDataSupportor.BuffDataDic.Add(buffNodeDataBase.NodeId.Value, buffNodeDataBase);
                 }
             }
         }
