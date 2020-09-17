@@ -28,7 +28,6 @@ namespace SkillDemo
 
         public override BuffNodeDataBase Skill_GetNodeData()
         {
-            this.AutoAddLinkedBuffs();
             return SkillBuffBases;
         }
 
@@ -37,12 +36,10 @@ namespace SkillDemo
             BindStateBuffData bindStateBuffData = SkillBuffBases.BuffData as BindStateBuffData;
             if (bindStateBuffData.OriBuff == null)
             {
-                bindStateBuffData.OriBuff = new List<VTD_Id>();
+                bindStateBuffData.OriBuff = new List<VTD_BuffInfo>();
             }
-            else
-            {
-                bindStateBuffData.OriBuff.Clear();
-            }
+
+            bindStateBuffData.OriBuff.Clear();
 
             foreach (var connection in this.connectionPorts)
             {
@@ -54,7 +51,7 @@ namespace SkillDemo
                         BuffNodeBase targetNode = (connectTagrets.body as BuffNodeBase);
                         if (targetNode != null)
                         {
-                            bindStateBuffData.OriBuff.Add(targetNode.Skill_GetNodeData().NodeId);
+                            bindStateBuffData.OriBuff.Add(new VTD_BuffInfo() { BuffId = targetNode.Skill_GetNodeData().NodeId });
                         }
                     }
 

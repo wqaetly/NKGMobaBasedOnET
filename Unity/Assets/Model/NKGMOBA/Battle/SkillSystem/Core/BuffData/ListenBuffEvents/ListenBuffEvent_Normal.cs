@@ -25,16 +25,19 @@ namespace ETModel
         /// </summary>
         [InfoBox("注意，是在节点编辑器中的Buff节点Id，而不是Buff自身的Id，别搞错了！")]
         [LabelText("Buff回调条件达成时会添加的Buff的节点Id")]
-        public List<VTD_Id> BuffsIdWillBeAdded = new List<VTD_Id>();
+        public List<VTD_BuffInfo> BuffInfoWillBeAdded = new List<VTD_BuffInfo>();
 
         public override void Run(ABuffSystemBase a)
         {
             //Log.Info($"直接添加_通过监听机制增加Buff");
-            foreach (var buffDataVTDId in this.BuffsIdWillBeAdded)
+            foreach (var buffInfo in this.BuffInfoWillBeAdded)
             {
-                //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
-                Game.Scene.GetComponent<BuffPoolComponent>()
-                        .AcquireBuff(a.BuffData.BelongToBuffDataSupportorId, buffDataVTDId.Value, a.TheUnitFrom, a.TheUnitBelongto);
+                for (int i = 0; i < buffInfo.Layers; i++)
+                {
+                    //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
+                    Game.Scene.GetComponent<BuffPoolComponent>()
+                            .AcquireBuff(a.BuffData.BelongToBuffDataSupportorId, buffInfo.BuffId.Value, a.TheUnitFrom, a.TheUnitBelongto);
+                }
             }
         }
     }

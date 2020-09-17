@@ -625,12 +625,9 @@ MonoBehaviour:
     - Name: MNpDataSupportor
       Entry: 7
       Data: 0|ETModel.NP_DataSupportor, Unity.Model
-    - Name: RootId
-      Entry: 3
-      Data: 0
-    - Name: NP_DataSupportorDic
+    - Name: BuffDataDic
       Entry: 7
-      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
+      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
@@ -648,86 +645,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: NP_BBValueManager
-      Entry: 7
-      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
-        Unity.Model]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BuffDataDic
-      Entry: 7
-      Data: 5|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
-        Unity.Model]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 2
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+    - Name: NpDataSupportorBase
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: MNpDataSupportor1
       Entry: 7
-      Data: 6|ETModel.NP_DataSupportor, Unity.Model
-    - Name: RootId
-      Entry: 3
-      Data: 0
-    - Name: NP_DataSupportorDic
-      Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
-        Unity.Model]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 2
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NP_BBValueManager
-      Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
-        Unity.Model]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 4
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 3|ETModel.NP_DataSupportor, Unity.Model
     - Name: BuffDataDic
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
+      Data: 4|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 9
@@ -740,6 +669,9 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: NpDataSupportorBase
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -754,8 +686,8 @@ MonoBehaviour:
   - {fileID: 6988642224762737028}
   - {fileID: 8659995985270308912}
   - {fileID: -4398475031741212948}
-  - {fileID: 3908578018477357994}
   - {fileID: -4423303617840932425}
+  - {fileID: 3908578018477357994}
   - {fileID: 4529937291697091796}
   nodesForDelete: []
   groups: []
@@ -1172,9 +1104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes: []
+  selectedNodes:
+  - {fileID: 4529937291697091796}
   panOffset: {x: 77.19998, y: -90.20003}
-  zoom: 2.4
+  zoom: 1
   boxSelecting: 0
 --- !u!114 &8659995985270308912
 MonoBehaviour:

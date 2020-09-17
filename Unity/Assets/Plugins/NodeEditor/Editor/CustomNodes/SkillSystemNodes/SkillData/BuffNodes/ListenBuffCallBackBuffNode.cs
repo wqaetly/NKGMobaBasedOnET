@@ -26,13 +26,11 @@ namespace SkillDemo
                     BuffData = new ListenBuffCallBackBuffData() { BelongBuffSystemType = BuffSystemType.ListenBuffCallBackBuffSystem }
                 };
 
-
         public override BuffNodeDataBase Skill_GetNodeData()
         {
-            AutoAddLinkedBuffs();
             return SkillBuffBases;
         }
-        
+
         public override void AutoAddLinkedBuffs()
         {
             ListenBuffCallBackBuffData listenBuffCallBackBuffData = SkillBuffBases.BuffData as ListenBuffCallBackBuffData;
@@ -40,10 +38,8 @@ namespace SkillDemo
             {
                 listenBuffCallBackBuffData.ListenBuffEventNormal = new ListenBuffEvent_Normal();
             }
-            else
-            {
-                listenBuffCallBackBuffData.ListenBuffEventNormal.BuffsIdWillBeAdded.Clear();
-            }
+
+            listenBuffCallBackBuffData.ListenBuffEventNormal.BuffInfoWillBeAdded.Clear();
 
             foreach (var connection in this.connectionPorts)
             {
@@ -55,15 +51,16 @@ namespace SkillDemo
                         BuffNodeBase targetNode = (connectTagrets.body as BuffNodeBase);
                         if (targetNode != null)
                         {
-                            listenBuffCallBackBuffData.ListenBuffEventNormal.BuffsIdWillBeAdded.Add(targetNode.Skill_GetNodeData().NodeId);
+                            listenBuffCallBackBuffData.ListenBuffEventNormal.BuffInfoWillBeAdded.Add(new VTD_BuffInfo()
+                            {
+                                BuffId = targetNode.Skill_GetNodeData().NodeId
+                            });
                         }
                     }
-
                     return;
                 }
             }
         }
-
 
         public override void NodeGUI()
         {

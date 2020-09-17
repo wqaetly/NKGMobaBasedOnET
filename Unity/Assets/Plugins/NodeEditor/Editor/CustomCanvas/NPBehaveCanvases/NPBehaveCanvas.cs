@@ -80,6 +80,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 if (node is BuffNodeBase mNode)
                 {
+                    mNode.AutoAddLinkedBuffs();
                     BuffNodeDataBase buffNodeDataBase = mNode.Skill_GetNodeData();
                     if (buffNodeDataBase is NormalBuffNodeData normalBuffNodeData)
                     {

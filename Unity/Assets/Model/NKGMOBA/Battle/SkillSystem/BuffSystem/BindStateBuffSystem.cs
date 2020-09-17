@@ -27,9 +27,12 @@ namespace ETModel
 
             foreach (var buffData in tempData.OriBuff)
             {
-                Game.Scene.GetComponent<BuffPoolComponent>()
-                        .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.Value,
-                            this.TheUnitFrom, this.TheUnitBelongto);
+                for (int i = 0; i < buffData.Layers; i++)
+                {
+                    Game.Scene.GetComponent<BuffPoolComponent>()
+                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffId.Value,
+                                this.TheUnitFrom, this.TheUnitBelongto);
+                }
             }
 
             if (this.BuffData.EventIds != null)
@@ -66,11 +69,14 @@ namespace ETModel
 
             foreach (var buffData in tempData.OriBuff)
             {
-                Game.Scene.GetComponent<BuffPoolComponent>()
-                        .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.Value,
-                            this.TheUnitFrom, this.TheUnitBelongto);
+                for (int i = 0; i < buffData.Layers; i++)
+                {
+                    Game.Scene.GetComponent<BuffPoolComponent>()
+                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffId.Value,
+                                this.TheUnitFrom, this.TheUnitBelongto);
+                }
             }
-
+            
             if (this.BuffData.EventIds != null)
             {
                 foreach (var eventId in this.BuffData.EventIds)
