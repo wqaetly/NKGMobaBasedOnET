@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using ETModel;
 
 namespace NPBehave
 {
@@ -41,7 +42,7 @@ namespace NPBehave
 
         public void Update()
         {
-            clock.Update(1f/60f);
+            clock.Update(1/30f);
         }
         
     }
