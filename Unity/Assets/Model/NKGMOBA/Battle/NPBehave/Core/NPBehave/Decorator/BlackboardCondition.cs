@@ -102,6 +102,8 @@ namespace NPBehave
                             return npBbValue == bbValue as NP_BBValue_String;
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue == bbValue as NP_BBValue_Vector3;
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_Long;
                         default:
                             Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
                             return false;
@@ -119,6 +121,8 @@ namespace NPBehave
                             return npBbValue != bbValue as NP_BBValue_Int;
                         case NP_BBValue_String npBbValue:
                             return npBbValue != bbValue as NP_BBValue_String;
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_Long;
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue != bbValue as NP_BBValue_Vector3;
                         default:
@@ -139,6 +143,8 @@ namespace NPBehave
                             return npBbValue >= (bbValue as NP_BBValue_Int);
                         case NP_BBValue_String npBbValue:
                             return npBbValue >= (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue >= bbValue as NP_BBValue_Long;
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue >= (bbValue as NP_BBValue_Vector3);
                         default:
@@ -159,6 +165,8 @@ namespace NPBehave
                             return npBbValue > (bbValue as NP_BBValue_Int);
                         case NP_BBValue_String npBbValue:
                             return npBbValue > (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue > (bbValue as NP_BBValue_Long);
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue > (bbValue as NP_BBValue_Vector3);
                         default:
@@ -178,6 +186,8 @@ namespace NPBehave
                             return npBbValue <= (bbValue as NP_BBValue_Int);
                         case NP_BBValue_String npBbValue:
                             return npBbValue <= (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue <= (bbValue as NP_BBValue_Long);
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue <= (bbValue as NP_BBValue_Vector3);
                         default:
@@ -195,6 +205,8 @@ namespace NPBehave
                             return npBbValue < (bbValue as NP_BBValue_Int);
                         case NP_BBValue_String npBbValue:
                             return npBbValue < (bbValue as NP_BBValue_String);
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue < (bbValue as NP_BBValue_Long);
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue < (bbValue as NP_BBValue_Vector3);
                         default:
