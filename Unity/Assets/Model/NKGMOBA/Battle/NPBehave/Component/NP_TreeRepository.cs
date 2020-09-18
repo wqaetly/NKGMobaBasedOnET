@@ -56,6 +56,8 @@ namespace ETModel
             BsonClassMap.LookupClassMap(typeof (NP_BBValue_Float));
             BsonClassMap.LookupClassMap(typeof (NP_BBValue_String));
             BsonClassMap.LookupClassMap(typeof (NP_BBValue_Vector3));
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_Long));
+            BsonClassMap.LookupClassMap(typeof (NP_BBValue_List_Long));
 #if SERVER
             DirectoryInfo directory = new DirectoryInfo(NPDataPath);
             FileInfo[] fileInfos = directory.GetFiles();

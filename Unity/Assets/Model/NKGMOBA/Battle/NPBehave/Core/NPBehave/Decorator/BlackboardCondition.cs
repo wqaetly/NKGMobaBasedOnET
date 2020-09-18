@@ -144,7 +144,7 @@ namespace NPBehave
                         case NP_BBValue_String npBbValue:
                             return npBbValue >= (bbValue as NP_BBValue_String);
                         case NP_BBValue_Long npBbValue:
-                            return npBbValue >= bbValue as NP_BBValue_Long;
+                            return npBbValue >= (bbValue as NP_BBValue_Long);
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue >= (bbValue as NP_BBValue_Vector3);
                         default:
