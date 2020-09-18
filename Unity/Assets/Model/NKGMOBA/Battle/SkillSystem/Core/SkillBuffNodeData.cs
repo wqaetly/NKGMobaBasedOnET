@@ -4,6 +4,7 @@
 // Data: 2019年5月17日 21:03:43
 //------------------------------------------------------------
 
+using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
 
 namespace ETModel
@@ -13,6 +14,7 @@ namespace ETModel
     public class NormalBuffNodeData: BuffNodeDataBase
     {
         [LabelText("Buff描述")]
+        [BsonIgnore]
         public string BuffDes;
         
         /// <summary>

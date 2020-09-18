@@ -101,12 +101,12 @@ namespace NodeEditorFramework.Utilities
 		
 		public void SetupGUI () 
 		{
-			backgroundStyle = new GUIStyle (GUI.skin.box);
+			backgroundStyle = new GUIStyle (NodeEditorGUI.nodeSkin.box);
 			backgroundStyle.contentOffset = new Vector2 (2, 2);
 			expandRight = ResourceManager.LoadTexture ("Textures/expandRight.png");
-			itemHeight = GUI.skin.label.CalcHeight (new GUIContent ("text"), 100);
+			itemHeight = NodeEditorGUI.nodeSkin.label.CalcHeight (new GUIContent ("text"), 100);
 			
-			selectedLabel = new GUIStyle (GUI.skin.label);
+			selectedLabel = new GUIStyle (NodeEditorGUI.nodeSkin.label);
 			selectedLabel.normal.background = RTEditorGUI.ColorToTex (1, new Color (0.4f, 0.4f, 0.4f));
 		}
 
