@@ -94,6 +94,11 @@ namespace ETModel
             return blackboard.Get<T>(this.BBKey);
         }
 
+        /// <summary>
+        /// 获取配置的BB值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public T GetTheBBDataValue<T>()
         {
             return (this.NP_BBValue as NP_BBValueBase<T>).GetValue();
@@ -116,8 +121,14 @@ namespace ETModel
                 case "System.Int32":
                     blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Int).GetValue());
                     break;
+                case "System.Int64":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Long).GetValue());
+                    break;
                 case "System.Boolean":
                     blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Bool).GetValue());
+                    break;
+                case "System.Collections.Generic.List`1[System.Int64]":
+                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_List_Long).GetValue());
                     break;
                 case "System.Numerics.Vector3":
                     blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Vector3).GetValue());
@@ -129,11 +140,43 @@ namespace ETModel
         /// 自动根据传来的值设置值
         /// </summary>
         /// <param name="blackboard">将要改变的黑板值</param>
-        /// <param name="compareType">值类型</param>
         /// <param name="value">值</param>
         public void SetBlackBoardValue<T>(Blackboard blackboard, T value)
         {
             blackboard.Set(this.BBKey, value);
+        }
+
+        /// <summary>
+        /// 自动将一个黑板的对应key的value设置到另一个黑板上
+        /// </summary>
+        /// <param name="oriBB">数据源黑板</param>
+        /// <param name="desBB">目标黑板</param>
+        public void SetBBValueFromThisBBValue(Blackboard oriBB, Blackboard desBB)
+        {
+            switch (this.NP_BBValueType)
+            {
+                case "System.String":
+                    desBB.Set(this.BBKey, oriBB.Get<string>(BBKey));
+                    break;
+                case "System.Single":
+                    desBB.Set(this.BBKey, oriBB.Get<float>(BBKey));
+                    break;
+                case "System.Int32":
+                    desBB.Set(this.BBKey, oriBB.Get<int>(BBKey));
+                    break;
+                case "System.Int64":
+                    desBB.Set(this.BBKey, oriBB.Get<long>(BBKey));
+                    break;
+                case "System.Boolean":
+                    desBB.Set(this.BBKey, oriBB.Get<bool>(BBKey));
+                    break;
+                case "System.Collections.Generic.List`1[System.Int64]":
+                    desBB.Set(this.BBKey, oriBB.Get<List<long>>(BBKey));
+                    break;
+                case "System.Numerics.Vector3":
+                    desBB.Set(this.BBKey, oriBB.Get<Vector3>(BBKey));
+                    break;
+            }
         }
     }
 }
