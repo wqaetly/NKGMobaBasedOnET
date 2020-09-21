@@ -23,9 +23,6 @@ namespace ETHotfix
                     Dictionary<long, BuffNodeDataBase> skillNodeDataSupporter =
                             unit.GetComponent<NP_RuntimeTreeManager>()
                                     .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Client).BelongNP_DataSupportor.BuffDataDic;
-                    ETModel.Game.Scene.GetComponent<BuffPoolComponent>()
-                            .AcquireBuff(((NormalBuffNodeData) skillNodeDataSupporter[10003]).BuffData, unit,
-                                unitComponent.Get(message.BelongToUnitId));
                     break;
             }
 

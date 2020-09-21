@@ -43,11 +43,11 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(long dataId, long buffId, Unit theUnitFrom, Unit theUnitBelongTo)
+        public ABuffSystemBase AcquireBuff(long dataId, long buffId, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
         {
             return AcquireBuff(
                 (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffDataDic[buffId] as NormalBuffNodeData).BuffData,
-                theUnitFrom, theUnitBelongTo);
+                theUnitFrom, theUnitBelongTo, theSkillCanvasBelongTo);
         }
 
         /// <summary>
@@ -58,11 +58,13 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffId, Unit theUnitFrom, Unit theUnitBelongTo)
+        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffId, Unit theUnitFrom, Unit theUnitBelongTo,
+        NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            return AcquireBuff((npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo);
+            return AcquireBuff((npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo,
+                theSkillCanvasBelongTo);
         }
-        
+
         /// <summary>
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
@@ -70,7 +72,7 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
+        public ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
         {
             Queue<ABuffSystemBase> buffBase;
             Type targetBuffSystemType = AllBuffSystemTypes[buffDataBase.BelongBuffSystemType];
@@ -80,12 +82,14 @@ namespace ETModel
                 if (buffBase.Count > 0)
                 {
                     resultBuff = buffBase.Dequeue();
+                    resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
                     resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
                     return resultBuff;
                 }
             }
 
             resultBuff = (ABuffSystemBase) Activator.CreateInstance(targetBuffSystemType);
+            resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
             resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return resultBuff;
         }

@@ -11,6 +11,11 @@ namespace ETModel
     public abstract class ABuffSystemBase
     {
         /// <summary>
+        /// 归属的运行时行为树实例
+        /// </summary>
+        public NP_RuntimeTree BelongtoRuntimeTree;
+        
+        /// <summary>
         /// Buff当前状态
         /// </summary>
         public BuffState BuffState;

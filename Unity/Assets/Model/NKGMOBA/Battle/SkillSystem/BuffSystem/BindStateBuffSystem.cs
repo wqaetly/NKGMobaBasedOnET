@@ -31,7 +31,7 @@ namespace ETModel
                 {
                     Game.Scene.GetComponent<BuffPoolComponent>()
                             .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffId.Value,
-                                this.TheUnitFrom, this.TheUnitBelongto);
+                                this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
                 }
             }
 
@@ -73,10 +73,10 @@ namespace ETModel
                 {
                     Game.Scene.GetComponent<BuffPoolComponent>()
                             .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffId.Value,
-                                this.TheUnitFrom, this.TheUnitBelongto);
+                                this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
                 }
             }
-            
+
             if (this.BuffData.EventIds != null)
             {
                 foreach (var eventId in this.BuffData.EventIds)

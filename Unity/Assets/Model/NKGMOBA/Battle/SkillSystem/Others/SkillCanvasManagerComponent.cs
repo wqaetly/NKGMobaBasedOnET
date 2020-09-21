@@ -7,36 +7,36 @@ namespace ETModel
     #region System
 
     [ObjectSystem]
-    public class SkillCanvasManagerComponentComponentAwakeSystem: AwakeSystem<SkillCanvasManagerComponentComponent>
+    public class SkillCanvasManagerComponentComponentAwakeSystem: AwakeSystem<SkillCanvasManagerComponent>
     {
-        public override void Awake(SkillCanvasManagerComponentComponent self)
+        public override void Awake(SkillCanvasManagerComponent self)
         {
             self.Awake();
         }
     }
 
     [ObjectSystem]
-    public class SkillCanvasManagerComponentComponentUpdateSystem: UpdateSystem<SkillCanvasManagerComponentComponent>
+    public class SkillCanvasManagerComponentComponentUpdateSystem: UpdateSystem<SkillCanvasManagerComponent>
     {
-        public override void Update(SkillCanvasManagerComponentComponent self)
+        public override void Update(SkillCanvasManagerComponent self)
         {
             self.Update();
         }
     }
 
     [ObjectSystem]
-    public class SkillCanvasManagerComponentComponentFixedUpdateSystem: FixedUpdateSystem<SkillCanvasManagerComponentComponent>
+    public class SkillCanvasManagerComponentComponentFixedUpdateSystem: FixedUpdateSystem<SkillCanvasManagerComponent>
     {
-        public override void FixedUpdate(SkillCanvasManagerComponentComponent self)
+        public override void FixedUpdate(SkillCanvasManagerComponent self)
         {
             self.FixedUpdate();
         }
     }
 
     [ObjectSystem]
-    public class SkillCanvasManagerComponentComponentDestroySystem: DestroySystem<SkillCanvasManagerComponentComponent>
+    public class SkillCanvasManagerComponentComponentDestroySystem: DestroySystem<SkillCanvasManagerComponent>
     {
-        public override void Destroy(SkillCanvasManagerComponentComponent self)
+        public override void Destroy(SkillCanvasManagerComponent self)
         {
             self.Destroy();
         }
@@ -47,7 +47,7 @@ namespace ETModel
     /// <summary>
     /// 技能行为树管理器
     /// </summary>
-    public class SkillCanvasManagerComponentComponent: Component
+    public class SkillCanvasManagerComponent: Component
     {
         #region 私有成员
 

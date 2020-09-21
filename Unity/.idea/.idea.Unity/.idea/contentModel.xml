@@ -858,17 +858,23 @@
                     <e p="NP_WaitUntilStoppedData.cs" t="Include" />
                   </e>
                   <e p="TheDataContainsAction" t="Include">
+                    <e p="BBValue" t="Include">
+                      <e p="NP_ChangeBlackValueAction.cs" t="Include" />
+                      <e p="NP_ChangeTargetSkillBBValueAction.cs" t="Include" />
+                      <e p="NP_CheckBBValueAction.cs" t="Include" />
+                    </e>
+                    <e p="ClientSpecial" t="Include">
+                      <e p="NP_PlayAnimationAction.cs" t="Include" />
+                      <e p="NP_PlayParticalAction.cs" t="Include" />
+                    </e>
                     <e p="NP_AddBuffAction.cs" t="Include" />
-                    <e p="NP_ChangeBlackValueAction.cs" t="Include" />
+                    <e p="NP_AddBuffToSpecifiedUnitAction.cs" t="Include" />
                     <e p="NP_ChangeUnitPropertyAction.cs" t="Include" />
-                    <e p="NP_CheckBBValueAction.cs" t="Include" />
                     <e p="NP_CheckSkillCanBeCastAction.cs" t="Include" />
                     <e p="NP_ClassForStoreAction.cs" t="Include" />
                     <e p="NP_CreateColliderDataAction.cs" t="Include" />
                     <e p="NP_InitTreeAction.cs" t="Include" />
                     <e p="NP_LogAction.cs" t="Include" />
-                    <e p="NP_PlayAnimationAction.cs" t="Include" />
-                    <e p="NP_PlayParticalAction.cs" t="Include" />
                     <e p="NP_WaitAChangeableTimeAction.cs" t="Include" />
                   </e>
                 </e>
@@ -877,6 +883,35 @@
                 </e>
               </e>
               <e p="SkillSystem" t="Include">
+                <e p="BuffData" t="Include">
+                  <e p="BindStateBuffData.cs" t="Include" />
+                  <e p="BuffEnums" t="Include">
+                    <e p="BuffAdditionTypes.cs" t="Include" />
+                    <e p="BuffBaseDataEffectTypes.cs" t="Include" />
+                    <e p="BuffBaseType.cs" t="Include" />
+                    <e p="BuffDamageTypes.cs" t="Include" />
+                    <e p="BuffSystemTypes.cs" t="Include" />
+                    <e p="BuffTargetTypes.cs" t="Include" />
+                    <e p="BuffWorkTypes.cs" t="Include" />
+                    <e p="SkillCostTypes.cs" t="Include" />
+                    <e p="SkillReleaseMode.cs" t="Include" />
+                    <e p="SkillTypes.cs" t="Include" />
+                  </e>
+                  <e p="ChangePropertyBuffData.cs" t="Include" />
+                  <e p="FlashDamageBuffData.cs" t="Include" />
+                  <e p="ListenBuffCallBackBuffData.cs" t="Include" />
+                  <e p="ListenBuffEvents" t="Include">
+                    <e p="ListenBuffEvent_CheckOverlay.cs" t="Include" />
+                    <e p="ListenBuffEvent_Normal.cs" t="Include" />
+                  </e>
+                  <e p="PlayEffectBuffData.cs" t="Include" />
+                  <e p="RefreshTargetBuffTimeBuffData.cs" t="Include" />
+                  <e p="SkillBuffDataBase" t="Include">
+                    <e p="BuffDataBase.cs" t="Include" />
+                  </e>
+                  <e p="SustainDamageBuffData.cs" t="Include" />
+                  <e p="TreatmentBuffData.cs" t="Include" />
+                </e>
                 <e p="BuffSystem" t="Include">
                   <e p="BindStateBuffSystem.cs" t="Include" />
                   <e p="ChangePropertyBuffSystem.cs" t="Include" />
@@ -896,40 +931,12 @@
                   <e p="SustainDamageBuffSystem.cs" t="Include" />
                   <e p="TreatmentBuffSystem.cs" t="Include" />
                 </e>
-                <e p="Core" t="Include">
+                <e p="Others" t="Include">
                   <e p="AnimationCore" t="Include">
                     <e p="PlayAnimInfo.cs" t="Include" />
                   </e>
-                  <e p="BuffData" t="Include">
-                    <e p="BindStateBuffData.cs" t="Include" />
-                    <e p="ChangePropertyBuffData.cs" t="Include" />
-                    <e p="FlashDamageBuffData.cs" t="Include" />
-                    <e p="ListenBuffCallBackBuffData.cs" t="Include" />
-                    <e p="ListenBuffEvents" t="Include">
-                      <e p="ListenBuffEvent_CheckOverlay.cs" t="Include" />
-                      <e p="ListenBuffEvent_Normal.cs" t="Include" />
-                    </e>
-                    <e p="PlayEffectBuffData.cs" t="Include" />
-                    <e p="RefreshTargetBuffTimeBuffData.cs" t="Include" />
-                    <e p="SkillBuffDataBase" t="Include">
-                      <e p="BuffDataBase.cs" t="Include" />
-                    </e>
-                    <e p="SustainDamageBuffData.cs" t="Include" />
-                    <e p="TreatmentBuffData.cs" t="Include" />
-                  </e>
-                  <e p="BuffEnums" t="Include">
-                    <e p="BuffAdditionTypes.cs" t="Include" />
-                    <e p="BuffBaseDataEffectTypes.cs" t="Include" />
-                    <e p="BuffBaseType.cs" t="Include" />
-                    <e p="BuffDamageTypes.cs" t="Include" />
-                    <e p="BuffSystemTypes.cs" t="Include" />
-                    <e p="BuffTargetTypes.cs" t="Include" />
-                    <e p="BuffWorkTypes.cs" t="Include" />
-                    <e p="SkillCostTypes.cs" t="Include" />
-                    <e p="SkillReleaseMode.cs" t="Include" />
-                    <e p="SkillTypes.cs" t="Include" />
-                  </e>
                   <e p="SkillBuffNodeData.cs" t="Include" />
+                  <e p="SkillCanvasManagerComponent.cs" t="Include" />
                   <e p="SkillDesNodeData.cs" t="Include" />
                   <e p="SkillNodeDataBase.cs" t="Include" />
                   <e p="ValueTypeDecideByCanvasData" t="Include">
@@ -1472,7 +1479,9 @@
                   </e>
                   <e p="Task" t="Include">
                     <e p="NP_AddBuffActionNode.cs" t="Include" />
+                    <e p="NP_AddBuffToSpecifiedUnitActionNode.cs" t="Include" />
                     <e p="NP_ChangeBlackValueActionNode.cs" t="Include" />
+                    <e p="NP_ChangeTargetSkillBBValueActionNode.cs" t="Include" />
                     <e p="NP_ChangeUnitPropertyActionNode.cs" t="Include" />
                     <e p="NP_CheckBBValueActionNode.cs" t="Include" />
                     <e p="NP_CheckSkillCanBeCastActionNode.cs" t="Include" />

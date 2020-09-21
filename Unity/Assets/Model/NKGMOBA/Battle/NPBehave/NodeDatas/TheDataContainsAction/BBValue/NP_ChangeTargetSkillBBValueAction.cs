@@ -44,7 +44,7 @@ namespace ETModel
         {
             //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.NP_BBValueType}  黑板值:Bool：{m_NPBalckBoardRelationData.BoolValue.GetValue()}\n");
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-            List<NP_RuntimeTree> skillContent = unit.GetComponent<SkillCanvasManagerComponentComponent>()
+            List<NP_RuntimeTree> skillContent = unit.GetComponent<SkillCanvasManagerComponent>()
                     .GetSkillCanvas(NPBBBValue_TargetSkillId.GetTheBBDataValue<int>());
 
             foreach (var skillCanvas in skillContent)

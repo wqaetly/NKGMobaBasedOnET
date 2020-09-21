@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    [Title("添加一个Buff", TitleAlignment = TitleAlignments.Centered)]
+    [Title("给自己添加一个Buff", TitleAlignment = TitleAlignments.Centered)]
     public class NP_AddBuffAction: NP_ClassForStoreAction
     {
         [LabelText("要添加的Buff的信息")]
@@ -28,7 +28,8 @@ namespace ETModel
             BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
             for (int i = 0; i < BuffDataInfo.Layers; i++)
             {
-                buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, this.BuffDataInfo.BuffId.Value, unit, unit);
+                buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, this.BuffDataInfo.BuffId.Value, unit, unit,
+                    BelongtoRuntimeTree);
             }
         }
     }

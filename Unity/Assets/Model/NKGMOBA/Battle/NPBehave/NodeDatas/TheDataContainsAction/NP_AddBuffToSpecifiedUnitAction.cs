@@ -16,7 +16,8 @@ namespace ETModel
         [LabelText("要添加的Buff的信息")]
         public VTD_BuffInfo BuffDataInfo = new VTD_BuffInfo();
 
-        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData() {};
+        [LabelText("添加目标Id")]
+        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
 
         public override Action GetActionToBeDone()
         {
@@ -33,7 +34,7 @@ namespace ETModel
                 for (int i = 0; i < BuffDataInfo.Layers; i++)
                 {
                     buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, BuffDataInfo.BuffId.Value, unit,
-                        Game.Scene.GetComponent<UnitComponent>().Get(targetUnitId));
+                        Game.Scene.GetComponent<UnitComponent>().Get(targetUnitId),BelongtoRuntimeTree);
                 }
             }
         }

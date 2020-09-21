@@ -15,7 +15,7 @@ namespace ETModel
     public class NP_RuntimeTreeFactory
     {
         /// <summary>
-        /// 创建一个行为树实例
+        /// 创建一个行为树实例,默认存入Unit的NP_RuntimeTreeManager中
         /// </summary>
         /// <param name="unit">行为树所归属unit</param>
         /// <param name="nPDataId">行为树数据id</param>
@@ -95,6 +95,20 @@ namespace ETModel
             }
 
             return tempTree;
+        }
+
+        /// <summary>
+        /// 创建一个技能树实例,默认存入Unit的SkillCanvasManagerComponentComponent中
+        /// </summary>
+        /// <param name="unit">行为树所归属unit</param>
+        /// <param name="skillId">技能标识，eg：0，1，2，3</param>
+        /// <param name="nPDataId">行为树数据id</param>
+        /// <returns></returns>
+        public static NP_RuntimeTree CreateSkillNpRuntimeTree(Unit unit, int skillId, long nPDataId)
+        {
+            NP_RuntimeTree result = CreateNpRuntimeTree(unit, nPDataId);
+            unit.GetComponent<SkillCanvasManagerComponent>().AddSkillCanvas(skillId, result);
+            return result;
         }
     }
 }

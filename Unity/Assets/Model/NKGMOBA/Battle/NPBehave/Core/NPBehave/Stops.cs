@@ -4,7 +4,7 @@ namespace NPBehave
 {
     public enum Stops
     {
-        [LabelText("并且永远不会停止任何正在运行的节点")]
+        [LabelText("永远不会停止任何正在运行的节点")]
         NONE,
         [LabelText("不满足时停止自身")]
         SELF,
