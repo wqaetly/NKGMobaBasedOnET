@@ -23,7 +23,7 @@ namespace EThotfix
         public override void Run(long a, long b, long c)
         {
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(a);
-            B2S_ColliderEntity colliderEntity = unit.GetComponent<B2S_HeroColliderDataManagerComponent>()
+            B2S_ColliderEntity colliderEntity = unit.GetComponent<B2S_ColliderDataManagerComponent>()
                     .CreateHeroColliderData(unit, b, c);
 
             //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参

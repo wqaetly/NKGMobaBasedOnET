@@ -20,7 +20,7 @@ namespace ETHotfix
 
             //Log.Info("确认找到了请求的父实体");
             //Game.EventSystem.Run(EventIdType.CreateCollider, unit.Id, 10001, 10006);
-            unit.AddComponent<B2S_HeroColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
+            unit.AddComponent<B2S_ColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
             unit.AddComponent<HeroDataComponent, long>(10001);
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;

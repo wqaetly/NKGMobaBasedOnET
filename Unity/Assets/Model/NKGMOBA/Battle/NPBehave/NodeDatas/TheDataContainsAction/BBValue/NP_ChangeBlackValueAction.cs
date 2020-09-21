@@ -10,6 +10,9 @@ using Action = System.Action;
 
 namespace ETModel
 {
+    /// <summary>
+    /// 这里默认修改自己的黑板值
+    /// </summary>
     [Title("修改黑板值", TitleAlignment = TitleAlignments.Centered)]
     public class NP_ChangeBlackValueAction: NP_ClassForStoreAction
     {

@@ -33,10 +33,6 @@ namespace ETModel
         [BoxGroup("必填项")]
         public long BuffId = IdGenerater.GenerateId();
 
-        [LabelText("归属的技能ID")]
-        [BoxGroup("必填项")]
-        public int BelongSkillId;
-
         [HideInInspector]
         [BoxGroup("必填项")]
         public BuffSystemType BelongBuffSystemType;

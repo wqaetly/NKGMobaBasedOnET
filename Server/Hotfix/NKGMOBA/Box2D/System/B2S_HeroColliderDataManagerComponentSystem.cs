@@ -19,7 +19,7 @@ namespace ETHotfix
         /// <param name="unit">所归属Unit</param>
         /// <param name="supportorId">所处碰撞关系数据载体id</param>
         /// <param name="nodeDataId">碰撞体数据ID</param>
-        public static B2S_ColliderEntity CreateHeroColliderData(this B2S_HeroColliderDataManagerComponent self, Unit unit, long supportorId,
+        public static B2S_ColliderEntity CreateHeroColliderData(this B2S_ColliderDataManagerComponent self, Unit unit, long supportorId,
         long nodeDataId)
         {
             //用于记录id
@@ -72,7 +72,7 @@ namespace ETHotfix
         /// <param name="nodeDataId">结点ID</param>
         public static void RecycleColliderData(this B2S_ColliderEntity self)
         {
-            self.m_Unit.GetComponent<B2S_HeroColliderDataManagerComponent>().AllColliderData[(self.ID, self.flagID, self)] = false;
+            self.Entity.GetComponent<B2S_ColliderDataManagerComponent>().AllColliderData[(self.ID, self.flagID, self)] = false;
         }
     }
 }
