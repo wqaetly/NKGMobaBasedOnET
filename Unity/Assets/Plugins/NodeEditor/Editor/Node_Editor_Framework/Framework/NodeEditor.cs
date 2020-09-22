@@ -104,6 +104,8 @@ namespace NodeEditorFramework
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.update -= Update;
             UnityEditor.EditorApplication.update += Update;
+            Undo.undoRedoPerformed -= RepaintClients;
+            Undo.undoRedoPerformed += RepaintClients;
 #endif
 
             initiatedBase = true;

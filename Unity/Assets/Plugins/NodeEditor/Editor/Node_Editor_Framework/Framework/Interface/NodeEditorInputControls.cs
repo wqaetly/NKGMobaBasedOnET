@@ -74,14 +74,12 @@ namespace NodeEditorFramework
         private static void DuplicateNode(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
-            Undo.RecordObject(inputInfo.editorState.canvas, "新增保存");
             if (state.focusedNode != null && state.selectedNodes.Count > 0 && state.canvas.CanAddNode(state.focusedNode.GetID))
             {
                 //TODO 支持多个Node复制操作
                 // Create new node of same type
-                Node duplicatedNode = Node.Create(state.focusedNode.GetID, NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), state.canvas,
+                Node.Create(state.focusedNode.GetID, NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), state.canvas,
                     state.connectKnob);
-                state.selectedNodes[0] = state.focusedNode = duplicatedNode;
                 state.connectKnob = null;
                 inputInfo.inputEvent.Use();
             }

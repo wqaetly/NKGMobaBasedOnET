@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
+using UnityEditor;
 
 namespace NodeEditorFramework
 {
@@ -248,6 +249,7 @@ namespace NodeEditorFramework
             node.autoSize = node.DefaultSize;
             node.position = pos;
 
+            Undo.RecordObject(hostCanvas, "新增保存");
             NodeEditorSaveManager.AddSubAsset(node, hostCanvas);
             ConnectionPortManager.UpdateConnectionPorts(node);
             if (init)
