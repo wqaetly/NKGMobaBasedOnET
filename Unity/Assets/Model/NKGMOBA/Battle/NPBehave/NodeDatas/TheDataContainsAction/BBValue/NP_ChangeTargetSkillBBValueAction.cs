@@ -49,6 +49,12 @@ namespace ETModel
 
             foreach (var skillCanvas in skillContent)
             {
+                //除自己之外
+                if (skillCanvas == this.BelongtoRuntimeTree)
+                {
+                    return;
+                }
+
                 if (this.ValueGetType == ValueGetType.FromDataSet)
                 {
                     this.NPBBValue_ValueToChange.SetBlackBoardValue(skillCanvas.GetBlackboard());
