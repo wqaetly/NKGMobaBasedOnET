@@ -41,7 +41,7 @@ namespace NodeEditorFramework
                 UnityEditor.AssetDatabase.CreateAsset(nodeCanvas, path);
             }
 
-            //PurifyCanvas(path);
+            PurifyCanvas(path);
             UnityEditor.AssetDatabase.SaveAssets();
             UnityEditor.AssetDatabase.Refresh();
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using Random = UnityEngine.Random;
 
 namespace NodeEditorFramework
@@ -243,6 +244,7 @@ namespace NodeEditorFramework
             if (port == null)
                 return;
 
+            Undo.RecordObjects(new []{this, port}, "NodeEditor_连接保存");
             if (maxConnectionCount == ConnectionCount.Single && connections.Count > 0)
             {
                 // Respect maximum connection count on this port
@@ -284,6 +286,7 @@ namespace NodeEditorFramework
         /// </summary>
         public void RemoveConnection(ConnectionPort port, bool silent = false)
         {
+            Undo.RecordObjects(new []{this, port}, "NodeEditor_连接移除保存");
             if (port == null)
             {
                 connections.RemoveAll(p => p != null);

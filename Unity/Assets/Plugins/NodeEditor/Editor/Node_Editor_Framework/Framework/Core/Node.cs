@@ -249,7 +249,7 @@ namespace NodeEditorFramework
             node.autoSize = node.DefaultSize;
             node.position = pos;
 
-            Undo.RecordObject(hostCanvas, "新增保存");
+            Undo.RecordObject(hostCanvas, "NodeEditor_新增保存");
             NodeEditorSaveManager.AddSubAsset(node, hostCanvas);
             ConnectionPortManager.UpdateConnectionPorts(node);
             if (init)

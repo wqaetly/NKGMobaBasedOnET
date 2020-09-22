@@ -53,7 +53,7 @@ namespace NodeEditorFramework
             if (inputInfo.editorState.focusedNode != null)
             {
                 List<Node> temp = new List<Node>();
-                Undo.RecordObject(inputInfo.editorState.canvas, "删除保存");
+                Undo.RecordObject(inputInfo.editorState.canvas, "NodeEditor_删除保存");
 
                 foreach (var node in inputInfo.editorState.selectedNodes)
                 {

@@ -49,6 +49,10 @@ namespace ETModel
 
         private void ApplayId()
         {
+            if (string.IsNullOrEmpty(IdKey))
+            {
+                return;
+            }
             string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
 
             UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
