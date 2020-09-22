@@ -52,10 +52,9 @@ namespace ETModel
         #region 私有成员
 
         /// <summary>
-        /// 技能标识与其对应行为树映射,因为一个技能可能由多个行为树组成，所以value使用了List的形式
-        /// 这里的技能标识为0，1，2，3这种形式
+        /// 技能Id与其对应行为树映射,因为一个技能可能由多个行为树组成，所以value使用了List的形式
         /// </summary>
-        private Dictionary<int, List<NP_RuntimeTree>> Skills = new Dictionary<int, List<NP_RuntimeTree>>();
+        private Dictionary<long, List<NP_RuntimeTree>> Skills = new Dictionary<long, List<NP_RuntimeTree>>();
 
         #endregion
 
