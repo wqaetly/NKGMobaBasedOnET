@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8782807227267087578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: 0}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections: []
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
 --- !u!114 &-7989250510533508224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,7 +187,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
@@ -237,24 +207,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: BelongToSkillId
-    - Name: $v
-      Entry: 7
-      Data: 3|ETModel.BBValues.NP_BBValue_Int, Unity.Model
-    - Name: Value
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -262,14 +214,26 @@ MonoBehaviour:
       Data: 
     - Name: Ids
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 1
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: BelongToSkillId
+    - Name: $v
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -725,11 +689,11 @@ MonoBehaviour:
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: BelongToSkillId
     - Name: Value
       Entry: 3
-      Data: 0
+      Data: 10001
     - Name: 
       Entry: 8
       Data: 
@@ -1958,12 +1922,12 @@ MonoBehaviour:
   nodes:
   - {fileID: -7562081598070440630}
   - {fileID: -4567074915175297165}
-  - {fileID: 8659995985270308912}
   - {fileID: -4398475031741212948}
-  - {fileID: 4529937291697091796}
   - {fileID: -4423303617840932425}
   - {fileID: 6988642224762737028}
   - {fileID: 3908578018477357994}
+  - {fileID: 4529937291697091796}
+  - {fileID: 8659995985270308912}
   - {fileID: -95692858349293711}
   nodesForDelete: []
   groups:
