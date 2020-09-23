@@ -54,11 +54,12 @@ namespace ETModel
         /// <summary>
         /// 获取指定技能等级
         /// </summary>
-        /// <param name="i">技能序号</param>
+        /// <param name="id">技能Id</param>
         /// <returns></returns>
-        public int GetSkillLevel(int i)
+        public int GetSkillLevel(long id)
         {
-            switch (i)
+            //TODO 去SkillCanvasManagerComponent获取技能等级
+            switch (id)
             {
                 case 0:
                     return Q_SkillLevel;
@@ -70,7 +71,7 @@ namespace ETModel
                     return R_SkillLevel;
             }
 
-            Log.Info($"技能序号获取错误,{i}");
+            Log.Info($"技能序号获取错误,{id}");
             return -1;
         }
     }

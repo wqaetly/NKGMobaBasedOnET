@@ -15,17 +15,17 @@ namespace ETModel
     [Title("检查技能是否能释放", TitleAlignment = TitleAlignments.Centered)]
     public class NP_CheckSkillCanBeCastAction: NP_ClassForStoreAction
     {
-        [LabelText("要引用的的数据结点ID")]
-        public VTD_Id DataId;
+        [BoxGroup("引用数据的Id")]
+        [LabelText("引用的数据结点Id")]
+        public VTD_Id DataId = new VTD_Id();
+
+        [BoxGroup("引用数据的Id")]
+        [LabelText("检查技能的Id")]
+        public VTD_Id SkillIdBelongTo = new VTD_Id();
 
         [HideInEditorMode]
         public SkillDesNodeData SkillDesNodeData;
-
-        [LabelText("将要检查的技能ID（QWER：0123）")]
-        public int SkillIDBelongTo;
-
-        public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteOrCompareToBB = true };
-
+        
         public override Func<bool> GetFunc1ToBeDone()
         {
             this.Func1 = this.CheckCostToSpanSkill;
@@ -45,29 +45,15 @@ namespace ETModel
             */
             //给要修改的黑板节点进行赋值
             HeroDataComponent heroDataComponent = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<HeroDataComponent>();
-            this.NPBalckBoardRelationData.SetBlackBoardValue(this.BelongtoRuntimeTree.GetBlackboard(),
-                this.SkillDesNodeData.SkillCost[heroDataComponent.GetSkillLevel(this.SkillIDBelongTo)]);
             switch (this.SkillDesNodeData.SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:
                     //依据技能具体消耗来进行属性改变操作
-                    if (heroDataComponent.CurrentMagicValue >
-                        this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
-                        return true;
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 case SkillCostTypes.Other:
                     return true;
                 case SkillCostTypes.HPValue:
-                    if (heroDataComponent.CurrentLifeValue >
-                        this.NPBalckBoardRelationData.GetBlackBoardValue<float>(this.BelongtoRuntimeTree.GetBlackboard()))
-                        return true;
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 default:
                     return true;
             }

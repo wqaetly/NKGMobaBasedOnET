@@ -81,7 +81,7 @@ namespace ETModel
         /// 获取行为树
         /// </summary>
         /// <param name="skillId">技能标识</param>
-        public List<NP_RuntimeTree> GetSkillCanvas(int skillId)
+        public List<NP_RuntimeTree> GetSkillCanvas(long skillId)
         {
             if (Skills.TryGetValue(skillId, out var skillContent))
             {
@@ -98,7 +98,7 @@ namespace ETModel
         /// 移除行为树(移除一个技能标识对应所有技能图)
         /// </summary>
         /// <param name="skillId">技能标识</param>
-        public void RemoveSkillCanvas(int skillId)
+        public void RemoveSkillCanvas(long skillId)
         {
             foreach (var skillCanvas in GetSkillCanvas(skillId))
             {
@@ -111,7 +111,7 @@ namespace ETModel
         /// </summary>
         /// <param name="skillId">技能标识</param>
         /// <param name="npRuntimeTree">对应行为树</param>
-        public void RemoveSkillCanvas(int skillId, NP_RuntimeTree npRuntimeTree)
+        public void RemoveSkillCanvas(long skillId, NP_RuntimeTree npRuntimeTree)
         {
             List<NP_RuntimeTree> targetSkillContent = GetSkillCanvas(skillId);
             if (targetSkillContent != null)

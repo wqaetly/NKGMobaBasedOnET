@@ -25,14 +25,15 @@ namespace ETModel
     /// </summary>
     public class NP_ChangeTargetSkillBBValueAction: NP_ClassForStoreAction
     {
-        [LabelText("目标技能标识")]
-        public NP_BlackBoardRelationData NPBBBValue_TargetSkillId = new NP_BlackBoardRelationData();
+        [BoxGroup("目标技能Id配置")]
+        [HideLabel]
+        public VTD_Id TargetSkillId = new VTD_Id();
+
+        [LabelText("要传递的黑板值")]
+        public NP_BlackBoardRelationData NPBBValue_ValueToChange = new NP_BlackBoardRelationData();
 
         [OnValueChanged("ApplyDataGetType")]
         public ValueGetType ValueGetType = ValueGetType.FromBBValue;
-
-        [LabelText("将要改变的BBValue")]
-        public NP_BlackBoardRelationData NPBBValue_ValueToChange = new NP_BlackBoardRelationData();
 
         public override Action GetActionToBeDone()
         {
@@ -45,7 +46,7 @@ namespace ETModel
             //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.NP_BBValueType}  黑板值:Bool：{m_NPBalckBoardRelationData.BoolValue.GetValue()}\n");
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
             List<NP_RuntimeTree> skillContent = unit.GetComponent<SkillCanvasManagerComponent>()
-                    .GetSkillCanvas(NPBBBValue_TargetSkillId.GetTheBBDataValue<int>());
+                    .GetSkillCanvas(this.TargetSkillId.Value);
 
             foreach (var skillCanvas in skillContent)
             {

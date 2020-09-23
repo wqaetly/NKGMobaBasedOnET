@@ -18,7 +18,7 @@ namespace ETModel
 
             float tempData = 0;
 
-            //依据基础数值的加成方式来获取对应伤害数据
+            //依据基础数值的加成方式来获取对应数据
             switch (buffData.BaseBuffBaseDataEffectTypes)
             {
                 case BuffBaseDataEffectTypes.FromHeroLevel:
@@ -26,7 +26,7 @@ namespace ETModel
                     break;
                 case BuffBaseDataEffectTypes.FromSkillLevel:
                     tempData = buffData.ValueToBeChanged[
-                        theUnitFromHeroData.GetSkillLevel(buffSystem.BelongtoRuntimeTree.GetBlackboard().Get<int>("BelongToSkillId"))];
+                        theUnitFromHeroData.GetSkillLevel(buffData.BelongToSkillId.Value)];
                     break;
                 case BuffBaseDataEffectTypes.FromHasLostLifeValue:
                     tempData = buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
