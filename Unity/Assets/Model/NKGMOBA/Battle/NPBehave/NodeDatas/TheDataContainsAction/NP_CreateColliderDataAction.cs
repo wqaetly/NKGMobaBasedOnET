@@ -17,9 +17,12 @@ namespace ETModel
         [LabelText("碰撞体碰撞关系数据载体Id")]
         public long CollisionsRelationSupportId;
 
-        [InfoBox("1xxxx为矩形，2xxxx为圆形，3xxxx为多边形")]
-        [LabelText("碰撞体数据Id")]
-        public long ColliderDataId;
+        [InfoBox("在碰撞关系数据载体中的节点Id，而不是真正的碰撞体数据Id", InfoMessageType.Warning)]
+        [LabelText("碰撞体数据节点Id")]
+        public long CollisionRelationNodeDataId;
+
+        [LabelText("碰撞体身上的行为树Id")]
+        public long ColliderNPBehaveTreeId;
 
         public override Action GetActionToBeDone()
         {
@@ -29,7 +32,8 @@ namespace ETModel
 
         public void CreateColliderData()
         {
-            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.CollisionsRelationSupportId, this.ColliderDataId);
+            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.CollisionsRelationSupportId, this.CollisionRelationNodeDataId,
+                this.ColliderNPBehaveTreeId);
         }
     }
 }

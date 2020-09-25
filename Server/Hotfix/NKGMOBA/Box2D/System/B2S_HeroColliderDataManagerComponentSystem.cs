@@ -18,7 +18,7 @@ namespace ETHotfix
         /// <param name="self"></param>
         /// <param name="unit">所归属Unit</param>
         /// <param name="collisionRelationId">所处碰撞关系数据载体id</param>
-        /// <param name="nodeDataId">碰撞体数据ID</param>
+        /// <param name="nodeDataId">碰撞体数据ID（在碰撞关系数据载体中的节点Id）</param>
         public static B2S_ColliderEntity CreateHeroColliderData(this B2S_ColliderDataManagerComponent self, Unit unit, long collisionRelationId,
         long nodeDataId)
         {

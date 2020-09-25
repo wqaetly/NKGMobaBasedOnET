@@ -12,15 +12,16 @@ using ETModel;
 namespace EThotfix
 {
     [Event(EventIdType.CreateCollider)]
-    public class NP_CreateColliderAction: AEvent<long, long, long>
+    public class NP_CreateColliderAction: AEvent<long, long, long, long>
     {
         /// <summary>
         /// 创建一次一定要同步一次
         /// </summary>
-        /// <param name="a">unitID</param>
-        /// <param name="b">数据结点载体ID</param>
-        /// <param name="c">数据ID</param>
-        public override void Run(long a, long b, long c)
+        /// <param name="a">unit Id</param>
+        /// <param name="b">碰撞关系数据载体Id</param>
+        /// <param name="c">碰撞关系数据载体中的Node的Id</param>
+        /// <param name="d">目标行为树数据载体Id</param>
+        public override void Run(long a, long b, long c, long d)
         {
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(a);
             B2S_ColliderEntity colliderEntity = unit.GetComponent<B2S_ColliderDataManagerComponent>()
@@ -29,6 +30,8 @@ namespace EThotfix
             //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参
             colliderEntity.SyncBody();
             //Log.Info("生成技能碰撞体");
+            //根据传过来的行为树Id来给这个碰撞Unit加上行为树
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(colliderEntity.m_Unit, d).Start();
 
             //下面这一部分是Debug用的，稳定后请去掉
             {
