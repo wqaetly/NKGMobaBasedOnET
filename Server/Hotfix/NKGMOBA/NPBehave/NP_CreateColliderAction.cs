@@ -31,12 +31,12 @@ namespace EThotfix
             colliderEntity.SyncBody();
             //Log.Info("生成技能碰撞体");
             //根据传过来的行为树Id来给这个碰撞Unit加上行为树
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(colliderEntity.m_Unit, d).Start();
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(colliderEntity.SelfUnit, d).Start();
 
             //下面这一部分是Debug用的，稳定后请去掉
             {
                 //广播碰撞体信息
-                foreach (var VARIABLE in colliderEntity.m_Body.FixtureList)
+                foreach (var VARIABLE in colliderEntity.Body.FixtureList)
                 {
                     switch (VARIABLE.ShapeType)
                     {
@@ -44,7 +44,7 @@ namespace EThotfix
                             M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 2000, };
                             foreach (var VARIABLE1 in ((PolygonShape) VARIABLE.Shape).Vertices)
                             {
-                                Vector2 worldPoint = colliderEntity.m_Body.GetWorldPoint(VARIABLE1);
+                                Vector2 worldPoint = colliderEntity.Body.GetWorldPoint(VARIABLE1);
                                 test.Vects.Add(new M2C_B2S_VectorBase() { X = worldPoint.X, Y = worldPoint.Y });
                             }
 
@@ -59,8 +59,8 @@ namespace EThotfix
                                 Radius = myShape.Radius,
                                 Pos = new M2C_B2S_VectorBase()
                                 {
-                                    X = colliderEntity.m_Body.GetWorldPoint(myShape.Position).X,
-                                    Y = colliderEntity.m_Body.GetWorldPoint(myShape.Position).Y
+                                    X = colliderEntity.Body.GetWorldPoint(myShape.Position).X,
+                                    Y = colliderEntity.Body.GetWorldPoint(myShape.Position).Y
                                 },
                             };
                             MessageHelper.Broadcast(test1);

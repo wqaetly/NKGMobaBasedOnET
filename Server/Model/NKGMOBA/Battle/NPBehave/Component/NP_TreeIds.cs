@@ -11,9 +11,6 @@ namespace ETModel
     /// </summary>
     public static class NP_Client_TreeIds
     {
-        public const long Client_Darius_Hemorrhage = 104884902166624;
-        public const long Client_Darius_Q = 104884901642311;
-
         public const long Server_Darius_Hemorrhage = 104925657497617;
         public const long Server_Darius_Q = 104925725261871;
         public const long Server_Darius_Q_Collider = 104925182296098;

@@ -59,7 +59,7 @@ namespace ETHotfix
 
             //添加到碰撞数据管理者
             self.AllColliderData
-                    .Add((b2SColliderEntity.ID, flag, b2SColliderEntity), false);
+                    .Add((b2SColliderEntity.NodeDataId, flag, b2SColliderEntity), false);
             Log.Info($"新建的碰撞数据.ID为{nodeDataId}");
             return b2SColliderEntity;
         }
@@ -72,7 +72,7 @@ namespace ETHotfix
         /// <param name="nodeDataId">结点ID</param>
         public static void RecycleColliderData(this B2S_ColliderEntity self)
         {
-            self.Entity.GetComponent<B2S_ColliderDataManagerComponent>().AllColliderData[(self.ID, self.flagID, self)] = false;
+            self.Entity.GetComponent<B2S_ColliderDataManagerComponent>().AllColliderData[(self.NodeDataId, self.FlagId, self)] = false;
         }
     }
 }

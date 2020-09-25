@@ -31,7 +31,7 @@ namespace ETHotfix
     {
         public void OnCollideStart(B2S_ColliderEntity b2SColliderEntity)
         {
-            switch (b2SColliderEntity.m_B2S_CollisionInstance.nodeDataId)
+            switch (b2SColliderEntity.B2S_CollisionInstance.nodeDataId)
             {
             }
         }

@@ -42,19 +42,19 @@ namespace ETHotfix
         public void OnCollideStart(B2S_ColliderEntity b2SColliderEntity)
         {
             //Log.Info("诺克Q技能打到了东西");
-            switch (b2SColliderEntity.m_B2S_CollisionInstance.nodeDataId)
+            switch (b2SColliderEntity.B2S_CollisionInstance.nodeDataId)
             {
                 case 10006: //诺克：自身
                     //TODO:这一步需要在结点编辑器配好支持自动升成
-                    if (b2SColliderEntity.m_BelongUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
+                    if (b2SColliderEntity.BelongToUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
 
-                    Unit unit = ((B2S_ColliderEntity) this.Entity).m_BelongUnit;
+                    Unit unit = ((B2S_ColliderEntity) this.Entity).BelongToUnit;
 
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
 
                     //敌方英雄
-                    if (Vector3.Distance(((B2S_ColliderEntity) this.Entity).m_BelongUnit.Position, b2SColliderEntity.m_BelongUnit.Position) >=
+                    if (Vector3.Distance(((B2S_ColliderEntity) this.Entity).BelongToUnit.Position, b2SColliderEntity.BelongToUnit.Position) >=
                         2.3f)
                     {
                         try
@@ -63,7 +63,7 @@ namespace ETHotfix
                             
                             MessageHelper.Broadcast(new M2C_FrieBattleEvent_PlayEffect()
                             {
-                                BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SColliderEntity.m_BelongUnit.Id
+                                BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SColliderEntity.BelongToUnit.Id
                             });
                         }
                         catch (Exception e)

@@ -32,7 +32,7 @@ namespace ETHotfix
             colliderEntity.SyncBody();
 
             //广播碰撞体信息
-            foreach (var VARIABLE in colliderEntity.m_Body.FixtureList)
+            foreach (var VARIABLE in colliderEntity.Body.FixtureList)
             {
                 switch (VARIABLE.ShapeType)
                 {
@@ -40,7 +40,7 @@ namespace ETHotfix
                         M2C_B2S_Debugger_Polygon test = new M2C_B2S_Debugger_Polygon() { Id = unit.Id, SustainTime = 2000, };
                         foreach (var VARIABLE1 in ((PolygonShape) VARIABLE.Shape).Vertices)
                         {
-                            Vector2 worldPoint = colliderEntity.m_Body.GetWorldPoint(VARIABLE1);
+                            Vector2 worldPoint = colliderEntity.Body.GetWorldPoint(VARIABLE1);
                             test.Vects.Add(new M2C_B2S_VectorBase() { X = worldPoint.X, Y = worldPoint.Y });
                         }
 
@@ -55,8 +55,8 @@ namespace ETHotfix
                             Radius = myShape.Radius,
                             Pos = new M2C_B2S_VectorBase()
                             {
-                                X = colliderEntity.m_Body.GetWorldPoint(myShape.Position).X,
-                                Y = colliderEntity.m_Body.GetWorldPoint(myShape.Position).Y
+                                X = colliderEntity.Body.GetWorldPoint(myShape.Position).X,
+                                Y = colliderEntity.Body.GetWorldPoint(myShape.Position).Y
                             },
                         };
                         MessageHelper.Broadcast(test1);
