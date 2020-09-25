@@ -119,21 +119,66 @@ namespace Sirenix.OdinInspector
         }
     }
 
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public class InfoBoxAttribute: System.Attribute
+    public enum InfoMessageType
     {
-        public InfoBoxAttribute(string value)
+        /// <summary>Generic message box with no type.</summary>
+        None,
+
+        /// <summary>Information message box.</summary>
+        Info,
+
+        /// <summary>Warning message box.</summary>
+        Warning,
+
+        /// <summary>Error message box.</summary>
+        Error,
+    }
+
+    public sealed class InfoBoxAttribute: Attribute
+    {
+        /// <summary>The message to display in the info box.</summary>
+        public string Message;
+
+        /// <summary>The type of the message box.</summary>
+        public InfoMessageType InfoMessageType;
+
+        /// <summary>
+        /// Optional member field, property or function to show and hide the info box.
+        /// </summary>
+        public string VisibleIf;
+
+        /// <summary>
+        /// When <c>true</c> the InfoBox will ignore the GUI.enable flag and always draw as enabled.
+        /// </summary>
+        public bool GUIAlwaysEnabled;
+
+        /// <summary>Displays an info box above the property.</summary>
+        /// <param name="message">The message for the message box. Supports referencing a member string field, property or method by using $.</param>
+        /// <param name="infoMessageType">The type of the message box.</param>
+        /// <param name="visibleIfMemberName">Name of member bool to show or hide the message box.</param>
+        public InfoBoxAttribute(
+        string message,
+        InfoMessageType infoMessageType = InfoMessageType.Info,
+        string visibleIfMemberName = null)
         {
+            this.Message = message;
+            this.InfoMessageType = infoMessageType;
+            this.VisibleIf = visibleIfMemberName;
         }
 
-        public InfoBoxAttribute(string value, InfoMessageType infoMessageType)
+        /// <summary>Displays an info box above the property.</summary>
+        /// <param name="message">The message for the message box. Supports referencing a member string field, property or method by using $.</param>
+        /// <param name="visibleIfMemberName">Name of member bool to show or hide the message box.</param>
+        public InfoBoxAttribute(string message, string visibleIfMemberName)
         {
+            this.Message = message;
+            this.InfoMessageType = InfoMessageType.Info;
+            this.VisibleIf = visibleIfMemberName;
         }
     }
 
-    public enum InfoMessageType
+    public sealed class HideInInspector: Attribute
     {
-        Error
     }
 
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
@@ -141,6 +186,23 @@ namespace Sirenix.OdinInspector
     {
         public TabGroupAttribute(string value)
         {
+        }
+    }
+
+    public class TooltipAttribute: PropertyAttribute
+    {
+        /// <summary>
+        ///   <para>The tooltip text.</para>
+        /// </summary>
+        public readonly string tooltip;
+
+        /// <summary>
+        ///   <para>Specify a tooltip for a field.</para>
+        /// </summary>
+        /// <param name="tooltip">The tooltip text.</param>
+        public TooltipAttribute(string tooltip)
+        {
+            this.tooltip = tooltip;
         }
     }
 
@@ -352,11 +414,12 @@ namespace Sirenix.OdinInspector
             this.DrawDropdownForListElements = true;
         }
     }
-    
-    public sealed class OnValueChangedAttribute : Attribute
+
+    public sealed class OnValueChangedAttribute: Attribute
     {
         /// <summary>Name of callback member function.</summary>
         public string MethodName;
+
         /// <summary>
         /// Whether to invoke the method when a child value of the property is changed.
         /// </summary>
@@ -373,8 +436,8 @@ namespace Sirenix.OdinInspector
             this.IncludeChildren = includeChildren;
         }
     }
-    
-    public class HideReferenceObjectPickerAttribute : Attribute
+
+    public class HideReferenceObjectPickerAttribute: Attribute
     {
     }
 

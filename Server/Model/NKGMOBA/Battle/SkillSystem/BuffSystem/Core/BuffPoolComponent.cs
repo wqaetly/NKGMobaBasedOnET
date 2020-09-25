@@ -14,96 +14,99 @@ namespace ETModel
     /// </summary>
     public class BuffPoolComponent: Component
     {
-        public Dictionary<Type, Queue<BuffSystemBase>> BuffSystemBases = new Dictionary<Type, Queue<BuffSystemBase>>();
+        /// <summary>
+        /// 记录所有BuffSystem类型，用于运行时创建对应的BuffSystem
+        /// </summary>
+        public static Dictionary<BuffSystemType, Type> AllBuffSystemTypes = new Dictionary<BuffSystemType, Type>()
+        {
+            //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
+            { BuffSystemType.FlashDamageBuffSystem, typeof (FlashDamageBuffSystem) },
+            { BuffSystemType.SustainDamageBuffSystem, typeof (SustainDamageBuffSystem) },
+            { BuffSystemType.ChangePropertyBuffSystem, typeof (ChangePropertyBuffSystem) },
+            { BuffSystemType.ListenBuffCallBackBuffSystem, typeof (ListenBuffCallBackBuffSystem) },
+            { BuffSystemType.BindStateBuffSystem, typeof (BindStateBuffSystem) },
+            { BuffSystemType.TreatmentBuffSystem, typeof (TreatmentBuffSystem) },
+            { BuffSystemType.RefreshTargetBuffTimeBuffSystem, typeof (RefreshTargetBuffTimeBuffSystem) },
+        };
 
         /// <summary>
-        /// 取得Buff
+        /// BuffPool中所有BuffSystem
+        /// </summary>
+        public Dictionary<Type, Queue<ABuffSystemBase>> BuffSystems = new Dictionary<Type, Queue<ABuffSystemBase>>();
+
+        /// <summary>
+        /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
+        /// </summary>
+        /// <param name="dataId">Buff数据归属的数据块Id</param>
+        /// <param name="buffId">Buff的Id</param>
+        /// <param name="theUnitFrom">Buff来源者</param>
+        /// <param name="theUnitBelongTo">Buff寄生者</param>
+        /// <returns></returns>
+        public ABuffSystemBase AcquireBuff(long dataId, long buffId, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
+        {
+            return AcquireBuff(
+                (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffDataDic[buffId] as NormalBuffNodeData).BuffData,
+                theUnitFrom, theUnitBelongTo, theSkillCanvasBelongTo);
+        }
+
+        /// <summary>
+        /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
+        /// </summary>
+        /// <param name="npDataSupportor">Buff数据归属的数据块</param>
+        /// <param name="buffId">Buff的Id</param>
+        /// <param name="theUnitFrom">Buff来源者</param>
+        /// <param name="theUnitBelongTo">Buff寄生者</param>
+        /// <returns></returns>
+        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffId, Unit theUnitFrom, Unit theUnitBelongTo,
+        NP_RuntimeTree theSkillCanvasBelongTo)
+        {
+            return AcquireBuff((npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo,
+                theSkillCanvasBelongTo);
+        }
+
+        /// <summary>
+        /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
         /// <param name="buffDataBase">Buff数据</param>
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
-        /// <typeparam name="T">要取得的具体Buff</typeparam>
         /// <returns></returns>
-        public T AcquireBuff<T>(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo) where T : BuffSystemBase
+        public ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            Queue<BuffSystemBase> buffBase;
-            if (this.BuffSystemBases.TryGetValue(typeof (T), out buffBase))
+            Queue<ABuffSystemBase> buffBase;
+            Type targetBuffSystemType = AllBuffSystemTypes[buffDataBase.BelongBuffSystemType];
+            ABuffSystemBase resultBuff;
+            if (this.BuffSystems.TryGetValue(targetBuffSystemType, out buffBase))
             {
                 if (buffBase.Count > 0)
                 {
-                    T tempBuffBase = (T) buffBase.Dequeue();
-                    tempBuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-                    return tempBuffBase;
+                    resultBuff = buffBase.Dequeue();
+                    resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
+                    resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+                    return resultBuff;
                 }
             }
 
-            T temp = (T) Activator.CreateInstance(typeof (T));
-            temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-            return temp;
+            resultBuff = (ABuffSystemBase) Activator.CreateInstance(targetBuffSystemType);
+            resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
+            resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
+            return resultBuff;
         }
 
         /// <summary>
-        /// 取得Buff
+        /// 回收一个Buff
         /// </summary>
-        /// <param name="buffDataBase">Buff数据</param>
-        /// <param name="theUnitFrom">Buff来源者</param>
-        /// <param name="theUnitBelongTo">Buff寄生者</param>
-        /// <returns></returns>
-        public BuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo)
+        /// <param name="aBuffSystemBase"></param>
+        public void RecycleBuff(ABuffSystemBase aBuffSystemBase)
         {
-            Queue<BuffSystemBase> buffBase;
-            Type tempType = typeof (BuffSystemBase);
-            switch (buffDataBase.BelongBuffSystemType)
+            if (this.BuffSystems.TryGetValue(aBuffSystemBase.GetType(), out Queue<ABuffSystemBase> temp))
             {
-                case BuffSystemType.FlashDamageBuffSystem:
-                    tempType = typeof (FlashDamageBuffSystem);
-                    break;
-                case BuffSystemType.SustainDamageBuffSystem:
-                    tempType = typeof (SustainDamageBuffSystem);
-                    break;
-                case BuffSystemType.ChangePlayerPropertyBuffSystem:
-                    tempType = typeof (ChangePlayerPropertyBuffSystem);
-                    break;
-                case BuffSystemType.ListenBuffCallBackBuffSystem:
-                    tempType = typeof (ListenBuffCallBackBuffSystem);
-                    break;
-                case BuffSystemType.BindStateBuffSystem:
-                    tempType = typeof (BindStateBuffSystem);
-                    break;
-                case BuffSystemType.TreatmenBuffSystem:
-                    tempType = typeof (TreatmentBuffSystem);
-                    break;
-                case BuffSystemType.RefreshTargetBuffTimeBuffSystem:
-                    tempType = typeof (RefreshTargetBuffTimeBuffSystem);
-                    break;
-                //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人架构能力的确有限。。。
-            }
-
-            if (this.BuffSystemBases.TryGetValue(tempType, out buffBase))
-            {
-                if (buffBase.Count > 0)
-                {
-                    BuffSystemBase tempBuffBase = buffBase.Dequeue();
-                    tempBuffBase.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-                    return tempBuffBase;
-                }
-            }
-
-            BuffSystemBase temp = (BuffSystemBase) Activator.CreateInstance(tempType);
-            temp.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-            return temp;
-        }
-
-        public void RecycleBuff(BuffSystemBase buffSystemBase)
-        {
-            if (this.BuffSystemBases.TryGetValue(buffSystemBase.GetType(), out Queue<BuffSystemBase> temp))
-            {
-                temp.Enqueue(buffSystemBase);
+                temp.Enqueue(aBuffSystemBase);
             }
             else
             {
-                this.BuffSystemBases.Add(buffSystemBase.GetType(), new Queue<BuffSystemBase>());
-                this.BuffSystemBases[buffSystemBase.GetType()].Enqueue(buffSystemBase);
+                this.BuffSystems.Add(aBuffSystemBase.GetType(), new Queue<ABuffSystemBase>());
+                this.BuffSystems[aBuffSystemBase.GetType()].Enqueue(aBuffSystemBase);
             }
         }
     }

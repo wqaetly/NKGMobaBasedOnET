@@ -34,20 +34,18 @@ namespace ETHotfix
             unit.AddComponent<NP_RuntimeTreeManager>();
 
             Log.Info("开始创建行为树");
-            
+
             try
             {
-                NP_RuntimeTree npRuntimeTree = NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Server);
+                NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Server_Darius_Hemorrhage).Start();
+                NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Server_Darius_Q).Start();
                 Log.Info("行为树创建完成");
-                npRuntimeTree.m_NPRuntimeTreeRootNode.Start();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
-
-
 
             //设置小骷髅位置
             unit.Position = new Vector3(-10, 0, -10);

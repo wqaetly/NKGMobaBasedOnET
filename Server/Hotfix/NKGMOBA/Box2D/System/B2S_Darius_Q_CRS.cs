@@ -49,10 +49,7 @@ namespace ETHotfix
                     if (b2SColliderEntity.m_BelongUnit.GetComponent<B2S_RoleCastComponent>().RoleCast != RoleCast.Adverse) return;
 
                     Unit unit = ((B2S_ColliderEntity) this.Entity).m_BelongUnit;
-                    Dictionary<long, SkillBaseNodeData> skillNodeDataSupporter =
-                            unit.GetComponent<NP_RuntimeTreeManager>()
-                                    .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Server).m_BelongNP_DataSupportor.mSkillDataDic;
-   
+
                     BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
                     //Log.Info("开始执行正式判断逻辑");
 
@@ -63,9 +60,7 @@ namespace ETHotfix
                         try
                         {
                             Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
-                            buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
-                                ((NodeDataForSkillBuff) skillNodeDataSupporter[10002]).SkillBuffBases,
-                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit);
+                            
                             MessageHelper.Broadcast(new M2C_FrieBattleEvent_PlayEffect()
                             {
                                 BattleKey = "Darius_Q_OutHit", FromUnitId = unit.Id, BelongToUnitId = b2SColliderEntity.m_BelongUnit.Id
@@ -82,9 +77,7 @@ namespace ETHotfix
                         Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
                         try
                         {
-                            buffPoolComponent.AcquireBuff<FlashDamageBuffSystem>(
-                                ((NodeDataForSkillBuff) skillNodeDataSupporter[10003]).SkillBuffBases,
-                                ((B2S_ColliderEntity) this.Entity).m_BelongUnit, b2SColliderEntity.m_BelongUnit);
+                            
                         }
                         catch (Exception e)
                         {

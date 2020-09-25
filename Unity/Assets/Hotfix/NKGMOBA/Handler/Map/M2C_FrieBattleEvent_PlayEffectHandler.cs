@@ -17,12 +17,10 @@ namespace ETHotfix
             switch (message.BattleKey)
             {
                 case "Darius_Q_OutHit":
-                    //ETModel.Log.Info($"这里进行客户端Q技能打中后的逻辑!!!!!!!!!!!");
+                    ETModel.Log.Info($"这里进行客户端Q技能打中后的逻辑!!!!!!!!!!!");
                     UnitComponent unitComponent = ETModel.Game.Scene.GetComponent<UnitComponent>();
                     Unit unit = unitComponent.Get(message.FromUnitId);
-                    Dictionary<long, BuffNodeDataBase> skillNodeDataSupporter =
-                            unit.GetComponent<NP_RuntimeTreeManager>()
-                                    .GetTreeByPrefabID(NP_Client_TreeIds.Darius_Q_Client).BelongNP_DataSupportor.BuffDataDic;
+
                     break;
             }
 

@@ -82,7 +82,7 @@ namespace ETModel
             Unit unit = ComponentFactory.Create<Unit>();
             unit.AddComponent<NP_RuntimeTreeManager>();
             unitComponent.Add(unit);
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client).Start();
+            //NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client).Start();
         }
     }
 }

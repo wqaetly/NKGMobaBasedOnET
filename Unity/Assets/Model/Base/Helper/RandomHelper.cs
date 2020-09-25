@@ -27,10 +27,12 @@ namespace ETModel
             return (float) random.NextDouble();
         }
 
+#if !SERVER
         public static Color RandColor()
         {
             return new Color(RandomHelper.RandFloat(), RandomHelper.RandFloat(), RandomHelper.RandFloat());
         }
+#endif
 
         /// <summary>
         /// 获取lower与Upper之间的随机数
