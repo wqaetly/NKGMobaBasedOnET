@@ -24,8 +24,7 @@ namespace ETHotfix
             unit.AddComponent<B2S_ColliderDataManagerComponent>();
 
             Log.Info("创建自身碰撞体");
-            //Game.EventSystem.Run(EventIdType.CreateCollider, unit.Id, 10001, 10006);
-            unit.GetComponent<B2S_ColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
+            unit.GetComponent<B2S_ColliderDataManagerComponent>().CreateHeroColliderData(unit, 104925417439242, 10006);
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Friendly;
             Log.Info("碰撞体创建完成");
             unit.AddComponent<HeroDataComponent, long>(10001);
