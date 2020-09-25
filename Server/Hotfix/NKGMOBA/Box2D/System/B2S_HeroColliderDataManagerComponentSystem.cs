@@ -17,9 +17,9 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="unit">所归属Unit</param>
-        /// <param name="supportorId">所处碰撞关系数据载体id</param>
+        /// <param name="collisionRelationId">所处碰撞关系数据载体id</param>
         /// <param name="nodeDataId">碰撞体数据ID</param>
-        public static B2S_ColliderEntity CreateHeroColliderData(this B2S_ColliderDataManagerComponent self, Unit unit, long supportorId,
+        public static B2S_ColliderEntity CreateHeroColliderData(this B2S_ColliderDataManagerComponent self, Unit unit, long collisionRelationId,
         long nodeDataId)
         {
             //用于记录id
@@ -40,7 +40,7 @@ namespace ETHotfix
             }
 
             B2S_CollisionsRelationSupport b2SCollisionsRelationSupport = Game.Scene.GetComponent<B2S_CollisionRelationRepositoryComponent>()
-                    .GetB2S_CollisionsRelationSupportById(supportorId);
+                    .GetB2S_CollisionsRelationSupportById(collisionRelationId);
 
             if (!b2SCollisionsRelationSupport.B2S_CollisionsRelationDic.ContainsKey(nodeDataId))
             {

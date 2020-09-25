@@ -14,11 +14,12 @@ namespace ETModel
     [Title("创建一个碰撞体", TitleAlignment = TitleAlignments.Centered)]
     public class NP_CreateColliderAction: NP_ClassForStoreAction
     {
-        [LabelText("要生成的碰撞数据载体ID")]
-        public long SupportDataID;
+        [LabelText("碰撞体碰撞关系数据载体Id")]
+        public long CollisionsRelationSupportId;
 
-        [LabelText("要生成的碰撞数据ID")]
-        public long ColliderDataID;
+        [InfoBox("1xxxx为矩形，2xxxx为圆形，3xxxx为多边形")]
+        [LabelText("碰撞体数据Id")]
+        public long ColliderDataId;
 
         public override Action GetActionToBeDone()
         {
@@ -28,7 +29,7 @@ namespace ETModel
 
         public void CreateColliderData()
         {
-            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.SupportDataID, this.ColliderDataID);
+            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.CollisionsRelationSupportId, this.ColliderDataId);
         }
     }
 }
