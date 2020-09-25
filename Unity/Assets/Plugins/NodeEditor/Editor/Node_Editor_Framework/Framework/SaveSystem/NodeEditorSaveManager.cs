@@ -149,7 +149,7 @@ namespace NodeEditorFramework
                 {
                     return;
                 }
-
+                
                 UnityEditor.AssetDatabase.AddObjectToAsset(subAsset, mainAsset);
                 subAsset.hideFlags = HideFlags.HideInHierarchy;
             }

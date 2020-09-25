@@ -12,6 +12,9 @@ using Vector2 = System.Numerics.Vector2;
 
 namespace ETModel
 {
+    /// <summary>
+    /// 多边形碰撞体的数据结构
+    /// </summary>
     public class B2S_PolygonColliderDataStructure: B2S_ColliderDataStructureBase
     {
         [LabelText("碰撞体所包含的顶点信息(顺时针),可能由多个多边形组成")]

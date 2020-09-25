@@ -12,6 +12,9 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    /// <summary>
+    /// 圆形碰撞体的数据结构
+    /// </summary>
     public class B2S_CircleColliderDataStructure: B2S_ColliderDataStructureBase
     {
         [LabelText("半径")]

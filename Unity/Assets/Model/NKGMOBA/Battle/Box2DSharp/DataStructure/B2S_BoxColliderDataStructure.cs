@@ -10,6 +10,9 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
+    /// <summary>
+    /// 矩形碰撞体的数据结构
+    /// </summary>
     public class B2S_BoxColliderDataStructure: B2S_ColliderDataStructureBase
     {
         [LabelText("x轴方向上的一半长度")]
