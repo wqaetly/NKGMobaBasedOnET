@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -25,11 +26,19 @@ namespace ETModel
     /// </summary>
     public class NP_ChangeTargetSkillBBValueAction: NP_ClassForStoreAction
     {
+        [Tooltip("比如诺手（Unit A）的Q技能会有一个碰撞体Unit（Unit B），这个Action是在UnitB上的一个行为树中的，如果此处为true，则会索引到UnitB而不是UnitA，否则就根据下面的<目标技能归属的英雄Unit Id>来获取目标")]
+        [LabelText("目标技能归属Unit是否为自身的Unit")]
+        public bool TargetUnitIsSelf = true;
+
+        [HideIf("TargetUnitIsSelf")]
+        [LabelText("目标技能归属的英雄Unit Id")]
+        public NP_BlackBoardRelationData TargetUnitId = new NP_BlackBoardRelationData();
+
         [BoxGroup("目标技能Id配置")]
         [HideLabel]
         public VTD_Id TargetSkillId = new VTD_Id();
 
-        [LabelText("要传递的黑板值")]
+        [LabelText("要传递给目标技能的黑板值")]
         public NP_BlackBoardRelationData NPBBValue_ValueToChange = new NP_BlackBoardRelationData();
 
         [OnValueChanged("ApplyDataGetType")]
@@ -44,8 +53,24 @@ namespace ETModel
         public void ChangeTargetSkillBBValue()
         {
             //Log.Info($"修改黑板键{m_NPBalckBoardRelationData.DicKey} 黑板值类型 {m_NPBalckBoardRelationData.NP_BBValueType}  黑板值:Bool：{m_NPBalckBoardRelationData.BoolValue.GetValue()}\n");
-            Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-            List<NP_RuntimeTree> skillContent = unit.GetComponent<SkillCanvasManagerComponent>()
+            Unit targetUnit = null;
+            
+            if (this.TargetUnitIsSelf)
+            {
+                targetUnit = Game.Scene.GetComponent<UnitComponent>()
+                        .Get(this.Unitid);
+            }
+            else
+            {
+#if SERVER
+                //TODO 这里先默许目标为碰撞体归属的Unit Id（施法者Unit Id）
+                targetUnit = Game.Scene.GetComponent<UnitComponent>()
+                        .Get(Game.Scene.GetComponent<UnitComponent>()
+                                .Get(this.Unitid).GetComponent<B2SC>());
+#endif
+            }
+
+            List<NP_RuntimeTree> skillContent = targetUnit.GetComponent<SkillCanvasManagerComponent>()
                     .GetSkillCanvas(this.TargetSkillId.Value);
 
             foreach (var skillCanvas in skillContent)
