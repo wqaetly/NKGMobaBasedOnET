@@ -39,7 +39,7 @@ namespace ETHotfix.NKGMOBA.Factory
         public static Unit CreateDarius()
         {
             //创建战斗单位
-            Unit unit = CreateUnitBase();
+            Unit unit = CreateUnitWithIdBase(IdGenerater.GenerateId());
             unit.AddComponent<ChildrenUnitComponent>();
             //增加移动组件
             unit.AddComponent<MoveComponent>();
@@ -49,7 +49,8 @@ namespace ETHotfix.NKGMOBA.Factory
             //增加碰撞体管理组件
             unit.AddComponent<B2S_UnitColliderManagerComponent>();
 
-            unit.GetComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit, 104925417439242, 10006);
+            unit.GetComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit,
+                Game.Scene.GetComponent<ConfigComponent>().Get<Server_B2SCollisionRelationConfig>(10001).B2S_CollisionRelationId, 10006);
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Friendly;
 
             unit.AddComponent<HeroDataComponent, long>(10001);
@@ -58,8 +59,10 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<NP_RuntimeTreeManager>();
 
             //Log.Info("开始创建行为树");
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Server_Darius_Hemorrhage).Start();
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Server_Darius_Q).Start();
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Server_NPBehaveConfig>(10001).NPBehaveId)
+                    .Start();
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Server_NPBehaveConfig>(10002).NPBehaveId)
+                    .Start();
             //Log.Info("行为树创建完成");
 
             //设置英雄位置
@@ -73,12 +76,13 @@ namespace ETHotfix.NKGMOBA.Factory
         /// <returns></returns>
         public static Unit CreateSpiling(long parentId)
         {
-            Unit unit = ComponentFactory.Create<Unit>();
+            Unit unit = ComponentFactory.CreateWithId<Unit>(IdGenerater.GenerateId());
             //Log.Info($"服务端响应木桩请求，父id为{message.ParentUnitId}");
             Game.Scene.GetComponent<UnitComponent>().Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             //Log.Info("确认找到了请求的父实体");
             //Game.EventSystem.Run(EventIdType.CreateCollider, unit.Id, 10001, 10006);
-            unit.AddComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit, 10001, 10006);
+            unit.AddComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit,
+                Game.Scene.GetComponent<ConfigComponent>().Get<Server_B2SCollisionRelationConfig>(10001).B2S_CollisionRelationId, 10006);
             unit.AddComponent<HeroDataComponent, long>(10001);
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;

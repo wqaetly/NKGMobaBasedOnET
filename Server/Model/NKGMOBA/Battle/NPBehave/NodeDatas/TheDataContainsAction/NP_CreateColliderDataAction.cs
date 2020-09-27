@@ -15,14 +15,14 @@ namespace ETModel
     public class NP_CreateColliderAction: NP_ClassForStoreAction
     {
         [LabelText("碰撞体碰撞关系数据载体Id")]
-        public long CollisionsRelationSupportId;
+        public int CollisionsRelationSupportIdInExcel;
 
         [InfoBox("在碰撞关系数据载体中的节点Id，而不是真正的碰撞体数据Id", InfoMessageType.Warning)]
         [LabelText("碰撞体数据节点Id")]
         public long CollisionRelationNodeDataId;
 
         [LabelText("碰撞体身上的行为树Id")]
-        public long ColliderNPBehaveTreeId;
+        public int ColliderNPBehaveTreeIdInExcel;
 
         public override Action GetActionToBeDone()
         {
@@ -32,8 +32,9 @@ namespace ETModel
 
         public void CreateColliderData()
         {
-            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.CollisionsRelationSupportId, this.CollisionRelationNodeDataId,
-                this.ColliderNPBehaveTreeId);
+            ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
+            Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.CollisionsRelationSupportIdInExcel, this.CollisionRelationNodeDataId,
+                this.ColliderNPBehaveTreeIdInExcel);
         }
     }
 }
