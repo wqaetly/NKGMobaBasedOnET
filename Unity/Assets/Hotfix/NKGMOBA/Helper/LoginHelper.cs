@@ -67,7 +67,7 @@ namespace ETHotfix
 
                 Game.EventSystem.Run(EventIdType.ShowLoginInfo, "登录成功");
 
-                // 创建Player(抽象化的玩家)
+                // 创建Player(抽象化的玩家),这里的id是数据库里的账号id
                 Player player = ETModel.ComponentFactory.CreateWithId<Player>(r2CLogin.PlayerId);
                 PlayerComponent playerComponent = ETModel.Game.Scene.GetComponent<PlayerComponent>();
                 playerComponent.MyPlayer = player;

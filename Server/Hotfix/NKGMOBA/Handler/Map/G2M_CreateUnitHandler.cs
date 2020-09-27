@@ -13,19 +13,16 @@ namespace ETHotfix
         {
             Unit targetUnit = UnitFactory.CreateDarius();
 
-            //给小骷髅添加信箱组件，队列处理收到的消息（赋予了InstanceId）
+            //给小骷髅添加信箱组件，队列处理收到的消息，让这个unit正式注册为actor系统一员
             await targetUnit.AddComponent<MailBoxComponent>().AddLocation();
 
-            //添加同gate服务器通信基础组件，主要是赋予ID
+            //添加同gate服务器通信基础组件，记录GateSeesion的Id为ActorId
             targetUnit.AddComponent<UnitGateComponent, long>(request.GateSessionId);
-
-            //设置回复消息的Id
-            response.UnitId = targetUnit.Id;
 
             // 广播创建的unit
             M2C_CreateUnits createUnits = new M2C_CreateUnits();
             Unit[] units = Game.Scene.GetComponent<UnitComponent>().GetAll();
-            foreach (Unit u in units)
+            foreach (Unit u in units) 
             {
                 UnitInfo unitInfo = new UnitInfo();
                 unitInfo.X = u.Position.x;
@@ -35,9 +32,11 @@ namespace ETHotfix
                 createUnits.Units.Add(unitInfo);
             }
 
-            //向所有小骷髅广播信息
+            //向所有unit广播信息
             MessageHelper.Broadcast(createUnits);
-
+            
+            //设置回复消息的Id
+            response.UnitId = targetUnit.Id;
             //广播完回复客户端，这边搞好了
             reply();
         }

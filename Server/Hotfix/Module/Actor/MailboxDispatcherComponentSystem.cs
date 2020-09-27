@@ -64,7 +64,7 @@ namespace ETHotfix
 		}
 
 		/// <summary>
-		/// 根据mailbox类型做不同的处理
+		/// 根据mailbox类型做不同的处理，有两种类型gate session类型的Mailbox，消息分发类型的Mailbox,对mailbox中的消息进行分发处理
 		/// </summary>
 		public static async ETTask Handle(
 		this MailboxDispatcherComponent self, MailBoxComponent mailBoxComponent, Session session, object message)

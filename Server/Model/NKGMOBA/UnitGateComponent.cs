@@ -11,6 +11,9 @@
 
 	public class UnitGateComponent : Component, ISerializeToEntity
 	{
+		/// <summary>
+		/// Gate的ActorId（自身的entity.id）
+		/// </summary>
 		public long GateSessionActorId;
 
 		public bool IsDisconnect;

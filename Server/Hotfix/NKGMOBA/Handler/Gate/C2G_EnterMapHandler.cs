@@ -16,7 +16,7 @@ namespace ETHotfix
             IPEndPoint mapAddress = StartConfigComponent.Instance.MapConfigs[0].GetComponent<InnerConfig>().IPEndPoint;
             Session mapSession = Game.Scene.GetComponent<NetInnerComponent>().Get(mapAddress);
             
-            //由gate服务器向map服务器发送创建战斗单位请求
+            //由gate服务器向map服务器发送创建战斗单位请求,这里的id是数据库里玩家账号id
             M2G_CreateUnit createUnit =
                     (M2G_CreateUnit) await mapSession.Call(new G2M_CreateUnit() { PlayerId = player.PlayerID, GateSessionId = session.InstanceId });
             player.UnitId = createUnit.UnitId;

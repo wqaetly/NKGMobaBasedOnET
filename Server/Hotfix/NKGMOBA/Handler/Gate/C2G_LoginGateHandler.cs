@@ -42,6 +42,7 @@ namespace ETHotfix
             //添加邮箱组件表示该session是一个Actor,接收的消息将会队列处理
             await session.AddComponent<MailBoxComponent, string>(MailboxType.GateSession).AddLocation();
 
+            Log.Info($"gate的actorid为{session.Id}");
             //向登录服务器发送玩家上线消息
             StartConfigComponent config = Game.Scene.GetComponent<StartConfigComponent>();
             IPEndPoint realmIPEndPoint = config.RealmConfig.GetComponent<InnerConfig>().IPEndPoint;
