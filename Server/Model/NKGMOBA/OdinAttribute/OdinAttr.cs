@@ -21,6 +21,46 @@ namespace Sirenix.OdinInspector
         }
     }
 
+    public sealed class HideIfAttribute: Attribute
+    {
+        /// <summary>
+        /// Name of a bool field, property or function to show or hide the property.
+        /// </summary>
+        public string MemberName;
+
+        /// <summary>The optional member value.</summary>
+        public object Value;
+
+        /// <summary>
+        /// Whether or not to slide the property in and out when the state changes.
+        /// </summary>
+        public bool Animate;
+
+        /// <summary>
+        /// Hides a property in the inspector, if the specified member returns true.
+        /// </summary>
+        /// <param name="memberName">Name of a bool field, property or function to show or hide the property.</param>
+        /// <param name="animate">Whether or not to slide the property in and out when the state changes.</param>
+        public HideIfAttribute(string memberName, bool animate = true)
+        {
+            this.MemberName = memberName;
+            this.Animate = animate;
+        }
+
+        /// <summary>
+        /// Hides a property in the inspector, if the specified member returns the specified value.
+        /// </summary>
+        /// <param name="memberName">Name of member to check the value of.</param>
+        /// <param name="optionalValue">The value to check for.</param>
+        /// <param name="animate">Whether or not to slide the property in and out when the state changes.</param>
+        public HideIfAttribute(string memberName, object optionalValue, bool animate = true)
+        {
+            this.MemberName = memberName;
+            this.Value = optionalValue;
+            this.Animate = animate;
+        }
+    }
+
     public enum TitleAlignments
     {
         /// <summary>Title and subtitle left aligned.</summary>
@@ -253,14 +293,6 @@ namespace Sirenix.OdinInspector
     public class HorizontalGroupAttribute: System.Attribute
     {
         public HorizontalGroupAttribute()
-        {
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public class HideIfAttribute: System.Attribute
-    {
-        public HideIfAttribute(string value, object m)
         {
         }
     }

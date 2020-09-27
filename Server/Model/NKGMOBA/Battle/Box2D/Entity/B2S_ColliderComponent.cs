@@ -30,8 +30,8 @@ namespace ETModel
         public Body Body;
 
         /// <summary>
-        /// 所归属的Unit，就是挂有此碰撞体的目标单位，
-        /// 比如诺克放一个Q，那么m_BelongUnit就是诺克
+        /// 所归属的Unit，也就是产出碰撞体的Unit，
+        /// 比如诺克放一个Q，那么BelongUnit就是诺克
         /// </summary>
         public Unit BelongToUnit;
 
