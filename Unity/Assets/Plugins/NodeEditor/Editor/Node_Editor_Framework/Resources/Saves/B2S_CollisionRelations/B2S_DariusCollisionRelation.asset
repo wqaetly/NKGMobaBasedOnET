@@ -680,8 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes:
-  - {fileID: -4719080179046963717}
+  selectedNodes: []
   panOffset: {x: -882.0001, y: 466.8003}
   zoom: 1
   boxSelecting: 0
@@ -711,7 +710,7 @@ MonoBehaviour:
       Data: 0|ETModel.B2S_CollisionsRelationSupport, Unity.Model
     - Name: SupportId
       Entry: 3
-      Data: 104925417439242
+      Data: 104936227143709
     - Name: B2S_CollisionsRelationDic
       Entry: 7
       Data: 1|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.B2S_CollisionInstance,
@@ -794,10 +793,64 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10001
+      Data: 10006
     - Name: $v
       Entry: 7
       Data: 6|ETModel.B2S_CollisionInstance, Unity.Model
+    - Name: Flag
+      Entry: 1
+      Data: "\u8BFA\u514B\uFF1A\u81EA\u8EAB"
+    - Name: nodeDataId
+      Entry: 3
+      Data: 10006
+    - Name: collisionId
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 20004
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: FollowUnit
+      Entry: 5
+      Data: true
+    - Name: BelongGroup
+      Entry: 1
+      Data: GenerateCollision
+    - Name: CollisionRelations
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10001
+    - Name: $v
+      Entry: 7
+      Data: 9|ETModel.B2S_CollisionInstance, Unity.Model
     - Name: Flag
       Entry: 1
       Data: "\u8BFA\u514BQ\u6280\u80FD"
@@ -806,7 +859,7 @@ MonoBehaviour:
       Data: 10001
     - Name: collisionId
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 10|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -827,7 +880,7 @@ MonoBehaviour:
       Data: GenerateCollision
     - Name: CollisionRelations
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 11|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
@@ -840,60 +893,6 @@ MonoBehaviour:
     - Name: 
       Entry: 3
       Data: 40001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10006
-    - Name: $v
-      Entry: 7
-      Data: 9|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514B\uFF1A\u81EA\u8EAB"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10006
-    - Name: collisionId
-      Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 11|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -1423,8 +1422,8 @@ MonoBehaviour:
       Data: 
   editorStates:
   - {fileID: -33845583896355862}
-  saveName: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\B2S_DariusCollisionRelation
-  savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\B2S_DariusCollisionRelation.asset
+  saveName: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\B2S_CollisionRelations\B2S_DariusCollisionRelation
+  savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\B2S_CollisionRelations\B2S_DariusCollisionRelation.asset
   nodes:
   - {fileID: 7784135005481043676}
   - {fileID: 7450639867750030194}
@@ -1433,9 +1432,9 @@ MonoBehaviour:
   - {fileID: -9178729680112208409}
   - {fileID: 246365750136713269}
   - {fileID: 4908138704683202640}
-  - {fileID: -4019839847595240064}
-  - {fileID: 3139552478084388340}
   - {fileID: -4719080179046963717}
+  - {fileID: 3139552478084388340}
+  - {fileID: -4019839847595240064}
   nodesForDelete: []
   groups:
   - rect:
@@ -1723,7 +1722,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: 428, y: -723.4}
+  position: {x: 430, y: -720}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: -2991479530967100852}

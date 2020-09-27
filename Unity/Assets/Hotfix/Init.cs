@@ -37,10 +37,7 @@ namespace ETHotfix
                 ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
                 Game.Scene.AddComponent<ConfigComponent>();
                 ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
-
-                UnitConfig unitConfig = (UnitConfig) Game.Scene.GetComponent<ConfigComponent>().Get<UnitConfig>(1001);
-                Log.Debug($"config {JsonHelper.ToJson(unitConfig)}");
-
+                
                 //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
                 //初始化UI操作

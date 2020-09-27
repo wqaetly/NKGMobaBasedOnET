@@ -125,7 +125,6 @@ namespace ETModel
                 Log.Error($"CoroutineLockComponent Notify not found queue: {key}");
                 return;
             }
-            
             if (lockQueue.Count == 0)
             {
                 this.lockQueues.Remove(key);
