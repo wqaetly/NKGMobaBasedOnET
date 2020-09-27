@@ -21,7 +21,7 @@ namespace ETModel
             //绑定指定的物理世界，正常来说一个房间一个物理世界,这里是Demo，直接获取了
             Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().SetContactListener(self);
             //self.TestCollision();
-            self.B2SColliderEntityManagerComponent = Game.Scene.GetComponent<B2S_ColliderEntityManagerComponent>();
+            self.B2SWorldColliderManagerComponent = Game.Scene.GetComponent<B2S_WorldColliderManagerComponent>();
         }
     }
 
@@ -39,37 +39,37 @@ namespace ETModel
     /// </summary>
     public class B2S_CollisionListenerComponent: Component, IContactListener
     {
-        public B2S_ColliderEntityManagerComponent B2SColliderEntityManagerComponent;
+        public B2S_WorldColliderManagerComponent B2SWorldColliderManagerComponent;
 
         public Dictionary<(long, long), bool> collisionRecorder = new Dictionary<(long, long), bool>();
 
         public void BeginContact(Contact contact)
         {
             //这里获取的是碰撞实体
-            B2S_ColliderEntity aUserEntity = (B2S_ColliderEntity) contact.FixtureA.UserData;
-            B2S_ColliderEntity bUserEntity = (B2S_ColliderEntity) contact.FixtureB.UserData;
-            if (this.collisionRecorder.ContainsKey((aUserEntity.Id, bUserEntity.Id)))
+            Entity entitya = (Entity) contact.FixtureA.UserData;
+            Entity entityb = (Entity) contact.FixtureB.UserData;
+            if (this.collisionRecorder.ContainsKey((entitya.Id, entityb.Id)))
             {
-                this.collisionRecorder[(aUserEntity.Id, bUserEntity.Id)] = true;
+                this.collisionRecorder[(entitya.Id, entityb.Id)] = true;
             }
             else
             {
-                this.collisionRecorder.Add((aUserEntity.Id, bUserEntity.Id), true);
+                this.collisionRecorder.Add((entitya.Id, entityb.Id), true);
             }
 
-            aUserEntity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(bUserEntity);
-            bUserEntity.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(aUserEntity);
+            entitya.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(entityb);
+            entityb.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(entitya);
         }
 
         public void EndContact(Contact contact)
         {
-            B2S_ColliderEntity aUserEntity = (B2S_ColliderEntity) contact.FixtureA.UserData;
-            B2S_ColliderEntity bUserEntity = (B2S_ColliderEntity) contact.FixtureB.UserData;
+            Entity entitya = (Entity) contact.FixtureA.UserData;
+            Entity entityb = (Entity) contact.FixtureB.UserData;
 
-            this.collisionRecorder[(aUserEntity.Id, bUserEntity.Id)] = false;
+            this.collisionRecorder[(entitya.Id, entityb.Id)] = false;
 
-            aUserEntity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(bUserEntity);
-            bUserEntity.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(aUserEntity);
+            entitya.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(entityb);
+            entityb.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(entitya);
         }
 
         public void PreSolve(Contact contact, in Manifold oldManifold)
@@ -87,8 +87,8 @@ namespace ETModel
             {
                 if (VARIABLE.Value)
                 {
-                    var a = this.B2SColliderEntityManagerComponent.GetColliderEntity(VARIABLE.Key.Item1);
-                    var b = this.B2SColliderEntityManagerComponent.GetColliderEntity(VARIABLE.Key.Item2);
+                    var a = this.B2SWorldColliderManagerComponent.GetColliderEntity(VARIABLE.Key.Item1);
+                    var b = this.B2SWorldColliderManagerComponent.GetColliderEntity(VARIABLE.Key.Item2);
                     a.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(b);
                     b.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(a);
                 }

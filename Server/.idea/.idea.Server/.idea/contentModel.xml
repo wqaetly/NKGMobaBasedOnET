@@ -87,13 +87,13 @@
               <e p="EventIdType_Collision.cs" t="Include" />
             </e>
             <e p="system" t="Include">
-              <e p="B2S_Darius_E_CRS.cs" t="Include" />
+              <e p="B2S_ColliderComponentSystems.cs" t="Include" />
+              <e p="B2S_ColliderManagerComponentSystem.cs" t="Include" />
               <e p="B2S_Darius_Q_CRS.cs" t="Include" />
-              <e p="B2S_Darius_RFare_CRS.cs" t="Include" />
-              <e p="B2S_Darius_Self_CRS.cs" t="Include" />
-              <e p="B2S_HeroColliderDataManagerComponentSystem.cs" t="Include" />
-              <e p="B2S_HeroColliderDataSystem.cs" t="Include" />
             </e>
+          </e>
+          <e p="Factory" t="Include">
+            <e p="UnitFactory.cs" t="Include" />
           </e>
           <e p="Handler" t="Include">
             <e p="ActorHandler" t="Include">
@@ -275,20 +275,17 @@
           <e p="Battle" t="Include">
             <e p="Box2D" t="Include">
               <e p="Component" t="Include">
-                <e p="B2S_ColliderDataManagerComponent.cs" t="Include" />
                 <e p="B2S_ColliderDataRepositoryComponent.cs" t="Include" />
-                <e p="B2S_ColliderEntityManagerComponent.cs" t="Include" />
                 <e p="B2S_CollisionListenerComponent.cs" t="Include" />
                 <e p="B2S_CollisionRelationRepositoryComponent.cs" t="Include" />
                 <e p="B2S_CollisionResponseComponent.cs" t="Include" />
                 <e p="B2S_RoleCastComponent.cs" t="Include" />
+                <e p="B2S_UnitColliderManagerComponent.cs" t="Include" />
+                <e p="B2S_WorldColliderManagerComponent.cs" t="Include" />
                 <e p="B2S_WorldComponent.cs" t="Include" />
               </e>
               <e p="Entity" t="Include">
-                <e p="B2S_ColliderEntity.cs" t="Include" />
-              </e>
-              <e p="system" t="Include">
-                <e p="B2S_HeroColliderDataComponentFactory.cs" t="Include" />
+                <e p="B2S_ColliderComponent.cs" t="Include" />
               </e>
               <e p="Utility" t="Include">
                 <e p="B2S_BodyUtility.cs" t="Include" />

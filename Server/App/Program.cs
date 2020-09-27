@@ -147,7 +147,7 @@ namespace App
                         Game.Scene.AddComponent<OnlineComponent>();
 
                         //添加碰撞实例管理者 TODO 待优化，一场游戏一个碰撞实例管理者
-                        Game.Scene.AddComponent<B2S_ColliderEntityManagerComponent>();
+                        Game.Scene.AddComponent<B2S_WorldColliderManagerComponent>();
                         
                         //添加物理世界 TODO 待优化，一场游戏一个物理世界
                         Game.Scene.AddComponent<B2S_WorldComponent>();

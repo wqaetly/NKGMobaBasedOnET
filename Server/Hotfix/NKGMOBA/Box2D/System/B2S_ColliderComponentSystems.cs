@@ -12,14 +12,13 @@ using Vector2 = System.Numerics.Vector2;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_ColliderEntityAwakeSystem: AwakeSystem<B2S_ColliderEntity, B2S_CollisionInstance, long, int>
+    public class B2S_ColliderComponentAwakeSystem: AwakeSystem<B2S_ColliderComponent, B2S_CollisionInstance, long, int>
     {
-        public override void Awake(B2S_ColliderEntity self, B2S_CollisionInstance b2SCollisionInstance, long id, int flagID)
+        public override void Awake(B2S_ColliderComponent self, B2S_CollisionInstance b2SCollisionInstance, long id, int flagID)
         {
             self.NodeDataId = id;
             self.FlagId = flagID;
             self.B2S_CollisionInstance = b2SCollisionInstance;
-            self.SelfUnit = ComponentFactory.Create<Unit>();
             self.BelongToUnit = (Unit) self.Entity;
             LoadDependenceRes(self);
         }
@@ -28,12 +27,12 @@ namespace ETHotfix
         /// 加载依赖数据，并且进行碰撞体的生成
         /// </summary>
         /// <param name="self"></param>
-        private void LoadDependenceRes(B2S_ColliderEntity self)
+        private void LoadDependenceRes(B2S_ColliderComponent self)
         {
             B2S_ColliderDataRepositoryComponent b2SColliderDataRepositoryComponent =
                     Game.Scene.GetComponent<B2S_ColliderDataRepositoryComponent>();
 
-            self.AddComponent<B2S_CollisionResponseComponent>();
+            self.Entity.AddComponent<B2S_CollisionResponseComponent>();
 
             foreach (var VARIABLE in self.B2S_CollisionInstance.collisionId)
             {
@@ -49,16 +48,16 @@ namespace ETHotfix
                 {
                     case B2S_ColliderType.BoxColllider:
                         self.Body.CreateBoxFixture(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy,
-                            VARIABLE.finalOffset, 0, VARIABLE.isSensor, self);
+                            VARIABLE.finalOffset, 0, VARIABLE.isSensor, self.Entity);
                         break;
                     case B2S_ColliderType.CircleCollider:
                         self.Body.CreateCircleFixture(((B2S_CircleColliderDataStructure) VARIABLE).radius, VARIABLE.finalOffset, VARIABLE.isSensor,
-                            self);
+                            self.Entity);
                         break;
                     case B2S_ColliderType.PolygonCollider:
                         foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).finalPoints)
                         {
-                            self.Body.CreatePolygonFixture(VARIABLE1, VARIABLE.isSensor, self);
+                            self.Body.CreatePolygonFixture(VARIABLE1, VARIABLE.isSensor, self.Entity);
                         }
 
                         break;
@@ -66,16 +65,16 @@ namespace ETHotfix
             }
 
             //根据ID添加对应的碰撞处理组件
-            Game.EventSystem.Run(self.B2S_CollisionInstance.nodeDataId.ToString(), self);
+            Game.EventSystem.Run(self.B2S_CollisionInstance.nodeDataId.ToString(), self.Entity);
             //Log.Info($"已经分发{self.m_B2S_CollisionInstance.nodeDataId}技能组装事件");
             //Log.Info("FixTureList大小为"+self.m_Body.FixtureList.Count.ToString());
         }
     }
 
     [ObjectSystem]
-    public class B2S_HeroColliderDataFixedUpdateSystem: FixedUpdateSystem<B2S_ColliderEntity>
+    public class B2S_HeroColliderDataFixedUpdateSystem: FixedUpdateSystem<B2S_ColliderComponent>
     {
-        public override void FixedUpdate(B2S_ColliderEntity self)
+        public override void FixedUpdate(B2S_ColliderComponent self)
         {
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
             if (self.Body.IsActive && self.B2S_CollisionInstance.FollowUnit && !Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().IsLocked)
@@ -93,7 +92,7 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="pos"></param>
-        public static void SyncBody(this B2S_ColliderEntity self)
+        public static void SyncBody(this B2S_ColliderComponent self)
         {
             self.SetColliderBodyPos(new Vector2(self.BelongToUnit.Position.x, self.BelongToUnit.Position.z));
             self.SetColliderBodyAngle(-Quaternion.QuaternionToEuler(self.BelongToUnit.Rotation).y * Settings.Pi / 180);
@@ -104,9 +103,9 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="pos"></param>
-        public static void SetColliderBodyPos(this B2S_ColliderEntity self, Vector2 pos)
+        public static void SetColliderBodyPos(this B2S_ColliderComponent self, Vector2 pos)
         {
-            self.SelfUnit.Position = new Vector3(pos.X, pos.Y, 0);
+            (self.Entity as Unit).Position = new Vector3(pos.X, pos.Y, 0);
             self.Body.SetTransform(pos, self.Body.GetAngle());
             //Log.Info($"位置为{pos}");
         }
@@ -116,9 +115,9 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="angle"></param>
-        public static void SetColliderBodyAngle(this B2S_ColliderEntity self, float angle)
+        public static void SetColliderBodyAngle(this B2S_ColliderComponent self, float angle)
         {
-            self.SelfUnit.Rotation = Quaternion.Euler(0, angle, 0);
+            (self.Entity as Unit).Rotation = Quaternion.Euler(0, angle, 0);
             self.Body.SetTransform(self.Body.GetPosition(), angle);
         }
 
@@ -127,7 +126,7 @@ namespace ETHotfix
         /// </summary>
         /// <param name="self"></param>
         /// <param name="state"></param>
-        public static void SetColliderBodyState(this B2S_ColliderEntity self, bool state)
+        public static void SetColliderBodyState(this B2S_ColliderComponent self, bool state)
         {
             self.Body.IsActive = state;
         }

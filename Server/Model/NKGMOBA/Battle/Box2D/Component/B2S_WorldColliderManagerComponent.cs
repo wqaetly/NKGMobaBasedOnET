@@ -11,16 +11,16 @@ namespace ETModel
     /// <summary>
     /// 用于管理一个物理世界中所有的碰撞实体
     /// </summary>
-    public class B2S_ColliderEntityManagerComponent: Component
+    public class B2S_WorldColliderManagerComponent: Component
     {
         /// <summary>
         /// 用于管理碰撞实体
         /// </summary>
-        public Dictionary<long, B2S_ColliderEntity> AllColliderEntitys = new Dictionary<long, B2S_ColliderEntity>();
+        public Dictionary<long, Entity> AllColliderEntitys = new Dictionary<long, Entity>();
 
-        public void AddColliderEntity(B2S_ColliderEntity b2SColliderEntity)
+        public void AddColliderEntity(Entity b2SCollider)
         {
-            this.AllColliderEntitys.Add(b2SColliderEntity.Id, b2SColliderEntity);
+            this.AllColliderEntitys.Add(b2SCollider.Id, b2SCollider);
         }
 
         public void RemoveColliderEntity(long id)
@@ -35,7 +35,7 @@ namespace ETModel
             }
         }
 
-        public B2S_ColliderEntity GetColliderEntity(long id)
+        public Entity GetColliderEntity(long id)
         {
             if (this.AllColliderEntitys.TryGetValue(id, out var b2SColliderEntity))
             {

@@ -160,7 +160,7 @@ namespace ETModel
                     }
                 }
             }
-            
+
             this.Load();
         }
 
@@ -185,9 +185,10 @@ namespace ETModel
             {
                 return new HashSet<Type>();
             }
+
             return this.types[systemAttributeType];
         }
-		
+
         public List<Type> GetTypes()
         {
             List<Type> allTypes = new List<Type>();
@@ -195,8 +196,10 @@ namespace ETModel
             {
                 allTypes.AddRange(assembly.GetTypes());
             }
+
             return allTypes;
         }
+
         public void Add(Component component)
         {
             this.allComponents.Add(component.InstanceId, component);
@@ -387,6 +390,38 @@ namespace ETModel
                 try
                 {
                     iAwake.Run(component, p1, p2, p3);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                }
+            }
+        }
+
+        public void Awake<P1, P2, P3, P4>(Component component, P1 p1, P2 p2, P3 p3, P4 p4)
+        {
+            List<IAwakeSystem> iAwakeSystems = this.awakeSystems[component.GetType()];
+            if (iAwakeSystems == null)
+            {
+                return;
+            }
+
+            foreach (IAwakeSystem aAwakeSystem in iAwakeSystems)
+            {
+                if (aAwakeSystem == null)
+                {
+                    continue;
+                }
+
+                IAwake<P1, P2, P3, P4> iAwake = aAwakeSystem as IAwake<P1, P2, P3, P4>;
+                if (iAwake == null)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    iAwake.Run(component, p1, p2, p3, p4);
                 }
                 catch (Exception e)
                 {

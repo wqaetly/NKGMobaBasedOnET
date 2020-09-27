@@ -4,6 +4,7 @@
 // Data: 2020年1月21日 16:03:23
 //------------------------------------------------------------
 
+using ETHotfix.NKGMOBA.Factory;
 using ETModel;
 using UnityEngine;
 
@@ -14,16 +15,7 @@ namespace ETHotfix
     {
         protected override ETTask Run(Unit entity, Actor_CreateSpiling message)
         {
-            Unit unit = ComponentFactory.CreateWithId<Unit>(IdGenerater.GenerateId());
-            //Log.Info($"服务端响应木桩请求，父id为{message.ParentUnitId}");
-            Game.Scene.GetComponent<UnitComponent>().Get(message.ParentUnitId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
-
-            //Log.Info("确认找到了请求的父实体");
-            //Game.EventSystem.Run(EventIdType.CreateCollider, unit.Id, 10001, 10006);
-            unit.AddComponent<B2S_ColliderDataManagerComponent>().CreateHeroColliderData(unit, 10001, 10006);
-            unit.AddComponent<HeroDataComponent, long>(10001);
-            unit.AddComponent<BuffManagerComponent>();
-            unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;
+            Unit unit = UnitFactory.CreateSpiling(message.ParentUnitId);
             //设置木桩位置
             unit.Position = new Vector3(message.X, 0, message.Z);
             // 广播创建的木桩unit

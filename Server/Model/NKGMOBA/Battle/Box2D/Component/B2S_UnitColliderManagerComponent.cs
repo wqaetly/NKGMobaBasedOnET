@@ -12,12 +12,12 @@ namespace ETModel
     /// <summary>
     /// 管理一个Unit身上所有碰撞体（包括技能创建）
     /// </summary>
-    public class B2S_ColliderDataManagerComponent: Component
+    public class B2S_UnitColliderManagerComponent: Component
     {
         /// <summary>
         /// 所有碰撞数据，long为碰撞数据id，int为此碰撞数据细分的id(从零开始)，比如卡特q会有多个匕首，第一个是1，第二个是2.。。,bool为此碰撞数据是否正在使用
         /// </summary>
-        public Dictionary<(long, int, B2S_ColliderEntity), bool> AllColliderData = new Dictionary<(long, int, B2S_ColliderEntity), bool>();
+        public Dictionary<(long, int, Unit), bool> AllColliderData = new Dictionary<(long, int, Unit), bool>();
 
         public override void Dispose()
         {

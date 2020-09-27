@@ -94,6 +94,33 @@ MonoBehaviour:
     - Name: Func2
       Entry: 6
       Data: 
+    - Name: TargetUnitIsSelf
+      Entry: 5
+      Data: false
+    - Name: TargetUnitId
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: SkillTargetUnitId
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Int64
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_Long, Unity.Model
+    - Name: Value
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: TargetSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -108,7 +135,7 @@ MonoBehaviour:
       Data: 
     - Name: NPBBValue_ValueToChange
       Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 5|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
       Data: Darius_QOutHitUnitIds
@@ -120,10 +147,10 @@ MonoBehaviour:
       Data: false
     - Name: NP_BBValue
       Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 6|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -219,6 +246,33 @@ MonoBehaviour:
     - Name: Func2
       Entry: 6
       Data: 
+    - Name: TargetUnitIsSelf
+      Entry: 5
+      Data: false
+    - Name: TargetUnitId
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: SkillTargetUnitId
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Int64
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_Long, Unity.Model
+    - Name: Value
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: TargetSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -233,7 +287,7 @@ MonoBehaviour:
       Data: 
     - Name: NPBBValue_ValueToChange
       Entry: 7
-      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 5|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
       Data: Darius_QInnerHitUnitIds
@@ -245,10 +299,10 @@ MonoBehaviour:
       Data: false
     - Name: NP_BBValue
       Entry: 7
-      Data: 4|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 6|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -274,7 +328,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -107.79996, y: 198.2}
+  position: {x: -110.79996, y: 200.2}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 5422305686255315073}
@@ -518,6 +572,12 @@ MonoBehaviour:
     - Name: Func2
       Entry: 6
       Data: 
+    - Name: TargetUnitIsSelf
+      Entry: 5
+      Data: false
+    - Name: TargetUnitId
+      Entry: 6
+      Data: 
     - Name: TargetSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -621,6 +681,12 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: TargetUnitIsSelf
+      Entry: 5
+      Data: false
+    - Name: TargetUnitId
       Entry: 6
       Data: 
     - Name: TargetSkillId
@@ -1183,6 +1249,12 @@ MonoBehaviour:
     - Name: Func2
       Entry: 6
       Data: 
+    - Name: TargetUnitIsSelf
+      Entry: 5
+      Data: false
+    - Name: TargetUnitId
+      Entry: 6
+      Data: 
     - Name: TargetSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -1286,6 +1358,12 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: TargetUnitIsSelf
+      Entry: 5
+      Data: false
+    - Name: TargetUnitId
       Entry: 6
       Data: 
     - Name: TargetSkillId
@@ -1768,11 +1846,11 @@ MonoBehaviour:
   nodes:
   - {fileID: 8881995160252037905}
   - {fileID: -5757031501220396646}
-  - {fileID: -7355016197508106453}
-  - {fileID: -7919304672396771097}
   - {fileID: -6219830271088202104}
   - {fileID: 5076964133346702209}
   - {fileID: 9152552268623739721}
+  - {fileID: -7919304672396771097}
+  - {fileID: -7355016197508106453}
   nodesForDelete: []
   groups: []
   Name: Server_Darius_Q_Collider
@@ -2071,8 +2149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes: []
-  panOffset: {x: 86.799995, y: -133.99997}
+  selectedNodes:
+  - {fileID: -7355016197508106453}
+  panOffset: {x: 37.799995, y: 49.00003}
   zoom: 1
   boxSelecting: 0
 --- !u!114 &8117683406650502008
@@ -2109,7 +2188,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: 
@@ -2228,6 +2307,24 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: SkillTargetUnitId
+    - Name: $v
+      Entry: 7
+      Data: 10|ETModel.BBValues.NP_BBValue_Long, Unity.Model
+    - Name: Value
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -2235,7 +2332,7 @@ MonoBehaviour:
       Data: 
     - Name: Ids
       Entry: 7
-      Data: 10|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
+      Data: 11|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
