@@ -597,6 +597,7 @@ namespace ETModel
 
         public void FixedUpdate()
         {
+            //BenchmarkHelper.CurrentFrameCount++;
             while (this.fixedUpdates.Count > 0)
             {
                 long instanceId = this.fixedUpdates.Dequeue();

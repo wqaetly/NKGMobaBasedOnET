@@ -49,7 +49,7 @@ namespace ETHotfix
             self.AllColliderData
                     .Add((b2sColliderEntity.GetComponent<B2S_ColliderComponent>().NodeDataId, flag, b2sColliderEntity), false);
             
-            Log.Info($"新建的碰撞数据.ID为{nodeDataId}");
+            //Log.Info($"新建的碰撞数据.ID为{nodeDataId}");
             return b2sColliderEntity;
         }
 

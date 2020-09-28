@@ -17,6 +17,7 @@ namespace ETHotfix
         public override void Run(Entity a)
         {
             a.AddComponent<B2S_Darius_Q_CRS>();
+            //Log.Info($"诺手Q碰撞体创建完成，帧步进为{BenchmarkHelper.CurrentFrameCount}");
         }
     }
 
@@ -47,6 +48,7 @@ namespace ETHotfix
                     if (b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit.GetComponent<B2S_RoleCastComponent>().RoleCast !=
                         RoleCast.Adverse) return;
                     
+                    //Log.Info($"诺手Q碰撞体碰撞响应创建完成，帧步进为{BenchmarkHelper.CurrentFrameCount}");
                     //敌方英雄
                     if (Vector3.Distance(this.Entity.GetComponent<B2S_ColliderComponent>().BelongToUnit.Position,
                             b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit.Position) >=

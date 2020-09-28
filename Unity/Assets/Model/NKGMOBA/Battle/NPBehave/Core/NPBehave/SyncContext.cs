@@ -13,6 +13,21 @@ namespace NPBehave
     {
         private static SyncContext _instance;
 
+        /// <summary>
+        /// 世界默认更新频率为60hz
+        /// </summary>
+        private const float c_GameUpdateInterval = 1 / 60f;
+
+        /// <summary>
+        /// 行为树默认更新频率为30hz
+        /// </summary>
+        private const float s_UpdateInterval = c_GameUpdateInterval * 2;
+
+        /// <summary>
+        /// 计时器
+        /// </summary>
+        private static float s_Timer = s_UpdateInterval;
+
         public static SyncContext Instance
         {
             get
@@ -20,16 +35,16 @@ namespace NPBehave
                 return _instance ?? (_instance = new SyncContext());
             }
         }
-        
+
         private Dictionary<string, Blackboard> blackboards = new Dictionary<string, Blackboard>();
-        
+
         private Clock clock = new Clock();
 
         public Clock GetClock()
         {
             return Instance.clock;
         }
-        
+
         public static Blackboard GetSharedBlackboard(string key)
         {
             if (!Instance.blackboards.ContainsKey(key))
@@ -42,8 +57,13 @@ namespace NPBehave
 
         public void Update()
         {
-            clock.Update(1/30f);
+            s_Timer += c_GameUpdateInterval;
+            if (s_Timer >= s_UpdateInterval)
+            {
+                //默认30hz运行
+                clock.Update(s_UpdateInterval);
+                s_Timer = 0;
+            }
         }
-        
     }
 }

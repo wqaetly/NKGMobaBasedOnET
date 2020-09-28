@@ -15,6 +15,11 @@ namespace ETModel
     public class BenchmarkHelper
     {
         /// <summary>
+        /// 当前帧步进数
+        /// </summary>
+        public static long CurrentFrameCount = 1;
+
+        /// <summary>
         /// 开始压测
         /// </summary>
         /// <param name="description">描述</param>
