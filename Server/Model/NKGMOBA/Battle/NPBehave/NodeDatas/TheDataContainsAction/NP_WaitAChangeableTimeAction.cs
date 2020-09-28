@@ -68,18 +68,18 @@ namespace ETModel
                 (float) (SyncContext.Instance.GetClock().ElapsedTime - lastElapsedTime));
 
             this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
-            /*Log.Info(
-                $"在执行改变CD逻辑，此时剩余CD为{tempBlackboard.Get<float>(this.NpBlackBoardRelationData.DicKey)}");*/
+            // Log.Info(
+            //     $"在执行改变CD逻辑，此时剩余CD为{tempBlackboard.Get<float>(this.TheTimeToWait.BBKey)}");
             if (tempBlackboard.Get<float>(this.TheTimeToWait.BBKey) <= 0)
             {
                 //Log.Info("CD刷新完成");
                 lastElapsedTime = -1;
                 //下次再运行就会初始化了
                 this.hasInit = false;
-                return NPBehave.Action.Result.FAILED;
+                return NPBehave.Action.Result.SUCCESS;
             }
 
-            return NPBehave.Action.Result.PROGRESS;
+            return NPBehave.Action.Result.FAILED;
         }
     }
 }
