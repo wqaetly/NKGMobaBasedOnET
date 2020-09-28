@@ -86,7 +86,7 @@ namespace ETModel
                 }
                 else
                 {
-                    this.NPBBValue_ValueToChange.SetBlackBoardValue(this.BelongtoRuntimeTree.GetBlackboard(), skillCanvas.GetBlackboard());
+                    this.NPBBValue_ValueToChange.SetBBValueFromThisBBValue(this.BelongtoRuntimeTree.GetBlackboard(), skillCanvas.GetBlackboard());
                 }
             }
         }
