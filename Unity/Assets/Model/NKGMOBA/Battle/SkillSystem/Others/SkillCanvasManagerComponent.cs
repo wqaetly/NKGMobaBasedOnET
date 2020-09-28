@@ -56,6 +56,11 @@ namespace ETModel
         /// </summary>
         private Dictionary<long, List<NP_RuntimeTree>> Skills = new Dictionary<long, List<NP_RuntimeTree>>();
 
+        /// <summary>
+        /// 技能Id与其等级映射
+        /// </summary>
+        private Dictionary<long, int> SkillLevels = new Dictionary<long, int>();
+
         #endregion
 
         #region 公有成员
@@ -63,10 +68,16 @@ namespace ETModel
         /// <summary>
         /// 添加技能Canvas
         /// </summary>
-        /// <param name="skillId">技能Id</param>
+        /// <param name="skillId">归属技能Id，不是技能图本身的id</param>
         /// <param name="npRuntimeTree">对应行为树</param>
         public void AddSkillCanvas(long skillId, NP_RuntimeTree npRuntimeTree)
         {
+            if (npRuntimeTree == null)
+            {
+                Log.Error($"试图添加的id为{skillId}的技能图为空");
+                return;
+            }
+
             if (Skills.TryGetValue(skillId, out var skillContent))
             {
                 skillContent.Add(npRuntimeTree);
@@ -74,6 +85,11 @@ namespace ETModel
             else
             {
                 Skills.Add(skillId, new List<NP_RuntimeTree>() { npRuntimeTree });
+            }
+
+            if (!this.SkillLevels.ContainsKey(skillId))
+            {
+                SkillLevels.Add(skillId, 0);
             }
         }
 
@@ -104,6 +120,10 @@ namespace ETModel
             {
                 RemoveSkillCanvas(skillId, skillCanvas);
             }
+            if (this.SkillLevels.ContainsKey(skillId))
+            {
+                SkillLevels.Remove(skillId);
+            }
         }
 
         /// <summary>
@@ -124,6 +144,40 @@ namespace ETModel
                         targetSkillContent.RemoveAt(i);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// 给技能升级
+        /// </summary>
+        /// <param name="skillId"></param>
+        /// <param name="count"></param>
+        public void AddSkillLevel(long skillId, int count = 1)
+        {
+            if (this.SkillLevels.TryGetValue(skillId, out var level))
+            {
+                SkillLevels[skillId] = level + count;
+            }
+            else
+            {
+                Log.Error($"请求升级的SkillId:{skillId}不存在");
+            }
+        }
+
+        /// <summary>
+        /// 获取技能等级
+        /// </summary>
+        /// <param name="skillId"></param>
+        public int GetSkillLevel(long skillId)
+        {
+            if (this.SkillLevels.TryGetValue(skillId, out var level))
+            {
+                return level;
+            }
+            else
+            {
+                Log.Error($"请求等级的SkillId:{skillId}不存在");
+                return -1;
             }
         }
 
