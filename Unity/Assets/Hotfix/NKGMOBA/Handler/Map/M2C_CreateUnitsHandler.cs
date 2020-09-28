@@ -29,10 +29,13 @@ namespace ETHotfix
                 unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
                 unit.AddComponent<NP_RuntimeTreeManager>();
                 //Log.Info("开始创建行为树");
+                ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
                 NP_RuntimeTreeFactory
-                        .CreateNpRuntimeTree(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Client_NPBehaveConfig>(10001).NPBehaveId).Start();
+                        .CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10001).NPBehaveId,
+                            configComponent.Get<Client_SkillCanvasConfig>(10001).BelongToSkillId).Start();
                 NP_RuntimeTreeFactory
-                        .CreateNpRuntimeTree(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Client_NPBehaveConfig>(10002).NPBehaveId).Start();
+                        .CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10002).NPBehaveId,
+                            configComponent.Get<Client_SkillCanvasConfig>(10002).BelongToSkillId).Start();
                 //Log.Info("行为树创建完成");
 
                 //添加英雄数据

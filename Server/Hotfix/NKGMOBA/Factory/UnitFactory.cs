@@ -13,13 +13,20 @@ namespace ETHotfix.NKGMOBA.Factory
     {
         #region base
 
+        /// <summary>
+        /// 随机Id
+        /// </summary>
+        /// <returns></returns>
         private static Unit CreateUnitBase()
         {
-            Unit result = ComponentFactory.Create<Unit>();
-            Game.Scene.GetComponent<UnitComponent>().Add(result);
-            return result;
+            return CreateUnitWithIdBase(IdGenerater.GenerateId());
         }
 
+        /// <summary>
+        /// 指定Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private static Unit CreateUnitWithIdBase(long id)
         {
             Unit result = ComponentFactory.CreateWithId<Unit>(id);
@@ -39,7 +46,7 @@ namespace ETHotfix.NKGMOBA.Factory
         public static Unit CreateDarius()
         {
             //创建战斗单位
-            Unit unit = CreateUnitWithIdBase(IdGenerater.GenerateId());
+            Unit unit = CreateUnitBase();
             unit.AddComponent<ChildrenUnitComponent>();
             //增加移动组件
             unit.AddComponent<MoveComponent>();
@@ -57,12 +64,20 @@ namespace ETHotfix.NKGMOBA.Factory
 
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<NP_RuntimeTreeManager>();
+            unit.AddComponent<SkillCanvasManagerComponent>();
 
+            ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
             //Log.Info("开始创建行为树");
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Server_NPBehaveConfig>(10001).NPBehaveId)
+            NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Server_SkillCanvasConfig>(10001).NPBehaveId,
+                        configComponent.Get<Server_SkillCanvasConfig>(10001).BelongToSkillId)
                     .Start();
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Server_NPBehaveConfig>(10002).NPBehaveId)
+
+            NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Server_SkillCanvasConfig>(10002).NPBehaveId,
+                        configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId)
                     .Start();
+            
+            //默认升一级技能
+            unit.GetComponent<SkillCanvasManagerComponent>().AddSkillLevel(configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId);
             //Log.Info("行为树创建完成");
 
             //设置英雄位置
@@ -76,11 +91,11 @@ namespace ETHotfix.NKGMOBA.Factory
         /// <returns></returns>
         public static Unit CreateSpiling(long parentId)
         {
-            Unit unit = ComponentFactory.CreateWithId<Unit>(IdGenerater.GenerateId());
+            Unit unit = CreateUnitBase();
             //Log.Info($"服务端响应木桩请求，父id为{message.ParentUnitId}");
             Game.Scene.GetComponent<UnitComponent>().Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             //Log.Info("确认找到了请求的父实体");
-            //Game.EventSystem.Run(EventIdType.CreateCollider, unit.Id, 10001, 10006);
+            
             unit.AddComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit,
                 Game.Scene.GetComponent<ConfigComponent>().Get<Server_B2SCollisionRelationConfig>(10001).B2S_CollisionRelationId, 10006);
             unit.AddComponent<HeroDataComponent, long>(10001);
@@ -114,6 +129,9 @@ namespace ETHotfix.NKGMOBA.Factory
 
             //为碰撞体新建一个Unit
             Unit b2sColliderEntity = CreateUnitBase();
+            b2sColliderEntity.AddComponent<NP_RuntimeTreeManager>();
+            b2sColliderEntity.AddComponent<SkillCanvasManagerComponent>();
+
             b2sColliderEntity.AddComponent<B2S_ColliderComponent, Unit, B2S_CollisionInstance, long, int>(belongToUnit,
                 b2SCollisionsRelationSupport.B2S_CollisionsRelationDic[nodeDataId],
                 nodeDataId, flagId);

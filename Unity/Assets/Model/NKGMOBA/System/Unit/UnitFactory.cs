@@ -24,6 +24,7 @@ namespace ETModel
             unit.AddComponent<EffectComponent>();
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
+            unit.AddComponent<SkillCanvasManagerComponent>();
 
             unitComponent.Add(unit);
             return unit;

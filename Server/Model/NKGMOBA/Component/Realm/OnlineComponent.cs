@@ -42,7 +42,7 @@ namespace ETModel
                 return tempGateAppID.Item2;
             }
 
-            Log.Error($"没有找到id为{playerID}的玩家");
+            //Log.Error($"没有找到id为{playerID}的玩家");
             return tempGateAppID.Item2;
         }
         
@@ -58,7 +58,7 @@ namespace ETModel
                 return tempGateAppID.Item1;
             }
 
-            Log.Error($"没有找到id为{playerID}的玩家");
+            //Log.Error($"没有找到id为{playerID}的玩家");
             return tempGateAppID.Item1;
         }
 

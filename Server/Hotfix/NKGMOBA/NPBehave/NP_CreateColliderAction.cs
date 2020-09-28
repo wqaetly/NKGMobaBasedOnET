@@ -25,6 +25,7 @@ namespace EThotfix
         {
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(a);
             ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
+
             B2S_ColliderComponent colliderComponent = unit.GetComponent<B2S_UnitColliderManagerComponent>()
                     .CreateCollider(unit, configComponent.Get<Server_B2SCollisionRelationConfig>(b).B2S_CollisionRelationId, c)
                     .GetComponent<B2S_ColliderComponent>();
@@ -32,8 +33,10 @@ namespace EThotfix
             //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参
             colliderComponent.SyncBody();
             //Log.Info("生成技能碰撞体");
+
             //根据传过来的行为树Id来给这个碰撞Unit加上行为树
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(colliderComponent.Entity as Unit, configComponent.Get<Server_NPBehaveConfig>(d).NPBehaveId)
+            NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(colliderComponent.Entity as Unit,
+                        configComponent.Get<Server_SkillCanvasConfig>(d).NPBehaveId, configComponent.Get<Server_SkillCanvasConfig>(d).BelongToSkillId)
                     .Start();
 
             //下面这一部分是Debug用的，稳定后请去掉

@@ -25,8 +25,8 @@ namespace ETModel
                     tempData = buffData.ValueToBeChanged[theUnitFromHeroData.CurrentLevel];
                     break;
                 case BuffBaseDataEffectTypes.FromSkillLevel:
-                    tempData = buffData.ValueToBeChanged[
-                        theUnitFromHeroData.GetSkillLevel(buffData.BelongToSkillId.Value)];
+                    tempData = buffData.ValueToBeChanged[buffSystem.TheUnitFrom.GetComponent<SkillCanvasManagerComponent>()
+                                .GetSkillLevel(buffData.BelongToSkillId.Value)];
                     break;
                 case BuffBaseDataEffectTypes.FromHasLostLifeValue:
                     tempData = buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -

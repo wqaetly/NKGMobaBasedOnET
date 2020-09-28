@@ -102,13 +102,13 @@ namespace ETModel
         /// </summary>
         /// <param name="unit">行为树所归属unit</param>
         /// <param name="nPDataId">行为树数据id</param>
+        /// <param name="belongToSkillId">归属的SkillId,一般来说需要从excel表中读取</param>
         /// <returns></returns>
-        public static NP_RuntimeTree CreateSkillNpRuntimeTree(Unit unit, long nPDataId)
+        public static NP_RuntimeTree CreateSkillNpRuntimeTree(Unit unit, long nPDataId, long belongToSkillId)
         {
             NP_RuntimeTree result = CreateNpRuntimeTree(unit, nPDataId);
-            //TODO 这里直接以10001作为索引随便取一个BuffData，因为所有BuffData都有归属的SkillId
             unit.GetComponent<SkillCanvasManagerComponent>()
-                    .AddSkillCanvas((result.BelongNP_DataSupportor.BuffDataDic[10001] as NormalBuffNodeData).BuffData.BelongToSkillId.Value, result);
+                    .AddSkillCanvas(belongToSkillId, result);
             return result;
         }
     }

@@ -57,7 +57,7 @@ namespace ETModel
                 this.SkillDesNodeData = (SkillDesNodeData) this.BelongtoRuntimeTree.BelongNP_DataSupportor.BuffDataDic[this.DataId.Value];
                 tempBlackboard.Set(this.TheTimeToWait.BBKey,
                     this.SkillDesNodeData.SkillCD[
-                        this.m_Unit.GetComponent<HeroDataComponent>().GetSkillLevel(this.SkillIdBelongTo.Value)]);
+                        this.m_Unit.GetComponent<SkillCanvasManagerComponent>().GetSkillLevel(this.SkillIdBelongTo.Value)]);
                 //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
                 this.hasInit = true;
             }

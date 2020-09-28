@@ -45,34 +45,5 @@ namespace ETModel
         /// 当前法强
         /// </summary>
         public float CurrentSpellpower;
-
-        public int Q_SkillLevel = 1;
-        public int W_SkillLevel;
-        public int E_SkillLevel;
-        public int R_SkillLevel;
-
-        /// <summary>
-        /// 获取指定技能等级
-        /// </summary>
-        /// <param name="id">技能Id</param>
-        /// <returns></returns>
-        public int GetSkillLevel(long id)
-        {
-            //TODO 去SkillCanvasManagerComponent获取技能等级
-            switch (id)
-            {
-                case 0:
-                    return Q_SkillLevel;
-                case 1:
-                    return W_SkillLevel;
-                case 2:
-                    return E_SkillLevel;
-                case 3:
-                    return R_SkillLevel;
-            }
-
-            Log.Info($"技能序号获取错误,{id}");
-            return -1;
-        }
     }
 }
