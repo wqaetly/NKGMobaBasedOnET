@@ -77,7 +77,7 @@ namespace ETHotfix
         public override void FixedUpdate(B2S_ColliderComponent self)
         {
             //如果刚体处于激活状态，且设定上此刚体是跟随Unit的话，就同步位置和角度
-            if (self.Body.IsActive && self.B2S_CollisionInstance.FollowUnit && !Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().IsLocked)
+            if (self.Body.IsEnabled && self.B2S_CollisionInstance.FollowUnit && !Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().IsLocked)
             {
                 self.SyncBody();
                 //Log.Info($"进行了位置移动，数据结点为{self.ID}");
@@ -128,7 +128,7 @@ namespace ETHotfix
         /// <param name="state"></param>
         public static void SetColliderBodyState(this B2S_ColliderComponent self, bool state)
         {
-            self.Body.IsActive = state;
+            self.Body.IsEnabled = state;
         }
     }
 }

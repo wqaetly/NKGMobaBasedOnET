@@ -1,17 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>7.3</LangVersion>
+        <AssemblyName>Box2DSharp</AssemblyName>
+        <RootNamespace>Box2DSharp</RootNamespace>
+        <Version>0.3.1</Version>
+        <Authors>Zonciu Liang</Authors>
+        <Company>Zonciu Studio</Company>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/Zonciu/Box2DSharp/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/Zonciu/Box2DSharp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Zonciu/Box2DSharp</RepositoryUrl>
+        <Copyright>Copyright © Zonciu Liang 2018</Copyright>
+        <Description>A C# port of Box2D</Description>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PackageVersion>0.4</PackageVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DebugType>full</DebugType>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
+    <ItemGroup>
+        <None Remove="**\*.meta" />
+    </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="System.Memory" Version="4.5.3" />
+        <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7.1" />
+    </ItemGroup>
 </Project>
