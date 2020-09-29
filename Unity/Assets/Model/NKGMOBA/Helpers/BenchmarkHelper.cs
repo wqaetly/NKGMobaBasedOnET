@@ -26,7 +26,7 @@ namespace ETModel
         /// <param name="action">要压测的函数</param>
         /// <param name="iterations">迭代次数</param>
         /// <returns></returns>
-        private static double Profile(string description, Action action, int iterations = 100)
+        public static double Profile(string description, Action action, int iterations = 100)
         {
             // clean up
             GC.Collect();
