@@ -22,9 +22,15 @@ namespace ETHotfix
             // 广播创建的unit
             M2C_CreateUnits createUnits = new M2C_CreateUnits();
             Unit[] units = Game.Scene.GetComponent<UnitComponent>().GetAll();
-            foreach (Unit u in units) 
+            foreach (Unit u in units)
             {
                 UnitInfo unitInfo = new UnitInfo();
+                if (targetUnit.Id == u.Id)
+                {
+                    //TODO 诺手UnitTypeId暂定10001
+                    unitInfo.UnitTypeId = 10001;
+                }
+
                 unitInfo.X = u.Position.x;
                 unitInfo.Y = u.Position.y;
                 unitInfo.Z = u.Position.z;
@@ -34,7 +40,7 @@ namespace ETHotfix
 
             //向所有unit广播信息
             MessageHelper.Broadcast(createUnits);
-            
+
             //设置回复消息的Id
             response.UnitId = targetUnit.Id;
             //广播完回复客户端，这边搞好了

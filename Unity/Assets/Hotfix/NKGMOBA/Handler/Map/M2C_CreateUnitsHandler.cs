@@ -14,7 +14,9 @@ namespace ETHotfix
 
             foreach (UnitInfo unitInfo in message.Units)
             {
-                if (unitComponent.Get(unitInfo.UnitId) != null)
+                //TODO 暂时先忽略除英雄之外的Unit（如技能碰撞体），后期需要配表来解决这一块的逻辑，并且需要在协议里指定Unit的类型Id（注意不是运行时的Id,是Excel表中的类型Id）
+                //TODO 诺手UnitTypeId暂定10001
+                if (unitComponent.Get(unitInfo.UnitId) != null || unitInfo.UnitTypeId != 10001)
                 {
                     continue;
                 }
@@ -28,6 +30,7 @@ namespace ETHotfix
 
                 unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
                 unit.AddComponent<NP_RuntimeTreeManager>();
+
                 //Log.Info("开始创建行为树");
                 ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
                 NP_RuntimeTreeFactory
@@ -51,7 +54,7 @@ namespace ETHotfix
                 hotfixUnit.AddComponent<HeroHeadBarComponent, Unit, FUI>(unit,
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
             }
-
+            
             if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)
             {
                 // 给自己的Unit添加引用

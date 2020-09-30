@@ -553,6 +553,14 @@ namespace ETModel {
       }
     }
 
+    private long unitTypeId_;
+    public long UnitTypeId {
+      get { return unitTypeId_; }
+      set {
+        unitTypeId_ = value;
+      }
+    }
+
     private float x_;
     public float X {
       get { return x_; }
@@ -594,12 +602,19 @@ namespace ETModel {
         output.WriteRawTag(37);
         output.WriteFloat(Z);
       }
+      if (UnitTypeId != 0L) {
+        output.WriteRawTag(152, 6);
+        output.WriteInt64(UnitTypeId);
+      }
     }
 
     public int CalculateSize() {
       int size = 0;
       if (UnitId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
+      }
+      if (UnitTypeId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitTypeId);
       }
       if (X != 0F) {
         size += 1 + 4;
@@ -618,6 +633,7 @@ namespace ETModel {
       x_ = 0f;
       y_ = 0f;
       z_ = 0f;
+      unitTypeId_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -638,6 +654,10 @@ namespace ETModel {
           }
           case 37: {
             Z = input.ReadFloat();
+            break;
+          }
+          case 792: {
+            UnitTypeId = input.ReadInt64();
             break;
           }
         }
