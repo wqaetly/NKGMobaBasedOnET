@@ -7,6 +7,7 @@
 using ETModel;
 using ETModel.NKGMOBA.Battle.State;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
@@ -28,6 +29,7 @@ namespace DefaultNamespace
         /// 过渡时间
         /// </summary>
         [LabelText("过渡时间")]
+        [Tooltip("这个过度时间指从其他动画过渡到本身所用时间")]
         public float FadeOutTime;
     }
 }

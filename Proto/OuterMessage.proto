@@ -48,7 +48,8 @@ message G2C_EnterMap // IResponse
 
 message UnitInfo {
     int64 UnitId = 1;
-
+    int64 UnitTypeId = 99;
+    
     float X = 2;
     float Y = 3;
     float Z = 4;
