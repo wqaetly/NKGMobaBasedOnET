@@ -66,24 +66,14 @@ namespace ETModel
         };
 
         /// <summary>
-        /// 播放一个动画并且允许设置好下一个要播放的动画，在外部调用.OnEnd即可添加委托
-        /// </summary>
-        /// <param name="currentStateTypes"></param>
-        /// <param name="fadeOutTime"></param>
-        /// <returns></returns>
-        public AnimancerState PlayAnimAndAllowRegisterNext(StateTypes currentStateTypes, float fadeOutTime = 0.3f)
-        {
-            return AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[currentStateTypes]], fadeOutTime);
-        }
-
-        /// <summary>
-        /// 播放一个动画(播放完成自动循环)
+        /// 播放一个动画,默认过渡时间为0.3s
         /// </summary>
         /// <param name="stateTypes"></param>
+        /// <param name="fadeDuration">动画过渡时间</param>
         /// <returns></returns>
-        public void PlayAnim(StateTypes stateTypes)
+        public AnimancerState PlayAnim(StateTypes stateTypes, float fadeDuration = 0.3f)
         {
-            AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]]);
+            return AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]], fadeDuration);
         }
 
         /// <summary>
