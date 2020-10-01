@@ -1,4 +1,4 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Numerics;
 using ETModel;
 using ETModel.BBValues;
@@ -149,7 +149,16 @@ namespace NPBehave
                 return default;
             }
 
-            return (result as NP_BBValueBase<T>).GetValue();
+            NP_BBValueBase<T> finalResult = result as NP_BBValueBase<T>;
+            if (finalResult == null)
+            {
+                Log.Error($"黑板获取值转型失败，Key：{key}，Type：{typeof (NP_BBValueBase<T>)}");
+                return default;
+            }
+            else
+            {
+                return finalResult.GetValue();
+            }
         }
 
         public ANP_BBValue Get(string key)
