@@ -63,9 +63,8 @@ namespace ETModel
             else
             {
 #if SERVER
-                //TODO 这里先默许目标为碰撞体归属的Unit Id（施法者Unit Id）
                 targetUnit = Game.Scene.GetComponent<UnitComponent>()
-                        .Get(this.Unitid).GetComponent<B2S_ColliderComponent>().BelongToUnit;
+                        .Get(TargetUnitId.GetBlackBoardValue<long>(this.BelongtoRuntimeTree.GetBlackboard()));
 #endif
             }
 

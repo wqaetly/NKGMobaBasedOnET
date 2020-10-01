@@ -35,9 +35,9 @@ namespace ETModel
         private Dictionary<BuffWorkTypes, ABuffSystemBase> m_BuffsForFind_BuffWorkType = new Dictionary<BuffWorkTypes, ABuffSystemBase>();
 
         /// <summary>
-        /// 用于查找的——基于Buff的ID
+        /// 用于查找的——基于Buff的Id
         /// </summary>
-        private Dictionary<long, ABuffSystemBase> m_BuffsForFind_BuffFlagID = new Dictionary<long, ABuffSystemBase>();
+        private Dictionary<long, ABuffSystemBase> m_BuffsForFind_BuffId = new Dictionary<long, ABuffSystemBase>();
 
         private LinkedListNode<ABuffSystemBase> m_Current, m_Next;
 
@@ -71,9 +71,9 @@ namespace ETModel
                     this.m_Next = this.m_Current.Next;
                     m_Buffs.Remove(this.m_Current);
                     m_BuffsForFind_BuffWorkType.Remove(this.m_Current.Value.BuffData.BuffWorkType);
-                    m_BuffsForFind_BuffFlagID.Remove(this.m_Current.Value.BuffData.BuffId);
-                    Log.Info(
-                        $"移除一个Buff，ID为{this.m_Current.Value.BuffData.BuffId},BuffManager是否还有?:{this.FindBuffById(this.m_Current.Value.BuffData.BuffId)}");
+                    this.m_BuffsForFind_BuffId.Remove(this.m_Current.Value.BuffData.BuffId);
+                    // Log.Info(
+                    //     $"移除一个Buff，Id为{this.m_Current.Value.BuffData.BuffId},BuffManager是否还有?:{this.FindBuffById(this.m_Current.Value.BuffData.BuffId)}");
                     this.m_Current = this.m_Next;
                 }
             }
@@ -96,15 +96,15 @@ namespace ETModel
                 m_BuffsForFind_BuffWorkType.Add(aBuff.BuffData.BuffWorkType, aBuff);
             }
 
-            if (this.m_BuffsForFind_BuffFlagID.ContainsKey(aBuff.BuffData.BuffId))
+            if (this.m_BuffsForFind_BuffId.ContainsKey(aBuff.BuffData.BuffId))
             {
-                m_BuffsForFind_BuffFlagID[aBuff.BuffData.BuffId] = aBuff;
+                this.m_BuffsForFind_BuffId[aBuff.BuffData.BuffId] = aBuff;
             }
             else
             {
-                m_BuffsForFind_BuffFlagID.Add(aBuff.BuffData.BuffId, aBuff);
+                this.m_BuffsForFind_BuffId.Add(aBuff.BuffData.BuffId, aBuff);
             }
-            Log.Info($"把ID为{aBuff.BuffData.BuffId}的buff加入检索表");
+            // Log.Info($"把ID为{aBuff.BuffData.BuffId}的buff加入检索表");
         }
 
         /// <summary>
@@ -125,11 +125,11 @@ namespace ETModel
         /// <summary>
         /// 通过标识ID查找Buff
         /// </summary>
-        /// <param name="flagID">BuffData的标识ID</param>
+        /// <param name="buffId">BuffData的标识ID</param>
         /// <returns></returns>
-        public bool FindBuffById(long flagID)
+        public bool FindBuffById(long buffId)
         {
-            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out ABuffSystemBase _temp))
+            if (this.m_BuffsForFind_BuffId.TryGetValue(buffId, out ABuffSystemBase _temp))
             {
                 return true;
             }
@@ -155,26 +155,24 @@ namespace ETModel
         /// <summary>
         /// 通过标识ID获得Buff
         /// </summary>
-        /// <param name="flagID">BuffData的标识ID</param>
-        public ABuffSystemBase GetBuffById(long flagID)
+        /// <param name="buffId">BuffData的标识ID</param>
+        public ABuffSystemBase GetBuffById(long buffId)
         {
-            if (this.m_BuffsForFind_BuffFlagID.TryGetValue(flagID, out ABuffSystemBase _temp))
+            if (this.m_BuffsForFind_BuffId.TryGetValue(buffId, out ABuffSystemBase _temp))
             {
                 return _temp;
             }
-
-            Log.Info($"查找{flagID}Buff失败");
             return null;
         }
 
         /// <summary>
         /// 移除并返回临时列表中的一个Buff
         /// </summary>
-        /// <param name="flagID">BuffData的标识ID</param>
+        /// <param name="buffId">BuffData的标识ID</param>
         /// <returns></returns>
-        public ABuffSystemBase GetBuffById_FromTempDic(long flagID)
+        public ABuffSystemBase GetBuffById_FromTempDic(long buffId)
         {
-            if (this.TempBuffsToBeAdded.TryGetValue(flagID, out var temp))
+            if (this.TempBuffsToBeAdded.TryGetValue(buffId, out var temp))
             {
                 return temp;
             }

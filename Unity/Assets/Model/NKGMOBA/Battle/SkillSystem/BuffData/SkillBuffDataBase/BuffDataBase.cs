@@ -32,10 +32,7 @@ namespace ETModel
         [LabelText("Buff的Id")]
         [BoxGroup("必填项")]
         public long BuffId = IdGenerater.GenerateId();
-
-        /// <summary>
-        /// 用于标识技能Id
-        /// </summary>
+        
         [BoxGroup("必填项")]
         [LabelText("Buff归属技能的Id"), GUIColor(1, 140 / 255f, 0)]
         public VTD_Id BelongToSkillId = new VTD_Id();

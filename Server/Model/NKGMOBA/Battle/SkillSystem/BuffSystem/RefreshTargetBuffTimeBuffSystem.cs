@@ -31,10 +31,13 @@ namespace ETModel
                 buffManagerComponent = this.TheUnitBelongto.GetComponent<BuffManagerComponent>();
             }
 
-            foreach (var buffId in refreshTargetBuffTimeBuffData.TheBuffsIDToBeRefreshed)
+            foreach (var buffNodeId in refreshTargetBuffTimeBuffData.TheBuffNodeIdToBeRefreshed)
             {
                 //Log.Info($"准备刷新指定Buff——{buffId}持续时间");
-                ABuffSystemBase aBuffSystemBase = buffManagerComponent.GetBuffById(buffId.Value);
+                ABuffSystemBase aBuffSystemBase =
+                        buffManagerComponent.GetBuffById(
+                            (this.BelongtoRuntimeTree.BelongNP_DataSupportor.BuffNodeDataDic[buffNodeId.Value] as NormalBuffNodeData).BuffData
+                            .BuffId);
                 if (aBuffSystemBase != null && aBuffSystemBase.BuffData.SustainTime + 1 > 0)
                 {
                     // Log.Info(

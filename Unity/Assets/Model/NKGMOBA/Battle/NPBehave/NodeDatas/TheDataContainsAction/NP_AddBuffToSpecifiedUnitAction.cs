@@ -33,7 +33,7 @@ namespace ETModel
             {
                 for (int i = 0; i < BuffDataInfo.Layers; i++)
                 {
-                    buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, BuffDataInfo.BuffId.Value, unit,
+                    buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, BuffDataInfo.BuffNodeId.Value, unit,
                         Game.Scene.GetComponent<UnitComponent>().Get(targetUnitId),BelongtoRuntimeTree);
                 }
             }

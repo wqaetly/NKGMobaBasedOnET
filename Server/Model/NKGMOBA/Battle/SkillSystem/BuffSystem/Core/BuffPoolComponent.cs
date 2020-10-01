@@ -38,14 +38,14 @@ namespace ETModel
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
         /// <param name="dataId">Buff数据归属的数据块Id</param>
-        /// <param name="buffId">Buff的Id</param>
+        /// <param name="buffNodeId">Buff节点的Id</param>
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(long dataId, long buffId, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
+        public ABuffSystemBase AcquireBuff(long dataId, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
         {
             return AcquireBuff(
-                (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffDataDic[buffId] as NormalBuffNodeData).BuffData,
+                (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffNodeDataDic[buffNodeId] as NormalBuffNodeData).BuffData,
                 theUnitFrom, theUnitBelongTo, theSkillCanvasBelongTo);
         }
 
@@ -53,14 +53,14 @@ namespace ETModel
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
         /// <param name="npDataSupportor">Buff数据归属的数据块</param>
-        /// <param name="buffId">Buff的Id</param>
+        /// <param name="buffNodeId">Buff节点的Id</param>
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffId, Unit theUnitFrom, Unit theUnitBelongTo,
+        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
         NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            return AcquireBuff((npDataSupportor.BuffDataDic[buffId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo,
+            return AcquireBuff((npDataSupportor.BuffNodeDataDic[buffNodeId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo,
                 theSkillCanvasBelongTo);
         }
 

@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -18,6 +19,7 @@ namespace ETModel
         [LabelText("预伤害修正")]
         public float DamageFix = 1.0f;
 
+        [Tooltip("1000为1s")]
         [BoxGroup("自定义项")]
         [LabelText("作用间隔")]
         public long WorkInternal = 0;

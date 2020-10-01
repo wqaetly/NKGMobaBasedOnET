@@ -51,7 +51,7 @@ namespace SkillDemo
                         BuffNodeBase targetNode = (connectTagrets.body as BuffNodeBase);
                         if (targetNode != null)
                         {
-                            bindStateBuffData.OriBuff.Add(new VTD_BuffInfo() { BuffId = targetNode.Skill_GetNodeData().NodeId });
+                            bindStateBuffData.OriBuff.Add(new VTD_BuffInfo() { BuffNodeId = targetNode.Skill_GetNodeData().NodeId });
                         }
                     }
 

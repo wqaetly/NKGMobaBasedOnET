@@ -73,8 +73,8 @@ namespace Plugins.NodeEditor.Editor.Canvas
 
         private void AutoSetSkillData_NodeData()
         {
-            if (MNpDataSupportor.BuffDataDic == null) return;
-            MNpDataSupportor.BuffDataDic.Clear();
+            if (MNpDataSupportor.BuffNodeDataDic == null) return;
+            MNpDataSupportor.BuffNodeDataDic.Clear();
 
             foreach (var node in this.nodes)
             {
@@ -87,7 +87,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                         normalBuffNodeData.BuffData.BelongToBuffDataSupportorId = MNpDataSupportor.NpDataSupportorBase.RootId;
                     }
 
-                    this.MNpDataSupportor.BuffDataDic.Add(buffNodeDataBase.NodeId.Value, buffNodeDataBase);
+                    this.MNpDataSupportor.BuffNodeDataDic.Add(buffNodeDataBase.NodeId.Value, buffNodeDataBase);
                 }
             }
         }

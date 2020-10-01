@@ -10,9 +10,9 @@ namespace ETModel
 {
     public class VTD_BuffInfo
     {
-        [BoxGroup("Buff Id信息")]
+        [BoxGroup("Buff节点Id信息")]
         [HideLabel]
-        public VTD_Id BuffId;
+        public VTD_Id BuffNodeId;
 
         [LabelText("添加Buff层数")]
         public int Layers = 1;

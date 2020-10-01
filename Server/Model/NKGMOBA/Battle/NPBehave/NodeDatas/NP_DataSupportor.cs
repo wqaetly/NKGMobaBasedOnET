@@ -17,7 +17,7 @@ namespace ETModel
     {
         [BoxGroup("技能中的Buff数据结点")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<long, BuffNodeDataBase> BuffDataDic = new Dictionary<long, BuffNodeDataBase>();
+        public Dictionary<long, BuffNodeDataBase> BuffNodeDataDic = new Dictionary<long, BuffNodeDataBase>();
 
         public NP_DataSupportorBase NpDataSupportorBase = new NP_DataSupportorBase();
     }

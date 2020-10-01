@@ -128,7 +128,7 @@ namespace ETModel
         }
 
         /// <summary>
-        /// 获取一棵树的所有数据（仅深拷贝黑板数据内容，而忽略例如BuffDataDic的数据内容）
+        /// 获取一棵树的所有数据（仅深拷贝黑板数据内容，而忽略例如BuffNodeDataDic的数据内容）
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace ETModel
             NP_DataSupportor result = new NP_DataSupportor();
             if (this.m_NpRuntimeTreesDatas.ContainsKey(id))
             {
-                result.BuffDataDic = this.m_NpRuntimeTreesDatas[id].BuffDataDic;
+                result.BuffNodeDataDic = this.m_NpRuntimeTreesDatas[id].BuffNodeDataDic;
                 result.NpDataSupportorBase = this.m_NpRuntimeTreesDatas[id].NpDataSupportorBase.DeepCopy();
                 return result;
             }

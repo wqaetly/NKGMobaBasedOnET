@@ -30,7 +30,7 @@ namespace ETModel
                 for (int i = 0; i < buffData.Layers; i++)
                 {
                     Game.Scene.GetComponent<BuffPoolComponent>()
-                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffId.Value,
+                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
                                 this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
                 }
             }
@@ -72,7 +72,7 @@ namespace ETModel
                 for (int i = 0; i < buffData.Layers; i++)
                 {
                     Game.Scene.GetComponent<BuffPoolComponent>()
-                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffId.Value,
+                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
                                 this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
                 }
             }

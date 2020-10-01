@@ -45,7 +45,7 @@ namespace SkillDemo
 
             foreach (var vtdBuffInfo in listenBuffCallBackBuffData.ListenBuffEventNormal.BuffInfoWillBeAdded)
             {
-                buffDataBack.Add(vtdBuffInfo.BuffId.Value, vtdBuffInfo.Layers);
+                buffDataBack.Add(vtdBuffInfo.BuffNodeId.Value, vtdBuffInfo.Layers);
             }
 
             listenBuffCallBackBuffData.ListenBuffEventNormal.BuffInfoWillBeAdded.Clear();
@@ -62,14 +62,14 @@ namespace SkillDemo
                         {
                             listenBuffCallBackBuffData.ListenBuffEventNormal.BuffInfoWillBeAdded.Add(new VTD_BuffInfo()
                             {
-                                BuffId = targetNode.Skill_GetNodeData().NodeId
+                                BuffNodeId = targetNode.Skill_GetNodeData().NodeId
                             });
                         }
                     }
 
                     foreach (var vtdBuffInfo in listenBuffCallBackBuffData.ListenBuffEventNormal.BuffInfoWillBeAdded)
                     {
-                        if (buffDataBack.TryGetValue(vtdBuffInfo.BuffId.Value, out var buffLayer))
+                        if (buffDataBack.TryGetValue(vtdBuffInfo.BuffNodeId.Value, out var buffLayer))
                         {
                             vtdBuffInfo.Layers = buffLayer;
                         }
