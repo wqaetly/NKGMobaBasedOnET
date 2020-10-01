@@ -14,13 +14,13 @@ using Node = NPBehave.Node;
 
 namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 {
-    [Node(false, "NPBehave行为树/Task/初始化行为树", typeof (NPBehaveCanvas))]
-    public class NP_InitTreeActionNode: NP_TaskNodeBase
+    [Node(false, "NPBehave行为树/Task/宏行为节点", typeof (NPBehaveCanvas))]
+    public class NP_MacroActionNode: NP_TaskNodeBase
     {
         /// <summary>
         /// 内部ID
         /// </summary>
-        private const string Id = "初始化行为树";
+        private const string Id = "宏行为节点";
 
         /// <summary>
         /// 内部ID
@@ -28,7 +28,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
         public override string GetID => Id;
 
         public NP_ActionNodeData NP_ActionNodeData =
-                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_InitTreeAction() };
+                new NP_ActionNodeData() { NodeType = NodeType.Task, NpClassForStoreAction = new NP_MacroAction() };
 
         public override NP_NodeDataBase NP_GetNodeData()
         {
