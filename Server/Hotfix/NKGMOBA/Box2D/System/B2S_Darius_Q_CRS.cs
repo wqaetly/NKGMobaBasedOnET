@@ -6,7 +6,9 @@
 //------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using ETModel;
+using ETModel.BBValues;
 using UnityEngine;
 
 namespace ETHotfix
@@ -47,33 +49,35 @@ namespace ETHotfix
                     //TODO:这一步需要在结点编辑器配好支持自动升成
                     if (b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit.GetComponent<B2S_RoleCastComponent>().RoleCast !=
                         RoleCast.Adverse) return;
-                    
-                    //Log.Info($"诺手Q碰撞体碰撞响应创建完成，帧步进为{BenchmarkHelper.CurrentFrameCount}");
+
+                    //自身Collider Unit所归属的Unit
+                    Unit selfBelongToUnit = Entity.GetComponent<B2S_ColliderComponent>().BelongToUnit;
+                    //碰撞到的Collider Unit所归属的Unit
+                    Unit collisionBelongToUnit = b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit;
+
+                    //获取目标SkillCanvas
+                    List<NP_RuntimeTree> targetSkillCanvas = this.Entity.GetComponent<SkillCanvasManagerComponent>()
+                            .GetSkillCanvas(Game.Scene.GetComponent<ConfigComponent>().Get<Server_SkillCanvasConfig>(10003).BelongToSkillId);
+
                     //敌方英雄
-                    if (Vector3.Distance(this.Entity.GetComponent<B2S_ColliderComponent>().BelongToUnit.Position,
-                            b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit.Position) >=
-                        2.3f)
+                    if (Vector3.Distance(selfBelongToUnit.Position, collisionBelongToUnit.Position) >= 2.3f)
                     {
-                        try
+                        Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
+
+                        foreach (var skillCanvas in targetSkillCanvas)
                         {
-                            Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            throw;
+                            skillCanvas.GetBlackboard().Set("Darius_QOutIsHitUnit", true);
+                            skillCanvas.GetBlackboard().Get<List<long>>("Darius_QOutHitUnitIds")?.Add(collisionBelongToUnit.Id);
                         }
                     }
                     else
                     {
                         Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
-                        try
+
+                        foreach (var skillCanvas in targetSkillCanvas)
                         {
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            throw;
+                            skillCanvas.GetBlackboard().Set("Darius_QInnerIsHitUnit", true);
+                            skillCanvas.GetBlackboard().Get<List<long>>("Darius_QInnerHitUnitIds")?.Add(collisionBelongToUnit.Id);
                         }
                     }
 

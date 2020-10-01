@@ -31,7 +31,7 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &-7626116260985324783
+--- !u!114 &-8274820457381375686
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,8 +40,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
+  m_Script: {fileID: 11500000, guid: c8d2282f3876e6c4592a04861d147f33, type: 3}
+  m_Name: "\u4FEE\u6539\u9ED1\u677F\u503C"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -51,17 +51,151 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: -2256545890192384875}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections:
-  - {fileID: 5228138216832620544}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396075
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u9632\u6B62\u91CD\u590D\u521D\u59CB\u5316\u884C\u4E3A\u6811"
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 3|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: HasInitTree
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -90.3, y: 234.50009}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: 9121442884109297700}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 9121442884109297700}
+--- !u!114 &-7196133465600089667
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1b7334dc4097f4983e31d4320a9a08, type: 3}
+  m_Name: "\u5E8F\u5217\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_SequenceNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_SequenceNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396078
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104959540396076
+    - Name: 
+      Entry: 3
+      Data: 104959540396077
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5E8F\u5217\u7EC4\u5408\u5668"
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: 217.49995, y: 58.100033}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: 8006409087879787029}
+  - {fileID: -306623187996842983}
+  backgroundColor: {r: 0, g: 0.9607843, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 8006409087879787029}
+  NextNode: {fileID: -306623187996842983}
 --- !u!114 &-6852855696448615917
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,6 +227,197 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &-5811845753790790274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfaf591d9729bfb4284ca313aa245f1a, type: 3}
+  m_Name: "\u5237\u65B0\u6307\u5B9ABuff\u65F6\u95F4Buff"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|ETModel.NormalBuffNodeData, Unity.Model
+    - Name: NodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_RefreshFullAngry_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10006
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BuffDes
+      Entry: 1
+      Data: "\u5237\u65B0\u6307\u5B9ABuff\u65F6\u95F4Buff"
+    - Name: BuffData
+      Entry: 7
+      Data: 1|ETModel.RefreshTargetBuffTimeBuffData, Unity.Model
+    - Name: BelongToBuffDataSupportorId
+      Entry: 3
+      Data: 104959540396084
+    - Name: BuffId
+      Entry: 3
+      Data: 104958845714474
+    - Name: BelongToSkillId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: BelongToSkillId
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BelongBuffSystemType
+      Entry: 3
+      Data: 7
+    - Name: BuffTargetTypes
+      Entry: 3
+      Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 1
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: EventIds
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CanOverlay
+      Entry: 5
+      Data: false
+    - Name: TargetOverlay
+      Entry: 3
+      Data: 1
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 0
+    - Name: SustainTime
+      Entry: 3
+      Data: 0
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
+    - Name: BaseBuffBaseDataEffectTypes
+      Entry: 3
+      Data: 0
+    - Name: ValueToBeChanged
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AdditionValue
+      Entry: 7
+      Data: 5|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+        Unity.Model],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: TheBuffNodeIdToBeRefreshed
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[ETModel.VTD_Id, Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_ListenHemorrhageCast_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10005
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: 443.89996, y: 825.7001}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: 8669811582656010616}
+  - {fileID: -1608032445982192288}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevNode: {fileID: 8669811582656010616}
+  NextNode: {fileID: -1608032445982192288}
 --- !u!114 &-5696800094620646916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +475,39 @@ MonoBehaviour:
   styleID: NPBehave_NextNodeDatas
   color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
-  - {fileID: 3448466357781322933}
+  - {fileID: 8006409087879787029}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-4737943930170178289
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -2623259274970966175}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections:
+  - {fileID: -388022712510910168}
+  - {fileID: 9121442884109297700}
   side: 1
   sidePosition: 75
   sideOffset: 0
@@ -182,10 +539,247 @@ MonoBehaviour:
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _connections:
   - {fileID: -3224921756575237568}
-  - {fileID: -3441844050181462901}
+  - {fileID: 3576898132634927057}
   side: 4
   sidePosition: 30
   sideOffset: 0
+--- !u!114 &-3860965695840862382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9172b5b0833eb39418ffce21ad1e1f14, type: 3}
+  m_Name: "\u76D1\u542CBuff"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SkillBuffBases
+      Entry: 7
+      Data: 0|ETModel.NormalBuffNodeData, Unity.Model
+    - Name: NodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_ListenHemorrhageCast_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10005
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BuffDes
+      Entry: 1
+      Data: "\u76D1\u542C\u6D41\u8840Buff\u7684\u89E6\u53D1\u4E8B\u4EF6"
+    - Name: BuffData
+      Entry: 7
+      Data: 1|ETModel.ListenBuffCallBackBuffData, Unity.Model
+    - Name: BelongToBuffDataSupportorId
+      Entry: 3
+      Data: 104959540396084
+    - Name: BuffId
+      Entry: 3
+      Data: 104959416205423
+    - Name: BelongToSkillId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: BelongToSkillId
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BelongBuffSystemType
+      Entry: 3
+      Data: 2
+    - Name: BuffTargetTypes
+      Entry: 3
+      Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: EventIds
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CanOverlay
+      Entry: 5
+      Data: false
+    - Name: TargetOverlay
+      Entry: 3
+      Data: 1
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 0
+    - Name: SustainTime
+      Entry: 3
+      Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
+    - Name: BaseBuffBaseDataEffectTypes
+      Entry: 3
+      Data: 0
+    - Name: ValueToBeChanged
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AdditionValue
+      Entry: 7
+      Data: 5|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+        Unity.Model],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: EventId
+      Entry: 7
+      Data: ETModel.VTD_EventId, Unity.Model
+    - Name: Value
+      Entry: 1
+      Data: Darius_HemorrhageCast
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ListenBuffEventNormal
+      Entry: 7
+      Data: 7|ETModel.ListenBuffEvent_Normal, Unity.Model
+    - Name: BuffInfoWillBeAdded
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 9|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhageSustainDamge_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10002
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_RefreshFullAngry_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10006
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -13.000022, y: 732.60016}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: 4746603814496892126}
+  - {fileID: 3576898132634927057}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevNode: {fileID: 4746603814496892126}
+  NextNode: {fileID: 3576898132634927057}
 --- !u!114 &-3780318256159628981
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,7 +824,7 @@ MonoBehaviour:
       Data: 1|ETModel.ListenBuffCallBackBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874259775511
@@ -360,7 +954,7 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 9|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -397,7 +991,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -312.6002, y: 779.60065}
+  position: {x: -301.6002, y: 730.60065}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: -5696800094620646916}
@@ -405,37 +999,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevNode: {fileID: -5696800094620646916}
   NextNode: {fileID: 7061772707269282115}
---- !u!114 &-3441844050181462901
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NextBuffType
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: 6395221889597461844}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NextNodeDatas
-  color: {r: 0, g: 1, b: 1, a: 1}
-  _connections:
-  - {fileID: -4732805102246031989}
-  side: 2
-  sidePosition: 30
-  sideOffset: 0
 --- !u!114 &-3238531819078989325
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,7 +1025,7 @@ MonoBehaviour:
       Data: 0|ETModel.NP_BlackboardConditionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: NodeType
       Entry: 3
       Data: 1
@@ -474,7 +1037,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396079
     - Name: 
       Entry: 13
       Data: 
@@ -518,7 +1081,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -174.49997, y: 139.40002}
+  position: {x: -172.09998, y: -101.599976}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 5943746912144853136}
@@ -558,7 +1121,7 @@ MonoBehaviour:
   side: 2
   sidePosition: 30
   sideOffset: 0
---- !u!114 &-2256545890192384875
+--- !u!114 &-2623259274970966175
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,8 +1130,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1596362470db17b4ba3a645152cee599, type: 3}
-  m_Name: "\u521D\u59CB\u5316\u884C\u4E3A\u6811"
+  m_Script: {fileID: 11500000, guid: 6c1b7334dc4097f4983e31d4320a9a08, type: 3}
+  m_Name: "\u5E8F\u5217\u7ED3\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -579,21 +1142,27 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: NP_ActionNodeData
+    - Name: NP_SequenceNodeData
       Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 0|ETModel.NP_SequenceNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396079
     - Name: NodeType
       Entry: 3
-      Data: 2
+      Data: 0
     - Name: LinkedIds
       Entry: 7
       Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104959540396074
+    - Name: 
+      Entry: 3
+      Data: 104959540396075
     - Name: 
       Entry: 13
       Data: 
@@ -602,94 +1171,20 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u6DFB\u52A0\u88AB\u52A8Buff"
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_InitTreeAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: NpClassForStoreActions
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
-        Unity.Model]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 4|ETModel.NP_AddBuffAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: BuffDataInfo
-      Entry: 7
-      Data: 5|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_ListenHemorrhageLayers_Buff
-    - Name: Value
-      Entry: 3
-      Data: 10003
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: "\u5E8F\u5217\u7EC4\u5408\u5668"
     - Name: 
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -173.79994, y: 316.99997}
+  position: {x: -174.60004, y: 42.80002}
   dynamicConnectionPorts: []
   connectionPorts:
-  - {fileID: -7626116260985324783}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  - {fileID: 867355776153573035}
+  - {fileID: -4737943930170178289}
+  backgroundColor: {r: 0, g: 0.9607843, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: -7626116260985324783}
+  PrevNode: {fileID: 867355776153573035}
+  NextNode: {fileID: -4737943930170178289}
 --- !u!114 &-1715738202907026958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -716,7 +1211,7 @@ MonoBehaviour:
       Data: 0|ETModel.NP_WaitUntilStoppedData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: NodeType
       Entry: 3
       Data: 2
@@ -739,13 +1234,106 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: 335.30005, y: 143.60007}
+  position: {x: 526.69995, y: -93.59995}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: -8680538906235857491}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: -8680538906235857491}
+--- !u!114 &-1608032445982192288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -5811845753790790274}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections: []
+  side: 2
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &-388022712510910168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: 2933893089114324976}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -4737943930170178289}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-306623187996842983
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_NextNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -7196133465600089667}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NPBehave_NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections:
+  - {fileID: 6540231539396791531}
+  - {fileID: 5376245769801126266}
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,7 +1358,7 @@ MonoBehaviour:
     - Name: MNpDataSupportor
       Entry: 7
       Data: 0|ETModel.NP_DataSupportor, Unity.Model
-    - Name: BuffDataDic
+    - Name: BuffNodeDataDic
       Entry: 7
       Data: 1|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
         Unity.Model]], mscorlib
@@ -783,7 +1371,196 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10001
+    - Name: $v
+      Entry: 7
+      Data: 3|ETModel.NormalBuffNodeData, Unity.Model
+    - Name: NodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BuffDes
+      Entry: 1
+      Data: "\u7ED9\u654C\u4EBA\u52A0\u6D41\u8840Buff"
+    - Name: BuffData
+      Entry: 7
+      Data: 4|ETModel.BindStateBuffData, Unity.Model
+    - Name: BelongToBuffDataSupportorId
+      Entry: 3
+      Data: 104959540396084
+    - Name: BuffId
+      Entry: 3
+      Data: 104874245292054
+    - Name: BelongToSkillId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: BelongToSkillId
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BelongBuffSystemType
+      Entry: 3
+      Data: 3
+    - Name: BuffTargetTypes
+      Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: EventIds
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: ETModel.VTD_EventId, Unity.Model
+    - Name: Value
+      Entry: 1
+      Data: Darius_HemorrhageCast
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CanOverlay
+      Entry: 5
+      Data: true
+    - Name: TargetOverlay
+      Entry: 3
+      Data: 1
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 5
+    - Name: SustainTime
+      Entry: 3
+      Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
+    - Name: BaseBuffBaseDataEffectTypes
+      Entry: 3
+      Data: 0
+    - Name: ValueToBeChanged
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AdditionValue
+      Entry: 7
+      Data: 8|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+        Unity.Model],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: OriBuff
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhageSustainDamge_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10002
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
       Data: 
@@ -792,7 +1569,7 @@ MonoBehaviour:
       Data: 10002
     - Name: $v
       Entry: 7
-      Data: 3|ETModel.NormalBuffNodeData, Unity.Model
+      Data: 12|ETModel.NormalBuffNodeData, Unity.Model
     - Name: NodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -810,10 +1587,10 @@ MonoBehaviour:
       Data: "\u6301\u7EED\u4F24\u5BB3Buff"
     - Name: BuffData
       Entry: 7
-      Data: 4|ETModel.SustainDamageBuffData, Unity.Model
+      Data: 13|ETModel.SustainDamageBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874244374549
@@ -846,7 +1623,7 @@ MonoBehaviour:
       Data: false
     - Name: EventIds
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+      Data: 14|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
@@ -874,14 +1651,14 @@ MonoBehaviour:
       Data: 134217728
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
-      Data: 18
+      Data: 16
     - Name: ValueToBeChanged
       Entry: 7
-      Data: 6|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      Data: 15|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      Data: 16|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -957,11 +1734,11 @@ MonoBehaviour:
       Data: 
     - Name: AdditionValue
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+      Data: 17|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
         Unity.Model],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+      Data: 18|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
         Unity.Model]], mscorlib
     - Name: 
       Entry: 12
@@ -995,13 +1772,13 @@ MonoBehaviour:
       Data: 
     - Name: BuffDamageTypes
       Entry: 3
-      Data: 0
+      Data: 52
     - Name: DamageFix
       Entry: 4
       Data: 1
     - Name: WorkInternal
       Entry: 3
-      Data: 0
+      Data: 1000
     - Name: 
       Entry: 8
       Data: 
@@ -1019,7 +1796,7 @@ MonoBehaviour:
       Data: 10003
     - Name: $v
       Entry: 7
-      Data: 10|ETModel.NormalBuffNodeData, Unity.Model
+      Data: 19|ETModel.NormalBuffNodeData, Unity.Model
     - Name: NodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -1037,10 +1814,10 @@ MonoBehaviour:
       Data: "\u76D1\u542C\u6D41\u8840\u5C42\u6570\u662F\u5426\u5230\u8FBE5\u5C42"
     - Name: BuffData
       Entry: 7
-      Data: 11|ETModel.ListenBuffCallBackBuffData, Unity.Model
+      Data: 20|ETModel.ListenBuffCallBackBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874259775511
@@ -1073,7 +1850,7 @@ MonoBehaviour:
       Data: false
     - Name: EventIds
       Entry: 7
-      Data: 12|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+      Data: 21|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
@@ -1104,11 +1881,11 @@ MonoBehaviour:
       Data: 0
     - Name: ValueToBeChanged
       Entry: 7
-      Data: 13|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      Data: 22|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 14|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      Data: 23|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -1124,11 +1901,11 @@ MonoBehaviour:
       Data: 
     - Name: AdditionValue
       Entry: 7
-      Data: 15|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+      Data: 24|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
         Unity.Model],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 16|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+      Data: 25|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
         Unity.Model]], mscorlib
     - Name: 
       Entry: 12
@@ -1159,18 +1936,18 @@ MonoBehaviour:
       Data: 
     - Name: ListenBuffEventNormal
       Entry: 7
-      Data: 17|ETModel.ListenBuffEvent_CheckOverlay, Unity.Model
+      Data: 26|ETModel.ListenBuffEvent_CheckOverlay, Unity.Model
     - Name: BuffInfoWillBeAdded
       Entry: 7
-      Data: 18|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+      Data: 27|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 19|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+      Data: 28|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -1214,196 +1991,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10001
-    - Name: $v
-      Entry: 7
-      Data: 20|ETModel.NormalBuffNodeData, Unity.Model
-    - Name: NodeId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_BindHemorrhage_Buff
-    - Name: Value
-      Entry: 3
-      Data: 10001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BuffDes
-      Entry: 1
-      Data: "\u7ED9\u654C\u4EBA\u52A0\u6D41\u8840Buff"
-    - Name: BuffData
-      Entry: 7
-      Data: 21|ETModel.BindStateBuffData, Unity.Model
-    - Name: BelongToBuffDataSupportorId
-      Entry: 3
-      Data: 104935135445043
-    - Name: BuffId
-      Entry: 3
-      Data: 104874245292054
-    - Name: BelongToSkillId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: BelongToSkillId
-    - Name: Value
-      Entry: 3
-      Data: 10001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BelongBuffSystemType
-      Entry: 3
-      Data: 3
-    - Name: BuffTargetTypes
-      Entry: 3
-      Data: 4
-    - Name: BuffBaseType
-      Entry: 3
-      Data: 0
-    - Name: SpriteABInfo
-      Entry: 6
-      Data: 
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
-    - Name: EventIds
-      Entry: 7
-      Data: 22|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: ETModel.VTD_EventId, Unity.Model
-    - Name: Value
-      Entry: 1
-      Data: Darius_HemorrhageCast
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: CanOverlay
-      Entry: 5
-      Data: false
-    - Name: TargetOverlay
-      Entry: 3
-      Data: 1
-    - Name: MaxOverlay
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
-      Entry: 3
-      Data: 0
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: BaseBuffBaseDataEffectTypes
-      Entry: 3
-      Data: 0
-    - Name: ValueToBeChanged
-      Entry: 7
-      Data: 23|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 24|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AdditionValue
-      Entry: 7
-      Data: 25|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
-        Unity.Model],[System.Single, mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 26|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
-        Unity.Model]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: OriBuff
-      Entry: 7
-      Data: 27|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 28|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_BindHemorrhageSustainDamge_Buff
-    - Name: Value
-      Entry: 3
-      Data: 10002
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10005
+      Data: 10006
     - Name: $v
       Entry: 7
       Data: 29|ETModel.NormalBuffNodeData, Unity.Model
@@ -1412,25 +2000,25 @@ MonoBehaviour:
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
       Entry: 1
-      Data: Darius_ListenHemorrhageCast_Buff
+      Data: Darius_RefreshFullAngry_Buff
     - Name: Value
       Entry: 3
-      Data: 10005
+      Data: 10006
     - Name: 
       Entry: 8
       Data: 
     - Name: BuffDes
       Entry: 1
-      Data: "\u76D1\u542C\u6D41\u8840Buff\u7684\u89E6\u53D1\u4E8B\u4EF6"
+      Data: "\u5237\u65B0\u6307\u5B9ABuff\u65F6\u95F4Buff"
     - Name: BuffData
       Entry: 7
-      Data: 30|ETModel.ListenBuffCallBackBuffData, Unity.Model
+      Data: 30|ETModel.RefreshTargetBuffTimeBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
-      Data: 104874428137524
+      Data: 104958845714474
     - Name: BelongToSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -1445,13 +2033,13 @@ MonoBehaviour:
       Data: 
     - Name: BelongBuffSystemType
       Entry: 3
-      Data: 2
+      Data: 7
     - Name: BuffTargetTypes
       Entry: 3
       Data: 2
     - Name: BuffBaseType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: SpriteABInfo
       Entry: 6
       Data: 
@@ -1482,7 +2070,7 @@ MonoBehaviour:
       Data: 0
     - Name: SustainTime
       Entry: 3
-      Data: 5000
+      Data: 0
     - Name: BuffWorkType
       Entry: 3
       Data: 0
@@ -1535,6 +2123,177 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: TheBuffNodeIdToBeRefreshed
+      Entry: 7
+      Data: 36|System.Collections.Generic.List`1[[ETModel.VTD_Id, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_ListenHemorrhageCast_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10005
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10005
+    - Name: $v
+      Entry: 7
+      Data: 37|ETModel.NormalBuffNodeData, Unity.Model
+    - Name: NodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_ListenHemorrhageCast_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10005
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BuffDes
+      Entry: 1
+      Data: "\u76D1\u542C\u6D41\u8840Buff\u7684\u89E6\u53D1\u4E8B\u4EF6"
+    - Name: BuffData
+      Entry: 7
+      Data: 38|ETModel.ListenBuffCallBackBuffData, Unity.Model
+    - Name: BelongToBuffDataSupportorId
+      Entry: 3
+      Data: 104959540396084
+    - Name: BuffId
+      Entry: 3
+      Data: 104959416205423
+    - Name: BelongToSkillId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: BelongToSkillId
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BelongBuffSystemType
+      Entry: 3
+      Data: 2
+    - Name: BuffTargetTypes
+      Entry: 3
+      Data: 2
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: EventIds
+      Entry: 7
+      Data: 39|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CanOverlay
+      Entry: 5
+      Data: false
+    - Name: TargetOverlay
+      Entry: 3
+      Data: 1
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 0
+    - Name: SustainTime
+      Entry: 3
+      Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
+    - Name: BaseBuffBaseDataEffectTypes
+      Entry: 3
+      Data: 0
+    - Name: ValueToBeChanged
+      Entry: 7
+      Data: 40|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 41|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AdditionValue
+      Entry: 7
+      Data: 42|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+        Unity.Model],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 43|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: EventId
       Entry: 7
       Data: ETModel.VTD_EventId, Unity.Model
@@ -1546,18 +2305,18 @@ MonoBehaviour:
       Data: 
     - Name: ListenBuffEventNormal
       Entry: 7
-      Data: 36|ETModel.ListenBuffEvent_Normal, Unity.Model
+      Data: 44|ETModel.ListenBuffEvent_Normal, Unity.Model
     - Name: BuffInfoWillBeAdded
       Entry: 7
-      Data: 37|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+      Data: 45|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 38|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+      Data: 46|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -1572,6 +2331,27 @@ MonoBehaviour:
     - Name: Layers
       Entry: 3
       Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 47|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_RefreshFullAngry_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10006
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -1601,42 +2381,42 @@ MonoBehaviour:
       Data: 
     - Name: NpDataSupportorBase
       Entry: 7
-      Data: 39|ETModel.NP_DataSupportorBase, Unity.Model
+      Data: 48|ETModel.NP_DataSupportorBase, Unity.Model
     - Name: RootId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: NP_DataSupportorDic
       Entry: 7
-      Data: 40|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
+      Data: 49|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 41|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
+      Data: 50|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 11
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396074
     - Name: $v
       Entry: 7
-      Data: 42|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 51|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396074
     - Name: NodeType
       Entry: 3
       Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 43|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 52|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1648,10 +2428,10 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u6DFB\u52A0\u88AB\u52A8Buff"
+      Data: "\u521D\u59CB\u5316\u884C\u4E3A\u6811"
     - Name: NpClassForStoreAction
       Entry: 7
-      Data: 44|ETModel.NP_InitTreeAction, Unity.Model
+      Data: 53|ETModel.NP_MacroAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1669,14 +2449,14 @@ MonoBehaviour:
       Data: 
     - Name: NpClassForStoreActions
       Entry: 7
-      Data: 45|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+      Data: 54|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
         Unity.Model]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 46|ETModel.NP_AddBuffAction, Unity.Model
+      Data: 55|ETModel.NP_AddBuffAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1694,8 +2474,8 @@ MonoBehaviour:
       Data: 
     - Name: BuffDataInfo
       Entry: 7
-      Data: 47|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+      Data: 56|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -1736,19 +2516,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445038
+      Data: 104959540396075
     - Name: $v
       Entry: 7
-      Data: 48|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 57|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445038
+      Data: 104959540396075
     - Name: NodeType
       Entry: 3
       Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 49|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 58|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1760,10 +2540,10 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u4E3A\u76EE\u6807Unit\u6DFB\u52A0\u6D41\u8840Buff"
+      Data: "\u9632\u6B62\u91CD\u590D\u521D\u59CB\u5316\u884C\u4E3A\u6811"
     - Name: NpClassForStoreAction
       Entry: 7
-      Data: 50|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+      Data: 59|ETModel.NP_ChangeBlackValueAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -1779,54 +2559,24 @@ MonoBehaviour:
     - Name: Func2
       Entry: 6
       Data: 
-    - Name: BuffDataInfo
-      Entry: 7
-      Data: 51|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_BindHemorrhage_Buff
-    - Name: Value
-      Entry: 3
-      Data: 10001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 52|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 60|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
-      Data: Darius_QOutTargets
+      Data: HasInitTree
     - Name: NP_BBValueType
       Entry: 1
-      Data: System.Collections.Generic.List`1[System.Int64]
+      Data: System.Boolean
     - Name: WriteOrCompareToBB
       Entry: 5
-      Data: false
+      Data: true
     - Name: NP_BBValue
       Entry: 7
-      Data: 53|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 61|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
-      Entry: 7
-      Data: 54|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -1847,25 +2597,22 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396076
     - Name: $v
       Entry: 7
-      Data: 55|ETModel.NP_BlackboardMultipleConditionsNodeData, Unity.Model
+      Data: 62|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396076
     - Name: NodeType
       Entry: 3
-      Data: 1
+      Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 56|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 63|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 104935135445038
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -1874,23 +2621,513 @@ MonoBehaviour:
       Data: 
     - Name: NodeDes
       Entry: 1
-      Data: "\u9ED1\u677F\u591A\u6761\u4EF6\u8282\u70B9"
-    - Name: MatchInfos
+      Data: "\u5BF9\u6240\u6709\u6570\u636E\u8FDB\u884C\u64CD\u4F5C"
+    - Name: NpClassForStoreAction
       Entry: 7
-      Data: 57|System.Collections.Generic.List`1[[NPBehave.MatchInfo, Unity.Model]],
-        mscorlib
+      Data: 64|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreActions
+      Entry: 7
+      Data: 65|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+        Unity.Model]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: 58|NPBehave.MatchInfo, Unity.Model
+      Data: 66|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 67|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 59|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 68|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
-      Data: Darius_Q_OutHit
+      Data: NormalAttackUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 69|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 70|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 71|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 72|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 73|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 74|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 75|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 76|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 77|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 78|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 79|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 80|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396077
+    - Name: $v
+      Entry: 7
+      Data: 81|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396077
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 82|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u91CD\u7F6E\u6570\u636E"
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 83|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreActions
+      Entry: 7
+      Data: 84|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 85|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 86|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 87|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 88|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 89|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 90|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: NormalAttackUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 91|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 92|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 93|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 94|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 95|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 96|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 97|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 98|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutIsHitUnit
     - Name: NP_BBValueType
       Entry: 1
       Data: System.Boolean
@@ -1899,61 +3136,40 @@ MonoBehaviour:
       Data: true
     - Name: NP_BBValue
       Entry: 7
-      Data: 60|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 99|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: Operator
-      Entry: 3
-      Data: 2
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 61|NPBehave.MatchInfo, Unity.Model
+      Data: 100|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 62|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: Darius_NormalAttack
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Boolean
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: true
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 63|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Operator
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 64|NPBehave.MatchInfo, Unity.Model
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 65|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 101|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
       Data: Darius_R_Normal
@@ -1965,7 +3181,287 @@ MonoBehaviour:
       Data: true
     - Name: NP_BBValue
       Entry: 7
-      Data: 66|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 102|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 103|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 104|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: CastNormalAttack
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 105|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396078
+    - Name: $v
+      Entry: 7
+      Data: 106|ETModel.NP_SequenceNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396078
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: LinkedIds
+      Entry: 7
+      Data: 107|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104959540396076
+    - Name: 
+      Entry: 3
+      Data: 104959540396077
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5E8F\u5217\u7EC4\u5408\u5668"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396079
+    - Name: $v
+      Entry: 7
+      Data: 108|ETModel.NP_SequenceNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396079
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: LinkedIds
+      Entry: 7
+      Data: 109|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104959540396074
+    - Name: 
+      Entry: 3
+      Data: 104959540396075
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5E8F\u5217\u7EC4\u5408\u5668"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396080
+    - Name: $v
+      Entry: 7
+      Data: 110|ETModel.NP_BlackboardMultipleConditionsNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396080
+    - Name: NodeType
+      Entry: 3
+      Data: 1
+    - Name: LinkedIds
+      Entry: 7
+      Data: 111|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 104959540396078
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u9ED1\u677F\u591A\u6761\u4EF6\u8282\u70B9"
+    - Name: MatchInfos
+      Entry: 7
+      Data: 112|System.Collections.Generic.List`1[[NPBehave.MatchInfo, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 113|NPBehave.MatchInfo, Unity.Model
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 114|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutIsHitUnit
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 115|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Operator
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 116|NPBehave.MatchInfo, Unity.Model
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 117|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: CastNormalAttack
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 118|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Operator
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 119|NPBehave.MatchInfo, Unity.Model
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 120|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_Normal
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 121|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: true
@@ -2004,19 +3500,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: $v
       Entry: 7
-      Data: 67|ETModel.NP_WaitUntilStoppedData, Unity.Model
+      Data: 122|ETModel.NP_WaitUntilStoppedData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: NodeType
       Entry: 3
       Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 68|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 123|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2040,25 +3536,25 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: $v
       Entry: 7
-      Data: 69|ETModel.NP_BlackboardConditionNodeData, Unity.Model
+      Data: 124|ETModel.NP_BlackboardConditionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: NodeType
       Entry: 3
       Data: 1
     - Name: LinkedIds
       Entry: 7
-      Data: 70|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 125|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396079
     - Name: 
       Entry: 13
       Data: 
@@ -2076,7 +3572,7 @@ MonoBehaviour:
       Data: 4
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 71|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 126|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
       Data: HasInitTree
@@ -2088,7 +3584,7 @@ MonoBehaviour:
       Data: true
     - Name: NP_BBValue
       Entry: 7
-      Data: 72|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 127|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -2109,31 +3605,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: $v
       Entry: 7
-      Data: 73|ETModel.NP_SelectorNodeData, Unity.Model
+      Data: 128|ETModel.NP_SelectorNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: NodeType
       Entry: 3
       Data: 0
     - Name: LinkedIds
       Entry: 7
-      Data: 74|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 129|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: 
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396080
     - Name: 
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: 
       Entry: 13
       Data: 
@@ -2154,25 +3650,25 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: $v
       Entry: 7
-      Data: 75|ETModel.NP_RootNodeData, Unity.Model
+      Data: 130|ETModel.NP_RootNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: NodeType
       Entry: 3
       Data: 1
     - Name: LinkedIds
       Entry: 7
-      Data: 76|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 131|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: 
       Entry: 13
       Data: 
@@ -2199,30 +3695,39 @@ MonoBehaviour:
       Data: 
     - Name: NP_BBValueManager
       Entry: 7
-      Data: 77|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
+      Data: 132|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 78|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 133|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_Q_OutHit
+      Data: NormalAttackUnitIds
     - Name: $v
       Entry: 7
-      Data: 79|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 134|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
-      Entry: 5
-      Data: false
+      Entry: 7
+      Data: 135|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -2234,10 +3739,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_NormalAttack
+      Data: CastNormalAttack
     - Name: $v
       Entry: 7
-      Data: 80|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 136|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -2255,7 +3760,7 @@ MonoBehaviour:
       Data: Darius_R_Normal
     - Name: $v
       Entry: 7
-      Data: 81|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 137|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -2273,7 +3778,7 @@ MonoBehaviour:
       Data: HasInitTree
     - Name: $v
       Entry: 7
-      Data: 82|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 138|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -2288,13 +3793,58 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_QOutTargets
+      Data: Darius_QOutIsHitUnit
     - Name: $v
       Entry: 7
-      Data: 83|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 139|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: $v
+      Entry: 7
+      Data: 140|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
       Entry: 7
-      Data: 84|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 141|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: $v
+      Entry: 7
+      Data: 142|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 143|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -2324,21 +3874,210 @@ MonoBehaviour:
       Data: 
     - Name: MNpDataSupportor1
       Entry: 7
-      Data: 85|ETModel.NP_DataSupportor, Unity.Model
-    - Name: BuffDataDic
+      Data: 144|ETModel.NP_DataSupportor, Unity.Model
+    - Name: BuffNodeDataDic
       Entry: 7
-      Data: 86|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
+      Data: 145|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.BuffNodeDataBase,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 87|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
+      Data: 146|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10001
+    - Name: $v
+      Entry: 7
+      Data: 147|ETModel.NormalBuffNodeData, Unity.Model
+    - Name: NodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BuffDes
+      Entry: 6
+      Data: 
+    - Name: BuffData
+      Entry: 7
+      Data: 148|ETModel.BindStateBuffData, Unity.Model
+    - Name: BelongToBuffDataSupportorId
+      Entry: 3
+      Data: 104959540396084
+    - Name: BuffId
+      Entry: 3
+      Data: 104874245292054
+    - Name: BelongToSkillId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: BelongBuffSystemType
+      Entry: 3
+      Data: 3
+    - Name: BuffTargetTypes
+      Entry: 3
       Data: 4
+    - Name: BuffBaseType
+      Entry: 3
+      Data: 0
+    - Name: SpriteABInfo
+      Entry: 6
+      Data: 
+    - Name: Base_isVisualable
+      Entry: 5
+      Data: false
+    - Name: EventIds
+      Entry: 7
+      Data: 149|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: ETModel.VTD_EventId, Unity.Model
+    - Name: Value
+      Entry: 1
+      Data: Darius_HemorrhageCast
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CanOverlay
+      Entry: 5
+      Data: true
+    - Name: TargetOverlay
+      Entry: 3
+      Data: 1
+    - Name: MaxOverlay
+      Entry: 3
+      Data: 5
+    - Name: SustainTime
+      Entry: 3
+      Data: 5000
+    - Name: BuffWorkType
+      Entry: 3
+      Data: 0
+    - Name: BaseBuffBaseDataEffectTypes
+      Entry: 3
+      Data: 0
+    - Name: ValueToBeChanged
+      Entry: 7
+      Data: 150|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 151|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AdditionValue
+      Entry: 7
+      Data: 152|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+        Unity.Model],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 153|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: OriBuff
+      Entry: 7
+      Data: 154|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 155|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10002
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
       Data: 
@@ -2347,7 +4086,7 @@ MonoBehaviour:
       Data: 10002
     - Name: $v
       Entry: 7
-      Data: 88|ETModel.NormalBuffNodeData, Unity.Model
+      Data: 156|ETModel.NormalBuffNodeData, Unity.Model
     - Name: NodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -2365,10 +4104,10 @@ MonoBehaviour:
       Data: 
     - Name: BuffData
       Entry: 7
-      Data: 89|ETModel.SustainDamageBuffData, Unity.Model
+      Data: 157|ETModel.SustainDamageBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874244374549
@@ -2401,7 +4140,7 @@ MonoBehaviour:
       Data: false
     - Name: EventIds
       Entry: 7
-      Data: 90|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+      Data: 158|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
@@ -2429,18 +4168,14 @@ MonoBehaviour:
       Data: 134217728
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
-      Data: 18
+      Data: 16
     - Name: ValueToBeChanged
       Entry: 7
-      Data: 91|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      Data: 159|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
-      Entry: 7
-      Data: 92|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 9
+      Data: 151
     - Name: 
       Entry: 12
       Data: 5
@@ -2512,21 +4247,11 @@ MonoBehaviour:
       Data: 
     - Name: AdditionValue
       Entry: 7
-      Data: 93|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+      Data: 160|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
         Unity.Model],[System.Single, mscorlib]], mscorlib
     - Name: comparer
-      Entry: 7
-      Data: 94|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
-        Unity.Model]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 9
+      Data: 153
     - Name: 
       Entry: 12
       Data: 1
@@ -2550,13 +4275,13 @@ MonoBehaviour:
       Data: 
     - Name: BuffDamageTypes
       Entry: 3
-      Data: 0
+      Data: 52
     - Name: DamageFix
       Entry: 4
       Data: 1
     - Name: WorkInternal
       Entry: 3
-      Data: 0
+      Data: 1000
     - Name: 
       Entry: 8
       Data: 
@@ -2574,7 +4299,7 @@ MonoBehaviour:
       Data: 10003
     - Name: $v
       Entry: 7
-      Data: 95|ETModel.NormalBuffNodeData, Unity.Model
+      Data: 161|ETModel.NormalBuffNodeData, Unity.Model
     - Name: NodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -2592,10 +4317,10 @@ MonoBehaviour:
       Data: 
     - Name: BuffData
       Entry: 7
-      Data: 96|ETModel.ListenBuffCallBackBuffData, Unity.Model
+      Data: 162|ETModel.ListenBuffCallBackBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874259775511
@@ -2628,7 +4353,7 @@ MonoBehaviour:
       Data: false
     - Name: EventIds
       Entry: 7
-      Data: 97|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+      Data: 163|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
@@ -2659,11 +4384,11 @@ MonoBehaviour:
       Data: 0
     - Name: ValueToBeChanged
       Entry: 7
-      Data: 98|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      Data: 164|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 92
+      Data: 151
     - Name: 
       Entry: 12
       Data: 0
@@ -2675,11 +4400,11 @@ MonoBehaviour:
       Data: 
     - Name: AdditionValue
       Entry: 7
-      Data: 99|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+      Data: 165|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
         Unity.Model],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 94
+      Data: 153
     - Name: 
       Entry: 12
       Data: 0
@@ -2700,18 +4425,18 @@ MonoBehaviour:
       Data: 
     - Name: ListenBuffEventNormal
       Entry: 7
-      Data: 100|ETModel.ListenBuffEvent_CheckOverlay, Unity.Model
+      Data: 166|ETModel.ListenBuffEvent_CheckOverlay, Unity.Model
     - Name: BuffInfoWillBeAdded
       Entry: 7
-      Data: 101|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+      Data: 167|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 102|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+      Data: 168|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -2755,10 +4480,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10001
+      Data: 10006
     - Name: $v
       Entry: 7
-      Data: 103|ETModel.NormalBuffNodeData, Unity.Model
+      Data: 169|ETModel.NormalBuffNodeData, Unity.Model
     - Name: NodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -2767,7 +4492,7 @@ MonoBehaviour:
       Data: 
     - Name: Value
       Entry: 3
-      Data: 10001
+      Data: 10006
     - Name: 
       Entry: 8
       Data: 
@@ -2776,13 +4501,13 @@ MonoBehaviour:
       Data: 
     - Name: BuffData
       Entry: 7
-      Data: 104|ETModel.BindStateBuffData, Unity.Model
+      Data: 170|ETModel.RefreshTargetBuffTimeBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
-      Data: 104874245292054
+      Data: 104958845714474
     - Name: BelongToSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -2797,13 +4522,13 @@ MonoBehaviour:
       Data: 
     - Name: BelongBuffSystemType
       Entry: 3
-      Data: 3
+      Data: 7
     - Name: BuffTargetTypes
       Entry: 3
-      Data: 4
+      Data: 2
     - Name: BuffBaseType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: SpriteABInfo
       Entry: 6
       Data: 
@@ -2812,20 +4537,11 @@ MonoBehaviour:
       Data: false
     - Name: EventIds
       Entry: 7
-      Data: 105|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+      Data: 171|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: ETModel.VTD_EventId, Unity.Model
-    - Name: Value
-      Entry: 1
-      Data: Darius_HemorrhageCast
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -2852,11 +4568,11 @@ MonoBehaviour:
       Data: 0
     - Name: ValueToBeChanged
       Entry: 7
-      Data: 106|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      Data: 172|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 92
+      Data: 151
     - Name: 
       Entry: 12
       Data: 0
@@ -2868,11 +4584,11 @@ MonoBehaviour:
       Data: 
     - Name: AdditionValue
       Entry: 7
-      Data: 107|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+      Data: 173|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
         Unity.Model],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 94
+      Data: 153
     - Name: 
       Entry: 12
       Data: 0
@@ -2882,17 +4598,14 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: OriBuff
+    - Name: TheBuffNodeIdToBeRefreshed
       Entry: 7
-      Data: 108|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+      Data: 174|System.Collections.Generic.List`1[[ETModel.VTD_Id, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
-      Entry: 7
-      Data: 109|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -2900,13 +4613,7 @@ MonoBehaviour:
       Data: 
     - Name: Value
       Entry: 3
-      Data: 10002
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 1
+      Data: 10005
     - Name: 
       Entry: 8
       Data: 
@@ -2933,7 +4640,7 @@ MonoBehaviour:
       Data: 10005
     - Name: $v
       Entry: 7
-      Data: 110|ETModel.NormalBuffNodeData, Unity.Model
+      Data: 175|ETModel.NormalBuffNodeData, Unity.Model
     - Name: NodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -2951,13 +4658,13 @@ MonoBehaviour:
       Data: 
     - Name: BuffData
       Entry: 7
-      Data: 111|ETModel.ListenBuffCallBackBuffData, Unity.Model
+      Data: 176|ETModel.ListenBuffCallBackBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
-      Data: 104874428137524
+      Data: 104959416205423
     - Name: BelongToSkillId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
@@ -2987,7 +4694,7 @@ MonoBehaviour:
       Data: false
     - Name: EventIds
       Entry: 7
-      Data: 112|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
+      Data: 177|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
@@ -3018,11 +4725,11 @@ MonoBehaviour:
       Data: 0
     - Name: ValueToBeChanged
       Entry: 7
-      Data: 113|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      Data: 178|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 92
+      Data: 151
     - Name: 
       Entry: 12
       Data: 0
@@ -3034,11 +4741,11 @@ MonoBehaviour:
       Data: 
     - Name: AdditionValue
       Entry: 7
-      Data: 114|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
+      Data: 179|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
         Unity.Model],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 94
+      Data: 153
     - Name: 
       Entry: 12
       Data: 0
@@ -3059,18 +4766,18 @@ MonoBehaviour:
       Data: 
     - Name: ListenBuffEventNormal
       Entry: 7
-      Data: 115|ETModel.ListenBuffEvent_Normal, Unity.Model
+      Data: 180|ETModel.ListenBuffEvent_Normal, Unity.Model
     - Name: BuffInfoWillBeAdded
       Entry: 7
-      Data: 116|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
+      Data: 181|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 117|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+      Data: 182|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -3085,6 +4792,27 @@ MonoBehaviour:
     - Name: Layers
       Entry: 3
       Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 183|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10006
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3114,38 +4842,38 @@ MonoBehaviour:
       Data: 
     - Name: NpDataSupportorBase
       Entry: 7
-      Data: 118|ETModel.NP_DataSupportorBase, Unity.Model
+      Data: 184|ETModel.NP_DataSupportorBase, Unity.Model
     - Name: RootId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: NP_DataSupportorDic
       Entry: 7
-      Data: 119|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
+      Data: 185|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.NP_NodeDataBase,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 87
+      Data: 146
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 11
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396074
     - Name: $v
       Entry: 7
-      Data: 120|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 186|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396074
     - Name: NodeType
       Entry: 3
       Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 121|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 187|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3160,7 +4888,7 @@ MonoBehaviour:
       Data: 
     - Name: NpClassForStoreAction
       Entry: 7
-      Data: 122|ETModel.NP_InitTreeAction, Unity.Model
+      Data: 188|ETModel.NP_MacroAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -3178,14 +4906,14 @@ MonoBehaviour:
       Data: 
     - Name: NpClassForStoreActions
       Entry: 7
-      Data: 123|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+      Data: 189|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
         Unity.Model]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 124|ETModel.NP_AddBuffAction, Unity.Model
+      Data: 190|ETModel.NP_AddBuffAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -3203,8 +4931,8 @@ MonoBehaviour:
       Data: 
     - Name: BuffDataInfo
       Entry: 7
-      Data: 125|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+      Data: 191|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -3245,19 +4973,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445038
+      Data: 104959540396075
     - Name: $v
       Entry: 7
-      Data: 126|ETModel.NP_ActionNodeData, Unity.Model
+      Data: 192|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445038
+      Data: 104959540396075
     - Name: NodeType
       Entry: 3
       Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 127|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 193|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3272,7 +5000,7 @@ MonoBehaviour:
       Data: 
     - Name: NpClassForStoreAction
       Entry: 7
-      Data: 128|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+      Data: 194|ETModel.NP_ChangeBlackValueAction, Unity.Model
     - Name: Unitid
       Entry: 3
       Data: 0
@@ -3288,54 +5016,24 @@ MonoBehaviour:
     - Name: Func2
       Entry: 6
       Data: 
-    - Name: BuffDataInfo
-      Entry: 7
-      Data: 129|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 6
-      Data: 
-    - Name: Value
-      Entry: 3
-      Data: 10001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 130|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 195|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
-      Data: Darius_QOutTargets
+      Data: HasInitTree
     - Name: NP_BBValueType
       Entry: 1
-      Data: System.Collections.Generic.List`1[System.Int64]
+      Data: System.Boolean
     - Name: WriteOrCompareToBB
       Entry: 5
       Data: false
     - Name: NP_BBValue
       Entry: 7
-      Data: 131|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 196|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
-      Entry: 7
-      Data: 132|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -3356,25 +5054,22 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396076
     - Name: $v
       Entry: 7
-      Data: 133|ETModel.NP_BlackboardMultipleConditionsNodeData, Unity.Model
+      Data: 197|ETModel.NP_ActionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396076
     - Name: NodeType
       Entry: 3
-      Data: 1
+      Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 134|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 198|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 104935135445038
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -3384,22 +5079,512 @@ MonoBehaviour:
     - Name: NodeDes
       Entry: 6
       Data: 
-    - Name: MatchInfos
+    - Name: NpClassForStoreAction
       Entry: 7
-      Data: 135|System.Collections.Generic.List`1[[NPBehave.MatchInfo, Unity.Model]],
-        mscorlib
+      Data: 199|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreActions
+      Entry: 7
+      Data: 200|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+        Unity.Model]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: 136|NPBehave.MatchInfo, Unity.Model
+      Data: 201|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 202|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 137|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 203|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
-      Data: Darius_Q_OutHit
+      Data: NormalAttackUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 204|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 205|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 206|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 207|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 208|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 209|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 210|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 211|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 212|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 6
+      Data: 
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 213|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 214|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 215|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396077
+    - Name: $v
+      Entry: 7
+      Data: 216|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396077
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 217|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 218|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreActions
+      Entry: 7
+      Data: 219|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 220|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 221|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 222|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 223|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 224|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 225|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: NormalAttackUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 226|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 227|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 228|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 229|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 230|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 231|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 232|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 233|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutIsHitUnit
     - Name: NP_BBValueType
       Entry: 1
       Data: System.Boolean
@@ -3408,61 +5593,40 @@ MonoBehaviour:
       Data: false
     - Name: NP_BBValue
       Entry: 7
-      Data: 138|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 234|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Operator
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 139|NPBehave.MatchInfo, Unity.Model
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 140|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: Darius_NormalAttack
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Boolean
-    - Name: WriteOrCompareToBB
       Entry: 5
       Data: false
-    - Name: NP_BBValue
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 7
-      Data: 141|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Operator
+      Data: 235|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
       Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 7
-      Data: 142|NPBehave.MatchInfo, Unity.Model
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 143|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 236|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
       Data: Darius_R_Normal
@@ -3474,7 +5638,287 @@ MonoBehaviour:
       Data: false
     - Name: NP_BBValue
       Entry: 7
-      Data: 144|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 237|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 238|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 239|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: CastNormalAttack
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 240|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396078
+    - Name: $v
+      Entry: 7
+      Data: 241|ETModel.NP_SequenceNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396078
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: LinkedIds
+      Entry: 7
+      Data: 242|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104959540396076
+    - Name: 
+      Entry: 3
+      Data: 104959540396077
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396079
+    - Name: $v
+      Entry: 7
+      Data: 243|ETModel.NP_SequenceNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396079
+    - Name: NodeType
+      Entry: 3
+      Data: 0
+    - Name: LinkedIds
+      Entry: 7
+      Data: 244|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 104959540396074
+    - Name: 
+      Entry: 3
+      Data: 104959540396075
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 104959540396080
+    - Name: $v
+      Entry: 7
+      Data: 245|ETModel.NP_BlackboardMultipleConditionsNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396080
+    - Name: NodeType
+      Entry: 3
+      Data: 1
+    - Name: LinkedIds
+      Entry: 7
+      Data: 246|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 104959540396078
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 6
+      Data: 
+    - Name: MatchInfos
+      Entry: 7
+      Data: 247|System.Collections.Generic.List`1[[NPBehave.MatchInfo, Unity.Model]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 248|NPBehave.MatchInfo, Unity.Model
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 249|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutIsHitUnit
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 250|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Operator
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 251|NPBehave.MatchInfo, Unity.Model
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 252|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: CastNormalAttack
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 253|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Operator
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 254|NPBehave.MatchInfo, Unity.Model
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 255|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_Normal
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 256|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: true
@@ -3513,19 +5957,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: $v
       Entry: 7
-      Data: 145|ETModel.NP_WaitUntilStoppedData, Unity.Model
+      Data: 257|ETModel.NP_WaitUntilStoppedData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: NodeType
       Entry: 3
       Data: 2
     - Name: LinkedIds
       Entry: 7
-      Data: 146|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 258|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3549,25 +5993,25 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: $v
       Entry: 7
-      Data: 147|ETModel.NP_BlackboardConditionNodeData, Unity.Model
+      Data: 259|ETModel.NP_BlackboardConditionNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: NodeType
       Entry: 3
       Data: 1
     - Name: LinkedIds
       Entry: 7
-      Data: 148|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 260|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445037
+      Data: 104959540396079
     - Name: 
       Entry: 13
       Data: 
@@ -3585,7 +6029,7 @@ MonoBehaviour:
       Data: 4
     - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 149|ETModel.NP_BlackBoardRelationData, Unity.Model
+      Data: 261|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
       Data: HasInitTree
@@ -3597,7 +6041,7 @@ MonoBehaviour:
       Data: false
     - Name: NP_BBValue
       Entry: 7
-      Data: 150|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 262|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -3618,31 +6062,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: $v
       Entry: 7
-      Data: 151|ETModel.NP_SelectorNodeData, Unity.Model
+      Data: 263|ETModel.NP_SelectorNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: NodeType
       Entry: 3
       Data: 0
     - Name: LinkedIds
       Entry: 7
-      Data: 152|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 264|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: 
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396080
     - Name: 
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: 
       Entry: 13
       Data: 
@@ -3663,25 +6107,25 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: $v
       Entry: 7
-      Data: 153|ETModel.NP_RootNodeData, Unity.Model
+      Data: 265|ETModel.NP_RootNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: NodeType
       Entry: 3
       Data: 1
     - Name: LinkedIds
       Entry: 7
-      Data: 154|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 266|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: 
       Entry: 13
       Data: 
@@ -3708,30 +6152,39 @@ MonoBehaviour:
       Data: 
     - Name: NP_BBValueManager
       Entry: 7
-      Data: 155|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
+      Data: 267|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ETModel.BBValues.ANP_BBValue,
         Unity.Model]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 156|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 268|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_Q_OutHit
+      Data: NormalAttackUnitIds
     - Name: $v
       Entry: 7
-      Data: 157|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 269|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
-      Entry: 5
-      Data: false
+      Entry: 7
+      Data: 270|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -3743,10 +6196,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_NormalAttack
+      Data: CastNormalAttack
     - Name: $v
       Entry: 7
-      Data: 158|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 271|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -3764,7 +6217,7 @@ MonoBehaviour:
       Data: Darius_R_Normal
     - Name: $v
       Entry: 7
-      Data: 159|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 272|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -3782,7 +6235,7 @@ MonoBehaviour:
       Data: HasInitTree
     - Name: $v
       Entry: 7
-      Data: 160|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 273|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
     - Name: Value
       Entry: 5
       Data: false
@@ -3797,13 +6250,58 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_QOutTargets
+      Data: Darius_QOutIsHitUnit
     - Name: $v
       Entry: 7
-      Data: 161|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 274|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: $v
+      Entry: 7
+      Data: 275|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
       Entry: 7
-      Data: 162|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 276|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: $v
+      Entry: 7
+      Data: 277|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 278|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3836,25 +6334,30 @@ MonoBehaviour:
   saveName: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_Server\Server_Darius_Hemorrhage
   savePath: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\NPBehave_Server\Server_Darius_Hemorrhage.asset
   nodes:
+  - {fileID: -2623259274970966175}
   - {fileID: 1237940189421271898}
   - {fileID: 8144643241280076461}
   - {fileID: -1715738202907026958}
-  - {fileID: 2718509820946187046}
+  - {fileID: -3238531819078989325}
+  - {fileID: -7196133465600089667}
+  - {fileID: 6633864101604099091}
+  - {fileID: 6236675664782212435}
+  - {fileID: -8274820457381375686}
+  - {fileID: 2933893089114324976}
+  - {fileID: 7292932585800559809}
+  - {fileID: 9098132212135405639}
   - {fileID: 4447158310783960981}
   - {fileID: -3780318256159628981}
-  - {fileID: 9098132212135405639}
-  - {fileID: 6395221889597461844}
-  - {fileID: 6236675664782212435}
-  - {fileID: -3238531819078989325}
-  - {fileID: -2256545890192384875}
+  - {fileID: -5811845753790790274}
+  - {fileID: -3860965695840862382}
   nodesForDelete: []
   groups:
   - rect:
       serializedVersion: 2
       x: -367.8
-      y: -243.59998
-      width: 1252
-      height: 614.8
+      y: -483.39996
+      width: 1247.6
+      height: 852.4
     title: "\u6280\u80FD\u903B\u8F91\u5757"
     _color: {r: 0.5507857, g: 0.43382075, b: 0.41740915, a: 1}
     TextSize: 25
@@ -3934,6 +6437,37 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
+--- !u!114 &867355776153573035
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -2623259274970966175}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: 5228138216832620544}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
 --- !u!114 &1237940189421271898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3960,7 +6494,7 @@ MonoBehaviour:
       Data: 0|ETModel.NP_RootNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: NodeType
       Entry: 3
       Data: 1
@@ -3972,7 +6506,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: 
       Entry: 13
       Data: 
@@ -3989,7 +6523,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: 103.899994, y: -192.80005}
+  position: {x: 229.90005, y: -430.80005}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 2727030988573893728}
@@ -4026,137 +6560,6 @@ MonoBehaviour:
   side: 4
   sidePosition: 30
   sideOffset: 0
---- !u!114 &2718509820946187046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776d774702fd6be4cb6108465c1b4612, type: 3}
-  m_Name: "\u6307\u5B9AUnit\u6DFB\u52A0Buff"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: NP_ActionNodeData
-      Entry: 7
-      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
-    - Name: id
-      Entry: 3
-      Data: 104935135445038
-    - Name: NodeType
-      Entry: 3
-      Data: 2
-    - Name: LinkedIds
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NodeDes
-      Entry: 1
-      Data: "\u4E3A\u76EE\u6807Unit\u6DFB\u52A0\u6D41\u8840Buff"
-    - Name: NpClassForStoreAction
-      Entry: 7
-      Data: 2|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
-    - Name: Unitid
-      Entry: 3
-      Data: 0
-    - Name: BelongtoRuntimeTree
-      Entry: 6
-      Data: 
-    - Name: Action
-      Entry: 6
-      Data: 
-    - Name: Func1
-      Entry: 6
-      Data: 
-    - Name: Func2
-      Entry: 6
-      Data: 
-    - Name: BuffDataInfo
-      Entry: 7
-      Data: 3|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_BindHemorrhage_Buff
-    - Name: Value
-      Entry: 3
-      Data: 10001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: NPBalckBoardRelationData
-      Entry: 7
-      Data: 4|ETModel.NP_BlackBoardRelationData, Unity.Model
-    - Name: BBKey
-      Entry: 1
-      Data: Darius_QOutTargets
-    - Name: NP_BBValueType
-      Entry: 1
-      Data: System.Collections.Generic.List`1[System.Int64]
-    - Name: WriteOrCompareToBB
-      Entry: 5
-      Data: false
-    - Name: NP_BBValue
-      Entry: 7
-      Data: 5|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
-    - Name: Value
-      Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: 103.29997, y: 310.00006}
-  dynamicConnectionPorts: []
-  connectionPorts:
-  - {fileID: 3448466357781322933}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 3448466357781322933}
 --- !u!114 &2727030988573893728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4188,7 +6591,139 @@ MonoBehaviour:
   side: 1
   sidePosition: 75
   sideOffset: 0
---- !u!114 &3448466357781322933
+--- !u!114 &2933893089114324976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1596362470db17b4ba3a645152cee599, type: 3}
+  m_Name: "\u5B8F\u884C\u4E3A\u8282\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396074
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u521D\u59CB\u5316\u884C\u4E3A\u6811"
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreActions
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 4|ETModel.NP_AddBuffAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 5|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_ListenHemorrhageLayers_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10003
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: -294.90002, y: 236.70006}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: -388022712510910168}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: -388022712510910168}
+--- !u!114 &3576898132634927057
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4198,7 +6733,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
+  m_Name: NextBuffType
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -4209,15 +6744,16 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  body: {fileID: 2718509820946187046}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  body: {fileID: -3860965695840862382}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextNodeDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
-  - {fileID: -5236892687000802004}
-  side: 3
-  sidePosition: 75
+  - {fileID: -4732805102246031989}
+  - {fileID: 8669811582656010616}
+  side: 2
+  sidePosition: 30
   sideOffset: 0
 --- !u!114 &4447158310783960981
 MonoBehaviour:
@@ -4263,7 +6799,7 @@ MonoBehaviour:
       Data: 1|ETModel.SustainDamageBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874244374549
@@ -4324,7 +6860,7 @@ MonoBehaviour:
       Data: 134217728
     - Name: BaseBuffBaseDataEffectTypes
       Entry: 3
-      Data: 18
+      Data: 16
     - Name: ValueToBeChanged
       Entry: 7
       Data: 3|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
@@ -4445,13 +6981,13 @@ MonoBehaviour:
       Data: 
     - Name: BuffDamageTypes
       Entry: 3
-      Data: 0
+      Data: 52
     - Name: DamageFix
       Entry: 4
       Data: 1
     - Name: WorkInternal
       Entry: 3
-      Data: 0
+      Data: 1000
     - Name: 
       Entry: 8
       Data: 
@@ -4459,7 +6995,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: 446.99985, y: 642.79974}
+  position: {x: 449.39987, y: 612.79974}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: -4732805102246031989}
@@ -4467,6 +7003,37 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevNode: {fileID: -4732805102246031989}
   NextNode: {fileID: 8478758888793955702}
+--- !u!114 &4746603814496892126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -3860965695840862382}
+  direction: 1
+  maxConnectionCount: 1
+  styleID: PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: 7061772707269282115}
+  side: 4
+  sidePosition: 30
+  sideOffset: 0
 --- !u!114 &5228138216832620544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4494,8 +7061,39 @@ MonoBehaviour:
   styleID: NPBehave_NextNodeDatas
   color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
-  - {fileID: -7626116260985324783}
+  - {fileID: 867355776153573035}
   side: 1
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &5376245769801126266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: 7292932585800559809}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -306623187996842983}
+  side: 3
   sidePosition: 75
   sideOffset: 0
 --- !u!114 &5943746912144853136
@@ -4555,7 +7153,7 @@ MonoBehaviour:
       Data: 0|ETModel.NP_BlackboardMultipleConditionsNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396080
     - Name: NodeType
       Entry: 3
       Data: 1
@@ -4567,7 +7165,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 3
-      Data: 104935135445038
+      Data: 104959540396078
     - Name: 
       Entry: 13
       Data: 
@@ -4592,7 +7190,7 @@ MonoBehaviour:
       Data: 4|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
-      Data: Darius_Q_OutHit
+      Data: Darius_QOutIsHitUnit
     - Name: NP_BBValueType
       Entry: 1
       Data: System.Boolean
@@ -4625,7 +7223,7 @@ MonoBehaviour:
       Data: 7|ETModel.NP_BlackBoardRelationData, Unity.Model
     - Name: BBKey
       Entry: 1
-      Data: Darius_NormalAttack
+      Data: CastNormalAttack
     - Name: NP_BBValueType
       Entry: 1
       Data: System.Boolean
@@ -4699,7 +7297,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: 102.19999, y: 148.40004}
+  position: {x: 219.79996, y: -81.59997}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 490940553095830177}
@@ -4708,7 +7306,7 @@ MonoBehaviour:
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: 490940553095830177}
   NextNode: {fileID: -5236892687000802004}
---- !u!114 &6395221889597461844
+--- !u!114 &6540231539396791531
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4717,8 +7315,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9172b5b0833eb39418ffce21ad1e1f14, type: 3}
-  m_Name: "\u76D1\u542CBuff"
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: 6633864101604099091}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -306623187996842983}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
+--- !u!114 &6633864101604099091
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1596362470db17b4ba3a645152cee599, type: 3}
+  m_Name: "\u5B8F\u884C\u4E3A\u8282\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -4729,128 +7358,91 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: SkillBuffBases
+    - Name: NP_ActionNodeData
       Entry: 7
-      Data: 0|ETModel.NormalBuffNodeData, Unity.Model
-    - Name: NodeId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_ListenHemorrhageCast_Buff
-    - Name: Value
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
       Entry: 3
-      Data: 10005
+      Data: 104959540396077
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: BuffDes
+    - Name: NodeDes
       Entry: 1
-      Data: "\u76D1\u542C\u6D41\u8840Buff\u7684\u89E6\u53D1\u4E8B\u4EF6"
-    - Name: BuffData
+      Data: "\u91CD\u7F6E\u6570\u636E"
+    - Name: NpClassForStoreAction
       Entry: 7
-      Data: 1|ETModel.ListenBuffCallBackBuffData, Unity.Model
-    - Name: BelongToBuffDataSupportorId
-      Entry: 3
-      Data: 104935135445043
-    - Name: BuffId
-      Entry: 3
-      Data: 104874428137524
-    - Name: BelongToSkillId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: BelongToSkillId
-    - Name: Value
-      Entry: 3
-      Data: 10001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: BelongBuffSystemType
-      Entry: 3
-      Data: 2
-    - Name: BuffTargetTypes
-      Entry: 3
-      Data: 2
-    - Name: BuffBaseType
+      Data: 2|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
       Entry: 3
       Data: 0
-    - Name: SpriteABInfo
+    - Name: BelongtoRuntimeTree
       Entry: 6
       Data: 
-    - Name: Base_isVisualable
-      Entry: 5
-      Data: false
-    - Name: EventIds
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[ETModel.VTD_EventId, Unity.Model]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
+    - Name: Action
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 8
+    - Name: Func1
+      Entry: 6
       Data: 
-    - Name: CanOverlay
-      Entry: 5
-      Data: false
-    - Name: TargetOverlay
-      Entry: 3
-      Data: 1
-    - Name: MaxOverlay
-      Entry: 3
-      Data: 0
-    - Name: SustainTime
-      Entry: 3
-      Data: 5000
-    - Name: BuffWorkType
-      Entry: 3
-      Data: 0
-    - Name: BaseBuffBaseDataEffectTypes
-      Entry: 3
-      Data: 0
-    - Name: ValueToBeChanged
-      Entry: 7
-      Data: 3|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
+    - Name: Func2
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AdditionValue
+    - Name: NpClassForStoreActions
       Entry: 7
-      Data: 5|System.Collections.Generic.Dictionary`2[[ETModel.BuffAdditionTypes,
-        Unity.Model],[System.Single, mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[ETModel.BuffAdditionTypes,
+      Data: 3|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
         Unity.Model]], mscorlib
     - Name: 
       Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 4|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
       Data: 0
-    - Name: 
-      Entry: 13
+    - Name: BelongtoRuntimeTree
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 8
+    - Name: Action
+      Entry: 6
       Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 5|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 6|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -4860,51 +7452,260 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: EventId
-      Entry: 7
-      Data: ETModel.VTD_EventId, Unity.Model
-    - Name: Value
-      Entry: 1
-      Data: Darius_HemorrhageCast
     - Name: 
       Entry: 8
       Data: 
-    - Name: ListenBuffEventNormal
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 7
-      Data: 7|ETModel.ListenBuffEvent_Normal, Unity.Model
-    - Name: BuffInfoWillBeAdded
+      Data: 8|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[ETModel.VTD_BuffInfo, Unity.Model]],
-        mscorlib
+      Data: 9|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: NormalAttackUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 10|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 11|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 9|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
-      Entry: 7
-      Data: ETModel.VTD_Id, Unity.Model
-    - Name: IdKey
-      Entry: 1
-      Data: Darius_BindHemorrhageSustainDamge_Buff
-    - Name: Value
-      Entry: 3
-      Data: 10002
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Layers
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 13|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 14|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 15|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 16|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 17|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutIsHitUnit
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 18|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 19|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 20|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_Normal
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 21|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 22|ETModel.NP_ChangeBlackValueAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 23|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: CastNormalAttack
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Boolean
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: true
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 24|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
       Data: 
     - Name: 
       Entry: 8
@@ -4916,45 +7717,13 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -25.300121, y: 779.4003}
+  position: {x: 346.09995, y: 225.1}
   dynamicConnectionPorts: []
   connectionPorts:
-  - {fileID: 6965600764152117964}
-  - {fileID: -3441844050181462901}
+  - {fileID: 6540231539396791531}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  PrevNode: {fileID: 6965600764152117964}
-  NextNode: {fileID: -3441844050181462901}
---- !u!114 &6965600764152117964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: PrevBuffType
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: 6395221889597461844}
-  direction: 1
-  maxConnectionCount: 1
-  styleID: PrevNodeDatas
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections:
-  - {fileID: 7061772707269282115}
-  side: 4
-  sidePosition: 30
-  sideOffset: 0
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 6540231539396791531}
 --- !u!114 &7061772707269282115
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4982,10 +7751,325 @@ MonoBehaviour:
   styleID: NextNodeDatas
   color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
-  - {fileID: 6965600764152117964}
+  - {fileID: 4746603814496892126}
   side: 2
   sidePosition: 30
   sideOffset: 0
+--- !u!114 &7292932585800559809
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1596362470db17b4ba3a645152cee599, type: 3}
+  m_Name: "\u5B8F\u884C\u4E3A\u8282\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NP_ActionNodeData
+      Entry: 7
+      Data: 0|ETModel.NP_ActionNodeData, Unity.Model
+    - Name: id
+      Entry: 3
+      Data: 104959540396076
+    - Name: NodeType
+      Entry: 3
+      Data: 2
+    - Name: LinkedIds
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NodeDes
+      Entry: 1
+      Data: "\u5BF9\u6240\u6709\u6570\u636E\u8FDB\u884C\u64CD\u4F5C"
+    - Name: NpClassForStoreAction
+      Entry: 7
+      Data: 2|ETModel.NP_MacroAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: NpClassForStoreActions
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ETModel.NP_ClassForStoreAction,
+        Unity.Model]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 4|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 5|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 6|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: NormalAttackUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 7|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 10|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 11|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 12|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 13|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 14|ETModel.NP_AddBuffToSpecifiedUnitAction, Unity.Model
+    - Name: Unitid
+      Entry: 3
+      Data: 0
+    - Name: BelongtoRuntimeTree
+      Entry: 6
+      Data: 
+    - Name: Action
+      Entry: 6
+      Data: 
+    - Name: Func1
+      Entry: 6
+      Data: 
+    - Name: Func2
+      Entry: 6
+      Data: 
+    - Name: BuffDataInfo
+      Entry: 7
+      Data: 15|ETModel.VTD_BuffInfo, Unity.Model
+    - Name: BuffNodeId
+      Entry: 7
+      Data: ETModel.VTD_Id, Unity.Model
+    - Name: IdKey
+      Entry: 1
+      Data: Darius_BindHemorrhage_Buff
+    - Name: Value
+      Entry: 3
+      Data: 10001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Layers
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: NPBalckBoardRelationData
+      Entry: 7
+      Data: 16|ETModel.NP_BlackBoardRelationData, Unity.Model
+    - Name: BBKey
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: NP_BBValueType
+      Entry: 1
+      Data: System.Collections.Generic.List`1[System.Int64]
+    - Name: WriteOrCompareToBB
+      Entry: 5
+      Data: false
+    - Name: NP_BBValue
+      Entry: 7
+      Data: 17|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 18|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  canvas: {fileID: 11400000}
+  position: {x: 134.29996, y: 226.90002}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: 5376245769801126266}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  NodeSize: {x: 150, y: 60}
+  PrevNode: {fileID: 5376245769801126266}
 --- !u!114 &7666517856408170400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5000,11 +8084,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes:
-  - {fileID: -2256545890192384875}
-  panOffset: {x: -85.399994, y: -234.00003}
-  zoom: 1
+  selectedNodes: []
+  panOffset: {x: 23.20002, y: -651.0001}
+  zoom: 1.2
   boxSelecting: 0
+--- !u!114 &8006409087879787029
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -7196133465600089667}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -5236892687000802004}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
 --- !u!114 &8144643241280076461
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5031,7 +8145,7 @@ MonoBehaviour:
       Data: 0|ETModel.NP_SelectorNodeData, Unity.Model
     - Name: id
       Entry: 3
-      Data: 104935135445042
+      Data: 104959540396083
     - Name: NodeType
       Entry: 3
       Data: 0
@@ -5043,13 +8157,13 @@ MonoBehaviour:
       Data: 3
     - Name: 
       Entry: 3
-      Data: 104935135445041
+      Data: 104959540396082
     - Name: 
       Entry: 3
-      Data: 104935135445039
+      Data: 104959540396080
     - Name: 
       Entry: 3
-      Data: 104935135445040
+      Data: 104959540396081
     - Name: 
       Entry: 13
       Data: 
@@ -5063,7 +8177,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: 103.899994, y: -48.80001}
+  position: {x: 229.90005, y: -286.80005}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: -6852855696448615917}
@@ -5106,19 +8220,28 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_Q_OutHit
+      Data: NormalAttackUnitIds
     - Name: $v
       Entry: 7
-      Data: 2|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+      Data: 2|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
-      Entry: 5
-      Data: false
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -5130,25 +8253,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_NormalAttack
-    - Name: $v
-      Entry: 7
-      Data: 3|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
-    - Name: Value
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Darius_R_Normal
+      Data: CastNormalAttack
     - Name: $v
       Entry: 7
       Data: 4|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
@@ -5166,7 +8271,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: HasInitTree
+      Data: Darius_R_Normal
     - Name: $v
       Entry: 7
       Data: 5|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
@@ -5184,13 +8289,76 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Darius_QOutTargets
+      Data: HasInitTree
     - Name: $v
       Entry: 7
-      Data: 6|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+      Data: 6|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_QOutIsHitUnit
+    - Name: $v
+      Entry: 7
+      Data: 7|ETModel.BBValues.NP_BBValue_Bool, Unity.Model
+    - Name: Value
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_QOutHitUnitIds
+    - Name: $v
+      Entry: 7
+      Data: 8|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
     - Name: Value
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+      Data: 9|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_R_NormalUnitIds
+    - Name: $v
+      Entry: 7
+      Data: 10|ETModel.BBValues.NP_BBValue_List_Long, Unity.Model
+    - Name: Value
+      Entry: 7
+      Data: 11|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -5214,14 +8382,14 @@ MonoBehaviour:
       Data: 
     - Name: Ids
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
+      Data: 12|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int64,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 1
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -5295,6 +8463,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Darius_RefreshFullAngry_Buff
+    - Name: $v
+      Entry: 3
+      Data: 10006
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -5330,6 +8510,37 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 1, a: 1}
   _connections: []
   side: 2
+  sidePosition: 30
+  sideOffset: 0
+--- !u!114 &8669811582656010616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevBuffType
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -5811845753790790274}
+  direction: 1
+  maxConnectionCount: 1
+  styleID: PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: 3576898132634927057}
+  side: 4
   sidePosition: 30
   sideOffset: 0
 --- !u!114 &9098132212135405639
@@ -5376,7 +8587,7 @@ MonoBehaviour:
       Data: 1|ETModel.BindStateBuffData, Unity.Model
     - Name: BelongToBuffDataSupportorId
       Entry: 3
-      Data: 104935135445043
+      Data: 104959540396084
     - Name: BuffId
       Entry: 3
       Data: 104874245292054
@@ -5431,16 +8642,16 @@ MonoBehaviour:
       Data: 
     - Name: CanOverlay
       Entry: 5
-      Data: false
+      Data: true
     - Name: TargetOverlay
       Entry: 3
       Data: 1
     - Name: MaxOverlay
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: SustainTime
       Entry: 3
-      Data: 0
+      Data: 5000
     - Name: BuffWorkType
       Entry: 3
       Data: 0
@@ -5503,7 +8714,7 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 8|ETModel.VTD_BuffInfo, Unity.Model
-    - Name: BuffId
+    - Name: BuffNodeId
       Entry: 7
       Data: ETModel.VTD_Id, Unity.Model
     - Name: IdKey
@@ -5534,7 +8745,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   canvas: {fileID: 11400000}
-  position: {x: -28.19989, y: 525.60016}
+  position: {x: -9.19989, y: 518.60016}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 1614334904269724753}
@@ -5542,3 +8753,34 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevNode: {fileID: 1614334904269724753}
   NextNode: {fileID: -3224921756575237568}
+--- !u!114 &9121442884109297700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NPBehave_PreNode
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -8274820457381375686}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: NPBehave_PrevNodeDatas
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _connections:
+  - {fileID: -4737943930170178289}
+  side: 3
+  sidePosition: 75
+  sideOffset: 0
