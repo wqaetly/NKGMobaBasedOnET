@@ -28,7 +28,7 @@
 
 ## 运行环境
 
- **编辑器：Unity 2019.4.0 LTS** 
+ **编辑器：Unity 2019.4.8 LTS** 
 
  **客户端：.Net Framework 4.7.2** 
 
@@ -83,5 +83,5 @@
 ![image-20200722084012352](https://images.gitee.com/uploads/images/2020/0722/084147_079e755b_2253805.png)
 ![image-20200722084025787](https://images.gitee.com/uploads/images/2020/0722/084147_be3e8764_2253805.png)
 ![image-20200722084036165](https://images.gitee.com/uploads/images/2020/0722/084147_22c5cb4d_2253805.png)
-![image-20200722084047541](https://images.gitee.com/uploads/images/2020/0722/084148_6d7d9888_2253805.png)
+![技能编辑器v0.0.3](https://images.gitee.com/uploads/images/2020/1002/235719_dd64d0a5_2253805.png "QQ截图20201002234438.png")
 ![163758_138e22e9_2253805](https://images.gitee.com/uploads/images/2020/0722/084148_1f2eb6b1_2253805.png)
