@@ -40,12 +40,12 @@ namespace ETHotfix.NKGMOBA.Battle
     /// long:归属Unit的ID
     /// string：要传给客户端的事件ID
     /// </summary>
-    [Event(EventIdType.BattleEvent_PlayEffect)]
-    public class BattleEvent_PlayEffect: AEvent<long, long, string>
+    [Event(EventIdType.SendBuffInfoToClient)]
+    public class SendBuffInfoToClient: AEvent<M2C_BuffInfo>
     {
-        public override void Run(long a, long b, string c)
+        public override void Run(M2C_BuffInfo c)
         {
-            MessageHelper.Broadcast(new M2C_FrieBattleEvent_PlayEffect() { FromUnitId = a, BelongToUnitId = b, BattleKey = c });
+            MessageHelper.Broadcast(c);
         }
     }
 }

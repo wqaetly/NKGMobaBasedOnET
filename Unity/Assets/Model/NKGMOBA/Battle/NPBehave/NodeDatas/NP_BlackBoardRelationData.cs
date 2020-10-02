@@ -5,10 +5,12 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Numerics;
 using ETModel.BBValues;
 using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 using Sirenix.OdinInspector;
+using Vector3 = System.Numerics.Vector3;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
@@ -128,7 +130,23 @@ namespace ETModel
                     blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Bool).GetValue());
                     break;
                 case "System.Collections.Generic.List`1[System.Int64]":
-                    blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_List_Long).GetValue());
+                    //因为List是引用类型，所以这里要做一下特殊处理，如果要设置的值为0元素的List，就Clear一下，而且这个东西也不会用来做为黑板条件，因为它没办法用来对比
+                    //否则就拷贝全部元素
+                    NP_BBValue_List_Long selfBBValue = (this.NP_BBValue as NP_BBValue_List_Long);
+                    List<long> targetList = blackboard.Get<List<long>>(this.BBKey);
+                    if (selfBBValue.Value.Count == 0)
+                    {
+                        targetList.Clear();
+                    }
+                    else
+                    {
+                        targetList.Clear();
+                        foreach (var item in selfBBValue.Value)
+                        {
+                            targetList.Add(item);
+                        }
+                    }
+
                     break;
                 case "System.Numerics.Vector3":
                     blackboard.Set(this.BBKey, (this.NP_BBValue as NP_BBValue_Vector3).GetValue());
@@ -171,7 +189,23 @@ namespace ETModel
                     desBB.Set(this.BBKey, oriBB.Get<bool>(BBKey));
                     break;
                 case "System.Collections.Generic.List`1[System.Int64]":
-                    desBB.Set(this.BBKey, oriBB.Get<List<long>>(BBKey));
+                    //因为List是引用类型，所以这里要做一下特殊处理，如果要设置的值为0元素的List，就Clear一下，而且这个东西也不会用来做为黑板条件，因为它没办法用来对比
+                    //否则就拷贝全部元素
+                    List<long> oriList = oriBB.Get<List<long>>(this.BBKey);
+                    List<long> desList = desBB.Get<List<long>>(this.BBKey);
+                    if (oriList.Count == 0)
+                    {
+                        desList.Clear();
+                    }
+                    else
+                    {
+                        desList.Clear();
+                        foreach (var item in oriList)
+                        {
+                            desList.Add(item);
+                        }
+                    }
+
                     break;
                 case "System.Numerics.Vector3":
                     desBB.Set(this.BBKey, oriBB.Get<Vector3>(BBKey));

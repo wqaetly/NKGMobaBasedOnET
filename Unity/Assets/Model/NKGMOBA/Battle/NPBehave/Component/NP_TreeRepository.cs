@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using ETModel.BBValues;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ETModel

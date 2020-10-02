@@ -28,14 +28,10 @@ namespace ETModel
         public void AddBuffToSpecifiedUnit()
         {
             Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
-            BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
             foreach (var targetUnitId in NPBalckBoardRelationData.GetBlackBoardValue<List<long>>(this.BelongtoRuntimeTree.GetBlackboard()))
             {
-                for (int i = 0; i < BuffDataInfo.Layers; i++)
-                {
-                    buffPoolComponent.AcquireBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, BuffDataInfo.BuffNodeId.Value, unit,
-                        Game.Scene.GetComponent<UnitComponent>().Get(targetUnitId),BelongtoRuntimeTree);
-                }
+                BuffDataInfo.AutoAddBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, BuffDataInfo.BuffNodeId.Value, unit,
+                    Game.Scene.GetComponent<UnitComponent>().Get(targetUnitId),BelongtoRuntimeTree);
             }
         }
     }

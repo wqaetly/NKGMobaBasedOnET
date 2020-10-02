@@ -55,5 +55,11 @@ namespace ETModel
         /// </summary>
         [LabelText("刷新Buff")]
         RefreshTargetBuffTimeBuffSystem,
+        
+        /// <summary>
+        /// 往客户端发送Buff信息Buff
+        /// </summary>
+        [LabelText("同步Buff信息")]
+        SendBuffInfoToClientBuffSystem,
     }
 }

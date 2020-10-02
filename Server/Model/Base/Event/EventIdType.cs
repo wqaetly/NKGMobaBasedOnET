@@ -12,6 +12,6 @@
 		public const string ChangeHP = "ChangeHP";
 		public const string ChangeMP = "ChangeMP";
 
-		public const string BattleEvent_PlayEffect = "BattleEvent_PlayEffect";
+		public const string SendBuffInfoToClient = "SendBuffInfoToClient";
 	}
 }

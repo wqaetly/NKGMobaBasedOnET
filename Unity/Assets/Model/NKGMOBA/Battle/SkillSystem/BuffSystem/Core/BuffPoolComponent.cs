@@ -28,6 +28,7 @@ namespace ETModel
             { BuffSystemType.TreatmentBuffSystem, typeof (TreatmentBuffSystem) },
             { BuffSystemType.PlayEffectBuffSystem, typeof (PlayEffectBuffSystem) },
             { BuffSystemType.RefreshTargetBuffTimeBuffSystem, typeof (RefreshTargetBuffTimeBuffSystem) },
+            { BuffSystemType.SendBuffInfoToClientBuffSystem, typeof (SendBuffInfoToClientBuffSystem) }
         };
 
         /// <summary>
@@ -43,7 +44,8 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(long dataId, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
+        public ABuffSystemBase AcquireBuff(long dataId, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
+        NP_RuntimeTree theSkillCanvasBelongTo)
         {
             return AcquireBuff(
                 (Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData(dataId).BuffNodeDataDic[buffNodeId] as NormalBuffNodeData).BuffData,

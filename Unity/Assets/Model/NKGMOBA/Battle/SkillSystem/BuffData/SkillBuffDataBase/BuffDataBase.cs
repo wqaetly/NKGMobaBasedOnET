@@ -32,7 +32,7 @@ namespace ETModel
         [LabelText("Buff的Id")]
         [BoxGroup("必填项")]
         public long BuffId = IdGenerater.GenerateId();
-        
+
         [BoxGroup("必填项")]
         [LabelText("Buff归属技能的Id"), GUIColor(1, 140 / 255f, 0)]
         public VTD_Id BelongToSkillId = new VTD_Id();
@@ -57,7 +57,7 @@ namespace ETModel
         [BoxGroup("选填项")]
         [LabelText("Buff是否状态栏可见")]
         public bool Base_isVisualable;
-
+        
         [LabelText("要抛出的事件ID，如果有的话")]
         [BoxGroup("选填项")]
         public List<VTD_EventId> EventIds = new List<VTD_EventId>();
