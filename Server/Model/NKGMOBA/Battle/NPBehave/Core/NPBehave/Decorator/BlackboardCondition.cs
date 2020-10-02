@@ -136,17 +136,17 @@ namespace NPBehave
                     switch (this.value)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) >= npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) >= npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) >= npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) >= npBbValue;
                         case NP_BBValue_Long npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Long);
+                            return (bbValue as NP_BBValue_Long) >= npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) >= npBbValue;
                         default:
                             Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
                             return false;
@@ -158,17 +158,17 @@ namespace NPBehave
                     switch (this.value)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) > npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) > npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) > npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) > npBbValue;
                         case NP_BBValue_Long npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Long);
+                            return (bbValue as NP_BBValue_Long) > npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) > npBbValue;
                         default:
                             Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
                             return false;
@@ -179,17 +179,17 @@ namespace NPBehave
                     switch (this.value)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) <= npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) <= npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) <= npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) <= npBbValue;
                         case NP_BBValue_Long npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Long);
+                            return (bbValue as NP_BBValue_Long) <= npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) <= npBbValue;
                         default:
                             Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
                             return false;
@@ -198,17 +198,17 @@ namespace NPBehave
                     switch (this.value)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) < npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) < npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) < npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) < npBbValue;
                         case NP_BBValue_Long npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Long);
+                            return (bbValue as NP_BBValue_Long) < npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) < npBbValue;
                         default:
                             Log.Error($"类型为{this.value.GetType()}的数未注册为NP_BBValue");
                             return false;

@@ -33,20 +33,22 @@ namespace ETModel
                 return true;
             }
 
-            if (!this.BelongtoRuntimeTree.GetBlackboard().Isset(NpBlackBoardRelationData.BBKey))
+            string key = NpBlackBoardRelationData.BBKey;
+            Blackboard selfBlackboard = this.BelongtoRuntimeTree.GetBlackboard();
+            if (!selfBlackboard.Isset(key))
             {
                 return Ope == Operator.IS_NOT_SET;
             }
 
-            ANP_BBValue bbValue = this.BelongtoRuntimeTree.GetBlackboard().Get(NpBlackBoardRelationData.BBKey),
-                    preSetBBValue = this.NpBlackBoardRelationData.NP_BBValue;
+            ANP_BBValue preSetValue = this.NpBlackBoardRelationData.NP_BBValue;
+            ANP_BBValue bbValue = selfBlackboard.Get(key);
 
             switch (this.Ope)
             {
                 case Operator.IS_SET: return true;
                 case Operator.IS_EQUAL:
                 {
-                    switch (preSetBBValue)
+                    switch (preSetValue)
                     {
                         case NP_BBValue_Bool npBbValue:
                             return npBbValue == bbValue as NP_BBValue_Bool;
@@ -58,14 +60,16 @@ namespace ETModel
                             return npBbValue == bbValue as NP_BBValue_String;
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue == bbValue as NP_BBValue_Vector3;
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue == bbValue as NP_BBValue_Long;
                         default:
-                            Log.Error($"类型为{preSetBBValue.GetType()}的数未注册为NP_BBValue");
+                            Log.Error($"类型为{preSetValue.GetType()}的数未注册为NP_BBValue");
                             return false;
                     }
                 }
                 case Operator.IS_NOT_EQUAL:
                 {
-                    switch (preSetBBValue)
+                    switch (preSetValue)
                     {
                         case NP_BBValue_Bool npBbValue:
                             return npBbValue != bbValue as NP_BBValue_Bool;
@@ -75,86 +79,96 @@ namespace ETModel
                             return npBbValue != bbValue as NP_BBValue_Int;
                         case NP_BBValue_String npBbValue:
                             return npBbValue != bbValue as NP_BBValue_String;
+                        case NP_BBValue_Long npBbValue:
+                            return npBbValue != bbValue as NP_BBValue_Long;
                         case NP_BBValue_Vector3 npBbValue:
                             return npBbValue != bbValue as NP_BBValue_Vector3;
                         default:
-                            Log.Error($"类型为{preSetBBValue.GetType()}的数未注册为NP_BBValue");
+                            Log.Error($"类型为{preSetValue.GetType()}的数未注册为NP_BBValue");
                             return false;
                     }
                 }
 
                 case Operator.IS_GREATER_OR_EQUAL:
                 {
-                    switch (preSetBBValue)
+                    switch (preSetValue)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) >= npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) >= npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) >= npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) >= npBbValue;
+                        case NP_BBValue_Long npBbValue:
+                            return (bbValue as NP_BBValue_Long) >= npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue >= (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) >= npBbValue;
                         default:
-                            Log.Error($"类型为{preSetBBValue.GetType()}的数未注册为NP_BBValue");
+                            Log.Error($"类型为{preSetValue.GetType()}的数未注册为NP_BBValue");
                             return false;
                     }
                 }
 
                 case Operator.IS_GREATER:
                 {
-                    switch (preSetBBValue)
+                    switch (preSetValue)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) > npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) > npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) > npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) > npBbValue;
+                        case NP_BBValue_Long npBbValue:
+                            return (bbValue as NP_BBValue_Long) > npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue > (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) > npBbValue;
                         default:
-                            Log.Error($"类型为{preSetBBValue.GetType()}的数未注册为NP_BBValue");
+                            Log.Error($"类型为{preSetValue.GetType()}的数未注册为NP_BBValue");
                             return false;
                     }
                 }
 
                 case Operator.IS_SMALLER_OR_EQUAL:
-                    switch (preSetBBValue)
+                    switch (preSetValue)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) <= npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) <= npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) <= npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) <= npBbValue;
+                        case NP_BBValue_Long npBbValue:
+                            return (bbValue as NP_BBValue_Long) <= npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue <= (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) <= npBbValue;
                         default:
-                            Log.Error($"类型为{preSetBBValue.GetType()}的数未注册为NP_BBValue");
+                            Log.Error($"类型为{preSetValue.GetType()}的数未注册为NP_BBValue");
                             return false;
                     }
                 case Operator.IS_SMALLER:
-                    switch (preSetBBValue)
+                    switch (preSetValue)
                     {
                         case NP_BBValue_Bool npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Bool);
+                            return (bbValue as NP_BBValue_Bool) < npBbValue;
                         case NP_BBValue_Float npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Float);
+                            return (bbValue as NP_BBValue_Float) < npBbValue;
                         case NP_BBValue_Int npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Int);
+                            return (bbValue as NP_BBValue_Int) < npBbValue;
                         case NP_BBValue_String npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_String);
+                            return (bbValue as NP_BBValue_String) < npBbValue;
+                        case NP_BBValue_Long npBbValue:
+                            return (bbValue as NP_BBValue_Long) < npBbValue;
                         case NP_BBValue_Vector3 npBbValue:
-                            return npBbValue < (bbValue as NP_BBValue_Vector3);
+                            return (bbValue as NP_BBValue_Vector3) < npBbValue;
                         default:
-                            Log.Error($"类型为{preSetBBValue.GetType()}的数未注册为NP_BBValue");
+                            Log.Error($"类型为{preSetValue.GetType()}的数未注册为NP_BBValue");
                             return false;
                     }
 
