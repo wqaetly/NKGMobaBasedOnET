@@ -32,10 +32,9 @@ namespace ETModel
             {
                 CalculateTimerAndOverlayHelper(targetBuffSystemBase, buffDataBase);
                 //Log.Info($"本次续命BuffID为{buffDataBase.FlagId}，当前层数{temp.CurrentOverlay}，最高层为{temp.MSkillBuffDataBase.MaxOverlay}");
-
+                buffSystemBase.CurrentOverlay = targetBuffSystemBase.CurrentOverlay;
                 //刷新当前已有的Buff
                 targetBuffSystemBase.OnRefresh();
-
                 //TODO 把这个临时的回收，因为已经用不到他了
             }
             else
@@ -48,7 +47,7 @@ namespace ETModel
                 {
                     CalculateTimerAndOverlayHelper(targetBuffSystemBase, buffDataBase);
                     //Log.Info($"本次续命BuffID为{buffDataBase.FlagId}，当前层数{temp.CurrentOverlay}，最高层为{temp.MSkillBuffDataBase.MaxOverlay}");
-
+                    buffSystemBase.CurrentOverlay = targetBuffSystemBase.CurrentOverlay;
                     //刷新当前已有的Buff
                     targetBuffSystemBase.OnRefresh();
 
@@ -82,6 +81,10 @@ namespace ETModel
                 {
                     targetBuffSystemBase.CurrentOverlay = targetBuffSystemBase.BuffData.MaxOverlay;
                 }
+            }
+            else
+            {
+                targetBuffSystemBase.CurrentOverlay = 1;
             }
 
             //如果是有限时长的 TODO:这里考虑处理持续时间和Buff层数挂钩的情况（比如磕了5瓶药，就是5*单瓶药的持续时间）
