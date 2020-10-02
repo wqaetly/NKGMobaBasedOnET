@@ -24,13 +24,8 @@ namespace ETModel
                 //Log.Info($"直接添加_通过监听机制增加Buff");
                 foreach (var buffInfo in this.BuffInfoWillBeAdded)
                 {
-                    for (int i = 0; i < buffInfo.Layers; i++)
-                    {
-                        //Log.Info($"直接添加_通过监听机制增加id为{VARIABLE.FlagId}的Buff");
-                        Game.Scene.GetComponent<BuffPoolComponent>()
-                                .AcquireBuff(a.BuffData.BelongToBuffDataSupportorId, buffInfo.BuffNodeId.Value, a.TheUnitFrom, a.TheUnitBelongto,
-                                    a.BelongtoRuntimeTree);
-                    }
+                    buffInfo.AutoAddBuff(a.BuffData.BelongToBuffDataSupportorId, buffInfo.BuffNodeId.Value, a.TheUnitFrom, a.TheUnitBelongto,
+                        a.BelongtoRuntimeTree);
                 }
             }
         }

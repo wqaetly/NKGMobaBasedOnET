@@ -27,12 +27,8 @@ namespace ETModel
 
             foreach (var buffData in tempData.OriBuff)
             {
-                for (int i = 0; i < buffData.Layers; i++)
-                {
-                    Game.Scene.GetComponent<BuffPoolComponent>()
-                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
-                                this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
-                }
+                buffData.AutoAddBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
+                    this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
             }
 
             if (this.BuffData.EventIds != null)
@@ -69,12 +65,8 @@ namespace ETModel
 
             foreach (var buffData in tempData.OriBuff)
             {
-                for (int i = 0; i < buffData.Layers; i++)
-                {
-                    Game.Scene.GetComponent<BuffPoolComponent>()
-                            .AcquireBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
-                                this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
-                }
+                buffData.AutoAddBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
+                    this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
             }
 
             if (this.BuffData.EventIds != null)
