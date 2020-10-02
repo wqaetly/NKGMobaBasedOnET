@@ -26,7 +26,7 @@ namespace ETModel
                     Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopyBBValuesOnly(nPDataId);
 
             NP_RuntimeTree tempTree =
-                    ComponentFactory.Create<NP_RuntimeTree, NP_DataSupportor>(npDataSupportor);
+                    ComponentFactory.Create<NP_RuntimeTree, NP_DataSupportor, long>(npDataSupportor, unit.Id);
 
             long rootId = npDataSupportor.NpDataSupportorBase.RootId;
 

@@ -9,11 +9,11 @@ using NPBehave;
 namespace ETModel
 {
     [ObjectSystem]
-    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, NP_DataSupportor>
+    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, NP_DataSupportor, long>
     {
-        public override void Awake(NP_RuntimeTree self, NP_DataSupportor m_BelongNP_DataSupportor)
+        public override void Awake(NP_RuntimeTree self, NP_DataSupportor m_BelongNP_DataSupportor, long belongToUnitId)
         {
-            self.Awake(m_BelongNP_DataSupportor);
+            self.Awake(m_BelongNP_DataSupportor, belongToUnitId);
         }
     }
 
@@ -29,8 +29,14 @@ namespace ETModel
         /// </summary>
         public NP_DataSupportor BelongNP_DataSupportor;
 
-        public void Awake(NP_DataSupportor m_BelongNP_DataSupportor)
+        /// <summary>
+        /// 所归属的Unit的Id
+        /// </summary>
+        public long BelongToUnitId;
+
+        public void Awake(NP_DataSupportor m_BelongNP_DataSupportor, long belongToUnitId)
         {
+            BelongToUnitId = belongToUnitId;
             this.BelongNP_DataSupportor = m_BelongNP_DataSupportor;
         }
 
@@ -42,7 +48,7 @@ namespace ETModel
         {
             this.m_RootNode = rootNode;
         }
-        
+
         /// <summary>
         /// 获取黑板
         /// </summary>
@@ -70,11 +76,12 @@ namespace ETModel
 
         public override void Dispose()
         {
-            if(IsDisposed)
+            if (IsDisposed)
                 return;
             base.Dispose();
-            
+
             this.Finish();
+            BelongToUnitId = 0;
             this.m_RootNode = null;
             this.BelongNP_DataSupportor = null;
         }
