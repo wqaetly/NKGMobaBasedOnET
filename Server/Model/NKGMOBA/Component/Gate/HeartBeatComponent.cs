@@ -26,13 +26,13 @@ namespace ETModel
         /// <summary>
         /// 更新间隔
         /// </summary>
-        public long UpdateInterval = 5;
+        public long UpdateInterval = 5000000;
 
         /// <summary>
         /// 超出时间
         /// </summary>
         /// <remarks>如果跟客户端连接时间间隔大于在服务器上删除该Session</remarks>
-        public long OutInterval = 10;
+        public long OutInterval = 10000000;
 
         /// <summary>
         /// 记录时间

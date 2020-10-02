@@ -26,7 +26,7 @@ namespace ETModel
         /// <summary>
         /// 心跳包间隔
         /// </summary>
-        public float SendInterval = 10f;
+        public float SendInterval = 1000000f;
 
         /// <summary>
         /// 记录时间
