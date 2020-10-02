@@ -41,6 +41,16 @@ namespace SkillDemo
 
             bindStateBuffData.OriBuff.Clear();
 
+            //备份Buff Id和对应层数键值对，防止被覆写
+            Dictionary<long, int> buffDataBack = new Dictionary<long, int>();
+
+            foreach (var vtdBuffInfo in bindStateBuffData.OriBuff)
+            {
+                buffDataBack.Add(vtdBuffInfo.BuffNodeId.Value, vtdBuffInfo.Layers);
+            }
+
+            bindStateBuffData.OriBuff.Clear();
+
             foreach (var connection in this.connectionPorts)
             {
                 //只有出方向的端口才是添加LinkedBuffId的地方
@@ -51,10 +61,20 @@ namespace SkillDemo
                         BuffNodeBase targetNode = (connectTagrets.body as BuffNodeBase);
                         if (targetNode != null)
                         {
-                            bindStateBuffData.OriBuff.Add(new VTD_BuffInfo() { BuffNodeId = targetNode.Skill_GetNodeData().NodeId });
+                            bindStateBuffData.OriBuff.Add(new VTD_BuffInfo()
+                            {
+                                BuffNodeId = targetNode.Skill_GetNodeData().NodeId
+                            });
                         }
                     }
 
+                    foreach (var vtdBuffInfo in bindStateBuffData.OriBuff)
+                    {
+                        if (buffDataBack.TryGetValue(vtdBuffInfo.BuffNodeId.Value, out var buffLayer))
+                        {
+                            vtdBuffInfo.Layers = buffLayer;
+                        }
+                    }
                     return;
                 }
             }
