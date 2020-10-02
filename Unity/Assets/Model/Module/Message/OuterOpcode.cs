@@ -61,6 +61,9 @@ namespace ETModel
 	[Message(OuterOpcode.G2C_HeartBeat)]
 	public partial class G2C_HeartBeat : IResponse {}
 
+	[Message(OuterOpcode.M2C_BuffInfo)]
+	public partial class M2C_BuffInfo : IActorMessage {}
+
 }
 namespace ETModel
 {
@@ -85,5 +88,6 @@ namespace ETModel
 		 public const ushort M2C_Reload = 117;
 		 public const ushort C2G_HeartBeat = 118;
 		 public const ushort G2C_HeartBeat = 119;
+		 public const ushort M2C_BuffInfo = 120;
 	}
 }

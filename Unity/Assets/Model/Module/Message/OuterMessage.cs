@@ -1736,6 +1736,232 @@ namespace ETModel {
 
   }
 
+  public partial class M2C_BuffInfo : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_BuffInfo> _parser = new pb::MessageParser<M2C_BuffInfo>(() => (M2C_BuffInfo)MessagePool.Instance.Fetch(typeof(M2C_BuffInfo)));
+    public static pb::MessageParser<M2C_BuffInfo> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long unitId_;
+    /// <summary>
+    ///要发送到的目标UnitId
+    /// </summary>
+    public long UnitId {
+      get { return unitId_; }
+      set {
+        unitId_ = value;
+      }
+    }
+
+    private long skillId_;
+    /// <summary>
+    ///目标技能Id
+    /// </summary>
+    public long SkillId {
+      get { return skillId_; }
+      set {
+        skillId_ = value;
+      }
+    }
+
+    private string bBKey_ = "";
+    /// <summary>
+    ///黑板键，此键对应值将会被设置为Buff层数
+    /// </summary>
+    public string BBKey {
+      get { return bBKey_; }
+      set {
+        bBKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private long theUnitBelongToId_;
+    /// <summary>
+    ///Buff归属的UnitId
+    /// </summary>
+    public long TheUnitBelongToId {
+      get { return theUnitBelongToId_; }
+      set {
+        theUnitBelongToId_ = value;
+      }
+    }
+
+    private long theUnitFromId_;
+    /// <summary>
+    ///Buff来自的UnitId
+    /// </summary>
+    public long TheUnitFromId {
+      get { return theUnitFromId_; }
+      set {
+        theUnitFromId_ = value;
+      }
+    }
+
+    private int buffLayers_;
+    /// <summary>
+    ///Buff层数
+    /// </summary>
+    public int BuffLayers {
+      get { return buffLayers_; }
+      set {
+        buffLayers_ = value;
+      }
+    }
+
+    private float buffMaxLimitTime_;
+    /// <summary>
+    ///Buff最大持续到的时间点
+    /// </summary>
+    public float BuffMaxLimitTime {
+      get { return buffMaxLimitTime_; }
+      set {
+        buffMaxLimitTime_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (UnitId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(UnitId);
+      }
+      if (BBKey.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BBKey);
+      }
+      if (BuffLayers != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(BuffLayers);
+      }
+      if (BuffMaxLimitTime != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(BuffMaxLimitTime);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (TheUnitFromId != 0L) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt64(TheUnitFromId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+      if (TheUnitBelongToId != 0L) {
+        output.WriteRawTag(248, 5);
+        output.WriteInt64(TheUnitBelongToId);
+      }
+      if (SkillId != 0L) {
+        output.WriteRawTag(128, 6);
+        output.WriteInt64(SkillId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (UnitId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
+      }
+      if (SkillId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(SkillId);
+      }
+      if (BBKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BBKey);
+      }
+      if (TheUnitBelongToId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(TheUnitBelongToId);
+      }
+      if (TheUnitFromId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(TheUnitFromId);
+      }
+      if (BuffLayers != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BuffLayers);
+      }
+      if (BuffMaxLimitTime != 0F) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      unitId_ = 0;
+      bBKey_ = "";
+      buffLayers_ = 0;
+      buffMaxLimitTime_ = 0f;
+      rpcId_ = 0;
+      theUnitFromId_ = 0;
+      actorId_ = 0;
+      theUnitBelongToId_ = 0;
+      skillId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            UnitId = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            BBKey = input.ReadString();
+            break;
+          }
+          case 24: {
+            BuffLayers = input.ReadInt32();
+            break;
+          }
+          case 37: {
+            BuffMaxLimitTime = input.ReadFloat();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 728: {
+            TheUnitFromId = input.ReadInt64();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+          case 760: {
+            TheUnitBelongToId = input.ReadInt64();
+            break;
+          }
+          case 768: {
+            SkillId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   #endregion
 
 }

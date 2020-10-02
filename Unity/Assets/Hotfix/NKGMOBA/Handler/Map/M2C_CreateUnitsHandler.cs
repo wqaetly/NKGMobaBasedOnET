@@ -24,7 +24,7 @@ namespace ETHotfix
                 //根据不同名称和ID，创建英雄
                 Unit unit = UnitFactory.Create("NuoKe", unitInfo.UnitId);
                 //因为血条需要，创建热更层unit
-                HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit);
+                HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit,true);
 
                 hotfixUnit.AddComponent<FallingFontComponent>();
 
