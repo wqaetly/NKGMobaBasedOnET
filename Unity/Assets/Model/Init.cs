@@ -9,6 +9,8 @@ namespace ETModel
     {
         public bool isEditorMode = false;
 
+        public Camera MainCamera;
+        
         private FixedUpdate fixedUpdate;
 
         private void Start()
@@ -25,6 +27,7 @@ namespace ETModel
 
                 SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
                 DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(MainCamera);
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
 
                 fixedUpdate = new FixedUpdate() { UpdateCallback = () => Game.EventSystem.FixedUpdate() };
