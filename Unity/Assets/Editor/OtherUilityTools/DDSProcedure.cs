@@ -28,7 +28,7 @@ namespace ETEditor
         public List<string> pngFolderList = new List<string>();
         
 
-        [MenuItem("NKGTools/贴图工作流/Png与DDS互转")]
+        [MenuItem("NKGTools/其他实用工具/贴图工作流/Png与DDS互转")]
         private static void OpenWindow()
         {
             var window = GetWindow<DDSProcedure>();

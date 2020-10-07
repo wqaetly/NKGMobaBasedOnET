@@ -38,7 +38,7 @@ namespace ETEditor
         [HideLabel]
         public Shader ShaderSetting;
 
-        [MenuItem("NKGTools/贴图工作流/依据dds文件自动生成Material")]
+        [MenuItem("NKGTools/其他实用工具/贴图工作流/依据dds文件自动生成Material")]
         private static void OpenWindow()
         {
             var window = GetWindow<CreateMatFromFileOrFolder>();

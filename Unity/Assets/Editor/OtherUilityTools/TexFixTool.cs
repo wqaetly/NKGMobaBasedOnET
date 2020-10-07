@@ -27,7 +27,7 @@ namespace ETEditor
         [LabelText("目标Shader")]
         public Shader TargetShader;
 
-        [MenuItem("NKGTools/地图修复工具")]
+        [MenuItem("NKGTools/其他实用工具/地图修复工具")]
         private static void OpenWindow()
         {
             var window = GetWindow<TexFixTool>();
