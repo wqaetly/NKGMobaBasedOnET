@@ -39,7 +39,7 @@ namespace ETEditor
     public class Params_GenerateETModelComponent: AParams_GenerateBase
     {
         [LabelText("组件名")]
-        [InfoBox("示例：MoveComponent")]
+        [InfoBox("示例：Move")]
         public string ComponentName;
 
         public override string TemplateAssetPath
