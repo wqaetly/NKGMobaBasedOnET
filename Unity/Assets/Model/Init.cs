@@ -31,7 +31,7 @@ namespace ETModel
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
 
                 fixedUpdate = new FixedUpdate() { UpdateCallback = () => Game.EventSystem.FixedUpdate() };
-
+                
                 Game.Scene.AddComponent<TimerComponent>();
 
                 Game.Scene.AddComponent<GlobalConfigComponent>();
@@ -46,6 +46,7 @@ namespace ETModel
 
                 //用户输入管理组件
                 Game.Scene.AddComponent<UserInputComponent>();
+                Game.Scene.AddComponent<MouseTargetSelectorComponent>();
 
                 Game.Scene.AddComponent<GameObjectPool>();
 

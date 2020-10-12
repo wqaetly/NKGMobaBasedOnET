@@ -37,7 +37,7 @@ namespace ETHotfix
                 PlayerComponent.Instance.MyPlayer.UnitId = g2CEnterMap.UnitId;
 
                 // 添加点击地图寻路组件
-                m5V5Game.AddComponent<MapClickCompoent, UserInputComponent>(ETModel.Game.Scene.GetComponent<UserInputComponent>());
+                m5V5Game.AddComponent<MapClickCompoent>();
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
             }
             catch (Exception e)

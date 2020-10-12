@@ -8,15 +8,16 @@ using System;
 using ETModel;
 using FairyGUI;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class MapClickComponentAwake: AwakeSystem<MapClickCompoent, UserInputComponent>
+    public class MapClickComponentAwake: AwakeSystem<MapClickCompoent>
     {
-        public override void Awake(MapClickCompoent self, UserInputComponent a)
+        public override void Awake(MapClickCompoent self)
         {
-            self.Awake(a);
+            self.Awake();
         }
     }
 
@@ -41,12 +42,15 @@ namespace ETHotfix
     public class MapClickCompoent: Component
     {
         private UserInputComponent m_UserInputComponent;
+
+        private MouseTargetSelectorComponent m_MouseTargetSelectorComponent;
         
         private readonly Frame_ClickMap frameClickMap = new Frame_ClickMap();
 
-        public void Awake(UserInputComponent userInputComponent)
+        public void Awake()
         {
-            this.m_UserInputComponent = userInputComponent;
+            this.m_UserInputComponent = ETModel.Game.Scene.GetComponent<UserInputComponent>();
+            this.m_MouseTargetSelectorComponent = ETModel.Game.Scene.GetComponent<MouseTargetSelectorComponent>();
         }
 
         public void Update()
@@ -59,12 +63,9 @@ namespace ETHotfix
                 }
                 else //没有点在UI上
                 {
-                    //Log.Info("没点在UI上");
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Map")))
+                    if (m_MouseTargetSelectorComponent.TargetGameObject?.GetComponent<MonoBridge>().CustomTag == "Map")
                     {
-                        MapPathFinder(hit.point);
+                        MapPathFinder(m_MouseTargetSelectorComponent.TargetHitPoint);
                     }
                 }
             }
@@ -92,6 +93,17 @@ namespace ETHotfix
             {
                 Log.Error(e);
             }
+        }
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+            base.Dispose();
+            m_UserInputComponent = null;
+            m_MouseTargetSelectorComponent = null;
         }
     }
 }

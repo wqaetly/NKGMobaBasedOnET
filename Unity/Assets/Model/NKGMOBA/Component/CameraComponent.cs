@@ -23,7 +23,7 @@ namespace ETModel
     public class CameraComponent: Component
     {
         // 战斗摄像机
-        public Camera mainCamera;
+        private Camera m_MainCamera;
 
         public Unit Unit;
 
@@ -33,15 +33,15 @@ namespace ETModel
         {
             get
             {
-                return this.mainCamera;
+                return this.m_MainCamera;
             }
         }
 
         public void Awake(Unit unit)
         {
-            this.mainCamera = Camera.main;
+            this.m_MainCamera = Camera.main;
             this.Unit = unit;
-            offenPosition = mainCamera.transform.position - this.Unit.Position;
+            offenPosition = m_MainCamera.transform.position - this.Unit.Position;
         }
 
         public void LateUpdate()
@@ -52,7 +52,7 @@ namespace ETModel
 
         private void UpdatePosition()
         {
-            this.mainCamera.transform.position = this.Unit.Position + offenPosition;
+            this.m_MainCamera.transform.position = this.Unit.Position + offenPosition;
         }
 
         public override void Dispose()
@@ -63,7 +63,7 @@ namespace ETModel
             }
 			
             base.Dispose();
-            mainCamera = null;
+            m_MainCamera = null;
             Unit = null;
         }
     }
