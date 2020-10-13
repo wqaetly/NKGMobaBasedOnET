@@ -10,7 +10,7 @@ namespace ETModel
         public bool isEditorMode = false;
 
         public Camera MainCamera;
-        
+
         private FixedUpdate fixedUpdate;
 
         private void Start()
@@ -31,7 +31,7 @@ namespace ETModel
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
 
                 fixedUpdate = new FixedUpdate() { UpdateCallback = () => Game.EventSystem.FixedUpdate() };
-                
+
                 Game.Scene.AddComponent<TimerComponent>();
 
                 Game.Scene.AddComponent<GlobalConfigComponent>();
@@ -47,6 +47,8 @@ namespace ETModel
                 //用户输入管理组件
                 Game.Scene.AddComponent<UserInputComponent>();
                 Game.Scene.AddComponent<MouseTargetSelectorComponent>();
+
+                Game.Scene.AddComponent<OutLineComponent>();
 
                 Game.Scene.AddComponent<GameObjectPool>();
 
@@ -75,7 +77,7 @@ namespace ETModel
                 Game.Scene.AddComponent<BattleEventSystem>();
                 //Buff池组件
                 Game.Scene.AddComponent<BuffPoolComponent>();
-                
+
                 //UnitFactory.NPBehaveTestCreate();
             }
             catch (Exception e)

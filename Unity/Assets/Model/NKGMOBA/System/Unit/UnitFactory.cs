@@ -25,7 +25,9 @@ namespace ETModel
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<SkillCanvasManagerComponent>();
+            unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Friendly);
 
+            unit.GameObject.GetComponent<MonoBridge>().BelongToUnit = unit;
             unitComponent.Add(unit);
             return unit;
         }
@@ -51,11 +53,12 @@ namespace ETModel
             unit.AddComponent<AnimationComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<EffectComponent>();
+            unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Adverse);
             unit.AddComponent<HeroTransformComponent>();
 
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
-
+            unit.GameObject.GetComponent<MonoBridge>().BelongToUnit = unit;
             unitComponent.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             return unit;
         }
