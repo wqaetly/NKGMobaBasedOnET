@@ -450,7 +450,6 @@
               <e p="RunServerConfig.cs" t="Include" />
               <e p="StartConfig.cs" t="Include" />
             </e>
-            <e p="DebuggerComponent.cs" t="Include" />
             <e p="GlobalConfigComponent.cs" t="Include" />
             <e p="TimerComponent.cs" t="Include" />
           </e>
@@ -1442,6 +1441,30 @@
               <e p="B2S_ColliderVisualHelperBase.cs" t="Include" />
               <e p="B2S_DebuggerHandler.cs" t="Include" />
               <e p="B2S_PolygonColliderVisualHelper.cs" t="Include" />
+            </e>
+          </e>
+          <e p="IngameDebugConsole" t="Include">
+            <e p="Android" t="Include">
+              <e p="DebugLogLogcatListener.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="DebugLogManagerEditor.cs" t="Include" />
+              <e p="IngameDebugConsole.Editor.asmdef" t="Include" />
+            </e>
+            <e p="IngameDebugConsole.Runtime.asmdef" t="Include" />
+            <e p="Readme.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Circularbuffer.cs" t="Include" />
+              <e p="ConsoleMethodAttribute.cs" t="Include" />
+              <e p="DebugLogConsole.cs" t="Include" />
+              <e p="DebugLogEntry.cs" t="Include" />
+              <e p="DebugLogIndexList.cs" t="Include" />
+              <e p="DebugLogItem.cs" t="Include" />
+              <e p="DebugLogManager.cs" t="Include" />
+              <e p="DebugLogPopup.cs" t="Include" />
+              <e p="DebugLogRecycledListView.cs" t="Include" />
+              <e p="DebugLogResizeListener.cs" t="Include" />
+              <e p="DebugsOnScrollListener.cs" t="Include" />
             </e>
           </e>
           <e p="NodeEditor" t="Include">
@@ -2535,6 +2558,8 @@
           </e>
         </e>
       </e>
+      <e p="IngameDebugConsole.Editor.csproj" t="IncludeRecursive" />
+      <e p="IngameDebugConsole.Runtime.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Sirenix.OdinInspector.CompatibilityLayer.csproj" t="IncludeRecursive" />

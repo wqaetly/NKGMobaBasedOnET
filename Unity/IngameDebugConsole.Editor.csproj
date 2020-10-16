@@ -12,10 +12,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2662B409-6332-1E56-D797-C9025C53BDD6}</ProjectGuid>
+    <ProjectGuid>{2F5F011A-4CEF-52FC-3777-906DA4065B5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <AssemblyName>IngameDebugConsole.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -29,7 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -39,7 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
@@ -58,226 +58,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\AABB.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\BroadPhase.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\ClipVertex.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\ContactFeature.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\ContactID.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\Manifold.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\ManifoldPoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\ManifoldType.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\PointState.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\RayCastInput.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\RayCastOutput.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Collider\WorldManifold.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\ColliderCircle.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\ColliderEdge.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\ColliderPolygon.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\CollisionUtils.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\DistanceAlgorithm.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\DistanceInput.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\DistanceOutput.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\DistanceProxy.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\DynamicTree.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\ShapeCastInput.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\ShapeCastOutput.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\ChainShape.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\CircleShape.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\EdgeShape.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\MassData.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\PolygonShape.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\Shape.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\ShapeType.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Shapes\Sweep.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\Simplex.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\SimplexCache.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\SimplexVertex.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Collision\TimeOfImpact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Color.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\DrawFlag.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Drawer.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\DumpLogger.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\FixedArray.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\LinkedListNodePool.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\MathExtensions.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\MathUtils.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Matrix2x2.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Matrix3x3.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\ObjectPool.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Rotation.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Settings.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Common\Transform.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Body.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\BodyFlags.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Callbacks.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\ContactManager.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ChainAndCircleContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ChainAndPolygonContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\CircleContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\Contact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ContactEdge.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ContactImpulse.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ContactPositionConstraint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ContactSolve.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ContactSolverDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\ContactVelocityConstraint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\EdgeAndCircleContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\EdgeAndPolygonContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\IContactFactory.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\PolygonAndCircleContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\PolygonContact.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\PositionSolverManifold.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Contacts\VelocityConstraintPoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\DefaultContactFilter.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Fixture.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\IContactFilter.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\IContactListener.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\IDestructionListener.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Island.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\DistanceJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\DistanceJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\FrictionJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\FrictionJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\GearJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\GearJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\Joints.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\MotorJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\MotorJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\MouseJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\MouseJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\PrismaticJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\PrismaticJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\PulleyJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\PulleyJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\RevoluteJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\RevoluteJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\RopeJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\RopeJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\WeldJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\WeldJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\WheelJoint.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Joints\WheelJointDef.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Position.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Profile.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\SolverData.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\TimeStep.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\Velocity.cs" />
-     <Compile Include="Assets\Plugins\Box2D\Box2D\Dynamics\World.cs" />
-     <Compile Include="Assets\Plugins\Box2DSharpVisual\Core\Separator.cs" />
-     <Compile Include="Assets\Plugins\Box2DSharpVisual\VisualHelper\B2S_BoxColliderVisualHelper.cs" />
-     <Compile Include="Assets\Plugins\Box2DSharpVisual\VisualHelper\B2S_CircleColliderVisualHelper.cs" />
-     <Compile Include="Assets\Plugins\Box2DSharpVisual\VisualHelper\B2S_ColliderVisualHelperBase.cs" />
-     <Compile Include="Assets\Plugins\Box2DSharpVisual\VisualHelper\B2S_DebuggerHandler.cs" />
-     <Compile Include="Assets\Plugins\Box2DSharpVisual\VisualHelper\B2S_PolygonColliderVisualHelper.cs" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.xml" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
-     <None Include="Assets\Plugins\AstarPathfindingProject\Clipper\ClipperLicense.txt" />
-     <None Include="Assets\Plugins\AstarPathfindingProject\DotNetZip\DotNetZipLicense.txt" />
-     <None Include="Assets\Plugins\Sirenix\Readme.txt" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml" />
-     <None Include="Assets\Plugins\AstarPathfindingProject\Poly2Tri\Poly2TriLicense.txt" />
-     <None Include="Assets\Plugins\AstarPathfindingProject\dependencies.txt" />
- <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Monetization">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Shaders">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+     <Compile Include="Assets\Plugins\IngameDebugConsole\Editor\DebugLogManagerEditor.cs" />
+     <None Include="Assets\Plugins\IngameDebugConsole\Editor\IngameDebugConsole.Editor.asmdef" />
+ <Reference Include="UnityEditor.UI">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <Reference Include="UnityEditor.TestRunner">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
- </Reference>
- <Reference Include="Unity.AssetBundleBrowser.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.SpatialTracking">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.XR.LegacyInputHelpers">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -456,6 +249,18 @@
  <Reference Include="UnityEngine.XRModule">
  <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.VR">
+ <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
@@ -476,6 +281,18 @@
  </Reference>
  <Reference Include="System.Runtime.CompilerServices.Unsafe">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Box2D/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+ </Reference>
+ <Reference Include="NPOI">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Editor/npoi/NPOI.dll</HintPath>
+ </Reference>
+ <Reference Include="NPOI.OOXML">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Editor/npoi/NPOI.OOXML.dll</HintPath>
+ </Reference>
+ <Reference Include="NPOI.OpenXml4Net">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Editor/npoi/NPOI.OpenXml4Net.dll</HintPath>
+ </Reference>
+ <Reference Include="NPOI.OpenXmlFormats">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Editor/npoi/NPOI.OpenXmlFormats.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -503,6 +320,15 @@
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Purchasing">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.render-pipelines.core@7.3.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -860,49 +686,9 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.ThirdParty.csproj">
-      <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
-      <Name>Unity.ThirdParty</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Editor.csproj">
-      <Project>{CD311104-1830-B119-81B6-5DBEE2467FFB}</Project>
-      <Name>Unity.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{686145E0-A51B-685E-EF99-A1034C8B63AB}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="XAsset.Editor.csproj">
-      <Project>{9A556E11-9DE6-4E88-AF00-61D57CB9A039}</Project>
-      <Name>XAsset.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{E387569F-725F-F5C8-517B-584709B7D5D8}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Hotfix.csproj">
-      <Project>{1066F652-6A89-D1C4-9881-1A19DF7AB80E}</Project>
-      <Name>Unity.Hotfix</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Model.csproj">
-      <Project>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</Project>
-      <Name>Unity.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="Animancer.csproj">
-      <Project>{F6659E15-63D3-6D1A-EC57-6DB30DA1B98F}</Project>
-      <Name>Animancer</Name>
-    </ProjectReference>
-    <ProjectReference Include="XAsset.Runtime.csproj">
-      <Project>{D2C179FB-C340-1EF6-3D5C-F52409C3A8B0}</Project>
-      <Name>XAsset.Runtime</Name>
-    </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Runtime.csproj">
       <Project>{4E4F3AF3-8D83-5CB3-CEB7-3F8A7AB9A9AF}</Project>
       <Name>IngameDebugConsole.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="IngameDebugConsole.Editor.csproj">
-      <Project>{2F5F011A-4CEF-52FC-3777-906DA4065B5E}</Project>
-      <Name>IngameDebugConsole.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
