@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using libx;
 using NETCoreTest.Framework;
 using UnityEngine;
 
@@ -7,15 +8,13 @@ namespace ETModel
 {
     public class Init: MonoBehaviour
     {
-        public bool isEditorMode = false;
-
         public Camera MainCamera;
 
         private FixedUpdate fixedUpdate;
 
         private void Start()
         {
-            Define.ResModeIsEditor = this.isEditorMode;
+            Define.ResModeIsEditor = this.GetComponent<Updater>().DevelopmentMode;
             this.StartAsync().Coroutine();
         }
 
@@ -55,12 +54,13 @@ namespace ETModel
                 // 下载ab包 
                 await BundleHelper.DownloadBundle();
 
+                await Game.Scene.GetComponent<ResourcesComponent>().LoadAssetAsync<Sprite>("Assets/Textures/TargetTextureName.png");
+
                 Game.Hotfix.LoadHotfixAssembly();
 
                 // 加载配置
-                Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
                 Game.Scene.AddComponent<ConfigComponent>();
-                Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
+
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
 

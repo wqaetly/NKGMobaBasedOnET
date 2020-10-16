@@ -177,8 +177,9 @@ namespace FairyGUI
 			if (source == null)
 				throw new Exception("FairyGUI: no package found in this bundle.");
 
-			if (desc != res)
-				desc.Unload(true);
+			//TODO 此处因为会与XAsset的资源管理冲突，所以先去掉
+			// if (desc != res)
+			// 	desc.Unload(true);
 
 			ByteBuffer buffer = new ByteBuffer(source);
 

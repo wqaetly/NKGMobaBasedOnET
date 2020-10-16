@@ -13,11 +13,11 @@
 
 	public abstract class Object: ISupportInitialize
 	{
-		public virtual void BeginInit()
+		public virtual async void BeginInit()
 		{
 		}
 
-		public virtual void EndInit()
+		public virtual async void EndInit()
 		{
 		}
 

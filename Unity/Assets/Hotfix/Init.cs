@@ -1,6 +1,7 @@
 ﻿using System;
 using ETModel;
 using NETCoreTest.Framework;
+using UnityEngine;
 
 namespace ETHotfix
 {
@@ -33,11 +34,8 @@ namespace ETHotfix
 
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
-
-                ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
-                Game.Scene.AddComponent<ConfigComponent>();
-                ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
                 
+                Game.Scene.AddComponent<ConfigComponent>();
                 //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
                 //初始化UI操作
@@ -49,7 +47,7 @@ namespace ETHotfix
 
                 //至此，检查更新界面使命正式结束
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CheckForUpdateFinish);
-
+                ETModel.Log.Info("关闭了资源热更新界面");
                 //关闭转圈圈
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
             }

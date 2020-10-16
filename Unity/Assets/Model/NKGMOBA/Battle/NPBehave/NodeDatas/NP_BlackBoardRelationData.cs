@@ -34,8 +34,7 @@ namespace ETModel
         [LabelText("指定的值类型")]
         [ReadOnly]
         public string NP_BBValueType;
-
-        [HideInInspector]
+        
         [LabelText("是否可以把值写入黑板，或者是否与黑板进行值对比")]
         [BsonIgnore]
         public bool WriteOrCompareToBB;

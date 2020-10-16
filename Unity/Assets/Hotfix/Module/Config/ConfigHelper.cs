@@ -10,7 +10,7 @@ namespace ETHotfix
 		{
 			try
 			{
-				GameObject config = (GameObject)ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("config.unity3d", "Config");
+				GameObject config = ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadAsset<GameObject>(ABPathUtilities.GetNormalConfigPath("Config"));
 				string configStr = config.GetTargetObjectFromRC<TextAsset>(key).text;
 				return configStr;
 			}

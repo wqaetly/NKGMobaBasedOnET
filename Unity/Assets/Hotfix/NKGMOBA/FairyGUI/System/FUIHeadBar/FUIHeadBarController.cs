@@ -14,7 +14,12 @@ namespace ETHotfix
     {
         public override void Run(long fuiId)
         {
-            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUIHeadBar);
+            Run_Internal(fuiId).Coroutine();
+        }
+
+        private async ETVoid Run_Internal(long fuiId)
+        {
+            await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIPackage.FUIHeadBar);
             var hotfixui = FUIHeadBar.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = fuiId.ToString();

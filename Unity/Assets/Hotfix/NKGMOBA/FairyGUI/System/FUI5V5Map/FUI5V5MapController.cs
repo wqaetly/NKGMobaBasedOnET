@@ -14,13 +14,13 @@ namespace ETHotfix
     {
         public override void Run()
         {
-            this.ShowUI();
+            this.ShowUI().Coroutine();
         }
 
-        public void ShowUI()
+        public async ETVoid ShowUI()
         {
             //加载UI资源
-            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUI5v5Map);
+            await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIPackage.FUI5v5Map);
             //创建UI实例
             var hotfixui = FUI5V5Map.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理

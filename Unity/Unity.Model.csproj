@@ -144,7 +144,6 @@
      <Compile Include="Assets\Model\Component\Config\StartConfig.cs" />
      <Compile Include="Assets\Model\Component\DebuggerComponent.cs" />
      <Compile Include="Assets\Model\Component\GlobalConfigComponent.cs" />
-     <Compile Include="Assets\Model\Component\SceneChangeComponent.cs" />
      <Compile Include="Assets\Model\Component\TimerComponent.cs" />
      <Compile Include="Assets\Model\Entity\Game.cs" />
      <Compile Include="Assets\Model\Entity\Hotfix.cs" />
@@ -154,18 +153,15 @@
      <Compile Include="Assets\Model\Helper\BundleHelper.cs" />
      <Compile Include="Assets\Model\Helper\GameObjectHelper.cs" />
      <Compile Include="Assets\Model\Helper\ILHelper.cs" />
-     <Compile Include="Assets\Model\Helper\PathHelper.cs" />
      <Compile Include="Assets\Model\Helper\PositionHelper.cs" />
      <Compile Include="Assets\Model\Helper\ResourcesHelper.cs" />
      <Compile Include="Assets\Model\ILBinding\CLRBindings.cs" />
      <Compile Include="Assets\Model\Init.cs" />
      <Compile Include="Assets\Model\Module\Actor\IActorMessage.cs" />
      <Compile Include="Assets\Model\Module\ActorLocation\IActorLocationMessage.cs" />
-     <Compile Include="Assets\Model\Module\AssetsBundle\AssetsBundleLoaderAsync.cs" />
-     <Compile Include="Assets\Model\Module\AssetsBundle\AssetsLoaderAsync.cs" />
+     <Compile Include="Assets\Model\Module\AssetsBundle\ABPathUtilities.cs" />
      <Compile Include="Assets\Model\Module\AssetsBundle\BundleDownloaderComponent.cs" />
      <Compile Include="Assets\Model\Module\AssetsBundle\ResourcesComponent.cs" />
-     <Compile Include="Assets\Model\Module\AssetsBundle\VersionConfig.cs" />
      <Compile Include="Assets\Model\Module\Config\ACategory.cs" />
      <Compile Include="Assets\Model\Module\Config\AConfigComponent.cs" />
      <Compile Include="Assets\Model\Module\Config\ConfigAttribute.cs" />
@@ -1193,6 +1189,10 @@
     <ProjectReference Include="Animancer.csproj">
       <Project>{F6659E15-63D3-6D1A-EC57-6DB30DA1B98F}</Project>
       <Name>Animancer</Name>
+    </ProjectReference>
+    <ProjectReference Include="XAsset.Runtime.csproj">
+      <Project>{D2C179FB-C340-1EF6-3D5C-F52409C3A8B0}</Project>
+      <Name>XAsset.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

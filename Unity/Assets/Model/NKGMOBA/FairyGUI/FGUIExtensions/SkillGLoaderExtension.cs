@@ -18,7 +18,7 @@ namespace ETModel
 
         private async ETVoid StartToLoadIcon()
         {
-            GameObject HeroAvatars = (GameObject)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroavatars.unity3d","HeroAvatars");
+            GameObject HeroAvatars = Game.Scene.GetComponent<ResourcesComponent>().LoadAsset<GameObject>(ABPathUtilities.GetTexturePath("HeroAvarars"));
             Texture2D tex = HeroAvatars.GetTargetObjectFromRC<Sprite>("Darius").texture;
             if (tex != null)
                 onExternalLoadSuccess(new NTexture(tex));

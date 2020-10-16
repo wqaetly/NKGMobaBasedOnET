@@ -70,7 +70,7 @@ namespace ETModel
         private static void PrepareHeroRes(string heroType)
         {
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
+            GameObject bundleGameObject = resourcesComponent.LoadAsset<GameObject>(ABPathUtilities.GetUnitPath("Unit"));
             GameObject prefab = bundleGameObject.GetTargetObjectFromRC<GameObject>(heroType);
             Game.Scene.GetComponent<GameObjectPool>().Add(heroType, prefab);
         }

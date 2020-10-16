@@ -42,8 +42,7 @@ namespace ETModel
 
 		public void LoadHotfixAssembly()
 		{
-			Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"code.unity3d");
-			GameObject code = (GameObject)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("code.unity3d", "Code");
+			GameObject code = Game.Scene.GetComponent<ResourcesComponent>().LoadAsset<GameObject>(ABPathUtilities.GetNormalConfigPath("Code"));
 			
 			byte[] assBytes = code.GetTargetObjectFromRC<TextAsset>("Hotfix.dll").bytes;
 			byte[] pdbBytes = code.GetTargetObjectFromRC<TextAsset>("Hotfix.pdb").bytes;
@@ -70,7 +69,7 @@ namespace ETModel
 			this.hotfixTypes = this.assembly.GetTypes().ToList();
 #endif
 			
-			Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"code.unity3d");
+			Game.Scene.GetComponent<ResourcesComponent>().UnLoadAsset(ABPathUtilities.GetNormalConfigPath("Code"));
 		}
 	}
 }

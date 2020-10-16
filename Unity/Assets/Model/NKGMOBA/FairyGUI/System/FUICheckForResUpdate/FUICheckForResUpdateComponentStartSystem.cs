@@ -4,6 +4,9 @@
 // Data: 2019年4月27日 11:25:25
 //------------------------------------------------------------
 
+using libx;
+using UnityEngine;
+
 namespace ETModel
 {
     [ObjectSystem]
@@ -33,27 +36,22 @@ namespace ETModel
                     continue;
                 }
 
-                if (!bundleDownloaderComponent.CheckResCompleted)
+                if (bundleDownloaderComponent.Updater.Step == Step.Versions)
                 {
-                    self.FUICheackForResUpdate.processbar.text = "正在为您检查资源更新：" + $"{bundleDownloaderComponent.CheckUpdateResProgress}%";
-                    self.FUICheackForResUpdate.processbar.value = bundleDownloaderComponent.CheckUpdateResProgress;
-                    if (bundleDownloaderComponent.CheckUpdateResProgress == 100)
-                    {
-                        if (bundleDownloaderComponent.bundles.Count == 1)
-                        {
-                            self.FUICheackForResUpdate.processbar.text = "您已是最新版本，祝您游戏愉快。";
-                        }
-                        else
-                        {
-                            self.FUICheackForResUpdate.processbar.text = "检测到有资源更新，即将为您更新资源。";
-                        }
-                    }
+                    self.FUICheackForResUpdate.processbar.text = "正在为您检查资源更新...";
+                    self.FUICheackForResUpdate.processbar.value = 0;
                 }
-                else
+
+                if (bundleDownloaderComponent.Updater.Step == Step.Prepared)
                 {
-                    self.FUICheackForResUpdate.processbar.text = "正在为您更新资源：" + $"{bundleDownloaderComponent.UpdateResProgress}%";
-                    self.FUICheackForResUpdate.processbar.value = bundleDownloaderComponent.UpdateResProgress;
-                    if (bundleDownloaderComponent.UpdateResProgress == 100)
+                    self.FUICheackForResUpdate.processbar.text = "检查更新完毕";
+                }
+                
+                if(bundleDownloaderComponent.Updater.Step == Step.Download)
+                {
+                    self.FUICheackForResUpdate.processbar.text = "正在为您更新资源：" + $"{bundleDownloaderComponent.Updater.UpdateProgress}%";
+                    self.FUICheackForResUpdate.processbar.value = bundleDownloaderComponent.Updater.UpdateProgress;
+                    if (bundleDownloaderComponent.Updater.UpdateProgress >= 100)
                     {
                         self.FUICheackForResUpdate.processbar.text = "资源更新完成，祝您游戏愉快。";
                     }

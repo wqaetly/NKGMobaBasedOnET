@@ -14,31 +14,6 @@ namespace ETModel
 
         private readonly Dictionary<string, UIPackage> packages = new Dictionary<string, UIPackage>();
 
-        public void AddPackage(string type)
-        {
-            if (this.packages.ContainsKey(type)) return;
-            
-            UIPackage uiPackage;
-            if (Define.ResModeIsEditor)
-            {
-                uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
-            }
-            else
-            {
-                string uiBundleDesName = $"{type}_fui".StringToAB();
-                string uiBundleResName = type.StringToAB();
-                ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-                resourcesComponent.LoadBundle(uiBundleDesName);
-                resourcesComponent.LoadBundle(uiBundleResName);
-
-                AssetBundle desAssetBundle = resourcesComponent.GetAssetBundle(uiBundleDesName);
-                AssetBundle resAssetBundle = resourcesComponent.GetAssetBundle(uiBundleResName);
-                uiPackage = UIPackage.AddPackage(desAssetBundle, resAssetBundle);
-            }
-
-            packages.Add(type, uiPackage);
-        }
-
         public async ETTask AddPackageAsync(string type)
         {
             if (this.packages.ContainsKey(type)) return;
@@ -49,14 +24,12 @@ namespace ETModel
             }
             else
             {
-                string uiBundleDesName = $"{type}_fui".StringToAB();
-                string uiBundleResName = type.StringToAB();
+                string uiBundleDesName = $"{type}_fui";
+                string uiBundleResName = $"{type}_atlas0";
                 ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-                await resourcesComponent.LoadBundleAsync(uiBundleDesName);
-                await resourcesComponent.LoadBundleAsync(uiBundleResName);
 
-                AssetBundle desAssetBundle = resourcesComponent.GetAssetBundle(uiBundleDesName);
-                AssetBundle resAssetBundle = resourcesComponent.GetAssetBundle(uiBundleResName);
+                AssetBundle desAssetBundle = await resourcesComponent.LoadAssetBundleAsync(ABPathUtilities.GetFGUIDesPath(uiBundleDesName));
+                AssetBundle resAssetBundle = await resourcesComponent.LoadAssetBundleAsync(ABPathUtilities.GetFGUIResPath(uiBundleResName));
                 uiPackage = UIPackage.AddPackage(desAssetBundle, resAssetBundle);
             }
 
@@ -81,10 +54,10 @@ namespace ETModel
 
             if (!Define.ResModeIsEditor)
             {
-                string uiBundleDesName = $"{type}_fui".StringToAB();
-                string uiBundleResName = type.StringToAB();
-                Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(uiBundleDesName);
-                Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(uiBundleResName);
+                string uiBundleDesName = $"{type}_fui";
+                string uiBundleResName = $"{type}_atlas0";
+                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAssetBundle(ABPathUtilities.GetFGUIDesPath(uiBundleDesName));
+                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAssetBundle(ABPathUtilities.GetFGUIResPath(uiBundleResName));
             }
         }
     }

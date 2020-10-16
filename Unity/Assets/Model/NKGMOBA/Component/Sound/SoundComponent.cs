@@ -98,9 +98,6 @@ namespace ETModel
 
         public void Awake()
         {
-            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            resourcesComponent.LoadBundle("sounds.unity3d");
-
             _musicMute = PlayerPrefs.GetInt("MusicMute", 0) == 1;
             _soundMute = PlayerPrefs.GetInt("SoundMute", 0) == 1;
 
@@ -212,7 +209,7 @@ namespace ETModel
             {
                 abSounds.Add(soundName,
                     UnityEngine.Object.Instantiate(
-                            ((GameObject) resourcesComponent.GetAsset("sounds.unity3d", "Sounds"))
+                            (resourcesComponent.LoadAsset<GameObject>(ABPathUtilities.GetSoundPath("Sound")))
                             .GetTargetObjectFromRC<GameObject>(soundName))
                         .GetComponent<SoundData>());
             }

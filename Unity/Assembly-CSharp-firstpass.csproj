@@ -872,6 +872,10 @@
       <Project>{686145E0-A51B-685E-EF99-A1034C8B63AB}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="XAsset.Editor.csproj">
+      <Project>{9A556E11-9DE6-4E88-AF00-61D57CB9A039}</Project>
+      <Name>XAsset.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{E387569F-725F-F5C8-517B-584709B7D5D8}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
@@ -887,6 +891,10 @@
     <ProjectReference Include="Animancer.csproj">
       <Project>{F6659E15-63D3-6D1A-EC57-6DB30DA1B98F}</Project>
       <Name>Animancer</Name>
+    </ProjectReference>
+    <ProjectReference Include="XAsset.Runtime.csproj">
+      <Project>{D2C179FB-C340-1EF6-3D5C-F52409C3A8B0}</Project>
+      <Name>XAsset.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

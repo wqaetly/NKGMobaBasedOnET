@@ -48,9 +48,7 @@
             <e p="SeekerEditor.cs" t="Include" />
           </e>
           <e p="BuildEditor" t="Include">
-            <e p="BuildData.cs" t="Include" />
             <e p="BuildEditor.cs" t="Include" />
-            <e p="BuildHelper.cs" t="Include" />
             <e p="BuildHotfixEditor.cs" t="Include" />
           </e>
           <e p="ComponentViewEditor" t="Include">
@@ -118,6 +116,7 @@
             <e p="DDSProcedure.cs" t="Include" />
             <e p="RightKeyTools.cs" t="Include" />
             <e p="TexFixTool.cs" t="Include" />
+            <e p="WebFileServer.cs" t="Include" />
             <e p="WirteAverageNormalToTangentTools.cs" t="Include" />
           </e>
           <e p="Proto2CsEditor" t="Include">
@@ -138,6 +137,15 @@
             <e p="ServerManagerEditor.cs" t="Include" />
           </e>
           <e p="Unity.Editor.asmdef" t="Include" />
+          <e p="XAsset" t="Include">
+            <e p="Editor" t="Include">
+              <e p="BuildRules.cs" t="Include" />
+              <e p="BuildScript.cs" t="Include" />
+              <e p="EditorRuntimeInitializeOnLoad.cs" t="Include" />
+              <e p="MenuItems.cs" t="Include" />
+              <e p="XAsset.Editor.asmdef" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Hotfix" t="Include">
           <e p="Base" t="Include">
@@ -444,7 +452,6 @@
             </e>
             <e p="DebuggerComponent.cs" t="Include" />
             <e p="GlobalConfigComponent.cs" t="Include" />
-            <e p="SceneChangeComponent.cs" t="Include" />
             <e p="TimerComponent.cs" t="Include" />
           </e>
           <e p="Entity" t="Include">
@@ -458,7 +465,6 @@
             <e p="BundleHelper.cs" t="Include" />
             <e p="GameObjectHelper.cs" t="Include" />
             <e p="ILHelper.cs" t="Include" />
-            <e p="PathHelper.cs" t="Include" />
             <e p="PositionHelper.cs" t="Include" />
             <e p="ResourcesHelper.cs" t="Include" />
           </e>
@@ -474,11 +480,9 @@
               <e p="IActorLocationMessage.cs" t="Include" />
             </e>
             <e p="AssetsBundle" t="Include">
-              <e p="AssetsBundleLoaderAsync.cs" t="Include" />
-              <e p="AssetsLoaderAsync.cs" t="Include" />
+              <e p="ABPathUtilities.cs" t="Include" />
               <e p="BundleDownloaderComponent.cs" t="Include" />
               <e p="ResourcesComponent.cs" t="Include" />
-              <e p="VersionConfig.cs" t="Include" />
             </e>
             <e p="Config" t="Include">
               <e p="ACategory.cs" t="Include" />
@@ -2508,6 +2512,27 @@
             </e>
           </e>
           <e p="Unity.ThirdParty.asmdef" t="Include" />
+          <e p="XAsset" t="Include">
+            <e p="Runtime" t="Include">
+              <e p="Core" t="Include">
+                <e p="Assets.cs" t="Include" />
+                <e p="Download.cs" t="Include" />
+                <e p="Downloader.cs" t="Include" />
+                <e p="Manifest.cs" t="Include" />
+                <e p="NetworkMonitor.cs" t="Include" />
+                <e p="Reference.cs" t="Include" />
+                <e p="Requests.cs" t="Include" />
+                <e p="Updater.cs" t="Include" />
+                <e p="VDisk.cs" t="Include" />
+                <e p="Versions.cs" t="Include" />
+              </e>
+              <e p="Utility" t="Include">
+                <e p="StringExtension.cs" t="Include" />
+                <e p="Utility.cs" t="Include" />
+              </e>
+              <e p="XAsset.Runtime.asmdef" t="Include" />
+            </e>
+          </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
@@ -2520,6 +2545,8 @@
       <e p="Unity.Model.csproj" t="IncludeRecursive" />
       <e p="Unity.sln" t="IncludeFlat" />
       <e p="Unity.ThirdParty.csproj" t="IncludeRecursive" />
+      <e p="XAsset.Editor.csproj" t="IncludeRecursive" />
+      <e p="XAsset.Runtime.csproj" t="IncludeRecursive" />
     </e>
   </component>
 </project>

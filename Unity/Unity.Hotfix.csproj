@@ -193,12 +193,6 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.TestRunner">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.TestRunner">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
@@ -453,9 +447,6 @@
  </Reference>
  <Reference Include="ICSharpCode.NRefactory">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.render-pipelines.core@7.3.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
- </Reference>
- <Reference Include="nunit.framework">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>D:/Study/Unity/2019.4.8f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -820,6 +811,10 @@
     <ProjectReference Include="Unity.ThirdParty.csproj">
       <Project>{E15BADD2-3A26-309A-AB0F-DC5B08044350}</Project>
       <Name>Unity.ThirdParty</Name>
+    </ProjectReference>
+    <ProjectReference Include="XAsset.Runtime.csproj">
+      <Project>{D2C179FB-C340-1EF6-3D5C-F52409C3A8B0}</Project>
+      <Name>XAsset.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

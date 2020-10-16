@@ -49,9 +49,9 @@ namespace ETHotfix
             });
 
             GameObject HeroAvatars =
-                    (GameObject) ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroavatars.unity3d", "HeroAvatars");
+                    ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadAsset<GameObject>(ABPathUtilities.GetTexturePath("HeroAvatars"));
             GameObject HeroSkillIcons =
-                    (GameObject) ETModel.Game.Scene.GetComponent<ResourcesComponent>().GetAsset("heroskillicons.unity3d", "HeroSkillIcons");
+                    ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadAsset<GameObject>(ABPathUtilities.GetTexturePath("HeroSkillIcons"));
 
             self.HeroAvatarLoader.texture = new NTexture(HeroAvatars.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.HeroAvatar).texture);
             self.SkillTalent_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.Talent_SkillSprite).texture);
@@ -82,7 +82,6 @@ namespace ETHotfix
 
             self.BlueProBar.self.max = heroDataComponent.MaxMagicValue;
             self.BlueProBar.self.value = heroDataComponent.CurrentMagicValue;
-
 
             self.SkillTalent_CDInfo.visible = false;
             self.SkillTalent_Bar.Visible = false;

@@ -4,6 +4,8 @@
 // Data: 2019年4月26日 20:13:34
 //------------------------------------------------------------
 
+using libx;
+
 namespace ETModel
 {
     public class FUICheckForResUpdateComponent: Component
