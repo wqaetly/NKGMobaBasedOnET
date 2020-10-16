@@ -52,13 +52,14 @@ namespace libx
         public Action ResPreparedCompleted;
 
         public float UpdateProgress;
-        
+
         public bool DevelopmentMode;
-        
+
         public bool EnableVFS = true;
 
         [SerializeField]
         private string baseURL = "http://127.0.0.1:7888/DLC/";
+
         private Downloader _downloader;
         private string _platform;
         private string _savePath;
@@ -71,7 +72,7 @@ namespace libx
 
         public void OnProgress(float progress)
         {
-            UpdateProgress = progress;
+            UpdateProgress = progress * 100;
         }
 
         private void Awake()

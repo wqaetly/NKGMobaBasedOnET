@@ -54,8 +54,6 @@ namespace ETModel
                 // 下载ab包 
                 await BundleHelper.DownloadBundle();
 
-                await Game.Scene.GetComponent<ResourcesComponent>().LoadAssetAsync<Sprite>("Assets/Textures/TargetTextureName.png");
-
                 Game.Hotfix.LoadHotfixAssembly();
 
                 // 加载配置

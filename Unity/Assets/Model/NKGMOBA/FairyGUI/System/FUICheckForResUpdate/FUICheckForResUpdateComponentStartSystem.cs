@@ -38,24 +38,23 @@ namespace ETModel
 
                 if (bundleDownloaderComponent.Updater.Step == Step.Versions)
                 {
-                    self.FUICheackForResUpdate.processbar.text = "正在为您检查资源更新...";
-                    self.FUICheackForResUpdate.processbar.value = 0;
+                    self.FUICheackForResUpdate.updateInfo.text = "正在为您检查资源更新...";
                 }
 
                 if (bundleDownloaderComponent.Updater.Step == Step.Prepared)
                 {
-                    self.FUICheackForResUpdate.processbar.text = "检查更新完毕";
+                    self.FUICheackForResUpdate.updateInfo.text = "检查更新完毕";
                 }
-                
-                if(bundleDownloaderComponent.Updater.Step == Step.Download)
+
+                if (bundleDownloaderComponent.Updater.Step == Step.Download)
                 {
-                    self.FUICheackForResUpdate.processbar.text = "正在为您更新资源：" + $"{bundleDownloaderComponent.Updater.UpdateProgress}%";
-                    self.FUICheackForResUpdate.processbar.value = bundleDownloaderComponent.Updater.UpdateProgress;
+                    self.FUICheackForResUpdate.updateInfo.text = "正在为您更新资源：" + $"{bundleDownloaderComponent.Updater.UpdateProgress}%";
                     if (bundleDownloaderComponent.Updater.UpdateProgress >= 100)
                     {
-                        self.FUICheackForResUpdate.processbar.text = "资源更新完成，祝您游戏愉快。";
+                        self.FUICheackForResUpdate.updateInfo.text = "资源更新完成，祝您游戏愉快。";
                     }
                 }
+                self.FUICheackForResUpdate.processbar.TweenValue(bundleDownloaderComponent.Updater.UpdateProgress, 0.1f);
             }
         }
     }
