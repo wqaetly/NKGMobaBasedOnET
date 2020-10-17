@@ -5,7 +5,7 @@ namespace ETModel
 {
     public static class UnitFactory
     {
-        public static Unit Create(string unitType, long id)
+        public static Unit CreateHero(string unitType, long id)
         {
             PrepareHeroRes(unitType);
             UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
