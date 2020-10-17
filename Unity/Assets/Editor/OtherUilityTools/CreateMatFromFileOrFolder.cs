@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using ETModel;
 using MongoDB.Bson;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -38,7 +39,7 @@ namespace ETEditor
         [HideLabel]
         public Shader ShaderSetting;
 
-        [MenuItem("NKGTools/其他实用工具/贴图工作流/依据dds文件自动生成Material")]
+        [Command("ETEditor_AutoGenerateMaterialFromDDS","依据dds文件自动生成Material",Category = "ETEditor")]
         private static void OpenWindow()
         {
             var window = GetWindow<CreateMatFromFileOrFolder>();

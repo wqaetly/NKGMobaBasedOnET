@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.IO;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -27,7 +28,7 @@ namespace ETEditor
         [LabelText("目标Shader")]
         public Shader TargetShader;
 
-        [MenuItem("NKGTools/其他实用工具/地图修复工具")]
+        [Command("ETEditor_MapFixer","地图修复工具",Category = "ETEditor")]
         private static void OpenWindow()
         {
             var window = GetWindow<TexFixTool>();

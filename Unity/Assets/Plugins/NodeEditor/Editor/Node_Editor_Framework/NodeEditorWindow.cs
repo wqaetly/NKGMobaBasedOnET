@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using ETModel;
+using MonKey;
 using NodeEditorFramework.Utilities;
 using NPOI.SS.Util;
 using Sirenix.OdinInspector.Editor;
@@ -42,11 +43,11 @@ namespace NodeEditorFramework.Standard
         }
 
         #region General
-
+        
         /// <summary>
         /// Opens the Node Editor window and loads the last session
         /// </summary>
-        [MenuItem("NKGTools/多功能可视化编辑器")]
+        [Command("Open NodeEditor","打开可视化节点编辑器",Category = "ETEditor")]
         public static NodeEditorWindow OpenNodeEditor()
         {
             _editor = GetWindow<NodeEditorWindow>();

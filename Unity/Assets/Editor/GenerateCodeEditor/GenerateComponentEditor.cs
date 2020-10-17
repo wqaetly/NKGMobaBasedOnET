@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ETModel;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -27,7 +28,7 @@ namespace ETEditor
         [ListDrawerSettings(Expanded = true)]
         public List<AParams_GenerateBase> TargetsForGenerate = new List<AParams_GenerateBase>();
 
-        [MenuItem("NKGTools/一键生成类工具/代码生成工具")]
+        [Command("ETEditor_CodeGenerator","从模板生成代码",Category = "ETEditor")]
         private static void OpenWindow()
         {
             var window = GetWindow<GenerateComponentEditor>();

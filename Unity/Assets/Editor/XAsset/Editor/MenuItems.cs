@@ -27,6 +27,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using MonKey;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -116,7 +117,7 @@ namespace libx
             AssetDatabase.SaveAssets();
         }
 
-        [MenuItem(KApplyBuildRules)]
+        [Command("ETEditor_XAsset_BuildRules","构建打包规则", Category = "ETEditor")]
         private static void ApplyBuildRules()
         {
             var watch = new Stopwatch();
@@ -126,7 +127,7 @@ namespace libx
             Debug.Log("ApplyBuildRules " + watch.ElapsedMilliseconds + " ms.");
         }
 
-        [MenuItem(KBuildAssetBundles)]
+        [Command("ETEditor_XAsset_BuildAssetBundles","打包AssetBundle",Category = "ETEditor")]
         private static void BuildAssetBundles()
         {
             var watch = new Stopwatch();
@@ -137,7 +138,7 @@ namespace libx
             Debug.Log("BuildAssetBundles " + watch.ElapsedMilliseconds + " ms.");
         } 
 
-        [MenuItem(KBuildPlayer)]
+        [Command("ETEditor_XAsset_BuildStandalonePlayer","打包为当前平台可执行文件",Category = "ETEditor")]
         private static void BuildStandalonePlayer()
         {
             BuildScript.BuildStandalonePlayer();

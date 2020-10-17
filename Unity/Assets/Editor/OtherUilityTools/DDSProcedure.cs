@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 using System.Collections.Generic;
 using ETModel;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -28,7 +29,7 @@ namespace ETEditor
         public List<string> pngFolderList = new List<string>();
         
 
-        [MenuItem("NKGTools/其他实用工具/贴图工作流/Png与DDS互转")]
+        [Command("ETEditor_MutualConversionPngAndDDS","Png与DDS互转",Category = "ETEditor")]
         private static void OpenWindow()
         {
             var window = GetWindow<DDSProcedure>();

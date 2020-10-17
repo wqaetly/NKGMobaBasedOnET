@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ETModel;
+using MonKey;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace ETEditor
 
         private GlobalProto globalProto;
 
-        [MenuItem("NKGTools/ET/全局配置")]
+        [Command("ETEditor_GlobalProto","ET全局配置",Category = "ETEditor")]
         public static void ShowWindow()
         {
             GetWindow<GlobalProtoEditor>();

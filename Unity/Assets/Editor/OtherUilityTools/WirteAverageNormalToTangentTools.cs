@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using MonKey;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +13,6 @@ namespace ETEditor
 {
     public class WirteAverageNormalToTangentTools
     {
-        [MenuItem("NKGTools/其他实用工具/模型平均法线写入切线数据")]
         public static void WirteAverageNormalToTangentToos()
         {
             MeshFilter[] meshFilters = Selection.activeGameObject.GetComponentsInChildren<MeshFilter>();

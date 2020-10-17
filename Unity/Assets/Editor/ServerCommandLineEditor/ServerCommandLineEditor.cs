@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using ETModel;
 using MongoDB.Bson;
+using MonKey;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace ETEditor
 
 		private readonly List<StartConfig> startConfigs = new List<StartConfig>();
 
-		[MenuItem("NKGTools/ET/命令行配置")]
+		[Command("ETEditor_ServerCommandLine","Server命令行配置",Category = "ETEditor")]
 		private static void ShowWindow()
 		{
 			GetWindow(typeof (ServerCommandLineEditor));

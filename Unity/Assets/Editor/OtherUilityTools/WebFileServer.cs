@@ -5,13 +5,14 @@
 //------------------------------------------------------------
 
 using ETModel;
+using MonKey;
 using UnityEditor;
 
 namespace ETEditor
 {
     public class WebFileServer
     {
-        [MenuItem("NKGTools/ET/本地资源服务器")]
+        [Command("ETEditor_WebFileServer","本地资源服务器",Category = "ETEditor")]
         public static void OpenFileServer()
         {
             ProcessHelper.Run("dotnet", "FileServer.dll", "../FileServer/");

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using ETModel;
+using MonKey;
 using UnityEditor;
 
 namespace ETEditor
@@ -12,7 +13,7 @@ namespace ETEditor
 
 	public class Proto2CSEditor: EditorWindow
 	{
-		[MenuItem("NKGTools/一键生成类工具/Proto2CS")]
+		[Command("ETEditor_AllProto2CS","Proto转CS",Category = "ETEditor")]
 		public static void AllProto2CS()
 		{
 			Process process = ProcessHelper.Run("dotnet", "Proto2CS.dll", "../Proto/", true);

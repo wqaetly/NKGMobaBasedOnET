@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using ETModel;
+using MonKey;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace ETEditor
 		private RsyncConfig rsyncConfig;
 		private bool isFold = true;
 
-		[MenuItem("NKGTools/ET/Rsync同步")]
+		[Command("ETEditor_RsyncEditor","Rsync同步",Category = "ETEditor")]
 		private static void ShowWindow()
 		{
 			GetWindow(typeof (RsyncEditor));

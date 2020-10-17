@@ -113,10 +113,10 @@ namespace IngameDebugConsole
 		{
 #if UNITY_EDITOR || !NETFX_CORE
 			// Load commands in most common Unity assemblies
-			HashSet<Assembly> assemblies = new HashSet<Assembly> { Assembly.GetAssembly( typeof( DebugLogConsole ) ) };
+			HashSet<Assembly> assemblies = new HashSet<Assembly> { Assembly.GetAssembly( typeof( DebugLogConsole ) )};
 			try
 			{
-				assemblies.Add( Assembly.Load( "Assembly-CSharp" ) );
+				assemblies.Add( Assembly.Load( "Assembly-CSharp" ));
 			}
 			catch { }
 

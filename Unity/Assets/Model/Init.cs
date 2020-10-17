@@ -17,7 +17,7 @@ namespace ETModel
             Define.ResModeIsEditor = this.GetComponent<Updater>().DevelopmentMode;
             this.StartAsync().Coroutine();
         }
-
+        
         private async ETVoid StartAsync()
         {
             try

@@ -13,6 +13,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -79,7 +80,7 @@ namespace ETEditor
 
         private List<string> colliderDataName = new List<string>() { "BoxColliderData", "CircleColliderData", "PolygonColliderData" };
 
-        [MenuItem("NKGTools/Box2D可视化编辑器")]
+        [Command("ETEditor_B2S_ColliderEditor","Box2D可视化编辑器")]
         private static void OpenWindow()
         {
             var window = GetWindow<B2S_ColliderEditor>();

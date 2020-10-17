@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using ETModel;
 using MongoDB.Bson;
+using MonKey;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using Sirenix.OdinInspector;
@@ -44,7 +45,7 @@ public class ExcelExporterEditor: OdinEditorWindow
 
     private static ExcelMD5Info md5Info;
 
-    [MenuItem("NKGTools/一键生成类工具/从Excel文件自动生成类/生成类到客户端")]
+    [Command("ETEditor_Excel_Export2Client","从Excel导出数据和对应类到客户端",Category = "ETEditor")]
     private static void ExportData2Class_Client()
     {
         try
@@ -64,7 +65,7 @@ public class ExcelExporterEditor: OdinEditorWindow
         }
     }
     
-    [MenuItem("NKGTools/一键生成类工具/从Excel文件自动生成类/生成类到服务端")]
+    [Command("ETEditor_Excel_Export2Server","从Excel导出数据和对应类到服务端")]
     private static void ExportData2Class_Server()
     {
         try

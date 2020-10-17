@@ -59,6 +59,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\Box2DSharpVisual\Editor\B2S_ColliderEditor.cs" />
+     <Compile Include="Assets\Plugins\MonKey Commander\Editor\Init\GettingStartedPanel.cs" />
+     <Compile Include="Assets\Plugins\MonKey Commander\Editor\Init\MonKeyInitialization.cs" />
+     <Compile Include="Assets\Plugins\MonKey Commander\Editor\Menu Items\MonkeyMenuItems.cs" />
+     <Compile Include="Assets\Plugins\MonKey Commander\Editor\Settings\MonKeySettings.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\B2S_CollisionRelationCanvas.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\HeroDataNodeCanvas.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvases\NPBehaveCanvas.cs" />
@@ -157,7 +161,12 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\ReflectionUtility.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\ResourceManager.cs" />
      <None Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\link.xml" />
+     <None Include="Assets\Plugins\MonKey Commander\Editor\Bin\2018\MonKey Commander.xml" />
+     <None Include="Assets\Plugins\MonKey Commander\Editor\Bin\2018_3\MonKey Commander.xml" />
      <None Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Shader\LineShader.shader" />
+     <None Include="Assets\Plugins\MonKey Commander\Editor\Bin\5_4\MonKey Commander.xml" />
+     <None Include="Assets\Plugins\MonKey Commander\Editor\Bin\2017\MonKey Commander.xml" />
+     <None Include="Assets\Plugins\MonKey Commander\Editor\Bin\2018_2\MonKey Commander.xml" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
@@ -485,6 +494,9 @@
  <Reference Include="NPOI.OpenXmlFormats">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Editor/npoi/NPOI.OpenXmlFormats.dll</HintPath>
  </Reference>
+ <Reference Include="MonKey Core">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/MonKey Commander/MonKey Core.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
  </Reference>
@@ -517,6 +529,9 @@
  </Reference>
  <Reference Include="ICSharpCode.NRefactory">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.render-pipelines.core@7.3.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ </Reference>
+ <Reference Include="MonKey Commander">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/MonKey Commander/Editor/Bin/2018_3/MonKey Commander.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -905,6 +920,14 @@
       <Project>{1066F652-6A89-D1C4-9881-1A19DF7AB80E}</Project>
       <Name>Unity.Hotfix</Name>
     </ProjectReference>
+    <ProjectReference Include="IngameDebugConsole.Runtime.csproj">
+      <Project>{4E4F3AF3-8D83-5CB3-CEB7-3F8A7AB9A9AF}</Project>
+      <Name>IngameDebugConsole.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="IngameDebugConsole.Editor.csproj">
+      <Project>{2F5F011A-4CEF-52FC-3777-906DA4065B5E}</Project>
+      <Name>IngameDebugConsole.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Model.csproj">
       <Project>{B4BF9894-F5D9-41C4-13E3-3F26F7700E29}</Project>
       <Name>Unity.Model</Name>
@@ -916,14 +939,6 @@
     <ProjectReference Include="XAsset.Runtime.csproj">
       <Project>{D2C179FB-C340-1EF6-3D5C-F52409C3A8B0}</Project>
       <Name>XAsset.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="IngameDebugConsole.Runtime.csproj">
-      <Project>{4E4F3AF3-8D83-5CB3-CEB7-3F8A7AB9A9AF}</Project>
-      <Name>IngameDebugConsole.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="IngameDebugConsole.Editor.csproj">
-      <Project>{2F5F011A-4CEF-52FC-3777-906DA4065B5E}</Project>
-      <Name>IngameDebugConsole.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

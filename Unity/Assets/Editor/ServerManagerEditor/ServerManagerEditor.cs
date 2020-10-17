@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using ETModel;
 using MongoDB.Bson;
+using MonKey;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,7 +16,8 @@ namespace ETEditor
 		private string managerAddress;
 		private string account;
 		private string password;
-		[MenuItem("NKGTools/ET/服务器管理工具")]
+		
+		[Command("ETEditor_ServerManager","服务器管理工具",Category = "ETEditor")]
 		private static void ShowWindow()
 		{
 			GetWindow(typeof (ServerManagerEditor));

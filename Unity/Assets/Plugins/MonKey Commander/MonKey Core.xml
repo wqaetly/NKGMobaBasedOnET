@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MonKey Core</name>
+    </assembly>
+    <members>
+        <member name="T:MonKey.Command">
+            <summary>
+            Add this attribute to a static method in an class
+             file in an editor folder, and it will be added to MonKey's list of commands!
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.AlwaysShow">
+            <summary>
+            Should the command be visible even when no search terms were entered
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.Name">
+            <summary>
+            The name with which the command can be searched
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.QuickName">
+            <summary>
+            The quick name with which the command can be searched (make it short to quickly access the command)
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.Help">
+            <summary>
+            Some help to display for the user to understand the command
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.Order">
+            <summary>
+            The secondary sorting order: the smaller the number, 
+            the higher the placement (after the search terms sorting) 
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.DefaultValidation">
+            <summary>
+            If you want to use one of the default ways to validate the command, 
+            select one here ( will get overridden by "ValidationMethodName")
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.ValidationMethodName">
+            <summary>
+            The name of the Validation Method that indicates 
+            if the command is currently available or not. Must return a boolean
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.IgnoreHotKeyConflict">
+            <summary>
+            Set true if you want to ignore the fact that 
+            the menu item hotkey is going to conflict with another menu item
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.MenuItemLink">
+            <summary>
+            If you want the command to be associated to a menu item 
+            (essentially for hotkeys) without this menu item being added, specify the name 
+            of the command that has a MenuItemLink attribute here
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.MenuItemLinkTypeOwner">
+            <summary>
+            If the MenuItemLink is in another type, enter the type's name here
+            </summary>
+        </member>
+        <member name="F:MonKey.Command.Category">
+            <summary>
+            The category of the commands to help you browse it
+            </summary>
+        </member>
+        <member name="T:MonKey.CommandParameter">
+            <summary>
+            Put the attribute on the parameter 
+            it represents to customize the way the parameter 
+            will be handled by MonKey. You can put the attribute 
+            on the method as well, but then you need to specify 
+            the index of the parameter in the Order field (starting at 0)
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.Order">
+            <summary>
+            The order of the parameter in the method (for identification).
+            You do not need to specify the value if the attribute is on the parameter directly
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.Help">
+            <summary>
+            Some Help that can help the user identify the use if this parameter
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.OverrideName">
+            <summary>
+            If you want the name of the parameter to appear differently than the one specified in c#
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.OverrideTypeName">
+            <summary>
+            If you want the type of the parameter to be formatted in a specific way, 
+            you can change it here
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.AutoCompleteMethodName">
+            <summary>
+            The name of the method that will suggest the user values to be used 
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.DefaultValueMethod">
+            <summary>
+            The name of the method that will provide 
+            the default value to be used in case the user does not use any input
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.DefaultValueNameOverride">
+            <summary>
+            If you want the default value to appear with a certain name 
+            inside Monkey Commander, define it here.
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.PreventDefaultValueUsage">
+            <summary>
+            if true, forces the user to enter a value for the parameter,
+             ignoring potential default values
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandParameter.ForceAutoCompleteUsage">
+            <summary>
+            When this is true, the value of the variable will 
+            automatically be taken from auto-complete suggestions (the first one being chosen if none was selected)
+            </summary>
+        </member>
+        <member name="T:MonKey.CommandValidation">
+            <summary>
+            Put the attribute on a validation method to 
+            customize the validation message that will appear in the MonKey console.
+            </summary>
+        </member>
+        <member name="F:MonKey.CommandValidation.InvalidCommandMessage">
+            <summary>
+            The help message that will indicate to the user
+            the reason why the command is not available
+            </summary>
+        </member>
+        <member name="T:MonKey.MenuItemCommandLink">
+            <summary>
+            Use this link if you want the menu item to be associated with a command. 
+            Associate "MenuItemLink" with the name of the method in the 
+            linked command to complete the link
+            </summary>
+        </member>
+        <member name="M:MonKey.Extensions.ListExt.AddRange(System.Collections.Generic.IList{System.Int32},System.Int32,System.Int32)">
+            <summary>
+            Adds a range of int, both extremes included
+            </summary>
+            <param name="source"></param>
+            <param name="from"></param>
+            <param name="to"></param>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.AllSubIndexesOf(System.String,System.String,System.Boolean)">
+            <summary>
+            returns indexes of all the subletters part of the string to lpok for
+            </summary>
+            <param name="item"></param>
+            <param name="toSearchFor"></param>
+            <param name="searchInitials"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.OrderStringsBySearchScore(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.String[])">
+            <summary>
+            Orders a set of string by search terms using a custom fast fuzzy search
+            </summary>
+            <param name="strings"></param>
+            <param name="includeZeroScore"></param>
+            <param name="searchTerms"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.GetVariableInitials(System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            returns the initials of a string that is camel cased 
+            (typically any c# variable that follows the usual naming conventions)
+            </summary>
+            <param name="variable"></param>
+            <param name="initialIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.RemoveUnityCloneTerms(System.String)">
+            <summary>
+            Removes any terms that may have been created by cloning an object by Unity
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.NicifyVariableName(System.String)">
+            <summary>
+            Transforms a Camel-case name into a nice group of words known as a sentence
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.WordSearchScore(System.String,System.Boolean,System.String[])">
+            <summary>
+            </summary>
+            <param name="s"></param>
+            <param name="searchTerms"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Extensions.StringExt.MatchResultSet(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Full Fuzzy Search (more costly, but exact fuzzy)
+            </summary>
+            <param name="resultSet"></param>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonKey.Commands.ParentingUtilities.FindEarliestCommonParent(UnityEngine.GameObject[])">
+            <summary>
+            Finds a common parent for all objects
+            </summary>
+            <param name="objects"></param>
+            <returns> the common parent, or null if none </returns>
+        </member>
+        <member name="M:MonKey.Commands.ParentingUtilities.FindEarliestCommonParent(UnityEngine.Transform,UnityEngine.Transform)">
+            <summary>
+            Finds a common parent
+            </summary>
+            <param name="one"></param>
+            <param name="two"></param>
+            <returns> the earliest common transform, or null if none</returns>
+        </member>
+    </members>
+</doc>

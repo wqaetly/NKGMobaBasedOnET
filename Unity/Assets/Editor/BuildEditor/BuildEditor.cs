@@ -11,6 +11,7 @@ using System.Linq;
 using ETModel;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -31,7 +32,7 @@ namespace ETEditor
     {
         private const string c_BuildDataPath = "Assets/Editor/BuildEditor/BuildData.asset";
 
-        [MenuItem("NKGTools/打包工具")]
+        [Command("ETEditor_BuildEditor","打包工具")]
         private static void OpenWindow()
         {
             var window = GetWindow<BuildEditor>();
