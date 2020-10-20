@@ -12,6 +12,7 @@ namespace ETModel
 		public const int ERR_NotFoundActor = 100002;
 		public const int ERR_ActorNoMailBoxComponent = 100003;
 		public const int ERR_ActorRemove = 100004;
+		public const int ERR_ActorNotOnline = 100044;
 		public const int ERR_PacketParserError = 100005;
 		
 		public const int ERR_ConnectGateKeyError = 100006;

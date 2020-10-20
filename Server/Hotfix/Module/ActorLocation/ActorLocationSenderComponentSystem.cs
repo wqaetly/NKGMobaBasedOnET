@@ -37,7 +37,7 @@ namespace ETHotfix
                         continue;
                     }
 
-                    if (timeNow < actorLocationMessageSender.LastRecvTime + 60 * 1000)
+                    if (timeNow < actorLocationMessageSender.LastSendOrRecvTime + 60 * 1000)
                     {
                         continue;
                     }
