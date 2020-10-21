@@ -55,7 +55,6 @@ message UnitInfo {
     float Z = 4;
 }
 
-
 message M2C_CreateUnits // IActorMessage
 {
     int32 RpcId = 90;
@@ -155,11 +154,39 @@ message M2C_BuffInfo // IActorMessage
 
     int64 UnitId = 1; //要发送到的目标UnitId
     int64 SkillId = 96; //目标技能Id
-    
+
     string BBKey = 2; //黑板键，此键对应值将会被设置为Buff层数
-    
+
     int64 TheUnitBelongToId = 95; //Buff归属的UnitId
     int64 TheUnitFromId = 91; //Buff来自的UnitId
     int32 BuffLayers = 3; //Buff层数
     float BuffMaxLimitTime = 4; //Buff最大持续到的时间点
+}
+
+
+message C2M_CommonAttack // IActorLocationRequest
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+
+    int64 TargetUnitId = 1;
+}
+
+message M2C_CommonAttack // IActorLocationResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    bool CanAttack = 2; //是否可以发起攻击
+}
+
+//是否允许进行攻击
+message M2C_CommonAttackState // IActorMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+
+    int64 UnitId = 1; //要发送到的目标UnitId
+    bool CanAttack = 2; //是否可以发起攻击
 }

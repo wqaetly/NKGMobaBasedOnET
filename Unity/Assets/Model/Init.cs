@@ -73,9 +73,6 @@ namespace ETModel
 
                 //战斗系统的事件系统组件
                 Game.Scene.AddComponent<BattleEventSystem>();
-                //Buff池组件
-                Game.Scene.AddComponent<BuffPoolComponent>();
-
                 //UnitFactory.NPBehaveTestCreate();
             }
             catch (Exception e)

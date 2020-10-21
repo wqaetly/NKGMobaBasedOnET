@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using ETModel;
+using ETModel.NKGMOBA.Battle.State;
 using UnityEngine;
 
 namespace ETHotfix.NKGMOBA.Factory
@@ -80,6 +81,10 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.GetComponent<SkillCanvasManagerComponent>().AddSkillLevel(configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId);
             //Log.Info("行为树创建完成");
 
+            //添加栈式状态机组件
+            unit.AddComponent<StackFsmComponent>();
+            unit.AddComponent<CommonAttackComponent>();
+            
             //设置英雄位置
             unit.Position = new Vector3(-10, 0, -10);
             return unit;
@@ -101,6 +106,8 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<HeroDataComponent, long>(10001);
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;
+            //添加栈式状态机组件
+            unit.AddComponent<StackFsmComponent>();
             return unit;
         }
 

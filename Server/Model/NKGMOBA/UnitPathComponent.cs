@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Threading;
-using PF;
 using UnityEngine;
 
 namespace ETModel
@@ -13,7 +11,7 @@ namespace ETModel
         
         public List<Vector3> Path;
 
-        public CancellationTokenSource CancellationTokenSource;
+        public ETCancellationTokenSource ETCancellationTokenSource;
 
         public ABPathWrap ABPath
         {
@@ -26,6 +24,11 @@ namespace ETModel
                 this.abPath?.Dispose();
                 this.abPath = value;
             }
+        }
+
+        public void CancelMove()
+        {
+            ETCancellationTokenSource?.Cancel();;
         }
 
         public override void Dispose()

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using ETModel.NKGMOBA.Battle.Fsm;
 using ETModel.NKGMOBA.Battle.State;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ namespace ETModel
 
         public Vector3 ServerPos;
 
-        public CancellationTokenSource CancellationTokenSource;
+        public ETCancellationTokenSource EtCancellationTokenSource;
 
-        public async ETTask StartMove(CancellationToken cancellationToken)
+        private async ETTask StartMove_Internal(CancellationToken cancellationToken)
         {
             for (int i = 0; i < this.Path.Count; ++i)
             {
@@ -37,27 +38,41 @@ namespace ETModel
                 await this.Entity.GetComponent<MoveComponent>().MoveToAsync(v, speed, cancellationToken);
             }
 
-            this.Entity.GetComponent<StackFsmComponent>().AddState(StateTypes.Idle, "Idle", 1);
+            this.Entity.GetComponent<StackFsmComponent>().ChangeState<IdleState>(StateTypes.Idle, "Idle", 1);
+            this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
 
+        /// <summary>
+        /// 开始移动
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public async ETVoid StartMove(M2C_PathfindingResult message)
         {
-            this.Entity.GetComponent<StackFsmComponent>().AddState(StateTypes.Run, "Run", 1);
+            if (!this.Entity.GetComponent<StackFsmComponent>().ChangeState<NavigateState>(StateTypes.Run, "Run", 1)) return;
+            this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
             // 取消之前的移动协程
-            this.CancellationTokenSource?.Cancel();
-            this.CancellationTokenSource = new CancellationTokenSource();
-
+            this.EtCancellationTokenSource?.Cancel();
+            this.EtCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
             this.Path.Clear();
+
             for (int i = 0; i < message.Xs.Count; ++i)
             {
                 this.Path.Add(new Vector3(message.Xs[i], message.Ys[i], message.Zs[i]));
             }
 
             ServerPos = new Vector3(message.X, message.Y, message.Z);
-            await StartMove(this.CancellationTokenSource.Token);
+            await this.StartMove_Internal(this.EtCancellationTokenSource.Token);
+        }
 
-            this.CancellationTokenSource.Dispose();
-            this.CancellationTokenSource = null;
+        /// <summary>
+        /// 取消移动
+        /// </summary>
+        public void CancelMove()
+        {
+            this.EtCancellationTokenSource?.Cancel();
+            this.Path.Clear();
+            this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
 
         public override void Dispose()
@@ -66,9 +81,7 @@ namespace ETModel
             base.Dispose();
             Path.Clear();
             this.ServerPos = Vector3.zero;
-            CancellationTokenSource?.Cancel();
-            this.CancellationTokenSource?.Dispose();
-            this.CancellationTokenSource = null;
+            this.EtCancellationTokenSource?.Cancel();
         }
     }
 }

@@ -27,14 +27,14 @@ namespace ETModel
 
         public void Cancel()
         {
-            this.CancellationTokenSource.Cancel();
+            this.CancellationTokenSource?.Cancel();
             this.Dispose();
         }
 
         public async ETVoid CancelAfter(long afterTimeCancel)
         {
             await Game.Scene.GetComponent<TimerComponent>().WaitAsync(afterTimeCancel);
-            this.CancellationTokenSource.Cancel();
+            this.CancellationTokenSource?.Cancel();
             this.Dispose();
         }
 

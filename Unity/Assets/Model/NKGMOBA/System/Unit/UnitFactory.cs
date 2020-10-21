@@ -26,6 +26,7 @@ namespace ETModel
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<SkillCanvasManagerComponent>();
             unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Friendly);
+            unit.AddComponent<CommonAttackComponent>();
 
             unit.GameObject.GetComponent<MonoBridge>().BelongToUnit = unit;
             unitComponent.Add(unit);

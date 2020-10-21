@@ -329,6 +329,7 @@
                 <e p="M2C_BuffInfoHandler.cs" t="Include" />
                 <e p="M2C_ChangeHPValueHandler.cs" t="Include" />
                 <e p="M2C_ChangeMPValueHandler.cs" t="Include" />
+                <e p="M2C_CommonAttackStateHandler.cs" t="Include" />
                 <e p="M2C_CreateSpilingsHandler.cs" t="Include" />
                 <e p="M2C_CreateUnitsHandler.cs" t="Include" />
                 <e p="M2C_FrieBattleEvent_PlayEffecthANDLER.cs" t="Include" />
@@ -747,15 +748,23 @@
               <e p="Component" t="Include">
                 <e p="AnimationComponent.cs" t="Include" />
                 <e p="B2S_RoleCastComponent.cs" t="Include" />
+                <e p="CommonAttackComponent.cs" t="Include" />
                 <e p="EffectComponent.cs" t="Include" />
                 <e p="HeroTransformComponent.cs" t="Include" />
                 <e p="MouseTargetSelectorComponent.cs" t="Include" />
                 <e p="OutLineComponent.cs" t="Include" />
+                <e p="StopAllCommandComponent.cs" t="Include" />
               </e>
               <e p="Fsm" t="Include">
-                <e p="FsmStateBase.cs" t="Include" />
-                <e p="StackFsmComponent.cs" t="Include" />
-                <e p="StateTypes.cs" t="Include" />
+                <e p="CommonAttackState.cs" t="Include" />
+                <e p="Core" t="Include">
+                  <e p="AFsmStateBase.cs" t="Include" />
+                  <e p="IFSMState.cs" t="Include" />
+                  <e p="StackFsmComponent.cs" t="Include" />
+                  <e p="StateTypes.cs" t="Include" />
+                </e>
+                <e p="IdleState.cs" t="Include" />
+                <e p="NavigateState.cs" t="Include" />
               </e>
               <e p="HeroData" t="Include">
                 <e p="HeroBaseDataRepositoryComponent.cs" t="Include" />
@@ -932,8 +941,8 @@
                     <e p="ABuffSystemBase.cs" t="Include" />
                     <e p="BattleEventSystem.cs" t="Include" />
                     <e p="BuffDataCalculateHelper.cs" t="Include" />
+                    <e p="BuffFactory.cs" t="Include" />
                     <e p="BuffManagerComponent.cs" t="Include" />
-                    <e p="BuffPoolComponent.cs" t="Include" />
                     <e p="BuffState.cs" t="Include" />
                     <e p="BuffTimerAndOverlayHelper.cs" t="Include" />
                   </e>
@@ -1042,6 +1051,12 @@
             <e p="Mono" t="Include">
               <e p="Effect_Special_Mono.cs" t="Include" />
               <e p="MonoBridge.cs" t="Include" />
+            </e>
+            <e p="ReferencePool" t="Include">
+              <e p="IReference.cs" t="Include" />
+              <e p="ReferencePool.cs" t="Include" />
+              <e p="ReferencePool.ReferenceCollection.cs" t="Include" />
+              <e p="ReferencePoolInfo.cs" t="Include" />
             </e>
             <e p="System" t="Include">
               <e p="Player" t="Include">
@@ -1469,23 +1484,6 @@
           </e>
           <e p="MonKey Commander" t="Include">
             <e p="Editor" t="Include">
-              <e p="bin" t="Include">
-                <e p="2017" t="Include">
-                  <e p="MonKey Commander.xml" t="Include" />
-                </e>
-                <e p="2018" t="Include">
-                  <e p="MonKey Commander.xml" t="Include" />
-                </e>
-                <e p="2018_2" t="Include">
-                  <e p="MonKey Commander.xml" t="Include" />
-                </e>
-                <e p="2018_3" t="Include">
-                  <e p="MonKey Commander.xml" t="Include" />
-                </e>
-                <e p="5_4" t="Include">
-                  <e p="MonKey Commander.xml" t="Include" />
-                </e>
-              </e>
               <e p="Init" t="Include">
                 <e p="GettingStartedPanel.cs" t="Include" />
                 <e p="MonKeyInitialization.cs" t="Include" />

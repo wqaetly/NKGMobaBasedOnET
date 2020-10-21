@@ -348,13 +348,19 @@
      <Compile Include="Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_PrefabData.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\AnimationComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\B2S_RoleCastComponent.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Component\CommonAttackComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\EffectComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\HeroTransformComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\MouseTargetSelectorComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\OutLineComponent.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\FsmStateBase.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\StackFsmComponent.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\StateTypes.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Component\StopAllCommandComponent.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\CommonAttackState.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\Core\AFsmStateBase.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\Core\IFSMState.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\Core\StackFsmComponent.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\Core\StateTypes.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\IdleState.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\Fsm\NavigateState.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\HeroData\HeroBaseDataRepositoryComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\HeroData\HeroDataComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\HeroData\HeroDataSupportor.cs" />
@@ -477,8 +483,8 @@
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\ABuffSystemBase.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BattleEventSystem.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffDataCalculateHelper.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffFactory.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffManagerComponent.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffPoolComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffState.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffTimerAndOverlayHelper.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\FlashDamageBuffSystem.cs" />
@@ -544,6 +550,10 @@
      <Compile Include="Assets\Model\NKGMOBA\Helpers\DeepCopyHelper.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Mono\Effect_Special_Mono.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Mono\MonoBridge.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\ReferencePool\IReference.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\ReferencePool\ReferencePool.ReferenceCollection.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\ReferencePool\ReferencePool.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\ReferencePool\ReferencePoolInfo.cs" />
      <Compile Include="Assets\Model\NKGMOBA\System\Player\PlayerFactory.cs" />
      <Compile Include="Assets\Model\NKGMOBA\System\Unit\UnitFactory.cs" />
      <Compile Include="Assets\Model\Other\AppType.cs" />
@@ -796,7 +806,7 @@
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/MonKey Commander/MonKey Core.dll</HintPath>
  </Reference>
  <Reference Include="MonKey Commander">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/MonKey Commander/Editor/Bin/2018_3/MonKey Commander.dll</HintPath>
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/MonKey Commander/Editor/Libs/MonKey Commander.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>

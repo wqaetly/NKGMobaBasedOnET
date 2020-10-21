@@ -77,7 +77,11 @@ namespace ETModel
         public bool JDouble { get; set; }
         public double JLastClickTime { get; set; }
 
-
+        public bool SDown_long { get; set; }
+        public bool SDown { get; set; }
+        public bool SUp { get; set; }
+        public bool SDouble { get; set; }
+        public double SLastClickTime { get; set; }
 
         public bool SpaceDown_long { get; set; }
         public bool SpaceDown { get; set; }
@@ -157,6 +161,11 @@ namespace ETModel
             {
                 this.RDown_long = false;
                 this.RUp = true;
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                this.SDown_long = false;
+                this.SUp = true;
             }
         }
 
@@ -263,6 +272,23 @@ namespace ETModel
 
                 this.DLastClickTime = this.currentTime;
             }
+            
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                this.SDown = true;
+
+                if ((this.currentTime - this.SLastClickTime) / 1000f <= 0.5f)
+                {
+                    this.SDouble = true;
+                }
+                else
+                {
+                    this.SDouble = false;
+                }
+
+                this.SLastClickTime = this.currentTime;
+            }
+            
             if (Input.GetKeyDown(KeyCode.J))
             {
                 this.JDown = true;
@@ -304,6 +330,12 @@ namespace ETModel
             {
                 QDown_long = true;
             }
+            
+            if (Input.GetKey(KeyCode.S))
+            {
+                SDown_long = true;
+            }
+
 
             if (Input.GetKey(KeyCode.Space))
             {
@@ -348,6 +380,9 @@ namespace ETModel
             
             this.QUp = false;
             this.QDown = false;
+            
+            this.SUp = false;
+            this.SDown = false;
             
             this.EUp = false;
             this.EDown = false;

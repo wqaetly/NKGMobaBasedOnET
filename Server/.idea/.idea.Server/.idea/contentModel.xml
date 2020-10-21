@@ -106,8 +106,10 @@
                 <e p="UserInput_SkillCmdHandler.cs" t="Include" />
               </e>
               <e p="Map" t="Include">
+                <e p="C2M_CommonAttackHandler.cs" t="Include" />
                 <e p="C2M_GetHeroDataRequestHandler.cs" t="Include" />
                 <e p="C2M_TestActorRequestHandler.cs" t="Include" />
+                <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
               </e>
             </e>
             <e p="Gate" t="Include">
@@ -119,7 +121,6 @@
             </e>
             <e p="Map" t="Include">
               <e p="G2M_CreateUnitHandler.cs" t="Include" />
-              <e p="G2M_SessionDisconnectHandler.cs" t="Include" />
               <e p="M2M_TrasferUnitRequest.cs" t="Include" />
             </e>
             <e p="Realm" t="Include">
@@ -136,6 +137,7 @@
             <e p="NP_CreateColliderAction.cs" t="Include" />
           </e>
           <e p="system" t="Include">
+            <e p="CommonAttackComponentSystem.cs" t="Include" />
             <e p="PlayerInput_SkillCmdSystem.cs" t="Include" />
             <e p="RealmGateAddressComponentSystem.cs" t="Include" />
             <e p="SessionPlayerComponentSystem.cs" t="Include" />
@@ -298,6 +300,21 @@
             <e p="Box2DSharp" t="Include">
               <e p="CollisionRelations" t="Include" />
               <e p="DataStructure" t="Include" />
+            </e>
+            <e p="Component" t="Include">
+              <e p="CommonAttackComponent.cs" t="Include" />
+              <e p="StopAllCommandComponent.cs" t="Include" />
+            </e>
+            <e p="Fsm" t="Include">
+              <e p="CommonAttackState.cs" t="Include" />
+              <e p="Core" t="Include">
+                <e p="AFsmStateBase.cs" t="Include" />
+                <e p="IFSMState.cs" t="Include" />
+                <e p="StackFsmComponent.cs" t="Include" />
+                <e p="StateTypes.cs" t="Include" />
+              </e>
+              <e p="IdleState.cs" t="Include" />
+              <e p="NavigateState.cs" t="Include" />
             </e>
             <e p="HeroData" t="Include" />
             <e p="NPBehave" t="Include">
@@ -517,6 +534,12 @@
             <e p="OdinAttr.cs" t="Include" />
           </e>
           <e p="RealmGateAddressComponent.cs" t="Include" />
+          <e p="ReferencePool" t="Include">
+            <e p="IReference.cs" t="Include" />
+            <e p="ReferencePool.cs" t="Include" />
+            <e p="ReferencePool.ReferenceCollection.cs" t="Include" />
+            <e p="ReferencePoolInfo.cs" t="Include" />
+          </e>
           <e p="SessionInfoComponent.cs" t="Include" />
           <e p="SessionPlayerComponent.cs" t="Include" />
           <e p="Unit.cs" t="Include" />
