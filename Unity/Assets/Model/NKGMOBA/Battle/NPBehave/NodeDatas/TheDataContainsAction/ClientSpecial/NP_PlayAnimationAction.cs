@@ -63,7 +63,7 @@ namespace ETModel
         {
             if (this.m_Flag > NodeDataForPlayAnims.Count - 1)
             {
-                this.TheUnitBelongTo.GetComponent<StackFsmComponent>().RefreshState();
+                this.TheUnitBelongTo.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
                 //Log.Info("栈式状态机已刷新，应该会衔接切换到正确的动画");
                 this.m_Flag = 0;
                 return true;

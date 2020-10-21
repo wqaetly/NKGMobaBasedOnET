@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using Animancer;
+using ETModel.NKGMOBA.Battle.Fsm;
 using ETModel.NKGMOBA.Battle.State;
 using UnityEngine;
 
@@ -28,8 +29,7 @@ namespace ETModel
                 }
             }
 
-            self.StackFsmComponent.FsmLinkedListHasChanaged += self.PlayAnimByStackFsmCurrent;
-            self.StackFsmComponent.AddState(StateTypes.Idle, "Idle", 1);
+            self.PlayAnimByStackFsmCurrent();
         }
     }
 
@@ -62,18 +62,33 @@ namespace ETModel
         /// </summary>
         public Dictionary<StateTypes, string> RuntimeAnimationClips = new Dictionary<StateTypes, string>
         {
-            { StateTypes.Run, "Anim_Run1" }, { StateTypes.Idle, "Anim_Idle1" },
+            { StateTypes.Run, "Anim_Run1" }, { StateTypes.Idle, "Anim_Idle1" }, { StateTypes.CommonAttack, "Anim_Attack1" }
         };
 
         /// <summary>
-        /// 播放一个动画,默认过渡时间为0.3s
+        /// 播放一个动画,默认过渡时间为0.3s，如果在此期间再次播放，则会继续播放
         /// </summary>
         /// <param name="stateTypes"></param>
         /// <param name="fadeDuration">动画过渡时间</param>
         /// <returns></returns>
-        public AnimancerState PlayAnim(StateTypes stateTypes, float fadeDuration = 0.3f)
+        public AnimancerState PlayAnim(StateTypes stateTypes, float fadeDuration = 0.3f, float speed = 1.0f)
         {
-            return AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]], fadeDuration);
+            AnimancerState animancerState = AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]], fadeDuration);
+            animancerState.Speed = speed;
+            return animancerState;
+        }
+        
+        /// <summary>
+        /// 播放一个动画,默认过渡时间为0.3s,如果在此期间再次播放，则会从头开始
+        /// </summary>
+        /// <param name="stateTypes"></param>
+        /// <param name="fadeDuration">动画过渡时间</param>
+        /// <returns></returns>
+        public AnimancerState PlayAnimFromStart(StateTypes stateTypes, float fadeDuration = 0.3f, float speed = 1.0f)
+        {
+            AnimancerState animancerState = AnimancerComponent.CrossFadeFromStart(this.AnimationClips[RuntimeAnimationClips[stateTypes]], fadeDuration);
+            animancerState.Speed = speed;
+            return animancerState;
         }
 
         /// <summary>
@@ -81,10 +96,19 @@ namespace ETModel
         /// </summary>
         /// <param name="stateTypes"></param>
         /// <returns></returns>
-        public void PlayAnimAndReturnIdel(StateTypes stateTypes)
+        public void PlayAnimAndReturnIdel(StateTypes stateTypes, float fadeDuration = 0.3f, float speed = 1.0f)
         {
-            AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[stateTypes]]).OnEnd =
-                    PlayIdel;
+            PlayAnim(stateTypes, fadeDuration, speed).OnEnd = PlayIdel;
+        }
+        
+        /// <summary>
+        /// 播放一个动画(播放完成自动回到默认动画),如果在此期间再次播放，则会从头开始
+        /// </summary>
+        /// <param name="stateTypes"></param>
+        /// <returns></returns>
+        public void PlayAnimAndReturnIdelFromStart(StateTypes stateTypes, float fadeDuration = 0.3f, float speed = 1.0f)
+        {
+            PlayAnimFromStart(stateTypes, fadeDuration, speed).OnEnd = PlayIdelFromStart;
         }
 
         /// <summary>
@@ -102,6 +126,14 @@ namespace ETModel
         public void PlayIdel()
         {
             AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idle]]);
+        }
+        
+        /// <summary>
+        /// 播放默认动画（非正式版）,如果在此期间再次播放，则会从头开始
+        /// </summary>
+        public void PlayIdelFromStart()
+        {
+            AnimancerComponent.CrossFadeFromStart(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idle]]);
         }
 
         /// <summary>
@@ -127,7 +159,6 @@ namespace ETModel
             this.AnimationClips = null;
             RuntimeAnimationClips.Clear();
             this.RuntimeAnimationClips = null;
-            StackFsmComponent.FsmLinkedListHasChanaged -= PlayAnimByStackFsmCurrent;
             this.StackFsmComponent = null;
         }
     }
