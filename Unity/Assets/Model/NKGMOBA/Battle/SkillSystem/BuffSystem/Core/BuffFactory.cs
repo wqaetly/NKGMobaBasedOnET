@@ -12,7 +12,7 @@ namespace ETModel
     /// <summary>
     /// Buff池组件
     /// </summary>
-    public class BuffPoolComponent: Component
+    public static class BuffFactory
     {
         /// <summary>
         /// 记录所有BuffSystem类型，用于运行时创建对应的BuffSystem
@@ -32,11 +32,6 @@ namespace ETModel
         };
 
         /// <summary>
-        /// BuffPool中所有BuffSystem
-        /// </summary>
-        public Dictionary<Type, Queue<ABuffSystemBase>> BuffSystems = new Dictionary<Type, Queue<ABuffSystemBase>>();
-
-        /// <summary>
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
         /// <param name="dataId">Buff数据归属的数据块Id</param>
@@ -44,7 +39,7 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(long dataId, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
+        public static ABuffSystemBase AcquireBuff(long dataId, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
         NP_RuntimeTree theSkillCanvasBelongTo)
         {
             return AcquireBuff(
@@ -60,7 +55,7 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
+        public static ABuffSystemBase AcquireBuff(NP_DataSupportor npDataSupportor, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
         NP_RuntimeTree theSkillCanvasBelongTo)
         {
             return AcquireBuff((npDataSupportor.BuffNodeDataDic[buffNodeId] as NormalBuffNodeData).BuffData, theUnitFrom, theUnitBelongTo,
@@ -74,23 +69,10 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
+        public static ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo,
+        NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            Queue<ABuffSystemBase> buffBase;
-            Type targetBuffSystemType = AllBuffSystemTypes[buffDataBase.BelongBuffSystemType];
-            ABuffSystemBase resultBuff;
-            if (this.BuffSystems.TryGetValue(targetBuffSystemType, out buffBase))
-            {
-                if (buffBase.Count > 0)
-                {
-                    resultBuff = buffBase.Dequeue();
-                    resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
-                    resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
-                    return resultBuff;
-                }
-            }
-
-            resultBuff = (ABuffSystemBase) Activator.CreateInstance(targetBuffSystemType);
+            ABuffSystemBase resultBuff = ReferencePool.Acquire(AllBuffSystemTypes[buffDataBase.BelongBuffSystemType]) as ABuffSystemBase;
             resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
             resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return resultBuff;
@@ -100,17 +82,9 @@ namespace ETModel
         /// 回收一个Buff
         /// </summary>
         /// <param name="aBuffSystemBase"></param>
-        public void RecycleBuff(ABuffSystemBase aBuffSystemBase)
+        public static void RecycleBuff(ABuffSystemBase aBuffSystemBase)
         {
-            if (this.BuffSystems.TryGetValue(aBuffSystemBase.GetType(), out Queue<ABuffSystemBase> temp))
-            {
-                temp.Enqueue(aBuffSystemBase);
-            }
-            else
-            {
-                this.BuffSystems.Add(aBuffSystemBase.GetType(), new Queue<ABuffSystemBase>());
-                this.BuffSystems[aBuffSystemBase.GetType()].Enqueue(aBuffSystemBase);
-            }
+            ReferencePool.Release(aBuffSystemBase);
         }
     }
 }
