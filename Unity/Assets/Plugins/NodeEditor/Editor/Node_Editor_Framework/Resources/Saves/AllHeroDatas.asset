@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes:
-  - {fileID: 1941134707238735340}
+  selectedNodes: []
   panOffset: {x: -54.4, y: 185}
   zoom: 1.2
   boxSelecting: 0
@@ -74,28 +73,28 @@ MonoBehaviour:
       Data: 10001
     - Name: HeroName
       Entry: 1
-      Data: Darius
+      Data: "\u5FB7\u83B1\u5384\u65AF"
     - Name: HeroProfession
       Entry: 3
-      Data: 132
+      Data: 0
     - Name: HeroAvatar
       Entry: 1
       Data: Darius_Circle_8
     - Name: Talent_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Hemorrhage
     - Name: Q_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Decimate
     - Name: W_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Hamstring
     - Name: E_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Axe_Grab
     - Name: R_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Sudden_Death
     - Name: LevelUpExp
       Entry: 7
       Data: 4|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Int32,
@@ -335,9 +334,18 @@ MonoBehaviour:
     - Name: OriMoveSpeed
       Entry: 4
       Data: 435
+    - Name: OriAttackPre
+      Entry: 4
+      Data: 0.3
     - Name: OriAttackSpeed
       Entry: 4
       Data: 0.75
+    - Name: OriAttackIncome
+      Entry: 4
+      Data: 1
+    - Name: OriAttackPos
+      Entry: 4
+      Data: 0.6
     - Name: OriArmorPenetration
       Entry: 4
       Data: 0
@@ -505,20 +513,20 @@ MonoBehaviour:
       Entry: 1
       Data: Darius_Circle_8
     - Name: Talent_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Hemorrhage
     - Name: Q_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Decimate
     - Name: W_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Hamstring
     - Name: E_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Axe_Grab
     - Name: R_SkillSprite
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: Darius_Icon_Sudden_Death
     - Name: LevelUpExp
       Entry: 7
       Data: 1|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Int32,
@@ -758,9 +766,18 @@ MonoBehaviour:
     - Name: OriMoveSpeed
       Entry: 4
       Data: 435
+    - Name: OriAttackPre
+      Entry: 4
+      Data: 0.3
     - Name: OriAttackSpeed
       Entry: 4
       Data: 0.75
+    - Name: OriAttackIncome
+      Entry: 4
+      Data: 1
+    - Name: OriAttackPos
+      Entry: 4
+      Data: 0.6
     - Name: OriArmorPenetration
       Entry: 4
       Data: 0

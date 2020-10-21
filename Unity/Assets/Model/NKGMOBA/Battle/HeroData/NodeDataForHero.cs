@@ -94,8 +94,17 @@ namespace ETModel
         [LabelText("初始移速")]
         public float OriMoveSpeed;
 
+        [LabelText("初始攻击前摇")]
+        public float OriAttackPre;
+        
         [LabelText("初始攻速")]
         public float OriAttackSpeed;
+        
+        [LabelText("攻速收益")]
+        public float OriAttackIncome;
+
+        [LabelText("初始攻击后摇")]
+        public float OriAttackPos;
 
         [LabelText("初始破甲")]
         public float OriArmorPenetration;
