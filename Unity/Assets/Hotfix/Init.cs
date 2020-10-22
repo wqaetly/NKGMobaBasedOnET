@@ -39,7 +39,7 @@ namespace ETHotfix
                 //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
                 //初始化UI操作
-                await Game.Scene.AddComponent<FUIInitComponent>().Init();
+                Game.Scene.AddComponent<FUIInitComponent>().Init();
                 //增加UI栈组件，方便管理UI
                 Game.Scene.AddComponent<FUIStackComponent>();
                 //显示登录UI

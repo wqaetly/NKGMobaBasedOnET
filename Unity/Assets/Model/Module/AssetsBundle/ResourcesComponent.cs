@@ -72,48 +72,5 @@ namespace ETModel
         }
 
         #endregion
-
-        #region AssetBundles
-
-        /// <summary>
-        /// 加载AB,path需要为全路径
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public AssetBundle LoadAssetBundle(string path)
-        {
-            string assetBundleName;
-            Assets.GetAssetBundleName(path, out assetBundleName);
-            AssetRequest assetRequest = Assets.LoadBundle(assetBundleName);
-            return (AssetBundle) assetRequest.asset;
-        }
-
-        /// <summary>
-        /// 异步加载AB，path需要为全路径
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public ETTask<AssetBundle> LoadAssetBundleAsync(string path)
-        {
-            string assetBundleName;
-            Assets.GetAssetBundleName(path, out assetBundleName);
-            ETTaskCompletionSource<AssetBundle> tcs = new ETTaskCompletionSource<AssetBundle>();
-            AssetRequest assetRequest = Assets.LoadBundleAsync(assetBundleName);
-            assetRequest.completed = (arq) => { tcs.SetResult((AssetBundle) arq.asset); };
-            return tcs.Task;
-        }
-
-        /// <summary>
-        /// 卸载资源，path需要是全路径
-        /// </summary>
-        /// <param name="path"></param>
-        public void UnLoadAssetBundle(string path)
-        {
-            string assetBundleName;
-            Assets.GetAssetBundleName(path, out assetBundleName);
-            Assets.UnloadBundle(assetBundleName);
-        }
-
-        #endregion
     }
 }

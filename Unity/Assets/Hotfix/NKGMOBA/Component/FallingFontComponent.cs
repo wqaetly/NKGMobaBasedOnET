@@ -61,11 +61,11 @@ namespace ETHotfix
         /// 播放飘字特效
         /// </summary>
         /// <param name="targetValue">目标值</param>
-        public async ETVoid Play(float targetValue)
+        public void Play(float targetValue)
         {
             if (FuiFallBleedQue.Count == 0)
             {
-                await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIPackage.FUIFallBleed);
+                ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUIFallBleed);
                 var hotfixui = FUIFallBleed.CreateInstance();
                 hotfixui.Name = hotfixui.Id.ToString();
                 hotfixui.MakeFullScreen();

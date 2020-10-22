@@ -438,17 +438,6 @@ namespace libx
         {
             bundle.Release();
         }
-        
-        public static void UnloadBundle(string assetBundleName)
-        {
-            foreach (var ab in _bundles)
-            {
-                if (ab.Value.assetBundleName == assetBundleName)
-                {
-                    ab.Value.Release();
-                }
-            }
-        }
 
         private static void UnloadDependencies(BundleRequest bundle)
         {

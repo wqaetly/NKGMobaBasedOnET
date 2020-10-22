@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FairyGUI;
+using libx;
 using UnityEngine;
 
 namespace ETModel
@@ -14,7 +16,7 @@ namespace ETModel
 
         private readonly Dictionary<string, UIPackage> packages = new Dictionary<string, UIPackage>();
 
-        public async ETTask AddPackageAsync(string type)
+        public void AddPackage(string type)
         {
             if (this.packages.ContainsKey(type)) return;
             UIPackage uiPackage;
@@ -24,13 +26,27 @@ namespace ETModel
             }
             else
             {
-                string uiBundleDesName = $"{type}_fui";
-                string uiBundleResName = $"{type}_atlas0";
                 ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-                AssetBundle desAssetBundle = await resourcesComponent.LoadAssetBundleAsync(ABPathUtilities.GetFGUIDesPath(uiBundleDesName));
-                AssetBundle resAssetBundle = await resourcesComponent.LoadAssetBundleAsync(ABPathUtilities.GetFGUIResPath(uiBundleResName));
-                uiPackage = UIPackage.AddPackage(desAssetBundle, resAssetBundle);
+                uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}", (string name, string extension, Type type1, out DestroyMethod method) =>
+                {
+                    method = DestroyMethod.Unload;
+                    switch (extension)
+                    {
+                        case ".bytes":
+                        {
+                            var req = resourcesComponent.LoadAsset<TextAsset>($"{name}{extension}");
+                            return req;
+                        }
+                        case ".png":
+                        {
+                            var req = resourcesComponent.LoadAsset<Texture>($"{name}{extension}");
+                            return req;
+                        }
+                    }
+
+                    return null;
+                });
             }
 
             packages.Add(type, uiPackage);
@@ -54,10 +70,8 @@ namespace ETModel
 
             if (!Define.ResModeIsEditor)
             {
-                string uiBundleDesName = $"{type}_fui";
-                string uiBundleResName = $"{type}_atlas0";
-                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAssetBundle(ABPathUtilities.GetFGUIDesPath(uiBundleDesName));
-                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAssetBundle(ABPathUtilities.GetFGUIResPath(uiBundleResName));
+                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAsset(ABPathUtilities.GetFGUIDesPath($"{type}_fui"));
+                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAsset(ABPathUtilities.GetFGUIResPath($"{type}_atlas0"));
             }
         }
     }
