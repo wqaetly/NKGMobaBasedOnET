@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using FairyGUI;
-using libx;
 using UnityEngine;
 
 namespace ETModel
@@ -26,30 +24,31 @@ namespace ETModel
             }
             else
             {
-                ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-
-                uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}", (string name, string extension, Type type1, out DestroyMethod method) =>
-                {
-                    method = DestroyMethod.Unload;
-                    switch (extension)
-                    {
-                        case ".bytes":
-                        {
-                            var req = resourcesComponent.LoadAsset<TextAsset>($"{name}{extension}");
-                            return req;
-                        }
-                        case ".png":
-                        {
-                            var req = resourcesComponent.LoadAsset<Texture>($"{name}{extension}");
-                            return req;
-                        }
-                    }
-
-                    return null;
-                });
+                uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}", LoadPackageInternal);
             }
 
             packages.Add(type, uiPackage);
+        }
+
+        private static UnityEngine.Object LoadPackageInternal(string name, string extension, Type type, out DestroyMethod method)
+        {
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+            method = DestroyMethod.Unload;
+            switch (extension)
+            {
+                case ".bytes":
+                {
+                    var req = resourcesComponent.LoadAsset<TextAsset>($"{name}{extension}");
+                    return req;
+                }
+                case ".png": //如果FGUI导出时没有选择分离通明通道，会因为加载不到!a结尾的Asset而报错，但是不影响运行
+                {
+                    var req = resourcesComponent.LoadAsset<Texture>($"{name}{extension}");
+                    return req;
+                }
+            }
+
+            return null;
         }
 
         public void RemovePackage(string type)
