@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using PF;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ETModel
 {

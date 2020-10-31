@@ -170,15 +170,6 @@
           <e p="LogType.cs" t="Include" />
           <e p="PlayerOfflineTypes.cs" t="Include" />
           <e p="RecyclableMemoryStream" t="Include" />
-          <e p="UnityEngine" t="Include">
-            <e p="Mathf.cs" t="Include" />
-            <e p="Matrix3x3.cs" t="Include" />
-            <e p="Matrix4x4.cs" t="Include" />
-            <e p="Quaternion.cs" t="Include" />
-            <e p="Vector2.cs" t="Include" />
-            <e p="Vector3.cs" t="Include" />
-            <e p="Vector4.cs" t="Include" />
-          </e>
         </e>
         <e p="Component" t="Include">
           <e p="AppManagerComponent.cs" t="Include" />
@@ -264,16 +255,6 @@
             </e>
           </e>
           <e p="Numeric" t="Include" />
-          <e p="Pathfinding" t="Include">
-            <e p="ABPathWrap.cs" t="Include" />
-            <e p="DeserializeHelper.cs" t="Include" />
-            <e p="PathfindingComponent.cs" t="Include" />
-            <e p="PathModifyHelper.cs" t="Include" />
-            <e p="Recast" t="Include">
-              <e p="Pathfinders" t="Include" />
-              <e p="Serialization" t="Include" />
-            </e>
-          </e>
         </e>
         <e p="NKGMOBA" t="Include">
           <e p="Battle" t="Include">
@@ -534,6 +515,15 @@
             <e p="OdinAttr.cs" t="Include" />
           </e>
           <e p="RealmGateAddressComponent.cs" t="Include" />
+          <e p="RecastNav" t="Include">
+            <e p="Base" t="Include">
+              <e p="BitArray.cs" t="Include" />
+              <e p="BitStream.cs" t="Include" />
+              <e p="VoxelFile.cs" t="Include" />
+            </e>
+            <e p="RecastPathComponent.cs" t="Include" />
+            <e p="RecastPathProcessor.cs" t="Include" />
+          </e>
           <e p="ReferencePool" t="Include">
             <e p="IReference.cs" t="Include" />
             <e p="ReferencePool.cs" t="Include" />
@@ -2056,6 +2046,43 @@
           <e p="MongoDB.Shared\IncrementalMD5.cs" t="Include" />
           <e p="MongoDB.Shared\MaxTimeHelper.cs" t="Include" />
         </e>
+        <e p="Recast" t="IncludeRecursive">
+          <e p="Bin" t="ExcludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Recast.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Recast.csproj" t="IncludeRecursive" />
+          <e p="RecastInterface.cs" t="Include" />
+        </e>
+        <e p="UnityEngine" t="IncludeRecursive">
+          <e p="Bin" t="ExcludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="UnityEngine.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="UnityEngine" t="Include">
+            <e p="Unity" t="Include">
+              <e p="Mathf.cs" t="Include" />
+              <e p="Matrix3x3.cs" t="Include" />
+              <e p="Matrix4x4.cs" t="Include" />
+              <e p="Quaternion.cs" t="Include" />
+              <e p="Rect.cs" t="Include" />
+              <e p="Vector2.cs" t="Include" />
+              <e p="Vector3.cs" t="Include" />
+              <e p="Vector4.cs" t="Include" />
+              <e p="WrapMode.cs" t="Include" />
+            </e>
+            <e p="UnityEngine.csproj" t="Include" />
+          </e>
+          <e p="UnityEngine.csproj" t="IncludeRecursive" />
+        </e>
       </e>
     </e>
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Hotfix\Module\Message\HotfixMessage.cs" t="Include" />
@@ -2174,49 +2201,6 @@
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericType.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericWatcherAttribute.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericWatcherComponent.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ArrayPool.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\AstarChecksum.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\AStarConfig.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\AstarDeserializer.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\AstarMath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\AstarMemory.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\BBTree.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\BinaryHeap.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\EuclideanEmbedding.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Funnel.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\GraphNode.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\GraphTransform.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Guid.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\INavmesh.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Int3.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\IntRect.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ListPool.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\NavGraph.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\NavmeshBase.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\NavmeshTile.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\NN.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ObjectPool.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Path.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\ABPath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\ConstantPath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\FleePath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\FloodPath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\FloodPathTracer.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\MultiTargetPath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\RandomPath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Pathfinders\XPath.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\PathFindHelper.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\PathHandler.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\PathPool.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\PathProcessor.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\PathReturnQueue.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\RecastGenerator.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Serialization\JsonSerializer.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Serialization\SimpleZipReplacement.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\Serialization\TinyJson.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\ThreadControlQueue.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\TriangleMeshNode.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Pathfinding\Recast\WindowsStoreCompatibility.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_AllCollideableObject.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_CollisionInstance.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_CollisionRelationSupport.cs" t="Include" />
@@ -2254,5 +2238,6 @@
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\RepeatedField.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\StreamExtensions.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\ThirdParty\Google.Protobuf\WireFormat.cs" t="Include" />
+    <e p="F:\Download\recastnavigation-master\recastnavigation-master\RecastDemo\Build\vs2019\x64\Release\RecastNavDll.dll" t="Include" />
   </component>
 </project>

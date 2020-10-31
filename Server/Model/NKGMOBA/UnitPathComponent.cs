@@ -7,28 +7,29 @@ namespace ETModel
     {
         public Vector3 Target;
 
-        private ABPathWrap abPath;
-        
+        private RecastPath recastPath;
+
         public List<Vector3> Path;
 
         public ETCancellationTokenSource ETCancellationTokenSource;
 
-        public ABPathWrap ABPath
+        public RecastPath RecastPath
         {
             get
             {
-                return this.abPath;
+                return this.recastPath;
             }
             set
             {
-                this.abPath?.Dispose();
-                this.abPath = value;
+                if (recastPath != null)
+                    ReferencePool.Release(recastPath);
+                this.recastPath = value;
             }
         }
 
         public void CancelMove()
         {
-            ETCancellationTokenSource?.Cancel();;
+            ETCancellationTokenSource?.Cancel();
         }
 
         public override void Dispose()
@@ -37,9 +38,11 @@ namespace ETModel
             {
                 return;
             }
+
             base.Dispose();
-            
-            this.abPath?.Dispose();
+
+            if (recastPath != null)
+                ReferencePool.Release(recastPath);
         }
     }
 }

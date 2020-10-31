@@ -94,7 +94,7 @@ namespace App
                         Game.Scene.AddComponent<ActorLocationSenderComponent>();
                         Game.Scene.AddComponent<MailboxDispatcherComponent>();
                         Game.Scene.AddComponent<ActorMessageDispatcherComponent>();
-                        Game.Scene.AddComponent<PathfindingComponent>();
+                        Game.Scene.AddComponent<RecastPathComponent>();
                         Game.Scene.AddComponent<CoroutineLockComponent>();
                         break;
                     case AppType.AllServer:
@@ -134,7 +134,8 @@ namespace App
                         Game.Scene.AddComponent<ConfigComponent>();
 
                         // recast寻路组件
-                        Game.Scene.AddComponent<PathfindingComponent>();
+                        Game.Scene.AddComponent<RecastPathComponent>();
+                        
                         //添加玩家组件（使用字典维护，可当做抽象化的玩家，处于不同的游戏流程会有不同的身份）
                         Game.Scene.AddComponent<PlayerComponent>();
 

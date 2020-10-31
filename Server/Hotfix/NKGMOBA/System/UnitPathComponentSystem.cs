@@ -45,18 +45,22 @@ namespace ETHotfix
 
             Unit unit = self.GetParent<Unit>();
 
-            PathfindingComponent pathfindingComponent = Game.Scene.GetComponent<PathfindingComponent>();
-            self.ABPath = ComponentFactory.Create<ABPathWrap, Vector3, Vector3>(unit.Position, new Vector3(target.x, target.y, target.z));
-            pathfindingComponent.Search(self.ABPath);
+            RecastPathComponent recastPathComponent = Game.Scene.GetComponent<RecastPathComponent>();
+            RecastPath recastPath = ReferencePool.Acquire<RecastPath>();
+            recastPath.StartPos = unit.Position;
+            recastPath.EndPos = new Vector3(target.x, target.y, target.z);
+            self.RecastPath = recastPath;
+            //TODO 因为目前阶段只有一张地图，所以默认mapId为10001
+            recastPathComponent.SearchPath(10001, self.RecastPath);
             //Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
 
             self.ETCancellationTokenSource?.Cancel();
             self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
-            await self.MoveAsync(self.ABPath.Result);
+            await self.MoveAsync(self.RecastPath.Results);
             self.ETCancellationTokenSource.Dispose();
             self.Entity.GetComponent<StackFsmComponent>().ChangeState<NavigateState>(StateTypes.Idle, "Idle", 1);
         }
-        
+
         // 从index找接下来3个点，广播
         public static void BroadcastPath(this UnitPathComponent self, List<Vector3> path, int index, int offset)
         {
@@ -70,12 +74,12 @@ namespace ETHotfix
 
             for (int i = 0; i < offset; ++i)
             {
-                if (index + i >= self.ABPath.Result.Count)
+                if (index + i >= self.RecastPath.Results.Count)
                 {
                     break;
                 }
 
-                Vector3 v = self.ABPath.Result[index + i];
+                Vector3 v = self.RecastPath.Results[index + i];
                 m2CPathfindingResult.Xs.Add(v.x);
                 m2CPathfindingResult.Ys.Add(v.y);
                 m2CPathfindingResult.Zs.Add(v.z);

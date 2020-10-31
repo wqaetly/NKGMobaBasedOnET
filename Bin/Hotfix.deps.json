@@ -1107,7 +1107,9 @@
           "MongoDB.Driver": "0.0.0-local",
           "MongoDB.Driver.Core": "0.0.0-local",
           "NLog": "4.5.4",
-          "SharpZipLib": "1.0.0-alpha2"
+          "Recast": "1.0.0",
+          "SharpZipLib": "1.0.0-alpha2",
+          "UnityEngine": "1.0.0"
         },
         "runtime": {
           "Model.dll": {}
@@ -1136,12 +1138,17 @@
           "MongoDB.Driver.Core.dll": {}
         }
       },
-      "Pathfinding.Ionic.Zip.Reduced/1.9.1.9000": {
+      "Recast/1.0.0": {
+        "dependencies": {
+          "UnityEngine": "1.0.0"
+        },
         "runtime": {
-          "Pathfinding.Ionic.Zip.Reduced.dll": {
-            "assemblyVersion": "1.9.1.9000",
-            "fileVersion": "1.9.1.9000"
-          }
+          "Recast.dll": {}
+        }
+      },
+      "UnityEngine/1.0.0": {
+        "runtime": {
+          "UnityEngine.dll": {}
         }
       }
     }
@@ -1873,8 +1880,13 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Pathfinding.Ionic.Zip.Reduced/1.9.1.9000": {
-      "type": "reference",
+    "Recast/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     }
