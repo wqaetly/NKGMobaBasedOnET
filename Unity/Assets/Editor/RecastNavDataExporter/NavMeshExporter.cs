@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using ETModel;
+using MonKey;
 using UnityEditor;
 using UnityEditor.UI;
 using UnityEngine;
@@ -67,12 +68,11 @@ namespace ETEditor
         private static Dictionary<Vert, Dictionary<Vert, Pair>> vertPairDict = new Dictionary<Vert, Dictionary<Vert, Pair>>();
         private static Dictionary<float, Dictionary<float, Vert>> pointVertDict = new Dictionary<float, Dictionary<float, Vert>>();
         private static Dictionary<int, Vert> indexVertDict = new Dictionary<int, Vert>();
-        private static string outputClientFolder = "Assets/Res/RecastNavData/ExportedObj/";
+        private static string outputClientFolder = "../RecastNavMesh/Meshes/";
         private static string outputServerFolder = "../Config/RecastNavData/ExportedObj/";
 
         #region 菜单主函数
-
-        [MenuItem("Tools/NavMesh/Export Scene")]
+        [Command("ETEditor_NavMeshExportSceneObjEditor","从NavMesh导出obj文件给RecastDemo烘焙",Category = "ETEditor")]
         public static void ExportScene()
         {
             var triangulation = UnityEngine.AI.NavMesh.CalculateTriangulation();
@@ -98,8 +98,8 @@ namespace ETEditor
             //WriteUnityObjFile();
             // 导出Recast可用的*.Obj文件
             WriteRecastObjFile();
-            // 拷贝Obj和Bytes文件到服务器目录下
-            CopyObjFiles();
+            // 拷贝Obj和Bytes文件到服务器目录下 TODO 暂不需要
+            //CopyObjFiles();
 
             Debug.Log($"NavMesh Output Info - Vertices:[{vertList.Count}] - Faces:[{faceList.Count}]");
         }
