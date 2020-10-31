@@ -1,5 +1,4 @@
-﻿#if SERVER
-using System;
+﻿using System;
 
 namespace UnityEngine
 {
@@ -491,4 +490,3 @@ namespace UnityEngine
 	    }
 	}
 }
-#endif

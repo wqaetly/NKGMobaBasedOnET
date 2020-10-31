@@ -1,9 +1,4 @@
-﻿//**************************************************
-// Copyright©2018 何冠峰
-// Licensed under the MIT license
-//**************************************************
-
-namespace UnityEngine
+﻿namespace UnityEngine
 {
 	public struct Matrix3x3
 	{
@@ -67,7 +62,6 @@ namespace UnityEngine
 			return fCofactor0 + fCofactor1 + fCofactor2 - fCofactor3 - fCofactor4 - fCofactor5;
 		}
 
-		// Right handed
 		public static bool LookRotationToMatrix(Vector3 viewVec, Vector3 upVec, out Matrix3x3 m)
 		{
 			m = Matrix3x3.identity;

@@ -124,12 +124,17 @@ namespace UnityEngine
         {
             int length = values.Length;
             if (length == 0)
+            {
                 return 0.0f;
+            }
+
             float num = values[0];
             for (int index = 1; index < length; ++index)
             {
                 if ((double) values[index] < (double) num)
+                {
                     num = values[index];
+                }
             }
 
             return num;
@@ -156,12 +161,17 @@ namespace UnityEngine
         {
             int length = values.Length;
             if (length == 0)
+            {
                 return 0;
+            }
+
             int num = values[0];
             for (int index = 1; index < length; ++index)
             {
                 if (values[index] < num)
+                {
                     num = values[index];
+                }
             }
 
             return num;
@@ -188,12 +198,17 @@ namespace UnityEngine
         {
             int length = values.Length;
             if (length == 0)
+            {
                 return 0.0f;
+            }
+
             float num = values[0];
             for (int index = 1; index < length; ++index)
             {
                 if ((double) values[index] > (double) num)
+                {
                     num = values[index];
+                }
             }
 
             return num;
@@ -220,12 +235,17 @@ namespace UnityEngine
         {
             int length = values.Length;
             if (length == 0)
+            {
                 return 0;
+            }
+
             int num = values[0];
             for (int index = 1; index < length; ++index)
             {
                 if (values[index] > num)
+                {
                     num = values[index];
+                }
             }
 
             return num;
@@ -350,9 +370,14 @@ namespace UnityEngine
         public static float Clamp(float value, float min, float max)
         {
             if ((double) value < (double) min)
+            {
                 value = min;
+            }
             else if ((double) value > (double) max)
+            {
                 value = max;
+            }
+
             return value;
         }
 
@@ -365,9 +390,14 @@ namespace UnityEngine
         public static int Clamp(int value, int min, int max)
         {
             if (value < min)
+            {
                 value = min;
+            }
             else if (value > max)
+            {
                 value = max;
+            }
+
             return value;
         }
 
@@ -378,9 +408,15 @@ namespace UnityEngine
         public static float Clamp01(float value)
         {
             if ((double) value < 0.0)
+            {
                 return 0.0f;
+            }
+
             if ((double) value > 1.0)
+            {
                 return 1f;
+            }
+
             return value;
         }
 
@@ -422,7 +458,10 @@ namespace UnityEngine
         {
             float num = Mathf.Repeat(b - a, 360f);
             if ((double) num > 180.0)
+            {
                 num -= 360f;
+            }
+
             return a + num * Mathf.Clamp01(t);
         }
 
@@ -435,7 +474,10 @@ namespace UnityEngine
         public static float MoveTowards(float current, float target, float maxDelta)
         {
             if ((double) Mathf.Abs(target - current) <= (double) maxDelta)
+            {
                 return target;
+            }
+
             return current + Mathf.Sign(target - current) * maxDelta;
         }
 
@@ -449,7 +491,10 @@ namespace UnityEngine
         {
             float num = Mathf.DeltaAngle(current, target);
             if (-(double) maxDelta < (double) num && (double) num < (double) maxDelta)
+            {
                 return target;
+            }
+
             target = current + num;
             return Mathf.MoveTowards(current, target, maxDelta);
         }
@@ -471,10 +516,16 @@ namespace UnityEngine
         {
             bool flag = false;
             if ((double) value < 0.0)
+            {
                 flag = true;
+            }
+
             float num1 = Mathf.Abs(value);
             if ((double) num1 > (double) absmax)
+            {
                 return !flag? num1 : -num1;
+            }
+
             float num2 = Mathf.Pow(num1 / absmax, gamma) * absmax;
             return !flag? num2 : -num2;
         }
@@ -509,7 +560,10 @@ namespace UnityEngine
         public static float InverseLerp(float a, float b, float value)
         {
             if ((double) a != (double) b)
+            {
                 return Mathf.Clamp01((float) (((double) value - (double) a) / ((double) b - (double) a)));
+            }
+
             return 0.0f;
         }
 
@@ -522,7 +576,10 @@ namespace UnityEngine
         {
             float num = Mathf.Repeat(target - current, 360f);
             if ((double) num > 180.0)
+            {
                 num -= 360f;
+            }
+
             return num;
         }
 
@@ -534,7 +591,10 @@ namespace UnityEngine
             float num4 = p4.y - p3.y;
             float num5 = (float) ((double) num1 * (double) num4 - (double) num2 * (double) num3);
             if ((double) num5 == 0.0)
+            {
                 return false;
+            }
+
             float num6 = p3.x - p1.x;
             float num7 = p3.y - p1.y;
             float num8 = (float) ((double) num6 * (double) num4 - (double) num7 * (double) num3) / num5;
@@ -550,15 +610,24 @@ namespace UnityEngine
             float num4 = p4.y - p3.y;
             float num5 = (float) ((double) num1 * (double) num4 - (double) num2 * (double) num3);
             if ((double) num5 == 0.0)
+            {
                 return false;
+            }
+
             float num6 = p3.x - p1.x;
             float num7 = p3.y - p1.y;
             float num8 = (float) ((double) num6 * (double) num4 - (double) num7 * (double) num3) / num5;
             if ((double) num8 < 0.0 || (double) num8 > 1.0)
+            {
                 return false;
+            }
+
             float num9 = (float) ((double) num6 * (double) num2 - (double) num7 * (double) num1) / num5;
             if ((double) num9 < 0.0 || (double) num9 > 1.0)
+            {
                 return false;
+            }
+
             result = new Vector2(p1.x + num8 * num1, p1.y + num8 * num2);
             return true;
         }
@@ -605,6 +674,42 @@ namespace UnityEngine
         public static bool CompareApproximate(double f0, double f1, float epsilon = CompareEpsilon)
         {
             return System.Math.Abs(f0 - f1) < epsilon;
+        }
+
+        public static float GammaToLinearSpace(float value)
+        {
+            if (value <= 0.04045F)
+            {
+                return value / 12.92F;
+            }
+            else if (value < 1.0F)
+            {
+                return Pow((value + 0.055F) / 1.055F, 2.4F);
+            }
+            else
+            {
+                return Pow(value, 2.4F);
+            }
+        }
+
+        public static float LinearToGammaSpace(float value)
+        {
+            if (value <= 0.0F)
+            {
+                return 0.0F;
+            }
+            else if (value <= 0.0031308F)
+            {
+                return 12.92F * value;
+            }
+            else if (value <= 1.0F)
+            {
+                return 1.055F * Pow(value, 0.41666F) - 0.055F;
+            }
+            else
+            {
+                return Pow(value, 0.41666F);
+            }
         }
     }
 }

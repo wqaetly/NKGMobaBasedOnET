@@ -1,5 +1,4 @@
-﻿#if SERVER
-using System;
+﻿using System;
 using System.Globalization;
 
 namespace UnityEngine
@@ -655,4 +654,3 @@ namespace UnityEngine
         }
     }
 }
-#endif

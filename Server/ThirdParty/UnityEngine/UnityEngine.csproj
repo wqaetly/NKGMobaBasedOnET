@@ -1,21 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>7.1</LangVersion>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <DefineConstants>TRACE;SERVER</DefineConstants>
-        <OutputPath>bin\Release\</OutputPath>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Optimize>false</Optimize>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DefineConstants>TRACE;SERVER</DefineConstants>
-        <OutputPath>bin\Debug\</OutputPath>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="UnityEngine\UnityEngine.csproj" />
+    </ItemGroup>
 
 </Project>

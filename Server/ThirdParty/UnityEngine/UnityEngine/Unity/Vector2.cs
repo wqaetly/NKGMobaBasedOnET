@@ -4,14 +4,14 @@ using System.Globalization;
 namespace UnityEngine
 {
     [Serializable]
-    public struct Vector2: IEquatable<Vector2>
+    public struct Vector2 : IEquatable<Vector2>
     {
         public static readonly Vector2 zero = new Vector2();
         public static readonly Vector2 one = new Vector2(1f, 1f);
-        
+
         public float x;
         public float y;
-        
+
         public static implicit operator Vector2(Vector3 v)
         {
             return new Vector2(v.x, v.y);
@@ -76,7 +76,7 @@ namespace UnityEngine
         {
             bool flag = false;
             if (obj is Vector2)
-                flag = this.Equals((Vector2) obj);
+                flag = this.Equals((Vector2)obj);
             return flag;
         }
 
@@ -87,14 +87,14 @@ namespace UnityEngine
 
         public float Length()
         {
-            return (float) Math.Sqrt(this.x * (double) this.x + this.y * (double) this.y);
+            return (float)Math.Sqrt(this.x * (double)this.x + this.y * (double)this.y);
         }
 
         public float LengthSquared()
         {
-            return (float) (this.x * (double) this.x + this.y * (double) this.y);
+            return (float)(this.x * (double)this.x + this.y * (double)this.y);
         }
-        
+
         public float magnitude
         {
             get
@@ -102,7 +102,7 @@ namespace UnityEngine
                 return this.Length();
             }
         }
-        
+
         public float sqrMagnitude
         {
             get
@@ -115,47 +115,47 @@ namespace UnityEngine
         {
             float num1 = value1.x - value2.x;
             float num2 = value1.y - value2.y;
-            return (float) Math.Sqrt(num1 * (double) num1 + num2 * (double) num2);
+            return (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
         }
 
         public static void Distance(ref Vector2 value1, ref Vector2 value2, out float result)
         {
             float num1 = value1.x - value2.x;
             float num2 = value1.y - value2.y;
-            float num3 = (float) (num1 * (double) num1 + num2 * (double) num2);
-            result = (float) Math.Sqrt(num3);
+            float num3 = (float)(num1 * (double)num1 + num2 * (double)num2);
+            result = (float)Math.Sqrt(num3);
         }
 
         public static float DistanceSquared(Vector2 value1, Vector2 value2)
         {
             float num1 = value1.x - value2.x;
             float num2 = value1.y - value2.y;
-            return (float) (num1 * (double) num1 + num2 * (double) num2);
+            return (float)(num1 * (double)num1 + num2 * (double)num2);
         }
 
         public static void DistanceSquared(ref Vector2 value1, ref Vector2 value2, out float result)
         {
             float num1 = value1.x - value2.x;
             float num2 = value1.y - value2.y;
-            result = (float) (num1 * (double) num1 + num2 * (double) num2);
+            result = (float)(num1 * (double)num1 + num2 * (double)num2);
         }
 
         public void Normalize()
         {
-            float num1 = (float) (this.x * (double) this.x + this.y * (double) this.y);
+            float num1 = (float)(this.x * (double)this.x + this.y * (double)this.y);
             if (num1 < 9.99999974737875E-06)
                 return;
-            float num2 = 1f / (float) Math.Sqrt(num1);
+            float num2 = 1f / (float)Math.Sqrt(num1);
             this.x *= num2;
             this.y *= num2;
         }
 
         public static Vector2 Normalize(Vector2 value)
         {
-            float num1 = (float) (value.x * (double) value.x + value.y * (double) value.y);
+            float num1 = (float)(value.x * (double)value.x + value.y * (double)value.y);
             if (num1 < 9.99999974737875E-06)
                 return value;
-            float num2 = 1f / (float) Math.Sqrt(num1);
+            float num2 = 1f / (float)Math.Sqrt(num1);
             Vector2 vector2;
             vector2.x = value.x * num2;
             vector2.y = value.y * num2;
@@ -164,19 +164,19 @@ namespace UnityEngine
 
         public static void Normalize(ref Vector2 value, out Vector2 result)
         {
-            float num1 = (float) (value.x * (double) value.x + value.y * (double) value.y);
+            float num1 = (float)(value.x * (double)value.x + value.y * (double)value.y);
             if (num1 < 9.99999974737875E-06)
             {
                 result = value;
             }
             else
             {
-                float num2 = 1f / (float) Math.Sqrt(num1);
+                float num2 = 1f / (float)Math.Sqrt(num1);
                 result.x = value.x * num2;
                 result.y = value.y * num2;
             }
         }
-        
+
         public Vector2 normalized
         {
             get
@@ -187,7 +187,7 @@ namespace UnityEngine
 
         public static Vector2 Reflect(Vector2 vector, Vector2 normal)
         {
-            float num = (float) (vector.x * (double) normal.x + vector.y * (double) normal.y);
+            float num = (float)(vector.x * (double)normal.x + vector.y * (double)normal.y);
             Vector2 vector2;
             vector2.x = vector.x - 2f * num * normal.x;
             vector2.y = vector.y - 2f * num * normal.y;
@@ -196,7 +196,7 @@ namespace UnityEngine
 
         public static void Reflect(ref Vector2 vector, ref Vector2 normal, out Vector2 result)
         {
-            float num = (float) (vector.x * (double) normal.x + vector.y * (double) normal.y);
+            float num = (float)(vector.x * (double)normal.x + vector.y * (double)normal.y);
             result.x = vector.x - 2f * num * normal.x;
             result.y = vector.y - 2f * num * normal.y;
         }
@@ -204,39 +204,39 @@ namespace UnityEngine
         public static Vector2 Min(Vector2 value1, Vector2 value2)
         {
             Vector2 vector2;
-            vector2.x = (double) value1.x < (double) value2.x? value1.x : value2.x;
-            vector2.y = (double) value1.y < (double) value2.y? value1.y : value2.y;
+            vector2.x = (double)value1.x < (double)value2.x ? value1.x : value2.x;
+            vector2.y = (double)value1.y < (double)value2.y ? value1.y : value2.y;
             return vector2;
         }
 
         public static void Min(ref Vector2 value1, ref Vector2 value2, out Vector2 result)
         {
-            result.x = (double) value1.x < (double) value2.x? value1.x : value2.x;
-            result.y = (double) value1.y < (double) value2.y? value1.y : value2.y;
+            result.x = (double)value1.x < (double)value2.x ? value1.x : value2.x;
+            result.y = (double)value1.y < (double)value2.y ? value1.y : value2.y;
         }
 
         public static Vector2 Max(Vector2 value1, Vector2 value2)
         {
             Vector2 vector2;
-            vector2.x = (double) value1.x > (double) value2.x? value1.x : value2.x;
-            vector2.y = (double) value1.y > (double) value2.y? value1.y : value2.y;
+            vector2.x = (double)value1.x > (double)value2.x ? value1.x : value2.x;
+            vector2.y = (double)value1.y > (double)value2.y ? value1.y : value2.y;
             return vector2;
         }
 
         public static void Max(ref Vector2 value1, ref Vector2 value2, out Vector2 result)
         {
-            result.x = (double) value1.x > (double) value2.x? value1.x : value2.x;
-            result.y = (double) value1.y > (double) value2.y? value1.y : value2.y;
+            result.x = (double)value1.x > (double)value2.x ? value1.x : value2.x;
+            result.y = (double)value1.y > (double)value2.y ? value1.y : value2.y;
         }
 
         public static Vector2 Clamp(Vector2 value1, Vector2 min, Vector2 max)
         {
             float x = value1.x;
-            float num1 = (double) x > (double) max.x? max.x : x;
-            float num2 = (double) num1 < (double) min.x? min.x : num1;
+            float num1 = (double)x > (double)max.x ? max.x : x;
+            float num2 = (double)num1 < (double)min.x ? min.x : num1;
             float y = value1.y;
-            float num3 = (double) y > (double) max.y? max.y : y;
-            float num4 = (double) num3 < (double) min.y? min.y : num3;
+            float num3 = (double)y > (double)max.y ? max.y : y;
+            float num4 = (double)num3 < (double)min.y ? min.y : num3;
             Vector2 vector2;
             vector2.x = num2;
             vector2.y = num4;
@@ -246,11 +246,11 @@ namespace UnityEngine
         public static void Clamp(ref Vector2 value1, ref Vector2 min, ref Vector2 max, out Vector2 result)
         {
             float x = value1.x;
-            float num1 = (double) x > (double) max.x? max.x : x;
-            float num2 = (double) num1 < (double) min.x? min.x : num1;
+            float num1 = (double)x > (double)max.x ? max.x : x;
+            float num2 = (double)num1 < (double)min.x ? min.x : num1;
             float y = value1.y;
-            float num3 = (double) y > (double) max.y? max.y : y;
-            float num4 = (double) num3 < (double) min.y? min.y : num3;
+            float num3 = (double)y > (double)max.y ? max.y : y;
+            float num4 = (double)num3 < (double)min.y ? min.y : num3;
             result.x = num2;
             result.y = num4;
         }
@@ -271,8 +271,8 @@ namespace UnityEngine
 
         public static Vector2 SmoothStep(Vector2 value1, Vector2 value2, float amount)
         {
-            amount = (double) amount > 1.0? 1f : ((double) amount < 0.0? 0.0f : amount);
-            amount = (float) (amount * (double) amount * (3.0 - 2.0 * amount));
+            amount = (double)amount > 1.0 ? 1f : ((double)amount < 0.0 ? 0.0f : amount);
+            amount = (float)(amount * (double)amount * (3.0 - 2.0 * amount));
             Vector2 vector2;
             vector2.x = value1.x + (value2.x - value1.x) * amount;
             vector2.y = value1.y + (value2.y - value1.y) * amount;
@@ -281,8 +281,8 @@ namespace UnityEngine
 
         public static void SmoothStep(ref Vector2 value1, ref Vector2 value2, float amount, out Vector2 result)
         {
-            amount = (double) amount > 1.0? 1f : ((double) amount < 0.0? 0.0f : amount);
-            amount = (float) (amount * (double) amount * (3.0 - 2.0 * amount));
+            amount = (double)amount > 1.0 ? 1f : ((double)amount < 0.0 ? 0.0f : amount);
+            amount = (float)(amount * (double)amount * (3.0 - 2.0 * amount));
             result.x = value1.x + (value2.x - value1.x) * amount;
             result.y = value1.y + (value2.y - value1.y) * amount;
         }
@@ -303,12 +303,12 @@ namespace UnityEngine
 
         public static float Dot(Vector2 value1, Vector2 value2)
         {
-            return (float) (value1.x * (double) value2.x + value1.y * (double) value2.y);
+            return (float)(value1.x * (double)value2.x + value1.y * (double)value2.y);
         }
 
         public static void Dot(ref Vector2 value1, ref Vector2 value2, out float result)
         {
-            result = (float) (value1.x * (double) value2.x + value1.y * (double) value2.y);
+            result = (float)(value1.x * (double)value2.x + value1.y * (double)value2.y);
         }
 
         public static float Angle(Vector2 from, Vector2 to)
