@@ -58,7 +58,34 @@ namespace ETHotfix
             self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
             await self.MoveAsync(self.RecastPath.Results);
             self.ETCancellationTokenSource.Dispose();
-            self.Entity.GetComponent<StackFsmComponent>().ChangeState<NavigateState>(StateTypes.Idle, "Idle", 1);
+            
+            self.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
+        }
+
+        public static async ETVoid MoveTo_InternalWithOutStateChange(this UnitPathComponent self, Vector3 target)
+        {
+            if ((self.Target - target).magnitude < 0.1f)
+            {
+                return;
+            }
+
+            self.Target = target;
+
+            Unit unit = self.GetParent<Unit>();
+
+            RecastPathComponent recastPathComponent = Game.Scene.GetComponent<RecastPathComponent>();
+            RecastPath recastPath = ReferencePool.Acquire<RecastPath>();
+            recastPath.StartPos = unit.Position;
+            recastPath.EndPos = new Vector3(target.x, target.y, target.z);
+            self.RecastPath = recastPath;
+            //TODO 因为目前阶段只有一张地图，所以默认mapId为10001
+            recastPathComponent.SearchPath(10001, self.RecastPath);
+            //Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
+
+            self.ETCancellationTokenSource?.Cancel();
+            self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
+            await self.MoveAsync(self.RecastPath.Results);
+            self.ETCancellationTokenSource.Dispose();
         }
 
         // 从index找接下来3个点，广播

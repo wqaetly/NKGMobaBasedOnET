@@ -64,15 +64,13 @@ namespace ETModel
 	[Message(OuterOpcode.M2C_BuffInfo)]
 	public partial class M2C_BuffInfo : IActorMessage {}
 
+//请求攻击
 	[Message(OuterOpcode.C2M_CommonAttack)]
-	public partial class C2M_CommonAttack : IActorLocationRequest {}
+	public partial class C2M_CommonAttack : IActorLocationMessage {}
 
+//服务器返回攻击指令，开始播放动画
 	[Message(OuterOpcode.M2C_CommonAttack)]
-	public partial class M2C_CommonAttack : IActorLocationResponse {}
-
-//是否允许进行攻击
-	[Message(OuterOpcode.M2C_CommonAttackState)]
-	public partial class M2C_CommonAttackState : IActorMessage {}
+	public partial class M2C_CommonAttack : IActorMessage {}
 
 }
 namespace ETModel
@@ -101,6 +99,5 @@ namespace ETModel
 		 public const ushort M2C_BuffInfo = 120;
 		 public const ushort C2M_CommonAttack = 121;
 		 public const ushort M2C_CommonAttack = 122;
-		 public const ushort M2C_CommonAttackState = 123;
 	}
 }

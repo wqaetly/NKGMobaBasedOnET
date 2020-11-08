@@ -1,6 +1,7 @@
 //此文件格式由工具自动生成
 
 using System.Collections.Generic;
+using System.Threading;
 using ETModel.NKGMOBA.Battle.Fsm;
 using ETModel.NKGMOBA.Battle.State;
 using UnityEngine;
@@ -29,29 +30,34 @@ namespace ETModel
         /// <summary>
         /// 是否可以进行此次攻击
         /// </summary>
-        public bool m_CanAttack;
+        public bool CanAttack;
 
         /// <summary>
         /// 攻击间隔
         /// </summary>
-        public long m_AttackInterval;
+        public long AttackInterval;
 
         /// <summary>
         /// 上一次的攻击时间点
         /// </summary>
-        public long m_LastAttackTime;
+        public long LastAttackTime;
 
         /// <summary>
         /// 上次选中的Unit，用于自动攻击
         /// </summary>
-        public Unit m_CachedUnit;
+        public Unit CachedUnitForAttack;
 
-        public ETCancellationTokenSource m_ETCancellationTokenSource;
+        public CancellationTokenSource CancellationTokenSource;
 
         #endregion
 
         #region 公有成员
-
+        public void CancelCommonAttack()
+        {
+            this.CancellationTokenSource?.Cancel();
+            this.CancellationTokenSource = null;
+            this.CachedUnitForAttack = null;
+        }
         #endregion
 
         #region 生命周期函数
@@ -60,9 +66,8 @@ namespace ETModel
         {
             //此处填写Awake逻辑
             m_StackFsmComponent = this.Entity.GetComponent<StackFsmComponent>();
-            m_ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
-            m_ETCancellationTokenSource.Cancel();
-            this.m_ETCancellationTokenSource = null;
+            this.CancellationTokenSource = new CancellationTokenSource();
+            this.CancellationTokenSource = null;
         }
 
         public override void Dispose()
@@ -71,14 +76,8 @@ namespace ETModel
                 return;
             base.Dispose();
             //此处填写释放逻辑,但涉及Entity的操作，请放在Destroy中
-            m_ETCancellationTokenSource?.Cancel();
-            this.m_ETCancellationTokenSource = null;
-        }
-
-        public void CancelCommonAttack()
-        {
-            m_ETCancellationTokenSource?.Cancel();
-            m_ETCancellationTokenSource = null;
+            this.CancellationTokenSource?.Cancel();
+            this.CancellationTokenSource = null;
         }
 
         #endregion

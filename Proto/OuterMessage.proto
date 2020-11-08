@@ -163,8 +163,8 @@ message M2C_BuffInfo // IActorMessage
     float BuffMaxLimitTime = 4; //Buff最大持续到的时间点
 }
 
-
-message C2M_CommonAttack // IActorLocationRequest
+//请求攻击
+message C2M_CommonAttack // IActorLocationMessage
 {
     int32 RpcId = 90;
     int64 ActorId = 93;
@@ -172,21 +172,13 @@ message C2M_CommonAttack // IActorLocationRequest
     int64 TargetUnitId = 1;
 }
 
-message M2C_CommonAttack // IActorLocationResponse
-{
-    int32 RpcId = 90;
-    int32 Error = 91;
-    string Message = 92;
-
-    bool CanAttack = 2; //是否可以发起攻击
-}
-
-//是否允许进行攻击
-message M2C_CommonAttackState // IActorMessage
+//服务器返回攻击指令，开始播放动画
+message M2C_CommonAttack // IActorMessage
 {
     int32 RpcId = 90;
     int64 ActorId = 93;
-
-    int64 UnitId = 1; //要发送到的目标UnitId
+    
+    int64 AttackCasterId = 4;//攻击发起者Id
+    int64 TargetUnitId = 3;//攻击目标Id
     bool CanAttack = 2; //是否可以发起攻击
 }

@@ -53,7 +53,7 @@ namespace ETModel
                     {
                         Vector3 node = new Vector3(smooths[i * 3], smooths[i * 3 + 1], smooths[i * 3 + 2]);
                         recastPath.Results.Add(node);
-                        Log.Info($"路径点：{node}");
+                        //Log.Info($"路径点：{node}");
                     }
                 }
             }

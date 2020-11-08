@@ -12,13 +12,11 @@ using ETModel.NKGMOBA.Battle.State;
 namespace ETHotfix
 {
     [ActorMessageHandler(AppType.Map)]
-    public class C2M_CommonAttackHandler: AMActorLocationRpcHandler<Unit, C2M_CommonAttack, M2C_CommonAttack>
+    public class C2M_CommonAttackHandler: AMActorLocationHandler<Unit, C2M_CommonAttack>
     {
-        protected override async ETTask Run(Unit unit, C2M_CommonAttack request, M2C_CommonAttack response, Action reply)
+        protected override async ETTask Run(Unit unit, C2M_CommonAttack request)
         {
-            reply();
-            unit.GetComponent<CommonAttackComponent>().CommonAttackStart(Game.Scene.GetComponent<UnitComponent>().Get(request.TargetUnitId))
-                    .Coroutine();
+            unit.GetComponent<CommonAttackComponent>().SetAttackTarget(Game.Scene.GetComponent<UnitComponent>().Get(request.TargetUnitId));
             await ETTask.CompletedTask;
         }
     }

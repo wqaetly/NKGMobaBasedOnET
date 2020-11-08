@@ -1962,6 +1962,9 @@ namespace ETModel {
 
   }
 
+  /// <summary>
+  ///请求攻击
+  /// </summary>
   public partial class C2M_CommonAttack : pb::IMessage {
     private static readonly pb::MessageParser<C2M_CommonAttack> _parser = new pb::MessageParser<C2M_CommonAttack>(() => (C2M_CommonAttack)MessagePool.Instance.Fetch(typeof(C2M_CommonAttack)));
     public static pb::MessageParser<C2M_CommonAttack> Parser { get { return _parser; } }
@@ -2047,120 +2050,12 @@ namespace ETModel {
 
   }
 
+  /// <summary>
+  ///服务器返回攻击指令，开始播放动画
+  /// </summary>
   public partial class M2C_CommonAttack : pb::IMessage {
     private static readonly pb::MessageParser<M2C_CommonAttack> _parser = new pb::MessageParser<M2C_CommonAttack>(() => (M2C_CommonAttack)MessagePool.Instance.Fetch(typeof(M2C_CommonAttack)));
     public static pb::MessageParser<M2C_CommonAttack> Parser { get { return _parser; } }
-
-    private int rpcId_;
-    public int RpcId {
-      get { return rpcId_; }
-      set {
-        rpcId_ = value;
-      }
-    }
-
-    private int error_;
-    public int Error {
-      get { return error_; }
-      set {
-        error_ = value;
-      }
-    }
-
-    private string message_ = "";
-    public string Message {
-      get { return message_; }
-      set {
-        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    private bool canAttack_;
-    /// <summary>
-    ///是否可以发起攻击
-    /// </summary>
-    public bool CanAttack {
-      get { return canAttack_; }
-      set {
-        canAttack_ = value;
-      }
-    }
-
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (CanAttack != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(CanAttack);
-      }
-      if (RpcId != 0) {
-        output.WriteRawTag(208, 5);
-        output.WriteInt32(RpcId);
-      }
-      if (Error != 0) {
-        output.WriteRawTag(216, 5);
-        output.WriteInt32(Error);
-      }
-      if (Message.Length != 0) {
-        output.WriteRawTag(226, 5);
-        output.WriteString(Message);
-      }
-    }
-
-    public int CalculateSize() {
-      int size = 0;
-      if (RpcId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
-      }
-      if (Error != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
-      }
-      if (Message.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
-      }
-      if (CanAttack != false) {
-        size += 1 + 1;
-      }
-      return size;
-    }
-
-    public void MergeFrom(pb::CodedInputStream input) {
-      canAttack_ = false;
-      rpcId_ = 0;
-      error_ = 0;
-      message_ = "";
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 16: {
-            CanAttack = input.ReadBool();
-            break;
-          }
-          case 720: {
-            RpcId = input.ReadInt32();
-            break;
-          }
-          case 728: {
-            Error = input.ReadInt32();
-            break;
-          }
-          case 738: {
-            Message = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  ///是否允许进行攻击
-  /// </summary>
-  public partial class M2C_CommonAttackState : pb::IMessage {
-    private static readonly pb::MessageParser<M2C_CommonAttackState> _parser = new pb::MessageParser<M2C_CommonAttackState>(() => (M2C_CommonAttackState)MessagePool.Instance.Fetch(typeof(M2C_CommonAttackState)));
-    public static pb::MessageParser<M2C_CommonAttackState> Parser { get { return _parser; } }
 
     private int rpcId_;
     public int RpcId {
@@ -2178,14 +2073,25 @@ namespace ETModel {
       }
     }
 
-    private long unitId_;
+    private long attackCasterId_;
     /// <summary>
-    ///要发送到的目标UnitId
+    ///攻击发起者Id
     /// </summary>
-    public long UnitId {
-      get { return unitId_; }
+    public long AttackCasterId {
+      get { return attackCasterId_; }
       set {
-        unitId_ = value;
+        attackCasterId_ = value;
+      }
+    }
+
+    private long targetUnitId_;
+    /// <summary>
+    ///攻击目标Id
+    /// </summary>
+    public long TargetUnitId {
+      get { return targetUnitId_; }
+      set {
+        targetUnitId_ = value;
       }
     }
 
@@ -2201,13 +2107,17 @@ namespace ETModel {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (UnitId != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(UnitId);
-      }
       if (CanAttack != false) {
         output.WriteRawTag(16);
         output.WriteBool(CanAttack);
+      }
+      if (TargetUnitId != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(TargetUnitId);
+      }
+      if (AttackCasterId != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(AttackCasterId);
       }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
@@ -2227,8 +2137,11 @@ namespace ETModel {
       if (ActorId != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
       }
-      if (UnitId != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
+      if (AttackCasterId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(AttackCasterId);
+      }
+      if (TargetUnitId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(TargetUnitId);
       }
       if (CanAttack != false) {
         size += 1 + 1;
@@ -2237,8 +2150,9 @@ namespace ETModel {
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
-      unitId_ = 0;
       canAttack_ = false;
+      targetUnitId_ = 0;
+      attackCasterId_ = 0;
       rpcId_ = 0;
       actorId_ = 0;
       uint tag;
@@ -2247,12 +2161,16 @@ namespace ETModel {
           default:
             input.SkipLastField();
             break;
-          case 8: {
-            UnitId = input.ReadInt64();
-            break;
-          }
           case 16: {
             CanAttack = input.ReadBool();
+            break;
+          }
+          case 24: {
+            TargetUnitId = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            AttackCasterId = input.ReadInt64();
             break;
           }
           case 720: {
