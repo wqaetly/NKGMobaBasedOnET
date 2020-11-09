@@ -52,11 +52,7 @@ namespace ETModel.NKGMOBA.Battle.State
                 return;
             temp.OnExit(this);
             
-            bool theRemovedItemIsFirstState;
-            if (CheckIsFirstState(temp))
-            {
-                theRemovedItemIsFirstState = true;
-            }
+            bool theRemovedItemIsFirstState = this.CheckIsFirstState(temp);
 
             this.m_FsmStateBases.Remove(temp);
             ReferencePool.Release(temp);
