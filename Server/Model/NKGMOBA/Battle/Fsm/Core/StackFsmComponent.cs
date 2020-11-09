@@ -42,7 +42,7 @@ namespace ETModel.NKGMOBA.Battle.State
         }
 
         /// <summary>
-        /// 从状态机移除一个状态
+        /// 从状态机移除一个状态，如果移除的是栈顶元素，需要对新的栈顶元素进行OnEnter操作
         /// </summary>
         /// <param name="stateName"></param>
         public void RemoveState(string stateName)
@@ -51,8 +51,19 @@ namespace ETModel.NKGMOBA.Battle.State
             if (temp == null)
                 return;
             temp.OnExit(this);
+            
+            bool theRemovedItemIsFirstState;
+            if (CheckIsFirstState(temp))
+            {
+                theRemovedItemIsFirstState = true;
+            }
+
             this.m_FsmStateBases.Remove(temp);
             ReferencePool.Release(temp);
+            if (theRemovedItemIsFirstState)
+            {
+                this.GetCurrentFsmState()?.OnEnter(this);
+            }
         }
 
         /// <summary>
