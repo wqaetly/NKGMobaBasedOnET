@@ -34,7 +34,7 @@
 
  **IDE：JetBrain Rider 2020**
 
- **服务端：.Net Core 2.2** 
+ **服务端：.Net Core 3.1** 
 
 ## 已实现功能列表
 
