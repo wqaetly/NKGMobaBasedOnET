@@ -94,23 +94,44 @@ namespace ETHotfix
                 }
             }
 
-            if (self.CanAttack && self.Entity.GetComponent<StackFsmComponent>().GetCurrentFsmState().StateTypes == StateTypes.CommonAttack)
+            if (self.Entity.GetComponent<StackFsmComponent>().GetCurrentFsmState().StateTypes == StateTypes.CommonAttack)
             {
-                //目标不为空，且处于攻击状态，且上次攻击已完成或取消
-                if (self.CachedUnitForAttack != null && !self.CachedUnitForAttack.IsDisposed &&
-                    (self.CancellationTokenSource == null || self.CancellationTokenSource.IsCancellationRequested))
+                if (self.CachedUnitForAttack != null && !self.CachedUnitForAttack.IsDisposed)
                 {
-                    float distance = Vector3.Distance((self.Entity as Unit).Position, self.CachedUnitForAttack.Position);
+                    Vector3 selfUnitPos = (self.Entity as Unit).Position;
+                    float distance = Vector3.Distance(selfUnitPos, self.CachedUnitForAttack.Position);
+                    // Vector3 dir = (self.CachedUnitForAttack.Position - (self.Entity as Unit).Position).normalized;
+                    // Vector3 targetPos = self.CachedUnitForAttack.Position + dir * 1.75f;
                     //目标距离大于当前攻击距离会先进行寻路，这里的1.75为175码
-                    if (distance > 1.75)
+                    if (distance >= 1.75)
                     {
-                        self.Entity.GetComponent<UnitPathComponent>().MoveTo_InternalWithOutStateChange(self.CachedUnitForAttack.Position)
+                        self.IsMoveToTarget = true;
+                        self.Entity.GetComponent<UnitPathComponent>()
+                                .MoveTo_InternalWithOutStateChange(self.CachedUnitForAttack.Position)
                                 .Coroutine();
                     }
                     else
                     {
-                        self.Entity.GetComponent<UnitPathComponent>().CancelMove();
-                        self.StartCommonAttack().Coroutine();
+                        if (self.IsMoveToTarget)
+                        {
+                            self.Entity.GetComponent<UnitPathComponent>().CancelMove();
+                            M2C_PathfindingResult pathfindingResult = new M2C_PathfindingResult()
+                            {
+                                X = selfUnitPos.x, Y = selfUnitPos.y, Z = selfUnitPos.z, Id = self.Entity.Id
+                            };
+                            pathfindingResult.Xs.Clear();
+                            pathfindingResult.Ys.Clear();
+                            pathfindingResult.Zs.Clear();
+                            MessageHelper.Broadcast(pathfindingResult);
+                            self.IsMoveToTarget = false;
+                        }
+                        
+                        //目标不为空，且处于攻击状态，且上次攻击已完成或取消
+                        if ((self.CancellationTokenSource == null || self.CancellationTokenSource.IsCancellationRequested))
+                        {
+                            if (distance <= 1.75 && self.CanAttack)
+                                self.StartCommonAttack().Coroutine();
+                        }
                     }
                 }
             }

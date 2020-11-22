@@ -43,6 +43,11 @@ namespace ETModel
         public long LastAttackTime;
 
         /// <summary>
+        /// 是否正在移向目标
+        /// </summary>
+        public bool IsMoveToTarget;
+
+        /// <summary>
         /// 上次选中的Unit，用于自动攻击
         /// </summary>
         public Unit CachedUnitForAttack;
