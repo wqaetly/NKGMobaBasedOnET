@@ -196,7 +196,7 @@ namespace ETModel.NKGMOBA.Battle.State
             //如果这个被插入的状态成为了链表首状态，说明发生了状态变化
             if (CheckIsFirstState(fsmStateToInsert))
             {
-                Log.Info($"打断了{tempFirstState?.StateName},开始{fsmStateToInsert.StateName}");
+                //Log.Info($"打断了{tempFirstState?.StateName},开始{fsmStateToInsert.StateName}");
                 tempFirstState?.OnExit(this);
                 fsmStateToInsert.OnEnter(this);
             }

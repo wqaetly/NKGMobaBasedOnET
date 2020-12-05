@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using ETModel;
+using UnityEngine;
 
 namespace ETHotfix.NKGMOBA.Battle
 {
@@ -46,6 +47,15 @@ namespace ETHotfix.NKGMOBA.Battle
         public override void Run(M2C_BuffInfo c)
         {
             MessageHelper.Broadcast(c);
+        }
+    }
+
+    [Event(EventIdType.MoveToRandomPos)]
+    public class UnitPathComponentInvoke: AEvent<long, Vector3>
+    {
+        public override void Run(long a, Vector3 b)
+        {
+            Game.Scene.GetComponent<UnitComponent>().Get(a).GetComponent<UnitPathComponent>().MoveTo(b).Coroutine();  
         }
     }
 }

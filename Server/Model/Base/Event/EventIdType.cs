@@ -13,5 +13,8 @@
 		public const string ChangeMP = "ChangeMP";
 
 		public const string SendBuffInfoToClient = "SendBuffInfoToClient";
+		
+		//移动到随机位置
+		public const string MoveToRandomPos = "MoveToRandomPos";
 	}
 }

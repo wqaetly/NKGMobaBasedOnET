@@ -108,6 +108,16 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;
             //添加栈式状态机组件
             unit.AddComponent<StackFsmComponent>();
+            unit.AddComponent<MoveComponent>();
+            unit.AddComponent<UnitPathComponent>();
+
+            unit.AddComponent<NP_RuntimeTreeManager>();
+            
+            ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
+            //Log.Info("开始创建行为树");
+            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, configComponent.Get<Server_AICanvasConfig>(10001).NPBehaveId)
+                    .Start();
+
             return unit;
         }
 

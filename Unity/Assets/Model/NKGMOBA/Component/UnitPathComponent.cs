@@ -37,9 +37,6 @@ namespace ETModel
                 this.Entity.GetComponent<TurnComponent>().Turn(v);
                 await this.Entity.GetComponent<MoveComponent>().MoveToAsync(v, speed, cancellationToken);
             }
-
-            this.Entity.GetComponent<StackFsmComponent>().ChangeState<IdleState>(StateTypes.Idle, "Idle", 1);
-            this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
 
         /// <summary>
@@ -63,6 +60,10 @@ namespace ETModel
 
             ServerPos = new Vector3(message.X, message.Y, message.Z);
             await this.StartMove_Internal(this.EtCancellationTokenSource.Token);
+            this.EtCancellationTokenSource.Dispose();
+            this.EtCancellationTokenSource = null;
+            this.Entity.GetComponent<StackFsmComponent>().ChangeState<IdleState>(StateTypes.Idle, "Idle", 1);
+            this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
 
         /// <summary>

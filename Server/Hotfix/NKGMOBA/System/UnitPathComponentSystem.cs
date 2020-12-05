@@ -58,7 +58,7 @@ namespace ETHotfix
             self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
             await self.MoveAsync(self.RecastPath.Results);
             self.ETCancellationTokenSource.Dispose();
-            
+            self.ETCancellationTokenSource = null;
             self.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
         }
 
@@ -86,6 +86,7 @@ namespace ETHotfix
             self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
             await self.MoveAsync(self.RecastPath.Results);
             self.ETCancellationTokenSource.Dispose();
+            self.ETCancellationTokenSource = null;
         }
 
         // 从index找接下来3个点，广播

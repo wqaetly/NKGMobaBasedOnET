@@ -42,7 +42,7 @@ namespace ETModel
         public void Awake()
         {
             Type[] types = typeof (NodeType).Assembly.GetTypes();
-            foreach (Type type in types)
+            foreach (Type type in types) 
             {
                 if (type.IsSubclassOf(typeof (NP_NodeDataBase)) || type.IsSubclassOf(typeof (NP_ClassForStoreAction)) ||
                     type.IsSubclassOf(typeof (BuffNodeDataBase)) || type.IsSubclassOf(typeof (BuffDataBase)) ||
@@ -73,7 +73,7 @@ namespace ETModel
                 {
                     NP_DataSupportor MnNpDataSupportor = BsonSerializer.Deserialize<NP_DataSupportor>(mfile);
 
-                    Log.Info($"反序列化行为树:{fileInfo.FullName}完成");
+                    Log.Info($"反序列化行为树：id：{MnNpDataSupportor.NpDataSupportorBase.RootId} {fileInfo.FullName}完成");
 
                     m_NpRuntimeTreesDatas.Add(MnNpDataSupportor.NpDataSupportorBase.RootId, MnNpDataSupportor);
                 }

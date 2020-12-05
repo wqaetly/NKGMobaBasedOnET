@@ -4,82 +4,80 @@ using UnityEngine;
 
 namespace ETModel
 {
-	[ObjectSystem]
-	public class MoveComponentUpdateSystem : UpdateSystem<MoveComponent>
-	{
-		public override void Update(MoveComponent self)
-		{
-			self.Update();
-		}
-	}
+    [ObjectSystem]
+    public class MoveComponentUpdateSystem: UpdateSystem<MoveComponent>
+    {
+        public override void Update(MoveComponent self)
+        {
+            self.Update();
+        }
+    }
 
-	public class MoveComponent : Component
-	{
-		public Vector3 Target;
+    public class MoveComponent: Component
+    {
+        public Vector3 Target;
 
-		// 开启移动协程的时间
-		public long StartTime;
+        // 开启移动协程的时间
+        public long StartTime;
 
-		// 开启移动协程的Unit的位置
-		public Vector3 StartPos;
+        // 开启移动协程的Unit的位置
+        public Vector3 StartPos;
 
-		public long needTime;
-		
-		public ETTaskCompletionSource moveTcs;
+        public long needTime;
 
+        public ETTaskCompletionSource moveTcs;
 
-		public void Update()
-		{
-			if (this.moveTcs == null)
-			{
-				return;
-			}
-			
-			Unit unit = this.GetParent<Unit>();
-			long timeNow = TimeHelper.Now();
+        public void Update()
+        {
+            if (this.moveTcs == null)
+            {
+                return;
+            }
 
-			if (timeNow - this.StartTime >= this.needTime)
-			{
-				unit.Position = this.Target;
-				ETTaskCompletionSource tcs = this.moveTcs;
-				this.moveTcs = null;
-				tcs.SetResult();
-				return;
-			}
+            Unit unit = this.GetParent<Unit>();
+            long timeNow = TimeHelper.Now();
 
-			float amount = (timeNow - this.StartTime) * 1f / this.needTime;
-			unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
-		}
+            if (timeNow - this.StartTime >= this.needTime)
+            {
+                unit.Position = this.Target;
+                ETTaskCompletionSource tcs = this.moveTcs;
+                this.moveTcs = null;
+                tcs.SetResult();
+                return;
+            }
 
-		public ETTask MoveToAsync(Vector3 target, float speedValue, CancellationToken cancellationToken)
-		{
-			Unit unit = this.GetParent<Unit>();
-			
-			if ((target - this.Target).magnitude < 0.1f)
-			{
-				return ETTask.CompletedTask;
-			}
-			
-			this.Target = target;
+            float amount = (timeNow - this.StartTime) * 1f / this.needTime;
+            unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
+        }
 
-			
-			this.StartPos = unit.Position;
-			this.StartTime = TimeHelper.Now();
-			float distance = (this.Target - this.StartPos).magnitude;
-			if (Math.Abs(distance) < 0.1f)
-			{
-				return ETTask.CompletedTask;
-			}
-            
-			this.needTime = (long)(distance / speedValue * 1000);
-			
-			this.moveTcs = new ETTaskCompletionSource();
-			
-			cancellationToken.Register(() =>
-			{
-				this.moveTcs = null;
-			});
-			return this.moveTcs.Task;
-		}
-	}
+        public ETTask MoveToAsync(Vector3 target, float speedValue, CancellationToken cancellationToken)
+        {
+            Unit unit = this.GetParent<Unit>();
+
+            if ((target - this.Target).magnitude < 0.1f)
+            {
+                return ETTask.CompletedTask;
+            }
+
+            this.Target = target;
+
+            this.StartPos = unit.Position;
+            this.StartTime = TimeHelper.Now();
+            float distance = (this.Target - this.StartPos).magnitude;
+            if (Math.Abs(distance) < 0.1f)
+            {
+                return ETTask.CompletedTask;
+            }
+
+            this.needTime = (long) (distance / speedValue * 1000);
+
+            this.moveTcs = new ETTaskCompletionSource();
+
+            cancellationToken.Register(() =>
+            {
+                this.moveTcs = null;
+            });
+            return this.moveTcs.Task;
+        }
+    }
 }

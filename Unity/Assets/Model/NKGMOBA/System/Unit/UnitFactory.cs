@@ -51,8 +51,11 @@ namespace ETModel
             unit.AddComponent<ChildrenUnitComponent>();
             //增加栈式状态机，辅助动画切换
             unit.AddComponent<StackFsmComponent>();
-            unit.AddComponent<AnimationComponent>();
+            unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
+            unit.AddComponent<UnitPathComponent>();
+            unit.AddComponent<AnimationComponent>();
+
             unit.AddComponent<EffectComponent>();
             unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Adverse);
             unit.AddComponent<HeroTransformComponent>();
