@@ -135,7 +135,7 @@ namespace App
 
                         // recast寻路组件
                         Game.Scene.AddComponent<RecastPathComponent>();
-                        
+
                         //添加玩家组件（使用字典维护，可当做抽象化的玩家，处于不同的游戏流程会有不同的身份）
                         Game.Scene.AddComponent<PlayerComponent>();
 
@@ -149,7 +149,7 @@ namespace App
 
                         //添加碰撞实例管理者 TODO 待优化，一场游戏一个碰撞实例管理者
                         Game.Scene.AddComponent<B2S_WorldColliderManagerComponent>();
-                        
+
                         //添加物理世界 TODO 待优化，一场游戏一个物理世界
                         Game.Scene.AddComponent<B2S_WorldComponent>();
 
@@ -187,16 +187,22 @@ namespace App
                         throw new Exception($"命令行参数没有设置正确的AppType: {startConfig.AppType}");
                 }
 
-                //用于FixedUpdate
-                FixedUpdate fixedUpdate = new FixedUpdate() { UpdateCallback = () => Game.EventSystem.FixedUpdate() };
+                //用于服务端逻辑帧更新，默认更新频率为30hz
+                FixedUpdate fixedUpdate = new FixedUpdate()
+                {
+                    UpdateCallback = () =>
+                    {
+                        OneThreadSynchronizationContext.Instance.Update();
+                        Game.EventSystem.FixedUpdate();
+                        Game.EventSystem.Update();
+                    }
+                };
 
                 while (true)
                 {
                     try
                     {
                         Thread.Sleep(1);
-                        OneThreadSynchronizationContext.Instance.Update();
-                        Game.EventSystem.Update();
                         fixedUpdate.Tick();
                     }
                     catch (Exception e)

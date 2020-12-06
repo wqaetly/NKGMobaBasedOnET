@@ -50,7 +50,7 @@ namespace NETCoreTest.Framework
             _totalUpdateTime = new TimeSpan();
             _timer = new TimerTick();
             _maximumElapsedTime = TimeSpan.FromMilliseconds(500.0);
-            TargetElapsedTime = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / 60); // target elapsed time is by default 60Hz
+            TargetElapsedTime = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / 30); // target elapsed time is by default 60Hz
             _lastUpdateCount = new int[4];
             _nextLastUpdateCountIndex = 0;
 
@@ -75,7 +75,7 @@ namespace NETCoreTest.Framework
         public TimerTick PlayTime => _playTimer;
 
         /// <summary>
-        /// 每次更新的时间间隔,默认60Hz<br/>
+        /// 每次更新的时间间隔,默认60Hz(因为这里是服务器所以更改为30hz)<br/>
         /// Gets or sets the target elapsed time, this is the duration of each tick/update 
         /// </summary>
         /// <value>The target elapsed time.</value>

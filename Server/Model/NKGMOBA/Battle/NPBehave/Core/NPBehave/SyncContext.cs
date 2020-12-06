@@ -14,9 +14,9 @@ namespace NPBehave
         private static SyncContext _instance;
 
         /// <summary>
-        /// 世界默认更新频率为60hz
+        /// 世界默认更新频率为30hz
         /// </summary>
-        private const float c_GameUpdateInterval = 1 / 60f;
+        private const float c_GameUpdateInterval = 1 / 30f;
 
         /// <summary>
         /// 行为树默认更新频率为30hz
