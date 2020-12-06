@@ -50,11 +50,10 @@ namespace ETModel.NKGMOBA.Battle.State
             AFsmStateBase temp = GetState(stateName);
             if (temp == null)
                 return;
-            temp.OnExit(this);
-            
             bool theRemovedItemIsFirstState = this.CheckIsFirstState(temp);
 
             this.m_FsmStateBases.Remove(temp);
+            temp.OnExit(this);
             ReferencePool.Release(temp);
             if (theRemovedItemIsFirstState)
             {
