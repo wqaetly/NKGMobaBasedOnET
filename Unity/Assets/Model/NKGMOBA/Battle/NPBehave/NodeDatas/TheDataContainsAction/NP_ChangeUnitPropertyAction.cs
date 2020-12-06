@@ -28,7 +28,7 @@ namespace ETModel
 
         public void ChangeUnitProperty()
         {
-            HeroDataComponent heroDataComponent = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<HeroDataComponent>();
+            HeroDataComponent heroDataComponent = UnitComponent.Instance.Get(this.Unitid).GetComponent<HeroDataComponent>();
             switch (BuffWorkTypes)
             {
                 case BuffWorkTypes.ChangeMagic:
@@ -45,7 +45,7 @@ namespace ETModel
                     }
 
                     // Log.Info(
-                    //     $"减少了蓝：{((float) Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
+                    //     $"减少了蓝：{((float) UnitComponent.Instance.Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
                     break;
                 case BuffWorkTypes.ChangeHP:
                     heroDataComponent.CurrentLifeValue -= this.BelongtoRuntimeTree.GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);

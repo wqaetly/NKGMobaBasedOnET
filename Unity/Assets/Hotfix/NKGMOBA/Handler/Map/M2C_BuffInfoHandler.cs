@@ -15,7 +15,7 @@ namespace ETHotfix
     {
         protected override ETTask Run(ETModel.Session session, M2C_BuffInfo message)
         {
-            Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.UnitId);
+            Unit unit = UnitComponent.Instance.Get(message.UnitId);
             List<NP_RuntimeTree> skillContents = unit.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(message.SkillId);
             if (skillContents == null)
             {

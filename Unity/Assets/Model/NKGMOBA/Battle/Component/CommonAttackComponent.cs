@@ -104,8 +104,7 @@ namespace ETModel
             //播放动画，如果动画播放完成还不能进行下一次普攻，则播放空闲动画
             this.m_AnimationComponent.PlayAnimAndReturnIdelFromStart(StateTypes.CommonAttack, speed: animationSpeed);
 
-            await Game.Scene.GetComponent<TimerComponent>()
-                    .WaitAsync((long) (1 / attackSpeed * 1000), cancellationTokenSource.Token);
+            await TimerComponent.Instance.WaitAsync((long) (1 / attackSpeed * 1000), cancellationTokenSource.Token);
             
         }
 

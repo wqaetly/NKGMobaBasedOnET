@@ -9,6 +9,14 @@ namespace ETModel
 		public long Time { get; set; }
 		public ETTaskCompletionSource tcs;
 	}
+	[ObjectSystem]
+	public class TimerComponentAwakeSystem : AwakeSystem<TimerComponent>
+	{
+		public override void Awake(TimerComponent self)
+		{
+			self.Awake();
+		}
+	}
 
 	[ObjectSystem]
 	public class TimerComponentUpdateSystem : UpdateSystem<TimerComponent>
@@ -34,6 +42,31 @@ namespace ETModel
 
 		// 记录最小时间，不用每次都去MultiMap取第一个值
 		private long minTime;
+		
+		private static TimerComponent m_Instance;
+
+		public static TimerComponent Instance
+		{
+			get
+			{
+				if (m_Instance == null)
+				{
+					Log.Error("请先注册TimerComponent到Game.Scene中");
+                    
+					return null;
+				}
+				else
+				{
+					return m_Instance;
+				}
+
+			}
+		}
+
+		public void Awake()
+		{
+			m_Instance = this;
+		}
 
 		public void Update()
 		{

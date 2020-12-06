@@ -19,7 +19,7 @@ namespace ETHotfix
 
             while (true)
             {
-                await Game.Scene.GetComponent<TimerComponent>().WaitAsync(10000);
+                await TimerComponent.Instance.WaitAsync(10000);
 
                 if (self.IsDisposed)
                 {

@@ -27,7 +27,7 @@ namespace ETModel
         {
 #if SERVER
             //这里默许碰撞体自身带有B2S_ColliderComponent
-            Unit selfUnit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
+            Unit selfUnit = UnitComponent.Instance.Get(this.Unitid);
             this.BelongtoRuntimeTree.GetBlackboard().Set(NpBlackBoardRelationData.BBKey, selfUnit.GetComponent<B2S_ColliderComponent>().BelongToUnit.Id);
 #endif
         }

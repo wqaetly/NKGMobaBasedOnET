@@ -16,7 +16,7 @@ namespace ETHotfix
     {
         protected override async ETTask Run(Unit unit, C2M_CommonAttack request)
         {
-            unit.GetComponent<CommonAttackComponent>().SetAttackTarget(Game.Scene.GetComponent<UnitComponent>().Get(request.TargetUnitId));
+            unit.GetComponent<CommonAttackComponent>().SetAttackTarget(UnitComponent.Instance.Get(request.TargetUnitId));
             await ETTask.CompletedTask;
         }
     }

@@ -28,7 +28,7 @@ namespace ETHotfix
 			IPEndPoint address = mapConfig.GetComponent<InnerConfig>().IPEndPoint;
 			Session session = Game.Scene.GetComponent<NetInnerComponent>().Get(address);
 			// 只删除不disponse否则M2M_TrasferUnitRequest无法序列化Unit
-			Game.Scene.GetComponent<UnitComponent>().RemoveNoDispose(unitId);
+			UnitComponent.Instance.RemoveNoDispose(unitId);
 			M2M_TrasferUnitResponse m2m_TrasferUnitResponse = (M2M_TrasferUnitResponse)await session.Call(new M2M_TrasferUnitRequest() { Unit = unit });
 			unit.Dispose();
 			// 解锁unit的地址,并且更新unit的instanceId

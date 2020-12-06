@@ -57,13 +57,12 @@ namespace ETModel
 
             if (this.TargetUnitIsSelf)
             {
-                targetUnit = Game.Scene.GetComponent<UnitComponent>()
-                        .Get(this.Unitid);
+                targetUnit = UnitComponent.Instance.Get(this.Unitid);
             }
             else
             {
 #if SERVER
-                targetUnit = Game.Scene.GetComponent<UnitComponent>()
+                targetUnit = UnitComponent.Instance
                         .Get(TargetUnitId.GetBlackBoardValue<long>(this.BelongtoRuntimeTree.GetBlackboard()));
 #endif
             }

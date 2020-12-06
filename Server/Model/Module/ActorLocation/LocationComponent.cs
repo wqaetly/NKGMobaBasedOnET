@@ -104,7 +104,7 @@ namespace ETModel
 			// 超时则解锁
 			if (time > 0)
 			{
-				await Game.Scene.GetComponent<TimerComponent>().WaitAsync(time);
+				await TimerComponent.Instance.WaitAsync(time);
 				this.UnLock(key, instanceId, instanceId);
 			}
 		}

@@ -67,7 +67,7 @@ namespace ETModel
             //此处填写Update逻辑
             if (m_UserInputComponent.SDown)
             {
-                Game.Scene.GetComponent<UnitComponent>().MyUnit.GetComponent<UnitPathComponent>().CancelMove();
+                UnitComponent.Instance.MyUnit.GetComponent<UnitPathComponent>().CancelMove();
             }
         }
 

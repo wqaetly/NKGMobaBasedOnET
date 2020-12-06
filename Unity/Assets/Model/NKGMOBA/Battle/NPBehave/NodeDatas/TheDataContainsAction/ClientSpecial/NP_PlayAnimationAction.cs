@@ -46,7 +46,7 @@ namespace ETModel
             this.m_OnAnimFinished = this.OnAnimFinished;
             m_Flag = 0;
 
-            this.TheUnitBelongTo = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
+            this.TheUnitBelongTo = UnitComponent.Instance.Get(this.Unitid);
 
             //进行数据的装入
             foreach (var playAnimInfo in NodeDataForPlayAnims)

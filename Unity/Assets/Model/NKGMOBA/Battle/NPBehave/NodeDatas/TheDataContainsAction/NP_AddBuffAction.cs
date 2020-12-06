@@ -24,7 +24,7 @@ namespace ETModel
 
         public void AddBuff()
         {
-            Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
+            Unit unit = UnitComponent.Instance.Get(this.Unitid);
             BuffDataInfo.AutoAddBuff(BelongtoRuntimeTree.BelongNP_DataSupportor, this.BuffDataInfo.BuffNodeId.Value, unit, unit,
                 BelongtoRuntimeTree);
         }

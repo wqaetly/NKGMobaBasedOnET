@@ -182,7 +182,7 @@ namespace ETModel
                 this.dictionary.Add(type, queue);
             }
 
-            Game.Scene.GetComponent<UnitComponent>().Remove(entity.Id);
+            UnitComponent.Instance.Remove(entity.Id);
             entity.GameObject.SetActive(false);
             entity.GameObject.transform.SetParent(queue.GameObject.transform);
             queue.Enqueue(entity.GameObject);

@@ -19,11 +19,10 @@ namespace ETModel
 
         private async ETVoid StartAsync(FUICheckForResUpdateComponent self)
         {
-            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
             long instanceId = self.InstanceId;
             while (true)
             {
-                await timerComponent.WaitAsync(1);
+                await TimerComponent.Instance.WaitAsync(1);
 
                 if (self.InstanceId != instanceId)
                 {

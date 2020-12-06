@@ -13,7 +13,7 @@ namespace ETHotfix
     {
         protected override ETTask Run(ETModel.Session session, M2C_ChangeHeroHP message)
         {
-            ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.UnitId).GetComponent<HeroDataComponent>().CurrentLifeValue +=
+            UnitComponent.Instance.Get(message.UnitId).GetComponent<HeroDataComponent>().CurrentLifeValue +=
                     message.ChangeHPValue;
             Game.EventSystem.Run(EventIdType.ChangeHPValue, message.UnitId, message.ChangeHPValue);
             return ETTask.CompletedTask;

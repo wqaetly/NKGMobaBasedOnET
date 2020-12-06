@@ -13,7 +13,7 @@ namespace ETHotfix
     {
         protected override async ETTask Run(ETModel.Session session, M2C_CancelAttack message)
         {
-            Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.UnitId);
+            Unit unit = UnitComponent.Instance.Get(message.UnitId);
             unit.GetComponent<CommonAttackComponent>().CancelCommonAttack();
             ETModel.Log.Error("收到取消攻击指令");
             await ETTask.CompletedTask;

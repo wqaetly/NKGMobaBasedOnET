@@ -71,7 +71,7 @@ namespace ETModel
         /// <returns></returns>
         private async ETVoid SetDeadLineTime(long time, int id, GameObject targetGo)
         {
-            await Game.Scene.GetComponent<TimerComponent>().WaitAsync(time);
+            await TimerComponent.Instance.WaitAsync(time);
             targetGo.GetComponent<B2S_Debugger>().StopDraw();
             m_LinerRenderersDic[(id, targetGo)] = true;
         }

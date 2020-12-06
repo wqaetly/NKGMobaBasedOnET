@@ -55,8 +55,7 @@ namespace ETHotfix
 
                 //Log.Info("下线消息发送完成");
                 // 延时1s，保证消息发送完成
-                TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
-                await timerComponent.WaitAsync(1000);
+                await TimerComponent.Instance.WaitAsync(1000);
                 
                 //正式移除旧的客户端连接
                 Game.Scene.GetComponent<OnlineComponent>().Remove(playerID);

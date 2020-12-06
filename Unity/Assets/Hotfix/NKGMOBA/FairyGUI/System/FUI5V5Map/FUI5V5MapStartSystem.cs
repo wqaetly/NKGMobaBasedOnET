@@ -17,7 +17,7 @@ namespace ETHotfix
     {
         public override void Start(FUI5V5Map self)
         {
-            Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit;
+            Unit unit = UnitComponent.Instance.MyUnit;
 
             HeroDataComponent heroDataComponent = unit.GetComponent<HeroDataComponent>();
 

@@ -18,7 +18,7 @@ namespace ETHotfix
     {
         public override void Run(long a)
         {
-            Game.Scene.GetComponent<UnitComponent>().Get(a).GetComponent<CommonAttackComponent>().CancelCommonAttackExtension();
+            UnitComponent.Instance.Get(a).GetComponent<CommonAttackComponent>().CancelCommonAttackExtension();
         }
     }
 
@@ -76,7 +76,7 @@ namespace ETHotfix
             float attackSpeed = heroDataComponent.NodeDataForHero.OriAttackSpeed + heroDataComponent.NodeDataForHero.ExtAttackSpeed;
 
             //播放动画，如果动画播放完成还不能进行下一次普攻，则播放空闲动画
-            await Game.Scene.GetComponent<TimerComponent>().WaitAsync((long) (attackPre * 1000), self.CancellationTokenSource.Token);
+            await TimerComponent.Instance.WaitAsync((long) (attackPre * 1000), self.CancellationTokenSource.Token);
 
             List<NP_RuntimeTree> targetSkillCanvas = self.Entity.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(10001);
             foreach (var skillCanva in targetSkillCanvas)
@@ -91,7 +91,7 @@ namespace ETHotfix
             CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
             commonAttackCDInfo.Interval = (long) (1 / attackSpeed - attackPre) * 1000;
 
-            await Game.Scene.GetComponent<TimerComponent>().WaitAsync(commonAttackCDInfo.Interval, self.CancellationTokenSource.Token);
+            await TimerComponent.Instance.WaitAsync(commonAttackCDInfo.Interval, self.CancellationTokenSource.Token);
         }
 
         public static void Update(this CommonAttackComponent self)

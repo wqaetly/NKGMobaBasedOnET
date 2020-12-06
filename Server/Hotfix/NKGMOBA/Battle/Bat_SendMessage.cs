@@ -55,7 +55,7 @@ namespace ETHotfix.NKGMOBA.Battle
     {
         public override void Run(long a, Vector3 b)
         {
-            Game.Scene.GetComponent<UnitComponent>().Get(a).GetComponent<UnitPathComponent>().MoveTo(b).Coroutine();  
+            UnitComponent.Instance.Get(a).GetComponent<UnitPathComponent>().MoveTo(b).Coroutine();  
         }
     }
 }

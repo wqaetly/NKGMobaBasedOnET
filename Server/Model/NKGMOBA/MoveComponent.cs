@@ -50,8 +50,6 @@ namespace ETModel
 
             this.needTime = (long) (distance / this.Speed * 1000);
 
-            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
-
             // 协程如果取消，将算出玩家的真实位置，赋值给玩家
             cancellationToken.Register(() =>
             {
@@ -69,7 +67,7 @@ namespace ETModel
 
             while (true)
             {
-                await timerComponent.WaitAsync(10, cancellationToken);
+                await TimerComponent.Instance.WaitAsync(10, cancellationToken);
 
                 long timeNow = TimeHelper.Now();
 

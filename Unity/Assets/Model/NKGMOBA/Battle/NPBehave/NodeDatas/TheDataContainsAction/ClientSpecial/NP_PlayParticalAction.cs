@@ -39,7 +39,7 @@ namespace ETModel
 
         public override Action GetActionToBeDone()
         {
-            BelongUnit = Game.Scene.GetComponent<UnitComponent>().Get(Unitid);
+            BelongUnit = UnitComponent.Instance.Get(Unitid);
             Game.Scene.GetComponent<GameObjectPool>().Add(ParticalName,
                 this.BelongUnit.GameObject.GetComponent<ReferenceCollector>().Get<GameObject>(ParticalName));
             Partical = Game.Scene.GetComponent<GameObjectPool>().FetchEntity(ParticalName);

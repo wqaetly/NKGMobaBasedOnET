@@ -57,7 +57,7 @@ namespace ETModel
             
             if (this.TargetUnitIsSelf)
             {
-                targetUnit = Game.Scene.GetComponent<UnitComponent>()
+                targetUnit = UnitComponent.Instance
                         .Get(this.Unitid);
             }
             else

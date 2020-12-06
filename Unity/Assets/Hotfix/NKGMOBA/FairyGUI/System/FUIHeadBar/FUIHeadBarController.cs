@@ -56,7 +56,7 @@ namespace ETHotfix
             //Log.Info($"事件收到的血条ID为{fuiId}");
             FUIHeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as FUIHeadBar;
             headBar.Bar_HP.self.TweenValue(
-                ETModel.Game.Scene.GetComponent<UnitComponent>().Get(fuiId).GetComponent<HeroDataComponent>().CurrentLifeValue,
+                UnitComponent.Instance.Get(fuiId).GetComponent<HeroDataComponent>().CurrentLifeValue,
                 0.2f);
             Game.Scene.GetComponent<M5V5GameComponent>().GetHotfixUnit(fuiId).GetComponent<FallingFontComponent>().Play(changedValue);
         }
@@ -81,7 +81,7 @@ namespace ETHotfix
             //Log.Info($"事件收到的将要改变的数值为{changedValue}");
             FUIHeadBar headBar = Game.Scene.GetComponent<FUIComponent>().Get(fuiId) as FUIHeadBar;
             headBar.Bar_MP.self.TweenValue(
-                ETModel.Game.Scene.GetComponent<UnitComponent>().Get(fuiId).GetComponent<HeroDataComponent>().CurrentMagicValue, 0.2f);
+                UnitComponent.Instance.Get(fuiId).GetComponent<HeroDataComponent>().CurrentMagicValue, 0.2f);
         }
     }
 }

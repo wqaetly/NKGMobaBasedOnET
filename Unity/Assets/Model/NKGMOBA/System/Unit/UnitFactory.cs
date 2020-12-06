@@ -8,7 +8,6 @@ namespace ETModel
         public static Unit CreateHero(string unitType, long id)
         {
             PrepareHeroRes(unitType);
-            UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
             Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(id, unitType);
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
 
@@ -29,7 +28,7 @@ namespace ETModel
             unit.AddComponent<CommonAttackComponent>();
 
             unit.GameObject.GetComponent<MonoBridge>().BelongToUnit = unit;
-            unitComponent.Add(unit);
+            UnitComponent.Instance.Add(unit);
             return unit;
         }
 
@@ -42,8 +41,7 @@ namespace ETModel
         public static Unit CreateSpiling(long selfId, long parentId)
         {
             PrepareHeroRes("NuoKe");
-
-            UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
+            
             Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(selfId, "NuoKe");
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
 
@@ -63,7 +61,7 @@ namespace ETModel
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
             unit.GameObject.GetComponent<MonoBridge>().BelongToUnit = unit;
-            unitComponent.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
+            UnitComponent.Instance.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             return unit;
         }
 
@@ -86,10 +84,9 @@ namespace ETModel
         /// <returns></returns>
         public static void NPBehaveTestCreate()
         {
-            UnitComponent unitComponent = Game.Scene.GetComponent<UnitComponent>();
             Unit unit = ComponentFactory.Create<Unit>();
             unit.AddComponent<NP_RuntimeTreeManager>();
-            unitComponent.Add(unit);
+            UnitComponent.Instance.Add(unit);
             //NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, NP_Client_TreeIds.Darius_Q_Client).Start();
         }
     }

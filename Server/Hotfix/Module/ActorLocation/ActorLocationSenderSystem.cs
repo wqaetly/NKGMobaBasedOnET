@@ -82,7 +82,7 @@ namespace ETHotfix
 
                         // 等待0.5s再发送
                         long instanceId = self.InstanceId;
-                        await Game.Scene.GetComponent<TimerComponent>().WaitAsync(500);
+                        await TimerComponent.Instance.WaitAsync(500);
                         if (self.InstanceId != instanceId)
                         {
                             throw new RpcException(ErrorCode.ERR_ActorRemove, $"{MongoHelper.ToJson(iActorRequest)}");

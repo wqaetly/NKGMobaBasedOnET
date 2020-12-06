@@ -21,7 +21,7 @@ namespace Plugins.IngameDebugConsole.ETCmds
         public static async void TestAsyncLog()
         {
             Log.Info("这是一个测试常规的Log--一秒后会Log加密通话");
-            await Game.Scene.GetComponent<TimerComponent>().WaitAsync(1000);
+            await TimerComponent.Instance.WaitAsync(1000);
             Log.Info("这是一个测试常规的Log--别比别比，别比巴伯");
         }
     }

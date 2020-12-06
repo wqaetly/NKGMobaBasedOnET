@@ -5,12 +5,41 @@ using MongoDB.Bson.Serialization.Options;
 
 namespace ETModel
 {
+    [ObjectSystem]
+    public class UnitComponentSystem: AwakeSystem<UnitComponent>
+    {
+        public override void Awake(UnitComponent self)
+        {
+            self.Awake();
+        }
+    }
     public class UnitComponent: Component
     {
         [BsonElement]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         private readonly Dictionary<long, Unit> idUnits = new Dictionary<long, Unit>();
 
+        private static UnitComponent m_Instance;
+
+        public static UnitComponent Instance
+        {
+            get
+            {
+                if (m_Instance == null)
+                {
+                    Log.Error("请先注册UnitComponent到Game.Scene中");
+                    
+                    return null;
+                }
+                else
+                {
+                    return m_Instance;
+                }
+
+            }
+        }
+
+        
         public override void Dispose()
         {
             if (this.IsDisposed)
@@ -85,6 +114,11 @@ namespace ETModel
         public Unit[] GetAll()
         {
             return this.idUnits.Values.ToArray();
+        }
+
+        public void Awake()
+        {
+            m_Instance = this;
         }
     }
 }

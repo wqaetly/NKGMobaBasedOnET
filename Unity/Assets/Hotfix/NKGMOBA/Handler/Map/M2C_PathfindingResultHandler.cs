@@ -8,7 +8,7 @@ namespace ETHotfix
     {
         protected override async ETTask Run(ETModel.Session session, M2C_PathfindingResult message)
         {
-            Unit unit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(message.Id);
+            Unit unit = UnitComponent.Instance.Get(message.Id);
             UnitPathComponent unitPathComponent = unit.GetComponent<UnitPathComponent>();
 
             unitPathComponent.StartMove(message).Coroutine();

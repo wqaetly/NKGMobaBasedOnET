@@ -23,7 +23,7 @@ namespace EThotfix
         /// <param name="d">目标行为树数据载体Id(Excel表中的)</param>
         public override void Run(long a, int b, long c, int d)
         {
-            Unit unit = Game.Scene.GetComponent<UnitComponent>().Get(a);
+            Unit unit = UnitComponent.Instance.Get(a);
             ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
 
             B2S_ColliderComponent colliderComponent = unit.GetComponent<B2S_UnitColliderManagerComponent>()

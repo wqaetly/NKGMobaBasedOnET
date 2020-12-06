@@ -33,7 +33,7 @@ namespace ETModel
 
         public async ETVoid CancelAfter(long afterTimeCancel)
         {
-            await Game.Scene.GetComponent<TimerComponent>().WaitAsync(afterTimeCancel);
+            await TimerComponent.Instance.WaitAsync(afterTimeCancel);
             this.CancellationTokenSource?.Cancel();
             this.Dispose();
         }

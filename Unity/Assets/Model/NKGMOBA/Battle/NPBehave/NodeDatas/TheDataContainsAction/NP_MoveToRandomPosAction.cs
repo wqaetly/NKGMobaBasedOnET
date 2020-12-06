@@ -35,7 +35,7 @@ namespace ETModel
         {
 #if SERVER 
             Vector3 randomTarget = new Vector3(RandomHelper.RandomNumber(this.XMin, this.XMax), 0, RandomHelper.RandomNumber(this.YMin, this.YMax));
-            Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<UnitPathComponent>().MoveTo(randomTarget).Coroutine();  
+            UnitComponent.Instance.Get(this.Unitid).GetComponent<UnitPathComponent>().MoveTo(randomTarget).Coroutine();  
 #endif
         }
     }

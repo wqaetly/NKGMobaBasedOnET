@@ -37,14 +37,14 @@ namespace ETModel
             this.SkillDesNodeData = (SkillDesNodeData) this.BelongtoRuntimeTree.BelongNP_DataSupportor.BuffNodeDataDic[this.DataId.Value];
             //TODO 相关状态检测，例如沉默，眩晕等,下面是示例代码
             /*
-            if (Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<BuffManagerComponent>()
+            if (UnitComponent.Instance.Get(this.Unitid).GetComponent<BuffManagerComponent>()
                     .FindBuffByWorkType(BuffWorkTypes.Silence))
             {
                 return false;
             }
             */
             //给要修改的黑板节点进行赋值
-            HeroDataComponent heroDataComponent = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid).GetComponent<HeroDataComponent>();
+            HeroDataComponent heroDataComponent = UnitComponent.Instance.Get(this.Unitid).GetComponent<HeroDataComponent>();
             switch (this.SkillDesNodeData.SkillCostTypes)
             {
                 case SkillCostTypes.MagicValue:

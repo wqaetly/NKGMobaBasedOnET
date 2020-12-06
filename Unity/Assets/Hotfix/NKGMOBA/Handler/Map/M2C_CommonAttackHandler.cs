@@ -13,9 +13,8 @@ namespace ETHotfix
     {
         protected override ETTask Run(ETModel.Session session, M2C_CommonAttack message)
         {
-            UnitComponent unitComponent = ETModel.Game.Scene.GetComponent<UnitComponent>();
-            unitComponent.Get(message.AttackCasterId).GetComponent<CommonAttackComponent>()
-                    .CommonAttackStart(unitComponent.Get(message.TargetUnitId));
+            UnitComponent.Instance.Get(message.AttackCasterId).GetComponent<CommonAttackComponent>()
+                    .CommonAttackStart(UnitComponent.Instance.Get(message.TargetUnitId));
             return ETTask.CompletedTask;
         }
     }

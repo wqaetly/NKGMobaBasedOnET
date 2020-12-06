@@ -10,13 +10,11 @@ namespace ETHotfix
     {
         protected override async ETTask Run(ETModel.Session session, M2C_CreateUnits message)
         {
-            UnitComponent unitComponent = ETModel.Game.Scene.GetComponent<UnitComponent>();
-
             foreach (UnitInfo unitInfo in message.Units)
             {
                 //TODO 暂时先忽略除英雄之外的Unit（如技能碰撞体），后期需要配表来解决这一块的逻辑，并且需要在协议里指定Unit的类型Id（注意不是运行时的Id,是Excel表中的类型Id）
                 //TODO 诺手UnitTypeId暂定10001
-                if (unitComponent.Get(unitInfo.UnitId) != null || unitInfo.UnitTypeId != 10001)
+                if (UnitComponent.Instance.Get(unitInfo.UnitId) != null || unitInfo.UnitTypeId != 10001)
                 {
                     continue;
                 }
@@ -45,7 +43,7 @@ namespace ETHotfix
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
                         .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
 
-                ETModel.Game.Scene.GetComponent<UnitComponent>().Get(unitInfo.UnitId)
+                UnitComponent.Instance.Get(unitInfo.UnitId)
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
 
                 // 创建头顶Bar
@@ -55,13 +53,13 @@ namespace ETHotfix
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
             }
             
-            if (ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit == null)
+            if (UnitComponent.Instance.MyUnit == null)
             {
                 // 给自己的Unit添加引用
-                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit =
-                        ETModel.Game.Scene.GetComponent<UnitComponent>().Get(PlayerComponent.Instance.MyPlayer.UnitId);
-                ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit
-                        .AddComponent<CameraComponent, Unit>(ETModel.Game.Scene.GetComponent<UnitComponent>().MyUnit);
+                UnitComponent.Instance.MyUnit =
+                        UnitComponent.Instance.Get(PlayerComponent.Instance.MyPlayer.UnitId);
+                UnitComponent.Instance.MyUnit
+                        .AddComponent<CameraComponent, Unit>(UnitComponent.Instance.MyUnit);
 
                 Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }

@@ -50,7 +50,7 @@ namespace ETModel
         {
             if (!this.hasInit)
             {
-                this.m_Unit = Game.Scene.GetComponent<UnitComponent>().Get(this.Unitid);
+                this.m_Unit = UnitComponent.Instance.Get(this.Unitid);
                 tempBlackboard = this.BelongtoRuntimeTree.GetBlackboard();
 
                 this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;

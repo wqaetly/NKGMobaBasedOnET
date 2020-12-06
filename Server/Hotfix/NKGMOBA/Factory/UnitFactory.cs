@@ -31,7 +31,7 @@ namespace ETHotfix.NKGMOBA.Factory
         private static Unit CreateUnitWithIdBase(long id)
         {
             Unit result = ComponentFactory.CreateWithId<Unit>(id);
-            Game.Scene.GetComponent<UnitComponent>().Add(result);
+            UnitComponent.Instance.Add(result);
             return result;
         }
 
@@ -98,7 +98,7 @@ namespace ETHotfix.NKGMOBA.Factory
         {
             Unit unit = CreateUnitBase();
             //Log.Info($"服务端响应木桩请求，父id为{message.ParentUnitId}");
-            Game.Scene.GetComponent<UnitComponent>().Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
+            UnitComponent.Instance.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             //Log.Info("确认找到了请求的父实体");
             
             unit.AddComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit,
