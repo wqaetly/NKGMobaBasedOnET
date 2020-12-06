@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using ETModel;
 using ETModel.NKGMOBA.Battle.Fsm;
 using ETModel.NKGMOBA.Battle.State;
@@ -25,7 +26,7 @@ namespace ETHotfix
                 }
 
                 Vector3 v3 = path[i];
-                await self.Entity.GetComponent<MoveComponent>().MoveToAsync(v3, self.ETCancellationTokenSource.Token);
+                await self.Entity.GetComponent<MoveComponent>().MoveToAsync(v3, self.CancellationTokenSource.Token);
             }
         }
 
@@ -54,11 +55,11 @@ namespace ETHotfix
             recastPathComponent.SearchPath(10001, self.RecastPath);
             //Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
 
-            self.ETCancellationTokenSource?.Cancel();
-            self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
+            self.CancellationTokenSource?.Cancel();
+            self.CancellationTokenSource = new CancellationTokenSource();
             await self.MoveAsync(self.RecastPath.Results);
-            self.ETCancellationTokenSource.Dispose();
-            self.ETCancellationTokenSource = null;
+            self.CancellationTokenSource.Dispose();
+            self.CancellationTokenSource = null;
             self.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
         }
 
@@ -82,11 +83,12 @@ namespace ETHotfix
             recastPathComponent.SearchPath(10001, self.RecastPath);
             //Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
 
-            self.ETCancellationTokenSource?.Cancel();
-            self.ETCancellationTokenSource = ComponentFactory.Create<ETCancellationTokenSource>();
+            self.CancellationTokenSource?.Cancel();
+            self.CancellationTokenSource = new CancellationTokenSource();
             await self.MoveAsync(self.RecastPath.Results);
-            self.ETCancellationTokenSource.Dispose();
-            self.ETCancellationTokenSource = null;
+            self.CancellationTokenSource.Dispose();
+            self.CancellationTokenSource = null;
+            self.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
         }
 
         // 从index找接下来3个点，广播

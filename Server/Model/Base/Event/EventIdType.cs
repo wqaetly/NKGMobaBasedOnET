@@ -16,5 +16,9 @@
 		
 		//移动到随机位置
 		public const string MoveToRandomPos = "MoveToRandomPos";
+		/// <summary>
+		/// 取消攻击
+		/// </summary>
+		public const string CancelAttack = "CancelAttack";
 	}
 }

@@ -46,7 +46,7 @@ namespace ETModel
         /// <returns></returns>
         public async ETVoid StartMove(M2C_PathfindingResult message)
         {
-            if (!this.Entity.GetComponent<StackFsmComponent>().ChangeState<NavigateState>(StateTypes.Run, "Run", 1)) return;
+            if (!this.Entity.GetComponent<StackFsmComponent>().ChangeState<NavigateState>(StateTypes.Run, "Navigate", 1)) return;
             this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
             // 取消之前的移动协程
             this.EtCancellationTokenSource?.Cancel();
@@ -62,7 +62,7 @@ namespace ETModel
             await this.StartMove_Internal(this.EtCancellationTokenSource.Token);
             this.EtCancellationTokenSource.Dispose();
             this.EtCancellationTokenSource = null;
-            this.Entity.GetComponent<StackFsmComponent>().ChangeState<IdleState>(StateTypes.Idle, "Idle", 1);
+            this.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
             this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
 
@@ -73,6 +73,7 @@ namespace ETModel
         {
             this.EtCancellationTokenSource?.Cancel();
             this.Path.Clear();
+            this.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
             this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
 
@@ -83,6 +84,9 @@ namespace ETModel
             Path.Clear();
             this.ServerPos = Vector3.zero;
             this.EtCancellationTokenSource?.Cancel();
+            //TODO Entity相关的操作放到DestroySystem中
+            // this.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
+            // this.Entity.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
         }
     }
 }

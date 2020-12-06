@@ -85,6 +85,10 @@ namespace ETModel
             this.Entity.GetComponent<TurnComponent>().Turn(targetUnit.Position);
             this.m_StackFsmComponent.ChangeState<CommonAttackState>(StateTypes.CommonAttack, "Attack", 1);
             await CommonAttack_Internal(targetUnit, this.CancellationTokenSource);
+            //此次攻击完成
+            this.CancellationTokenSource.Dispose();
+            this.CancellationTokenSource = null;
+            this.m_StackFsmComponent.RemoveState("Attack");
         }
 
         private async ETTask CommonAttack_Internal(Unit targetUnit, CancellationTokenSource cancellationTokenSource)
@@ -102,16 +106,14 @@ namespace ETModel
 
             await Game.Scene.GetComponent<TimerComponent>()
                     .WaitAsync((long) (1 / attackSpeed * 1000), cancellationTokenSource.Token);
-
-            //此次攻击完成
-            this.CancellationTokenSource.Dispose();
-            this.CancellationTokenSource = null;
+            
         }
 
         public void CancelCommonAttack()
         {
             this.CancellationTokenSource?.Cancel();
             this.CancellationTokenSource = null;
+            this.m_StackFsmComponent.RemoveState("Attack");
         }
 
         public override void Dispose()
@@ -124,7 +126,7 @@ namespace ETModel
             m_UserInputComponent = null;
             m_StackFsmComponent = null;
             m_AnimationComponent = null;
-            this.CancellationTokenSource?.Cancel();
+            this.CancellationTokenSource?.Dispose();
             this.CancellationTokenSource = null;
         }
 

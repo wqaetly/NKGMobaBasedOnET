@@ -13,6 +13,15 @@ using UnityEngine;
 
 namespace ETHotfix
 {
+    [Event(EventIdType.CancelAttack)]
+    public class CancelAttackEvent: AEvent<long>
+    {
+        public override void Run(long a)
+        {
+            Game.Scene.GetComponent<UnitComponent>().Get(a).GetComponent<CommonAttackComponent>().CancelCommonAttackExtension();
+        }
+    }
+    
     [ObjectSystem]
     public class CommonAttackComponentUpdateSystem: UpdateSystem<CommonAttackComponent>
     {
@@ -54,6 +63,9 @@ namespace ETHotfix
                 AttackCasterId = self.Entity.Id, TargetUnitId = self.CachedUnitForAttack.Id, CanAttack = true
             });
             await self.CommonAttack_Internal();
+            //此次攻击完成
+            self.CancellationTokenSource.Dispose();
+            self.CancellationTokenSource = null;
         }
 
         private static async ETTask CommonAttack_Internal(this CommonAttackComponent self)
@@ -79,18 +91,24 @@ namespace ETHotfix
             self.AttackInterval = (long) (1 / attackSpeed - attackPre) * 1000;
 
             await Game.Scene.GetComponent<TimerComponent>().WaitAsync(self.AttackInterval, self.CancellationTokenSource.Token);
-            //此次攻击完成
-            self.CancellationTokenSource.Dispose();
-            self.CancellationTokenSource = null;
         }
 
         public static void Update(this CommonAttackComponent self)
         {
+            //TODO 是否可以考虑把这些计时器类型的变量都用一个组件进行包办
             if (!self.CanAttack)
             {
                 if (TimeHelper.Now() - self.LastAttackTime > self.AttackInterval)
                 {
                     self.CanAttack = true;
+                }
+            }
+
+            if (!self.CanMoveToTarget)
+            {
+                if (TimeHelper.Now() - self.LastMoveToTime > self.MoveToTargetInterval)
+                {
+                    self.CanMoveToTarget = true;
                 }
             }
 
@@ -100,12 +118,14 @@ namespace ETHotfix
                 {
                     Vector3 selfUnitPos = (self.Entity as Unit).Position;
                     float distance = Vector3.Distance(selfUnitPos, self.CachedUnitForAttack.Position);
-                    // Vector3 dir = (self.CachedUnitForAttack.Position - (self.Entity as Unit).Position).normalized;
-                    // Vector3 targetPos = self.CachedUnitForAttack.Position + dir * 1.75f;
                     //目标距离大于当前攻击距离会先进行寻路，这里的1.75为175码
                     if (distance >= 1.75)
                     {
+                        self.CancelCommonAttackWithOutResetTarget();
+                        if (!self.CanMoveToTarget) return;
                         self.IsMoveToTarget = true;
+                        self.LastMoveToTime = TimeHelper.Now();
+                        self.CanMoveToTarget = false;
                         self.Entity.GetComponent<UnitPathComponent>()
                                 .MoveTo_InternalWithOutStateChange(self.CachedUnitForAttack.Position)
                                 .Coroutine();
@@ -125,7 +145,7 @@ namespace ETHotfix
                             MessageHelper.Broadcast(pathfindingResult);
                             self.IsMoveToTarget = false;
                         }
-                        
+
                         //目标不为空，且处于攻击状态，且上次攻击已完成或取消
                         if ((self.CancellationTokenSource == null || self.CancellationTokenSource.IsCancellationRequested))
                         {
@@ -135,6 +155,25 @@ namespace ETHotfix
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 取消攻击但不重置攻击对象
+        /// </summary>
+        public static void CancelCommonAttackWithOutResetTarget(this CommonAttackComponent self)
+        {
+            self.CancellationTokenSource?.Cancel();
+            self.CancellationTokenSource = null;
+            //MessageHelper.Broadcast(new M2C_CancelAttack() { UnitId = self.Entity.Id });
+        }
+
+        /// <summary>
+        /// 取消攻击并且重置攻击对象
+        /// </summary>
+        public static void CancelCommonAttackExtension(this CommonAttackComponent self)
+        {
+            self.CancelCommonAttackWithOutResetTarget();
+            self.CachedUnitForAttack = null;
         }
     }
 }

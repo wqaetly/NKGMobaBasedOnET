@@ -43,9 +43,24 @@ namespace ETModel
         public long LastAttackTime;
 
         /// <summary>
+        /// 是否可以走向目标
+        /// </summary>
+        public bool CanMoveToTarget = true;
+
+        /// <summary>
         /// 是否正在移向目标
         /// </summary>
         public bool IsMoveToTarget;
+
+        /// <summary>
+        /// 上一次移动时间点
+        /// </summary>
+        public long LastMoveToTime;
+
+        /// <summary>
+        /// 走向目标的间隔，默认为0.1s，防止频繁切换状态
+        /// </summary>
+        public long MoveToTargetInterval = 300;
 
         /// <summary>
         /// 上次选中的Unit，用于自动攻击
@@ -57,12 +72,16 @@ namespace ETModel
         #endregion
 
         #region 公有成员
+
+        /// <summary>
+        /// 取消攻击并且重置攻击对象
+        /// </summary>
         public void CancelCommonAttack()
         {
-            this.CancellationTokenSource?.Cancel();
-            this.CancellationTokenSource = null;
+            Game.EventSystem.Run(EventIdType.CancelAttack, this.Entity.Id);
             this.CachedUnitForAttack = null;
         }
+
         #endregion
 
         #region 生命周期函数

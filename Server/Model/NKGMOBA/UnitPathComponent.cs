@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Threading;
+using ETModel.NKGMOBA.Battle.State;
 using UnityEngine;
 
 namespace ETModel
@@ -11,7 +13,7 @@ namespace ETModel
 
         public List<Vector3> Path;
 
-        public ETCancellationTokenSource ETCancellationTokenSource;
+        public CancellationTokenSource CancellationTokenSource;
 
         public RecastPath RecastPath
         {
@@ -29,7 +31,8 @@ namespace ETModel
 
         public void CancelMove()
         {
-            ETCancellationTokenSource?.Cancel();
+            CancellationTokenSource?.Cancel();
+            this.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
         }
 
         public override void Dispose()

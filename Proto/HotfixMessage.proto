@@ -203,6 +203,25 @@ message M2C_ChangeHeroMP // IActorMessage
     float ChangeMPValue = 2;
 }
 
+message M2C_SyncUnitPos // IActorMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 UnitId = 94;
+
+    float PosX = 2;
+    float PosY = 3;
+    float PosZ = 4;
+}
+
+message M2C_CancelAttack // IActorMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 93;
+    int64 UnitId = 94;
+    
+}
+
 message M2C_FrieBattleEvent_PlayEffect // IActorMessage
 {
     int32 RpcId = 90;
