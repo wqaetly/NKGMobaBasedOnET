@@ -36,7 +36,6 @@ namespace ETModel
         public static void AutoAddBuff(this VTD_BuffInfo self, long dataId, long buffNodeId, Unit theUnitFrom, Unit theUnitBelongTo,
         NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
             int Layers = 0;
             if (self.LayersDetermindByBBValue)
             {
@@ -49,7 +48,7 @@ namespace ETModel
 
             if (self.LayersIsAbs)
             {
-                ABuffSystemBase nextBuffSystemBase = buffPoolComponent.AcquireBuff(dataId, buffNodeId, theUnitFrom, theUnitBelongTo,
+                ABuffSystemBase nextBuffSystemBase = BuffFactory.AcquireBuff(dataId, buffNodeId, theUnitFrom, theUnitBelongTo,
                     theSkillCanvasBelongTo);
                 if (nextBuffSystemBase.CurrentOverlay < nextBuffSystemBase.BuffData.MaxOverlay && nextBuffSystemBase.CurrentOverlay < Layers)
                 {
@@ -63,7 +62,7 @@ namespace ETModel
 
             for (int i = 0; i < Layers; i++)
             {
-                buffPoolComponent.AcquireBuff(dataId, buffNodeId, theUnitFrom, theUnitBelongTo,
+                BuffFactory.AcquireBuff(dataId, buffNodeId, theUnitFrom, theUnitBelongTo,
                     theSkillCanvasBelongTo);
             }
         }
@@ -72,7 +71,6 @@ namespace ETModel
         Unit theUnitBelongTo,
         NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            BuffPoolComponent buffPoolComponent = Game.Scene.GetComponent<BuffPoolComponent>();
             int Layers = 0;
             if (self.LayersDetermindByBBValue)
             {
@@ -85,7 +83,7 @@ namespace ETModel
 
             if (self.LayersIsAbs)
             {
-                ABuffSystemBase nextBuffSystemBase = buffPoolComponent.AcquireBuff(npDataSupportor, buffNodeId, theUnitFrom, theUnitBelongTo,
+                ABuffSystemBase nextBuffSystemBase = BuffFactory.AcquireBuff(npDataSupportor, buffNodeId, theUnitFrom, theUnitBelongTo,
                     theSkillCanvasBelongTo);
                 if (nextBuffSystemBase.CurrentOverlay < nextBuffSystemBase.BuffData.MaxOverlay && nextBuffSystemBase.CurrentOverlay < Layers)
                 {
@@ -99,7 +97,7 @@ namespace ETModel
 
             for (int i = 0; i < Layers; i++)
             {
-                buffPoolComponent.AcquireBuff(npDataSupportor, buffNodeId, theUnitFrom, theUnitBelongTo,
+                BuffFactory.AcquireBuff(npDataSupportor, buffNodeId, theUnitFrom, theUnitBelongTo,
                     theSkillCanvasBelongTo);
             }
         }

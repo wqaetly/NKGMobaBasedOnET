@@ -172,8 +172,6 @@ namespace App
                         Game.Scene.AddComponent<NP_TreeDataRepository>();
                         //战斗系统中的事件系统组件 TODO 待优化，一场游戏挂载一个战斗系统的事件系统
                         Game.Scene.AddComponent<BattleEventSystem>();
-                        //增加Buff池组件
-                        Game.Scene.AddComponent<BuffPoolComponent>();
                         break;
                     case AppType.Benchmark:
                         Game.Scene.AddComponent<NetOuterComponent>();

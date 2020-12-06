@@ -8,13 +8,13 @@ using Sirenix.OdinInspector;
 
 namespace ETModel
 {
-    public abstract class ABuffSystemBase
+    public abstract class ABuffSystemBase: IReference
     {
         /// <summary>
         /// 归属的运行时行为树实例
         /// </summary>
         public NP_RuntimeTree BelongtoRuntimeTree;
-        
+
         /// <summary>
         /// Buff当前状态
         /// </summary>
@@ -29,7 +29,7 @@ namespace ETModel
         /// 最多持续到什么时候
         /// </summary>
         public long MaxLimitTime;
-        
+
         /// <summary>
         /// Buff数据
         /// </summary>
@@ -46,7 +46,7 @@ namespace ETModel
         /// </summary>
         [DisableInEditorMode]
         public Unit TheUnitBelongto;
-        
+
         /// <summary>
         /// 初始化buff数据
         /// </summary>
@@ -77,7 +77,17 @@ namespace ETModel
         /// </summary>
         public virtual void OnRefresh()
         {
-            
+        }
+
+        public void Clear()
+        {
+            BelongtoRuntimeTree = null;
+            BuffState = BuffState.Waiting;
+            CurrentOverlay = 0;
+            MaxLimitTime = 0;
+            BuffData = null;
+            TheUnitFrom = null;
+            TheUnitBelongto = null;
         }
     }
 }

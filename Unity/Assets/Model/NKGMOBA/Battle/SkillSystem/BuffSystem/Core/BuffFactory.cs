@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace ETModel
 {
     /// <summary>
-    /// Buff池组件
+    /// Buff工厂
     /// </summary>
     public static class BuffFactory
     {
