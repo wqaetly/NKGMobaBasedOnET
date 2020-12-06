@@ -133,6 +133,9 @@ namespace App
                         // 配置管理
                         Game.Scene.AddComponent<ConfigComponent>();
 
+                        //CD组件
+                        Game.Scene.AddComponent<CDComponent>();
+
                         // recast寻路组件
                         Game.Scene.AddComponent<RecastPathComponent>();
 

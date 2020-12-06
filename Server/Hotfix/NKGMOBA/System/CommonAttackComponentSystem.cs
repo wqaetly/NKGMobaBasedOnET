@@ -21,7 +21,7 @@ namespace ETHotfix
             Game.Scene.GetComponent<UnitComponent>().Get(a).GetComponent<CommonAttackComponent>().CancelCommonAttackExtension();
         }
     }
-    
+
     [ObjectSystem]
     public class CommonAttackComponentUpdateSystem: UpdateSystem<CommonAttackComponent>
     {
@@ -86,32 +86,16 @@ namespace ETHotfix
             }
 
             Game.EventSystem.Run(EventIdType.ChangeHP, self.CachedUnitForAttack.Id, -50.0f);
-            self.LastAttackTime = TimeHelper.Now();
-            self.CanAttack = false;
-            self.AttackInterval = (long) (1 / attackSpeed - attackPre) * 1000;
 
-            await Game.Scene.GetComponent<TimerComponent>().WaitAsync(self.AttackInterval, self.CancellationTokenSource.Token);
+            CDComponent.Instance.TriggerCD(self.Entity.Id,"CommonAttack");
+            CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
+            commonAttackCDInfo.Interval = (long) (1 / attackSpeed - attackPre) * 1000;
+
+            await Game.Scene.GetComponent<TimerComponent>().WaitAsync(commonAttackCDInfo.Interval, self.CancellationTokenSource.Token);
         }
 
         public static void Update(this CommonAttackComponent self)
         {
-            //TODO 是否可以考虑把这些计时器类型的变量都用一个组件进行包办
-            if (!self.CanAttack)
-            {
-                if (TimeHelper.Now() - self.LastAttackTime > self.AttackInterval)
-                {
-                    self.CanAttack = true;
-                }
-            }
-
-            if (!self.CanMoveToTarget)
-            {
-                if (TimeHelper.Now() - self.LastMoveToTime > self.MoveToTargetInterval)
-                {
-                    self.CanMoveToTarget = true;
-                }
-            }
-
             if (self.Entity.GetComponent<StackFsmComponent>().GetCurrentFsmState().StateTypes == StateTypes.CommonAttack)
             {
                 if (self.CachedUnitForAttack != null && !self.CachedUnitForAttack.IsDisposed)
@@ -122,10 +106,11 @@ namespace ETHotfix
                     if (distance >= 1.75)
                     {
                         self.CancelCommonAttackWithOutResetTarget();
-                        if (!self.CanMoveToTarget) return;
+                        if (!CDComponent.Instance.GetCDResult(self.Entity.Id, "MoveToAttack")) return;
+
+                        CDComponent.Instance.TriggerCD(self.Entity.Id, "MoveToAttack");
+
                         self.IsMoveToTarget = true;
-                        self.LastMoveToTime = TimeHelper.Now();
-                        self.CanMoveToTarget = false;
                         self.Entity.GetComponent<UnitPathComponent>()
                                 .MoveTo_InternalWithOutStateChange(self.CachedUnitForAttack.Position)
                                 .Coroutine();
@@ -149,7 +134,7 @@ namespace ETHotfix
                         //目标不为空，且处于攻击状态，且上次攻击已完成或取消
                         if ((self.CancellationTokenSource == null || self.CancellationTokenSource.IsCancellationRequested))
                         {
-                            if (distance <= 1.75 && self.CanAttack)
+                            if (distance <= 1.75 && CDComponent.Instance.GetCDResult(self.Entity.Id, "CommonAttack"))
                                 self.StartCommonAttack().Coroutine();
                         }
                     }
