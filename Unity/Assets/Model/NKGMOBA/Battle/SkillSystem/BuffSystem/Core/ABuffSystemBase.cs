@@ -81,7 +81,13 @@ namespace ETModel
 
         public void Clear()
         {
-            
+            BelongtoRuntimeTree = null;
+            BuffState = BuffState.Waiting;
+            CurrentOverlay = 0;
+            MaxLimitTime = 0;
+            BuffData = null;
+            TheUnitFrom = null;
+            TheUnitBelongto = null;
         }
     }
 }
