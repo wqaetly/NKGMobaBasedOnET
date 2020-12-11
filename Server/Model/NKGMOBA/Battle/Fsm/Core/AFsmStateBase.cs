@@ -55,11 +55,23 @@ namespace ETModel.NKGMOBA.Battle.State
 
         public abstract StateTypes[] GetConflictStateTypeses();
         
+        /// <summary>
+        /// 进入状态调用
+        /// </summary>
+        /// <param name="stackFsmComponent"></param>
         public abstract void OnEnter(StackFsmComponent stackFsmComponent);
-
-        public abstract void OnUpdate(StackFsmComponent stackFsmComponent);
-
+        
+        /// <summary>
+        /// 状态退出时调用
+        /// </summary>
+        /// <param name="stackFsmComponent"></param>
         public abstract void OnExit(StackFsmComponent stackFsmComponent);
+        
+        /// <summary>
+        /// 状态移除时调用
+        /// </summary>
+        /// <param name="stackFsmComponent"></param>
+        public abstract void OnRemoved(StackFsmComponent stackFsmComponent);
 
         public virtual void Clear()
         {

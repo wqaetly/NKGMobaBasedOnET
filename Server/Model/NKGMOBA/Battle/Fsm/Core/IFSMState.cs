@@ -12,12 +12,7 @@ namespace ETModel.NKGMOBA.Battle.State
         /// 正式进入此状态时需要进行的逻辑
         /// </summary>
         void OnEnter(StackFsmComponent stackFsmComponent);
-
-        /// <summary>
-        /// 轮询此状态时需要进行的逻辑
-        /// </summary>
-        void OnUpdate(StackFsmComponent stackFsmComponent);
-
+        
         /// <summary>
         /// 离开此状态时需要进行的逻辑
         /// </summary>

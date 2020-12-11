@@ -34,13 +34,14 @@ namespace ETModel.NKGMOBA.Battle.Fsm
         {
         }
 
-        public override void OnUpdate(StackFsmComponent stackFsmComponent)
-        {
-        }
-
         public override void OnExit(StackFsmComponent stackFsmComponent)
         {
-            stackFsmComponent.Entity.GetComponent<UnitPathComponent>().CancelMove();
+            Game.EventSystem.Run(EventIdType.CancelMove, stackFsmComponent.Entity.Id);
+        }
+
+        public override void OnRemoved(StackFsmComponent stackFsmComponent)
+        {
+            Game.EventSystem.Run(EventIdType.CancelMove, stackFsmComponent.Entity.Id);
         }
     }
 }

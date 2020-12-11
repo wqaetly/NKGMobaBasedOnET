@@ -31,13 +31,9 @@ namespace ETModel.NKGMOBA.Battle.Fsm
 
         public override void OnEnter(StackFsmComponent stackFsmComponent)
         {
+            
         }
-
-        public override void OnUpdate(StackFsmComponent stackFsmComponent)
-        {
-           
-        }
-
+        
         public override void OnExit(StackFsmComponent stackFsmComponent)
         {
             

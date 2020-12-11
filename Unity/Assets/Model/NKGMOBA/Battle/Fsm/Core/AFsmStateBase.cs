@@ -56,9 +56,7 @@ namespace ETModel.NKGMOBA.Battle.State
         public abstract StateTypes[] GetConflictStateTypeses();
         
         public abstract void OnEnter(StackFsmComponent stackFsmComponent);
-
-        public abstract void OnUpdate(StackFsmComponent stackFsmComponent);
-
+        
         public abstract void OnExit(StackFsmComponent stackFsmComponent);
 
         public virtual void Clear()

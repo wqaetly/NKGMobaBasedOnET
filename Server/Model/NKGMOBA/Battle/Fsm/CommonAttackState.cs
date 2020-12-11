@@ -36,12 +36,12 @@ namespace ETModel.NKGMOBA.Battle.Fsm
 
         }
 
-        public override void OnUpdate(StackFsmComponent stackFsmComponent)
+        public override void OnExit(StackFsmComponent stackFsmComponent)
         {
-            
+            stackFsmComponent.Entity.GetComponent<CommonAttackComponent>().CancelAttackWithOutResetAttackTarget();
         }
 
-        public override void OnExit(StackFsmComponent stackFsmComponent)
+        public override void OnRemoved(StackFsmComponent stackFsmComponent)
         {
             stackFsmComponent.Entity.GetComponent<CommonAttackComponent>().CancelCommonAttack();
         }
