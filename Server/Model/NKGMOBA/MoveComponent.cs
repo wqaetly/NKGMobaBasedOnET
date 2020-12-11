@@ -22,13 +22,13 @@ namespace ETModel
         public async ETTask MoveToAsync(Vector3 target, CancellationToken cancellationToken)
         {
             // 新目标点离旧目标点太近，不设置新的
-            if ((target - this.Target).sqrMagnitude < 0.01f)
+            if ((target - this.Target).sqrMagnitude < 0.0001f)
             {
                 return;
             }
 
             // 距离当前位置太近
-            if ((this.GetParent<Unit>().Position - target).sqrMagnitude < 0.01f)
+            if ((this.GetParent<Unit>().Position - target).sqrMagnitude < 0.0001f)
             {
                 return;
             }
@@ -43,7 +43,7 @@ namespace ETModel
             this.StartPos = unit.Position;
             this.StartTime = TimeHelper.Now();
             float distance = (this.Target - this.StartPos).magnitude;
-            if (Math.Abs(distance) < 0.1f)
+            if (Math.Abs(distance) < 0.0001f)
             {
                 return;
             }

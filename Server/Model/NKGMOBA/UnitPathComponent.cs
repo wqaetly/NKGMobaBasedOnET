@@ -11,9 +11,22 @@ namespace ETModel
 
         private RecastPath recastPath;
 
-        public List<Vector3> Path;
-
         public CancellationTokenSource CancellationTokenSource;
+
+        /// <summary>
+        /// 目标范围，当自身与目标位置小于等于此范围时，则停止寻路，进入NextState
+        /// </summary>
+        public float TargetRange;
+        
+        /// <summary>
+        /// 绑定的状态
+        /// </summary>
+        public AFsmStateBase BindState;
+
+        /// <summary>
+        /// 寻路完成后会转移到的状态
+        /// </summary>
+        public AFsmStateBase NextState;
 
         public RecastPath RecastPath
         {
@@ -29,12 +42,6 @@ namespace ETModel
             }
         }
 
-        public void CancelMove()
-        {
-            CancellationTokenSource?.Cancel();
-            this.Entity.GetComponent<StackFsmComponent>().RemoveState("Navigate");
-        }
-
         public override void Dispose()
         {
             if (this.IsDisposed)
@@ -46,6 +53,20 @@ namespace ETModel
 
             if (recastPath != null)
                 ReferencePool.Release(recastPath);
+            
+            CancellationTokenSource?.Cancel();
+            CancellationTokenSource = null;
+            if (this.BindState != null)
+            {
+                this.Entity.GetComponent<StackFsmComponent>().RemoveState(this.BindState.StateName);
+                this.BindState = null;
+            }
+
+            if (this.NextState != null)
+            {
+                ReferencePool.Release(NextState);
+                this.NextState = null;
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using ETModel;
+using ETModel.NKGMOBA.Battle.Fsm;
+using ETModel.NKGMOBA.Battle.State;
 using UnityEngine;
 
 namespace ETHotfix
@@ -9,7 +11,8 @@ namespace ETHotfix
         protected override async ETTask Run(Unit unit, Frame_ClickMap message)
         {
             Vector3 target = new Vector3(message.X, message.Y, message.Z);
-            unit.GetComponent<UnitPathComponent>().MoveTo(target).Coroutine();
+            unit.GetComponent<UnitPathComponent>().CommonNavigate(target);
+
             await ETTask.CompletedTask;
         }
     }

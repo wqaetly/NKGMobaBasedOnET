@@ -22,6 +22,15 @@ namespace ETHotfix
         }
     }
 
+    [Event(EventIdType.CancelAttackWithOutResetAttackTarget)]
+    public class CancelAttackWithOutResetAttackTargetEvent: AEvent<long>
+    {
+        public override void Run(long a)
+        {
+            UnitComponent.Instance.Get(a).GetComponent<CommonAttackComponent>().CancelCommonAttackWithOutResetTarget();
+        }
+    }
+
     [ObjectSystem]
     public class CommonAttackComponentUpdateSystem: UpdateSystem<CommonAttackComponent>
     {
@@ -37,7 +46,7 @@ namespace ETHotfix
         {
             if (targetUnit == null)
             {
-                Log.Error("普攻组件接受到的targetUnit为null");
+                Log.Error("普攻组件接收到的targetUnit为null");
                 return;
             }
 
@@ -49,7 +58,8 @@ namespace ETHotfix
                 }
 
                 self.CachedUnitForAttack = targetUnit;
-                self.Entity.GetComponent<StackFsmComponent>().ChangeState<CommonAttackState>(StateTypes.CommonAttack, "CommonAttack", 1);
+
+                self.m_StackFsmComponent.ChangeState<CommonAttackState>(StateTypes.CommonAttack, "CommonAttack", 1);
             }
         }
 
@@ -87,7 +97,7 @@ namespace ETHotfix
 
             Game.EventSystem.Run(EventIdType.ChangeHP, self.CachedUnitForAttack.Id, -50.0f);
 
-            CDComponent.Instance.TriggerCD(self.Entity.Id,"CommonAttack");
+            CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");
             CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
             commonAttackCDInfo.Interval = (long) (1 / attackSpeed - attackPre) * 1000;
 
@@ -101,36 +111,24 @@ namespace ETHotfix
                 if (self.CachedUnitForAttack != null && !self.CachedUnitForAttack.IsDisposed)
                 {
                     Vector3 selfUnitPos = (self.Entity as Unit).Position;
-                    float distance = Vector3.Distance(selfUnitPos, self.CachedUnitForAttack.Position);
+                    double distance = Vector3.Distance(selfUnitPos, self.CachedUnitForAttack.Position);
                     //目标距离大于当前攻击距离会先进行寻路，这里的1.75为175码
-                    if (distance >= 1.75)
+                    if (distance >= 1.75f)
                     {
-                        self.CancelCommonAttackWithOutResetTarget();
                         if (!CDComponent.Instance.GetCDResult(self.Entity.Id, "MoveToAttack")) return;
 
                         CDComponent.Instance.TriggerCD(self.Entity.Id, "MoveToAttack");
-
                         self.IsMoveToTarget = true;
+
+                        //移动完进入攻击状态
+                        CommonAttackState commonAttackState = ReferencePool.Acquire<CommonAttackState>();
+                        commonAttackState.SetData(StateTypes.CommonAttack, "CommonAttack", 1);
+
                         self.Entity.GetComponent<UnitPathComponent>()
-                                .MoveTo_InternalWithOutStateChange(self.CachedUnitForAttack.Position)
-                                .Coroutine();
+                                .NavigateTodoSomething(self.CachedUnitForAttack.Position, 1.75f, commonAttackState);
                     }
                     else
                     {
-                        if (self.IsMoveToTarget)
-                        {
-                            self.Entity.GetComponent<UnitPathComponent>().CancelMove();
-                            M2C_PathfindingResult pathfindingResult = new M2C_PathfindingResult()
-                            {
-                                X = selfUnitPos.x, Y = selfUnitPos.y, Z = selfUnitPos.z, Id = self.Entity.Id
-                            };
-                            pathfindingResult.Xs.Clear();
-                            pathfindingResult.Ys.Clear();
-                            pathfindingResult.Zs.Clear();
-                            MessageHelper.Broadcast(pathfindingResult);
-                            self.IsMoveToTarget = false;
-                        }
-
                         //目标不为空，且处于攻击状态，且上次攻击已完成或取消
                         if ((self.CancellationTokenSource == null || self.CancellationTokenSource.IsCancellationRequested))
                         {

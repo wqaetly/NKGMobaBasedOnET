@@ -49,7 +49,14 @@ namespace ETModel
         public void CancelCommonAttack()
         {
             Game.EventSystem.Run(EventIdType.CancelAttack, this.Entity.Id);
-            this.CachedUnitForAttack = null;
+        }
+
+        /// <summary>
+        /// 取消攻击但不重置攻击对象，比如我们会因为与目标距离大于攻击距离而先寻路
+        /// </summary>
+        public void CancelAttackWithOutResetAttackTarget()
+        {
+            Game.EventSystem.Run(EventIdType.CancelAttackWithOutResetAttackTarget, this.Entity.Id);
         }
 
         #endregion

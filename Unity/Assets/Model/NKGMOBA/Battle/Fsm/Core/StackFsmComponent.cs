@@ -19,15 +19,6 @@ namespace ETModel.NKGMOBA.Battle.State
         }
     }
 
-    [ObjectSystem]
-    public class StackFsmComponentUpdateSystem: UpdateSystem<StackFsmComponent>
-    {
-        public override void Update(StackFsmComponent self)
-        {
-            self.Update();
-        }
-    }
-
     /// <summary>
     /// 适用于动画切换的栈式状态机
     /// </summary>
@@ -204,11 +195,6 @@ namespace ETModel.NKGMOBA.Battle.State
         private bool CheckIsFirstState(AFsmStateBase aFsmStateBase)
         {
             return aFsmStateBase == this.GetCurrentFsmState();
-        }
-
-        public void Update()
-        {
-            GetCurrentFsmState()?.OnUpdate(this);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace ETHotfix.NKGMOBA.Factory
             NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Server_SkillCanvasConfig>(10002).NPBehaveId,
                         configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId)
                     .Start();
-            
+
             //默认升一级技能
             unit.GetComponent<SkillCanvasManagerComponent>().AddSkillLevel(configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId);
             //Log.Info("行为树创建完成");
@@ -84,7 +84,7 @@ namespace ETHotfix.NKGMOBA.Factory
             //添加栈式状态机组件
             unit.AddComponent<StackFsmComponent>();
             unit.AddComponent<CommonAttackComponent>();
-            
+
             //设置英雄位置
             unit.Position = new Vector3(-10, 0, -10);
             return unit;
@@ -100,7 +100,7 @@ namespace ETHotfix.NKGMOBA.Factory
             //Log.Info($"服务端响应木桩请求，父id为{message.ParentUnitId}");
             UnitComponent.Instance.Get(parentId).GetComponent<ChildrenUnitComponent>().AddUnit(unit);
             //Log.Info("确认找到了请求的父实体");
-            
+
             unit.AddComponent<B2S_UnitColliderManagerComponent>().CreateCollider(unit,
                 Game.Scene.GetComponent<ConfigComponent>().Get<Server_B2SCollisionRelationConfig>(10001).B2S_CollisionRelationId, 10006);
             unit.AddComponent<HeroDataComponent, long>(10001);
@@ -112,11 +112,12 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<UnitPathComponent>();
 
             unit.AddComponent<NP_RuntimeTreeManager>();
-            
+
             ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
-            //Log.Info("开始创建行为树");
-            NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, configComponent.Get<Server_AICanvasConfig>(10001).NPBehaveId)
-                    .Start();
+            if (RandomHelper.RandomNumber(0, 2) == 0)
+                    //Log.Info("开始创建行为树");
+                NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, configComponent.Get<Server_AICanvasConfig>(10001).NPBehaveId)
+                        .Start();
 
             return unit;
         }

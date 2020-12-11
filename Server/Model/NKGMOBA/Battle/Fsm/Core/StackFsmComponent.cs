@@ -19,16 +19,6 @@ namespace ETModel.NKGMOBA.Battle.State
         }
     }
 
-    
-    [ObjectSystem]
-    public class StackFsmComponentUpdateSystem: UpdateSystem<StackFsmComponent>
-    {
-        public override void Update(StackFsmComponent self)
-        {
-            self.Update();
-        }
-    }
-
     /// <summary>
     /// 适用于动画切换的栈式状态机
     /// </summary>
@@ -119,6 +109,26 @@ namespace ETModel.NKGMOBA.Battle.State
         /// 切换状态，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行，切换成功返回成功，切换失败返回失败
         /// 这里的切换成功是指目标状态来到链表头部，插入到链表中或者插入失败都属于切换失败
         /// </summary>
+        public bool ChangeState(AFsmStateBase aFsmStateBase)
+        {
+            AFsmStateBase tempFsmStateBase = this.GetState(aFsmStateBase.StateName);
+
+            if (tempFsmStateBase != null)
+            {
+                //因为已有此状态，所以进行回收
+                ReferencePool.Release(aFsmStateBase);
+                this.InsertState(tempFsmStateBase, true);
+                return CheckIsFirstState(tempFsmStateBase);
+            }
+
+            this.InsertState(aFsmStateBase);
+            return CheckIsFirstState(aFsmStateBase);
+        }
+
+        /// <summary>
+        /// 切换状态，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行，切换成功返回成功，切换失败返回失败
+        /// 这里的切换成功是指目标状态来到链表头部，插入到链表中或者插入失败都属于切换失败
+        /// </summary>
         /// <param name="stateTypes">状态类型</param>
         /// <param name="stateName">状态名称</param>
         /// <param name="priority">状态优先级</param>
@@ -171,7 +181,7 @@ namespace ETModel.NKGMOBA.Battle.State
             //如果包含自身，就看current是不是自己，如果是，就不对链表做改变，如果不是就提到current前面
             if (containsItSelf)
             {
-                if (fsmStateToInsert.StateName == current.Value.StateName)
+                if (fsmStateToInsert == current.Value)
                 {
                     return;
                 }
@@ -204,11 +214,6 @@ namespace ETModel.NKGMOBA.Battle.State
         private bool CheckIsFirstState(AFsmStateBase aFsmStateBase)
         {
             return aFsmStateBase == this.GetCurrentFsmState();
-        }
-
-        public void Update()
-        {
-            GetCurrentFsmState()?.OnUpdate(this);
         }
     }
 }
