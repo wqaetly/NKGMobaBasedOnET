@@ -2302,9 +2302,9 @@ namespace ETHotfix {
 
   }
 
-  public partial class M2C_ChangeHeroHP : pb::IMessage {
-    private static readonly pb::MessageParser<M2C_ChangeHeroHP> _parser = new pb::MessageParser<M2C_ChangeHeroHP>(() => (M2C_ChangeHeroHP)MessagePool.Instance.Fetch(typeof(M2C_ChangeHeroHP)));
-    public static pb::MessageParser<M2C_ChangeHeroHP> Parser { get { return _parser; } }
+  public partial class M2C_SyncUnitAttribute : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_SyncUnitAttribute> _parser = new pb::MessageParser<M2C_SyncUnitAttribute>(() => (M2C_SyncUnitAttribute)MessagePool.Instance.Fetch(typeof(M2C_SyncUnitAttribute)));
+    public static pb::MessageParser<M2C_SyncUnitAttribute> Parser { get { return _parser; } }
 
     private int rpcId_;
     public int RpcId {
@@ -2330,18 +2330,26 @@ namespace ETHotfix {
       }
     }
 
-    private float changeHPValue_;
-    public float ChangeHPValue {
-      get { return changeHPValue_; }
+    private int numericType_;
+    public int NumericType {
+      get { return numericType_; }
       set {
-        changeHPValue_ = value;
+        numericType_ = value;
+      }
+    }
+
+    private float finalValue_;
+    public float FinalValue {
+      get { return finalValue_; }
+      set {
+        finalValue_ = value;
       }
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ChangeHPValue != 0F) {
-        output.WriteRawTag(21);
-        output.WriteFloat(ChangeHPValue);
+      if (FinalValue != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(FinalValue);
       }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
@@ -2354,6 +2362,10 @@ namespace ETHotfix {
       if (UnitId != 0L) {
         output.WriteRawTag(240, 5);
         output.WriteInt64(UnitId);
+      }
+      if (NumericType != 0) {
+        output.WriteRawTag(248, 5);
+        output.WriteInt32(NumericType);
       }
     }
 
@@ -2368,25 +2380,29 @@ namespace ETHotfix {
       if (UnitId != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
       }
-      if (ChangeHPValue != 0F) {
+      if (NumericType != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NumericType);
+      }
+      if (FinalValue != 0F) {
         size += 1 + 4;
       }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
-      changeHPValue_ = 0f;
+      finalValue_ = 0f;
       rpcId_ = 0;
       actorId_ = 0;
       unitId_ = 0;
+      numericType_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
           default:
             input.SkipLastField();
             break;
-          case 21: {
-            ChangeHPValue = input.ReadFloat();
+          case 29: {
+            FinalValue = input.ReadFloat();
             break;
           }
           case 720: {
@@ -2399,6 +2415,10 @@ namespace ETHotfix {
           }
           case 752: {
             UnitId = input.ReadInt64();
+            break;
+          }
+          case 760: {
+            NumericType = input.ReadInt32();
             break;
           }
         }
@@ -2407,9 +2427,9 @@ namespace ETHotfix {
 
   }
 
-  public partial class M2C_ChangeHeroMP : pb::IMessage {
-    private static readonly pb::MessageParser<M2C_ChangeHeroMP> _parser = new pb::MessageParser<M2C_ChangeHeroMP>(() => (M2C_ChangeHeroMP)MessagePool.Instance.Fetch(typeof(M2C_ChangeHeroMP)));
-    public static pb::MessageParser<M2C_ChangeHeroMP> Parser { get { return _parser; } }
+  public partial class M2C_ChangeUnitAttribute : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_ChangeUnitAttribute> _parser = new pb::MessageParser<M2C_ChangeUnitAttribute>(() => (M2C_ChangeUnitAttribute)MessagePool.Instance.Fetch(typeof(M2C_ChangeUnitAttribute)));
+    public static pb::MessageParser<M2C_ChangeUnitAttribute> Parser { get { return _parser; } }
 
     private int rpcId_;
     public int RpcId {
@@ -2435,18 +2455,26 @@ namespace ETHotfix {
       }
     }
 
-    private float changeMPValue_;
-    public float ChangeMPValue {
-      get { return changeMPValue_; }
+    private int numericType_;
+    public int NumericType {
+      get { return numericType_; }
       set {
-        changeMPValue_ = value;
+        numericType_ = value;
+      }
+    }
+
+    private float changeValue_;
+    public float ChangeValue {
+      get { return changeValue_; }
+      set {
+        changeValue_ = value;
       }
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ChangeMPValue != 0F) {
+      if (ChangeValue != 0F) {
         output.WriteRawTag(21);
-        output.WriteFloat(ChangeMPValue);
+        output.WriteFloat(ChangeValue);
       }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
@@ -2459,6 +2487,10 @@ namespace ETHotfix {
       if (UnitId != 0L) {
         output.WriteRawTag(240, 5);
         output.WriteInt64(UnitId);
+      }
+      if (NumericType != 0) {
+        output.WriteRawTag(248, 5);
+        output.WriteInt32(NumericType);
       }
     }
 
@@ -2473,17 +2505,21 @@ namespace ETHotfix {
       if (UnitId != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
       }
-      if (ChangeMPValue != 0F) {
+      if (NumericType != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NumericType);
+      }
+      if (ChangeValue != 0F) {
         size += 1 + 4;
       }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
-      changeMPValue_ = 0f;
+      changeValue_ = 0f;
       rpcId_ = 0;
       actorId_ = 0;
       unitId_ = 0;
+      numericType_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2491,7 +2527,7 @@ namespace ETHotfix {
             input.SkipLastField();
             break;
           case 21: {
-            ChangeMPValue = input.ReadFloat();
+            ChangeValue = input.ReadFloat();
             break;
           }
           case 720: {
@@ -2504,6 +2540,10 @@ namespace ETHotfix {
           }
           case 752: {
             UnitId = input.ReadInt64();
+            break;
+          }
+          case 760: {
+            NumericType = input.ReadInt32();
             break;
           }
         }

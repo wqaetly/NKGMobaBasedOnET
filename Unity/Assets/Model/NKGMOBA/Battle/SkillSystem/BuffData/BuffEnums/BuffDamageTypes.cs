@@ -28,6 +28,12 @@ namespace ETModel
         [LabelText("真实伤害")]
         Real = 1 << 7,
 
+        [LabelText("普攻伤害")]
+        CommonAttack = 1 << 8,
+
+        [LabelText("技能伤害")]
+        SkillAttack = 1 << 9,
+
         /// <summary>
         /// 物理伤害
         /// </summary>

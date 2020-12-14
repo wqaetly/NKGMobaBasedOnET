@@ -7,14 +7,19 @@
 
         public const string CreateCollider = "CreateCollider";
 
-        public const string ChangeHP = "ChangeHP";
-        public const string ChangeMP = "ChangeMP";
-
         public const string SendBuffInfoToClient = "SendBuffInfoToClient";
 
         //移动到随机位置
         public const string MoveToRandomPos = "MoveToRandomPos";
 
+        //伤害触发
+        public const string ExcuteDamage = "ExcuteDamage";
+        //治疗触发
+        public const string ExcuteTreate = "ExcuteTreate";
+        
+        //Numeric执行修改
+        public const string NumericApplyChangeValue = "NumericApplyChangeValue";
+        
         /// <summary>
         /// 取消移动
         /// </summary>

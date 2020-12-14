@@ -14,11 +14,6 @@ namespace ETModel
     public class SustainDamageBuffSystem: ABuffSystemBase
     {
         /// <summary>
-        /// 本次伤害值
-        /// </summary>
-        private float m_CurrentDamageValue;
-
-        /// <summary>
         /// 自身下一个时间点
         /// </summary>
         private long m_SelfNextimer;
@@ -36,28 +31,9 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            try
-            {
-                //Log.Info("进入持续伤害的Execute");
-                this.m_CurrentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
-                //强制类型转换为伤害Buff数据
-                SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
-
-                //TODO 对受方的伤害结算，此时finalDamageValue为最终值
-
-                this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.m_CurrentDamageValue;
-                Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.m_CurrentDamageValue);
-                //Log.Info($"来自持续伤害ExeCute的数据:{this.currentDamageValue}");
-                //设置下一个时间点
-                this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
-                //Log.Info($"作用间隔为{selfNextimer - TimeHelper.Now()},持续时间为{temp.SustainTime},持续到{this.selfNextimer}");
-                this.BuffState = BuffState.Running;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            ExcuteDamage();
+            //Log.Info($"作用间隔为{selfNextimer - TimeHelper.Now()},持续时间为{temp.SustainTime},持续到{this.selfNextimer}");
+            this.BuffState = BuffState.Running;
         }
 
         public override void OnUpdate()
@@ -73,31 +49,38 @@ namespace ETModel
                 }
                 else if (TimeHelper.Now() > this.m_SelfNextimer)
                 {
-                    try
-                    {
-                        this.m_CurrentDamageValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
-                        //强制类型转换为伤害Buff数据
-                        SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
-
-                        //TODO 对受方的伤害结算，此时finalDamageValue为最终值
-
-                        this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.m_CurrentDamageValue;
-                        Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.m_CurrentDamageValue);
-                        //Log.Info($"来自持续伤害Update的数据:{this.currentDamageValue},结束时间为{MaxLimitTime},当前层数为{this.CurrentOverlay}");
-                        //设置下一个时间点
-                        this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
+                    ExcuteDamage();
                 }
             }
         }
 
         public override void OnFinished()
         {
+        }
+
+        private void ExcuteDamage()
+        {
+            //强制类型转换为伤害Buff数据 
+            SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
+
+            DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(temp.BuffDamageTypes,
+                BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData), this.TheUnitFrom, this.TheUnitBelongto);
+
+            damageData.DamageValue *= temp.DamageFix;
+
+            this.TheUnitFrom.GetComponent<CastDamageComponent>().BaptismDamageData(damageData);
+
+            float finalDamage = this.TheUnitBelongto.GetComponent<ReceiveDamageComponent>().BaptismDamageData(damageData);
+
+            if (finalDamage >= 0)
+            {
+                this.TheUnitBelongto.GetComponent<HeroDataComponent>().NumericComponent[NumericType.Hp] += -finalDamage;
+                //抛出伤害事件，需要监听伤害的buff（比如吸血buff）需要监听此事件
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{this.TheUnitFrom.Id}", damageData);
+            }
+
+            //设置下一个时间点
+            this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
         }
     }
 }

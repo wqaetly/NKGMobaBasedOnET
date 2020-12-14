@@ -13,11 +13,6 @@ namespace ETModel
     /// </summary>
     public class FlashDamageBuffSystem: ABuffSystemBase
     {
-        /// <summary>
-        /// 最终伤害值
-        /// </summary>
-        private float finalDamageValue;
-
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
@@ -30,21 +25,22 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            float tempFinalData = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+            DamageData damageData = ReferencePool.Acquire<DamageData>().InitData((this.BuffData as FlashDamageBuffData).BuffDamageTypes,
+                BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData), this.TheUnitFrom, this.TheUnitBelongto);
 
-            tempFinalData *= (this.BuffData as FlashDamageBuffData).DamageFix;
+            damageData.DamageValue *= (this.BuffData as FlashDamageBuffData).DamageFix;
 
-            Log.Info($"瞬时预计造成{tempFinalData}伤害");
+            this.TheUnitFrom.GetComponent<CastDamageComponent>().BaptismDamageData(damageData);
 
-            //TODO 对受方的伤害结算，此时finalDamageValue为最终值
+            float finalDamage = this.TheUnitBelongto.GetComponent<ReceiveDamageComponent>().BaptismDamageData(damageData);
 
-            this.finalDamageValue = tempFinalData;
-
-            this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue -= this.finalDamageValue;
-
-            Game.EventSystem.Run(EventIdType.ChangeHP, this.TheUnitBelongto.Id, -this.finalDamageValue);
-
-            //抛出Buff奏效事件
+            if (finalDamage >= 0)
+            {
+                this.TheUnitBelongto.GetComponent<HeroDataComponent>().NumericComponent.ApplyChange(NumericType.Hp, -finalDamage);
+                //抛出伤害事件，需要监听伤害的buff（比如吸血buff）需要监听此事件
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{this.TheUnitFrom.Id}", damageData);
+            }
+            
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
             if (this.BuffData.EventIds != null)
             {

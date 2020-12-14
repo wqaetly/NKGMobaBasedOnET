@@ -11,11 +11,6 @@ namespace ETModel
     /// </summary>
     public class TreatmentBuffSystem: ABuffSystemBase
     {
-        /// <summary>
-        /// 最终治疗量
-        /// </summary>
-        private float m_FinalTreatValue;
-
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
@@ -28,13 +23,15 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            this.m_FinalTreatValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+            float finalTreatValue;
+            finalTreatValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
 
-            //TODO:进行相关治疗影响操作，例如减疗，增疗等
+            //TODO:进行相关治疗影响操作，例如减疗，增疗等，应该和伤害计算差不多处理（比如香炉会增加治疗量），这里暂时先只考虑受方
+            finalTreatValue = this.TheUnitBelongto.GetComponent<DataModifierComponent>().BaptismData("Treat", finalTreatValue);
 
-            this.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue += this.m_FinalTreatValue;
-            Game.EventSystem.Run(EventIdType.ChangeMP, this.TheUnitBelongto.Id, this.m_FinalTreatValue);
-            Log.Info($"受到了治疗，治疗量为{this.m_FinalTreatValue}");
+            this.TheUnitBelongto.GetComponent<HeroDataComponent>().NumericComponent.ApplyChange(NumericType.Hp, finalTreatValue);
+
+            Game.EventSystem.Run($"{EventIdType.ExcuteTreate}{this.TheUnitFrom.Id}", finalTreatValue);
 
             this.BuffState = BuffState.Finished;
         }

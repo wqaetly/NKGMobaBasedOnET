@@ -42,10 +42,13 @@
 
         //给NPBehave服务端用的事件系统
         public const string CreateCollider = "CreateCollider";
-
-        public const string ChangeHP = "ChangeHP";
-        public const string ChangeMP = "ChangeMP";
         
         public const string BattleEvent_PlayEffect = "BattleEvent_PlayEffect";
+
+        //伤害触发
+        public const string ExcuteDamage = "ExcuteDamage";
+        
+        //治疗触发
+        public const string ExcuteTreate = "ExcuteTreate";
     }
 }

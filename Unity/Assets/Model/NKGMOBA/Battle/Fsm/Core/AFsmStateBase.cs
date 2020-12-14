@@ -19,7 +19,7 @@ namespace ETModel.NKGMOBA.Battle.State
         public string StateName { get; set; }
 
         /// <summary>
-        /// 状态的优先级，值越大，优先级越高。
+        /// 状态的优先级，值越大，优先级越高。优先级越高越先执行
         /// </summary>
         public int Priority { get; set; }
 

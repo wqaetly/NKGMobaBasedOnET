@@ -12,6 +12,18 @@ using UnityEngine;
 
 namespace ETHotfix
 {
+    [Event(EventIdType.ChangeUnitAttribute)]
+    public class ChangeUnitAttribute_FallFront: AEvent<long, int, float>
+    {
+        public override void Run(long a, int numType, float b)
+        {
+            if ((NumericType) numType == NumericType.Hp)
+            {
+                Game.Scene.GetComponent<M5V5GameComponent>().GetHotfixUnit(a).GetComponent<FallingFontComponent>().Play((int) b);
+            }
+        }
+    }
+
     [ObjectSystem]
     public class FallingFontComponentAwakeSystem: AwakeSystem<FallingFontComponent>
     {

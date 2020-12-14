@@ -31,9 +31,10 @@ namespace ETHotfix
                 ETModel.Game.Hotfix.FixedUpdate = () => { FixedUpdate(); };
                 ETModel.Game.Hotfix.LateUpdate = () => { LateUpdate(); };
                 ETModel.Game.Hotfix.OnApplicationQuit = () => { OnApplicationQuit(); };
-
+                
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
+                Game.Scene.AddComponent<NumericWatcherComponent>();
                 
                 Game.Scene.AddComponent<ConfigComponent>();
                 //增加FGUI组件

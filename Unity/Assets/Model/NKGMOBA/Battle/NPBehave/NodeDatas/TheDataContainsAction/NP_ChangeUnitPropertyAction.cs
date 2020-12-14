@@ -28,27 +28,25 @@ namespace ETModel
 
         public void ChangeUnitProperty()
         {
-            HeroDataComponent heroDataComponent = UnitComponent.Instance.Get(this.Unitid).GetComponent<HeroDataComponent>();
+            Unit unit = UnitComponent.Instance.Get(this.Unitid);
+            HeroDataComponent heroDataComponent = unit.GetComponent<HeroDataComponent>();
+            DataModifierComponent dataModifierComponent = unit.GetComponent<DataModifierComponent>();
+            float oriValue, finalValue;
             switch (BuffWorkTypes)
             {
                 case BuffWorkTypes.ChangeMagic:
-                    float tobeReMagicValue = this.BelongtoRuntimeTree.GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);
-                    heroDataComponent.CurrentMagicValue -= tobeReMagicValue;
-                    try
-                    {
-                        Game.EventSystem.Run(EventIdType.ChangeMP, this.Unitid, -tobeReMagicValue);
-                    }
-                    catch (Exception e)
-                    {
-                        Log.Error(e);
-                        throw;
-                    }
+                    oriValue = this.BelongtoRuntimeTree.GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);
+                    finalValue = dataModifierComponent.BaptismData("CostMP", oriValue);
 
+                    unit.GetComponent<NumericComponent>()[NumericType.Mp] += finalValue;
                     // Log.Info(
                     //     $"减少了蓝：{((float) UnitComponent.Instance.Get(this.Unitid).GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.RuntimeTreeID).GetBlackboard()[m_NPBalckBoardRelationData.DicKey]).ToString()}");
                     break;
                 case BuffWorkTypes.ChangeHP:
-                    heroDataComponent.CurrentLifeValue -= this.BelongtoRuntimeTree.GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);
+                    oriValue = this.BelongtoRuntimeTree.GetBlackboard().Get<float>(this.NPBalckBoardRelationData.BBKey);
+                    finalValue = dataModifierComponent.BaptismData("CostHP", oriValue);
+
+                    unit.GetComponent<NumericComponent>()[NumericType.Hp] += finalValue;
                     break;
             }
         }

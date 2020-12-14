@@ -64,31 +64,19 @@
         /// </summary>
         public const string CreateHeadBar = "CreateHeadBar";
 
-        /// <summary>
-        /// 最大生命值改变事件，意图修改血条UI密度
-        /// </summary>
-        public const string ChangeHPMax = "ChangeHPMax";
-        
-        /// <summary>
-        /// 更改生命值，值为修改的量，正为加血，负为减血
-        /// </summary>
-        public const string ChangeHPValue = "ChangeHPValue";
-        
-        /// <summary>
-        /// 最大蓝量改变事件
-        /// </summary>
-        public const string ChangeMPMax = "ChangeMPMax";
-        
-        /// <summary>
-        /// 更改蓝量，值为修改的量，正为加蓝，负为减蓝
-        /// </summary>
-        public const string ChangeMPValue = "ChangeMPValue";
-
         #endregion
-        
+
         /// <summary>
         /// 设置自身的英雄Unit
         /// </summary>
         public const string SetSelfHero = "SetSelfHero";
+
+        /// <summary>
+        /// 修改对象的属性，用于处理具体的改变数值
+        /// 例如服务端发送了一条扣血（50）消息
+        /// Numeric处理当前血量（例如当前血量为100 - 50 = 50）事件
+        /// 而这个事件则处理改变了50这个事件，比如出现50飘血字样
+        /// </summary>
+        public const string ChangeUnitAttribute = "ChangeUnitAttribute";
     }
 }

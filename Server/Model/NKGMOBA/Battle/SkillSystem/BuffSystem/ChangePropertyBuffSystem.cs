@@ -8,6 +8,13 @@ namespace ETModel
 {
     public class ChangePropertyBuffSystem: ABuffSystemBase
     {
+        /// <summary>
+        /// 之所以要缓存一下是因为某些修改器比较特殊
+        /// 比如狗头的枯萎
+        /// 内瑟斯使目标英雄衰老，持续5秒，减少其35%移动速度，在持续期间减速效果逐渐提升至47%/59%/71%/83%/95%。该目标被减少的攻击速度为该数值的一半。
+        /// </summary>
+        private ADataModifier dataModifier;
+
         public override void OnInit(BuffDataBase buffData, Unit theUnitFrom, Unit theUnitBelongto)
         {
             //设置Buff来源Unit和归属Unit
@@ -19,13 +26,15 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            //Log.Info("自身添加了血怒Buff!!!!!!!!!!!!!!!!!!!!!");
-            HeroDataComponent tempHeroDataComponent = this.TheUnitBelongto.GetComponent<HeroDataComponent>();
-            ChangePropertyBuffData tempChangePropertyBuffData = this.BuffData as ChangePropertyBuffData;
             switch (this.BuffData.BuffWorkType)
             {
                 case BuffWorkTypes.ChangeAttackValue:
-                    tempHeroDataComponent.CurrentAttackValue += tempChangePropertyBuffData.TheValueWillBeAdded;
+                    ConstantModifier constantModifier = ReferencePool.Acquire<ConstantModifier>();
+                    constantModifier.ChangeValue = BuffDataCalculateHelper.CalculateCurrentData(this,this.BuffData);
+                    dataModifier = constantModifier;
+
+                    this.GetBuffTarget().GetComponent<DataModifierComponent>()
+                            .AddDataModifier(NumericType.AttackAdd.ToString(), dataModifier, NumericType.AttackAdd);
                     break;
             }
 
@@ -39,12 +48,11 @@ namespace ETModel
             {
                 if (TimeHelper.Now() >= this.MaxLimitTime)
                 {
-                    HeroDataComponent tempHeroDataComponent = this.TheUnitBelongto.GetComponent<HeroDataComponent>();
-                    ChangePropertyBuffData tempChangePropertyBuffData = this.BuffData as ChangePropertyBuffData;
                     switch (this.BuffData.BuffWorkType)
                     {
                         case BuffWorkTypes.ChangeAttackValue:
-                            tempHeroDataComponent.CurrentAttackValue -= tempChangePropertyBuffData.TheValueWillBeAdded;
+                            this.GetBuffTarget().GetComponent<DataModifierComponent>()
+                                    .RemoveDataModifier(NumericType.AttackAdd.ToString(), dataModifier, NumericType.AttackAdd);
                             break;
                     }
 
@@ -55,7 +63,8 @@ namespace ETModel
 
         public override void OnFinished()
         {
-            
+            ReferencePool.Release(dataModifier);
+            dataModifier = null;
         }
 
         public override void OnRefresh()

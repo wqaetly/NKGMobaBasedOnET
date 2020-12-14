@@ -130,6 +130,7 @@ namespace App
                         Game.Scene.AddComponent<RealmGateAddressComponent>();
                         Game.Scene.AddComponent<GateSessionKeyComponent>();
 
+                        Game.Scene.AddComponent<NumericWatcherComponent>();
                         // 配置管理
                         Game.Scene.AddComponent<ConfigComponent>();
 

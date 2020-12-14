@@ -27,37 +27,36 @@ namespace ETHotfix
         }
     }
 
-    [Event(EventIdType.ChangeHPValue)]
-    public class Map_ChangeHP: AEvent<long, float>
+    [NumericWatcher(NumericType.Hp)]
+    public class Map_ChangeHP: INumericWatcher
     {
-        public override void Run(long a, float b)
+        public void Run(long a, float b)
         {
             if (a != UnitComponent.Instance.MyUnit.Id) return;
             FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
-            fui5V5Map.RedProBar.self.TweenValue(
-                UnitComponent.Instance.MyUnit.GetComponent<HeroDataComponent>().CurrentLifeValue, 0.2f);
+            fui5V5Map.RedProBar.self.TweenValue(UnitComponent.Instance.MyUnit.GetComponent<HeroDataComponent>().GetAttribute(NumericType.Hp), 0.2f);
             fui5V5Map.RedText.text = $"{fui5V5Map.RedProBar.self.value}/{fui5V5Map.RedProBar.self.max}";
         }
     }
 
-    [Event(EventIdType.ChangeHPMax)]
-    public class Map_ChangeHPBarMax: AEvent<long, float>
+    [NumericWatcher(NumericType.MaxHp)]
+    public class Map_ChangeHPBarMax: INumericWatcher
     {
-        public override void Run(long a, float b)
+        public void Run(long id, float value)
         {
             FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
             //第一次抛出事件的时候可能UI还没有加载出来
             if (fui5V5Map == null) return;
-            if (a != UnitComponent.Instance.MyUnit.Id) return;
-            fui5V5Map.RedProBar.self.max = b;
+            if (id != UnitComponent.Instance.MyUnit.Id) return;
+            fui5V5Map.RedProBar.self.max = value;
             fui5V5Map.RedText.text = $"{fui5V5Map.RedProBar.self.value}/{fui5V5Map.RedProBar.self.max}";
         }
     }
 
-    [Event(EventIdType.ChangeMPMax)]
-    public class Map_ChangeMPBar_Max: AEvent<long, float>
+    [NumericWatcher(NumericType.MaxMp)]
+    public class Map_ChangeMPBar_Max: INumericWatcher
     {
-        public override void Run(long a, float b)
+        public void Run(long a, float b)
         {
             if (a != UnitComponent.Instance.MyUnit.Id) return;
             FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
@@ -67,16 +66,39 @@ namespace ETHotfix
         }
     }
 
-    [Event(EventIdType.ChangeMPValue)]
-    public class Map_ChangeMPValue: AEvent<long, float>
+    [NumericWatcher(NumericType.Mp)]
+    public class Map_ChangeMPValue: INumericWatcher
     {
-        public override void Run(long a, float b)
+        public void Run(long a, float b)
         {
             if (a != UnitComponent.Instance.MyUnit.Id) return;
             FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
-            fui5V5Map.BlueProBar.self.TweenValue(
-                UnitComponent.Instance.MyUnit.GetComponent<HeroDataComponent>().CurrentMagicValue, 0.2f);
+            fui5V5Map.BlueProBar.self.TweenValue(UnitComponent.Instance.MyUnit.GetComponent<HeroDataComponent>().GetAttribute(NumericType.Mp), 0.2f);
             fui5V5Map.BlueText.text = $"{fui5V5Map.BlueProBar.self.value}/{fui5V5Map.BlueProBar.self.max}";
+        }
+    }
+
+    [NumericWatcher(NumericType.Attack)]
+    public class Map_ChangeAttack: INumericWatcher
+    {
+        public void Run(long a, float b)
+        {
+            if (a != UnitComponent.Instance.MyUnit.Id) return;
+            FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
+
+            fui5V5Map.AttackInfo.text = ((int) b).ToString();
+        }
+    }
+
+    [NumericWatcher(NumericType.AttackAdd)]
+    public class Map_ChangeAttackAdd: INumericWatcher
+    {
+        public void Run(long a, float b)
+        {
+            Log.Error("收到了额外攻击力改变事件");
+            if (a != UnitComponent.Instance.MyUnit.Id) return;
+            FUI5V5Map fui5V5Map = Game.Scene.GetComponent<FUIComponent>().Get(FUI5V5Map.UIPackageName) as FUI5V5Map;
+            fui5V5Map.ExtraAttackInfo.text = ((int) b).ToString();
         }
     }
 }

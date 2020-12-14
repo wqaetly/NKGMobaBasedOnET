@@ -9,29 +9,48 @@ using UnityEngine;
 
 namespace ETHotfix.NKGMOBA.Battle
 {
-    /// <summary>
-    /// long为unit的id，float为改变的具体数值
-    /// </summary>
-    [Event(EventIdType.ChangeHP)]
-    public class ChangeHP: AEvent<long, float>
+    [NumericWatcher(NumericType.Hp)]
+    public class ChangeHP: INumericWatcher
     {
-        public override void Run(long a, float b)
+        public void Run(long id, float value)
         {
-            MessageHelper.Broadcast(new M2C_ChangeHeroHP() { UnitId = a, ChangeHPValue = b });
+            MessageHelper.Broadcast(new M2C_SyncUnitAttribute() { UnitId = id, NumericType = (int) NumericType.Hp, FinalValue = value });
         }
     }
 
-    /// <summary>
-    /// long为unit的id，float为改变的具体数值
-    /// </summary>
-    [Event(EventIdType.ChangeMP)]
-    public class ChangeMP: AEvent<long, float>
+    [NumericWatcher(NumericType.Mp)]
+    public class ChangeMP: INumericWatcher
     {
-        public override void Run(long a, float b)
+        public void Run(long id, float value)
         {
-            //Log.Info("准备发送蓝量改变事件");
-            MessageHelper.Broadcast(new M2C_ChangeHeroMP() { UnitId = a, ChangeMPValue = b });
-            //Log.Info("发送蓝量改变事件成功");
+            MessageHelper.Broadcast(new M2C_SyncUnitAttribute() { UnitId = id, NumericType = (int) NumericType.Mp, FinalValue = value });
+        }
+    }
+
+    [NumericWatcher(NumericType.AttackAdd)]
+    public class ChangeAttackAdd: INumericWatcher
+    {
+        public void Run(long id, float value)
+        {
+            MessageHelper.Broadcast(new M2C_SyncUnitAttribute() { UnitId = id, NumericType = (int) NumericType.AttackAdd, FinalValue = value });
+        }
+    }
+
+    [NumericWatcher(NumericType.Attack)]
+    public class ChangeAttack: INumericWatcher
+    {
+        public void Run(long id, float value)
+        {
+            MessageHelper.Broadcast(new M2C_SyncUnitAttribute() { UnitId = id, NumericType = (int) NumericType.Attack, FinalValue = value });
+        }
+    }
+
+    [Event(EventIdType.NumericApplyChangeValue)]
+    public class SendDamageInfoToClient: AEvent<long, NumericType, float>
+    {
+        public override void Run(long unitId, NumericType numberType, float changedValue)
+        {
+            MessageHelper.Broadcast(new M2C_ChangeUnitAttribute() { UnitId = unitId, NumericType = (int) numberType, ChangeValue = changedValue });
         }
     }
 
@@ -55,7 +74,7 @@ namespace ETHotfix.NKGMOBA.Battle
     {
         public override void Run(long a, Vector3 b)
         {
-            UnitComponent.Instance.Get(a).GetComponent<UnitPathComponent>().CommonNavigate(b);  
+            UnitComponent.Instance.Get(a).GetComponent<UnitPathComponent>().CommonNavigate(b);
         }
     }
 }

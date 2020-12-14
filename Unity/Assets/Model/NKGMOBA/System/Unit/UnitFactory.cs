@@ -19,6 +19,8 @@ namespace ETModel
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
+            unit.AddComponent<DataModifierComponent>();
+            unit.AddComponent<NumericComponent>();
             unit.AddComponent<HeroTransformComponent>();
             unit.AddComponent<EffectComponent>();
             //增加Buff管理组件
@@ -53,6 +55,8 @@ namespace ETModel
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
             unit.AddComponent<AnimationComponent>();
+            unit.AddComponent<DataModifierComponent>();
+            unit.AddComponent<NumericComponent>();
 
             unit.AddComponent<EffectComponent>();
             unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Adverse);

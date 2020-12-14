@@ -255,7 +255,6 @@
               <e p="WebSocket" t="Include" />
             </e>
           </e>
-          <e p="Numeric" t="Include" />
         </e>
         <e p="NKGMOBA" t="Include">
           <e p="Battle" t="Include">
@@ -284,8 +283,10 @@
               <e p="DataStructure" t="Include" />
             </e>
             <e p="Component" t="Include">
+              <e p="CastDamageComponent.cs" t="Include" />
               <e p="CDComponent.cs" t="Include" />
               <e p="CommonAttackComponent.cs" t="Include" />
+              <e p="ReceiveDamageComponent.cs" t="Include" />
               <e p="StopAllCommandComponent.cs" t="Include" />
             </e>
             <e p="Fsm" t="Include">
@@ -465,6 +466,7 @@
                   <e p="BuffFactory.cs" t="Include" />
                   <e p="BuffManagerComponent.cs" t="Include" />
                   <e p="BuffState.cs" t="Include" />
+                  <e p="BuffSystemExtension.cs" t="Include" />
                   <e p="BuffTimerAndOverlayHelper.cs" t="Include" />
                 </e>
                 <e p="FlashDamageBuffSystem.cs" t="Include" />
@@ -474,7 +476,23 @@
                 <e p="SustainDamageBuffSystem.cs" t="Include" />
                 <e p="TreatmentBuffSystem.cs" t="Include" />
               </e>
+              <e p="DataModifiers" t="Include">
+                <e p="ADataModifier.cs" t="Include" />
+                <e p="ConstantModifier.cs" t="Include" />
+                <e p="DataModifierComponent.cs" t="Include" />
+                <e p="PercentageModifier.cs" t="Include" />
+              </e>
+              <e p="Numeric" t="Include">
+                <e p="INumericWatcher.cs" t="Include" />
+                <e p="NumericChangeEvent_NotifyWatcher.cs" t="Include" />
+                <e p="NumericComponent.cs" t="Include" />
+                <e p="NumericType.cs" t="Include" />
+                <e p="NumericWatcher_Hp_ShowUI.cs" t="Include" />
+                <e p="NumericWatcherAttribute.cs" t="Include" />
+                <e p="NumericWatcherComponent.cs" t="Include" />
+              </e>
               <e p="Others" t="Include">
+                <e p="DamageData.cs" t="Include" />
                 <e p="SkillBuffNodeData.cs" t="Include" />
                 <e p="SkillCanvasManagerComponent.cs" t="Include" />
                 <e p="SkillDesNodeData.cs" t="Include" />
@@ -2200,12 +2218,6 @@
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Message\ProtobufPacker.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Message\RpcException.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Message\Session.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\INumericWatcher.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericChangeEvent_NotifyWatcher.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericComponent.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericType.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericWatcherAttribute.cs" t="Include" />
-    <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\Module\Numeric\NumericWatcherComponent.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_AllCollideableObject.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_CollisionInstance.cs" t="Include" />
     <e p="D:\Study\GameProject\NKGMobaBasedOnET\Unity\Assets\Model\NKGMOBA\Battle\Box2DSharp\CollisionRelations\B2S_CollisionRelationSupport.cs" t="Include" />

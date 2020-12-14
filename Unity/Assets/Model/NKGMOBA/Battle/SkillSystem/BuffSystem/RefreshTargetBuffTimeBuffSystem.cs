@@ -21,15 +21,8 @@ namespace ETModel
         public override void OnExecute()
         {
             RefreshTargetBuffTimeBuffData refreshTargetBuffTimeBuffData = this.BuffData as RefreshTargetBuffTimeBuffData;
-            BuffManagerComponent buffManagerComponent;
-            if (this.BuffData.BuffTargetTypes == BuffTargetTypes.Self)
-            {
-                buffManagerComponent = this.TheUnitFrom.GetComponent<BuffManagerComponent>();
-            }
-            else
-            {
-                buffManagerComponent = this.TheUnitBelongto.GetComponent<BuffManagerComponent>();
-            }
+
+            BuffManagerComponent buffManagerComponent = this.GetBuffTarget().GetComponent<BuffManagerComponent>();
 
             foreach (var buffNodeId in refreshTargetBuffTimeBuffData.TheBuffNodeIdToBeRefreshed)
             {

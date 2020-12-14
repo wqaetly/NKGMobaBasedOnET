@@ -20,10 +20,7 @@ namespace ETModel
         /// <typeparam name="B"></typeparam>
         public static void CalculateTimerAndOverlay<A, B>(A buffSystemBase, B buffDataBase) where A : ABuffSystemBase where B : BuffDataBase
         {
-            BuffManagerComponent buffManagerComponent;
-            buffManagerComponent = buffDataBase.BuffTargetTypes == BuffTargetTypes.Self
-                    ? buffSystemBase.TheUnitFrom.GetComponent<BuffManagerComponent>()
-                    : buffSystemBase.TheUnitBelongto.GetComponent<BuffManagerComponent>();
+            BuffManagerComponent buffManagerComponent = buffSystemBase.GetBuffTarget().GetComponent<BuffManagerComponent>();
 
             //先尝试从真正的Buff链表取得Buff
             ABuffSystemBase targetBuffSystemBase = buffManagerComponent.GetBuffById(buffDataBase.BuffId);

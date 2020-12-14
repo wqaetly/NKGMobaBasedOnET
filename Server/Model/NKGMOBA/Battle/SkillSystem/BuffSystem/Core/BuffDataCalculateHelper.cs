@@ -22,15 +22,15 @@ namespace ETModel
             switch (buffData.BaseBuffBaseDataEffectTypes)
             {
                 case BuffBaseDataEffectTypes.FromHeroLevel:
-                    tempData = buffData.ValueToBeChanged[theUnitFromHeroData.CurrentLevel];
+                    tempData = buffData.ValueToBeChanged[(int) theUnitFromHeroData.GetAttribute(NumericType.Level)];
                     break;
                 case BuffBaseDataEffectTypes.FromSkillLevel:
                     tempData = buffData.ValueToBeChanged[buffSystem.TheUnitFrom.GetComponent<SkillCanvasManagerComponent>()
-                                .GetSkillLevel(buffData.BelongToSkillId.Value)];
+                            .GetSkillLevel(buffData.BelongToSkillId.Value)];
                     break;
                 case BuffBaseDataEffectTypes.FromHasLostLifeValue:
-                    tempData = buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().MaxLifeValue -
-                            buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().CurrentLifeValue;
+                    tempData = buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().GetAttribute(NumericType.MaxHp) -
+                            buffSystem.TheUnitBelongto.GetComponent<HeroDataComponent>().GetAttribute(NumericType.Hp);
                     break;
                 case BuffBaseDataEffectTypes.FromCurrentOverlay:
                     tempData = buffData.ValueToBeChanged[buffSystem.CurrentOverlay];
@@ -44,11 +44,11 @@ namespace ETModel
                 {
                     case BuffAdditionTypes.Percentage_Physical:
                         tempData += additionValue.Value *
-                                theUnitFromHeroData.CurrentAttackValue;
+                                theUnitFromHeroData.GetAttribute(NumericType.Attack);
                         break;
                     case BuffAdditionTypes.Percentage_Magic:
                         tempData += additionValue.Value *
-                                theUnitFromHeroData.CurrentSpellpower;
+                                theUnitFromHeroData.GetAttribute(NumericType.MagicStrength);
                         break;
                     case BuffAdditionTypes.SelfOverlay_Mul:
                         tempData *= additionValue.Value * buffSystem.CurrentOverlay;

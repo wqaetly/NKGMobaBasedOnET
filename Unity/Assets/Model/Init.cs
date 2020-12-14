@@ -29,6 +29,8 @@ namespace ETModel
                 DontDestroyOnLoad(MainCamera);
                 Game.EventSystem.Add(DLLType.Model, typeof (Init).Assembly);
 
+                Game.Scene.AddComponent<NumericWatcherComponent>();
+
                 fixedUpdate = new FixedUpdate() { UpdateCallback = () => Game.EventSystem.FixedUpdate() };
 
                 Game.Scene.AddComponent<TimerComponent>();

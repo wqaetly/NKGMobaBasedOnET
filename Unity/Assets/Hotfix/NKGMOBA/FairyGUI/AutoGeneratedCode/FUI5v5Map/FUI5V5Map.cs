@@ -76,8 +76,8 @@ namespace ETHotfix
     public GImage ExtraAttack;
     public GImage SkillCD;
     public GImage Criticalstrike;
-    public GTextField AttackInfo;
     public GImage MoveSpeed;
+    public GTextField AttackInfo;
     public GTextField SkillCDInfo;
     public GTextField MagicpenetrationInfo;
     public GTextField ArmorpenetrationInfo;
@@ -251,8 +251,8 @@ namespace ETHotfix
     		ExtraAttack = (GImage)com.GetChildAt(49);
     		SkillCD = (GImage)com.GetChildAt(50);
     		Criticalstrike = (GImage)com.GetChildAt(51);
-    		AttackInfo = (GTextField)com.GetChildAt(52);
-    		MoveSpeed = (GImage)com.GetChildAt(53);
+    		MoveSpeed = (GImage)com.GetChildAt(52);
+    		AttackInfo = (GTextField)com.GetChildAt(53);
     		SkillCDInfo = (GTextField)com.GetChildAt(54);
     		MagicpenetrationInfo = (GTextField)com.GetChildAt(55);
     		ArmorpenetrationInfo = (GTextField)com.GetChildAt(56);
@@ -371,8 +371,8 @@ namespace ETHotfix
 			ExtraAttack = null;
 			SkillCD = null;
 			Criticalstrike = null;
-			AttackInfo = null;
 			MoveSpeed = null;
+			AttackInfo = null;
 			SkillCDInfo = null;
 			MagicpenetrationInfo = null;
 			ArmorpenetrationInfo = null;

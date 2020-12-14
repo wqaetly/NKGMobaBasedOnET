@@ -185,22 +185,27 @@ message Actor_CreateSpiling // IActorLocationMessage
     int64 Id = 94;
 }
 
-message M2C_ChangeHeroHP // IActorMessage
+message M2C_SyncUnitAttribute // IActorMessage
 {
     int32 RpcId = 90;
     int64 ActorId = 93;
+    
     int64 UnitId = 94;
-
-    float ChangeHPValue = 2;
+    
+    int32 NumericType = 95;
+    float FinalValue = 3;
 }
 
-message M2C_ChangeHeroMP // IActorMessage
+message M2C_ChangeUnitAttribute // IActorMessage
 {
     int32 RpcId = 90;
     int64 ActorId = 93;
+
     int64 UnitId = 94;
 
-    float ChangeMPValue = 2;
+    int32 NumericType = 95;
+
+    float ChangeValue = 2;
 }
 
 message M2C_SyncUnitPos // IActorMessage

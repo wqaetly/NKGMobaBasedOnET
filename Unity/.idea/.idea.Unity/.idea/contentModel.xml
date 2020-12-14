@@ -297,13 +297,13 @@
                 <e p="M2C_B2S_Debugger_PolygonHandler.cs" t="Include" />
                 <e p="M2C_BuffInfoHandler.cs" t="Include" />
                 <e p="M2C_CancelAttackHandler.cs" t="Include" />
-                <e p="M2C_ChangeHPValueHandler.cs" t="Include" />
-                <e p="M2C_ChangeMPValueHandler.cs" t="Include" />
+                <e p="M2C_ChangeUnitAttributeValueHandler.cs" t="Include" />
                 <e p="M2C_CommonAttackHandler.cs" t="Include" />
                 <e p="M2C_CreateSpilingsHandler.cs" t="Include" />
                 <e p="M2C_CreateUnitsHandler.cs" t="Include" />
                 <e p="M2C_FrieBattleEvent_PlayEffecthANDLER.cs" t="Include" />
                 <e p="M2C_PathfindingResultHandler.cs" t="Include" />
+                <e p="M2C_SyncUnitAttributeValueHandler.cs" t="Include" />
                 <e p="M2C_UserInput_SkillCmdHandler.cs" t="Include" />
               </e>
             </e>
@@ -312,6 +312,11 @@
               <e p="LoginHelper.cs" t="Include" />
               <e p="MapHelper.cs" t="Include" />
               <e p="RegisterHelper.cs" t="Include" />
+            </e>
+            <e p="Numeric" t="Include">
+              <e p="INumericWatcher.cs" t="Include" />
+              <e p="NumericChangeEvent_NotifyWatcher.cs" t="Include" />
+              <e p="NumericWatcherComponent.cs" t="Include" />
             </e>
           </e>
           <e p="Unity.Hotfix.asmdef" t="Include" />
@@ -513,15 +518,6 @@
               <e p="Session.cs" t="Include" />
               <e p="SessionCallbackComponent.cs" t="Include" />
             </e>
-            <e p="Numeric" t="Include">
-              <e p="INumericWatcher.cs" t="Include" />
-              <e p="NumericChangeEvent_NotifyWatcher.cs" t="Include" />
-              <e p="NumericComponent.cs" t="Include" />
-              <e p="NumericType.cs" t="Include" />
-              <e p="NumericWatcher_Hp_ShowUI.cs" t="Include" />
-              <e p="NumericWatcherAttribute.cs" t="Include" />
-              <e p="NumericWatcherComponent.cs" t="Include" />
-            </e>
           </e>
           <e p="NKGMOBA" t="Include">
             <e p="Battle" t="Include">
@@ -546,12 +542,14 @@
               <e p="Component" t="Include">
                 <e p="AnimationComponent.cs" t="Include" />
                 <e p="B2S_RoleCastComponent.cs" t="Include" />
+                <e p="CastDamageComponent.cs" t="Include" />
                 <e p="CDComponent.cs" t="Include" />
                 <e p="CommonAttackComponent.cs" t="Include" />
                 <e p="EffectComponent.cs" t="Include" />
                 <e p="HeroTransformComponent.cs" t="Include" />
                 <e p="MouseTargetSelectorComponent.cs" t="Include" />
                 <e p="OutLineComponent.cs" t="Include" />
+                <e p="ReceiveDamageComponent.cs" t="Include" />
                 <e p="StopAllCommandComponent.cs" t="Include" />
               </e>
               <e p="Fsm" t="Include">
@@ -744,6 +742,7 @@
                     <e p="BuffFactory.cs" t="Include" />
                     <e p="BuffManagerComponent.cs" t="Include" />
                     <e p="BuffState.cs" t="Include" />
+                    <e p="BuffSystemExtension.cs" t="Include" />
                     <e p="BuffTimerAndOverlayHelper.cs" t="Include" />
                   </e>
                   <e p="FlashDamageBuffSystem.cs" t="Include" />
@@ -754,10 +753,26 @@
                   <e p="SustainDamageBuffSystem.cs" t="Include" />
                   <e p="TreatmentBuffSystem.cs" t="Include" />
                 </e>
+                <e p="DataModifiers" t="Include">
+                  <e p="ADataModifier.cs" t="Include" />
+                  <e p="ConstantModifier.cs" t="Include" />
+                  <e p="DataModifierComponent.cs" t="Include" />
+                  <e p="PercentageModifier.cs" t="Include" />
+                </e>
+                <e p="Numeric" t="Include">
+                  <e p="INumericWatcher.cs" t="Include" />
+                  <e p="NumericChangeEvent_NotifyWatcher.cs" t="Include" />
+                  <e p="NumericComponent.cs" t="Include" />
+                  <e p="NumericType.cs" t="Include" />
+                  <e p="NumericWatcher_Hp_ShowUI.cs" t="Include" />
+                  <e p="NumericWatcherAttribute.cs" t="Include" />
+                  <e p="NumericWatcherComponent.cs" t="Include" />
+                </e>
                 <e p="Others" t="Include">
                   <e p="AnimationCore" t="Include">
                     <e p="PlayAnimInfo.cs" t="Include" />
                   </e>
+                  <e p="DamageData.cs" t="Include" />
                   <e p="SkillBuffNodeData.cs" t="Include" />
                   <e p="SkillCanvasManagerComponent.cs" t="Include" />
                   <e p="SkillDesNodeData.cs" t="Include" />

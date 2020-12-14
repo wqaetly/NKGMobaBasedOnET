@@ -76,11 +76,11 @@ namespace ETHotfix
 	public partial class Actor_CreateSpiling : IActorLocationMessage {}
 
 //所归属的父实体id
-	[Message(HotfixOpcode.M2C_ChangeHeroHP)]
-	public partial class M2C_ChangeHeroHP : IActorMessage {}
+	[Message(HotfixOpcode.M2C_SyncUnitAttribute)]
+	public partial class M2C_SyncUnitAttribute : IActorMessage {}
 
-	[Message(HotfixOpcode.M2C_ChangeHeroMP)]
-	public partial class M2C_ChangeHeroMP : IActorMessage {}
+	[Message(HotfixOpcode.M2C_ChangeUnitAttribute)]
+	public partial class M2C_ChangeUnitAttribute : IActorMessage {}
 
 	[Message(HotfixOpcode.M2C_SyncUnitPos)]
 	public partial class M2C_SyncUnitPos : IActorMessage {}
@@ -119,8 +119,8 @@ namespace ETHotfix
 		 public const ushort G2C_PlayerInfo = 10021;
 		 public const ushort G2C_PlayerOffline = 10022;
 		 public const ushort Actor_CreateSpiling = 10023;
-		 public const ushort M2C_ChangeHeroHP = 10024;
-		 public const ushort M2C_ChangeHeroMP = 10025;
+		 public const ushort M2C_SyncUnitAttribute = 10024;
+		 public const ushort M2C_ChangeUnitAttribute = 10025;
 		 public const ushort M2C_SyncUnitPos = 10026;
 		 public const ushort M2C_CancelAttack = 10027;
 		 public const ushort M2C_FrieBattleEvent_PlayEffect = 10028;

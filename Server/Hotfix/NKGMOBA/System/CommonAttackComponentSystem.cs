@@ -81,9 +81,8 @@ namespace ETHotfix
         private static async ETTask CommonAttack_Internal(this CommonAttackComponent self)
         {
             HeroDataComponent heroDataComponent = self.Entity.GetComponent<HeroDataComponent>();
-            float attackPre = heroDataComponent.NodeDataForHero.OriAttackPre / (1 + heroDataComponent.NodeDataForHero.ExtAttackSpeed);
-            float attackPos = heroDataComponent.NodeDataForHero.OriAttackPos / (1 + heroDataComponent.NodeDataForHero.ExtAttackSpeed);
-            float attackSpeed = heroDataComponent.NodeDataForHero.OriAttackSpeed + heroDataComponent.NodeDataForHero.ExtAttackSpeed;
+            float attackPre = heroDataComponent.NodeDataForHero.OriAttackPre / (1 + heroDataComponent.GetAttribute(NumericType.AttackSpeedAdd));
+            float attackSpeed = heroDataComponent.GetAttribute(NumericType.AttackSpeed);
 
             //播放动画，如果动画播放完成还不能进行下一次普攻，则播放空闲动画
             await TimerComponent.Instance.WaitAsync((long) (attackPre * 1000), self.CancellationTokenSource.Token);
@@ -95,7 +94,18 @@ namespace ETHotfix
                 skillCanva.GetBlackboard().Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
             }
 
-            Game.EventSystem.Run(EventIdType.ChangeHP, self.CachedUnitForAttack.Id, -50.0f);
+            DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(BuffDamageTypes.PhysicalSingle | BuffDamageTypes.CommonAttack,
+                heroDataComponent.GetAttribute(NumericType.Attack), self.Entity as Unit, self.CachedUnitForAttack);
+
+            self.Entity.GetComponent<CastDamageComponent>().BaptismDamageData(damageData);
+            float finalDamage = self.CachedUnitForAttack.GetComponent<ReceiveDamageComponent>().BaptismDamageData(damageData);
+
+            if (finalDamage >= 0)
+            {
+                self.CachedUnitForAttack.GetComponent<HeroDataComponent>().NumericComponent.ApplyChange(NumericType.Hp, -finalDamage);
+                //抛出伤害事件，需要监听伤害的buff（比如吸血buff）需要监听此事件
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{self.Entity.Id}", damageData);
+            }
 
             CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");
             CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
@@ -112,8 +122,9 @@ namespace ETHotfix
                 {
                     Vector3 selfUnitPos = (self.Entity as Unit).Position;
                     double distance = Vector3.Distance(selfUnitPos, self.CachedUnitForAttack.Position);
+                    float attackRange = self.Entity.GetComponent<HeroDataComponent>().NumericComponent[NumericType.AttackRange] / 100;
                     //目标距离大于当前攻击距离会先进行寻路，这里的1.75为175码
-                    if (distance >= 1.75f)
+                    if (distance >= attackRange)
                     {
                         if (!CDComponent.Instance.GetCDResult(self.Entity.Id, "MoveToAttack")) return;
 
@@ -125,7 +136,7 @@ namespace ETHotfix
                         commonAttackState.SetData(StateTypes.CommonAttack, "CommonAttack", 1);
 
                         self.Entity.GetComponent<UnitPathComponent>()
-                                .NavigateTodoSomething(self.CachedUnitForAttack.Position, 1.75f, commonAttackState);
+                                .NavigateTodoSomething(self.CachedUnitForAttack.Position, attackRange, commonAttackState);
                     }
                     else
                     {

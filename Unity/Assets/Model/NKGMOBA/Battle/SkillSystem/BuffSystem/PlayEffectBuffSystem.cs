@@ -71,6 +71,7 @@ namespace ETModel
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
                 }
             }
+
             this.BuffState = BuffState.Running;
         }
 
@@ -101,16 +102,8 @@ namespace ETModel
 
             if (playEffectBuffData.FollowUnit)
             {
-                if (playEffectBuffData.BuffTargetTypes == BuffTargetTypes.Self)
-                {
-                    effectUnit.GameObject.transform.SetParent(this.TheUnitFrom.GetComponent<HeroTransformComponent>()
-                            .GetTranform(playEffectBuffData.PosType));
-                }
-                else
-                {
-                    effectUnit.GameObject.transform.SetParent(this.TheUnitBelongto.GetComponent<HeroTransformComponent>()
-                            .GetTranform(playEffectBuffData.PosType));
-                }
+                effectUnit.GameObject.transform.SetParent(this.GetBuffTarget().GetComponent<HeroTransformComponent>()
+                        .GetTranform(playEffectBuffData.PosType));
 
                 effectUnit.GameObject.transform.localPosition = Vector3.zero;
             }

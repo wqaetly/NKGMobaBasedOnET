@@ -60,28 +60,27 @@ namespace ETHotfix
             self.SkillE_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.E_SkillSprite).texture);
             self.SkillR_Loader.texture = new NTexture(HeroSkillIcons.GetTargetObjectFromRC<Sprite>(mNodeDataForHero.R_SkillSprite).texture);
 
-            self.AttackInfo.text = (mNodeDataForHero.OriAttackValue + mNodeDataForHero.ExtAttackValue).ToString();
-            self.ExtraAttackInfo.text = mNodeDataForHero.ExtAttackValue.ToString();
-            self.MagicInfo.text = (mNodeDataForHero.OriMagicStrength + mNodeDataForHero.ExtMagicStrength).ToString();
-            self.ExtraMagicInfo.text = mNodeDataForHero.ExtMagicRec.ToString();
-            self.ArmorInfo.text = (mNodeDataForHero.OriArmor + mNodeDataForHero.ExtArmor).ToString();
-            self.ArmorpenetrationInfo.text = (mNodeDataForHero.OriArmorPenetration + mNodeDataForHero.ExtArmorPenetration).ToString();
-            self.SpellResistanceInfo.text = (mNodeDataForHero.OriMagicResistance + mNodeDataForHero.ExtMagicResistance).ToString();
-            self.MagicpenetrationInfo.text = (mNodeDataForHero.OriMagicPenetration + mNodeDataForHero.ExtMagicPenetration).ToString();
-            self.AttackSpeedInfo.text = (mNodeDataForHero.OriAttackSpeed + mNodeDataForHero.ExtAttackSpeed).ToString();
-            self.SkillCDInfo.text = (mNodeDataForHero.OriSkillCD + mNodeDataForHero.ExtSkillCD).ToString();
-            self.CriticalstrikeInfo.text =
-                    (mNodeDataForHero.OriCriticalStrikeProbability + mNodeDataForHero.ExtCriticalStrikeProbability).ToString();
-            self.MoveSpeedInfo.text = (mNodeDataForHero.OriMoveSpeed + mNodeDataForHero.ExtMoveSpeed).ToString();
+            self.AttackInfo.text = heroDataComponent.GetAttribute(NumericType.Attack).ToString();
+            self.ExtraAttackInfo.text = heroDataComponent.GetAttribute(NumericType.AttackAdd).ToString();
+            self.MagicInfo.text = heroDataComponent.GetAttribute(NumericType.MagicStrength).ToString();
+            self.ExtraMagicInfo.text = heroDataComponent.GetAttribute(NumericType.MagicStrengthAdd).ToString();
+            self.ArmorInfo.text = heroDataComponent.GetAttribute(NumericType.Armor).ToString();
+            self.ArmorpenetrationInfo.text = heroDataComponent.GetAttribute(NumericType.ArmorPenetration).ToString();
+            self.SpellResistanceInfo.text = heroDataComponent.GetAttribute(NumericType.MagicResistance).ToString();
+            self.MagicpenetrationInfo.text = heroDataComponent.GetAttribute(NumericType.MagicPenetration).ToString();
+            self.AttackSpeedInfo.text = heroDataComponent.GetAttribute(NumericType.AttackSpeed).ToString();
+            self.SkillCDInfo.text = heroDataComponent.GetAttribute(NumericType.SkillCD).ToString();
+            self.CriticalstrikeInfo.text = heroDataComponent.GetAttribute(NumericType.CriticalStrikeProbability).ToString();
+            self.MoveSpeedInfo.text = heroDataComponent.GetAttribute(NumericType.Speed).ToString();
 
-            self.RedText.text = $"{heroDataComponent.CurrentLifeValue}/{heroDataComponent.MaxLifeValue}";
-            self.BlueText.text = $"{heroDataComponent.CurrentMagicValue}/{heroDataComponent.MaxMagicValue}";
+            self.RedText.text = $"{heroDataComponent.GetAttribute(NumericType.Hp)}/{heroDataComponent.GetAttribute(NumericType.MaxHp)}";
+            self.BlueText.text = $"{heroDataComponent.GetAttribute(NumericType.Mp)}/{heroDataComponent.GetAttribute(NumericType.MaxMp)}";
 
-            self.RedProBar.self.max = heroDataComponent.MaxLifeValue;
-            self.RedProBar.self.value = heroDataComponent.CurrentLifeValue;
+            self.RedProBar.self.max = heroDataComponent.GetAttribute(NumericType.MaxHp);
+            self.RedProBar.self.value = heroDataComponent.GetAttribute(NumericType.Hp);
 
-            self.BlueProBar.self.max = heroDataComponent.MaxMagicValue;
-            self.BlueProBar.self.value = heroDataComponent.CurrentMagicValue;
+            self.BlueProBar.self.max = heroDataComponent.GetAttribute(NumericType.MaxMp);
+            self.BlueProBar.self.value = heroDataComponent.GetAttribute(NumericType.Mp);
 
             self.SkillTalent_CDInfo.visible = false;
             self.SkillTalent_Bar.Visible = false;

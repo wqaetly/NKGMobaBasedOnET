@@ -45,21 +45,15 @@ namespace ETHotfix
             HeroDataComponent heroDataComponent = hero.GetComponent<HeroDataComponent>();
             this.m_HeadBar = headBar as FUIHeadBar;
             //这个血量最大值有点特殊，还需要设置一下密度用事件比较好一点
-            Game.EventSystem.Run(EventIdType.ChangeHPMax,hero.Id,heroDataComponent.MaxLifeValue);
-            this.m_HeadBar.Bar_HP.self.value = heroDataComponent.MaxLifeValue;
-            this.m_HeadBar.Bar_MP.self.max = heroDataComponent.MaxMagicValue;
-            this.m_HeadBar.Bar_MP.self.value = heroDataComponent.MaxMagicValue;
+
+            this.SetDensityOfBar(this.m_Hero.GetComponent<HeroDataComponent>().GetAttribute(NumericType.MaxHp));
+            this.m_HeadBar.Bar_HP.self.value = heroDataComponent.GetAttribute(NumericType.MaxHp);
+            this.m_HeadBar.Bar_MP.self.max = heroDataComponent.GetAttribute(NumericType.MaxMp);
+            this.m_HeadBar.Bar_MP.self.value = heroDataComponent.GetAttribute(NumericType.MaxMp);
         }
 
         public void Update()
         {
-            /*if (ETModel.Game.Scene.GetComponent<UserInputComponent>().JDown)
-            {
-                float randomMaxLifeValue = Random.Range(1000, 2000);
-                ETModel.Log.Info($"此次随机最大生命值为{randomMaxLifeValue}");
-                Game.EventSystem.Run(EventIdType.ChangeHPMax, this.Entity.Id, randomMaxLifeValue);
-            }*/
-
             // 游戏物体的世界坐标转屏幕坐标
             this.m_Hero2Screen =
                     Camera.main.WorldToScreenPoint(new Vector3(m_Hero.Position.x, this.m_Hero.Position.y, this.m_Hero.Position.z));
@@ -85,6 +79,23 @@ namespace ETHotfix
         {
             float final = 100 + (Screen.width / 2.0f - barPos.x) * 0.05f;
             return final;
+        }
+
+        public void SetDensityOfBar(float maxHP)
+        {
+            float actual = 0;
+            if (maxHP % 100 - 0 <= 0.1f)
+            {
+                actual = maxHP / 100 + 1;
+            }
+            else
+            {
+                actual = maxHP / 100 + 2;
+            }
+
+            this.m_HeadBar.Bar_HP.self.max = maxHP;
+            this.m_HeadBar.HPGapList.numItems = (int) actual;
+            this.m_HeadBar.HPGapList.columnGap = (int) (this.m_HeadBar.HPGapList.actualWidth / (actual - 1));
         }
     }
 }
