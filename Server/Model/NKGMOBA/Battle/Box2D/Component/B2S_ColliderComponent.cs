@@ -20,11 +20,6 @@ namespace ETModel
         public long NodeDataId;
 
         /// <summary>
-        /// 在碰撞体池中的标识ID
-        /// </summary>
-        public int FlagId;
-        
-        /// <summary>
         /// Box2D世界中的刚体
         /// </summary>
         public Body Body;

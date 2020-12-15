@@ -7,6 +7,7 @@
 using System.Numerics;
 using Box2DSharp.Collision.Shapes;
 using ETHotfix;
+using ETHotfix.NKGMOBA.Factory;
 using ETModel;
 
 namespace EThotfix
@@ -26,8 +27,8 @@ namespace EThotfix
             Unit unit = UnitComponent.Instance.Get(a);
             ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
 
-            B2S_ColliderComponent colliderComponent = unit.GetComponent<B2S_UnitColliderManagerComponent>()
-                    .CreateCollider(unit, configComponent.Get<Server_B2SCollisionRelationConfig>(b).B2S_CollisionRelationId, c)
+            B2S_ColliderComponent colliderComponent = UnitFactory
+                    .CreateColliderUnit(unit, configComponent.Get<Server_B2SCollisionRelationConfig>(b).B2S_CollisionRelationId, c)
                     .GetComponent<B2S_ColliderComponent>();
 
             //这里直接默认以英雄当前位置作为碰撞体生成的位置，如需提前指定位置，请在抛事件那里传参

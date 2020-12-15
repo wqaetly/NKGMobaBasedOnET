@@ -10,7 +10,7 @@ namespace ETHotfix
         protected override async ETTask Run(Session session, C2G_LoginGate request, G2C_LoginGate response, Action reply)
         {
             GateSessionKeyComponent gateSessionKeyComponent = Game.Scene.GetComponent<GateSessionKeyComponent>();
-            //从已经分发的KEY里面寻找，如果没找到，说明非法用户，不给他连接gate服务器
+            //从已经分发的KEY里面寻找，如果没找到，说明非法用户，不给他连接gate服务器，PlayerId为数据库中账号Id
             long playerID = gateSessionKeyComponent.Get(request.Key);
             if (playerID == 0)
             {
@@ -25,7 +25,7 @@ namespace ETHotfix
 
             //专门给这个玩家创建一个Player对象
             Player player = ComponentFactory.Create<Player, long>(playerID);
-            player.AddComponent<UnitGateComponent, long>(session.InstanceId);
+            player.AddComponent<UnitGateComponent, long>(session.Id);
 
             //注册到PlayerComponent，方便管理
             Game.Scene.GetComponent<PlayerComponent>().Add(player);

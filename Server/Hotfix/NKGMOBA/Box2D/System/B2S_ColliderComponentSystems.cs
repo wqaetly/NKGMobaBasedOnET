@@ -12,12 +12,11 @@ using Vector2 = System.Numerics.Vector2;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class B2S_ColliderComponentAwakeSystem: AwakeSystem<B2S_ColliderComponent, Unit, B2S_CollisionInstance, long, int>
+    public class B2S_ColliderComponentAwakeSystem: AwakeSystem<B2S_ColliderComponent, Unit, B2S_CollisionInstance, long>
     {
-        public override void Awake(B2S_ColliderComponent self, Unit belongToUnit, B2S_CollisionInstance b2SCollisionInstance, long id, int flagId)
+        public override void Awake(B2S_ColliderComponent self, Unit belongToUnit, B2S_CollisionInstance b2SCollisionInstance, long id)
         {
             self.NodeDataId = id;
-            self.FlagId = flagId;
             self.B2S_CollisionInstance = b2SCollisionInstance;
             self.BelongToUnit = belongToUnit;
             LoadDependenceRes(self);
