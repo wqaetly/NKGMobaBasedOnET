@@ -141,10 +141,11 @@ namespace NPBehave
                 this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc2);
                 this.Stopped(result == Result.SUCCESS);
             }
-            else
-            {
-                Debug.Assert(false, "DoStop called for a single frame action on " + this);
-            }
+            //TODO 在同一帧执行某一Action结点，然后终止整棵树会崩溃
+            // else
+            // {
+            //     Debug.Assert(false, "DoStop called for a single frame action on " + this);
+            // }
         }
     }
 }

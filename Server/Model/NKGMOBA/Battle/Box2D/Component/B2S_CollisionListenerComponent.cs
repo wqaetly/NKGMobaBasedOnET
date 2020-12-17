@@ -41,21 +41,17 @@ namespace ETModel
     {
         public B2S_WorldColliderManagerComponent B2SWorldColliderManagerComponent;
 
-        public Dictionary<(long, long), bool> collisionRecorder = new Dictionary<(long, long), bool>();
+        private Dictionary<(long, long), bool> m_CollisionRecorder = new Dictionary<(long, long), bool>();
+
+        private List<(long, long)> m_ToBeRemovedCollisionData = new List<(long, long)>();
 
         public void BeginContact(Contact contact)
         {
-            //这里获取的是碰撞实体
+            //这里获取的是碰撞实体，比如诺克Q技能的碰撞体Unit，这里获取的就是它
             Entity entitya = (Entity) contact.FixtureA.UserData;
             Entity entityb = (Entity) contact.FixtureB.UserData;
-            if (this.collisionRecorder.ContainsKey((entitya.Id, entityb.Id)))
-            {
-                this.collisionRecorder[(entitya.Id, entityb.Id)] = true;
-            }
-            else
-            {
-                this.collisionRecorder.Add((entitya.Id, entityb.Id), true);
-            }
+
+            this.m_CollisionRecorder[(entitya.Id, entityb.Id)] = true;
 
             entitya.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(entityb);
             entityb.GetComponent<B2S_CollisionResponseComponent>().OnCollideStart(entitya);
@@ -66,7 +62,7 @@ namespace ETModel
             Entity entitya = (Entity) contact.FixtureA.UserData;
             Entity entityb = (Entity) contact.FixtureB.UserData;
 
-            this.collisionRecorder[(entitya.Id, entityb.Id)] = false;
+            this.m_CollisionRecorder.Remove((entitya.Id, entityb.Id));
 
             entitya.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(entityb);
             entityb.GetComponent<B2S_CollisionResponseComponent>().OnCollideFinish(entitya);
@@ -82,13 +78,23 @@ namespace ETModel
 
         public void FixedUpdate()
         {
-            //TODO:待修整，var a = this.UnitComponent.Get(VARIABLE.Key.Item1);不能从unitcomponent取得，因为根本没有注册到它里面
-            foreach (var VARIABLE in this.collisionRecorder)
+            foreach (var tobeRemovedData in m_ToBeRemovedCollisionData)
             {
-                if (VARIABLE.Value)
+                this.m_CollisionRecorder.Remove(tobeRemovedData);
+            }
+
+            foreach (var cachedCollisionData in this.m_CollisionRecorder)
+            {
+                if (cachedCollisionData.Value)
                 {
-                    var a = this.B2SWorldColliderManagerComponent.GetColliderEntity(VARIABLE.Key.Item1);
-                    var b = this.B2SWorldColliderManagerComponent.GetColliderEntity(VARIABLE.Key.Item2);
+                    var a = this.B2SWorldColliderManagerComponent.GetColliderEntity(cachedCollisionData.Key.Item1);
+                    var b = this.B2SWorldColliderManagerComponent.GetColliderEntity(cachedCollisionData.Key.Item2);
+                    if (a == null || b == null)
+                    {
+                        this.m_ToBeRemovedCollisionData.Add((a.Id, b.Id));
+                        return;
+                    }
+
                     a.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(b);
                     b.GetComponent<B2S_CollisionResponseComponent>().OnCollideSustain(a);
                 }
@@ -100,7 +106,8 @@ namespace ETModel
             base.Dispose();
             if (this.IsDisposed)
                 return;
-            this.collisionRecorder.Clear();
+            m_ToBeRemovedCollisionData.Clear();
+            this.m_CollisionRecorder.Clear();
         }
 
         /// <summary>

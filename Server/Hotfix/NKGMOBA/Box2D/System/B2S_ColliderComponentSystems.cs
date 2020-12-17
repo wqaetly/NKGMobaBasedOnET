@@ -41,22 +41,22 @@ namespace ETHotfix
             self.Body = B2S_BodyUtility.CreateDynamicBody();
 
             //根据数据加载具体的碰撞体，有的技能可能会产生多个碰撞体
-            foreach (var VARIABLE in self.B2S_ColliderDataStructureBase)
+            foreach (var colliderData in self.B2S_ColliderDataStructureBase)
             {
-                switch (VARIABLE.b2SColliderType)
+                switch (colliderData.b2SColliderType)
                 {
                     case B2S_ColliderType.BoxColllider:
-                        self.Body.CreateBoxFixture(((B2S_BoxColliderDataStructure) VARIABLE).hx, ((B2S_BoxColliderDataStructure) VARIABLE).hy,
-                            VARIABLE.finalOffset, 0, VARIABLE.isSensor, self.Entity);
+                        self.Body.CreateBoxFixture(((B2S_BoxColliderDataStructure) colliderData).hx, ((B2S_BoxColliderDataStructure) colliderData).hy,
+                            colliderData.finalOffset, 0, colliderData.isSensor, self.Entity);
                         break;
                     case B2S_ColliderType.CircleCollider:
-                        self.Body.CreateCircleFixture(((B2S_CircleColliderDataStructure) VARIABLE).radius, VARIABLE.finalOffset, VARIABLE.isSensor,
+                        self.Body.CreateCircleFixture(((B2S_CircleColliderDataStructure) colliderData).radius, colliderData.finalOffset, colliderData.isSensor,
                             self.Entity);
                         break;
                     case B2S_ColliderType.PolygonCollider:
-                        foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) VARIABLE).finalPoints)
+                        foreach (var VARIABLE1 in ((B2S_PolygonColliderDataStructure) colliderData).finalPoints)
                         {
-                            self.Body.CreatePolygonFixture(VARIABLE1, VARIABLE.isSensor, self.Entity);
+                            self.Body.CreatePolygonFixture(VARIABLE1, colliderData.isSensor, self.Entity);
                         }
 
                         break;

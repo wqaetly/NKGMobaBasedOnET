@@ -4,6 +4,7 @@
 // Data: 2020年1月21日 18:40:49
 //------------------------------------------------------------
 
+using ETHotfix.NKGMOBA.Factory;
 using ETModel;
 using UnityEngine;
 
@@ -75,6 +76,15 @@ namespace ETHotfix.NKGMOBA.Battle
         public override void Run(long a, Vector3 b)
         {
             UnitComponent.Instance.Get(a).GetComponent<UnitPathComponent>().CommonNavigate(b);
+        }
+    }
+    
+    [Event(EventIdType.RemoveCollider)]
+    public class RemoveCollider: AEvent<long>
+    {
+        public override void Run(long a)
+        {
+            UnitFactory.RemoveColliderUnit(a);
         }
     }
 }

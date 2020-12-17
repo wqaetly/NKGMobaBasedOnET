@@ -11,6 +11,9 @@
 
         //移动到随机位置
         public const string MoveToRandomPos = "MoveToRandomPos";
+        
+        //移除碰撞体
+        public const string RemoveCollider = "RemoveCollider";
 
         //伤害触发
         public const string ExcuteDamage = "ExcuteDamage";

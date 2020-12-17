@@ -10,7 +10,8 @@ using Box2DSharp.Dynamics;
 namespace ETModel
 {
     /// <summary>
-    /// 一个碰撞体Component,包含一个碰撞实例所有信息
+    /// 一个碰撞体Component,包含一个碰撞实例所有信息，直接挂载到碰撞体Unit上
+    /// 比如诺手Q技能碰撞体UnitA，那么这个B2S_ColliderComponent的Entity就是UnitA，而其中的BelongToUnit就是诺手
     /// </summary>
     public class B2S_ColliderComponent: Component
     {
@@ -48,7 +49,7 @@ namespace ETModel
             }
 
             base.Dispose();
-            this.Body.Dispose();
+            Game.Scene.GetComponent<B2S_WorldComponent>().GetWorld().DestroyBody(this.Body);
             this.B2S_CollisionInstance = null;
             this.B2S_ColliderDataStructureBase.Clear();
         }

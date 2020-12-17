@@ -22,7 +22,7 @@ namespace ETModel
         {
             globalLog.Info(message);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(string.Concat("信息:", message));
+            Console.WriteLine($"[{DateTime.Now}] 信息：{message}");
         }
 
         public static void Debug(string message)

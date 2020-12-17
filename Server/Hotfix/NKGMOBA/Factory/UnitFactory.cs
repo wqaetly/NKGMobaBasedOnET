@@ -123,10 +123,10 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<NP_RuntimeTreeManager>();
 
             ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
-            // if (RandomHelper.RandomNumber(0, 2) == 0)
-            //         //Log.Info("开始创建行为树");
-            //     NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, configComponent.Get<Server_AICanvasConfig>(10001).NPBehaveId)
-            //             .Start();
+            if (RandomHelper.RandomNumber(0, 2) == 0)
+                    //Log.Info("开始创建行为树");
+                NP_RuntimeTreeFactory.CreateNpRuntimeTree(unit, configComponent.Get<Server_AICanvasConfig>(10001).NPBehaveId)
+                        .Start();
 
             return unit;
         }
@@ -165,6 +165,17 @@ namespace ETHotfix.NKGMOBA.Factory
             //把这个碰撞实体增加到管理者维护 TODO 待优化，目的同B2S_ColliderEntityManagerComponent
             Game.Scene.GetComponent<B2S_WorldColliderManagerComponent>().AddColliderEntity(b2sColliderEntity);
             return b2sColliderEntity;
+        }
+
+        /// <summary>
+        /// 移除一个ColliderUnit
+        /// </summary>
+        /// <param name="id"></param>
+        public static void RemoveColliderUnit(long id)
+        {
+            Game.Scene.GetComponent<B2S_WorldColliderManagerComponent>().RemoveColliderEntity(id);
+            UnitComponent.Instance.Remove(id);
+            //Log.Error("移除碰撞体");
         }
 
         #endregion

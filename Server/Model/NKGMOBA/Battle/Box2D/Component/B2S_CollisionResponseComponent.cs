@@ -64,23 +64,9 @@ namespace ETModel
             }
 
             base.Dispose();
-            
-            //清理已注册的委托
-            foreach (var VARIABLE in this.OnCollideStartAction.GetInvocationList())
-            {
-                OnCollideStartAction -= VARIABLE as Action<Entity>; 
-            }
-            
-            foreach (var VARIABLE in this.OnCollideFinishAction.GetInvocationList())
-            {
-                OnCollideFinishAction -= VARIABLE as Action<Entity>; 
-            }
-
-            foreach (var VARIABLE in this.OnCollideSustainAction.GetInvocationList())
-            {
-                OnCollideSustainAction -= VARIABLE as Action<Entity>; 
-            }
-
+            OnCollideStartAction = null;
+            OnCollideSustainAction = null;
+            OnCollideSustainAction = null;
         }
     }
 }
