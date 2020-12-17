@@ -17,5 +17,11 @@ namespace ETModel.NKGMOBA.Battle.State
         /// 离开此状态时需要进行的逻辑
         /// </summary>
         void OnExit(StackFsmComponent stackFsmComponent);
+
+        /// <summary>
+        /// 状态被移除时调用
+        /// </summary>
+        /// <param name="stackFsmComponent"></param>
+        void OnRemoved(StackFsmComponent stackFsmComponent);
     }
 }

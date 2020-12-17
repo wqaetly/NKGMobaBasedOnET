@@ -24,15 +24,40 @@ namespace ETModel.NKGMOBA.Battle.State
     /// </summary>
     public class StackFsmComponent: Component
     {
+        /// <summary>
+        /// 当前持有的状态，用于外部获取对比，减少遍历次数
+        /// Key为状态类型，V为具体状态类
+        /// </summary>
+        private Dictionary<StateTypes, List<AFsmStateBase>> m_States = new Dictionary<StateTypes, List<AFsmStateBase>>();
+
+        /// <summary>
+        /// 用于内部轮询，切换的状态类
+        /// </summary>
         private LinkedList<AFsmStateBase> m_FsmStateBases = new LinkedList<AFsmStateBase>();
 
+        /// <summary>
+        /// 获取栈顶状态
+        /// </summary>
+        /// <returns></returns>
         public AFsmStateBase GetCurrentFsmState()
         {
             return this.m_FsmStateBases.First?.Value;
         }
 
         /// <summary>
-        /// 从状态机移除一个状态，如果移除的是栈顶元素，需要对新的栈顶元素进行OnEnter操作
+        /// 检查是否为栈顶状态
+        /// </summary>
+        /// <param name="aFsmStateBase"></param>
+        /// <returns></returns>
+        private bool CheckIsFirstState(AFsmStateBase aFsmStateBase)
+        {
+            return aFsmStateBase == this.GetCurrentFsmState();
+        }
+
+        #region 移除状态
+
+        /// <summary>
+        /// 从状态机移除一个状态（指定名称），如果移除的是栈顶元素，需要对新的栈顶元素进行OnEnter操作
         /// </summary>
         /// <param name="stateName"></param>
         public void RemoveState(string stateName)
@@ -42,6 +67,7 @@ namespace ETModel.NKGMOBA.Battle.State
                 return;
 
             bool theRemovedItemIsFirstState = this.CheckIsFirstState(temp);
+            this.m_States[temp.StateTypes].Remove(temp);
             this.m_FsmStateBases.Remove(temp);
             temp.OnExit(this);
             ReferencePool.Release(temp);
@@ -52,15 +78,56 @@ namespace ETModel.NKGMOBA.Battle.State
         }
 
         /// <summary>
-        /// 是否存在某个状态_通过状态名称获取
+        /// 从状态机移除一类状态（指定状态类型），如果移除的是栈顶元素，需要对新的栈顶元素进行OnEnter操作
         /// </summary>
-        /// <param name="stateName"></param>
-        /// <returns></returns>
-        public bool HasState(string stateName)
+        /// <param name="stateTypes"></param>
+        public void RemoveState(StateTypes stateTypes)
         {
-            foreach (var fsmStateBase in this.m_FsmStateBases)
+            if (!this.HasAbsoluteEqualsState(stateTypes))
+                return;
+
+            List<AFsmStateBase> statesToBeRemoved = new List<AFsmStateBase>();
+            foreach (var state in this.m_States[stateTypes])
             {
-                if (fsmStateBase.StateName == stateName)
+                statesToBeRemoved.Add(state);
+            }
+
+            this.m_States[stateTypes].Clear();
+
+            //是否移除了一个曾经是头节点的状态
+            bool removedFirstState = false;
+            foreach (var state in statesToBeRemoved)
+            {
+                if (!removedFirstState)
+                {
+                    removedFirstState = this.CheckIsFirstState(state);
+                }
+
+                this.m_FsmStateBases.Remove(state);
+                state.OnExit(this);
+                ReferencePool.Release(state);
+            }
+
+            if (removedFirstState)
+            {
+                this.GetCurrentFsmState()?.OnEnter(this);
+            }
+        }
+
+        #endregion
+
+        #region 状态检测
+
+        /// <summary>
+        /// 是否包含某个状态_通过状态类型判断，需要包含targetStateTypes的超集才会返回true
+        /// </summary>
+        /// <param name="targetStateTypes"></param>
+        /// <returns></returns>
+        public bool ContainsState(StateTypes targetStateTypes)
+        {
+            foreach (var state in this.m_States)
+            {
+                if ((targetStateTypes & state.Key) == state.Key)
                 {
                     return true;
                 }
@@ -70,15 +137,15 @@ namespace ETModel.NKGMOBA.Battle.State
         }
 
         /// <summary>
-        /// 是否存在某个状态_通过状态类型获取
+        /// 是否完全包含某个状态，需要包含targetStateTypes一致的时候才会返回true
         /// </summary>
-        /// <param name="stateTypes"></param>
+        /// <param name="targetStateTypes"></param>
         /// <returns></returns>
-        public bool HasState(StateTypes stateTypes)
+        public bool HasAbsoluteEqualsState(StateTypes targetStateTypes)
         {
-            foreach (var fsmStateBase in this.m_FsmStateBases)
+            foreach (var state in this.m_States)
             {
-                if (fsmStateBase.StateTypes == stateTypes)
+                if (targetStateTypes == state.Key)
                 {
                     return true;
                 }
@@ -86,6 +153,28 @@ namespace ETModel.NKGMOBA.Battle.State
 
             return false;
         }
+
+        /// <summary>
+        /// 是否会发生状态互斥，只要包含了conflictStateTypes的子集，就返回true
+        /// </summary>
+        /// <param name="conflictStateTypes">互斥的状态</param>
+        /// <returns></returns>
+        public bool CheckConflictState(StateTypes conflictStateTypes)
+        {
+            foreach (var state in this.m_States)
+            {
+                if ((conflictStateTypes & state.Key) == conflictStateTypes)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        #region 获取状态
 
         /// <summary>
         /// 根据状态名称获取状态
@@ -104,6 +193,10 @@ namespace ETModel.NKGMOBA.Battle.State
 
             return null;
         }
+
+        #endregion
+
+        #region 切换状态
 
         /// <summary>
         /// 切换状态，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行，切换成功返回成功，切换失败返回失败
@@ -181,6 +274,15 @@ namespace ETModel.NKGMOBA.Battle.State
                 {
                     this.m_FsmStateBases.AddLast(fsmStateToInsert);
                 }
+
+                if (this.m_States.TryGetValue(fsmStateToInsert.StateTypes, out var stateList))
+                {
+                    stateList.Add(fsmStateToInsert);
+                }
+                else
+                {
+                    this.m_States.Add(fsmStateToInsert.StateTypes, new List<AFsmStateBase>() { fsmStateToInsert });
+                }
             }
 
             //如果这个被插入的状态成为了链表首状态，说明发生了状态变化
@@ -192,9 +294,6 @@ namespace ETModel.NKGMOBA.Battle.State
             }
         }
 
-        private bool CheckIsFirstState(AFsmStateBase aFsmStateBase)
-        {
-            return aFsmStateBase == this.GetCurrentFsmState();
-        }
+        #endregion
     }
 }

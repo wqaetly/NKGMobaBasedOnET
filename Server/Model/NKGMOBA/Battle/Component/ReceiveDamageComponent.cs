@@ -66,7 +66,7 @@ namespace ETModel
         public float BaptismDamageData(DamageData damageData)
         {
             //如果当前无敌则不计算伤害
-            if (this.Entity.GetComponent<StackFsmComponent>().HasState(StateTypes.Invincible))
+            if (this.Entity.GetComponent<StackFsmComponent>().ContainsState(StateTypes.Invincible))
             {
                 return -1.0f;
             }

@@ -4,8 +4,11 @@
 // Data: 2020年1月12日 18:46:34
 //------------------------------------------------------------
 
+using System;
+
 namespace ETModel.NKGMOBA.Battle.State
 {
+    [Flags]
     public enum StateTypes: byte
     {
         /// <summary>

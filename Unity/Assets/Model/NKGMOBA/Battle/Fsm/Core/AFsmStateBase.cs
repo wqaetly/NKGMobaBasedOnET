@@ -36,28 +36,25 @@ namespace ETModel.NKGMOBA.Battle.State
 
         public virtual bool TryEnter(StackFsmComponent stackFsmComponent)
         {
-            StateTypes[] conflictStateTypeses = GetConflictStateTypeses();
-            if (conflictStateTypeses == null)
+            if (stackFsmComponent.CheckConflictState(GetConflictStateTypeses()))
             {
-                return true;
-            }
-
-            for (int i = 0; i < conflictStateTypeses.Length; i++)
-            {
-                if (stackFsmComponent.HasState(conflictStateTypeses[i]))
-                {
-                    return false;
-                }
+                return false;
             }
 
             return true;
         }
 
-        public abstract StateTypes[] GetConflictStateTypeses();
-        
+        public abstract StateTypes GetConflictStateTypeses();
+
         public abstract void OnEnter(StackFsmComponent stackFsmComponent);
-        
+
         public abstract void OnExit(StackFsmComponent stackFsmComponent);
+
+        /// <summary>
+        /// 状态移除时调用
+        /// </summary>
+        /// <param name="stackFsmComponent"></param>
+        public abstract void OnRemoved(StackFsmComponent stackFsmComponent);
 
         public virtual void Clear()
         {

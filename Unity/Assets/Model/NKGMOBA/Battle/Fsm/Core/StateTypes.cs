@@ -4,8 +4,11 @@
 // Data: 2020年1月12日 18:46:34
 //------------------------------------------------------------
 
+using System;
+
 namespace ETModel.NKGMOBA.Battle.State
 {
+    [Flags]
     public enum StateTypes: byte
     {
         /// <summary>
@@ -89,5 +92,15 @@ namespace ETModel.NKGMOBA.Battle.State
         /// 致盲
         /// </summary>
         Blind,
+        
+        /// <summary>
+        /// 排斥普攻，有此状态无法普攻
+        /// </summary>
+        CommonAttackConflict,
+        
+        /// <summary>
+        /// 排斥行走，有此状态无法行走
+        /// </summary>
+        WalkConflict,
     }
 }

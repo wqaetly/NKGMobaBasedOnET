@@ -13,10 +13,9 @@ namespace ETModel.NKGMOBA.Battle.Fsm
         /// <summary>
         /// 互斥的状态，如果当前身上有这些状态，将无法切换至此状态
         /// </summary>
-        public static StateTypes[] ConflictState =
-        {
-            StateTypes.RePluse, StateTypes.Dizziness, StateTypes.Striketofly, StateTypes.Sneer, StateTypes.Fear
-        };
+        public static StateTypes ConflictState =
+                StateTypes.RePluse | StateTypes.Dizziness | StateTypes.Striketofly | StateTypes.Sneer | StateTypes.Fear;
+
 
         public NavigateState()
         {
@@ -25,7 +24,7 @@ namespace ETModel.NKGMOBA.Battle.Fsm
             this.Priority = 1;
         }
 
-        public override StateTypes[] GetConflictStateTypeses()
+        public override StateTypes GetConflictStateTypeses()
         {
             return ConflictState;
         }
