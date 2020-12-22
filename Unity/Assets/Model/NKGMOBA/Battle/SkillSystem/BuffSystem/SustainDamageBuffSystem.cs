@@ -60,27 +60,29 @@ namespace ETModel
 
         private void ExcuteDamage()
         {
-            //强制类型转换为伤害Buff数据 
-            SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
-
-            DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(temp.BuffDamageTypes,
-                BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData), this.TheUnitFrom, this.TheUnitBelongto);
-
-            damageData.DamageValue *= temp.DamageFix;
-
-            this.TheUnitFrom.GetComponent<CastDamageComponent>().BaptismDamageData(damageData);
-
-            float finalDamage = this.TheUnitBelongto.GetComponent<ReceiveDamageComponent>().BaptismDamageData(damageData);
-
-            if (finalDamage >= 0)
-            {
-                this.TheUnitBelongto.GetComponent<HeroDataComponent>().NumericComponent[NumericType.Hp] += -finalDamage;
-                //抛出伤害事件，需要监听伤害的buff（比如吸血buff）需要监听此事件
-                Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{this.TheUnitFrom.Id}", damageData);
-            }
-
-            //设置下一个时间点
-            this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
+            // //强制类型转换为伤害Buff数据 
+            // SustainDamageBuffData temp = (SustainDamageBuffData) this.BuffData;
+            //
+            // DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(temp.BuffDamageTypes,
+            //     BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData), this.TheUnitFrom, this.TheUnitBelongto);
+            //
+            // damageData.DamageValue *= temp.DamageFix;
+            //
+            // this.TheUnitFrom.GetComponent<CastDamageComponent>().BaptismDamageData(damageData);
+            //
+            // float finalDamage = this.TheUnitBelongto.GetComponent<ReceiveDamageComponent>().BaptismDamageData(damageData);
+            //
+            // if (finalDamage >= 0)
+            // {
+            //     this.TheUnitBelongto.GetComponent<HeroDataComponent>().NumericComponent.ApplyChange(NumericType.Hp, -finalDamage);
+            //     //抛出伤害事件
+            //     Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{this.TheUnitFrom.Id}", damageData);
+            //     //抛出受伤事件
+            //     Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.TakeDamage}{this.GetBuffTarget().Id}", damageData);
+            // }
+            //
+            // //设置下一个时间点
+            // this.m_SelfNextimer = TimeHelper.Now() + temp.WorkInternal;
         }
     }
 }

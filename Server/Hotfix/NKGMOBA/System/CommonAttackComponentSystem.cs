@@ -105,6 +105,8 @@ namespace ETHotfix
                 self.CachedUnitForAttack.GetComponent<HeroDataComponent>().NumericComponent.ApplyChange(NumericType.Hp, -finalDamage);
                 //抛出伤害事件，需要监听伤害的buff（比如吸血buff）需要监听此事件
                 Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{self.Entity.Id}", damageData);
+                //抛出受伤事件，需要监听受伤的Buff（例如反甲）需要监听此事件
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.TakeDamage}{self.CachedUnitForAttack.Id}", damageData);
             }
 
             CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");

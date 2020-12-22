@@ -174,6 +174,21 @@ namespace ETModel
             this.allEvents[eventId].Add(e);
         }
 
+        /// <summary>
+        /// 获取事件实例，默认返回实例列表第一个
+        /// </summary>
+        /// <param name="eventId"></param>
+        public IEvent GetEvent(string eventId)
+        {
+            if (this.allEvents.TryGetValue(eventId, out var events))
+            {
+                return events[0];
+            }
+
+            Log.Error($"未找到Id为{eventId}对应的事件实例");
+            return null;
+        }
+
         public Assembly Get(DLLType dllType)
         {
             return this.assemblies[dllType];

@@ -37,8 +37,10 @@ namespace ETModel
             if (finalDamage >= 0)
             {
                 this.TheUnitBelongto.GetComponent<HeroDataComponent>().NumericComponent.ApplyChange(NumericType.Hp, -finalDamage);
-                //抛出伤害事件，需要监听伤害的buff（比如吸血buff）需要监听此事件
+                //抛出伤害事件
                 Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.ExcuteDamage}{this.TheUnitFrom.Id}", damageData);
+                //抛出受伤事件
+                Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.TakeDamage}{this.GetBuffTarget().Id}", damageData);
             }
             
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件

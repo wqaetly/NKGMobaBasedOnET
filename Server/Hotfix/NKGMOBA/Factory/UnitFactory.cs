@@ -67,6 +67,8 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<DataModifierComponent>();
             //增加移动组件
             unit.AddComponent<MoveComponent>();
+            
+            unit.AddComponent<OperatesComponent>();
 
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<NP_RuntimeTreeManager>();
@@ -113,6 +115,8 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<ReceiveDamageComponent>();
             unit.AddComponent<CastDamageComponent>();
             unit.AddComponent<DataModifierComponent>();
+
+            unit.AddComponent<OperatesComponent>();
 
             //增加移动组件
             unit.AddComponent<MoveComponent>();
