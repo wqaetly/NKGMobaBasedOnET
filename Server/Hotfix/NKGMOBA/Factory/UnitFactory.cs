@@ -50,8 +50,7 @@ namespace ETHotfix.NKGMOBA.Factory
             //创建战斗单位
             Unit unit = CreateUnitBase();
             unit.AddComponent<ChildrenUnitComponent>();
-            //增加移动组件
-            unit.AddComponent<MoveComponent>();
+
             //增加寻路相关组件
             unit.AddComponent<UnitPathComponent>();
 
@@ -66,6 +65,8 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<ReceiveDamageComponent>();
             unit.AddComponent<CastDamageComponent>();
             unit.AddComponent<DataModifierComponent>();
+            //增加移动组件
+            unit.AddComponent<MoveComponent>();
 
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<NP_RuntimeTreeManager>();
@@ -113,11 +114,12 @@ namespace ETHotfix.NKGMOBA.Factory
             unit.AddComponent<CastDamageComponent>();
             unit.AddComponent<DataModifierComponent>();
 
+            //增加移动组件
+            unit.AddComponent<MoveComponent>();
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;
             //添加栈式状态机组件
             unit.AddComponent<StackFsmComponent>();
-            unit.AddComponent<MoveComponent>();
             unit.AddComponent<UnitPathComponent>();
 
             unit.AddComponent<NP_RuntimeTreeManager>();

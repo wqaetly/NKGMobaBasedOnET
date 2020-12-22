@@ -10,7 +10,9 @@ namespace ETModel
             PrepareHeroRes(unitType);
             Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(id, unitType);
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
-
+            unit.AddComponent<DataModifierComponent>();
+            unit.AddComponent<NumericComponent>();
+            unit.AddComponent<HeroTransformComponent>();
             //增加子实体组件，用于管理子实体
             unit.AddComponent<ChildrenUnitComponent>();
             //增加栈式状态机，辅助动画切换
@@ -19,9 +21,6 @@ namespace ETModel
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
-            unit.AddComponent<DataModifierComponent>();
-            unit.AddComponent<NumericComponent>();
-            unit.AddComponent<HeroTransformComponent>();
             unit.AddComponent<EffectComponent>();
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
@@ -46,7 +45,8 @@ namespace ETModel
             
             Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(selfId, "NuoKe");
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
-
+            unit.AddComponent<DataModifierComponent>();
+            unit.AddComponent<NumericComponent>();
             //增加子实体组件，用于管理子实体
             unit.AddComponent<ChildrenUnitComponent>();
             //增加栈式状态机，辅助动画切换
@@ -55,9 +55,7 @@ namespace ETModel
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
             unit.AddComponent<AnimationComponent>();
-            unit.AddComponent<DataModifierComponent>();
-            unit.AddComponent<NumericComponent>();
-
+            
             unit.AddComponent<EffectComponent>();
             unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Adverse);
             unit.AddComponent<HeroTransformComponent>();

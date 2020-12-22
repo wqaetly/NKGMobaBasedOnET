@@ -32,9 +32,9 @@ namespace ETModel
             self.NumericComponent.NumericDic[(int) NumericType.AttackAdd] = self.NodeDataForHero.GroAttackValue;
             self.NumericComponent.NumericDic[(int) NumericType.Attack] = self.NodeDataForHero.OriAttackValue + self.NodeDataForHero.GroAttackValue;
 
-            self.NumericComponent.NumericDic[(int) NumericType.SpeedBase] = self.NodeDataForHero.OriAttackSpeed;
-            self.NumericComponent.NumericDic[(int) NumericType.SpeedAdd] = self.NodeDataForHero.GroAttackSpeed;
-            self.NumericComponent.NumericDic[(int) NumericType.Speed] = self.NodeDataForHero.OriAttackSpeed + self.NodeDataForHero.GroAttackSpeed;
+            self.NumericComponent.NumericDic[(int) NumericType.SpeedBase] = self.NodeDataForHero.OriMoveSpeed;
+            self.NumericComponent.NumericDic[(int) NumericType.SpeedAdd] = self.NodeDataForHero.GroMoveSpeed;
+            self.NumericComponent.NumericDic[(int) NumericType.Speed] = self.NodeDataForHero.OriMoveSpeed + self.NodeDataForHero.GroMoveSpeed;
 
             self.NumericComponent.NumericDic[(int) NumericType.ArmorBase] = self.NodeDataForHero.OriArmor;
             self.NumericComponent.NumericDic[(int) NumericType.ArmorAdd] = self.NodeDataForHero.GroArmor;

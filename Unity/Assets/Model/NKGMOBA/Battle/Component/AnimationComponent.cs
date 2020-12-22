@@ -77,7 +77,7 @@ namespace ETModel
             animancerState.Speed = speed;
             return animancerState;
         }
-        
+
         /// <summary>
         /// 播放一个动画,默认过渡时间为0.3s,如果在此期间再次播放，则会从头开始
         /// </summary>
@@ -86,7 +86,8 @@ namespace ETModel
         /// <returns></returns>
         public AnimancerState PlayAnimFromStart(StateTypes stateTypes, float fadeDuration = 0.3f, float speed = 1.0f)
         {
-            AnimancerState animancerState = AnimancerComponent.CrossFadeFromStart(this.AnimationClips[RuntimeAnimationClips[stateTypes]], fadeDuration);
+            AnimancerState animancerState =
+                    AnimancerComponent.CrossFadeFromStart(this.AnimationClips[RuntimeAnimationClips[stateTypes]], fadeDuration);
             animancerState.Speed = speed;
             return animancerState;
         }
@@ -100,7 +101,7 @@ namespace ETModel
         {
             PlayAnim(stateTypes, fadeDuration, speed).OnEnd = PlayIdel;
         }
-        
+
         /// <summary>
         /// 播放一个动画(播放完成自动回到默认动画),如果在此期间再次播放，则会从头开始
         /// </summary>
@@ -127,7 +128,7 @@ namespace ETModel
         {
             AnimancerComponent.CrossFade(this.AnimationClips[RuntimeAnimationClips[StateTypes.Idle]]);
         }
-        
+
         /// <summary>
         /// 播放默认动画（非正式版）,如果在此期间再次播放，则会从头开始
         /// </summary>
@@ -139,10 +140,10 @@ namespace ETModel
         /// <summary>
         /// 根据栈式状态机来自动播放动画
         /// </summary>
-        public void PlayAnimByStackFsmCurrent()
+        public void PlayAnimByStackFsmCurrent(float fadeDuration = 0.3f, float speed = 1.0f)
         {
             //Log.Info($"动画组件收到通知，当前状态{this.StackFsmComponent.GetCurrentFsmState().StateTypes}");
-            PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateTypes);
+            PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateTypes, fadeDuration, speed);
         }
 
         public override void Dispose()

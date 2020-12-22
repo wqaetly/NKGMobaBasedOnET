@@ -4,6 +4,15 @@ using UnityEngine;
 
 namespace ETModel
 {
+    [ObjectSystem]
+    public class MoveComponentAwakeSystem: AwakeSystem<MoveComponent>
+    {
+        public override void Awake(MoveComponent self)
+        {
+            self.Speed = self.Entity.GetComponent<HeroDataComponent>().GetAttribute(NumericType.Speed) / 100;
+        }
+    }
+    
     public class MoveComponent: Component
     {
         public Vector3 Target;
@@ -17,7 +26,7 @@ namespace ETModel
         public long needTime;
 
         // 当前的移动速度
-        public float Speed = 5;
+        public float Speed;
         
         public async ETTask MoveToAsync(Vector3 target, CancellationToken cancellationToken)
         {
@@ -49,7 +58,6 @@ namespace ETModel
             }
 
             this.needTime = (long) (distance / this.Speed * 1000);
-
             // 协程如果取消，将算出玩家的真实位置，赋值给玩家
             cancellationToken.Register(() =>
             {
@@ -68,7 +76,8 @@ namespace ETModel
             while (true)
             {
                 await TimerComponent.Instance.WaitAsync(10, cancellationToken);
-
+                this.needTime = (long) (distance / this.Speed * 1000);
+                
                 long timeNow = TimeHelper.Now();
 
                 if (timeNow - this.StartTime >= this.needTime)
@@ -80,6 +89,18 @@ namespace ETModel
                 float amount = (timeNow - this.StartTime) * 1f / this.needTime;
                 unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
             }
+        }
+
+        public override void Dispose()
+        {
+            if(this.IsDisposed)
+                return;
+            base.Dispose();
+            this.needTime = 0;
+            this.Speed = 0;
+            this.Target = Vector3.zero;
+            this.StartPos = Vector3.zero;
+            this.StartTime = 0;
         }
     }
 }
