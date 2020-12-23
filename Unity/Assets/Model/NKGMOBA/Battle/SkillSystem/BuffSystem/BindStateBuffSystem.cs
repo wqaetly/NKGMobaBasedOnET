@@ -4,6 +4,8 @@
 // Data: 2019年10月1日 21:22:19
 //------------------------------------------------------------
 
+using ETModel.NKGMOBA.Battle.State;
+
 namespace ETModel
 {
     /// <summary>
@@ -23,23 +25,7 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            BindStateBuffData tempData = this.BuffData as BindStateBuffData;
-
-            foreach (var buffData in tempData.OriBuff)
-            {
-                buffData.AutoAddBuff(this.BuffData.BelongToBuffDataSupportorId, buffData.BuffNodeId.Value,
-                    this.TheUnitFrom, this.TheUnitBelongto, this.BelongtoRuntimeTree);
-            }
-
-            if (this.BuffData.EventIds != null)
-            {
-                foreach (var eventId in this.BuffData.EventIds)
-                {
-                    Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
-                    //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
-                }
-            }
-
+            ExcuteInternal();
             this.BuffState = BuffState.Running;
         }
 
@@ -57,9 +43,19 @@ namespace ETModel
 
         public override void OnFinished()
         {
+            BindStateBuffData tempData = this.BuffData as BindStateBuffData;
+            if (tempData.OriState != null)
+            {
+                this.GetBuffTarget().GetComponent<StackFsmComponent>().RemoveState(tempData.OriState.StateName);
+            }
         }
 
         public override void OnRefresh()
+        {
+            ExcuteInternal();
+        }
+
+        private void ExcuteInternal()
         {
             BindStateBuffData tempData = this.BuffData as BindStateBuffData;
 
@@ -76,6 +72,11 @@ namespace ETModel
                     Game.Scene.GetComponent<BattleEventSystem>().Run($"{eventId}{this.TheUnitFrom.Id}", this);
                     //Log.Info($"抛出了{this.MSkillBuffDataBase.theEventID}{this.theUnitFrom.Id}");
                 }
+            }
+
+            if (tempData.OriState != null)
+            {
+                this.GetBuffTarget().GetComponent<StackFsmComponent>().ChangeState(tempData.OriState);
             }
         }
     }
