@@ -4,6 +4,8 @@
 // Data: 2020年12月22日 18:54:08
 //------------------------------------------------------------
 
+using Sirenix.OdinInspector;
+
 namespace ETModel.NKGMOBA.Battle.State
 {
     /// <summary>
@@ -14,6 +16,7 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <summary>
         /// 互斥的状态
         /// </summary>
+        [LabelText("互斥的状态")]
         public StateTypes ConflictStateTypes;
         
         public override StateTypes GetConflictStateTypeses()

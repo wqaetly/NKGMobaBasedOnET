@@ -79,7 +79,7 @@ namespace ETModel
         /// 处理播放动画
         /// </summary>
         /// <param name="stateTypes">动画对应StateType</param>
-        private void HandlePlayAnim(StateTypes stateTypes, float fadeDuration = 0.3f)
+        private void HandlePlayAnim(string stateTypes, float fadeDuration = 0.3f)
         {
             //在播放完成后，每帧都会调用OnEnd委托，由于行为树中的FixedUpdate与Unity的Update频率不一致，所以需要作特殊处理
             m_AnimancerState = this.TheUnitBelongTo.GetComponent<AnimationComponent>()
