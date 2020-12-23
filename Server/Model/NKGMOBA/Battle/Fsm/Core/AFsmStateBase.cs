@@ -4,6 +4,8 @@
 // Data: 2020年1月13日 17:30:29
 //------------------------------------------------------------
 
+using Sirenix.OdinInspector;
+
 namespace ETModel.NKGMOBA.Battle.State
 {
     public abstract class AFsmStateBase: IFSMState, IReference
@@ -11,17 +13,20 @@ namespace ETModel.NKGMOBA.Battle.State
         /// <summary>
         /// 状态类型
         /// </summary>
-        public StateTypes StateTypes { get; set; }
+        [LabelText("状态类型")]
+        public StateTypes StateTypes;
 
         /// <summary>
         /// 状态名称
         /// </summary>
-        public string StateName { get; set; }
+        [LabelText("状态名称")]
+        public string StateName;
 
         /// <summary>
         /// 状态的优先级，值越大，优先级越高。
         /// </summary>
-        public int Priority { get; set; }
+        [LabelText("状态的优先级")]
+        public int Priority;
 
         public AFsmStateBase()
         {

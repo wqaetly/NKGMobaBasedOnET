@@ -9,88 +9,86 @@ using System;
 namespace ETModel.NKGMOBA.Battle.State
 {
     [Flags]
-    public enum StateTypes: byte
+    public enum StateTypes: long
     {
         /// <summary>
         /// 行走
         /// </summary>
-        Run,
+        Run = 1 << 1,
 
         /// <summary>
         /// 空闲
         /// </summary>
-        Idle,
-        
-        //为多段技能动画预留的标识位
-        Q_Spell,
-        Q_Spell_1,
-        Q_Spell_2,
+        Idle = 1 << 2,
 
-        W_Spell,
-        W_Spell_1,
-        W_Spell_2,
-
-        E_Spell,
-        E_Spell_1,
-        E_Spell_2,
-
-        R_Spell,
-        R_Spell_1,
-        R_Spell_2,
+        /// <summary>
+        /// 释放技能
+        /// </summary>
+        Skill_Cast = 1 << 3,
 
         /// <summary>
         /// 普攻
         /// </summary>
-        CommonAttack,
+        CommonAttack = 1 << 4,
 
         /// <summary>
         /// 击退
         /// </summary>
-        RePluse,
+        RePluse = 1 << 5,
 
         /// <summary>
         /// 沉默
         /// </summary>
-        Silence,
+        Silence = 1 << 6,
 
         /// <summary>
         /// 眩晕
         /// </summary>
-        Dizziness,
+        Dizziness = 1 << 7,
 
         /// <summary>
         /// 击飞
         /// </summary>
-        Striketofly,
+        Striketofly = 1 << 8,
 
         /// <summary>
         /// 嘲讽
         /// </summary>
-        Sneer,
+        Sneer = 1 << 9,
 
         /// <summary>
         /// 无敌
         /// </summary>
-        Invincible,
+        Invincible = 1 << 10,
 
         /// <summary>
         /// 禁锢
         /// </summary>
-        Shackle,
+        Shackle = 1 << 11,
 
         /// <summary>
         /// 隐身
         /// </summary>
-        Invisible,
+        Invisible = 1 << 12,
 
         /// <summary>
         /// 恐惧
         /// </summary>
-        Fear,
+        Fear = 1 << 13,
 
         /// <summary>
         /// 致盲
         /// </summary>
-        Blind,
+        Blind = 1 << 14,
+
+        /// <summary>
+        /// 排斥普攻，有此状态无法普攻
+        /// </summary>
+        CommonAttackConflict = 1 << 15,
+
+        /// <summary>
+        /// 排斥行走，有此状态无法行走
+        /// </summary>
+        WalkConflict = 1 << 16,
     }
 }

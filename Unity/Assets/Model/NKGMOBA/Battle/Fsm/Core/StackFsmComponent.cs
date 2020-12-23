@@ -69,7 +69,7 @@ namespace ETModel.NKGMOBA.Battle.State
             bool theRemovedItemIsFirstState = this.CheckIsFirstState(temp);
             this.m_States[temp.StateTypes].Remove(temp);
             this.m_FsmStateBases.Remove(temp);
-            temp.OnExit(this);
+            temp.OnRemoved(this);
             ReferencePool.Release(temp);
             if (theRemovedItemIsFirstState)
             {
@@ -104,7 +104,7 @@ namespace ETModel.NKGMOBA.Battle.State
                 }
 
                 this.m_FsmStateBases.Remove(state);
-                state.OnExit(this);
+                state.OnRemoved(this);
                 ReferencePool.Release(state);
             }
 
@@ -127,7 +127,7 @@ namespace ETModel.NKGMOBA.Battle.State
         {
             foreach (var state in this.m_States)
             {
-                if ((targetStateTypes & state.Key) == state.Key)
+                if ((targetStateTypes & state.Key) == targetStateTypes && state.Value.Count > 0)
                 {
                     return true;
                 }
@@ -145,7 +145,7 @@ namespace ETModel.NKGMOBA.Battle.State
         {
             foreach (var state in this.m_States)
             {
-                if (targetStateTypes == state.Key)
+                if (targetStateTypes == state.Key && state.Value.Count > 0)
                 {
                     return true;
                 }
@@ -163,7 +163,7 @@ namespace ETModel.NKGMOBA.Battle.State
         {
             foreach (var state in this.m_States)
             {
-                if ((conflictStateTypes & state.Key) == conflictStateTypes)
+                if ((conflictStateTypes & state.Key) == state.Key && state.Value.Count > 0)
                 {
                     return true;
                 }
@@ -197,6 +197,26 @@ namespace ETModel.NKGMOBA.Battle.State
         #endregion
 
         #region 切换状态
+
+        /// <summary>
+        /// 切换状态，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行，切换成功返回成功，切换失败返回失败
+        /// 这里的切换成功是指目标状态来到链表头部，插入到链表中或者插入失败都属于切换失败
+        /// </summary>
+        public bool ChangeState(AFsmStateBase aFsmStateBase)
+        {
+            AFsmStateBase tempFsmStateBase = this.GetState(aFsmStateBase.StateName);
+
+            if (tempFsmStateBase != null)
+            {
+                //因为已有此状态，所以进行回收
+                ReferencePool.Release(aFsmStateBase);
+                this.InsertState(tempFsmStateBase, true);
+                return CheckIsFirstState(tempFsmStateBase);
+            }
+
+            this.InsertState(aFsmStateBase);
+            return CheckIsFirstState(aFsmStateBase);
+        }
 
         /// <summary>
         /// 切换状态，如果当前已存在，说明需要把它提到同优先级状态的前面去，让他先执行，切换成功返回成功，切换失败返回失败
