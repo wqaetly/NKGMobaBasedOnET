@@ -16,6 +16,7 @@ namespace ETEditor
         public const string ETModelComponentTemplatePath = "Assets/Editor/GenerateCodeEditor/ETModelComponentTemplate.txt";
         public const string BuffDataNodeTemplatePath = "Assets/Editor/GenerateCodeEditor/BuffDataNodeTemplate.txt";
         public const string NPBehaveActionNodeTemplatePath = "Assets/Editor/GenerateCodeEditor/NPBehaveActionNodeTemplate.txt";
+        public const string NPBehaveActionTemplatePath = "Assets/Editor/GenerateCodeEditor/NPBehaveActionTemplate.txt";
     }
 
     
@@ -96,7 +97,7 @@ namespace ETEditor
     }
 
     /// <summary>
-    /// 用于生成NPBehave Action数据结点的结构体
+    /// 用于生成NPBehave Action Node数据结点的结构体
     /// </summary>
     public class Params_GenerateNPBehaveActionNode: AParams_GenerateBase
     {
@@ -113,6 +114,39 @@ namespace ETEditor
             get
             {
                 return TemplateAssetPaths.NPBehaveActionNodeTemplatePath;
+            }
+        }
+
+        public override Dictionary<string, string> GetAllParams()
+        {
+            if (string.IsNullOrEmpty(ActionName) || string.IsNullOrEmpty(this.ActionDes))
+            {
+                Log.Error("Action名或Action描述不能为空");
+                return null;
+            }
+
+            return new Dictionary<string, string>() { { "_ACTIONNAME_", ActionName }, { "_ACTIONDES_", ActionDes } };
+        }
+    }
+    
+    /// <summary>
+    /// 用于生成NPBehave Action数据结点的结构体
+    /// </summary>
+    public class Params_GenerateNPBehaveAction: AParams_GenerateBase
+    {
+        [LabelText("Action名")]
+        [InfoBox("示例：LogAction")]
+        public string ActionName;
+
+        [LabelText("Action描述")]
+        [InfoBox("示例：打印一条消息")]
+        public string ActionDes;
+
+        public override string TemplateAssetPath
+        {
+            get
+            {
+                return TemplateAssetPaths.NPBehaveActionTemplatePath;
             }
         }
 
