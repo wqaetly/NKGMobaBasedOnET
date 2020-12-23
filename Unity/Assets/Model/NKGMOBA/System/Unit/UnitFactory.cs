@@ -79,6 +79,22 @@ namespace ETModel
             Game.Scene.GetComponent<GameObjectPool>().Add(heroType, prefab);
         }
 
+        // public static async ETVoid LoadAsyncTest_1()
+        // {
+        //     Log.Error("异步加载测试1开始");
+        //     ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+        //     await resourcesComponent.LoadAssetAsync<GameObject>(ABPathUtilities.GetUnitPath("Unit"));
+        //     Log.Error("异步加载测试1完成");
+        // }
+        //
+        // public static async ETVoid LoadAsyncTest_2()
+        // {
+        //     Log.Error("异步加载测试2开始");
+        //     ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+        //     await resourcesComponent.LoadAssetAsync<GameObject>(ABPathUtilities.GetUnitPath("Unit"));
+        //     Log.Error("异步加载测试2完成");
+        // }
+
         /// <summary>
         /// 用于NPBehave测试
         /// </summary>

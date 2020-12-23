@@ -29,7 +29,16 @@ namespace ETModel
         {
             ETTaskCompletionSource<T> tcs = new ETTaskCompletionSource<T>();
             AssetRequest assetRequest = Assets.LoadAssetAsync(path, typeof (T));
-            assetRequest.completed = (arq) => { tcs.SetResult((T) arq.asset); };
+            
+            //如果已经加载完成则直接返回结果（适用于编辑器模式下的异步写法和重复加载）
+            if (assetRequest.isDone)
+            {
+                tcs.SetResult((T) assetRequest.asset);
+                return tcs.Task;
+            }
+
+            //+=委托链，否则会导致前面完成委托被覆盖
+            assetRequest.completed += (arq) => { tcs.SetResult((T) arq.asset); };
             return tcs.Task;
         }
 
@@ -55,10 +64,7 @@ namespace ETModel
         {
             ETTaskCompletionSource<SceneAssetRequest> tcs = new ETTaskCompletionSource<SceneAssetRequest>();
             SceneAssetRequest sceneAssetRequest = Assets.LoadSceneAsync(path, false);
-            sceneAssetRequest.completed = (arq) =>
-            {
-                tcs.SetResult(sceneAssetRequest);
-            };
+            sceneAssetRequest.completed = (arq) => { tcs.SetResult(arq as SceneAssetRequest); };
             return tcs.Task;
         }
 
