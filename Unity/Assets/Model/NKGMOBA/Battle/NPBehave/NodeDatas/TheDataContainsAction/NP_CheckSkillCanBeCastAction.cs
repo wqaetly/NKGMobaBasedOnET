@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System;
+using ETModel.NKGMOBA.Battle.State;
 using Sirenix.OdinInspector;
 
 namespace ETModel
@@ -15,16 +16,20 @@ namespace ETModel
     [Title("检查技能是否能释放", TitleAlignment = TitleAlignments.Centered)]
     public class NP_CheckSkillCanBeCastAction: NP_ClassForStoreAction
     {
-        [BoxGroup("引用数据的Id")]
+        [BoxGroup("检测相关")]
         [LabelText("引用的数据结点Id")]
         public VTD_Id DataId = new VTD_Id();
 
-        [BoxGroup("引用数据的Id")]
+        [BoxGroup("检测相关")]
         [LabelText("检查技能的Id")]
         public VTD_Id SkillIdBelongTo = new VTD_Id();
 
         [HideInEditorMode]
         public SkillDesNodeData SkillDesNodeData;
+
+        [BoxGroup("检测相关")]
+        [LabelText("互斥的状态")]
+        public StateTypes ConfliectType;
         
         public override Func<bool> GetFunc1ToBeDone()
         {
