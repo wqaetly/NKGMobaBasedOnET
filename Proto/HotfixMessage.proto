@@ -226,14 +226,14 @@ message M2C_CancelAttack // IActorMessage
     int64 UnitId = 94;
     
 }
-
-message M2C_FrieBattleEvent_PlayEffect // IActorMessage
+//同步行为树bool黑板变量
+message M2C_SyncNPBehaveBoolData // IActorMessage
 {
     int32 RpcId = 90;
     int64 ActorId = 93;
+    
     int64 UnitId = 94;
-
-    int64 FromUnitId = 3;
-    int64 BelongToUnitId = 4;
-    string BattleKey = 2;
+    //黑板键
+    string BBKey = 2;
+    bool Value = 5;
 }

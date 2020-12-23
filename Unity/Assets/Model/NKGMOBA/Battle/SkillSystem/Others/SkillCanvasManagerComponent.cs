@@ -92,6 +92,16 @@ namespace ETModel
                 SkillLevels.Add(skillId, 0);
             }
         }
+        
+        
+        /// <summary>
+        /// 获取所有技能行为树
+        /// </summary>
+        /// <param name="skillId">技能标识</param>
+        public Dictionary<long, List<NP_RuntimeTree>> GetAllSkillCanvas()
+        {
+            return this.Skills;
+        }
 
         /// <summary>
         /// 获取行为树

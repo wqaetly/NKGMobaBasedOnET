@@ -88,9 +88,11 @@ namespace ETHotfix
 	[Message(HotfixOpcode.M2C_CancelAttack)]
 	public partial class M2C_CancelAttack : IActorMessage {}
 
-	[Message(HotfixOpcode.M2C_FrieBattleEvent_PlayEffect)]
-	public partial class M2C_FrieBattleEvent_PlayEffect : IActorMessage {}
+//同步行为树bool黑板变量
+	[Message(HotfixOpcode.M2C_SyncNPBehaveBoolData)]
+	public partial class M2C_SyncNPBehaveBoolData : IActorMessage {}
 
+//黑板键
 }
 namespace ETHotfix
 {
@@ -123,6 +125,6 @@ namespace ETHotfix
 		 public const ushort M2C_ChangeUnitAttribute = 10025;
 		 public const ushort M2C_SyncUnitPos = 10026;
 		 public const ushort M2C_CancelAttack = 10027;
-		 public const ushort M2C_FrieBattleEvent_PlayEffect = 10028;
+		 public const ushort M2C_SyncNPBehaveBoolData = 10028;
 	}
 }

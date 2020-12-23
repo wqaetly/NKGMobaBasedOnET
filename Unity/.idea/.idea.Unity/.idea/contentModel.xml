@@ -63,6 +63,7 @@
             <e p="ETModelComponentTemplate.txt" t="Include" />
             <e p="GenerateComponentEditor.cs" t="Include" />
             <e p="NPBehaveActionNodeTemplate.txt" t="Include" />
+            <e p="NPBehaveActionTemplate.txt" t="Include" />
             <e p="Params.cs" t="Include" />
           </e>
           <e p="GlobalConfigEditor" t="Include">
@@ -194,6 +195,7 @@
             </e>
             <e p="Config" t="Include">
               <e p="Client_SkillCanvasConfig.cs" t="Include" />
+              <e p="Server_AICanvasConfig.cs" t="Include" />
               <e p="Server_B2SCollisionRelationConfig.cs" t="Include" />
               <e p="Server_SkillCanvasConfig.cs" t="Include" />
               <e p="UnitConfig.cs" t="Include" />
@@ -301,8 +303,8 @@
                 <e p="M2C_CommonAttackHandler.cs" t="Include" />
                 <e p="M2C_CreateSpilingsHandler.cs" t="Include" />
                 <e p="M2C_CreateUnitsHandler.cs" t="Include" />
-                <e p="M2C_FrieBattleEvent_PlayEffecthANDLER.cs" t="Include" />
                 <e p="M2C_PathfindingResultHandler.cs" t="Include" />
+                <e p="M2C_SyncNPBehaveBoolDataHandler.cs" t="Include" />
                 <e p="M2C_SyncUnitAttributeValueHandler.cs" t="Include" />
                 <e p="M2C_UserInput_SkillCmdHandler.cs" t="Include" />
               </e>
@@ -559,6 +561,7 @@
                   <e p="AFsmStateBase.cs" t="Include" />
                   <e p="IFSMState.cs" t="Include" />
                   <e p="StackFsmComponent.cs" t="Include" />
+                  <e p="StateTypeForAnimExtension.cs" t="Include" />
                   <e p="StateTypes.cs" t="Include" />
                 </e>
                 <e p="CustomState.cs" t="Include" />
@@ -697,6 +700,7 @@
                     <e p="NP_MacroAction.cs" t="Include" />
                     <e p="NP_MoveToRandomPosAction.cs" t="Include" />
                     <e p="NP_SetUnitIdTheColliderBelongToAction.cs" t="Include" />
+                    <e p="NP_SyncNPBBValue_BoolAction.cs" t="Include" />
                     <e p="NP_WaitAChangeableTimeAction.cs" t="Include" />
                   </e>
                 </e>
@@ -809,6 +813,7 @@
             </e>
             <e p="Config" t="Include">
               <e p="Client_SkillCanvasConfig.cs" t="Include" />
+              <e p="Server_AICanvasConfig.cs" t="Include" />
               <e p="Server_B2SCollisionRelationConfig.cs" t="Include" />
               <e p="Server_SkillCanvasConfig.cs" t="Include" />
               <e p="UnitConfig.cs" t="Include" />
@@ -1392,6 +1397,7 @@
                     <e p="NP_PlayAnimationActionNode.cs" t="Include" />
                     <e p="NP_PlayParticalActionNode.cs" t="Include" />
                     <e p="NP_SetUnitIdTheColliderBelongToActionNode.cs" t="Include" />
+                    <e p="NP_SyncNPBBValue_BoolActionNode.cs" t="Include" />
                     <e p="NP_WaitAChangeableTimeActionNode.cs" t="Include" />
                     <e p="NP_WaitNode.cs" t="Include" />
                     <e p="NP_WaitUntilStoppedNode.cs" t="Include" />

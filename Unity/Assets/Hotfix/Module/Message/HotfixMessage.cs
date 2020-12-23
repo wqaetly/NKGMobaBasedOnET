@@ -2782,9 +2782,12 @@ namespace ETHotfix {
 
   }
 
-  public partial class M2C_FrieBattleEvent_PlayEffect : pb::IMessage {
-    private static readonly pb::MessageParser<M2C_FrieBattleEvent_PlayEffect> _parser = new pb::MessageParser<M2C_FrieBattleEvent_PlayEffect>(() => (M2C_FrieBattleEvent_PlayEffect)MessagePool.Instance.Fetch(typeof(M2C_FrieBattleEvent_PlayEffect)));
-    public static pb::MessageParser<M2C_FrieBattleEvent_PlayEffect> Parser { get { return _parser; } }
+  /// <summary>
+  ///同步行为树bool黑板变量
+  /// </summary>
+  public partial class M2C_SyncNPBehaveBoolData : pb::IMessage {
+    private static readonly pb::MessageParser<M2C_SyncNPBehaveBoolData> _parser = new pb::MessageParser<M2C_SyncNPBehaveBoolData>(() => (M2C_SyncNPBehaveBoolData)MessagePool.Instance.Fetch(typeof(M2C_SyncNPBehaveBoolData)));
+    public static pb::MessageParser<M2C_SyncNPBehaveBoolData> Parser { get { return _parser; } }
 
     private int rpcId_;
     public int RpcId {
@@ -2810,42 +2813,33 @@ namespace ETHotfix {
       }
     }
 
-    private long fromUnitId_;
-    public long FromUnitId {
-      get { return fromUnitId_; }
+    private string bBKey_ = "";
+    /// <summary>
+    ///黑板键
+    /// </summary>
+    public string BBKey {
+      get { return bBKey_; }
       set {
-        fromUnitId_ = value;
+        bBKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    private long belongToUnitId_;
-    public long BelongToUnitId {
-      get { return belongToUnitId_; }
+    private bool value_;
+    public bool Value {
+      get { return value_; }
       set {
-        belongToUnitId_ = value;
-      }
-    }
-
-    private string battleKey_ = "";
-    public string BattleKey {
-      get { return battleKey_; }
-      set {
-        battleKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        value_ = value;
       }
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (BattleKey.Length != 0) {
+      if (BBKey.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(BattleKey);
+        output.WriteString(BBKey);
       }
-      if (FromUnitId != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(FromUnitId);
-      }
-      if (BelongToUnitId != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(BelongToUnitId);
+      if (Value != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(Value);
       }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
@@ -2872,22 +2866,18 @@ namespace ETHotfix {
       if (UnitId != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
       }
-      if (FromUnitId != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(FromUnitId);
+      if (BBKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BBKey);
       }
-      if (BelongToUnitId != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BelongToUnitId);
-      }
-      if (BattleKey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BattleKey);
+      if (Value != false) {
+        size += 1 + 1;
       }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
-      battleKey_ = "";
-      fromUnitId_ = 0;
-      belongToUnitId_ = 0;
+      bBKey_ = "";
+      value_ = false;
       rpcId_ = 0;
       actorId_ = 0;
       unitId_ = 0;
@@ -2898,15 +2888,11 @@ namespace ETHotfix {
             input.SkipLastField();
             break;
           case 18: {
-            BattleKey = input.ReadString();
+            BBKey = input.ReadString();
             break;
           }
-          case 24: {
-            FromUnitId = input.ReadInt64();
-            break;
-          }
-          case 32: {
-            BelongToUnitId = input.ReadInt64();
+          case 40: {
+            Value = input.ReadBool();
             break;
           }
           case 720: {

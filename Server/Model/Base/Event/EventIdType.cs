@@ -8,6 +8,7 @@
         public const string CreateCollider = "CreateCollider";
 
         public const string SendBuffInfoToClient = "SendBuffInfoToClient";
+        public const string SendNPBBValue_BoolToClient = "SendNPBBValue_BoolToClient";
 
         //移动到随机位置
         public const string MoveToRandomPos = "MoveToRandomPos";

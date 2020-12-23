@@ -69,6 +69,18 @@ namespace ETHotfix.NKGMOBA.Battle
             MessageHelper.Broadcast(c);
         }
     }
+    
+    /// <summary>
+    /// 向客户端发送黑板bool类型值
+    /// </summary>
+    [Event(EventIdType.SendNPBBValue_BoolToClient)]
+    public class SendNPBBValue_BoolToClient: AEvent<M2C_SyncNPBehaveBoolData>
+    {
+        public override void Run(M2C_SyncNPBehaveBoolData a)
+        {
+            MessageHelper.Broadcast(a);
+        }
+    }
 
     [Event(EventIdType.MoveToRandomPos)]
     public class UnitPathComponentInvoke: AEvent<long, Vector3>
