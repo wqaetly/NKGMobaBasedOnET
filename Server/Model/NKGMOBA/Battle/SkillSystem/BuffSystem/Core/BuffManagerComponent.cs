@@ -79,8 +79,10 @@ namespace ETModel
             }
         }
 
+        #region 添加，移除Buff
+
         /// <summary>
-        /// 添加Buff到真是链表，禁止外部调用
+        /// 添加Buff到真实链表，禁止外部调用
         /// </summary>
         /// <param name="aBuff"></param>
         private void AddBuff2Real(ABuffSystemBase aBuff)
@@ -104,8 +106,26 @@ namespace ETModel
             {
                 this.m_BuffsForFind_BuffId.Add(aBuff.BuffData.BuffId, aBuff);
             }
+
             // Log.Info($"把ID为{aBuff.BuffData.BuffId}的buff加入检索表");
         }
+
+        /// <summary>
+        /// 移除Buff(下一帧才真正移除)
+        /// </summary>
+        /// <param name="buffId">要移除的BuffId</param>
+        public void RemoveBuff(long buffId)
+        {
+            ABuffSystemBase aBuffSystemBase = GetBuffById(buffId);
+            if (aBuffSystemBase != null)
+            {
+                aBuffSystemBase.BuffState = BuffState.Finished;
+            }
+        }
+
+        #endregion
+
+        #region 查询BuffSystem
 
         /// <summary>
         /// 通过作用方式查找Buff
@@ -121,7 +141,7 @@ namespace ETModel
 
             return false;
         }
-        
+
         /// <summary>
         /// 通过标识ID查找Buff
         /// </summary>
@@ -136,7 +156,11 @@ namespace ETModel
 
             return false;
         }
-        
+
+        #endregion
+
+        #region 获取BuffSystem
+
         /// <summary>
         /// 通过作用方式获得Buff
         /// </summary>
@@ -162,6 +186,7 @@ namespace ETModel
             {
                 return _temp;
             }
+
             return null;
         }
 
@@ -179,5 +204,7 @@ namespace ETModel
 
             return null;
         }
+
+        #endregion
     }
 }

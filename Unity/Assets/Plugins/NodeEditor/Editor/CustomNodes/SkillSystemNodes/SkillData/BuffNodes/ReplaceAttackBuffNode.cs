@@ -12,18 +12,18 @@ using Plugins.NodeEditor.Editor.Canvas;
 
 namespace SkillDemo
 {
-    [Node(false, "技能数据部分/_BUFFDES_", typeof (NPBehaveCanvas))]
-    public class _BUFFNAME_Node: BuffNodeBase
+    [Node(false, "技能数据部分/替换攻击流程Buff", typeof (NPBehaveCanvas))]
+    public class ReplaceAttackBuffNode: BuffNodeBase
     {
         public override string GetID => Id;
 
-        public const string Id = "_BUFFDES_";
+        public const string Id = "替换攻击流程Buff";
 
         public NormalBuffNodeData SkillBuffBases =
                 new NormalBuffNodeData()
                 {
-                    BuffDes = "_BUFFDES_",
-                    BuffData = new _BUFFNAME_Data() { BelongBuffSystemType = BuffSystemType._BUFFNAME_System }
+                    BuffDes = "替换攻击流程Buff",
+                    BuffData = new ReplaceAttackBuffData() { BelongBuffSystemType = BuffSystemType.ReplaceAttackBuffSystem }
                 };
 
 

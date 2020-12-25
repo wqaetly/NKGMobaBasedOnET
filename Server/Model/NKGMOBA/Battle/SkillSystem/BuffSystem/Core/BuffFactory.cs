@@ -27,9 +27,10 @@ namespace ETModel
             { BuffSystemType.BindStateBuffSystem, typeof (BindStateBuffSystem) },
             { BuffSystemType.TreatmentBuffSystem, typeof (TreatmentBuffSystem) },
             { BuffSystemType.RefreshTargetBuffTimeBuffSystem, typeof (RefreshTargetBuffTimeBuffSystem) },
-            { BuffSystemType.SendBuffInfoToClientBuffSystem, typeof (SendBuffInfoToClientBuffSystem) }
+            { BuffSystemType.SendBuffInfoToClientBuffSystem, typeof (SendBuffInfoToClientBuffSystem) },
+            { BuffSystemType.ReplaceAttackBuffSystem, typeof (ReplaceAttackBuffSystem) }
         };
-        
+
         /// <summary>
         /// 取得Buff,Buff流程是Acquire->OnInit(CalculateTimerAndOverlay)->AddTemp->经过筛选->AddReal
         /// </summary>
@@ -68,10 +69,10 @@ namespace ETModel
         /// <param name="theUnitFrom">Buff来源者</param>
         /// <param name="theUnitBelongTo">Buff寄生者</param>
         /// <returns></returns>
-        public static ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo, NP_RuntimeTree theSkillCanvasBelongTo)
+        public static ABuffSystemBase AcquireBuff(BuffDataBase buffDataBase, Unit theUnitFrom, Unit theUnitBelongTo,
+        NP_RuntimeTree theSkillCanvasBelongTo)
         {
-            Type targetBuffSystemType = AllBuffSystemTypes[buffDataBase.BelongBuffSystemType];
-            ABuffSystemBase resultBuff = ReferencePool.Acquire(targetBuffSystemType) as ABuffSystemBase;
+            ABuffSystemBase resultBuff = ReferencePool.Acquire(AllBuffSystemTypes[buffDataBase.BelongBuffSystemType]) as ABuffSystemBase;
             resultBuff.BelongtoRuntimeTree = theSkillCanvasBelongTo;
             resultBuff.OnInit(buffDataBase, theUnitFrom, theUnitBelongTo);
             return resultBuff;

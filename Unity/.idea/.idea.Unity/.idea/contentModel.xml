@@ -691,16 +691,22 @@
                     </e>
                     <e p="NP_AddBuffAction.cs" t="Include" />
                     <e p="NP_AddBuffToSpecifiedUnitAction.cs" t="Include" />
+                    <e p="NP_CancelAttackAction.cs" t="Include" />
                     <e p="NP_ChangeUnitPropertyAction.cs" t="Include" />
                     <e p="NP_CheckSkillCanBeCastAction.cs" t="Include" />
+                    <e p="NP_CheckUnitKilledBySpecialMethodAction.cs" t="Include" />
                     <e p="NP_ClassForStoreAction.cs" t="Include" />
                     <e p="NP_CreateColliderDataAction.cs" t="Include" />
                     <e p="NP_DestroySelfAndRelativeCollidersAction.cs" t="Include" />
                     <e p="NP_LogAction.cs" t="Include" />
                     <e p="NP_MacroAction.cs" t="Include" />
                     <e p="NP_MoveToRandomPosAction.cs" t="Include" />
+                    <e p="NP_RegisteReplaceAttackAction.cs" t="Include" />
+                    <e p="NP_RemoveBuffAction.cs" t="Include" />
+                    <e p="NP_ResetAttackCDAction.cs" t="Include" />
                     <e p="NP_SetUnitIdTheColliderBelongToAction.cs" t="Include" />
                     <e p="NP_SyncNPBBValue_BoolAction.cs" t="Include" />
+                    <e p="NP_TriggerAttackCDAction.cs" t="Include" />
                     <e p="NP_WaitAChangeableTimeAction.cs" t="Include" />
                   </e>
                 </e>
@@ -732,6 +738,8 @@
                   </e>
                   <e p="PlayEffectBuffData.cs" t="Include" />
                   <e p="RefreshTargetBuffTimeBuffData.cs" t="Include" />
+                  <e p="ReplaceAnimBuffData.cs" t="Include" />
+                  <e p="ReplaceAttackBuffData.cs" t="Include" />
                   <e p="SendBuffInfoToClientBuffData.cs" t="Include" />
                   <e p="SkillBuffDataBase" t="Include">
                     <e p="BuffDataBase.cs" t="Include" />
@@ -756,6 +764,8 @@
                   <e p="ListenBuffCallBackBuffSystem.cs" t="Include" />
                   <e p="PlayEffectBuffSystem.cs" t="Include" />
                   <e p="RefreshTargetBuffTimeBuffSystem.cs" t="Include" />
+                  <e p="ReplaceAnimBuffSystem.cs" t="Include" />
+                  <e p="ReplaceAttackBuffSystem.cs" t="Include" />
                   <e p="SendBuffInfoToClientBuffSystem.cs" t="Include" />
                   <e p="SustainDamageBuffSystem.cs" t="Include" />
                   <e p="TreatmentBuffSystem.cs" t="Include" />
@@ -1384,11 +1394,13 @@
                   <e p="Task" t="Include">
                     <e p="NP_AddBuffActionNode.cs" t="Include" />
                     <e p="NP_AddBuffToSpecifiedUnitActionNode.cs" t="Include" />
+                    <e p="NP_CancelAttackActionNode.cs" t="Include" />
                     <e p="NP_ChangeBlackValueActionNode.cs" t="Include" />
                     <e p="NP_ChangeTargetSkillBBValueActionNode.cs" t="Include" />
                     <e p="NP_ChangeUnitPropertyActionNode.cs" t="Include" />
                     <e p="NP_CheckBBValueActionNode.cs" t="Include" />
                     <e p="NP_CheckSkillCanBeCastActionNode.cs" t="Include" />
+                    <e p="NP_CheckUnitKilledBySpecialMethodActionNode.cs" t="Include" />
                     <e p="NP_CreateColliderActionNode.cs" t="Include" />
                     <e p="NP_DestroySelfAndRelativeCollidersActionNode.cs" t="Include" />
                     <e p="NP_LogActionNode.cs" t="Include" />
@@ -1396,8 +1408,12 @@
                     <e p="NP_MoveToRandomPosActionNode.cs" t="Include" />
                     <e p="NP_PlayAnimationActionNode.cs" t="Include" />
                     <e p="NP_PlayParticalActionNode.cs" t="Include" />
+                    <e p="NP_RegisteReplaceAttackActionNode.cs" t="Include" />
+                    <e p="NP_RemoveBuffActionNode.cs" t="Include" />
+                    <e p="NP_ResetAttackCDActionNode.cs" t="Include" />
                     <e p="NP_SetUnitIdTheColliderBelongToActionNode.cs" t="Include" />
                     <e p="NP_SyncNPBBValue_BoolActionNode.cs" t="Include" />
+                    <e p="NP_TriggerAttackCDActionNode.cs" t="Include" />
                     <e p="NP_WaitAChangeableTimeActionNode.cs" t="Include" />
                     <e p="NP_WaitNode.cs" t="Include" />
                     <e p="NP_WaitUntilStoppedNode.cs" t="Include" />
@@ -1415,6 +1431,8 @@
                       <e p="ListenBuffCallBackBuffNode.cs" t="Include" />
                       <e p="PlayEffectBuffNode.cs" t="Include" />
                       <e p="RefreshTargetBuffTimeBuffNode.cs" t="Include" />
+                      <e p="ReplaceAnimBuffNode.cs" t="Include" />
+                      <e p="ReplaceAttackBuffNode.cs" t="Include" />
                       <e p="SendBuffInfoToClientBuffNode.cs" t="Include" />
                       <e p="SustainDamageBuffNode.cs" t="Include" />
                       <e p="TreatmentBuffNode.cs" t="Include" />

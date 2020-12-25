@@ -22,7 +22,7 @@ namespace ETHotfix
                 //根据不同名称和ID，创建英雄
                 Unit unit = UnitFactory.CreateHero("NuoKe", unitInfo.UnitId);
                 //因为血条需要，创建热更层unit
-                HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit,true);
+                HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit, true);
 
                 hotfixUnit.AddComponent<FallingFontComponent>();
 
@@ -31,12 +31,12 @@ namespace ETHotfix
 
                 //Log.Info("开始创建行为树");
                 ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
-                NP_RuntimeTreeFactory
-                        .CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10001).NPBehaveId,
-                            configComponent.Get<Client_SkillCanvasConfig>(10001).BelongToSkillId).Start();
-                NP_RuntimeTreeFactory
-                        .CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10002).NPBehaveId,
-                            configComponent.Get<Client_SkillCanvasConfig>(10002).BelongToSkillId).Start();
+                NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10001).NPBehaveId,
+                    configComponent.Get<Client_SkillCanvasConfig>(10001).BelongToSkillId).Start();
+                NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10002).NPBehaveId,
+                    configComponent.Get<Client_SkillCanvasConfig>(10002).BelongToSkillId).Start();
+                NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10003).NPBehaveId,
+                    configComponent.Get<Client_SkillCanvasConfig>(10003).BelongToSkillId).Start();
                 //Log.Info("行为树创建完成");
 
                 //添加英雄数据
@@ -52,7 +52,7 @@ namespace ETHotfix
                 hotfixUnit.AddComponent<HeroHeadBarComponent, Unit, FUI>(unit,
                     Game.Scene.GetComponent<FUIComponent>().Get(unitInfo.UnitId));
             }
-            
+
             if (UnitComponent.Instance.MyUnit == null)
             {
                 // 给自己的Unit添加引用

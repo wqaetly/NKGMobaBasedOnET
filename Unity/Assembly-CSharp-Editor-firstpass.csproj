@@ -97,11 +97,13 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Decorator\NP_ServiceNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_AddBuffActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_AddBuffToSpecifiedUnitActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CancelAttackActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_ChangeBlackValueActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_ChangeTargetSkillBBValueActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_ChangeUnitPropertyActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CheckBBValueActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CheckSkillCanBeCastActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CheckUnitKilledBySpecialMethodActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CreateColliderActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_DestroySelfAndRelativeCollidersActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_LogActionNode.cs" />
@@ -109,8 +111,12 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_MoveToRandomPosActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_PlayAnimationActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_PlayParticalActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_RegisteReplaceAttackActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_RemoveBuffActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_ResetAttackCDActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_SetUnitIdTheColliderBelongToActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_SyncNPBBValue_BoolActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_TriggerAttackCDActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_WaitAChangeableTimeActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_WaitNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_WaitUntilStoppedNode.cs" />
@@ -123,6 +129,8 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ListenBuffCallBackBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\PlayEffectBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\RefreshTargetBuffTimeBuffNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ReplaceAnimBuffNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ReplaceAttackBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\SendBuffInfoToClientBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\SustainDamageBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\TreatmentBuffNode.cs" />

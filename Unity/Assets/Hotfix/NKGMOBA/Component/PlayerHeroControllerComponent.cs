@@ -47,10 +47,20 @@ namespace ETHotfix
             {
                 SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "Q" });
             }
-
+            
+            if (this.userInputComponent.WDown)
+            {
+                SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "W" });
+            }
+            
             if (this.userInputComponent.EDown)
             {
                 SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "E" });
+            }
+            
+            if (this.userInputComponent.RDown)
+            {
+                SessionComponent.Instance.Session.Send(new UserInput_SkillCmd() { Message = "R" });
             }
         }
     }

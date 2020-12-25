@@ -83,9 +83,14 @@ namespace ETHotfix.NKGMOBA.Factory
             NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Server_SkillCanvasConfig>(10002).NPBehaveId,
                         configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId)
                     .Start();
+            
+            NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Server_SkillCanvasConfig>(10004).NPBehaveId,
+                        configComponent.Get<Server_SkillCanvasConfig>(10004).BelongToSkillId)
+                    .Start();
 
             //默认升一级技能
             unit.GetComponent<SkillCanvasManagerComponent>().AddSkillLevel(configComponent.Get<Server_SkillCanvasConfig>(10002).BelongToSkillId);
+            unit.GetComponent<SkillCanvasManagerComponent>().AddSkillLevel(configComponent.Get<Server_SkillCanvasConfig>(10004).BelongToSkillId);
             //Log.Info("行为树创建完成");
 
             //添加栈式状态机组件

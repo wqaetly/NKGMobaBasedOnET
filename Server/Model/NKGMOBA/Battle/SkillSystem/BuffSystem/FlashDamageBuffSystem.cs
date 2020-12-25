@@ -25,8 +25,10 @@ namespace ETModel
 
         public override void OnExecute()
         {
-            DamageData damageData = ReferencePool.Acquire<DamageData>().InitData((this.BuffData as FlashDamageBuffData).BuffDamageTypes,
-                BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData), this.TheUnitFrom, this.TheUnitBelongto);
+            FlashDamageBuffData flashDamageBuffData = (this.BuffData as FlashDamageBuffData);
+            DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(flashDamageBuffData.BuffDamageTypes,
+                BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData), this.TheUnitFrom, this.TheUnitBelongto,
+                flashDamageBuffData.CustomData);
 
             damageData.DamageValue *= (this.BuffData as FlashDamageBuffData).DamageFix;
 
@@ -42,7 +44,7 @@ namespace ETModel
                 //抛出受伤事件
                 Game.Scene.GetComponent<BattleEventSystem>().Run($"{EventIdType.TakeDamage}{this.GetBuffTarget().Id}", damageData);
             }
-            
+
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
             if (this.BuffData.EventIds != null)
             {

@@ -130,7 +130,21 @@ namespace ETModel
         public void PlayAnimByStackFsmCurrent(float fadeDuration = 0.3f, float speed = 1.0f)
         {
             //Log.Info($"动画组件收到通知，当前状态{this.StackFsmComponent.GetCurrentFsmState().StateTypes}");
-            PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateTypes, fadeDuration, speed);
+            //先根据StateType进行动画播放
+            if (this.RuntimeAnimationClips.ContainsKey(this.StackFsmComponent.GetCurrentFsmState().StateTypes.ToString()))
+            {
+                PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateTypes, fadeDuration, speed);
+            }
+            //如果没有的话就根据StateName进行动画播放
+            else if (this.RuntimeAnimationClips.ContainsKey(this.StackFsmComponent.GetCurrentFsmState().StateName.ToString()))
+            {
+                PlayAnim(this.StackFsmComponent.GetCurrentFsmState().StateName, fadeDuration, speed);
+            }
+            //否则播放默认动画
+            else
+            {
+                this.PlayIdelFromStart();
+            }
         }
 
         public override void Dispose()

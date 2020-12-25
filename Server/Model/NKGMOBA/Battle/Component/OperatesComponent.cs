@@ -116,6 +116,17 @@ namespace ETModel
             }
         }
 
+        public Stack<OperateData> GetOperateDatas(OperateType operateType)
+        {
+            if (this.AllOperates.TryGetValue(operateType, out var operateStack))
+            {
+                return operateStack;
+            }
+
+            Log.Error($"未找到类型为{operateType}的栈数据");
+            return null;
+        }
+
         #endregion
 
         #region 生命周期函数
@@ -151,7 +162,7 @@ namespace ETModel
             }
 
             this.AllOperates.Clear();
-            
+
             Game.Scene.GetComponent<BattleEventSystem>().UnRegisterEvent($"{EventIdType.ExcuteDamage}{this.Entity.Id}",
                 Game.EventSystem.GetEvent(EventIdType.ExcuteDamage));
             Game.Scene.GetComponent<BattleEventSystem>()

@@ -19,9 +19,9 @@ namespace NPBehave
         private const float c_GameUpdateInterval = 1 / 30f;
 
         /// <summary>
-        /// 行为树默认更新频率为30hz
+        /// 行为树默认更新频率为15hz
         /// </summary>
-        private const float s_UpdateInterval = c_GameUpdateInterval * 2;
+        private const float s_UpdateInterval = c_GameUpdateInterval * 2 / 2;
 
         /// <summary>
         /// 计时器
@@ -60,7 +60,7 @@ namespace NPBehave
             s_Timer += c_GameUpdateInterval;
             if (s_Timer >= s_UpdateInterval)
             {
-                //默认30hz运行
+                //默认15hz运行
                 clock.Update(s_UpdateInterval);
                 s_Timer = 0;
             }
