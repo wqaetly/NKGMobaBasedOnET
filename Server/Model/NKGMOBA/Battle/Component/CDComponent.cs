@@ -148,6 +148,25 @@ namespace ETModel
 
             Log.Error($"尚未注册id为：{id}，Name为：{name}的CD信息");
         }
+        
+        /// <summary>
+        /// 重置某个CD，仅更新其结果
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        public void ResetCD(long id, string name)
+        {
+            if (this.CDInfos.TryGetValue(id, out var cdInfoDic))
+            {
+                if (cdInfoDic.TryGetValue(name, out var cdInfo))
+                {
+                    cdInfo.Result = true;
+                    return;
+                }
+            }
+
+            Log.Error($"尚未注册id为：{id}，Name为：{name}的CD信息");
+        }
 
         /// <summary>
         /// 获取CD数据

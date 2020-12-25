@@ -9,6 +9,7 @@ using System.Threading;
 using ETModel;
 using ETModel.NKGMOBA.Battle.Fsm;
 using ETModel.NKGMOBA.Battle.State;
+using NPBehave;
 using UnityEngine;
 
 namespace ETHotfix
@@ -67,12 +68,29 @@ namespace ETHotfix
         {
             self.CancellationTokenSource?.Cancel();
             self.CancellationTokenSource = new CancellationTokenSource();
-
-            MessageHelper.Broadcast(new M2C_CommonAttack()
+            //如果有要执行攻击流程替换的内容，就执行替换流程
+            if (self.HasAttackReplaceInfo())
             {
-                AttackCasterId = self.Entity.Id, TargetUnitId = self.CachedUnitForAttack.Id, CanAttack = true
-            });
-            await self.CommonAttack_Internal();
+                Blackboard blackboard = self.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(self.AttackReplaceNPTreeId)
+                        .GetBlackboard();
+                blackboard.Set(self.AttackReplaceBB.BBKey, self.AttackReplaceBB.GetTheBBDataValue<bool>());
+                blackboard.Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
+
+                List<NP_RuntimeTree> targetSkillCanvas = self.Entity.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(10001);
+                foreach (var skillCanva in targetSkillCanvas)
+                {
+                    skillCanva.GetBlackboard().Set("CastNormalAttack", true);
+                    skillCanva.GetBlackboard().Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
+                }
+
+                CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");
+                self.ReSetAttackReplaceInfo();
+            }
+            else
+            {
+                await self.CommonAttack_Internal();
+            }
+
             //此次攻击完成
             self.CancellationTokenSource.Dispose();
             self.CancellationTokenSource = null;
@@ -80,20 +98,17 @@ namespace ETHotfix
 
         private static async ETTask CommonAttack_Internal(this CommonAttackComponent self)
         {
+            MessageHelper.Broadcast(new M2C_CommonAttack()
+            {
+                AttackCasterId = self.Entity.Id, TargetUnitId = self.CachedUnitForAttack.Id, CanAttack = true
+            });
             HeroDataComponent heroDataComponent = self.Entity.GetComponent<HeroDataComponent>();
             float attackPre = heroDataComponent.NodeDataForHero.OriAttackPre / (1 + heroDataComponent.GetAttribute(NumericType.AttackSpeedAdd));
             float attackSpeed = heroDataComponent.GetAttribute(NumericType.AttackSpeed);
 
             //播放动画，如果动画播放完成还不能进行下一次普攻，则播放空闲动画
             await TimerComponent.Instance.WaitAsync((long) (attackPre * 1000), self.CancellationTokenSource.Token);
-
-            List<NP_RuntimeTree> targetSkillCanvas = self.Entity.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(10001);
-            foreach (var skillCanva in targetSkillCanvas)
-            {
-                skillCanva.GetBlackboard().Set("CastNormalAttack", true);
-                skillCanva.GetBlackboard().Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
-            }
-
+            
             DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(BuffDamageTypes.PhysicalSingle | BuffDamageTypes.CommonAttack,
                 heroDataComponent.GetAttribute(NumericType.Attack), self.Entity as Unit, self.CachedUnitForAttack);
 
@@ -112,6 +127,13 @@ namespace ETHotfix
             CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");
             CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
             commonAttackCDInfo.Interval = (long) (1 / attackSpeed - attackPre) * 1000;
+            
+            List<NP_RuntimeTree> targetSkillCanvas = self.Entity.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(10001);
+            foreach (var skillCanva in targetSkillCanvas)
+            {
+                skillCanva.GetBlackboard().Set("CastNormalAttack", true);
+                skillCanva.GetBlackboard().Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
+            }
 
             await TimerComponent.Instance.WaitAsync(commonAttackCDInfo.Interval, self.CancellationTokenSource.Token);
         }
@@ -160,6 +182,12 @@ namespace ETHotfix
         {
             self.CancellationTokenSource?.Cancel();
             self.CancellationTokenSource = null;
+            if (self.HasCancelAttackReplaceInfo())
+            {
+                self.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(self.CancelAttackReplaceNPTreeId).GetBlackboard()
+                        .Set(self.CancelAttackReplaceBB.BBKey, self.CancelAttackReplaceBB.GetTheBBDataValue<bool>());
+            }
+
             //MessageHelper.Broadcast(new M2C_CancelAttack() { UnitId = self.Entity.Id });
         }
 
