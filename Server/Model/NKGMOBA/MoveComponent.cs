@@ -13,6 +13,16 @@ namespace ETModel
         }
     }
     
+    [NumericWatcher(NumericType.Speed)]
+    public class SpeedSynced_MoveComponent: INumericWatcher
+    {
+        public void Run(long id, float value)
+        {
+            Unit unit = UnitComponent.Instance.Get(id);
+            unit.GetComponent<MoveComponent>().CorrectMoveSpeed();
+        }
+    }
+    
     public class MoveComponent: Component
     {
         public Vector3 Target;
@@ -27,6 +37,8 @@ namespace ETModel
 
         // 当前的移动速度
         public float Speed;
+
+        public float distance;
         
         public async ETTask MoveToAsync(Vector3 target, CancellationToken cancellationToken)
         {
@@ -49,15 +61,7 @@ namespace ETModel
             
             // 开启协程移动,每100毫秒移动一次，并且协程取消的时候会计算玩家真实移动
             // 比方说玩家移动了250毫秒,玩家有新的目标,这时旧的移动协程结束,将计算250毫秒移动的位置，而不是300毫秒移动的位置
-            this.StartPos = unit.Position;
-            this.StartTime = TimeHelper.Now();
-            float distance = (this.Target - this.StartPos).magnitude;
-            if (Math.Abs(distance) < 0.0001f)
-            {
-                return;
-            }
-
-            this.needTime = (long) (distance / this.Speed * 1000);
+            this.CorrectMoveSpeed();
             // 协程如果取消，将算出玩家的真实位置，赋值给玩家
             cancellationToken.Register(() =>
             {
@@ -76,7 +80,7 @@ namespace ETModel
             while (true)
             {
                 await TimerComponent.Instance.WaitAsync(10, cancellationToken);
-                this.needTime = (long) (distance / this.Speed * 1000);
+                this.needTime = (long) (this.distance / this.Speed * 1000);
                 
                 long timeNow = TimeHelper.Now();
 
@@ -101,6 +105,17 @@ namespace ETModel
             this.Target = Vector3.zero;
             this.StartPos = Vector3.zero;
             this.StartTime = 0;
+        }
+
+        public void CorrectMoveSpeed()
+        {
+            this.StartPos = this.GetParent<Unit>().Position;
+            
+            this.Speed = this.Entity.GetComponent<HeroDataComponent>().GetAttribute(NumericType.Speed) / 100;
+            this.distance = (this.Target - this.StartPos).magnitude;
+            
+            this.StartTime = TimeHelper.Now();
+            this.needTime = (long) (this.distance / this.Speed * 1000);
         }
     }
 }

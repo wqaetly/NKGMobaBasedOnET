@@ -15,10 +15,6 @@ namespace ETHotfix
         {
             UnitComponent.Instance.Get(message.UnitId).GetComponent<HeroDataComponent>().NumericComponent[(NumericType) message.NumericType] =
                     message.FinalValue;
-            if ((NumericType) message.NumericType == NumericType.Speed)
-            {
-                ETModel.Log.Error($"同步{(NumericType) message.NumericType}，值为{message.FinalValue}");
-            }
             return ETTask.CompletedTask;
         }
     }

@@ -45,6 +45,15 @@ namespace ETHotfix.NKGMOBA.Battle
             MessageHelper.Broadcast(new M2C_SyncUnitAttribute() { UnitId = id, NumericType = (int) NumericType.Attack, FinalValue = value });
         }
     }
+    
+    [NumericWatcher(NumericType.Speed)]
+    public class ChangeSpeed: INumericWatcher
+    {
+        public void Run(long id, float value)
+        {
+            MessageHelper.Broadcast(new M2C_SyncUnitAttribute() { UnitId = id, NumericType = (int) NumericType.Speed, FinalValue = value });
+        }
+    }
 
     [Event(EventIdType.NumericApplyChangeValue)]
     public class SendDamageInfoToClient: AEvent<long, NumericType, float>
