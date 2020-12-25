@@ -25,7 +25,7 @@ namespace ETModel
         /// </summary>
         [LabelText("监听事件Buff")]
         ListenBuffCallBackBuffSystem,
-        
+
         /// <summary>
         /// 绑定一个状态
         /// </summary>
@@ -49,17 +49,23 @@ namespace ETModel
         /// </summary>
         [LabelText("播放特效Buff")]
         PlayEffectBuffSystem,
-        
+
         /// <summary>
         /// 刷新指定Buff的持续时间
         /// </summary>
         [LabelText("刷新Buff")]
         RefreshTargetBuffTimeBuffSystem,
-        
+
         /// <summary>
         /// 往客户端发送Buff信息Buff
         /// </summary>
         [LabelText("同步Buff信息")]
         SendBuffInfoToClientBuffSystem,
+
+        [LabelText("替换攻击流程Buff")]
+        ReplaceAttackBuffSystem,
+
+        [LabelText("临时替换动画资源")]
+        ReplaceAnimBuffSystem
     }
 }

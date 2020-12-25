@@ -23,11 +23,11 @@ namespace ETModel
         public bool LayersIsAbs;
 
         [HideIf("LayersDetermindByBBValue")]
-        [LabelText("添加Buff层数")]
+        [LabelText("操作Buff层数")]
         public int Layers = 1;
 
         [ShowIf("LayersDetermindByBBValue")]
-        [LabelText("添加Buff层数")]
+        [LabelText("操作Buff层数")]
         public NP_BlackBoardRelationData LayersThatDetermindByBBValue;
     }
 

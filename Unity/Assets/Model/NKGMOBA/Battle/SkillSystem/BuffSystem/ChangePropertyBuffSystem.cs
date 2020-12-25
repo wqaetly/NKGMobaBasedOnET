@@ -29,12 +29,28 @@ namespace ETModel
             switch (this.BuffData.BuffWorkType)
             {
                 case BuffWorkTypes.ChangeAttackValue:
-                    ConstantModifier constantModifier = ReferencePool.Acquire<ConstantModifier>();
-                    constantModifier.ChangeValue = BuffDataCalculateHelper.CalculateCurrentData(this,this.BuffData);
-                    dataModifier = constantModifier;
+                    ConstantModifier constantModifier_AttackValue = ReferencePool.Acquire<ConstantModifier>();
+                    constantModifier_AttackValue.ChangeValue = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+                    dataModifier = constantModifier_AttackValue;
 
                     this.GetBuffTarget().GetComponent<DataModifierComponent>()
                             .AddDataModifier(NumericType.AttackAdd.ToString(), dataModifier, NumericType.AttackAdd);
+                    break;
+                case BuffWorkTypes.ChangeMagic:
+                    PercentageModifier constantModifier_Magic = ReferencePool.Acquire<PercentageModifier>();
+                    constantModifier_Magic.Percentage = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+                    this.dataModifier = constantModifier_Magic;
+
+                    this.GetBuffTarget().GetComponent<DataModifierComponent>()
+                            .AddDataModifier(NumericType.Mp.ToString(), this.dataModifier, NumericType.Mp);
+                    break;
+                case BuffWorkTypes.ChangeSpeed:
+                    PercentageModifier percentageModifier_Speed = ReferencePool.Acquire<PercentageModifier>();
+                    percentageModifier_Speed.Percentage = BuffDataCalculateHelper.CalculateCurrentData(this, this.BuffData);
+                    this.dataModifier = percentageModifier_Speed;
+
+                    this.GetBuffTarget().GetComponent<DataModifierComponent>()
+                            .AddDataModifier(NumericType.SpeedAdd.ToString(), this.dataModifier, NumericType.SpeedAdd);
                     break;
             }
 
@@ -53,6 +69,14 @@ namespace ETModel
                         case BuffWorkTypes.ChangeAttackValue:
                             this.GetBuffTarget().GetComponent<DataModifierComponent>()
                                     .RemoveDataModifier(NumericType.AttackAdd.ToString(), dataModifier, NumericType.AttackAdd);
+                            break;
+                        case BuffWorkTypes.ChangeMagic:
+                            this.GetBuffTarget().GetComponent<DataModifierComponent>()
+                                    .RemoveDataModifier(NumericType.Mp.ToString(), dataModifier, NumericType.Mp);
+                            break;
+                        case BuffWorkTypes.ChangeSpeed:
+                            this.GetBuffTarget().GetComponent<DataModifierComponent>()
+                                    .AddDataModifier(NumericType.SpeedAdd.ToString(), this.dataModifier, NumericType.SpeedAdd);
                             break;
                     }
 

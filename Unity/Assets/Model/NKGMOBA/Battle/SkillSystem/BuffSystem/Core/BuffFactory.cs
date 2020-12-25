@@ -27,8 +27,10 @@ namespace ETModel
             { BuffSystemType.BindStateBuffSystem, typeof (BindStateBuffSystem) },
             { BuffSystemType.TreatmentBuffSystem, typeof (TreatmentBuffSystem) },
             { BuffSystemType.PlayEffectBuffSystem, typeof (PlayEffectBuffSystem) },
+            { BuffSystemType.ReplaceAnimBuffSystem, typeof (ReplaceAnimBuffSystem) },
             { BuffSystemType.RefreshTargetBuffTimeBuffSystem, typeof (RefreshTargetBuffTimeBuffSystem) },
-            { BuffSystemType.SendBuffInfoToClientBuffSystem, typeof (SendBuffInfoToClientBuffSystem) }
+            { BuffSystemType.SendBuffInfoToClientBuffSystem, typeof (SendBuffInfoToClientBuffSystem) },
+            { BuffSystemType.ReplaceAttackBuffSystem, typeof (ReplaceAttackBuffSystem) }
         };
 
         /// <summary>
