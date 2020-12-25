@@ -40,7 +40,7 @@ namespace ETModel
         [HideInEditorMode]
         public Unit TheUnitBelongTo;
 
-        public override Func<bool> GetFunc1ToBeDone()
+        public override Action GetActionToBeDone()
         {
             //数据初始化
             this.m_OnAnimFinished = this.OnAnimFinished;
@@ -55,24 +55,14 @@ namespace ETModel
                         playAnimInfo.AnimationClipName;
             }
 
-            this.Func1 = this.PlayAnimation;
-            return this.Func1;
+            this.Action = this.PlayAnimation;
+            return base.GetActionToBeDone();
         }
 
-        private bool PlayAnimation()
+        private void PlayAnimation()
         {
-            if (this.m_Flag > NodeDataForPlayAnims.Count - 1)
-            {
-                this.TheUnitBelongTo.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
-                //Log.Info("栈式状态机已刷新，应该会衔接切换到正确的动画");
-                this.m_Flag = 0;
-                return true;
-            }
-
             HandlePlayAnim(NodeDataForPlayAnims[this.m_Flag].StateTypes, NodeDataForPlayAnims[this.m_Flag].FadeOutTime);
-
             //Log.Info("这次播放的是Q技能动画");
-            return false;
         }
 
         /// <summary>
@@ -99,6 +89,9 @@ namespace ETModel
             }
             else //说明所有动画都已经播放完毕
             {
+                this.TheUnitBelongTo.GetComponent<AnimationComponent>().PlayAnimByStackFsmCurrent();
+                //Log.Info("栈式状态机已刷新，应该会衔接切换到正确的动画");
+                this.m_Flag = 0;
                 m_AnimancerState.OnEnd = null;
                 m_AnimancerState = null;
             }
