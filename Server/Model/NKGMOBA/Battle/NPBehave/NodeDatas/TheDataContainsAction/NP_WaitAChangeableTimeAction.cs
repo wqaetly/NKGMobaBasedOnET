@@ -40,7 +40,7 @@ namespace ETModel
 
         private Blackboard tempBlackboard;
 
-        public override Func<bool, global::NPBehave.Action.Result> GetFunc2ToBeDone()
+        public override Func<bool, Action.Result> GetFunc2ToBeDone()
         {
             this.Func2 = WaitTime;
             return this.Func2;
@@ -52,13 +52,12 @@ namespace ETModel
             {
                 this.m_Unit = UnitComponent.Instance.Get(this.Unitid);
                 tempBlackboard = this.BelongtoRuntimeTree.GetBlackboard();
-
-                this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
                 this.SkillDesNodeData = (SkillDesNodeData) this.BelongtoRuntimeTree.BelongNP_DataSupportor.BuffNodeDataDic[this.DataId.Value];
+                this.lastElapsedTime = SyncContext.Instance.GetClock().ElapsedTime;
                 tempBlackboard.Set(this.TheTimeToWait.BBKey,
                     this.SkillDesNodeData.SkillCD[
                         this.m_Unit.GetComponent<SkillCanvasManagerComponent>().GetSkillLevel(this.SkillIdBelongTo.Value)]);
-                //Log.Info($"第一次设置Q技能CD：{tempBlackboard[NpBlackBoardRelationData.DicKey]}");
+                // Log.Info($"第一次设置Q技能CD：{tempBlackboard.Get<float>(this.TheTimeToWait.BBKey)}");
                 this.hasInit = true;
             }
 
@@ -72,14 +71,14 @@ namespace ETModel
             //     $"在执行改变CD逻辑，此时剩余CD为{tempBlackboard.Get<float>(this.TheTimeToWait.BBKey)}");
             if (tempBlackboard.Get<float>(this.TheTimeToWait.BBKey) <= 0)
             {
-                //Log.Info("CD刷新完成");
+                // Log.Info("CD刷新完成");
                 lastElapsedTime = -1;
-                //下次再运行就会初始化了
+                //下次再运行就会初始化了，即重新从技能数据块获取并填充CD
                 this.hasInit = false;
                 return NPBehave.Action.Result.SUCCESS;
             }
 
-            return NPBehave.Action.Result.FAILED;
+            return NPBehave.Action.Result.PROGRESS;
         }
     }
 }
