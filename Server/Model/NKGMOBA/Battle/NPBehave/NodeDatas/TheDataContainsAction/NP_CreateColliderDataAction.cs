@@ -33,7 +33,6 @@ namespace ETModel
         public void CreateColliderData()
         {
             ConfigComponent configComponent = Game.Scene.GetComponent<ConfigComponent>();
-            Log.Info("创建了碰撞体");
             Game.EventSystem.Run(EventIdType.CreateCollider, this.Unitid, this.CollisionsRelationSupportIdInExcel, this.CollisionRelationNodeDataId,
                 this.ColliderNPBehaveTreeIdInExcel);
         }

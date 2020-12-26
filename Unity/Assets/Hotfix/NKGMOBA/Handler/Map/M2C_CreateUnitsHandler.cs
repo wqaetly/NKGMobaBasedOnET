@@ -27,6 +27,14 @@ namespace ETHotfix
                 hotfixUnit.AddComponent<FallingFontComponent>();
 
                 unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
+                
+                //添加英雄数据
+                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
+                        .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
+
+                UnitComponent.Instance.Get(unitInfo.UnitId)
+                        .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
+                
                 unit.AddComponent<NP_RuntimeTreeManager>();
 
                 //Log.Info("开始创建行为树");
@@ -37,14 +45,9 @@ namespace ETHotfix
                     configComponent.Get<Client_SkillCanvasConfig>(10002).BelongToSkillId).Start();
                 NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10003).NPBehaveId,
                     configComponent.Get<Client_SkillCanvasConfig>(10003).BelongToSkillId).Start();
+                NP_RuntimeTreeFactory.CreateSkillNpRuntimeTree(unit, configComponent.Get<Client_SkillCanvasConfig>(10004).NPBehaveId,
+                    configComponent.Get<Client_SkillCanvasConfig>(10004).BelongToSkillId).Start();
                 //Log.Info("行为树创建完成");
-
-                //添加英雄数据
-                M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
-                        .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
-
-                UnitComponent.Instance.Get(unitInfo.UnitId)
-                        .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
 
                 // 创建头顶Bar
                 Game.EventSystem.Run(EventIdType.CreateHeadBar, unitInfo.UnitId);

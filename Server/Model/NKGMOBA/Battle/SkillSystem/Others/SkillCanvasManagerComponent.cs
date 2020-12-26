@@ -89,7 +89,7 @@ namespace ETModel
 
             if (!this.SkillLevels.ContainsKey(skillId))
             {
-                SkillLevels.Add(skillId, 0);
+                SkillLevels.Add(skillId, 1);
             }
         }
 

@@ -1,93 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9178729680112208409
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99443a18157d4a379184faf15702833a, type: 3}
-  m_Name: "\u78B0\u649E\u6570\u636E\u7ED3\u70B9"
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514BE\u6280\u80FD"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10002
-    - Name: collisionId
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 30001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 3
-      Data: 20003
-    - Name: 
-      Entry: 3
-      Data: 40001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  canvas: {fileID: 11400000}
-  position: {x: 421.99988, y: -568.99994}
-  dynamicConnectionPorts: []
-  connectionPorts:
-  - {fileID: -3653505711752489848}
-  - {fileID: 6855316650829458185}
-  - {fileID: 5330278699686888772}
-  - {fileID: -2108115065813976180}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  PrevSkill: {fileID: -3653505711752489848}
-  NextSkill: {fileID: 6855316650829458185}
-  PrevSkill1: {fileID: 5330278699686888772}
-  NextSkill1: {fileID: -2108115065813976180}
 --- !u!114 &-7759595236755430734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +13,7 @@ MonoBehaviour:
   m_Name: NextB2S1
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -131,7 +43,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -148,6 +60,39 @@ MonoBehaviour:
   side: 4
   sidePosition: 30
   sideOffset: 0
+--- !u!114 &-6269709431162130435
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextB2S
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -4421215008099104566}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextB2SDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections:
+  - {fileID: 3626637699839008237}
+  - {fileID: 6345799756256415136}
+  - {fileID: 353916819699557950}
+  side: 2
+  sidePosition: 30
+  sideOffset: 0
 --- !u!114 &-4719080179046963717
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,61 +106,16 @@ MonoBehaviour:
   m_Name: "\u82F1\u96C4\u78B0\u649E\u6570\u636E\u7ED3\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEFAAAA+otLURr/6oGrjhsBCgAAAG4AbwBkAGUARABhAHQAYQBJAGQAFicAAAAAAAABAQsAAABjAG8AbABsAGkAcwBpAG8AbgBJAGQALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAQAAAAAAAAAcJE4AAAAAAAAHBSsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAAScBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABEQAAAEcAZQBuAGUAcgBhAHQAZQBDAG8AbABsAGkAcwBpAG8AbgABARIAAABDAG8AbABsAGkAcwBpAG8AbgBSAGUAbABhAHQAaQBvAG4AcwAwAQAAAAIAAAAGAAAAAAAAAAAHBQU=
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514B\uFF1A\u81EA\u8EAB"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10006
-    - Name: collisionId
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
-  position: {x: 418.19992, y: -294.60016}
+  position: {x: 420.19992, y: -300.60016}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: -7542428193462948434}
@@ -227,6 +127,40 @@ MonoBehaviour:
   NextSkill: {fileID: -3901893831475625042}
   PrevSkill1: {fileID: 6593347853826865298}
   NextSkill1: {fileID: 9116833099203199288}
+--- !u!114 &-4421215008099104566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99443a18157d4a379184faf15702833a, type: 3}
+  m_Name: "\u82F1\u96C4\u78B0\u649E\u6570\u636E\u7ED3\u70B9"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEIAAAA+otLYkUAgGL9gLB4nmRTTxsBCgAAAG4AbwBkAGUARABhAHQAYQBJAGQAEicAAAAAAAABAQsAAABjAG8AbABsAGkAcwBpAG8AbgBJAGQALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAQAAAAAAAAAcMXUAAAAAAAAHBSsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABEQAAAEcAZQBuAGUAcgBhAHQAZQBDAG8AbABsAGkAcwBpAG8AbgABARIAAABDAG8AbABsAGkAcwBpAG8AbgBSAGUAbABhAHQAaQBvAG4AcwAwAQAAAAIAAAAGAwAAAAAAAAAcJE4AAAAAAAAcI04AAAAAAAAcQZwAAAAAAAAHBQU=
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  canvas: {fileID: 11400000}
+  position: {x: 425.50012, y: -586.3003}
+  dynamicConnectionPorts: []
+  connectionPorts:
+  - {fileID: -1039896820189057550}
+  - {fileID: -6269709431162130435}
+  - {fileID: -1367288028312948110}
+  - {fileID: 3389122000893973782}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  PrevSkill: {fileID: -1039896820189057550}
+  NextSkill: {fileID: -6269709431162130435}
+  PrevSkill1: {fileID: -1367288028312948110}
+  NextSkill1: {fileID: 3389122000893973782}
 --- !u!114 &-4019839847595240064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,68 +174,14 @@ MonoBehaviour:
   m_Name: "\u78B0\u649E\u6570\u636E\u7ED3\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEIAAAA+otLUVIAgGL9gBr/UGDnYBsBCgAAAG4AbwBkAGUARABhAHQAYQBJAGQAEycAAAAAAAABAQsAAABjAG8AbABsAGkAcwBpAG8AbgBJAGQALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAQAAAAAAAAAcI04AAAAAAAAHBSsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABEQAAAEcAZQBuAGUAcgBhAHQAZQBDAG8AbABsAGkAcwBpAG8AbgABARIAAABDAG8AbABsAGkAcwBpAG8AbgBSAGUAbABhAHQAaQBvAG4AcwAwAQAAAAIAAAAGAwAAAAAAAAAcJE4AAAAAAAAcQZwAAAAAAAAcNHUAAAAAAAAHBQU=
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514BR\u6280\u80FD\uFF1A\u6050\u60E7"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10003
-    - Name: collisionId
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20003
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 3
-      Data: 40001
-    - Name: 
-      Entry: 3
-      Data: 30004
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
   position: {x: 420.70007, y: -444.3001}
   dynamicConnectionPorts: []
@@ -328,7 +208,7 @@ MonoBehaviour:
   m_Name: NextB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -358,7 +238,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -375,36 +255,6 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &-3653505711752489848
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: PrevB2S
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: -9178729680112208409}
-  direction: 1
-  maxConnectionCount: 1
-  styleID: PrevB2SDatas
-  color: {r: 0, g: 1, b: 0, a: 1}
-  _connections: []
-  side: 4
-  sidePosition: 30
-  sideOffset: 0
 --- !u!114 &-3567239293330408981
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,7 +268,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -448,7 +298,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -478,7 +328,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -508,7 +358,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -538,67 +388,16 @@ MonoBehaviour:
   m_Name: "\u654C\u65B9\u58EB\u5175"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEEAAAATGW5ZetYdVEbAQoAAABuAG8AZABlAEQAYQB0AGEASQBkACROAAAAAAAALQELAAAAYwBvAGwAbABpAHMAaQBvAG4ASQBkACsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABBAAAAB91fVRVU01PAQESAAAAQwBvAGwAbABpAHMAaQBvAG4AUgBlAGwAYQB0AGkAbwBuAHMALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAAAAAAAAAAAHBQUBAQsAAABtAFAAcgBlAGYAYQBiAGQAYQB0AGEALwIAAAABLgAAAFAAbAB1AGcAaQBuAHMALgBOAG8AZABlAEUAZABpAHQAbwByAC4AQgAyAFMAXwBQAHIAZQBmAGEAYgBEAGEAdABhACwAIABVAG4AaQB0AHkALgBNAG8AZABlAGwAAgAAAAEBDwAAAGMAbwBsAGwAaQBkAGUAcgBOAG8AZABlAEkARABzADABAAAAAwAAAAYAAAAAAAAAAAcFBQ==
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u58EB\u5175"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20004
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: mPrefabdata
-      Entry: 7
-      Data: 2|Plugins.NodeEditor.B2S_PrefabData, Unity.Model
-    - Name: colliderNodeIDs
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
-  position: {x: 738.60004, y: -652.60016}
+  position: {x: 762.60004, y: -655.60016}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 3626637699839008237}
@@ -619,7 +418,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -636,7 +435,7 @@ MonoBehaviour:
   side: 4
   sidePosition: 30
   sideOffset: 0
---- !u!114 &-2108115065813976180
+--- !u!114 &-1367288028312948110
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,10 +445,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NextB2S1
+  m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -657,14 +456,44 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  body: {fileID: -9178729680112208409}
-  direction: 2
+  body: {fileID: -4421215008099104566}
+  direction: 1
   maxConnectionCount: 1
-  styleID: NextB2SDatas
-  color: {r: 0, g: 1, b: 1, a: 1}
+  styleID: PrevB2SDatas
+  color: {r: 0, g: 1, b: 0, a: 1}
   _connections: []
-  side: 1
+  side: 3
   sidePosition: 75
+  sideOffset: 0
+--- !u!114 &-1039896820189057550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: PrevB2S
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -4421215008099104566}
+  direction: 1
+  maxConnectionCount: 1
+  styleID: PrevB2SDatas
+  color: {r: 0, g: 1, b: 0, a: 1}
+  _connections: []
+  side: 4
+  sidePosition: 30
   sideOffset: 0
 --- !u!114 &-33845583896355862
 MonoBehaviour:
@@ -680,8 +509,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNodes: []
-  panOffset: {x: -882.0001, y: 466.8003}
+  selectedNodes:
+  - {fileID: -4421215008099104566}
+  panOffset: {x: -391.00012, y: 462.8003}
   zoom: 1
   boxSelecting: 0
 --- !u!114 &11400000
@@ -697,729 +527,14 @@ MonoBehaviour:
   m_Name: B2S_DariusCollisionRelation
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQENAAAAbQBfAE0AYQBpAG4ARABhAHQAYQBEAGkAYwAvAAAAAAEyAAAARQBUAE0AbwBkAGUAbAAuAEIAMgBTAF8AQwBvAGwAbABpAHMAaQBvAG4AcwBSAGUAbABhAHQAaQBvAG4AUwB1AHAAcABvAHIAdAAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAbAQkAAABTAHUAcABwAG8AcgB0AEkAZAA0AITN5l8AAAEBGQAAAEIAMgBTAF8AQwBvAGwAbABpAHMAaQBvAG4AcwBSAGUAbABhAHQAaQBvAG4ARABpAGMALwEAAAABeAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEQAaQBjAHQAaQBvAG4AYQByAHkAYAAyAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0ALABbAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAABAQgAAABjAG8AbQBwAGEAcgBlAHIALwIAAAABWAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEcAZQBuAGUAcgBpAGMARQBxAHUAYQBsAGkAdAB5AEMAbwBtAHAAYQByAGUAcgBgADEAWwBbAFMAeQBzAHQAZQBtAC4ASQBuAHQANgA0ACwAIABtAHMAYwBvAHIAbABpAGIAXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAgAAAAUGBAAAAAAAAAAELhsBAgAAACQAawARJwAAAAAAAAEBAgAAACQAdgAvAwAAAAEqAAAARQBUAE0AbwBkAGUAbAAuAEIAMgBTAF8AQwBvAGwAbABpAHMAaQBvAG4ASQBuAHMAdABhAG4AYwBlACwAIABVAG4AaQB0AHkALgBNAG8AZABlAGwAAwAAACcBBAAAAEYAbABhAGcAAQUAAAD6i0tRUQCAYv2AGwEKAAAAbgBvAGQAZQBEAGEAdABhAEkAZAARJwAAAAAA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
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: m_MainDataDic
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionsRelationSupport, Unity.Model
-    - Name: SupportId
-      Entry: 3
-      Data: 104936227143709
-    - Name: B2S_CollisionsRelationDic
-      Entry: 7
-      Data: 1|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.B2S_CollisionInstance,
-        Unity.Model]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 2|System.Collections.Generic.GenericEqualityComparer`1[[System.Int64,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10002
-    - Name: $v
-      Entry: 7
-      Data: 3|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514BE\u6280\u80FD"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10002
-    - Name: collisionId
-      Entry: 7
-      Data: 4|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 30001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 3
-      Data: 20003
-    - Name: 
-      Entry: 3
-      Data: 40001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10006
-    - Name: $v
-      Entry: 7
-      Data: 6|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514B\uFF1A\u81EA\u8EAB"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10006
-    - Name: collisionId
-      Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10001
-    - Name: $v
-      Entry: 7
-      Data: 9|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514BQ\u6280\u80FD"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10001
-    - Name: collisionId
-      Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20002
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 11|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 3
-      Data: 20003
-    - Name: 
-      Entry: 3
-      Data: 40001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10003
-    - Name: $v
-      Entry: 7
-      Data: 12|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514BR\u6280\u80FD\uFF1A\u6050\u60E7"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10003
-    - Name: collisionId
-      Entry: 7
-      Data: 13|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20003
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 14|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 3
-      Data: 40001
-    - Name: 
-      Entry: 3
-      Data: 30004
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: m_PrefabDic
-      Entry: 7
-      Data: 15|ETModel.B2S_CollisionsRelationSupport, Unity.Model
-    - Name: SupportId
-      Entry: 3
-      Data: 0
-    - Name: B2S_CollisionsRelationDic
-      Entry: 7
-      Data: 16|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[ETModel.B2S_CollisionInstance,
-        Unity.Model]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 2
-    - Name: 
-      Entry: 12
-      Data: 6
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20004
-    - Name: $v
-      Entry: 7
-      Data: 17|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u58EB\u5175"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20004
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 18|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20003
-    - Name: $v
-      Entry: 7
-      Data: 19|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u82F1\u96C4"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20003
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 20|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 40001
-    - Name: $v
-      Entry: 7
-      Data: 21|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u4E2D\u7ACB\u751F\u7269"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 40001
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 22|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 30004
-    - Name: $v
-      Entry: 7
-      Data: 23|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u53CB\u65B9\u58EB\u5175"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 30004
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 24|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20001
-    - Name: $v
-      Entry: 7
-      Data: 25|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u6C34\u6676"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20001
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u5EFA\u7B51\u7269"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 26|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20002
-    - Name: $v
-      Entry: 7
-      Data: 27|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u9632\u5FA1\u5854"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20002
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u5EFA\u7B51\u7269"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 28|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: m_PrefabDataDic
-      Entry: 7
-      Data: 29|System.Collections.Generic.Dictionary`2[[System.Int64, mscorlib],[System.Collections.Generic.List`1[[System.Int64,
-        mscorlib]], mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 2
-    - Name: 
-      Entry: 12
-      Data: 6
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20004
-    - Name: $v
-      Entry: 7
-      Data: 30|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20003
-    - Name: $v
-      Entry: 7
-      Data: 31|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 10006
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 40001
-    - Name: $v
-      Entry: 7
-      Data: 32|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 30004
-    - Name: $v
-      Entry: 7
-      Data: 33|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20001
-    - Name: $v
-      Entry: 7
-      Data: 34|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20002
-    - Name: $v
-      Entry: 7
-      Data: 35|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: ClassName
-      Entry: 7
-      Data: 36|System.Collections.Generic.Dictionary`2[[System.ValueTuple`2[[System.String,
-        mscorlib],[ETModel.B2S_CollisionInstance, Unity.Model]], mscorlib],[System.String,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 37|System.Collections.Generic.GenericEqualityComparer`1[[System.ValueTuple`2[[System.String,
-        mscorlib],[ETModel.B2S_CollisionInstance, Unity.Model]], mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   editorStates:
   - {fileID: -33845583896355862}
   saveName: Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Saves\B2S_CollisionRelations\B2S_DariusCollisionRelation
@@ -1427,14 +542,14 @@ MonoBehaviour:
   nodes:
   - {fileID: 7784135005481043676}
   - {fileID: 7450639867750030194}
+  - {fileID: -4719080179046963717}
+  - {fileID: 4908138704683202640}
+  - {fileID: 246365750136713269}
+  - {fileID: -4019839847595240064}
   - {fileID: -2726096350637481719}
   - {fileID: 7718446275984819435}
-  - {fileID: -9178729680112208409}
-  - {fileID: 246365750136713269}
-  - {fileID: 4908138704683202640}
-  - {fileID: -4719080179046963717}
   - {fileID: 3139552478084388340}
-  - {fileID: -4019839847595240064}
+  - {fileID: -4421215008099104566}
   nodesForDelete: []
   groups:
   - rect:
@@ -1482,67 +597,16 @@ MonoBehaviour:
   m_Name: "\u4E2D\u7ACB\u751F\u7269"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEEAAAALU7Leh91aXIbAQoAAABuAG8AZABlAEQAYQB0AGEASQBkAEGcAAAAAAAALQELAAAAYwBvAGwAbABpAHMAaQBvAG4ASQBkACsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABBAAAAB91fVRVU01PAQESAAAAQwBvAGwAbABpAHMAaQBvAG4AUgBlAGwAYQB0AGkAbwBuAHMALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAAAAAAAAAAAHBQUBAQsAAABtAFAAcgBlAGYAYQBiAGQAYQB0AGEALwIAAAABLgAAAFAAbAB1AGcAaQBuAHMALgBOAG8AZABlAEUAZABpAHQAbwByAC4AQgAyAFMAXwBQAHIAZQBmAGEAYgBEAGEAdABhACwAIABVAG4AaQB0AHkALgBNAG8AZABlAGwAAgAAAAEBDwAAAGMAbwBsAGwAaQBkAGUAcgBOAG8AZABlAEkARABzADABAAAAAwAAAAYAAAAAAAAAAAcFBQ==
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u4E2D\u7ACB\u751F\u7269"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 40001
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: mPrefabdata
-      Entry: 7
-      Data: 2|Plugins.NodeEditor.B2S_PrefabData, Unity.Model
-    - Name: colliderNodeIDs
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
-  position: {x: 1141.2, y: -655.2001}
+  position: {x: 1147.2, y: -659.2001}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 353916819699557950}
@@ -1563,7 +627,7 @@ MonoBehaviour:
   m_Name: NextB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1577,9 +641,9 @@ MonoBehaviour:
   styleID: NextB2SDatas
   color: {r: 0, g: 1, b: 1, a: 1}
   _connections:
-  - {fileID: 3626637699839008237}
   - {fileID: 6345799756256415136}
   - {fileID: 353916819699557950}
+  - {fileID: 3626637699839008237}
   side: 2
   sidePosition: 30
   sideOffset: 0
@@ -1596,7 +660,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1611,8 +675,8 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 0, a: 1}
   _connections:
   - {fileID: 277848378485710521}
-  - {fileID: 6855316650829458185}
   - {fileID: 7591614167087321204}
+  - {fileID: -6269709431162130435}
   side: 4
   sidePosition: 30
   sideOffset: 0
@@ -1629,7 +693,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1659,68 +723,14 @@ MonoBehaviour:
   m_Name: "\u78B0\u649E\u6570\u636E\u7ED3\u70B9"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEFAAAA+otLUVEAgGL9gBsBCgAAAG4AbwBkAGUARABhAHQAYQBJAGQAEScAAAAAAAABAQsAAABjAG8AbABsAGkAcwBpAG8AbgBJAGQALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAQAAAAAAAAAcIk4AAAAAAAAHBSsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAAScBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABEQAAAEcAZQBuAGUAcgBhAHQAZQBDAG8AbABsAGkAcwBpAG8AbgABARIAAABDAG8AbABsAGkAcwBpAG8AbgBSAGUAbABhAHQAaQBvAG4AcwAwAQAAAAIAAAAGAwAAAAAAAAAcI04AAAAAAAAcQZwAAAAAAAAcJE4AAAAAAAAHBQU=
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u8BFA\u514BQ\u6280\u80FD"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 10001
-    - Name: collisionId
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 20002
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: true
-    - Name: BelongGroup
-      Entry: 1
-      Data: GenerateCollision
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 20004
-    - Name: 
-      Entry: 3
-      Data: 20003
-    - Name: 
-      Entry: 3
-      Data: 40001
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
   position: {x: 430, y: -720}
   dynamicConnectionPorts: []
@@ -1734,6 +744,36 @@ MonoBehaviour:
   NextSkill: {fileID: 277848378485710521}
   PrevSkill1: {fileID: -3388779280108525723}
   NextSkill1: {fileID: 6163760671949895848}
+--- !u!114 &3389122000893973782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: NextB2S1
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  body: {fileID: -4421215008099104566}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: NextB2SDatas
+  color: {r: 0, g: 1, b: 1, a: 1}
+  _connections: []
+  side: 1
+  sidePosition: 75
+  sideOffset: 0
 --- !u!114 &3626637699839008237
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1747,7 +787,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1761,9 +801,9 @@ MonoBehaviour:
   styleID: PrevB2SDatas
   color: {r: 0, g: 1, b: 0, a: 1}
   _connections:
-  - {fileID: 277848378485710521}
-  - {fileID: 6855316650829458185}
   - {fileID: 7591614167087321204}
+  - {fileID: 277848378485710521}
+  - {fileID: -6269709431162130435}
   side: 4
   sidePosition: 30
   sideOffset: 0
@@ -1780,7 +820,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1810,7 +850,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1840,7 +880,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1870,67 +910,16 @@ MonoBehaviour:
   m_Name: "\u53CB\u65B9\u58EB\u5175"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEEAAAAy1O5ZetYdVEbAQoAAABuAG8AZABlAEQAYQB0AGEASQBkADR1AAAAAAAALQELAAAAYwBvAGwAbABpAHMAaQBvAG4ASQBkACsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABBAAAAB91fVRVU01PAQESAAAAQwBvAGwAbABpAHMAaQBvAG4AUgBlAGwAYQB0AGkAbwBuAHMALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAAAAAAAAAAAHBQUBAQsAAABtAFAAcgBlAGYAYQBiAGQAYQB0AGEALwIAAAABLgAAAFAAbAB1AGcAaQBuAHMALgBOAG8AZABlAEUAZABpAHQAbwByAC4AQgAyAFMAXwBQAHIAZQBmAGEAYgBEAGEAdABhACwAIABVAG4AaQB0AHkALgBNAG8AZABlAGwAAgAAAAEBDwAAAGMAbwBsAGwAaQBkAGUAcgBOAG8AZABlAEkARABzADABAAAAAwAAAAYAAAAAAAAAAAcFBQ==
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u53CB\u65B9\u58EB\u5175"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 30004
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: mPrefabdata
-      Entry: 7
-      Data: 2|Plugins.NodeEditor.B2S_PrefabData, Unity.Model
-    - Name: colliderNodeIDs
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
-  position: {x: 1334.8, y: -645.6}
+  position: {x: 1339.8, y: -653.6}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 6183612698654755842}
@@ -1938,36 +927,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   PrevSkill: {fileID: 6183612698654755842}
   PrevSkill1: {fileID: 4281894843339954928}
---- !u!114 &5330278699686888772
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: PrevB2Sl
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: -9178729680112208409}
-  direction: 1
-  maxConnectionCount: 1
-  styleID: PrevB2SDatas
-  color: {r: 0, g: 1, b: 0, a: 1}
-  _connections: []
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
 --- !u!114 &6163760671949895848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1981,7 +940,7 @@ MonoBehaviour:
   m_Name: NextB2S1
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2011,7 +970,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2042,7 +1001,7 @@ MonoBehaviour:
   m_Name: PrevB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2057,7 +1016,7 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 0, a: 1}
   _connections:
   - {fileID: 277848378485710521}
-  - {fileID: 6855316650829458185}
+  - {fileID: -6269709431162130435}
   side: 4
   sidePosition: 30
   sideOffset: 0
@@ -2074,7 +1033,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2091,39 +1050,6 @@ MonoBehaviour:
   side: 3
   sidePosition: 75
   sideOffset: 0
---- !u!114 &6855316650829458185
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NextB2S
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: -9178729680112208409}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: NextB2SDatas
-  color: {r: 0, g: 1, b: 1, a: 1}
-  _connections:
-  - {fileID: 3626637699839008237}
-  - {fileID: 6345799756256415136}
-  - {fileID: 353916819699557950}
-  side: 2
-  sidePosition: 30
-  sideOffset: 0
 --- !u!114 &7450639867750030194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2137,65 +1063,14 @@ MonoBehaviour:
   m_Name: "\u654C\u65B9\u9632\u5FA1\u5854"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEFAAAATGW5ZTKWoV9UWBsBCgAAAG4AbwBkAGUARABhAHQAYQBJAGQAIk4AAAAAAAAtAQsAAABjAG8AbABsAGkAcwBpAG8AbgBJAGQAKwEKAAAARgBvAGwAbABvAHcAVQBuAGkAdAAAJwELAAAAQgBlAGwAbwBuAGcARwByAG8AdQBwAAEDAAAA+l5Re2lyAQESAAAAQwBvAGwAbABpAHMAaQBvAG4AUgBlAGwAYQB0AGkAbwBuAHMALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAAAAAAAAAAAHBQUBAQsAAABtAFAAcgBlAGYAYQBiAGQAYQB0AGEALwIAAAABLgAAAFAAbAB1AGcAaQBuAHMALgBOAG8AZABlAEUAZABpAHQAbwByAC4AQgAyAFMAXwBQAHIAZQBmAGEAYgBEAGEAdABhACwAIABVAG4AaQB0AHkALgBNAG8AZABlAGwAAgAAAAEBDwAAAGMAbwBsAGwAaQBkAGUAcgBOAG8AZABlAEkARABzADABAAAAAwAAAAYAAAAAAAAAAAcFBQ==
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u9632\u5FA1\u5854"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20002
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u5EFA\u7B51\u7269"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: mPrefabdata
-      Entry: 7
-      Data: 2|Plugins.NodeEditor.B2S_PrefabData, Unity.Model
-    - Name: colliderNodeIDs
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
   position: {x: 968.1997, y: -287.6001}
   dynamicConnectionPorts: []
@@ -2218,7 +1093,7 @@ MonoBehaviour:
   m_Name: NextB2S
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2251,70 +1126,16 @@ MonoBehaviour:
   m_Name: "\u654C\u65B9\u82F1\u96C4"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEEAAAATGW5ZfGCxJYbAQoAAABuAG8AZABlAEQAYQB0AGEASQBkACNOAAAAAAAALQELAAAAYwBvAGwAbABpAHMAaQBvAG4ASQBkACsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABBAAAAB91fVRVU01PAQESAAAAQwBvAGwAbABpAHMAaQBvAG4AUgBlAGwAYQB0AGkAbwBuAHMALwEAAAABRQAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEkAbgB0ADYANAAsACAAbQBzAGMAbwByAGwAaQBiAF0AXQAsACAAbQBzAGMAbwByAGwAaQBiAAEAAAAGAAAAAAAAAAAHBQUBAQsAAABtAFAAcgBlAGYAYQBiAGQAYQB0AGEALwIAAAABLgAAAFAAbAB1AGcAaQBuAHMALgBOAG8AZABlAEUAZABpAHQAbwByAC4AQgAyAFMAXwBQAHIAZQBmAGEAYgBEAGEAdABhACwAIABVAG4AaQB0AHkALgBNAG8AZABlAGwAAgAAAAEBDwAAAGMAbwBsAGwAaQBkAGUAcgBOAG8AZABlAEkARABzADABAAAAAwAAAAYBAAAAAAAAABwWJwAAAAAAAAcFBQ==
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u82F1\u96C4"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20003
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u751F\u547D\u5355\u4F4D"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: mPrefabdata
-      Entry: 7
-      Data: 2|Plugins.NodeEditor.B2S_PrefabData, Unity.Model
-    - Name: colliderNodeIDs
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 10006
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
-  position: {x: 949.2, y: -656}
+  position: {x: 959.2, y: -661}
   dynamicConnectionPorts: []
   connectionPorts:
   - {fileID: 6345799756256415136}
@@ -2335,65 +1156,14 @@ MonoBehaviour:
   m_Name: "\u654C\u65B9\u6C34\u6676"
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString: AQEVAAAATQBCADIAUwBDAG8AbABsAGkAcwBpAG8AbgBJAG4AcwB0AGEAbgBjAGUALwAAAAABKgAAAEUAVABNAG8AZABlAGwALgBCADIAUwBfAEMAbwBsAGwAaQBzAGkAbwBuAEkAbgBzAHQAYQBuAGMAZQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAAAAAAnAQQAAABGAGwAYQBnAAEEAAAATGW5ZTRsdmYbAQoAAABuAG8AZABlAEQAYQB0AGEASQBkACFOAAAAAAAALQELAAAAYwBvAGwAbABpAHMAaQBvAG4ASQBkACsBCgAAAEYAbwBsAGwAbwB3AFUAbgBpAHQAACcBCwAAAEIAZQBsAG8AbgBnAEcAcgBvAHUAcAABAwAAAPpeUXtpcgEBEgAAAEMAbwBsAGwAaQBzAGkAbwBuAFIAZQBsAGEAdABpAG8AbgBzAC8BAAAAAUUAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAUwB5AHMAdABlAG0ALgBJAG4AdAA2ADQALAAgAG0AcwBjAG8AcgBsAGkAYgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgAAAAAAAAAABwUFAQELAAAAbQBQAHIAZQBmAGEAYgBkAGEAdABhAC8CAAAAAS4AAABQAGwAdQBnAGkAbgBzAC4ATgBvAGQAZQBFAGQAaQB0AG8AcgAuAEIAMgBTAF8AUAByAGUAZgBhAGIARABhAHQAYQAsACAAVQBuAGkAdAB5AC4ATQBvAGQAZQBsAAIAAAABAQ8AAABjAG8AbABsAGkAZABlAHIATgBvAGQAZQBJAEQAcwAwAQAAAAMAAAAGAAAAAAAAAAAHBQU=
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MB2SCollisionInstance
-      Entry: 7
-      Data: 0|ETModel.B2S_CollisionInstance, Unity.Model
-    - Name: Flag
-      Entry: 1
-      Data: "\u654C\u65B9\u6C34\u6676"
-    - Name: nodeDataId
-      Entry: 3
-      Data: 20001
-    - Name: collisionId
-      Entry: 6
-      Data: 
-    - Name: FollowUnit
-      Entry: 5
-      Data: false
-    - Name: BelongGroup
-      Entry: 1
-      Data: "\u5EFA\u7B51\u7269"
-    - Name: CollisionRelations
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: mPrefabdata
-      Entry: 7
-      Data: 2|Plugins.NodeEditor.B2S_PrefabData, Unity.Model
-    - Name: colliderNodeIDs
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[System.Int64, mscorlib]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   canvas: {fileID: 11400000}
   position: {x: 772.59973, y: -286.0001}
   dynamicConnectionPorts: []
@@ -2416,7 +1186,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2446,7 +1216,7 @@ MonoBehaviour:
   m_Name: PrevB2Sl
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2476,7 +1246,7 @@ MonoBehaviour:
   m_Name: NextB2S1
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
