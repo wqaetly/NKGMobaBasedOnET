@@ -221,12 +221,12 @@ local function genCode(handler)
             local typeName = memberInfo.type
             if memberInfo.group == 0 then
                 if getMemberByName then
-                    if string.find(typeName, 'FUI') then
+                    if string.find(memberInfo.varName, 'FUI') then
                         writer:writeln('\t\t\t%s.Dispose();', memberInfo.varName)
                     end
                     writer:writeln('\t\t\t%s = null;', memberInfo.varName)
                 else
-                    if string.find(typeName, 'FUI') then
+                    if string.find(memberInfo.varName, 'FUI') then
                         writer:writeln('\t\t\t%s.Dispose();', memberInfo.varName)
                     end
                     writer:writeln('\t\t\t%s = null;', memberInfo.varName)
