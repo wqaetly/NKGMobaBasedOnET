@@ -39,8 +39,6 @@ namespace SkillDemo
                 bindStateBuffData.OriBuff = new List<VTD_BuffInfo>();
             }
 
-            bindStateBuffData.OriBuff.Clear();
-
             //备份Buff Id和对应层数键值对，防止被覆写
             Dictionary<long, int> buffDataBack = new Dictionary<long, int>();
 
