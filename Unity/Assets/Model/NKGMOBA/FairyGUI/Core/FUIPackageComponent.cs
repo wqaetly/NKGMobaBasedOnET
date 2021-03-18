@@ -21,6 +21,11 @@ namespace ETModel
             if (Define.ResModeIsEditor)
             {
                 uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
+                //加载依赖的包，否则跨包资源会显示失败，但是一般来说是会把这些公共依赖的资源单独设置一个包，参见官网：https://www.fairygui.com/docs/guide/editor/package.html#%E5%8C%85%E7%9A%84%E4%BE%9D%E8%B5%96
+                foreach (var deps in uiPackage.dependencies)
+                {
+                    AddPackage(deps["name"]);
+                }
             }
             else
             {

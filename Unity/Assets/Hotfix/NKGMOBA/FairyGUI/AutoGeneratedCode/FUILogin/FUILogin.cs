@@ -24,6 +24,7 @@ namespace ETHotfix
         /// </summary>
         public GComponent self;
             
+    public Controller Gro_ShowVersionInfo;
     public GImage n0;
     public GImage n9;
     public GTextField n10;
@@ -35,14 +36,21 @@ namespace ETHotfix
     public GTextField Tex_LoginInfo;
     public Btn_ToTestScene ToTestSceneBtn;
     public GTextInput passwordText;
-    public GGroup n16;
+    public GGroup Gro_LoginInfo;
+    public GImage Gros_Detail_BackGround;
+    public GTextField n26;
+    public GGroup Gro_Detail;
+    public Btn_VersionInfo Btn_VersionInfo;
+    public GGroup Gro_VersionInfo;
     public Transition t0;
     public Transition t1;
+    public Transition Anim_VersionHide;
+    public Transition Anim_VersionShow;
     public const string URL = "ui://2jxt4hn8pdjl9";
 
     private static GObject CreateGObject()
     {
-        return UIPackage.CreateObject(UIPackageName, UIResName);
+	    return UIPackage.CreateObject(UIPackageName, UIResName);
     }
     
     private static void CreateGObjectAsync(UIPackage.CreateObjectCallback result)
@@ -107,6 +115,7 @@ namespace ETHotfix
         if(com != null)
         {	
             
+    		Gro_ShowVersionInfo = com.GetControllerAt(0);
     		n0 = (GImage)com.GetChildAt(0);
     		n9 = (GImage)com.GetChildAt(1);
     		n10 = (GTextField)com.GetChildAt(2);
@@ -118,9 +127,16 @@ namespace ETHotfix
     		Tex_LoginInfo = (GTextField)com.GetChildAt(8);
     		ToTestSceneBtn = Btn_ToTestScene.Create(com.GetChildAt(9));
     		passwordText = (GTextInput)com.GetChildAt(10);
-    		n16 = (GGroup)com.GetChildAt(11);
+    		Gro_LoginInfo = (GGroup)com.GetChildAt(11);
+    		Gros_Detail_BackGround = (GImage)com.GetChildAt(12);
+    		n26 = (GTextField)com.GetChildAt(13);
+    		Gro_Detail = (GGroup)com.GetChildAt(14);
+    		Btn_VersionInfo = Btn_VersionInfo.Create(com.GetChildAt(15));
+    		Gro_VersionInfo = (GGroup)com.GetChildAt(16);
     		t0 = com.GetTransitionAt(0);
     		t1 = com.GetTransitionAt(1);
+    		Anim_VersionHide = com.GetTransitionAt(2);
+    		Anim_VersionShow = com.GetTransitionAt(3);
     	}
 }
        public override void Dispose()
@@ -135,6 +151,7 @@ namespace ETHotfix
             self.Remove();
             self = null;
             
+			Gro_ShowVersionInfo = null;
 			n0 = null;
 			n9 = null;
 			n10 = null;
@@ -146,9 +163,16 @@ namespace ETHotfix
 			Tex_LoginInfo = null;
 			ToTestSceneBtn = null;
 			passwordText = null;
-			n16 = null;
+			Gro_LoginInfo = null;
+			Gros_Detail_BackGround = null;
+			n26 = null;
+			Gro_Detail = null;
+			Btn_VersionInfo = null;
+			Gro_VersionInfo = null;
 			t0 = null;
 			t1 = null;
+			Anim_VersionHide = null;
+			Anim_VersionShow = null;
 		}
 }
 }

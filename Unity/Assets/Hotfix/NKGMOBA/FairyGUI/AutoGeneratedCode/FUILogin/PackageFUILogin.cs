@@ -9,5 +9,6 @@ namespace ETHotfix
         public const string FUILogin_FUILogin = "ui://FUILogin/FUILogin";
         public const string FUILogin_Btn_Registe = "ui://FUILogin/Btn_Registe";
         public const string FUILogin_Btn_Login = "ui://FUILogin/Btn_Login";
+        public const string FUILogin_Btn_VersionInfo = "ui://FUILogin/Btn_VersionInfo";
     }
 }
