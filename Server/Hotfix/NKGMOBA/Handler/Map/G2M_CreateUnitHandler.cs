@@ -23,11 +23,11 @@ namespace ETHotfix
             foreach (Unit u in units)
             {
                 UnitInfo unitInfo = new UnitInfo();
-                if (targetUnit.Id == u.Id)
+                if (u.GetComponent<B2S_RoleCastComponent>() != null)
                 {
                     //TODO 诺手UnitTypeId暂定10001
                     unitInfo.UnitTypeId = 10001;
-                    unitInfo.RoleCamp = (int)targetUnit.GetComponent<B2S_RoleCastComponent>().RoleCamp;
+                    unitInfo.RoleCamp = (int) u.GetComponent<B2S_RoleCastComponent>().RoleCamp;
                 }
 
                 unitInfo.X = u.Position.x;
