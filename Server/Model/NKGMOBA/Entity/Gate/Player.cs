@@ -11,13 +11,16 @@
 
 	public sealed class Player : Entity
 	{
-		public long PlayerID { get; private set; }
+		/// <summary>
+		/// 数据库中玩家Id
+		/// </summary>
+		public long PlayerIdInDB { get; private set; }
 		
 		public long UnitId { get; set; }
 
 		public void Awake(long account)
 		{
-			this.PlayerID = account;
+			this.PlayerIdInDB = account;
 		}
 		
 		public override void Dispose()

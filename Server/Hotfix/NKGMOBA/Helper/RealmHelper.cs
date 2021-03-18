@@ -15,29 +15,31 @@ namespace ETHotfix
         /// <summary>
         /// 将玩家踢下线
         /// </summary>
-        /// <param name="playerID">playerID</param>
+        /// <param name="playerIdInDB">playerID</param>
         /// <returns></returns>
-        public static async ETTask KickOutPlayer(long playerID, PlayerOfflineTypes playerOfflineType)
+        public static async ETTask KickOutPlayer(long playerIdInDB, PlayerOfflineTypes playerOfflineType)
         {
             //验证账号是否在线，在线则踢下线
-            int gateAppId = Game.Scene.GetComponent<OnlineComponent>().GetGateAppId(playerID);
+            int gateAppId = Game.Scene.GetComponent<OnlineComponent>().GetGateAppId(playerIdInDB);
             //Log.Info("开始验证账号");
             if (gateAppId != 0)
             {
-                long m_playerIDInPlayerComponent = Game.Scene.GetComponent<OnlineComponent>().GetPlayerIdInPlayerComponent(playerID);
+                long m_playerIdInPlayerComponent = Game.Scene.GetComponent<OnlineComponent>().GetPlayerIdInPlayerComponent(playerIdInDB);
                 //Log.Info($"发送断线信息,playerID:{playerID}");
-                Player player = Game.Scene.GetComponent<PlayerComponent>().Get(m_playerIDInPlayerComponent);
+                Player player = Game.Scene.GetComponent<PlayerComponent>().Get(m_playerIdInPlayerComponent);
                 if (player == null)
                 {
                     Log.Error("没有获取到player");
+                    return;
                 }
 
-                long playerSessionId = player.GetComponent<UnitGateComponent>().GateSessionActorId;
-                Session lastGateSession = Game.Scene.GetComponent<NetOuterComponent>().Get(playerSessionId);
+                long playerGateSessionId = player.GetComponent<UnitGateComponent>().GateSessionActorId;
+                Session playerGateSession = Game.Scene.GetComponent<NetOuterComponent>().Get(playerGateSessionId);
 
-                if (lastGateSession == null)
+                if (playerGateSession == null)
                 {
                     Log.Info("没有获取到Session");
+                    return;
                 }
 
                 //Log.Info("开始发送下线消息");
@@ -45,11 +47,11 @@ namespace ETHotfix
                 {
                     case PlayerOfflineTypes.NoPlayForLongTime:
                         // 因长时间未操作而强制下线
-                        lastGateSession.Send(new G2C_PlayerOffline() { MPlayerOfflineType = 1 });
+                        playerGateSession.Send(new G2C_PlayerOffline() { MPlayerOfflineType = 1 });
                         break;
                     case PlayerOfflineTypes.SamePlayerLogin:
                         // 因账号冲突而强制下线
-                        lastGateSession.Send(new G2C_PlayerOffline() { MPlayerOfflineType = 2 });
+                        playerGateSession.Send(new G2C_PlayerOffline() { MPlayerOfflineType = 2 });
                         break;
                 }
 
@@ -58,8 +60,7 @@ namespace ETHotfix
                 await TimerComponent.Instance.WaitAsync(1000);
                 
                 //正式移除旧的客户端连接
-                Game.Scene.GetComponent<OnlineComponent>().Remove(playerID);
-                Game.Scene.GetComponent<NetOuterComponent>().Remove(playerSessionId);
+                Game.Scene.GetComponent<NetOuterComponent>().Remove(playerGateSessionId);
                 //Log.Info($"玩家{playerID}已被踢下线");
             }
 

@@ -383,13 +383,13 @@ namespace ETModel
 	{
 		public int RpcId { get; set; }
 
-//playercomponent中的playerID
-//playercomponent中的playerID
-		public long PlayerIDInPlayerComponent { get; set; }
+//playercomponent中的playerId，其实就是Play这个Entiy的Id
+//playercomponent中的playerId，其实就是Play这个Entiy的Id
+		public long PlayerIdInPlayerComponent { get; set; }
 
-//将要上线的PlayerID
-//将要上线的PlayerID
-		public long PlayerId { get; set; }
+//将要上线的PlayerIdInDB，对应此玩家在数据库中账号的Id
+//将要上线的PlayerIdInDB，对应此玩家在数据库中账号的Id
+		public long PlayerIdInDB { get; set; }
 
 		public int GateAppID { get; set; }
 

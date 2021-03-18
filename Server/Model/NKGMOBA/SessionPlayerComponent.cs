@@ -7,7 +7,7 @@
         public override void Dispose()
         {
             base.Dispose();
-            Game.Scene.GetComponent<OnlineComponent>().Remove(this.Player.PlayerID);
+            Game.Scene.GetComponent<OnlineComponent>().Remove(this.Player);
         }
     }
 }

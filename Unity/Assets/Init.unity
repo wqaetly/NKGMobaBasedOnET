@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameDebugConsole
       objectReference: {fileID: 0}
+    - target: {fileID: 132536, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000061035156
@@ -477,8 +481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Step: 0
   UpdateProgress: 0
-  DevelopmentMode: 1
-  EnableVFS: 0
+  DevelopmentMode: 0
+  EnableVFS: 1
   baseURL: http://127.0.0.1:8080/
 --- !u!114 &575235023
 MonoBehaviour:

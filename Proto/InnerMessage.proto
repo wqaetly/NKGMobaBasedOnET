@@ -253,10 +253,10 @@ message G2M_SessionDisconnect // IActorLocationMessage
 message G2R_PlayerOnline // IRequest
 {
     int32 RpcId = 90;
-    //playercomponent中的playerID
-    int64 PlayerIDInPlayerComponent = 4;
-    //将要上线的PlayerID
-    int64 PlayerId = 1;
+    //playercomponent中的playerId，其实就是Play这个Entiy的Id
+    int64 PlayerIdInPlayerComponent = 4;
+    //将要上线的PlayerIdInDB，对应此玩家在数据库中账号的Id
+    int64 PlayerIdInDB = 1;
     int32 GateAppID = 2;
 }
 

@@ -15,7 +15,7 @@ namespace ETModel
     public class OnlineComponent: Component
     {
         /// <summary>
-        /// 记录玩家在线情况的字典，long为playerID（MongoDB数据库中的），long为PlayerComonent的id，int为GateAppID
+        /// 记录玩家在线情况的字典，long为PlayerIdInDB（MongoDB数据库中的账号Id），long为PlayerComonent的id，int为GateAppID
         /// </summary>
         private readonly Dictionary<long, (long, int)> m_dictionarty = new Dictionary<long, (long, int)>();
 
@@ -47,13 +47,13 @@ namespace ETModel
         }
         
         /// <summary>
-        /// 获取在线玩家id(PlayerComponent中的id)
+        /// 根据玩家账号Id(数据库中账号Id)获取在线玩家id(PlayerComponent中的id)
         /// </summary>
-        /// <param name="playerID">玩家ID（MongoDB数据库中的）</param>
+        /// <param name="playerIdInDB">玩家Id（MongoDB数据库中的）</param>
         /// <returns></returns>
-        public long GetPlayerIdInPlayerComponent(long playerID)
+        public long GetPlayerIdInPlayerComponent(long playerIdInDB)
         {
-            if (this.m_dictionarty.TryGetValue(playerID, out (long,int) tempGateAppID))
+            if (this.m_dictionarty.TryGetValue(playerIdInDB, out (long,int) tempGateAppID))
             {
                 return tempGateAppID.Item1;
             }
@@ -65,10 +65,12 @@ namespace ETModel
         /// <summary>
         /// 移除在线玩家
         /// </summary>
-        /// <param name="playerID">玩家ID（MongoDB数据库中的）</param>
-        public void Remove(long playerID)
+        /// <param name="player"></param>
+        public void Remove(Player player)
         {
-            this.m_dictionarty.Remove(playerID);
+            this.m_dictionarty.Remove(player.PlayerIdInDB);
+            //TODO 注意这里是直接找UnitComponent进行Remove Map上的Unit，但正确做法是应该考虑分布式服务器，发送消息给Map，让Map去管理
+            UnitComponent.Instance.Remove(player.UnitId);
         }
     }
 }

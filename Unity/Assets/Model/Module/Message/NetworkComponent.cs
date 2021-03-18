@@ -79,7 +79,7 @@ namespace ETModel
 			{
 				return;
 			}
-			Console.WriteLine("服务端的连接断开");
+
 			this.sessions.Remove(id);
 			session.Dispose();
 		}

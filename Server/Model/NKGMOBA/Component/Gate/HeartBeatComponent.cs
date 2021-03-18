@@ -44,7 +44,6 @@ namespace ETModel
         /// </summary>
         public long CurrentTime = 0;
 
-
         public void Update()
         {
             // 如果没有到达发包时间、直接返回
@@ -55,8 +54,7 @@ namespace ETModel
             if (TimeHelper.ClientNowSeconds() - CurrentTime > OutInterval)
             {
                 //Console.WriteLine("心跳失败");
-                Game.Scene.GetComponent<NetOuterComponent>().Remove(this.Parent.InstanceId);
-                Game.Scene.GetComponent<NetInnerComponent>().Remove(this.Parent.InstanceId);
+                Game.Scene.GetComponent<NetOuterComponent>().Remove(this.GetParent<Entity>().Id);
             }
             else
             {
