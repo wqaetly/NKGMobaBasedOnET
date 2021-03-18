@@ -22,5 +22,10 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
-
+    <ItemGroup>
+        <None Include="..\..\..\RecastNavMesh\libRecastNavDll.dylib">
+            <Link>libRecastNavDll.dylib</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 </Project>
