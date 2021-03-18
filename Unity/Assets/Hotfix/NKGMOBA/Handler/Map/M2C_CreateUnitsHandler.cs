@@ -20,21 +20,21 @@ namespace ETHotfix
                 }
 
                 //根据不同名称和ID，创建英雄
-                Unit unit = UnitFactory.CreateHero("NuoKe", unitInfo.UnitId);
+                Unit unit = UnitFactory.CreateHero(unitInfo.UnitId, "NuoKe", (RoleCamp) unitInfo.RoleCamp);
                 //因为血条需要，创建热更层unit
                 HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit, true);
 
                 hotfixUnit.AddComponent<FallingFontComponent>();
 
                 unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
-                
+
                 //添加英雄数据
                 M2C_GetHeroDataResponse M2C_GetHeroDataResponse = await Game.Scene.GetComponent<SessionComponent>()
                         .Session.Call(new C2M_GetHeroDataRequest() { UnitID = unitInfo.UnitId }) as M2C_GetHeroDataResponse;
 
                 UnitComponent.Instance.Get(unitInfo.UnitId)
                         .AddComponent<HeroDataComponent, long>(M2C_GetHeroDataResponse.HeroDataID);
-                
+
                 unit.AddComponent<NP_RuntimeTreeManager>();
 
                 //Log.Info("开始创建行为树");
@@ -63,6 +63,8 @@ namespace ETHotfix
                         UnitComponent.Instance.Get(PlayerComponent.Instance.MyPlayer.UnitId);
                 UnitComponent.Instance.MyUnit
                         .AddComponent<CameraComponent, Unit>(UnitComponent.Instance.MyUnit);
+
+                UnitComponent.Instance.MyUnit.AddComponent<OutLineComponent>();
 
                 Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }

@@ -51,7 +51,7 @@ namespace ETHotfix
                 return;
             }
 
-            if (targetUnit.GetComponent<B2S_RoleCastComponent>()?.RoleCast == RoleCast.Adverse)
+            if (targetUnit.GetComponent<B2S_RoleCastComponent>().GetRoleCastToTarget(self.GetParent<Unit>()) == RoleCast.Adverse)
             {
                 if (self.CachedUnitForAttack != targetUnit)
                 {

@@ -48,9 +48,8 @@ namespace ETModel
 
                 //用户输入管理组件
                 Game.Scene.AddComponent<UserInputComponent>();
+                Game.Scene.AddComponent<CampAllocManagerComponent>();
                 Game.Scene.AddComponent<MouseTargetSelectorComponent>();
-
-                Game.Scene.AddComponent<OutLineComponent>();
 
                 Game.Scene.AddComponent<GameObjectPool>();
 

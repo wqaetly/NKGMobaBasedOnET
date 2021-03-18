@@ -57,9 +57,11 @@ namespace ETHotfix.NKGMOBA.Factory
             //为Unit附加碰撞体
             CreateColliderUnit(unit, Game.Scene.GetComponent<ConfigComponent>().Get<Server_B2SCollisionRelationConfig>(10001).B2S_CollisionRelationId,
                 10006);
-            
-            unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Friendly;
 
+            unit.AddComponent<B2S_RoleCastComponent>();
+
+            Game.Scene.GetComponent<CampAllocManagerComponent>().AllocRoleCamp(unit);
+            
             unit.AddComponent<NumericComponent>();
             unit.AddComponent<HeroDataComponent, long>(10001);
             unit.AddComponent<ReceiveDamageComponent>();
@@ -127,7 +129,10 @@ namespace ETHotfix.NKGMOBA.Factory
             //增加移动组件
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<BuffManagerComponent>();
-            unit.AddComponent<B2S_RoleCastComponent>().RoleCast = RoleCast.Adverse;
+            unit.AddComponent<B2S_RoleCastComponent>();
+            
+            Game.Scene.GetComponent<CampAllocManagerComponent>().AllocRoleCamp(unit);
+            
             //添加栈式状态机组件
             unit.AddComponent<StackFsmComponent>();
             unit.AddComponent<UnitPathComponent>();

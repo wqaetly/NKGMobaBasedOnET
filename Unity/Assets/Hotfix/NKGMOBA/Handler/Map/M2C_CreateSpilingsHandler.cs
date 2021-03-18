@@ -19,14 +19,16 @@ namespace ETHotfix
             {
                 ETModel.Log.Error("收到的木桩回调信息为空");
             }
+
+            RoleCamp roleCamp = (RoleCamp) spilingInfo.RoleCamp;
             //创建木桩
-            Unit unit = UnitFactory.CreateSpiling(spilingInfo.UnitId, spilingInfo.ParentUnitId);
+            Unit unit = UnitFactory.CreateSpiling(spilingInfo.UnitId, spilingInfo.ParentUnitId, roleCamp);
 
             //因为血条需要，创建热更层unit
             HotfixUnit hotfixUnit = HotfixUnitFactory.CreateHotfixUnit(unit);
             hotfixUnit.AddComponent<FallingFontComponent>();
             unit.Position = new Vector3(spilingInfo.X, spilingInfo.Y, spilingInfo.Z);
-            
+
             unit.AddComponent<HeroDataComponent, long>(10001);
 
             // 创建头顶Bar

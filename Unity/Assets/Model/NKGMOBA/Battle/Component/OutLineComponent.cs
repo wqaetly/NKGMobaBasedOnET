@@ -111,7 +111,7 @@ namespace ETModel
                     GameObject selfUnitGo = m_CachedUnit.GameObject;
                     selfUnitGo.GetRCInternalComponent<Renderer>("Materials").GetPropertyBlock(s_MaterialPropertyBlock);
                     s_MaterialPropertyBlock.SetInt("OutLineWidth", 5);
-                    if (roleCastComponent.RoleCast == RoleCast.Friendly)
+                    if (roleCastComponent.GetRoleCastToTarget(this.GetParent<Unit>()) == RoleCast.Friendly)
                     {
                         s_MaterialPropertyBlock.SetColor("OutLineColor", Color.blue);
                     }

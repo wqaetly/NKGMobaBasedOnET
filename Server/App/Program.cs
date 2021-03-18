@@ -160,6 +160,9 @@ namespace App
                         //添加碰撞检测监听者 TODO 待优化，一场游戏一个碰撞检测监听者
                         Game.Scene.AddComponent<B2S_CollisionListenerComponent>();
 
+                        //阵容分配器，为Unit分配阵容
+                        Game.Scene.AddComponent<CampAllocManagerComponent>();
+
                         //增加碰撞体数据仓库
                         Game.Scene.AddComponent<B2S_ColliderDataRepositoryComponent>();
 

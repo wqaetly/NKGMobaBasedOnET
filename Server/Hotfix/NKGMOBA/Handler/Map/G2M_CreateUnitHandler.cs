@@ -27,6 +27,7 @@ namespace ETHotfix
                 {
                     //TODO 诺手UnitTypeId暂定10001
                     unitInfo.UnitTypeId = 10001;
+                    unitInfo.RoleCamp = (int)targetUnit.GetComponent<B2S_RoleCastComponent>().RoleCamp;
                 }
 
                 unitInfo.X = u.Position.x;

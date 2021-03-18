@@ -561,6 +561,14 @@ namespace ETModel {
       }
     }
 
+    private int roleCamp_;
+    public int RoleCamp {
+      get { return roleCamp_; }
+      set {
+        roleCamp_ = value;
+      }
+    }
+
     private float x_;
     public float X {
       get { return x_; }
@@ -602,6 +610,10 @@ namespace ETModel {
         output.WriteRawTag(37);
         output.WriteFloat(Z);
       }
+      if (RoleCamp != 0) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt32(RoleCamp);
+      }
       if (UnitTypeId != 0L) {
         output.WriteRawTag(152, 6);
         output.WriteInt64(UnitTypeId);
@@ -615,6 +627,9 @@ namespace ETModel {
       }
       if (UnitTypeId != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(UnitTypeId);
+      }
+      if (RoleCamp != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RoleCamp);
       }
       if (X != 0F) {
         size += 1 + 4;
@@ -633,6 +648,7 @@ namespace ETModel {
       x_ = 0f;
       y_ = 0f;
       z_ = 0f;
+      roleCamp_ = 0;
       unitTypeId_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -654,6 +670,10 @@ namespace ETModel {
           }
           case 37: {
             Z = input.ReadFloat();
+            break;
+          }
+          case 728: {
+            RoleCamp = input.ReadInt32();
             break;
           }
           case 792: {
@@ -767,6 +787,14 @@ namespace ETModel {
       }
     }
 
+    private int roleCamp_;
+    public int RoleCamp {
+      get { return roleCamp_; }
+      set {
+        roleCamp_ = value;
+      }
+    }
+
     private float x_;
     public float X {
       get { return x_; }
@@ -812,6 +840,10 @@ namespace ETModel {
         output.WriteRawTag(40);
         output.WriteInt64(ParentUnitId);
       }
+      if (RoleCamp != 0) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt32(RoleCamp);
+      }
     }
 
     public int CalculateSize() {
@@ -821,6 +853,9 @@ namespace ETModel {
       }
       if (ParentUnitId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(ParentUnitId);
+      }
+      if (RoleCamp != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RoleCamp);
       }
       if (X != 0F) {
         size += 1 + 4;
@@ -840,6 +875,7 @@ namespace ETModel {
       y_ = 0f;
       z_ = 0f;
       parentUnitId_ = 0;
+      roleCamp_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -864,6 +900,10 @@ namespace ETModel {
           }
           case 40: {
             ParentUnitId = input.ReadInt64();
+            break;
+          }
+          case 728: {
+            RoleCamp = input.ReadInt32();
             break;
           }
         }

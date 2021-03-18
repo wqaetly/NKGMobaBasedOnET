@@ -34,23 +34,29 @@ namespace ETHotfix
     {
         public void OnCollideStart(Entity b2SCollider)
         {
+            //技能碰撞体自身Unit的B2S_ColliderComponent
+            B2S_ColliderComponent selfColliderComponent = Entity.GetComponent<B2S_ColliderComponent>();
+            //碰撞到的Unit的B2S_ColliderComponent
+            B2S_ColliderComponent targetColliderComponent = b2SCollider.GetComponent<B2S_ColliderComponent>();
+            
+            //自身Collider Unit所归属的Unit
+            Unit selfBelongToUnit = selfColliderComponent.BelongToUnit;
+            //碰撞到的Collider Unit所归属的Unit
+            Unit collisionBelongToUnit = targetColliderComponent.BelongToUnit;
+            
             //Log.Info("诺克Q技能打到了东西");
-            switch (b2SCollider.GetComponent<B2S_ColliderComponent>().B2S_CollisionInstance.nodeDataId)
+            switch (targetColliderComponent.B2S_CollisionInstance.nodeDataId)
             {
                 case 10006: //诺克：自身
                     //TODO:这一步需要在结点编辑器配好支持自动升成
-                    if (b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit.GetComponent<B2S_RoleCastComponent>().RoleCast !=
+                    if (selfBelongToUnit.GetComponent<B2S_RoleCastComponent>()
+                                .GetRoleCastToTarget(collisionBelongToUnit) !=
                         RoleCast.Adverse) return;
-
-                    //自身Collider Unit所归属的Unit
-                    Unit selfBelongToUnit = Entity.GetComponent<B2S_ColliderComponent>().BelongToUnit;
-                    //碰撞到的Collider Unit所归属的Unit
-                    Unit collisionBelongToUnit = b2SCollider.GetComponent<B2S_ColliderComponent>().BelongToUnit;
 
                     //获取目标SkillCanvas
                     List<NP_RuntimeTree> targetSkillCanvas = this.Entity.GetComponent<SkillCanvasManagerComponent>()
                             .GetSkillCanvas(Game.Scene.GetComponent<ConfigComponent>().Get<Server_SkillCanvasConfig>(10006).BelongToSkillId);
-                    
+
                     foreach (var skillCanvas in targetSkillCanvas)
                     {
                         skillCanvas.GetBlackboard().Set("Darius_E_IsHitUnit", true);

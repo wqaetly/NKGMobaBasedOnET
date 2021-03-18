@@ -49,6 +49,7 @@ message G2C_EnterMap // IResponse
 message UnitInfo {
     int64 UnitId = 1;
     int64 UnitTypeId = 99;
+	int32 RoleCamp = 91;
 
     float X = 2;
     float Y = 3;
@@ -65,6 +66,8 @@ message M2C_CreateUnits // IActorMessage
 message SpilingInfo {
     int64 UnitId = 1;
     int64 ParentUnitId = 5;
+	int32 RoleCamp = 91;
+	
     float X = 2;
     float Y = 3;
     float Z = 4;

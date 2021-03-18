@@ -27,6 +27,7 @@ namespace ETHotfix
             spilingInfo.Z = unit.Position.z;
             spilingInfo.UnitId = unit.Id;
             spilingInfo.ParentUnitId = message.ParentUnitId;
+            spilingInfo.RoleCamp = (int) unit.GetComponent<B2S_RoleCastComponent>().RoleCamp;
             createSpilings.Spilings = spilingInfo;
 
             //向所有小骷髅广播信息

@@ -67,7 +67,7 @@ namespace ETModel
             //此处填写Update逻辑
             if (m_UserInputComponent.RightMouseDown && m_MouseTargetSelectorComponent.TargetUnit != null)
             {
-                if (m_MouseTargetSelectorComponent.TargetUnit.GetComponent<B2S_RoleCastComponent>().RoleCast == RoleCast.Adverse)
+                if (m_MouseTargetSelectorComponent.TargetUnit.GetComponent<B2S_RoleCastComponent>().GetRoleCastToTarget(this.GetParent<Unit>()) == RoleCast.Adverse)
                 {
                     m_CachedUnit = m_MouseTargetSelectorComponent.TargetUnit;
                     //向服务端发送攻击请求信息

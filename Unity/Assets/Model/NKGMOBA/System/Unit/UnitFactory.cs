@@ -5,7 +5,7 @@ namespace ETModel
 {
     public static class UnitFactory
     {
-        public static Unit CreateHero(string unitType, long id)
+        public static Unit CreateHero(long id, string unitType, RoleCamp roleCamp)
         {
             PrepareHeroRes(unitType);
             Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(id, unitType);
@@ -25,7 +25,7 @@ namespace ETModel
             //增加Buff管理组件
             unit.AddComponent<BuffManagerComponent>();
             unit.AddComponent<SkillCanvasManagerComponent>();
-            unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Friendly);
+            unit.AddComponent<B2S_RoleCastComponent, RoleCamp>(roleCamp);
             unit.AddComponent<CommonAttackComponent>();
 
             unit.GameObject.GetComponent<MonoBridge>().BelongToUnit = unit;
@@ -39,10 +39,10 @@ namespace ETModel
         /// <param name="selfId">自己的id</param>
         /// <param name="parentId">父实体id</param>
         /// <returns></returns>
-        public static Unit CreateSpiling(long selfId, long parentId)
+        public static Unit CreateSpiling(long selfId, long parentId, RoleCamp roleCamp)
         {
             PrepareHeroRes("NuoKe");
-            
+
             Unit unit = Game.Scene.GetComponent<GameObjectPool>().FetchEntityWithId(selfId, "NuoKe");
             //Log.Info($"此英雄的Model层ID为{unit.Id}");
             unit.AddComponent<DataModifierComponent>();
@@ -55,9 +55,9 @@ namespace ETModel
             unit.AddComponent<TurnComponent>();
             unit.AddComponent<UnitPathComponent>();
             unit.AddComponent<AnimationComponent>();
-            
+
             unit.AddComponent<EffectComponent>();
-            unit.AddComponent<B2S_RoleCastComponent, RoleCast>(RoleCast.Adverse);
+            unit.AddComponent<B2S_RoleCastComponent, RoleCamp>(roleCamp);
             unit.AddComponent<HeroTransformComponent>();
 
             //增加Buff管理组件
