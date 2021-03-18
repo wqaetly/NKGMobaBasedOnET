@@ -78,7 +78,7 @@
 ![image-20200722083928209](https://images.gitee.com/uploads/images/2020/0722/084147_fc1f9a7c_2253805.png)
 ### 登录界面
 
-![image-20200722083940466](https://images.gitee.com/uploads/images/2020/0722/084147_70475065_2253805.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0318/170241_c54f448d_2253805.png "屏幕截图.png")
 ### 大厅界面
 
 ![image-20200722083952197](https://images.gitee.com/uploads/images/2020/0722/084147_e41d6ac7_2253805.png)
