@@ -23,11 +23,16 @@ namespace ETModel
         public override void OnExecute()
         {
             ReplaceAttackBuffData replaceAttackBuffData = this.BuffData as ReplaceAttackBuffData;
-            
+
             Unit unit = UnitComponent.Instance.Get(this.GetBuffTarget().Id);
             unit.GetComponent<CommonAttackComponent>().SetAttackReplaceInfo(this.BelongtoRuntimeTree.Id, replaceAttackBuffData.AttackReplaceInfo);
             unit.GetComponent<CommonAttackComponent>()
                     .SetCancelAttackReplaceInfo(this.BelongtoRuntimeTree.Id, replaceAttackBuffData.CancelReplaceInfo);
+
+            Blackboard blackboard = unit.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(this.BelongtoRuntimeTree.Id).GetBlackboard();
+            blackboard.Set(replaceAttackBuffData.AttackReplaceInfo.BBKey, false);
+            blackboard.Set(replaceAttackBuffData.CancelReplaceInfo.BBKey, false);
+            
             //TODO 从当前战斗Entity获取BattleEventSystem来Run事件
             if (this.BuffData.EventIds != null)
             {
@@ -56,7 +61,7 @@ namespace ETModel
         public override void OnFinished()
         {
             ReplaceAttackBuffData replaceAttackBuffData = this.BuffData as ReplaceAttackBuffData;
-            
+
             Unit unit = UnitComponent.Instance.Get(this.GetBuffTarget().Id);
             unit.GetComponent<CommonAttackComponent>().ReSetAttackReplaceInfo();
             unit.GetComponent<CommonAttackComponent>().ReSetCancelAttackReplaceInfo();

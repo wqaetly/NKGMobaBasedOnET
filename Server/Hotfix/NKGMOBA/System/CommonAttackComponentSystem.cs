@@ -71,20 +71,15 @@ namespace ETHotfix
             //如果有要执行攻击流程替换的内容，就执行替换流程
             if (self.HasAttackReplaceInfo())
             {
-                Blackboard blackboard = self.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(self.AttackReplaceNPTreeId)
-                        .GetBlackboard();
-                blackboard.Set(self.AttackReplaceBB.BBKey, self.AttackReplaceBB.GetTheBBDataValue<bool>());
+                NP_RuntimeTree npRuntimeTree = self.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(self.AttackReplaceNPTreeId);
+                Blackboard blackboard = npRuntimeTree.GetBlackboard();
+
+                blackboard.Set(self.AttackReplaceBB.BBKey, true);
+                blackboard.Set(self.CancelAttackReplaceBB.BBKey, false);
+                
                 blackboard.Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
-
-                List<NP_RuntimeTree> targetSkillCanvas = self.Entity.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(10001);
-                foreach (var skillCanva in targetSkillCanvas)
-                {
-                    skillCanva.GetBlackboard().Set("CastNormalAttack", true);
-                    skillCanva.GetBlackboard().Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
-                }
-
-                CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");
-                self.ReSetAttackReplaceInfo();
+                
+                return;
             }
             else
             {
@@ -108,7 +103,7 @@ namespace ETHotfix
 
             //播放动画，如果动画播放完成还不能进行下一次普攻，则播放空闲动画
             await TimerComponent.Instance.WaitAsync((long) (attackPre * 1000), self.CancellationTokenSource.Token);
-            
+
             DamageData damageData = ReferencePool.Acquire<DamageData>().InitData(BuffDamageTypes.PhysicalSingle | BuffDamageTypes.CommonAttack,
                 heroDataComponent.GetAttribute(NumericType.Attack), self.Entity as Unit, self.CachedUnitForAttack);
 
@@ -127,7 +122,7 @@ namespace ETHotfix
             CDComponent.Instance.TriggerCD(self.Entity.Id, "CommonAttack");
             CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
             commonAttackCDInfo.Interval = (long) (1 / attackSpeed - attackPre) * 1000;
-            
+
             List<NP_RuntimeTree> targetSkillCanvas = self.Entity.GetComponent<SkillCanvasManagerComponent>().GetSkillCanvas(10001);
             foreach (var skillCanva in targetSkillCanvas)
             {
@@ -185,7 +180,9 @@ namespace ETHotfix
             if (self.HasCancelAttackReplaceInfo())
             {
                 self.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(self.CancelAttackReplaceNPTreeId).GetBlackboard()
-                        .Set(self.CancelAttackReplaceBB.BBKey, self.CancelAttackReplaceBB.GetTheBBDataValue<bool>());
+                        .Set(self.AttackReplaceBB.BBKey, false);
+                self.Entity.GetComponent<NP_RuntimeTreeManager>().GetTreeByRuntimeID(self.CancelAttackReplaceNPTreeId).GetBlackboard()
+                        .Set(self.CancelAttackReplaceBB.BBKey, true);
             }
 
             //MessageHelper.Broadcast(new M2C_CancelAttack() { UnitId = self.Entity.Id });
