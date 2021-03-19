@@ -1572,7 +1572,6 @@ MonoBehaviour:
   - {fileID: 4932360729193067694}
   - {fileID: -96243485560317100}
   - {fileID: -2502851080353440962}
-  - {fileID: 3272685594496161953}
   - {fileID: -4423186421792187262}
   - {fileID: 8442583462459217275}
   nodesForDelete: []
@@ -1810,37 +1809,6 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
   PrevNode: {fileID: 2877804701371886638}
---- !u!114 &1090809263492660262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
-  m_Name: NPBehave_PreNode
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  body: {fileID: 3272685594496161953}
-  direction: 1
-  maxConnectionCount: 0
-  styleID: NPBehave_PrevNodeDatas
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _connections:
-  - {fileID: 6935666852624858619}
-  side: 3
-  sidePosition: 75
-  sideOffset: 0
 --- !u!114 &1253782722423851188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2295,10 +2263,10 @@ MonoBehaviour:
   position: {x: -1088.0009, y: 334.59985}
   dynamicConnectionPorts: []
   connectionPorts:
-  - {fileID: 1090809263492660262}
+  - {fileID: 0}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   NodeSize: {x: 150, y: 60}
-  PrevNode: {fileID: 1090809263492660262}
+  PrevNode: {fileID: 0}
 --- !u!114 &3481339310899610863
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2941,7 +2909,7 @@ MonoBehaviour:
   - {fileID: 3570214157398705405}
   - {fileID: 131173420306461427}
   - {fileID: -6374544443772206053}
-  - {fileID: 1090809263492660262}
+  - {fileID: 0}
   side: 1
   sidePosition: 75
   sideOffset: 0

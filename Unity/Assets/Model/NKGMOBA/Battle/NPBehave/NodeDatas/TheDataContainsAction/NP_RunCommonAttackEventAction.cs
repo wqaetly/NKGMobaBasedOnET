@@ -29,15 +29,20 @@ namespace ETModel
             List<NP_RuntimeTree> targetSkillCanvas = unit.GetComponent<SkillCanvasManagerComponent>()
                     .GetSkillCanvas(SkillIdWillbeNotified.GetBlackBoardValue<long>(this.BelongtoRuntimeTree.GetBlackboard()));
 
+            //注意这里一定不能引用本黑板中的Id数据，因为行为树的事件是下一帧才响应的，但是在当前帧的不久后的将来，本黑板相关数据可能会被重置！
+            //List<long> attackIds = CachedUnitIdsForAttack.GetBlackBoardValue<List<long>>(this.BelongtoRuntimeTree.GetBlackboard());
+            List<long> attackIds = new List<long>();
+            foreach (var id in CachedUnitIdsForAttack.GetBlackBoardValue<List<long>>(this.BelongtoRuntimeTree.GetBlackboard()))
+            {
+                attackIds.Add(id);
+            }
             foreach (var skillCanva in targetSkillCanvas)
             {
                 skillCanva.GetBlackboard().Set("CastNormalAttack", true);
-                skillCanva.GetBlackboard().Set("NormalAttackUnitIds",
-                    CachedUnitIdsForAttack.GetBlackBoardValue<List<long>>(this.BelongtoRuntimeTree.GetBlackboard()));
+                skillCanva.GetBlackboard().Set("NormalAttackUnitIds", attackIds);
             }
 
             CDComponent.Instance.TriggerCD(this.BelongtoRuntimeTree.BelongToUnitId, "CommonAttack");
-            unit.GetComponent<CommonAttackComponent>().ReSetAttackReplaceInfo();  
 #endif
         }
     }
