@@ -15,10 +15,14 @@ namespace ETModel
 
         private void Start()
         {
+#if UNITY_EDITOR
             Define.ResModeIsEditor = this.GetComponent<Updater>().DevelopmentMode;
+#else
+            Define.ResModeIsEditor = false;
+#endif
             this.StartAsync().Coroutine();
         }
-        
+
         private async ETVoid StartAsync()
         {
             try
