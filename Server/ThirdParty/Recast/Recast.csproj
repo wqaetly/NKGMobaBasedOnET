@@ -28,4 +28,10 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\..\RecastNavMesh\libRecastNavDll.so">
+            <Link>libRecastNavDll.so</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 </Project>
