@@ -35,7 +35,8 @@ namespace ETHotfix
                 Game.Scene.GetComponent<FUIComponent>().Clear();
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);
             });
-
+            
+            hotfixui.GObject.sortingOrder = 40;
             hotfixui.MakeFullScreen();
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
         }
@@ -69,6 +70,7 @@ namespace ETHotfix
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);
             });
 
+            hotfixui.GObject.sortingOrder = 40;
             hotfixui.MakeFullScreen();
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
         }

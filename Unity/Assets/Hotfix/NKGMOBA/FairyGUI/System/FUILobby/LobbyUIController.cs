@@ -19,7 +19,7 @@ namespace ETHotfix
             var hotfixui = FUILobby.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = FUIPackage.FUILobby;
-            hotfixui.GObject.sortingOrder = 999;
+            hotfixui.GObject.sortingOrder = 30;
             hotfixui.MakeFullScreen();
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
         }

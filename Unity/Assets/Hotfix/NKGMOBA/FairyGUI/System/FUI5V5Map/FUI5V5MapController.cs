@@ -6,6 +6,7 @@
 
 using ETHotfix;
 using ETModel;
+using UnityEngine;
 
 namespace ETHotfix
 {
@@ -20,6 +21,7 @@ namespace ETHotfix
             var hotfixui = FUI5V5Map.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
             hotfixui.Name = FUIPackage.FUI5v5Map;
+            hotfixui.GObject.sortingOrder = 39;
             //设置UI为全屏大小
             hotfixui.MakeFullScreen();
             //将UI注册到FUIComponent中，正式显示
