@@ -69,7 +69,7 @@ namespace ETHotfix
                     //敌方英雄
                     if (Vector3.Distance(selfBelongToUnit.Position, collisionBelongToUnit.Position) >= 2.3f)
                     {
-                        Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
+                        //Log.Info("Q技能打到了诺克，外圈，开始添加Buff");
 
                         foreach (var skillCanvas in targetSkillCanvas)
                         {
@@ -79,7 +79,7 @@ namespace ETHotfix
                     }
                     else
                     {
-                        Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
+                        //Log.Info("Q技能打到了诺克，内圈，开始添加Buff");
 
                         foreach (var skillCanvas in targetSkillCanvas)
                         {

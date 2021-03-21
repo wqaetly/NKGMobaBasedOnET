@@ -77,6 +77,8 @@ namespace ETModel
                 Game.Scene.AddComponent<NP_SyncComponent>();
                 Game.Scene.AddComponent<NP_TreeDataRepository>();
 
+                Game.Scene.AddComponent<SoundComponent>();
+                
                 //战斗系统的事件系统组件
                 Game.Scene.AddComponent<BattleEventSystem>();
                 //UnitFactory.NPBehaveTestCreate();

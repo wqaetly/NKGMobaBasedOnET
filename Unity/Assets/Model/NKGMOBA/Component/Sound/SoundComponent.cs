@@ -147,7 +147,7 @@ namespace ETModel
         /// 无法暂停
         /// 异步加载音效
         /// </summary>
-        public async void PlayClip(string clipName, float volume = 1)
+        public async ETVoid PlayClip(string clipName, float volume = 1)
         {
             SoundData sd = await LoadSound(clipName);
             if (sd != null)
