@@ -67,7 +67,8 @@ namespace ETModel
             //此处填写Update逻辑
             if (m_UserInputComponent.RightMouseDown && m_MouseTargetSelectorComponent.TargetUnit != null)
             {
-                if (m_MouseTargetSelectorComponent.TargetUnit.GetComponent<B2S_RoleCastComponent>().GetRoleCastToTarget(this.GetParent<Unit>()) == RoleCast.Adverse)
+                if (m_MouseTargetSelectorComponent.TargetUnit.GetComponent<B2S_RoleCastComponent>().GetRoleCastToTarget(this.GetParent<Unit>()) ==
+                    RoleCast.Adverse)
                 {
                     m_CachedUnit = m_MouseTargetSelectorComponent.TargetUnit;
                     //向服务端发送攻击请求信息
@@ -104,8 +105,9 @@ namespace ETModel
             //播放动画，如果动画播放完成还不能进行下一次普攻，则播放空闲动画
             this.m_AnimationComponent.PlayAnimAndReturnIdelFromStart(StateTypes.CommonAttack, speed: animationSpeed);
 
+            Game.Scene.GetComponent<SoundComponent>().PlayClip("Sound_Darius_NormalAttack", 0.4f).Coroutine();
+
             await TimerComponent.Instance.WaitAsync((long) (1 / attackSpeed * 1000), cancellationTokenSource.Token);
-            
         }
 
         public void CancelCommonAttack()
