@@ -56,6 +56,8 @@
         /// 点击小地图
         /// </summary>
         public const string ClickSmallMap = "ClickSmallMap";
+        
+        public const string OfflineToLoginUI = "OfflineToLoginUI";
 
         #region 血条相关事件
 

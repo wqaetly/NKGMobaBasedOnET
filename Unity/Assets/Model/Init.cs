@@ -2,6 +2,7 @@
 using System.Threading;
 using ETModel.NKGMOBA.Battle.State;
 using libx;
+using MonKey;
 using NETCoreTest.Framework;
 using UnityEngine;
 
@@ -77,8 +78,10 @@ namespace ETModel
                 Game.Scene.AddComponent<NP_SyncComponent>();
                 Game.Scene.AddComponent<NP_TreeDataRepository>();
 
+                Game.Scene.AddComponent<CDComponent>();
                 Game.Scene.AddComponent<SoundComponent>();
-                
+                Game.Scene.GetComponent<SoundComponent>().PlayMusic("Sound_BGM", 0, 0.4f, true);
+
                 //战斗系统的事件系统组件
                 Game.Scene.AddComponent<BattleEventSystem>();
                 //UnitFactory.NPBehaveTestCreate();

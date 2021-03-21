@@ -18,6 +18,7 @@ MonoBehaviour:
   - Assets/Bundles/FUI
   - Assets/Bundles/Independent
   - Assets/Bundles/SkillConfigs
+  - Assets/Bundles/Sounds
   - Assets/Bundles/Unit
   - Assets/Scenes
   assets:
@@ -31,7 +32,7 @@ MonoBehaviour:
     bundle: 1
     dir: 1
   - name: FUI5v5Map_fui.bytes
-    bundle: 21
+    bundle: 22
     dir: 1
   - name: FUIDialog_atlas0.png
     bundle: 11
@@ -46,7 +47,7 @@ MonoBehaviour:
     bundle: 10
     dir: 1
   - name: FUIHeadBar_atlas0.png
-    bundle: 17
+    bundle: 18
     dir: 1
   - name: FUIHeadBar_fui.bytes
     bundle: 6
@@ -58,10 +59,10 @@ MonoBehaviour:
     bundle: 15
     dir: 1
   - name: FUILogin_atlas0.png
-    bundle: 18
+    bundle: 19
     dir: 1
   - name: FUILogin_fui.bytes
-    bundle: 19
+    bundle: 20
     dir: 1
   - name: Code.prefab
     bundle: 7
@@ -73,14 +74,17 @@ MonoBehaviour:
     bundle: 16
     dir: 2
   - name: SkillConfigs.prefab
-    bundle: 22
+    bundle: 23
     dir: 3
+  - name: Sound.prefab
+    bundle: 17
+    dir: 4
   - name: Unit.prefab
     bundle: 2
-    dir: 4
+    dir: 5
   - name: Map.unity
     bundle: 13
-    dir: 5
+    dir: 6
   bundles:
   - name: 0f6cf85bbba89a77ccb62f33dd8ec980.unity3d
     id: 0
@@ -94,7 +98,7 @@ MonoBehaviour:
     hash: 63f160ea8e3051e29c4ca98b5f654955
   - name: 2efc619c3f96e68cc7eaeffd09addad3.unity3d
     id: 2
-    deps: 050000000e00000014000000
+    deps: 050000000e00000015000000
     len: 1766051
     hash: 3602a74f0e60acb03026db37f5a01328
   - name: 30f3b55f87d3cccda2adda15633e4f8d.unity3d
@@ -105,11 +109,11 @@ MonoBehaviour:
   - name: 452268ef4d438d76cf96cb0b78df9000.unity3d
     id: 4
     deps: 
-    len: 2836
-    hash: 8a2af68edf679f10d905a6abc0c92b3c
+    len: 2829
+    hash: 56b779efa3c26d2ba5a7d34815624c8a
   - name: 46c4e95003ac44aba4f3cbcfeb556b50.unity3d
     id: 5
-    deps: 0e00000014000000
+    deps: 0e00000015000000
     len: 14592
     hash: bbf5a5204430e460f554290225d22f42
   - name: 5154227005c91c567f37838ffbfd1734.unity3d
@@ -120,8 +124,8 @@ MonoBehaviour:
   - name: 55ef7382f5a509040b488a114573722e.unity3d
     id: 7
     deps: 
-    len: 118123
-    hash: e90d650d760a444acf9e252360a65175
+    len: 135836
+    hash: 686c49b4cb592e1bb22082b0cf633062
   - name: 5c4421f6dea60df93b6644a4ec3c6a31.unity3d
     id: 8
     deps: 
@@ -149,7 +153,7 @@ MonoBehaviour:
     hash: 203481c6f9b5a272292e4726d861c1e1
   - name: 79169a669404a1225d75d2917f9af90a.unity3d
     id: 13
-    deps: 050000000e00000014000000
+    deps: 050000000e00000015000000
     len: 43474255
     hash: 9e97d354328b8e199d003c427c5ad52a
   - name: 7af8801dc0041170b2d6bd72bceafa78.unity3d
@@ -167,33 +171,38 @@ MonoBehaviour:
     deps: 
     len: 3383
     hash: 4ce6c1bf0d8d971036b269b2a4da1b94
-  - name: af6f89743b34c79d8e49316598e71e3e.unity3d
+  - name: ac85522a77e2cb773a5ed7a0f5546abf.unity3d
     id: 17
+    deps: 
+    len: 2374052
+    hash: 10d1c11b7a048e35112773cb896762bf
+  - name: af6f89743b34c79d8e49316598e71e3e.unity3d
+    id: 18
     deps: 
     len: 4157
     hash: 52d25fc9cc972dbde465a30a6bef5755
   - name: b4257688263d7fd02cbf56a10c0c1763.unity3d
-    id: 18
+    id: 19
     deps: 
     len: 1359692
     hash: 0aa5c9fbf3a139c447ff6d00d09186fe
   - name: c05a465e4b3066ff5a26fae21ab82ced.unity3d
-    id: 19
+    id: 20
     deps: 
     len: 3599
     hash: ab869b3038f72eb19297e77b1dc9d94b
   - name: d91ee336bc86d1ab40adcd28131940ff.unity3d
-    id: 20
+    id: 21
     deps: 
     len: 287917
     hash: 841c2d7d4951c05574db6ffe7d40e465
   - name: e216a8b81ad4b954b7713a6b1b09fc0c.unity3d
-    id: 21
+    id: 22
     deps: 
     len: 7310
     hash: 1a56312958af278bb03f7ed89e23ac6d
   - name: eb2ac7c19dc81ae65f583fb182991f30.unity3d
-    id: 22
+    id: 23
     deps: 
-    len: 6329
-    hash: 12aab54fd4190f948a897508bfe7988f
+    len: 6664
+    hash: 3ea87ad84b38ce9886248827159e3043

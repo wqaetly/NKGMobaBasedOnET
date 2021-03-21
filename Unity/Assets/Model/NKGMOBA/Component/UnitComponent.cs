@@ -85,6 +85,14 @@ namespace ETModel
             this.m_IdUnits.Remove(id);
             unit?.Dispose();
         }
+        
+        public void RemoveAll()
+        {
+            foreach (var unit in m_IdUnits)
+            {
+                unit.Value?.Dispose();
+            }
+        }
 
         public void RemoveNoDispose(long id)
         {

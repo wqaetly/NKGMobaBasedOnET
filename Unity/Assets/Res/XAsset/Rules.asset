@@ -20,7 +20,7 @@ MonoBehaviour:
   searchPatternPrefab: '*.prefab'
   searchPatternScene: '*.unity'
   searchPatternText: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
-  version: 12
+  version: 13
   scenesInBuild:
   - {fileID: 102900000, guid: e0d691ac8c1d0454ba07089ea820e18a, type: 3}
   rules:
@@ -55,6 +55,10 @@ MonoBehaviour:
   - searchPath: Assets/Bundles/Independent
     searchPattern: '*.prefab'
     nameBy: 1
+    assetBundleName: 
+  - searchPath: Assets/Bundles/Sounds
+    searchPattern: '*'
+    nameBy: 2
     assetBundleName: 
   ruleAssets:
   - bundle: 73118045ec340244b9c3a8780e6f7af9.unity3d
@@ -93,6 +97,8 @@ MonoBehaviour:
     path: Assets/Bundles/Independent/HeroDataConfigs.prefab
   - bundle: eb2ac7c19dc81ae65f583fb182991f30.unity3d
     path: Assets/Bundles/SkillConfigs/SkillConfigs.prefab
+  - bundle: ac85522a77e2cb773a5ed7a0f5546abf.unity3d
+    path: Assets/Bundles/Sounds/Sound.prefab
   - bundle: 2efc619c3f96e68cc7eaeffd09addad3.unity3d
     path: Assets/Bundles/Unit/Unit.prefab
   - bundle: 79169a669404a1225d75d2917f9af90a.unity3d
@@ -158,6 +164,9 @@ MonoBehaviour:
   - name: 79169a669404a1225d75d2917f9af90a.unity3d
     assets:
     - Assets/Scenes/Map.unity
+  - name: ac85522a77e2cb773a5ed7a0f5546abf.unity3d
+    assets:
+    - Assets/Bundles/Sounds/Sound.prefab
   - name: 7af8801dc0041170b2d6bd72bceafa78.unity3d
     assets:
     - Assets/Res/Models/AnimationClips/Materials/Darius_Skin08_TX_CM.dds

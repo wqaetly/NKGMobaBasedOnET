@@ -138,5 +138,16 @@ namespace ETHotfix
                 fuiFallBleed.GObject.y -= 100;
             }
         }
+
+        public override void Dispose()
+        {
+            if(this.IsDisposed) return;
+            base.Dispose();
+            this.completedIdQueue.Clear();
+            this.FuiFallBleedQue.Clear();
+            this.RunnningFuiFallBleedQue.Clear();
+            this.myHero.Dispose();
+            this.myHero = null;
+        }
     }
 }

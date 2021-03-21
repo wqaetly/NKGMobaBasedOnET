@@ -5,6 +5,10 @@ namespace ETHotfix
 {
     public static class MapHelper
     {
+        /// <summary>
+        /// 进入战斗地图
+        /// </summary>
+        /// <returns></returns>
         public static async ETVoid EnterMapAsync()
         {
             try
@@ -33,6 +37,15 @@ namespace ETHotfix
             {
                 Log.Error(e);
             }
+        }
+
+        /// <summary>
+        /// 离开战斗地图
+        /// </summary>
+        public static void ExitMap()
+        {
+            // 创建5v5游戏
+            M5V5GameFactory.DisposeM5V5Game();
         }
     }
 }

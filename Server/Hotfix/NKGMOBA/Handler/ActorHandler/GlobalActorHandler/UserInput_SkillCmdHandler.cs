@@ -18,8 +18,7 @@ namespace ETHotfix
             {
                 VARIABLE.Value.GetBlackboard().Set("PlayerInput",message.Message);
             }
-            //广播技能指令(BroadcastSkillCmd),让客户端行为树做出反应
-            //MessageHelper.Broadcast(m2CUserInputSkillCmd);
+
             await ETTask.CompletedTask;
         }
     }

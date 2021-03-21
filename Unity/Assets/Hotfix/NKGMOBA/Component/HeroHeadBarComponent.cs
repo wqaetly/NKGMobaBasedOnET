@@ -97,5 +97,15 @@ namespace ETHotfix
             this.m_HeadBar.HPGapList.numItems = (int) actual;
             this.m_HeadBar.HPGapList.columnGap = (int) (this.m_HeadBar.HPGapList.actualWidth / (actual - 1));
         }
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed) return;
+            base.Dispose();
+            m_Hero = null;
+            m_HeadBar = null;
+            m_Hero2Screen = Vector2.zero;
+            this.m_HeadBarScreenPos = Vector2.zero;
+        }
     }
 }

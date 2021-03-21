@@ -4,6 +4,7 @@
 // Data: 2019年7月3日 18:59:36
 //------------------------------------------------------------
 
+using System;
 using ETModel;
 
 namespace ETHotfix
@@ -16,8 +17,9 @@ namespace ETHotfix
             Unit unit = UnitComponent.Instance.Get(message.Id);
             foreach (var runtimeTree in unit.GetComponent<NP_RuntimeTreeManager>().RuntimeTrees)
             {
-                runtimeTree.Value.GetBlackboard().Set("PlayerInput",message.Message);
+                runtimeTree.Value.GetBlackboard().Set("PlayerInput", message.Message);
             }
+
             await ETTask.CompletedTask;
         }
     }
