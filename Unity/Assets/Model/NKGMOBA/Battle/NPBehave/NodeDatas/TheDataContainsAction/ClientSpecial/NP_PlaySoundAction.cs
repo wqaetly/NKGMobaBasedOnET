@@ -10,7 +10,7 @@ namespace ETModel
     {
         [LabelText("要播放的音效名称")]
         public string SoundName;
-        
+
         public override Action GetActionToBeDone()
         {
             this.Action = this.PlaySoundAction;
@@ -19,7 +19,7 @@ namespace ETModel
 
         public void PlaySoundAction()
         {
-           Game.Scene.GetComponent<SoundComponent>().PlayClip(this.SoundName).Coroutine();
+            Game.Scene.GetComponent<SoundComponent>().PlayClip(this.SoundName, 0.4f).Coroutine();
         }
     }
 }
