@@ -70,7 +70,8 @@ namespace ETModel
         {
             this.m_dictionarty.Remove(player.PlayerIdInDB);
             //TODO 注意这里是直接找UnitComponent进行Remove Map上的Unit，但正确做法是应该考虑分布式服务器，发送消息给Map，让Map去管理
-            UnitComponent.Instance.Remove(player.UnitId);
+            //TODO 或者说玩家离线时不需要Remove，只在一整局游戏结束之后再Remove，这样更安全
+            //UnitComponent.Instance.Remove(player.UnitId);
         }
     }
 }

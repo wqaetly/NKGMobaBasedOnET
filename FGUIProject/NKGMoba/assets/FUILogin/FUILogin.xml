@@ -16,7 +16,7 @@
     <image id="n15_8ibs" name="passwordInput" src="pdjl8" fileName="UI_LoginInput.PNG" xy="670,300" size="577,56" group="n16_8ibs"/>
     <text id="n18_8ibs" name="accountText" xy="784,216" size="353,44" group="n16_8ibs" fontSize="20" color="#70b7b7" align="center" vAlign="middle" autoSize="none" bold="true" italic="true" text="" input="true" prompt="请输入账号" maxLength="11" keyboardType="4"/>
     <text id="n20_i1ex" name="Tex_LoginInfo" xy="668,377" size="578,43" group="n16_8ibs" fontSize="30" color="#0ffefe" align="center" vAlign="middle" autoSize="none" text="账号不能为空！"/>
-    <component id="n21_10qrs" name="ToTestSceneBtn" src="10qrsd" fileName="Btn_ToTestScene.xml" xy="884,580" group="n16_8ibs">
+    <component id="n21_10qrs" name="ToTestSceneBtn" src="10qrsd" fileName="Btn_ToTestScene.xml" xy="884,580" group="n16_8ibs" visible="false">
       <Button title="前往训练营" titleColor="#00ff99" titleFontSize="30"/>
     </component>
     <text id="n19_8ibs" name="passwordText" xy="783,307" size="356,43" group="n16_8ibs" fontSize="20" color="#70b7b7" align="center" vAlign="middle" autoSize="none" bold="true" italic="true" text="" input="true" prompt="请输入密码" maxLength="11" keyboardType="1" password="true"/>
@@ -27,7 +27,7 @@
     <text id="n26_r0zz" name="n26" xy="53,54" size="456,181" group="n27_r0zz" fontSize="18" color="#0099ff" ubb="true" autoSize="none" strokeColor="#000000" strokeSize="2" text="本项目完全[color=#33ff00]开源免费[/color]，美术资源皆来源网络，[color=#ff0000]仅供学习交流使用，严禁用于商业用途，否则造成的任何法律纠纷本人概不负责[/color]。&#xA;开源地址：[url=https://gitee.com/NKG_admin/NKGMobaBasedOnET]https://gitee.com/NKG_admin/NKGMobaBasedOnET[/url]"/>
     <group id="n27_r0zz" name="Gro_Detail" xy="46,47" size="470,198" group="n25_r0zz" advanced="true"/>
     <component id="n23_r0zz" name="Btn_VersionInfo" src="r0zzsf" fileName="Btn_VersionInfo.xml" xy="22,22" size="40,40" group="n25_r0zz">
-      <Button checked="true" controller="Gro_ShowVersionInfo" page="1"/>
+      <Button controller="Gro_ShowVersionInfo" page="1"/>
     </component>
     <group id="n25_r0zz" name="Gro_VersionInfo" xy="22,22" size="494,223" advanced="true">
       <relation target="" sidePair="left-left,top-top"/>

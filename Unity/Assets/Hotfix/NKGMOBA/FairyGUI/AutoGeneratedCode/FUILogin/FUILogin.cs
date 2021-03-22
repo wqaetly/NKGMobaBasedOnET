@@ -50,7 +50,7 @@ namespace ETHotfix
 
     private static GObject CreateGObject()
     {
-	    return UIPackage.CreateObject(UIPackageName, UIResName);
+        return UIPackage.CreateObject(UIPackageName, UIResName);
     }
     
     private static void CreateGObjectAsync(UIPackage.CreateObjectCallback result)
