@@ -31,24 +31,22 @@ namespace ETHotfix
                 ETModel.Game.Hotfix.FixedUpdate = () => { FixedUpdate(); };
                 ETModel.Game.Hotfix.LateUpdate = () => { LateUpdate(); };
                 ETModel.Game.Hotfix.OnApplicationQuit = () => { OnApplicationQuit(); };
-                
+
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();
                 Game.Scene.AddComponent<NumericWatcherComponent>();
-                
+
                 Game.Scene.AddComponent<ConfigComponent>();
                 //增加FGUI组件
                 Game.Scene.AddComponent<FUIComponent>();
                 //初始化UI操作
-                Game.Scene.AddComponent<FUIInitComponent>().Init();
+                await Game.Scene.AddComponent<FUIInitComponent>().Init();
                 //增加UI栈组件，方便管理UI
                 Game.Scene.AddComponent<FUIStackComponent>();
                 //显示登录UI
                 Game.EventSystem.Run(EventIdType.ShowLoginUI);
-
                 //至此，检查更新界面使命正式结束
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CheckForUpdateFinish);
-                ETModel.Log.Info("关闭了资源热更新界面");
                 //关闭转圈圈
                 ETModel.Game.EventSystem.Run(ETModel.EventIdType.CloseLoadingUI);
             }

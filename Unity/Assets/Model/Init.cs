@@ -45,6 +45,8 @@ namespace ETModel
                 Game.Scene.AddComponent<NetOuterComponent>();
                 Game.Scene.AddComponent<ResourcesComponent>();
                 Game.Scene.AddComponent<PlayerComponent>();
+
+                Game.Scene.AddComponent<CoroutineLockComponent>();
                 Game.Scene.AddComponent<UnitComponent>();
 
                 Game.Scene.AddComponent<FUIPackageComponent>();

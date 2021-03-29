@@ -3,64 +3,73 @@ using UnityEngine;
 
 namespace FairyGUI
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class CompositeMesh : IMeshFactory, IHitTest
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		public readonly List<IMeshFactory> elements;
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CompositeMesh : IMeshFactory, IHitTest
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public readonly List<IMeshFactory> elements;
 
-		public CompositeMesh()
-		{
-			elements = new List<IMeshFactory>();
-		}
+        /// <summary>
+        /// If it is -1, means all elements are active, otherwise, only the specific element is active
+        /// </summary>
+        public int activeIndex;
 
-		public void OnPopulateMesh(VertexBuffer vb)
-		{
-			int cnt = elements.Count;
-			if (cnt == 0)
-				elements[0].OnPopulateMesh(vb);
-			else
-			{
-				VertexBuffer vb2 = VertexBuffer.Begin();
-				vb2.contentRect = vb.contentRect;
-				vb2.uvRect = vb.uvRect;
-				vb2.vertexColor = vb.vertexColor;
+        public CompositeMesh()
+        {
+            elements = new List<IMeshFactory>();
+            activeIndex = -1;
+        }
 
-				for (int i = 0; i < cnt; i++)
-				{
-					vb2.Clear();
-					elements[i].OnPopulateMesh(vb2);
-					vb.Append(vb2);
-				}
+        public void OnPopulateMesh(VertexBuffer vb)
+        {
+            int cnt = elements.Count;
+            if (cnt == 1)
+                elements[0].OnPopulateMesh(vb);
+            else
+            {
+                VertexBuffer vb2 = VertexBuffer.Begin(vb);
 
-				vb2.End();
-			}
-		}
+                for (int i = 0; i < cnt; i++)
+                {
+                    if (activeIndex == -1 || i == activeIndex)
+                    {
+                        vb2.Clear();
+                        elements[i].OnPopulateMesh(vb2);
+                        vb.Append(vb2);
+                    }
+                }
 
-		public bool HitTest(Rect contentRect, Vector2 point)
-		{
-			if (!contentRect.Contains(point))
-				return false;
+                vb2.End();
+            }
+        }
 
-			bool flag = false;
-			int cnt = elements.Count;
-			for (int i = 0; i < cnt; i++)
-			{
-				IHitTest ht = elements[i] as IHitTest;
-				if (ht != null)
-				{
-					if (ht.HitTest(contentRect, point))
-						return true;
-				}
-				else
-					flag = true;
-			}
+        public bool HitTest(Rect contentRect, Vector2 point)
+        {
+            if (!contentRect.Contains(point))
+                return false;
 
-			return flag;
-		}
-	}
+            bool flag = false;
+            int cnt = elements.Count;
+            for (int i = 0; i < cnt; i++)
+            {
+                if (activeIndex == -1 || i == activeIndex)
+                {
+                    IHitTest ht = elements[i] as IHitTest;
+                    if (ht != null)
+                    {
+                        if (ht.HitTest(contentRect, point))
+                            return true;
+                    }
+                    else
+                        flag = true;
+                }
+            }
+
+            return flag;
+        }
+    }
 }

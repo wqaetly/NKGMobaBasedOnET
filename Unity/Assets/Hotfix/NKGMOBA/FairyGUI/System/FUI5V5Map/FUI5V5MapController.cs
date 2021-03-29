@@ -16,7 +16,7 @@ namespace ETHotfix
         public override void Run()
         {
             //加载UI资源
-            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUI5v5Map);
+            this.RunInternal().Coroutine();
             //创建UI实例
             var hotfixui = FUI5V5Map.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理
@@ -26,6 +26,11 @@ namespace ETHotfix
             hotfixui.MakeFullScreen();
             //将UI注册到FUIComponent中，正式显示
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
+        }
+
+        private async ETVoid RunInternal()
+        {
+            await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIPackage.FUI5v5Map);;
         }
     }
 

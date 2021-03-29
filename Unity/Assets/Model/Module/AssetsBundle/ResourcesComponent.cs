@@ -3,8 +3,36 @@ using UnityEngine;
 
 namespace ETModel
 {
+    public class ResourcesComponentAwakeSystem: AwakeSystem<ResourcesComponent>
+    {
+        public override void Awake(ResourcesComponent self)
+        {
+            self.Awake();
+        }
+    }
+    
     public class ResourcesComponent: Component
     {
+        private static ResourcesComponent m_Instance;
+
+        public static ResourcesComponent Instance
+        {
+            get
+            {
+                if (m_Instance == null)
+                {
+                    Log.Error("请先注册ResourcesComponent到Game.Scene中");
+                    
+                    return null;
+                }
+                else
+                {
+                    return m_Instance;
+                }
+
+            }
+        }
+        
         #region Assets
 
         /// <summary>
@@ -29,7 +57,7 @@ namespace ETModel
         {
             ETTaskCompletionSource<T> tcs = new ETTaskCompletionSource<T>();
             AssetRequest assetRequest = Assets.LoadAssetAsync(path, typeof (T));
-            
+
             //如果已经加载完成则直接返回结果（适用于编辑器模式下的异步写法和重复加载）
             if (assetRequest.isDone)
             {
@@ -41,6 +69,7 @@ namespace ETModel
             assetRequest.completed += (arq) => { tcs.SetResult((T) arq.asset); };
             return tcs.Task;
         }
+        
 
         /// <summary>
         /// 卸载资源，path需要是全路径
@@ -78,5 +107,10 @@ namespace ETModel
         }
 
         #endregion
+
+        public void Awake()
+        {
+            m_Instance = this;
+        }
     }
 }

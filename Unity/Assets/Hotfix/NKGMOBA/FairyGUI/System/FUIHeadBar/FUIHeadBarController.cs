@@ -14,13 +14,18 @@ namespace ETHotfix
     {
         public override void Run(long fuiId)
         {
-            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUIHeadBar);
+            this.RunInternal().Coroutine();
             var hotfixui = FUIHeadBar.CreateInstance();
             //默认将会以Id为Name，也可以自定义Name，方便查询和管理，这里使用血条归属的Unit id作为Name
             hotfixui.Name = fuiId.ToString();
             //Log.Info($"这个英雄血条id为{hotfixui.Name}");
             hotfixui.MakeFullScreen();
             Game.Scene.GetComponent<FUIComponent>().Add(hotfixui, true);
+        }
+
+        private async ETVoid RunInternal()
+        {
+            await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIPackage.FUIHeadBar);
         }
     }
 

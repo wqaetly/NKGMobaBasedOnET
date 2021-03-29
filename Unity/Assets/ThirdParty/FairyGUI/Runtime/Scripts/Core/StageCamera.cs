@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 namespace FairyGUI
@@ -8,45 +9,50 @@ namespace FairyGUI
     /// </summary>
     [ExecuteInEditMode]
     [AddComponentMenu("FairyGUI/UI Camera")]
-    public class StageCamera: MonoBehaviour
+    public class StageCamera : MonoBehaviour
     {
         /// <summary>
         /// 
         /// </summary>
         public bool constantSize = true;
 
-        [System.NonSerialized]
-        public Transform cachedTransform;
+        /// <summary>
+        /// 
+        /// </summary>
+        [NonSerialized]
+        public float unitsPerPixel = 0.02f;
 
-        [System.NonSerialized]
+        [NonSerialized]
+        public Transform cachedTransform;
+        [NonSerialized]
         public Camera cachedCamera;
 
-        [System.NonSerialized]
+        [NonSerialized]
         int screenWidth;
-
-        [System.NonSerialized]
+        [NonSerialized]
         int screenHeight;
-
-        [System.NonSerialized]
+        [NonSerialized]
         bool isMain;
+        [NonSerialized]
+        Display _display;
 
         /// <summary>
         /// 
         /// </summary>
-        [System.NonSerialized]
+        [NonSerialized]
         public static Camera main;
 
         /// <summary>
         /// 
         /// </summary>
-        [System.NonSerialized]
+        [NonSerialized]
         public static int screenSizeVer = 1;
 
         public const string Name = "Stage Camera";
         public const string LayerName = "UI";
 
         public static float DefaultCameraSize = 5;
-        public static float UnitsPerPixel = 0.02f;
+        public static float DefaultUnitsPerPixel = 0.02f;
 
         void OnEnable()
         {
@@ -58,42 +64,54 @@ namespace FairyGUI
                 isMain = true;
             }
 
-            OnScreenSizeChanged();
+            if (Display.displays.Length > 1 && cachedCamera.targetDisplay != 0 && cachedCamera.targetDisplay < Display.displays.Length)
+                _display = Display.displays[cachedCamera.targetDisplay];
+
+            if (_display == null)
+                OnScreenSizeChanged(Screen.width, Screen.height);
+            else
+                OnScreenSizeChanged(_display.renderingWidth, _display.renderingHeight);
         }
 
         void Update()
         {
-            if (screenWidth != Screen.width || screenHeight != Screen.height)
-                OnScreenSizeChanged();
-        }
-
-        void OnScreenSizeChanged()
-        {
-            screenWidth = Screen.width;
-            screenHeight = Screen.height;
-            if (screenWidth == 0 || screenHeight == 0)
-                return;
-
-            float upp;
-            if (constantSize)
+            if (_display == null)
             {
-                cachedCamera.orthographicSize = DefaultCameraSize;
-                upp = cachedCamera.orthographicSize * 2 / screenHeight;
+                if (screenWidth != Screen.width || screenHeight != Screen.height)
+                    OnScreenSizeChanged(Screen.width, Screen.height);
             }
             else
             {
-                upp = 0.02f;
-                cachedCamera.orthographicSize = screenHeight / 2 * UnitsPerPixel;
+                if (screenWidth != _display.renderingWidth || screenHeight != _display.renderingHeight)
+                    OnScreenSizeChanged(_display.renderingWidth, _display.renderingHeight);
             }
+        }
 
+        void OnScreenSizeChanged(int newWidth, int newHeight)
+        {
+            if (newWidth == 0 || newHeight == 0)
+                return;
+
+            screenWidth = newWidth;
+            screenHeight = newHeight;
+
+            if (constantSize)
+            {
+                cachedCamera.orthographicSize = DefaultCameraSize;
+                unitsPerPixel = cachedCamera.orthographicSize * 2 / screenHeight;
+            }
+            else
+            {
+                unitsPerPixel = DefaultUnitsPerPixel;
+                cachedCamera.orthographicSize = screenHeight / 2 * unitsPerPixel;
+            }
             cachedTransform.localPosition = new Vector3(cachedCamera.orthographicSize * screenWidth / screenHeight, -cachedCamera.orthographicSize);
 
             if (isMain)
             {
-                UnitsPerPixel = upp;
                 screenSizeVer++;
                 if (Application.isPlaying)
-                    Stage.inst.HandleScreenSizeChanged();
+                    Stage.inst.HandleScreenSizeChanged(screenWidth, screenHeight, unitsPerPixel);
                 else
                 {
                     UIContentScaler scaler = GameObject.FindObjectOfType<UIContentScaler>();
@@ -162,6 +180,7 @@ namespace FairyGUI
             camera.orthographicSize = DefaultCameraSize;
             camera.nearClipPlane = -30;
             camera.farClipPlane = 30;
+
 #if UNITY_5_4_OR_NEWER
             camera.stereoTargetEye = StereoTargetEyeMask.None;
 #endif
@@ -170,18 +189,13 @@ namespace FairyGUI
             camera.allowHDR = false;
             camera.allowMSAA = false;
 #endif
-
             #region 适配URP
-
             UniversalAdditionalCameraData universalAdditionalCameraData = camera.GetUniversalAdditionalCameraData();
             universalAdditionalCameraData.renderType = CameraRenderType.Overlay;
             Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(camera);
             DontDestroyOnLoad(cameraObject);
-
             #endregion
-
             cameraObject.AddComponent<StageCamera>();
-
             return camera;
         }
     }
