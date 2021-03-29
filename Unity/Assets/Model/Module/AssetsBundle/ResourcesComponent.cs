@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ETModel
 {
+    [ObjectSystem]
     public class ResourcesComponentAwakeSystem: AwakeSystem<ResourcesComponent>
     {
         public override void Awake(ResourcesComponent self)
