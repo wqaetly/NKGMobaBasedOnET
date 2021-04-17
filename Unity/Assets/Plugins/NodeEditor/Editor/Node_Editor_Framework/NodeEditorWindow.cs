@@ -156,8 +156,6 @@ namespace NodeEditorFramework.Standard
 
             AssureEditor();
             AssureSetup();
-            
-            
 
             // Begin Node Editor GUI and set canvas rect
             NodeEditorGUI.StartNodeGUI(true);

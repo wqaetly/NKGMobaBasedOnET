@@ -200,7 +200,8 @@ namespace NodeEditorFramework
 
             if (Event.current.type == EventType.Repaint)
             {
-                EditorGUI.DrawRect(curEditorState.canvasRect, Color.black);
+                //绘制NodeEditor背景
+                EditorGUI.DrawRect(curEditorState.canvasRect, new Color(28/255f,28/255f,28/255f));
             }
 
             // Handle input events

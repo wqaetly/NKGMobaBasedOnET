@@ -61,9 +61,6 @@ namespace NodeEditorFramework
             toolbarLabel = GUI.skin.FindStyle("toolbarButton");
             toolbarDropdown = GUI.skin.FindStyle("toolbarDropdown");
             
-
-            GUI.skin = null;
-
             return true;
         }
 
