@@ -326,7 +326,7 @@ namespace NodeEditorFramework
 
             //如果选中绘制白色描边，否则绘制黑色描边
             Rect outlineRect = new Rect(nodeRect.position.x - 6f, nodeRect.position.y - 6f, rect.size.x + 12, this.rect.size.y + 12);
-            
+
             if (NodeEditor.CheckNodeIsSelected(this))
             {
                 GUI.color = Color.white;
@@ -349,7 +349,7 @@ namespace NodeEditorFramework
             GUI.color = Color.white;
             GUI.Label(headerRect, Title, NodeEditorGUI.nodeTittleCentered);
             GUI.color = backgroundColor;
-            
+
             // Begin the body frame around the NodeGUI
             Rect bodyRect = new Rect(nodeRect.x, nodeRect.y + contentOffset.y, nodeRect.width,
                 nodeRect.height - contentOffset.y);
@@ -364,7 +364,7 @@ namespace NodeEditorFramework
             GUI.changed = false;
             NodeGUI();
 
-            if (Event.current.type == EventType.Repaint)
+            if (Event.current.type == EventType.Repaint && nodeGUIHeight != GUILayoutUtility.GetLastRect().max)
                 nodeGUIHeight = GUILayoutUtility.GetLastRect().max + contentOffset;
 
             // End NodeGUI frame
@@ -383,18 +383,10 @@ namespace NodeEditorFramework
             if (!AutoLayout || Event.current.type != EventType.Repaint)
                 return;
 
-            Rect nodeRect = rect;
             Vector2 size = new Vector2();
-            size.y = Math.Max(nodeGUIHeight.y, MinSize.y) + 4;
-
-            // Account for potential knobs that might occupy horizontal space
-            float knobSize = 0;
-            List<ConnectionKnob> verticalKnobs =
-                    connectionKnobs.Where(x => x.side == NodeSide.Bottom || x.side == NodeSide.Top).ToList();
-            if (verticalKnobs.Count > 0)
-                knobSize = verticalKnobs.Max((ConnectionKnob knob) => knob.GetGUIKnob().xMax - nodeRect.xMin);
-            size.x = Math.Max(knobSize, MinSize.x);
-
+            size.y = Math.Max(nodeGUIHeight.y, MinSize.y);
+            size.x = Math.Max(nodeGUIHeight.x, this.DefaultSize.x);
+            
             autoSize = size;
             NodeEditor.RepaintClients();
         }
