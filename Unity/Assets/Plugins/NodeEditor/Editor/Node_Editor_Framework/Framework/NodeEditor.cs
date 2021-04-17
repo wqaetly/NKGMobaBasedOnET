@@ -200,17 +200,19 @@ namespace NodeEditorFramework
 
             if (Event.current.type == EventType.Repaint)
             {
-                // Draw Background when Repainting
-                // Offset from origin in tile units
-                Vector2 tileOffset = new Vector2(
-                    -(curEditorState.zoomPos.x * curEditorState.zoom + curEditorState.panOffset.x) / NodeEditorGUI.Background.width,
-                    ((curEditorState.zoomPos.y - curEditorState.canvasRect.height) * curEditorState.zoom + curEditorState.panOffset.y) /
-                    NodeEditorGUI.Background.height);
-                // Amount of tiles
-                Vector2 tileAmount = new Vector2(Mathf.Round(curEditorState.canvasRect.width * curEditorState.zoom) / NodeEditorGUI.Background.width,
-                    Mathf.Round(curEditorState.canvasRect.height * curEditorState.zoom) / NodeEditorGUI.Background.height);
+                // // Draw Background when Repainting
+                // // Offset from origin in tile units
+                // Vector2 tileOffset = new Vector2(
+                //     -(curEditorState.zoomPos.x * curEditorState.zoom + curEditorState.panOffset.x) / NodeEditorGUI.Background.width,
+                //     ((curEditorState.zoomPos.y - curEditorState.canvasRect.height) * curEditorState.zoom + curEditorState.panOffset.y) /
+                //     NodeEditorGUI.Background.height);
+                // // Amount of tiles
+                // Vector2 tileAmount = new Vector2(
+                //     Mathf.Round(curEditorState.canvasRect.width * curEditorState.zoom) / NodeEditorGUI.Background.width / 3,
+                //     Mathf.Round(curEditorState.canvasRect.height * curEditorState.zoom) / NodeEditorGUI.Background.height / 3);
                 // Draw tiled background
-                GUI.DrawTextureWithTexCoords(curEditorState.canvasRect, NodeEditorGUI.Background, new Rect(tileOffset, tileAmount));
+                EditorGUI.DrawRect(curEditorState.canvasRect, Color.black);
+                // GUI.DrawTextureWithTexCoords(curEditorState.canvasRect, NodeEditorGUI.Background, new Rect(tileOffset, tileAmount));
             }
 
             // Handle input events

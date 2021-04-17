@@ -253,7 +253,7 @@ namespace NodeEditorFramework.Utilities
 					selectedPath = item.path;
 
 				bool selected = selectedPath == item.path || selectedPath.Contains (item.path + "/");
-				GUI.Label (labelRect, item.content, selected? NodeEditorGUI.nodeLabelSelected : NodeEditorGUI.nodeLabel);
+				GUI.Label (labelRect, item.content, NodeEditorGUI.nodeTittleCentered);
 				
 				if (item.group) 
 				{

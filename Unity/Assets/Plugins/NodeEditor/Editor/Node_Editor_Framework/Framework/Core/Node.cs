@@ -324,18 +324,23 @@ namespace NodeEditorFramework
             Vector2 pos = NodeEditor.curEditorState.zoomPanAdjust + NodeEditor.curEditorState.panOffset;
             nodeRect.position = new Vector2((int) (nodeRect.x + pos.x), (int) (nodeRect.y + pos.y));
 
-            GUIStyle targetNodeBoxStyle =
-                    NodeEditor.CheckNodeIsSelected(this)
-                            ? NodeEditorGUI.nodeBox_HighLight
-                            : NodeEditorGUI.nodeBox;
+            if (NodeEditor.CheckNodeIsSelected(this))
+            {
+                GUI.color = Color.white;
+                //绘制描边
+                Rect outlineRect = new Rect(nodeRect.position.x - 8, nodeRect.position.y - 8, rect.size.x + 16, this.rect.size.y + 16);
+                GUI.Box(outlineRect, "", NodeEditorGUI.nodeBox_HighLightOutLine);
+            }
+
             GUI.color = backgroundColor;
-            GUI.Box(nodeRect, GUIContent.none, targetNodeBoxStyle);
+            GUI.Box(nodeRect, GUIContent.none, NodeEditorGUI.nodeBox);
+
             contentOffset = new Vector2(0, 20);
 
             // Create a headerRect out of the previous rect and draw it, marking the selected node as such by making the header bold
             Rect headerRect = new Rect(nodeRect.x, nodeRect.y, nodeRect.width, contentOffset.y);
             GUI.color = Color.white;
-            GUI.Label(headerRect, Title, NodeEditorGUI.nodeLabelCentered);
+            GUI.Label(headerRect, Title, NodeEditorGUI.nodeTittleCentered);
 
             RTEditorGUI.Seperator(new Rect(nodeRect.x, nodeRect.y + contentOffset.y - 1, nodeRect.width, 0));
 
