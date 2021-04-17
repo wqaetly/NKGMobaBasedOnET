@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NodeEditorFramework.Utilities;
 using NodeEditorFramework.Utilities.CreateNodesWindow;
+using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 #if UNITY_EDITOR
 using Plugins.NodeEditor.Editor.Canvas;
@@ -220,9 +221,6 @@ namespace NodeEditorFramework
         internal static bool shouldIgnoreInput(NodeEditorState state)
         {
             if (state == null)
-                return true;
-            // Account for any opened popups
-            if (OverlayGUI.HasPopupControl())
                 return true;
             // Check if mouse is outside of canvas rect
             if (!state.canvasRect.Contains(Event.current.mousePosition))

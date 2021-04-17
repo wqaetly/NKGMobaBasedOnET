@@ -156,9 +156,8 @@ namespace NodeEditorFramework.Standard
 
             AssureEditor();
             AssureSetup();
-
-            // ROOT: Start Overlay GUI for popups
-            OverlayGUI.StartOverlayGUI("NodeEditorWindow");
+            
+            
 
             // Begin Node Editor GUI and set canvas rect
             NodeEditorGUI.StartNodeGUI(true);
@@ -184,9 +183,6 @@ namespace NodeEditorFramework.Standard
 
             // End Node Editor GUI
             NodeEditorGUI.EndNodeGUI();
-
-            // END ROOT: End Overlay GUI and draw popups
-            OverlayGUI.EndOverlayGUI();
         }
 
         #endregion

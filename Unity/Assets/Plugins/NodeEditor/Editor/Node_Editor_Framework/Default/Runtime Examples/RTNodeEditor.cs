@@ -61,9 +61,6 @@ namespace NodeEditorFramework.Standard
 				return;
 			}
 			AssureSetup();
-
-			// ROOT: Start Overlay GUI for popups
-			OverlayGUI.StartOverlayGUI("RTNodeEditor");
 			
 			// Set various nested groups
 			GUI.BeginGroup(rootRect, GUI.skin.box);
@@ -93,9 +90,6 @@ namespace NodeEditorFramework.Standard
 
 			// End various nested groups
 			GUI.EndGroup();
-
-			// END ROOT: End Overlay GUI and draw popups
-			OverlayGUI.EndOverlayGUI();
 		}
 	}
 }

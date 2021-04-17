@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using Plugins.NodeEditor.Editor.Canvas;
 using Plugins.NodeEditor.Node_Editor.Default;
-using GenericMenu = NodeEditorFramework.Utilities.GenericMenu;
+using UnityEditor;
 
 namespace NodeEditorFramework.Standard
 {
@@ -55,7 +55,7 @@ namespace NodeEditorFramework.Standard
 
                 // menu.AddSeparator("");
 #endif
-                menu.Show(new Vector2(5, toolbarHeight));
+                menu.ShowAsContext();
             }
 
             curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);

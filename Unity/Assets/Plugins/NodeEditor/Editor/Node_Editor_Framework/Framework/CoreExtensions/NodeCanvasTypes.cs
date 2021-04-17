@@ -93,13 +93,7 @@ namespace NodeEditorFramework
         }
 
         #region Canvas Type Menu
-
-        public static void FillCanvasTypeMenu(ref GenericMenu menu, Action<Type> NodeCanvasSelection, string path = "")
-        {
-            _menuCallback = NodeCanvasSelection;
-            foreach (NodeCanvasTypeData data in OnlyInToolBarCanvasTypes.Values)
-                menu.AddItem(new GUIContent(path + data.DisplayString), false, unwrapCanvasTypeCallback, (object) data);
-        }
+        
 
 #if UNITY_EDITOR
         public static void FillCanvasTypeMenu(ref UnityEditor.GenericMenu menu, Action<Type> NodeCanvasSelection, string path = "")
