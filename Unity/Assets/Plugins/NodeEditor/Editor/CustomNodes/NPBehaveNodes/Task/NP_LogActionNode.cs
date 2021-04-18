@@ -38,7 +38,7 @@ namespace Plugins.NodeEditor.Editor.NPBehaveNodes
 
         public override void NodeGUI()
         {
-            NP_ActionNodeData.NodeDes = EditorGUILayout.TextField("",NP_ActionNodeData.NodeDes);
+            NP_ActionNodeData.NodeDes = EditorGUILayout.TextField(NP_ActionNodeData.NodeDes);
         }
     }
 }

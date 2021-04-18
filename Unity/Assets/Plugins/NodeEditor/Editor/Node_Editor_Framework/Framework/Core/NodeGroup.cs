@@ -229,7 +229,7 @@ namespace NodeEditorFramework
             // Create a rect that is adjusted to the editor zoom
             Rect groupRect = rect;
             groupRect.position += state.zoomPanAdjust + state.panOffset;
-            
+
             if (state.activeGroup == this && state.resizeGroup)
             {
                 // Highlight the currently resized border
@@ -423,7 +423,7 @@ namespace NodeEditorFramework
         /// Starts a dragging operation for either dragging or resizing (on the header or borders only)
         /// </summary>
         [EventHandlerAttribute(EventType.MouseDown,
-            104)] // Priority over hundred to make it call after the GUI, and before Node dragging (110) and window panning (105)
+            10)] // Priority over hundred to make it call after the GUI, and before Node dragging (110) and window panning (105)
         private static void HandleGroupDraggingStart(NodeEditorInputInfo inputInfo)
         {
             if (GUIUtility.hotControl > 0)
@@ -473,7 +473,7 @@ namespace NodeEditorFramework
         /// <summary>
         /// Updates the dragging operation for either dragging or resizing
         /// </summary>
-        [EventHandlerAttribute(EventType.MouseDrag)]
+        [EventHandlerAttribute(EventType.MouseDrag, 10)]
         private static void HandleGroupDragging(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
@@ -524,8 +524,7 @@ namespace NodeEditorFramework
         /// <summary>
         /// Ends the dragging operation for either dragging or resizing
         /// </summary>
-        [EventHandlerAttribute(EventType.MouseDown)]
-        [EventHandlerAttribute(EventType.MouseUp)]
+        [EventHandlerAttribute(EventType.MouseUp, 10)]
         private static void HandleDraggingEnd(NodeEditorInputInfo inputInfo)
         {
             if (inputInfo.editorState.dragUserID == "group")

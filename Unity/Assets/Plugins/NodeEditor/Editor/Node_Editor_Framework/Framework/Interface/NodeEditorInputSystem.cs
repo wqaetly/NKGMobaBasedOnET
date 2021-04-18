@@ -232,6 +232,8 @@ namespace NodeEditorFramework
         private static void HandleFocussing(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
+            //必须放在这个地方，因为需要处理连线问题，如果不每次刷新就检测，就无法处理
+            state.focusedNode = NodeEditor.NodeAtPosition(NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), out state.focusedConnectionKnob);
             // Perform focus changes in Repaint, which is the only suitable time to do this
             if (unfocusControlsForState == state && Event.current.type == EventType.Repaint)
             {
@@ -245,7 +247,7 @@ namespace NodeEditorFramework
         private static void HandleSelecting(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
-            state.focusedNode = NodeEditor.NodeAtPosition(NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), out state.focusedConnectionKnob);
+
             if (inputInfo.inputEvent.button == 0 && state.focusedNode != null)
             {
                 // Select focussed Node
@@ -258,7 +260,6 @@ namespace NodeEditorFramework
                 unfocusControlsForState = inputInfo.editorState;
                 unfocusControlsHot = GUIUtility.hotControl;
                 unfocusControlsKeyboard = GUIUtility.keyboardControl;
-                NodeEditor.RepaintClients();
             }
 
             if (state.selectedNodes.Count > 0 && state.focusedNode != null)
@@ -276,7 +277,7 @@ namespace NodeEditorFramework
         /// 判断是否右击了节点或者空白处，并进行相应的处理
         /// </summary>
         /// <param name="inputInfo"></param>
-        [EventHandlerAttribute(EventType.MouseDown, 0)] // One of the highest priorities after node selection
+        [EventHandlerAttribute(EventType.MouseDown, -1)] // One of the highest priorities after node selection
         private static void HandleContextClicks(NodeEditorInputInfo inputInfo)
         {
             if (Event.current.button == 1)

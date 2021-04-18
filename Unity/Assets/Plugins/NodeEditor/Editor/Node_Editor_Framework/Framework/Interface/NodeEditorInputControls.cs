@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using ETModel;
 using NodeEditorFramework.Utilities.CreateNodesWindow;
+using NPOI.SS.Formula.Functions;
 using UnityEditor;
 
 namespace NodeEditorFramework
@@ -70,7 +71,7 @@ namespace NodeEditorFramework
 
         public static Vector2 startSelectionPos;
 
-        [EventHandlerAttribute(EventType.MouseDown, 95)] // Priority over hundred to make it call after the GUI
+        [EventHandlerAttribute(EventType.MouseDown, 20)] // Priority over hundred to make it call after the GUI
         private static void HandleWindowSelectionStart(NodeEditorInputInfo inputInfo)
         {
             if (GUIUtility.hotControl > 0)
@@ -86,7 +87,7 @@ namespace NodeEditorFramework
             }
         }
 
-        [EventHandlerAttribute(EventType.MouseDrag)]
+        [EventHandlerAttribute(EventType.MouseDrag,20)]
         private static void HandleWindowSelection(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
@@ -95,9 +96,8 @@ namespace NodeEditorFramework
                 NodeEditor.RepaintClients();
             }
         }
-
-        [EventHandlerAttribute(EventType.MouseDown)]
-        [EventHandlerAttribute(EventType.MouseUp)]
+        
+        [EventHandlerAttribute(EventType.MouseUp,20)]
         private static void HandleWindowSelectionEnd(NodeEditorInputInfo inputInfo)
         {
             if (inputInfo.editorState.boxSelecting)
@@ -111,15 +111,14 @@ namespace NodeEditorFramework
 
         #region Node Dragging
 
-        [EventHandlerAttribute(EventType.MouseDown, 110)] // Priority over hundred to make it call after the GUI
+        [EventHandlerAttribute(EventType.MouseDown, 30)] // Priority over hundred to make it call after the GUI
         private static void HandleNodeDraggingStart(NodeEditorInputInfo inputInfo)
         {
             if (GUIUtility.hotControl > 0)
                 return; // GUI has control
 
             NodeEditorState state = inputInfo.editorState;
-            if (inputInfo.inputEvent.button == 0 && state.focusedNode != null && NodeEditor.CheckNodeIsSelected(state.focusedNode) &&
-                state.focusedConnectionKnob == null)
+            if (inputInfo.inputEvent.button == 0 && state.focusedNode != null)
             {
                 // Clicked inside the selected Node, so start dragging it
                 state.dragNode = true;
@@ -127,7 +126,7 @@ namespace NodeEditorFramework
             }
         }
 
-        [EventHandlerAttribute(EventType.MouseDrag)]
+        [EventHandlerAttribute(EventType.MouseDrag,30)]
         private static void HandleNodeDragging(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
@@ -147,11 +146,11 @@ namespace NodeEditorFramework
                 }
                 else
                     state.dragNode = false;
+                Event.current.Use();
             }
         }
-
-        [EventHandlerAttribute(EventType.MouseDown)]
-        [EventHandlerAttribute(EventType.MouseUp)]
+        
+        [EventHandlerAttribute(EventType.MouseUp,30)]
         private static void HandleNodeDraggingEnd(NodeEditorInputInfo inputInfo)
         {
             if (inputInfo.editorState.dragUserID == "node")
@@ -165,6 +164,7 @@ namespace NodeEditorFramework
                         NodeEditorCallbacks.IssueOnMoveNode(node);
                     }
                 }
+                Event.current.Use();
             }
 
             inputInfo.editorState.dragNode = false;
@@ -174,22 +174,23 @@ namespace NodeEditorFramework
 
         #region Window Panning
 
-        [EventHandlerAttribute(EventType.MouseDown, 105)] // Priority over hundred to make it call after the GUI
+        [EventHandlerAttribute(EventType.MouseDown, 40)] // Priority over hundred to make it call after the GUI
         private static void HandleWindowPanningStart(NodeEditorInputInfo inputInfo)
         {
             if (GUIUtility.hotControl > 0)
                 return; // GUI has control
 
             NodeEditorState state = inputInfo.editorState;
-            if ((inputInfo.inputEvent.button == 2) && state.focusedNode == null)
+            if (inputInfo.inputEvent.button == 2)
             {
                 // Left- or Middle clicked on the empty canvas -> Start panning
+                Event.current.Use();
                 state.panWindow = true;
                 state.StartDrag("window", inputInfo.inputPos, state.panOffset);
             }
         }
 
-        [EventHandlerAttribute(EventType.MouseDrag)]
+        [EventHandlerAttribute(EventType.MouseDrag,40)]
         private static void HandleWindowPanning(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
@@ -200,16 +201,21 @@ namespace NodeEditorFramework
                     state.panOffset += state.UpdateDrag("window", inputInfo.inputPos);
                 else
                     state.panWindow = false;
+
                 NodeEditor.RepaintClients();
+                Event.current.Use();
             }
         }
-
-        [EventHandlerAttribute(EventType.MouseDown)]
-        [EventHandlerAttribute(EventType.MouseUp)]
+        
+        [EventHandlerAttribute(EventType.MouseUp,40)]
         private static void HandleWindowPanningEnd(NodeEditorInputInfo inputInfo)
         {
             if (inputInfo.editorState.dragUserID == "window")
+            {
                 inputInfo.editorState.panOffset = inputInfo.editorState.EndDrag("window");
+                Event.current.Use();
+            }
+
             inputInfo.editorState.panWindow = false;
         }
 
@@ -219,7 +225,7 @@ namespace NodeEditorFramework
 
         private static bool CreateConnection = false;
 
-        [EventHandlerAttribute(EventType.MouseDown)]
+        [EventHandlerAttribute(EventType.MouseDown,25)]
         private static void HandleConnectionDrawing(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
@@ -255,7 +261,7 @@ namespace NodeEditorFramework
             }
         }
 
-        [EventHandlerAttribute(EventType.MouseUp)]
+        [EventHandlerAttribute(EventType.MouseUp,25)]
         private static void HandleApplyConnection(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
@@ -283,63 +289,12 @@ namespace NodeEditorFramework
 
         #region Zoom
 
-        [EventHandlerAttribute(EventType.ScrollWheel)]
+        [EventHandlerAttribute(EventType.ScrollWheel,60)]
         private static void HandleZooming(NodeEditorInputInfo inputInfo)
         {
             inputInfo.editorState.zoom =
                     (float) Math.Round(Math.Min(4.0, Math.Max(0.6, inputInfo.editorState.zoom + inputInfo.inputEvent.delta.y / 15)), 2);
             NodeEditor.RepaintClients();
-        }
-
-        #endregion
-
-        #region Navigation
-
-        // [HotkeyAttribute(KeyCode.N, EventType.KeyDown)]
-        // private static void HandleStartNavigating(NodeEditorInputInfo inputInfo)
-        // {
-        //     if (GUIUtility.keyboardControl > 0)
-        //         return;
-        //     inputInfo.editorState.navigate = true;
-        // }
-        //
-        // [HotkeyAttribute(KeyCode.N, EventType.KeyUp)]
-        // private static void HandleEndNavigating(NodeEditorInputInfo inputInfo)
-        // {
-        //     if (GUIUtility.keyboardControl > 0)
-        //         return;
-        //     inputInfo.editorState.navigate = false;
-        // }
-
-        #endregion
-
-        #region 整格移动Node
-
-        [EventHandlerAttribute(EventType.MouseUp, 60)]
-        [EventHandlerAttribute(EventType.MouseDown, 60)]
-        [EventHandlerAttribute(EventType.MouseDrag, 60)]
-        [HotkeyAttribute(KeyCode.LeftControl, EventType.KeyDown, 60)]
-        private static void HandleNodeSnap(NodeEditorInputInfo inputInfo)
-        {
-            if (inputInfo.inputEvent.modifiers == EventModifiers.Control || inputInfo.inputEvent.keyCode == KeyCode.LeftControl)
-            {
-                NodeEditorState state = inputInfo.editorState;
-                foreach (var node in state.selectedNodes)
-                {
-                    // Snap selected Node's position to multiples of 10
-                    node.position.x = Mathf.Round(node.rect.x / 10) * 10;
-                    node.position.y = Mathf.Round(node.rect.y / 10) * 10;
-                    NodeEditor.RepaintClients();
-                }
-
-                if (state.activeGroup != null)
-                {
-                    // Snap active Group's position to multiples of 10
-                    state.activeGroup.rect.x = Mathf.Round(state.activeGroup.rect.x / 10) * 10;
-                    state.activeGroup.rect.y = Mathf.Round(state.activeGroup.rect.y / 10) * 10;
-                    NodeEditor.RepaintClients();
-                }
-            }
         }
 
         #endregion
