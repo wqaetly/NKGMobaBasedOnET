@@ -223,10 +223,7 @@ namespace NodeEditorFramework
 
         #endregion
 
-        #region 最前面的固定阶段事件判断
-        
-        private static NodeEditorState unfocusControlsForState;
-        private static int unfocusControlsHot, unfocusControlsKeyboard;
+        #region 最前面的固定阶段事件判断，用于初始化信息和重置某些输入状态
 
         [EventHandlerAttribute(-4)] // Absolute first to call!
         private static void HandleFocussing(NodeEditorInputInfo inputInfo)
@@ -235,31 +232,22 @@ namespace NodeEditorFramework
             //必须放在这个地方，因为需要处理连线问题，如果不每次刷新就检测，就无法处理
             state.focusedNode = NodeEditor.NodeAtPosition(NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), out state.focusedConnectionKnob);
             // Perform focus changes in Repaint, which is the only suitable time to do this
-            if (unfocusControlsForState == state && Event.current.type == EventType.Repaint)
-            {
-                if (unfocusControlsHot == GUIUtility.hotControl) GUIUtility.hotControl = 0;
-                if (unfocusControlsKeyboard == GUIUtility.keyboardControl) GUIUtility.keyboardControl = 0;
-                unfocusControlsForState = null;
-            }
         }
 
         [EventHandlerAttribute(EventType.MouseDown, -2)] // Absolute second to call!
         private static void HandleSelecting(NodeEditorInputInfo inputInfo)
         {
+            ResetKeyBoardInput();
+            
             NodeEditorState state = inputInfo.editorState;
-
             if (inputInfo.inputEvent.button == 0 && state.focusedNode != null)
             {
                 // Select focussed Node
-                unfocusControlsForState = state;
                 if (!NodeEditor.CheckNodeIsSelected(state.focusedNode))
                 {
                     state.selectedNodes.Clear();
                     state.selectedNodes.Add(state.focusedNode);
                 }
-                unfocusControlsForState = inputInfo.editorState;
-                unfocusControlsHot = GUIUtility.hotControl;
-                unfocusControlsKeyboard = GUIUtility.keyboardControl;
             }
 
             if (state.selectedNodes.Count > 0 && state.focusedNode != null)
@@ -269,6 +257,18 @@ namespace NodeEditorFramework
                 state.selectedNodes.Clear();
                 UnityEditor.Selection.activeObject = state.canvas;
             }
+        }
+        
+        [EventHandlerAttribute(EventType.MouseDrag, -2)] // Absolute second to call!
+        private static void HandleDrag(NodeEditorInputInfo inputInfo)
+        {
+            ResetKeyBoardInput();
+        }
+        
+        [EventHandlerAttribute(EventType.ScrollWheel, -2)] // Absolute second to call!
+        private static void HandleScrollWheel(NodeEditorInputInfo inputInfo)
+        {
+            ResetKeyBoardInput();
         }
 
         // CONTEXT CLICKS
@@ -303,6 +303,12 @@ namespace NodeEditorFramework
                     Event.current.Use();
                 }
             }
+        }
+
+        private static void ResetKeyBoardInput()
+        {
+            GUIUtility.keyboardControl = 0;
+            GUIUtility.hotControl = 0;
         }
 
         #endregion
