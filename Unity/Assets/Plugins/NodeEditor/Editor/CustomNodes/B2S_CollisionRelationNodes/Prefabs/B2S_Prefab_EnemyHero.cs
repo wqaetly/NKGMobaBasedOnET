@@ -11,6 +11,7 @@ using NodeEditorFramework;
 using NodeEditorFramework.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEditor;
 
 namespace Plugins.NodeEditor
 {
@@ -58,7 +59,7 @@ namespace Plugins.NodeEditor
 
         public override void NodeGUI()
         {
-            RTEditorGUI.TextField("标识：" + MB2SCollisionInstance.Flag);
+            EditorGUILayout.TextField("标识：" + MB2SCollisionInstance.Flag);
         }
     }
 }

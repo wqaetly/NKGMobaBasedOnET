@@ -29,7 +29,6 @@ namespace NodeEditorFramework
 		[NonSerialized] public ConnectionKnob connectKnob; // connection this output
 		[NonSerialized] public bool dragNode; // node dragging
 		[NonSerialized] public bool panWindow; // window panning
-		[NonSerialized] public bool navigate; // navigation ('N')
 		[NonSerialized] public bool resizeGroup; // whether the active group is being resized; if not, it is dragged
 
 		// Temporary variables

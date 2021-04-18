@@ -105,11 +105,6 @@ namespace NodeEditorFramework
         /// </summary>
         public virtual bool ContinueCalculation => true;
 
-        /// <summary>
-        /// Specifies whether GUI requires to be updated even when the node is off-screen 
-        /// </summary>
-        public virtual bool ForceGUIDawOffScreen => false;
-
         #endregion
 
         #region Node Implementation
@@ -327,18 +322,12 @@ namespace NodeEditorFramework
             //如果选中绘制白色描边，否则绘制黑色描边
             Rect outlineRect = new Rect(nodeRect.position.x - 6f, nodeRect.position.y - 6f, rect.size.x + 12, this.rect.size.y + 12);
 
-            if (NodeEditor.CheckNodeIsSelected(this))
-            {
-                GUI.color = Color.white;
-            }
-            else
-            {
-                GUI.color = Color.black;
-            }
+            GUI.color = NodeEditor.CheckNodeIsSelected(this)? Color.white : Color.black;
 
             GUI.Box(outlineRect, "", NodeEditorGUI.nodeBox_HighLightOutLine);
 
             GUI.color = backgroundColor;
+            
             GUI.Box(nodeRect, GUIContent.none, NodeEditorGUI.nodeBox);
 
             contentOffset = new Vector2(0, 20);
@@ -348,20 +337,14 @@ namespace NodeEditorFramework
 
             GUI.color = Color.white;
             GUI.Label(headerRect, Title, NodeEditorGUI.nodeTittleCentered);
-            GUI.color = backgroundColor;
 
             // Begin the body frame around the NodeGUI
             Rect bodyRect = new Rect(nodeRect.x, nodeRect.y + contentOffset.y, nodeRect.width,
                 nodeRect.height - contentOffset.y);
-
-            GUI.BeginGroup(bodyRect);
-
-            GUI.color = Color.white;
-            bodyRect.position = Vector2.zero;
+            
             GUILayout.BeginArea(bodyRect);
 
             // Call NodeGUI
-            GUI.changed = false;
             NodeGUI();
 
             if (Event.current.type == EventType.Repaint && nodeGUIHeight != GUILayoutUtility.GetLastRect().max)
@@ -369,7 +352,6 @@ namespace NodeEditorFramework
 
             // End NodeGUI frame
             GUILayout.EndArea();
-            GUI.EndGroup();
 
             // Automatically node if desired
             AutoLayoutNode();

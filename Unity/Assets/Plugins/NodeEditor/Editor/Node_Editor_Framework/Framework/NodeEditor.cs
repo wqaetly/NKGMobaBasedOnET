@@ -221,16 +221,6 @@ namespace NodeEditorFramework
 
             // Some features which require zoomed drawing:
 
-            if (curEditorState.navigate)
-            {
-                // Draw a curve to the origin/active node for orientation purposes
-                Vector2 startPos = (curEditorState.selectedNodes.Count > 0? curEditorState.selectedNodes[0].rect.center : curEditorState.panOffset) +
-                        curEditorState.zoomPanAdjust;
-                Vector2 endPos = Event.current.mousePosition;
-                RTEditorGUI.DrawLine(startPos, endPos, Color.green, null, 3);
-                RepaintClients();
-            }
-
             if (curEditorState.connectKnob != null)
             {
                 // Draw the currently drawn connection
@@ -248,19 +238,11 @@ namespace NodeEditorFramework
                     group.DrawGroup();
             }
 
-            // Push the active node to the top of the draw order.
-            if (Event.current.type == EventType.Layout && curEditorState.selectedNodes.Count > 0)
-            {
-                foreach (var node in curEditorState.selectedNodes)
-                {
-                    curNodeCanvas.nodes.Remove(node);
-                    curNodeCanvas.nodes.Add(node);
-                }
-            }
-
             // Draw the transitions and connections. Has to be drawn before nodes as transitions originate from node centers
             for (int nodeCnt = 0; nodeCnt < curNodeCanvas.nodes.Count; nodeCnt++)
+            {
                 curNodeCanvas.nodes[nodeCnt].DrawConnections();
+            }
 
             // Draw the nodes
             for (int nodeCnt = 0; nodeCnt < curNodeCanvas.nodes.Count; nodeCnt++)
@@ -268,12 +250,14 @@ namespace NodeEditorFramework
                 Node node = curNodeCanvas.nodes[nodeCnt];
                 if (Event.current.type == EventType.Layout)
                     node.isClipped = !curEditorState.canvasViewport.Overlaps(curNodeCanvas.nodes[nodeCnt].fullAABBRect);
-                if (!node.isClipped || node.ForceGUIDawOffScreen)
+                if (node.isClipped)
                 {
-                    node.DrawNode();
-                    if (Event.current.type == EventType.Repaint)
-                        node.DrawKnobs();
+                    continue;
                 }
+
+                node.DrawNode();
+                if (Event.current.type == EventType.Repaint)
+                    node.DrawKnobs();
             }
 
             // ---- END SCALE ----

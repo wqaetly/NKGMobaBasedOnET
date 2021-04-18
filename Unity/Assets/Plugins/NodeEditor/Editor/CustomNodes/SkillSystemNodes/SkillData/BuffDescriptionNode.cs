@@ -9,6 +9,7 @@ using NodeEditorFramework;
 using NodeEditorFramework.Utilities;
 using Plugins.NodeEditor.Editor.Canvas;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Plugins
@@ -30,7 +31,7 @@ namespace Plugins
 
         public override void NodeGUI()
         {
-            RTEditorGUI.TextField("技能描述结点");
+            EditorGUILayout.TextField("技能描述结点");
         }
     }
 }

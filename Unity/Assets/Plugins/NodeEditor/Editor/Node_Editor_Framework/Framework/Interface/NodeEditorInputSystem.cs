@@ -2,20 +2,10 @@
 using System;
 using System.Reflection;
 using System.Collections.Generic;
-using System.Linq;
-using NodeEditorFramework.Utilities;
 using NodeEditorFramework.Utilities.CreateNodesWindow;
 using UnityEditor;
-using UnityEditor.IMGUI.Controls;
-#if UNITY_EDITOR
-using Plugins.NodeEditor.Editor.Canvas;
-using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 using MenuFunctionData = UnityEditor.GenericMenu.MenuFunction2;
 
-#else
-using MenuFunction = NodeEditorFramework.Utilities.OverlayGUI.CustomMenuFunction;
-using MenuFunctionData = NodeEditorFramework.Utilities.OverlayGUI.CustomMenuFunctionData;
-#endif
 
 namespace NodeEditorFramework
 {
@@ -45,78 +35,74 @@ namespace NodeEditorFramework
             contextFillers = new List<KeyValuePair<ContextFillerAttribute, Delegate>>();
 
             // Iterate through each static method
-            IEnumerable<Assembly> scriptAssemblies =
-                    AppDomain.CurrentDomain.GetAssemblies().Where((Assembly assembly) => assembly.FullName.Contains("Assembly"));
-            foreach (Assembly assembly in scriptAssemblies)
-            {
-                foreach (Type type in assembly.GetTypes())
-                {
-                    foreach (MethodInfo method in type.GetMethods(BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic |
-                        BindingFlags.Static))
-                    {
-                        #region Event-Attributes recognition and storing
 
-                        // Check the method's attributes for input handler definitions
-                        Delegate actionDelegate = null;
-                        foreach (object attr in method.GetCustomAttributes(true))
+            Assembly assembly = Assembly.GetAssembly(typeof(NodeEditorInputSystem));
+            foreach (Type type in assembly.GetTypes())
+            {
+                foreach (MethodInfo method in type.GetMethods(BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic |
+                    BindingFlags.Static))
+                {
+                    #region Event-Attributes recognition and storing
+
+                    // Check the method's attributes for input handler definitions
+                    Delegate actionDelegate = null;
+                    foreach (object attr in method.GetCustomAttributes(true))
+                    {
+                        Type attrType = attr.GetType();
+                        if (attrType == typeof (EventHandlerAttribute))
                         {
-                            Type attrType = attr.GetType();
-                            if (attrType == typeof (EventHandlerAttribute))
+                            // Method is an eventHandler
+                            if (EventHandlerAttribute.AssureValidity(method, attr as EventHandlerAttribute))
                             {
-                                // Method is an eventHandler
-                                if (EventHandlerAttribute.AssureValidity(method, attr as EventHandlerAttribute))
-                                {
-                                    // Method signature is correct, so we register this handler
-                                    if (actionDelegate == null)
-                                        actionDelegate = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo>), method);
-                                    eventHandlers.Add(
-                                        new KeyValuePair<EventHandlerAttribute, Delegate>(attr as EventHandlerAttribute, actionDelegate));
-                                }
-                            }
-                            else if (attrType == typeof (HotkeyAttribute))
-                            {
-                                // Method is an hotkeyHandler
-                                if (HotkeyAttribute.AssureValidity(method, attr as HotkeyAttribute))
-                                {
-                                    // Method signature is correct, so we register this handler
-                                    if (actionDelegate == null)
-                                        actionDelegate = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo>), method);
-                                    hotkeyHandlers.Add(new KeyValuePair<HotkeyAttribute, Delegate>(attr as HotkeyAttribute, actionDelegate));
-                                }
-                            }
-                            else if (attrType == typeof (ContextEntryAttribute))
-                            {
-                                // Method is an contextEntry
-                                if (ContextEntryAttribute.AssureValidity(method, attr as ContextEntryAttribute))
-                                {
-                                    // Method signature is correct, so we register this handler
-                                    if (actionDelegate == null)
-                                        actionDelegate = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo>), method);
-                                    // Create a proper MenuFunction as a wrapper for the delegate that converts the object to NodeEditorInputInfo
-                                    MenuFunctionData menuFunction = (object callbackObj) =>
-                                    {
-                                        if (!(callbackObj is NodeEditorInputInfo))
-                                            throw new UnityException("Callback Object passed by context is not of type NodeEditorMenuCallback!");
-                                        actionDelegate.DynamicInvoke(callbackObj as NodeEditorInputInfo);
-                                    };
-                                    contextEntries.Add(
-                                        new KeyValuePair<ContextEntryAttribute, MenuFunctionData>(attr as ContextEntryAttribute, menuFunction));
-                                }
-                            }
-                            else if (attrType == typeof (ContextFillerAttribute))
-                            {
-                                // Method is an contextFiller
-                                if (ContextFillerAttribute.AssureValidity(method, attr as ContextFillerAttribute))
-                                {
-                                    // Method signature is correct, so we register this handler
-                                    Delegate methodDel = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo, GenericMenu>), method);
-                                    contextFillers.Add(new KeyValuePair<ContextFillerAttribute, Delegate>(attr as ContextFillerAttribute, methodDel));
-                                }
+                                // Method signature is correct, so we register this handler
+                                if (actionDelegate == null)
+                                    actionDelegate = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo>), method);
+                                eventHandlers.Add(new KeyValuePair<EventHandlerAttribute, Delegate>(attr as EventHandlerAttribute, actionDelegate));
                             }
                         }
-
-                        #endregion
+                        else if (attrType == typeof (HotkeyAttribute))
+                        {
+                            // Method is an hotkeyHandler
+                            if (HotkeyAttribute.AssureValidity(method, attr as HotkeyAttribute))
+                            {
+                                // Method signature is correct, so we register this handler
+                                if (actionDelegate == null)
+                                    actionDelegate = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo>), method);
+                                hotkeyHandlers.Add(new KeyValuePair<HotkeyAttribute, Delegate>(attr as HotkeyAttribute, actionDelegate));
+                            }
+                        }
+                        else if (attrType == typeof (ContextEntryAttribute))
+                        {
+                            // Method is an contextEntry
+                            if (ContextEntryAttribute.AssureValidity(method, attr as ContextEntryAttribute))
+                            {
+                                // Method signature is correct, so we register this handler
+                                if (actionDelegate == null)
+                                    actionDelegate = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo>), method);
+                                // Create a proper MenuFunction as a wrapper for the delegate that converts the object to NodeEditorInputInfo
+                                MenuFunctionData menuFunction = (object callbackObj) =>
+                                {
+                                    if (!(callbackObj is NodeEditorInputInfo))
+                                        throw new UnityException("Callback Object passed by context is not of type NodeEditorMenuCallback!");
+                                    actionDelegate.DynamicInvoke(callbackObj as NodeEditorInputInfo);
+                                };
+                                contextEntries.Add(
+                                    new KeyValuePair<ContextEntryAttribute, MenuFunctionData>(attr as ContextEntryAttribute, menuFunction));
+                            }
+                        }
+                        else if (attrType == typeof (ContextFillerAttribute))
+                        {
+                            // Method is an contextFiller
+                            if (ContextFillerAttribute.AssureValidity(method, attr as ContextFillerAttribute))
+                            {
+                                // Method signature is correct, so we register this handler
+                                Delegate methodDel = Delegate.CreateDelegate(typeof (Action<NodeEditorInputInfo, GenericMenu>), method);
+                                contextFillers.Add(new KeyValuePair<ContextFillerAttribute, Delegate>(attr as ContextFillerAttribute, methodDel));
+                            }
+                        }
                     }
+
+                    #endregion
                 }
             }
 
@@ -237,25 +223,20 @@ namespace NodeEditorFramework
 
         #endregion
 
-        #region Essential Controls
-
-        // Contains only the most essential controls, rest is found in NodeEditorInputControls
-
-        // NODE SELECTION
-
+        #region 最前面的固定阶段事件判断
+        
         private static NodeEditorState unfocusControlsForState;
+        private static int unfocusControlsHot, unfocusControlsKeyboard;
 
         [EventHandlerAttribute(-4)] // Absolute first to call!
         private static void HandleFocussing(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
-            // Choose focused Node
-            state.focusedNode = NodeEditor.NodeAtPosition(NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), out state.focusedConnectionKnob);
             // Perform focus changes in Repaint, which is the only suitable time to do this
             if (unfocusControlsForState == state && Event.current.type == EventType.Repaint)
             {
-                GUIUtility.hotControl = 0;
-                GUIUtility.keyboardControl = 0;
+                if (unfocusControlsHot == GUIUtility.hotControl) GUIUtility.hotControl = 0;
+                if (unfocusControlsKeyboard == GUIUtility.keyboardControl) GUIUtility.keyboardControl = 0;
                 unfocusControlsForState = null;
             }
         }
@@ -264,6 +245,7 @@ namespace NodeEditorFramework
         private static void HandleSelecting(NodeEditorInputInfo inputInfo)
         {
             NodeEditorState state = inputInfo.editorState;
+            state.focusedNode = NodeEditor.NodeAtPosition(NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), out state.focusedConnectionKnob);
             if (inputInfo.inputEvent.button == 0 && state.focusedNode != null)
             {
                 // Select focussed Node
@@ -273,10 +255,12 @@ namespace NodeEditorFramework
                     state.selectedNodes.Clear();
                     state.selectedNodes.Add(state.focusedNode);
                 }
-
+                unfocusControlsForState = inputInfo.editorState;
+                unfocusControlsHot = GUIUtility.hotControl;
+                unfocusControlsKeyboard = GUIUtility.keyboardControl;
                 NodeEditor.RepaintClients();
             }
-#if UNITY_EDITOR
+
             if (state.selectedNodes.Count > 0 && state.focusedNode != null)
                 UnityEditor.Selection.activeObject = state.selectedNodes[0];
             else if (state.focusedNode == null)
@@ -284,12 +268,14 @@ namespace NodeEditorFramework
                 state.selectedNodes.Clear();
                 UnityEditor.Selection.activeObject = state.canvas;
             }
-
-#endif
         }
 
         // CONTEXT CLICKS
 
+        /// <summary>
+        /// 判断是否右击了节点或者空白处，并进行相应的处理
+        /// </summary>
+        /// <param name="inputInfo"></param>
         [EventHandlerAttribute(EventType.MouseDown, 0)] // One of the highest priorities after node selection
         private static void HandleContextClicks(NodeEditorInputInfo inputInfo)
         {
@@ -307,14 +293,14 @@ namespace NodeEditorFramework
                     GenericMenu contextMenu = new GenericMenu();
                     FillContextMenu(inputInfo, contextMenu, ContextType.Node);
                     contextMenu.ShowAsContext();
+                    Event.current.Use();
                 }
                 else // Editor Context Click
                 {
                     inputInfo.editorState.selectedNodes.Clear();
                     CreateNodesAdvancedDropdown.ShowDropdown(new Rect(inputInfo.inputPos, Vector2.zero));
+                    Event.current.Use();
                 }
-
-                Event.current.Use();
             }
         }
 
@@ -326,22 +312,12 @@ namespace NodeEditorFramework
     /// </summary>
     public class NodeEditorInputInfo
     {
-        public string message;
         public NodeEditorState editorState;
         public Event inputEvent;
         public Vector2 inputPos;
 
         public NodeEditorInputInfo(NodeEditorState EditorState)
         {
-            message = null;
-            editorState = EditorState;
-            inputEvent = Event.current;
-            inputPos = inputEvent.mousePosition;
-        }
-
-        public NodeEditorInputInfo(string Message, NodeEditorState EditorState)
-        {
-            message = Message;
             editorState = EditorState;
             inputEvent = Event.current;
             inputPos = inputEvent.mousePosition;

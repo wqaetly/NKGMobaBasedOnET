@@ -12,38 +12,6 @@ namespace NodeEditorFramework
     /// </summary>
     public static class NodeEditorInputControls
     {
-        // #region Canvas Context Entries
-        //
-        // [ContextFillerAttribute(ContextType.Canvas)]
-        // private static void FillAddNodes(NodeEditorInputInfo inputInfo, GenericMenu canvasContextMenu)
-        // {
-        //     // Fill context menu with nodes to add to the canvas
-        //     NodeEditorState state = inputInfo.editorState;
-        //     List<string> nodes = NodeTypes.getCompatibleNodes(state.connectKnob);
-        //     foreach (string node in nodes)
-        //     {
-        //         // Only add nodes to the context menu that are compatible
-        //         if (NodeCanvasManager.CheckCanvasCompability(node, inputInfo.editorState.canvas.GetType()) &&
-        //             inputInfo.editorState.canvas.CanAddNode(node))
-        //             canvasContextMenu.AddItem(new GUIContent("Add " + NodeTypes.getNodeData(node).adress), false, CreateNodeCallback,
-        //                 new NodeEditorInputInfo(node, state));
-        //     }
-        // }
-        //
-        // private static void CreateNodeCallback(object infoObj)
-        // {
-        //     NodeEditorInputInfo callback = infoObj as NodeEditorInputInfo;
-        //     if (callback == null)
-        //         throw new UnityException("Callback Object passed by context is not of type NodeEditorInputInfo!");
-        //
-        //     Node.Create(callback.message, NodeEditor.ScreenToCanvasSpace(callback.inputPos), callback.editorState.canvas,
-        //         callback.editorState.connectKnob);
-        //     callback.editorState.connectKnob = null;
-        //     NodeEditor.RepaintClients();
-        // }
-        //
-        // #endregion
-
         #region Node Context Entries
 
         [ContextEntryAttribute(ContextType.Node, "Delete Node")]
@@ -327,21 +295,21 @@ namespace NodeEditorFramework
 
         #region Navigation
 
-        [HotkeyAttribute(KeyCode.N, EventType.KeyDown)]
-        private static void HandleStartNavigating(NodeEditorInputInfo inputInfo)
-        {
-            if (GUIUtility.keyboardControl > 0)
-                return;
-            inputInfo.editorState.navigate = true;
-        }
-
-        [HotkeyAttribute(KeyCode.N, EventType.KeyUp)]
-        private static void HandleEndNavigating(NodeEditorInputInfo inputInfo)
-        {
-            if (GUIUtility.keyboardControl > 0)
-                return;
-            inputInfo.editorState.navigate = false;
-        }
+        // [HotkeyAttribute(KeyCode.N, EventType.KeyDown)]
+        // private static void HandleStartNavigating(NodeEditorInputInfo inputInfo)
+        // {
+        //     if (GUIUtility.keyboardControl > 0)
+        //         return;
+        //     inputInfo.editorState.navigate = true;
+        // }
+        //
+        // [HotkeyAttribute(KeyCode.N, EventType.KeyUp)]
+        // private static void HandleEndNavigating(NodeEditorInputInfo inputInfo)
+        // {
+        //     if (GUIUtility.keyboardControl > 0)
+        //         return;
+        //     inputInfo.editorState.navigate = false;
+        // }
 
         #endregion
 
