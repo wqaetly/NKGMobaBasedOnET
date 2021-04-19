@@ -217,10 +217,7 @@ namespace NodeEditorFramework
             curEditorState.zoomPanAdjust = GUIScaleUtility.BeginScale(ref canvasRect, curEditorState.zoomPos, curEditorState.zoom,
                 NodeEditorGUI.isEditorWindow, false);
 
-            // ---- BEGIN SCALE ----
-
-            // Some features which require zoomed drawing:
-
+            // 开始绘制缩放区域
             if (curEditorState.connectKnob != null)
             {
                 // Draw the currently drawn connection

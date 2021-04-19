@@ -114,9 +114,6 @@ namespace NodeEditorFramework
         [EventHandlerAttribute(EventType.MouseDown, 30)] // Priority over hundred to make it call after the GUI
         private static void HandleNodeDraggingStart(NodeEditorInputInfo inputInfo)
         {
-            if (GUIUtility.hotControl > 0)
-                return; // GUI has control
-
             NodeEditorState state = inputInfo.editorState;
             if (inputInfo.inputEvent.button == 0 && state.focusedNode != null)
             {

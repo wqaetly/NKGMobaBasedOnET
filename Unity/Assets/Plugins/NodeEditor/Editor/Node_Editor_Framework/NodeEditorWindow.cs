@@ -177,7 +177,6 @@ namespace NodeEditorFramework.Standard
 
             // Draw Interface
             editorInterface.DrawToolbarGUI(new Rect(0, 0, Screen.width, 0));
-            editorInterface.DrawModalPanel();
 
             // End Node Editor GUI
             NodeEditorGUI.EndNodeGUI();

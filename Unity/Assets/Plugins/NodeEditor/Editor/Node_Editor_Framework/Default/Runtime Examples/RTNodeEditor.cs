@@ -83,7 +83,6 @@ namespace NodeEditorFramework.Standard
 			
 			// Draw Interface
 			editorInterface.DrawToolbarGUI(canvasRect);
-			editorInterface.DrawModalPanel();
 
 			// End Node Editor GUI
 			NodeEditorGUI.EndNodeGUI();

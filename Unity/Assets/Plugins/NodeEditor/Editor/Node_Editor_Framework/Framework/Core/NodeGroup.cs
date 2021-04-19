@@ -253,7 +253,7 @@ namespace NodeEditorFramework
             GUILayout.Space(8);
 
             // Header Title
-            title = GUILayout.TextField(title, headerTitleStyle, GUILayout.MinWidth(40));
+            title = EditorGUILayout.TextField(title, headerTitleStyle, GUILayout.MinWidth(40));
 
             // Header Color Edit
             color = this._color;
@@ -426,11 +426,8 @@ namespace NodeEditorFramework
             10)] // Priority over hundred to make it call after the GUI, and before Node dragging (110) and window panning (105)
         private static void HandleGroupDraggingStart(NodeEditorInputInfo inputInfo)
         {
-            if (GUIUtility.hotControl > 0)
-                return; // GUI has control
-
             NodeEditorState state = inputInfo.editorState;
-            if (inputInfo.inputEvent.button == 0 && state.focusedNode == null && state.dragNode == false)
+            if (inputInfo.inputEvent.button == 0)
             {
                 // Do not interfere with other dragging stuff
                 NodeGroup focusedGroup = GroupAtPositionInput(state, NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos));
@@ -456,7 +453,6 @@ namespace NodeEditorFramework
                         // Start the resize drag
                         state.StartDrag("group", inputInfo.inputPos, startSizePos);
                         state.resizeGroup = true;
-                        inputInfo.inputEvent.Use();
                     }
                     else if (focusedGroup.headerRect.Contains(canvasInputPos))
                     {
@@ -464,7 +460,6 @@ namespace NodeEditorFramework
                         state.activeGroup = focusedGroup;
                         state.StartDrag("group", inputInfo.inputPos, state.activeGroup.rect.position);
                         state.activeGroup.UpdatePins();
-                        inputInfo.inputEvent.Use();
                     }
                 }
             }
@@ -516,7 +511,7 @@ namespace NodeEditorFramework
                         pinnedGroup.rect.position += dragChange;
                 }
 
-                inputInfo.inputEvent.Use();
+                Event.current.Use();
                 NodeEditor.RepaintClients();
             }
         }

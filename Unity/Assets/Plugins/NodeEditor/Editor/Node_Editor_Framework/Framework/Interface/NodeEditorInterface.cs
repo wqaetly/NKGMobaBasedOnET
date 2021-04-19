@@ -16,11 +16,6 @@ namespace NodeEditorFramework.Standard
         public string sceneCanvasName = "";
         public float toolbarHeight = 17;
 
-        // Modal Panel
-        public bool showModalPanel;
-        public Rect modalPanelRect = new Rect(20, 50, 250, 70);
-        public Action modalPanelContent;
-
         public void ShowNotification(GUIContent message)
         {
             if (ShowNotificationAction != null)
@@ -39,22 +34,13 @@ namespace NodeEditorFramework.Standard
             if (GUILayout.Button("File", NodeEditorGUI.toolbarDropdown, GUILayout.Width(50)))
             {
                 GenericMenu menu = new GenericMenu();
-
-                // New Canvas filled with canvas types
                 NodeCanvasManager.FillCanvasTypeMenu(ref menu, NewNodeCanvas, "New Canvas/");
                 menu.AddSeparator("");
-
-                // Load / Save
-#if UNITY_EDITOR
                 menu.AddItem(new GUIContent("Load Canvas"), false, LoadCanvas);
                 menu.AddItem(new GUIContent("Reload Canvas"), false, ReloadCanvas);
                 menu.AddSeparator("");
-
                 menu.AddItem(new GUIContent("Save Canvas"), false, SaveCanvas);
                 menu.AddItem(new GUIContent("Save Canvas As"), false, SaveCanvasAs);
-
-                // menu.AddSeparator("");
-#endif
                 menu.ShowAsContext();
             }
 
@@ -76,12 +62,7 @@ namespace NodeEditorFramework.Standard
                     UnityEditor.Selection.activeObject = npBehaveCanvas.GetCurrentCanvasDatas();
                 }
             }
-
-#if !UNITY_EDITOR
-			GUILayout.Space(5);
-			if (GUILayout.Button("Quit", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
-				Application.Quit ();
-#endif
+            
             curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
             GUI.backgroundColor = Color.white;
 
@@ -89,18 +70,6 @@ namespace NodeEditorFramework.Standard
             GUILayout.EndArea();
             if (Event.current.type == EventType.Repaint)
                 toolbarHeight = curToolbarHeight;
-        }
-
-        public void DrawModalPanel()
-        {
-            if (showModalPanel)
-            {
-                if (modalPanelContent == null)
-                    return;
-                GUILayout.BeginArea(modalPanelRect, NodeEditorGUI.nodeBox);
-                modalPanelContent.Invoke();
-                GUILayout.EndArea();
-            }
         }
 
         #endregion

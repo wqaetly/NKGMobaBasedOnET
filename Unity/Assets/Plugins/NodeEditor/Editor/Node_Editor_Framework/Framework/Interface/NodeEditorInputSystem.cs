@@ -6,7 +6,6 @@ using NodeEditorFramework.Utilities.CreateNodesWindow;
 using UnityEditor;
 using MenuFunctionData = UnityEditor.GenericMenu.MenuFunction2;
 
-
 namespace NodeEditorFramework
 {
     /// <summary>
@@ -36,7 +35,7 @@ namespace NodeEditorFramework
 
             // Iterate through each static method
 
-            Assembly assembly = Assembly.GetAssembly(typeof(NodeEditorInputSystem));
+            Assembly assembly = Assembly.GetAssembly(typeof (NodeEditorInputSystem));
             foreach (Type type in assembly.GetTypes())
             {
                 foreach (MethodInfo method in type.GetMethods(BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic |
@@ -231,14 +230,13 @@ namespace NodeEditorFramework
             NodeEditorState state = inputInfo.editorState;
             //必须放在这个地方，因为需要处理连线问题，如果不每次刷新就检测，就无法处理
             state.focusedNode = NodeEditor.NodeAtPosition(NodeEditor.ScreenToCanvasSpace(inputInfo.inputPos), out state.focusedConnectionKnob);
-            // Perform focus changes in Repaint, which is the only suitable time to do this
         }
 
         [EventHandlerAttribute(EventType.MouseDown, -2)] // Absolute second to call!
         private static void HandleSelecting(NodeEditorInputInfo inputInfo)
         {
-            ResetKeyBoardInput();
-            
+            ResetHotControlId();
+
             NodeEditorState state = inputInfo.editorState;
             if (inputInfo.inputEvent.button == 0 && state.focusedNode != null)
             {
@@ -258,17 +256,22 @@ namespace NodeEditorFramework
                 UnityEditor.Selection.activeObject = state.canvas;
             }
         }
-        
+
         [EventHandlerAttribute(EventType.MouseDrag, -2)] // Absolute second to call!
         private static void HandleDrag(NodeEditorInputInfo inputInfo)
         {
-            ResetKeyBoardInput();
+            //因为在编辑文本的时候我们不希望进行拖拽，所以吃掉事件
+            if (GUIUtility.hotControl != 0)
+            {
+                Event.current.Use();
+            }
+
         }
-        
+
         [EventHandlerAttribute(EventType.ScrollWheel, -2)] // Absolute second to call!
         private static void HandleScrollWheel(NodeEditorInputInfo inputInfo)
         {
-            ResetKeyBoardInput();
+            ResetHotControlId();
         }
 
         // CONTEXT CLICKS
@@ -305,7 +308,7 @@ namespace NodeEditorFramework
             }
         }
 
-        private static void ResetKeyBoardInput()
+        private static void ResetHotControlId()
         {
             GUIUtility.keyboardControl = 0;
             GUIUtility.hotControl = 0;
