@@ -67,7 +67,7 @@ namespace NodeEditorFramework.Standard
 
 			// Begin Node Editor GUI and set canvas rect
 			NodeEditorGUI.StartNodeGUI(false);
-			canvasCache.editorState.canvasRect = new Rect (canvasRect.x, canvasRect.y + editorInterface.toolbarHeight, canvasRect.width, canvasRect.height - editorInterface.toolbarHeight);
+			canvasCache.editorState.canvasRect = new Rect (canvasRect.x, canvasRect.y + NodeEditorInterface.toolbarHeight, canvasRect.width, canvasRect.height - NodeEditorInterface.toolbarHeight);
 
 			try
 			{ // Perform drawing with error-handling

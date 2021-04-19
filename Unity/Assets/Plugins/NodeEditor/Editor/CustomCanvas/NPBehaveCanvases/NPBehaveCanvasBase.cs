@@ -120,6 +120,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 {
                     mNodeData.LinkedIds = new List<long>();
                 }
+
                 mNodeData.LinkedIds.Clear();
 
                 //出结点连接的Nodes
@@ -161,6 +162,18 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 npDataSupportorBase.NP_BBValueManager.Add(bbvalues.Key, bbvalues.Value);
             }
+        }
+
+        public override void DrawToolbar()
+        {
+            GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
+
+            if (GUILayout.Button("DataBase", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
+            {
+                Selection.activeObject = this.GetCurrentCanvasDatas();
+            }
+
+            GUI.backgroundColor = Color.white;
         }
     }
 }

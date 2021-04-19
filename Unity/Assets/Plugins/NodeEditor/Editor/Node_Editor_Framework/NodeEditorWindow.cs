@@ -38,7 +38,7 @@ namespace NodeEditorFramework.Standard
         {
             get
             {
-                return new Rect(0, editorInterface.toolbarHeight, position.width, position.height - editorInterface.toolbarHeight);
+                return new Rect(0, NodeEditorInterface.toolbarHeight, position.width, position.height - NodeEditorInterface.toolbarHeight);
             }
         }
 

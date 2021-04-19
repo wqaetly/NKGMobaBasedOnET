@@ -14,7 +14,7 @@ namespace NodeEditorFramework.Standard
 
         // GUI
         public string sceneCanvasName = "";
-        public float toolbarHeight = 17;
+        public const float toolbarHeight = 20;
 
         public void ShowNotification(GUIContent message)
         {
@@ -29,7 +29,6 @@ namespace NodeEditorFramework.Standard
             rect.height = toolbarHeight;
             GUILayout.BeginArea(rect, NodeEditorGUI.toolbar);
             GUILayout.BeginHorizontal();
-            float curToolbarHeight = 0;
 
             if (GUILayout.Button("File", NodeEditorGUI.toolbarDropdown, GUILayout.Width(50)))
             {
@@ -44,32 +43,16 @@ namespace NodeEditorFramework.Standard
                 menu.ShowAsContext();
             }
 
-            curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
-
             GUILayout.Space(10);
             GUILayout.FlexibleSpace();
-
-            GUILayout.Label(new GUIContent(this.canvasCache.openedCanvasPath), NodeEditorGUI.toolbarLabel);
+            //重定向到数据资产按钮
+            EditorGUILayoutExtension.LinkFileLabelField("Click To go to asset Path",this.canvasCache.openedCanvasPath);
             GUILayout.Label(this.canvasCache.typeData.DisplayString, NodeEditorGUI.toolbarLabel);
-            curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
 
-            GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
-            if (NodeEditor.curNodeCanvas is NPBehaveCanvas)
-            {
-                if (GUILayout.Button("DataBase", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
-                {
-                    NPBehaveCanvas npBehaveCanvas = this.canvasCache.nodeCanvas as NPBehaveCanvas;
-                    UnityEditor.Selection.activeObject = npBehaveCanvas.GetCurrentCanvasDatas();
-                }
-            }
-            
-            curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
-            GUI.backgroundColor = Color.white;
+            NodeEditor.curNodeCanvas.DrawToolbar();
 
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
-            if (Event.current.type == EventType.Repaint)
-                toolbarHeight = curToolbarHeight;
         }
 
         #endregion
