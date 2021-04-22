@@ -55,7 +55,7 @@ namespace NodeEditorFramework.Standard
 
             NodeEditor.ReInit(false);
             Texture iconTexture = ResourceManager.LoadTexture("Textures/Icon_Dark.png");
-            _editor.titleContent = new GUIContent("Node Editor", iconTexture);
+            _editor.titleContent = new GUIContent("NKG Universal Node Editor", iconTexture);
 
             return _editor;
         }
