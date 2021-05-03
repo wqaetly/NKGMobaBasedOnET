@@ -28,7 +28,7 @@ namespace ETModel
             NP_RuntimeTree tempTree =
                     ComponentFactory.Create<NP_RuntimeTree, NP_DataSupportor, long>(npDataSupportor, unit.Id);
 
-            long rootId = npDataSupportor.NpDataSupportorBase.RootId;
+            long rootId = npDataSupportor.NpDataSupportorBase.NPBehaveTreeDataId;
 
             unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, rootId, tempTree);
 

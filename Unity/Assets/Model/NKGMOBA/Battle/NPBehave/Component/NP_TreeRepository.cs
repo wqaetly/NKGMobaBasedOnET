@@ -99,7 +99,7 @@ namespace ETModel
 
                     Log.Info($"反序列化行为树:{referenceCollectorData.key}完成");
 
-                    this.m_NpRuntimeTreesDatas.Add(MnNpDataSupportor.NpDataSupportorBase.RootId, MnNpDataSupportor);
+                    this.m_NpRuntimeTreesDatas.Add(MnNpDataSupportor.NpDataSupportorBase.NPBehaveTreeDataId, MnNpDataSupportor);
                 }
                 catch (Exception e)
                 {

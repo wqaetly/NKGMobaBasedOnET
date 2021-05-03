@@ -25,12 +25,12 @@ namespace ETModel
             NP_DataSupportor npDataSupportor =
                     Game.Scene.GetComponent<NP_TreeDataRepository>().GetNP_TreeData_DeepCopyBBValuesOnly(nPDataId);
 
-            NP_RuntimeTree tempTree =
+            NP_RuntimeTree runTimeTree =
                     ComponentFactory.Create<NP_RuntimeTree, NP_DataSupportor, long>(npDataSupportor, unit.Id);
 
-            long rootId = npDataSupportor.NpDataSupportorBase.RootId;
+            long treeId = npDataSupportor.NpDataSupportorBase.NPBehaveTreeDataId;
 
-            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(tempTree.Id, rootId, tempTree);
+            unit.GetComponent<NP_RuntimeTreeManager>().AddTree(runTimeTree.Id, treeId, runTimeTree);
 
             //Log.Info($"运行时id为{theRuntimeTreeID}");
             //配置节点数据
@@ -41,7 +41,7 @@ namespace ETModel
                     case NodeType.Task:
                         try
                         {
-                            nodeDateBase.Value.CreateTask(unit.Id, tempTree);
+                            nodeDateBase.Value.CreateTask(unit.Id, runTimeTree);
                         }
                         catch (Exception e)
                         {
@@ -53,7 +53,7 @@ namespace ETModel
                     case NodeType.Decorator:
                         try
                         {
-                            nodeDateBase.Value.CreateDecoratorNode(unit.Id, tempTree,
+                            nodeDateBase.Value.CreateDecoratorNode(unit.Id, runTimeTree,
                                 npDataSupportor.NpDataSupportorBase.NP_DataSupportorDic[nodeDateBase.Value.LinkedIds[0]].NP_GetNode());
                         }
                         catch (Exception e)
@@ -85,16 +85,16 @@ namespace ETModel
             }
 
             //配置根结点
-            tempTree.SetRootNode(npDataSupportor.NpDataSupportorBase.NP_DataSupportorDic[rootId].NP_GetNode() as Root);
+            runTimeTree.SetRootNode(npDataSupportor.NpDataSupportorBase.NP_DataSupportorDic[treeId].NP_GetNode() as Root);
 
             //配置黑板数据
-            Dictionary<string, ANP_BBValue> bbvaluesManager = tempTree.GetBlackboard().GetDatas();
+            Dictionary<string, ANP_BBValue> bbvaluesManager = runTimeTree.GetBlackboard().GetDatas();
             foreach (var bbValues in npDataSupportor.NpDataSupportorBase.NP_BBValueManager)
             {
                 bbvaluesManager.Add(bbValues.Key, bbValues.Value);
             }
 
-            return tempTree;
+            return runTimeTree;
         }
 
         /// <summary>

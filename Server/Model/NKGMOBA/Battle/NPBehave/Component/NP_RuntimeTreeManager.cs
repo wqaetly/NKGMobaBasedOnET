@@ -21,12 +21,12 @@ namespace ETModel
         /// 添加行为树
         /// </summary>
         /// <param name="runTimeID">行为树运行时ID</param>
-        /// <param name="rootId">行为树在预配置中的id，即根节点id</param>
+        /// <param name="treeId">行为树在预配置中的id，即根节点id</param>
         /// <param name="npRuntimeTree">要添加的行为树</param>
-        public void AddTree(long runTimeID, long rootId, NP_RuntimeTree npRuntimeTree)
+        public void AddTree(long runTimeID, long treeId, NP_RuntimeTree npRuntimeTree)
         {
             RuntimeTrees.Add(runTimeID, npRuntimeTree);
-            this.m_HasAddedTrees.Add(rootId, runTimeID);
+            this.m_HasAddedTrees.Add(treeId, runTimeID);
         }
 
         /// <summary>

@@ -16,8 +16,8 @@ namespace ETModel
     [HideLabel]
     public class NP_DataSupportorBase
     {
-        [LabelText("此行为树根结点ID")]
-        public long RootId;
+        [LabelText("此行为树Id，也是根节点Id")]
+        public long NPBehaveTreeDataId;
 
         [LabelText("单个行为树所有结点")]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]

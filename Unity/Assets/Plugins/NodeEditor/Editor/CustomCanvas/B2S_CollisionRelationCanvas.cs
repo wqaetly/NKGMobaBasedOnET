@@ -66,9 +66,9 @@ namespace B2S_CollisionRelation
 
             foreach (var nodeGroup in this.groups)
             {
-                foreach (var VARIABLE1 in nodeGroup.pinnedNodes)
+                foreach (var pinnedNode in nodeGroup.pinnedNodes)
                 {
-                    VARIABLE1.B2SCollisionRelation_GetNodeData().BelongGroup = nodeGroup.title;
+                    pinnedNode.B2SCollisionRelation_GetNodeData().BelongGroup = nodeGroup.title;
                 }
             }
         }
@@ -83,19 +83,19 @@ namespace B2S_CollisionRelation
             foreach (var nodeGroup in this.groups)
             {
                 if (nodeGroup.title == "GenerateCollision" || nodeGroup.title == "NoGenerateCollision")
-                    foreach (var VARIABLE1 in nodeGroup.pinnedNodes)
+                    foreach (var pinnode1 in nodeGroup.pinnedNodes)
                     {
-                        this.m_MainDataDic.B2S_CollisionsRelationDic.Add(VARIABLE1.B2SCollisionRelation_GetNodeData().nodeDataId,
-                            VARIABLE1.B2SCollisionRelation_GetNodeData());
+                        this.m_MainDataDic.B2S_CollisionsRelationDic.Add(pinnode1.B2SCollisionRelation_GetNodeData().nodeDataId,
+                            pinnode1.B2SCollisionRelation_GetNodeData());
                     }
                 else
                 {
-                    foreach (var VARIABLE2 in nodeGroup.pinnedNodes)
+                    foreach (var pinnode2 in nodeGroup.pinnedNodes)
                     {
-                        this.m_PrefabDic.B2S_CollisionsRelationDic.Add(VARIABLE2.B2SCollisionRelation_GetNodeData().nodeDataId,
-                            VARIABLE2.B2SCollisionRelation_GetNodeData());
-                        this.m_PrefabDataDic.Add(VARIABLE2.B2SCollisionRelation_GetNodeData().nodeDataId,
-                            VARIABLE2.Prefab_GetNodeData().colliderNodeIDs);
+                        this.m_PrefabDic.B2S_CollisionsRelationDic.Add(pinnode2.B2SCollisionRelation_GetNodeData().nodeDataId,
+                            pinnode2.B2SCollisionRelation_GetNodeData());
+                        this.m_PrefabDataDic.Add(pinnode2.B2SCollisionRelation_GetNodeData().nodeDataId,
+                            pinnode2.Prefab_GetNodeData().colliderNodeIDs);
                     }
                 }
             }

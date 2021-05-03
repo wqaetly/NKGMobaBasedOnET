@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ETModel
 {
     [ObjectSystem]
-    public class ConfigComponentAwakeSystem : AwakeSystem<ConfigComponent>
+    public class ConfigComponentAwakeSystem: AwakeSystem<ConfigComponent>
     {
         public override void Awake(ConfigComponent self)
         {
@@ -13,7 +13,7 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class ConfigComponentLoadSystem : LoadSystem<ConfigComponent>
+    public class ConfigComponentLoadSystem: LoadSystem<ConfigComponent>
     {
         public override void Load(ConfigComponent self)
         {
@@ -24,7 +24,7 @@ namespace ETModel
     /// <summary>
     /// Config组件会扫描所有的有ConfigAttribute标签的配置,加载进来
     /// </summary>
-    public class ConfigComponent : Component
+    public class ConfigComponent: Component
     {
         private Dictionary<Type, ACategoryBase> allConfig = new Dictionary<Type, ACategoryBase>();
 
@@ -36,11 +36,11 @@ namespace ETModel
         public void Load()
         {
             this.allConfig.Clear();
-            HashSet<Type> types = Game.EventSystem.GetTypes(typeof(ConfigAttribute));
+            HashSet<Type> types = Game.EventSystem.GetTypes(typeof (ConfigAttribute));
 
             foreach (Type type in types)
             {
-                object[] attrs = type.GetCustomAttributes(typeof(ConfigAttribute), false);
+                object[] attrs = type.GetCustomAttributes(typeof (ConfigAttribute), false);
                 if (attrs.Length == 0)
                 {
                     continue;
@@ -70,7 +70,7 @@ namespace ETModel
 
         public T GetOne<T>() where T : IConfig
         {
-            Type type = typeof(T);
+            Type type = typeof (T);
             if (this.allConfig.TryGetValue(type, out var aCategoryBase))
             {
                 return ((ACategory<T>) aCategoryBase).GetOne();
@@ -85,7 +85,7 @@ namespace ETModel
 
         public T Get<T>(int id) where T : IConfig
         {
-            Type type = typeof(T);
+            Type type = typeof (T);
             if (this.allConfig.TryGetValue(type, out var aCategoryBase))
             {
                 return ((ACategory<T>) aCategoryBase).TryGet(id);
@@ -98,10 +98,23 @@ namespace ETModel
             return default;
         }
 
+        public ACategoryBase Get(Type type)
+        {
+            if (this.allConfig.TryGetValue(type, out var aCategoryBase))
+            {
+                return aCategoryBase;
+            }
+            else
+            {
+                throw new Exception($"ConfigComponent not found key: {type.FullName}");
+            }
+
+            return default;
+        }
 
         public List<T> GetAll<T>() where T : IConfig
         {
-            Type type = typeof(T);
+            Type type = typeof (T);
             if (this.allConfig.TryGetValue(type, out var aCategoryBase))
             {
                 return ((ACategory<T>) aCategoryBase).GetAll();
