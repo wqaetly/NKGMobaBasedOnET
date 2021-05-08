@@ -128,19 +128,19 @@ namespace ETHotfix
 
             if (fui5V5Map.SkillQ_CDInfo.visible)
             {
-                fui5V5Map.SkillQ_CDInfo.text = Math.Ceiling((double) (this.m_QCDInfo.LastTriggerTimer + this.m_QCDInfo.Interval - currentTime) / 1000)
+                fui5V5Map.SkillQ_CDInfo.text = ((int)Math.Ceiling((double) (this.m_QCDInfo.LastTriggerTimer + this.m_QCDInfo.Interval - currentTime) / 1000))
                         .ToString();
             }
 
             if (fui5V5Map.SkillW_CDInfo.visible)
             {
-                fui5V5Map.SkillW_CDInfo.text = Math.Ceiling((double) (this.m_WCDInfo.LastTriggerTimer + this.m_WCDInfo.Interval - currentTime) / 1000)
+                fui5V5Map.SkillW_CDInfo.text = ((int)Math.Ceiling((double) (this.m_WCDInfo.LastTriggerTimer + this.m_WCDInfo.Interval - currentTime) / 1000))
                         .ToString();
             }
 
             if (fui5V5Map.SkillE_CDInfo.visible)
             {
-                fui5V5Map.SkillE_CDInfo.text = Math.Ceiling((double) (this.m_ECDInfo.LastTriggerTimer + this.m_ECDInfo.Interval - currentTime) / 1000)
+                fui5V5Map.SkillE_CDInfo.text = ((int)Math.Ceiling((double) (this.m_ECDInfo.LastTriggerTimer + this.m_ECDInfo.Interval - currentTime) / 1000))
                         .ToString();
             }
         }

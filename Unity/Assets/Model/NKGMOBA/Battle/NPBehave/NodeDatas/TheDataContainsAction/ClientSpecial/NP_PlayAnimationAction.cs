@@ -61,6 +61,7 @@ namespace ETModel
 
         private void PlayAnimation()
         {
+            m_Flag = 0;
             HandlePlayAnim(NodeDataForPlayAnims[this.m_Flag].StateTypes, NodeDataForPlayAnims[this.m_Flag].FadeOutTime);
             //Log.Info("这次播放的是Q技能动画");
         }
@@ -74,7 +75,6 @@ namespace ETModel
             //在播放完成后，每帧都会调用OnEnd委托，由于行为树中的FixedUpdate与Unity的Update频率不一致，所以需要作特殊处理
             m_AnimancerState = this.TheUnitBelongTo.GetComponent<AnimationComponent>()
                     .PlayAnim(stateTypes, fadeDuration);
-
             m_AnimancerState.OnEnd = this.m_OnAnimFinished;
         }
 

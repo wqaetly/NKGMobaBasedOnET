@@ -50,7 +50,7 @@ namespace NETCoreTest.Framework
             _totalUpdateTime = new TimeSpan();
             _timer = new TimerTick();
             _maximumElapsedTime = TimeSpan.FromMilliseconds(500.0);
-            TargetElapsedTime = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / 30); // target elapsed time is by default 60Hz
+            TargetElapsedTime = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / 30); // target elapsed time is by default 30Hz
             _lastUpdateCount = new int[4];
             _nextLastUpdateCountIndex = 0;
 

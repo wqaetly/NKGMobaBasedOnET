@@ -16,12 +16,12 @@ namespace NPBehave
         /// <summary>
         /// 世界默认更新频率为30hz
         /// </summary>
-        private const float c_GameUpdateInterval = 1 / 30f;
+        private const float c_GameUpdateInterval = 1f / 30f;
 
         /// <summary>
         /// 行为树默认更新频率为15hz
         /// </summary>
-        private const float s_UpdateInterval = c_GameUpdateInterval * 2 / 2;
+        private const float s_UpdateInterval = c_GameUpdateInterval * 2;
 
         /// <summary>
         /// 计时器
