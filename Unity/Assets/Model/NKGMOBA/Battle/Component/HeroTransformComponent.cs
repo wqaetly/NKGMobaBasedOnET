@@ -44,14 +44,19 @@ namespace ETModel
         FRONT,
         
         /// <summary>
-        /// 正前方
+        /// 左手
         /// </summary>
         LEFTHAND,
         
         /// <summary>
-        /// 正前方
+        /// 右手
         /// </summary>
         RIGHTTHAND,
+        
+        /// <summary>
+        /// 武器末端
+        /// </summary>
+        WEAPON,
     }
 
     /// <summary>
@@ -67,6 +72,7 @@ namespace ETModel
         private Transform centerPos;
         private Transform leftHeadPos;
         private Transform rightHeadPos;
+        private Transform weaponHeadPos;
 
         public void Awake()
         {
@@ -77,6 +83,7 @@ namespace ETModel
             this.centerPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("C_BUFFBONE_GLB_CENTER_LOC");
             this.leftHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("L_Hand");
             this.rightHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("R_Hand");
+            this.weaponHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BuffBone_Cstm_Weapon_2");
         }
 
         /// <summary>
@@ -100,6 +107,8 @@ namespace ETModel
                     return this.leftHeadPos;
                 case PosType.RIGHTTHAND:
                     return this.rightHeadPos;
+                case PosType.WEAPON:
+                    return this.weaponHeadPos;
             }
 
             return null;
