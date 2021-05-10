@@ -124,6 +124,13 @@ MonoBehaviour:
       type: 3}
   - key: Materials
     gameObject: {fileID: 9029996764500167687}
+  - key: L_Hand
+    gameObject: {fileID: 9029996764500168189}
+  - key: Darius_W_Effect
+    gameObject: {fileID: 5109561674985421106, guid: 2d274f78e4ce9784f80b32345fe4f75c,
+      type: 3}
+  - key: R_Hand
+    gameObject: {fileID: 9029996764500167739}
 --- !u!114 &3653864368093967313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +554,10 @@ PrefabInstance:
       value: -0.0001539197
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -559,6 +570,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -568,14 +583,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
@@ -667,6 +674,18 @@ GameObject:
 --- !u!1 &9029996764500167687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100116, guid: dd7a668fd33673c439d0c23c617d448c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9029996764500069139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9029996764500168189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100078, guid: dd7a668fd33673c439d0c23c617d448c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9029996764500069139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9029996764500167739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100136, guid: dd7a668fd33673c439d0c23c617d448c,
     type: 3}
   m_PrefabInstance: {fileID: 9029996764500069139}
   m_PrefabAsset: {fileID: 0}

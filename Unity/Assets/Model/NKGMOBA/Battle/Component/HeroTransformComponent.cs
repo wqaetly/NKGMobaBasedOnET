@@ -41,7 +41,17 @@ namespace ETModel
         /// <summary>
         /// 正前方
         /// </summary>
-        FRONT
+        FRONT,
+        
+        /// <summary>
+        /// 正前方
+        /// </summary>
+        LEFTHAND,
+        
+        /// <summary>
+        /// 正前方
+        /// </summary>
+        RIGHTTHAND,
     }
 
     /// <summary>
@@ -55,6 +65,8 @@ namespace ETModel
         private Transform channelPos;
         private Transform groundPos;
         private Transform centerPos;
+        private Transform leftHeadPos;
+        private Transform rightHeadPos;
 
         public void Awake()
         {
@@ -63,6 +75,8 @@ namespace ETModel
             this.groundPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BUFFBONE_GLB_GROUND_LOC");
             this.channelPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BUFFBONE_GLB_CHANNEL_LOC");
             this.centerPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("C_BUFFBONE_GLB_CENTER_LOC");
+            this.leftHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("L_Hand");
+            this.rightHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("R_Hand");
         }
 
         /// <summary>
@@ -82,6 +96,10 @@ namespace ETModel
                     return this.channelPos;
                 case PosType.CENTER:
                     return this.centerPos;
+                case PosType.LEFTHAND:
+                    return this.leftHeadPos;
+                case PosType.RIGHTTHAND:
+                    return this.rightHeadPos;
             }
 
             return null;
