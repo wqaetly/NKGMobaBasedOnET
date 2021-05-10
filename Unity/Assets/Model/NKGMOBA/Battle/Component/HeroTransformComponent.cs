@@ -5,6 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ETModel
@@ -26,37 +27,56 @@ namespace ETModel
         /// <summary>
         /// 头顶
         /// </summary>
+        [LabelText("头顶")]
         HEAD,
 
         /// <summary>
         /// 正中央
         /// </summary>
+        [LabelText("正中央")]
         CENTER,
 
         /// <summary>
         /// 底部
         /// </summary>
+        [LabelText("底部")]
         GROUND,
 
         /// <summary>
         /// 正前方
         /// </summary>
+        [LabelText("正前方")]
         FRONT,
         
         /// <summary>
         /// 左手
         /// </summary>
+        [LabelText("左手")]
         LEFTHAND,
         
         /// <summary>
         /// 右手
         /// </summary>
+        [LabelText("右手")]
         RIGHTTHAND,
         
         /// <summary>
+        /// 武器前端
+        /// </summary>
+        [LabelText("武器前端")]
+        WEAPONSTART,
+        
+        /// <summary>
+        /// 武器中间
+        /// </summary>
+        [LabelText("武器中间")]
+        WEAPONCENTER,
+
+        /// <summary>
         /// 武器末端
         /// </summary>
-        WEAPON,
+        [LabelText("武器末端")]
+        WEAPONEND,
     }
 
     /// <summary>
@@ -72,18 +92,23 @@ namespace ETModel
         private Transform centerPos;
         private Transform leftHeadPos;
         private Transform rightHeadPos;
-        private Transform weaponHeadPos;
+        private Transform weaponStartPos;
+        private Transform weaponCenterPos;
+        private Transform weaponEndPos;
 
         public void Awake()
         {
             this.MyHero = this.GetParent<Unit>();
-            this.headPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("C_BuffBone_Glb_Overhead_Loc");
-            this.groundPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BUFFBONE_GLB_GROUND_LOC");
-            this.channelPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BUFFBONE_GLB_CHANNEL_LOC");
-            this.centerPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("C_BUFFBONE_GLB_CENTER_LOC");
-            this.leftHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("L_Hand");
-            this.rightHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("R_Hand");
-            this.weaponHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("BuffBone_Cstm_Weapon_2");
+            this.headPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_HeadPos");
+            this.groundPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_GroundPos");
+            this.channelPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_FrontPos");
+            this.centerPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_CenterPos");
+            this.leftHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_LeftHandPos");
+            this.rightHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_RightHandPos");
+            
+            this.weaponStartPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponStatrPos");
+            this.weaponCenterPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponCenterPos");
+            this.weaponEndPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponEndPos");
         }
 
         /// <summary>
@@ -107,10 +132,13 @@ namespace ETModel
                     return this.leftHeadPos;
                 case PosType.RIGHTTHAND:
                     return this.rightHeadPos;
-                case PosType.WEAPON:
-                    return this.weaponHeadPos;
+                case PosType.WEAPONSTART:
+                    return this.weaponStartPos;
+                case PosType.WEAPONCENTER:
+                    return this.weaponCenterPos;
+                case PosType.WEAPONEND:
+                    return this.weaponEndPos;
             }
-
             return null;
         }
     }

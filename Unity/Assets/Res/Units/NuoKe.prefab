@@ -88,15 +88,13 @@ MonoBehaviour:
     gameObject: {fileID: 7400000, guid: d71bca4fe098d9745a9a301f9a0baa9f, type: 2}
   - key: Anim_Spell4
     gameObject: {fileID: 7400000, guid: 26866f790138b6944b891370d6dbc9c9, type: 2}
-  - key: BUFFBONE_GLB_CHANNEL_LOC
+  - key: Trans_FrontPos
     gameObject: {fileID: 9029996764500168103}
-  - key: BUFFBONE_GLB_GROUND_LOC
-    gameObject: {fileID: 9029996764500168101}
-  - key: C_BUFFBONE_GLB_CENTER_LOC
+  - key: Trans_CenterPos
     gameObject: {fileID: 9029996764500168105}
-  - key: C_BUFFBONE_GLB_LAYOUT_LOC
+  - key: Trans_GroundPos
     gameObject: {fileID: 9029996764500168147}
-  - key: C_BuffBone_Glb_Overhead_Loc
+  - key: Trans_HeadPos
     gameObject: {fileID: 9029996764500168145}
   - key: Darius_Q_Effect
     gameObject: {fileID: 3196999497182221236, guid: 88078089f63e9524fa06183914f5f933,
@@ -124,14 +122,14 @@ MonoBehaviour:
       type: 3}
   - key: Materials
     gameObject: {fileID: 9029996764500167687}
-  - key: L_Hand
+  - key: Trans_LeftHandPos
     gameObject: {fileID: 9029996764500168189}
   - key: Darius_W_Effect
     gameObject: {fileID: 5109561674985421106, guid: 2d274f78e4ce9784f80b32345fe4f75c,
       type: 3}
-  - key: R_Hand
+  - key: Trans_RightHandPos
     gameObject: {fileID: 9029996764500167739}
-  - key: BuffBone_Cstm_Weapon_2
+  - key: Trans_WeaponEndPos
     gameObject: {fileID: 9029996764500168099}
 --- !u!114 &3653864368093967313
 MonoBehaviour:
@@ -646,12 +644,6 @@ Transform:
 --- !u!1 &9029996764500168103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100020, guid: dd7a668fd33673c439d0c23c617d448c,
-    type: 3}
-  m_PrefabInstance: {fileID: 9029996764500069139}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &9029996764500168101 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100022, guid: dd7a668fd33673c439d0c23c617d448c,
     type: 3}
   m_PrefabInstance: {fileID: 9029996764500069139}
   m_PrefabAsset: {fileID: 0}
