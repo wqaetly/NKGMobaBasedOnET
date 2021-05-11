@@ -1,4 +1,4 @@
-﻿Shader "Unlit/CustomShadow"
+﻿Shader "NKGMoba/CustomShadow"
 {
     Properties
     {
@@ -12,12 +12,9 @@
         {
             "RenderPipeline" = "UniversalPipeline" "RenderType" = "Transparent" "Queue" = "Transparent"
         }
-        LOD 300
 
-		Pass
+	    Pass
 		{
-			Name "Shadow"
-
 			//用使用模板测试以保证alpha显示正确
 			Stencil
 			{
@@ -37,11 +34,12 @@
 			//深度稍微偏移防止阴影与地面穿插
 			Offset -1 , 0
 
-			CGPROGRAM
+			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 
-			#include "UnityCG.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+			
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -53,9 +51,14 @@
 				float4 color : COLOR;
 			};
 
-			float4 _LightDir;
+			CBUFFER_START(UnityPerMaterial)
+
+            float4 _LightDir;
 			float4 _ShadowColor;
 			float _ShadowFalloff;
+
+            CBUFFER_END
+			
 
 			float3 ShadowProjectPos(float4 vertPos)
 			{
@@ -82,10 +85,10 @@
 				float3 shadowPos = ShadowProjectPos(v.vertex);
 
 				//转换到裁切空间
-				o.vertex = UnityWorldToClipPos(shadowPos);
+				o.vertex = TransformWorldToHClip(shadowPos);;
 
 				//得到中心点世界坐标
-				float3 center =float3( unity_ObjectToWorld[0].w , _LightDir.w , unity_ObjectToWorld[2].w);
+				float3 center =float3(unity_ObjectToWorld[0].w , _LightDir.w , unity_ObjectToWorld[2].w);
 				//计算阴影衰减
 				float falloff = 1-saturate(distance(shadowPos , center) * _ShadowFalloff);
 
@@ -96,11 +99,11 @@
 				return o;
 			}
 
-			fixed4 frag (v2f i) : SV_Target
+			half4 frag (v2f i) : SV_Target
 			{
 				return i.color;
 			}
-			ENDCG
+			ENDHLSL
 		}
     }
 }
