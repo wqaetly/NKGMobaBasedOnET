@@ -79,7 +79,8 @@ namespace ETHotfix
                 
                 blackboard.Set("NormalAttackUnitIds", new List<long>() { self.CachedUnitForAttack.Id });
                 
-                return;
+                CDInfo commonAttackCDInfo = CDComponent.Instance.GetCDData(self.Entity.Id, "CommonAttack");
+                await TimerComponent.Instance.WaitAsync(commonAttackCDInfo.Interval, self.CancellationTokenSource.Token);
             }
             else
             {
