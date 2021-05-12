@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace ETModel
 {
@@ -51,7 +52,15 @@ namespace ETModel
         {
             if (this.AllEffects.TryGetValue(name, out var tempUnit))
             {
-                tempUnit.GameObject.GetComponent<ParticleSystem>().Stop();
+                if (tempUnit.GameObject.GetComponent<ParticleSystem>() != null)
+                {
+                    tempUnit.GameObject.GetComponent<ParticleSystem>().Stop();
+                }
+                else
+                {
+                    tempUnit.GameObject.GetComponent<VisualEffect>().Stop();
+                }
+
                 AllEffects.Remove(name);
                 Game.Scene.GetComponent<GameObjectPool>().Recycle(tempUnit);
             }
@@ -69,12 +78,26 @@ namespace ETModel
             //播放特效
             if (this.AllEffects.TryGetValue(name, out var tempUnit))
             {
-                tempUnit.GameObject.GetComponent<ParticleSystem>().Play();
+                if (tempUnit.GameObject.GetComponent<ParticleSystem>() != null)
+                {
+                    tempUnit.GameObject.GetComponent<ParticleSystem>().Play();
+                }
+                else
+                {
+                    tempUnit.GameObject.GetComponent<VisualEffect>().Play();
+                }
             }
             else
             {
                 Add(name, unit);
-                unit.GameObject.GetComponent<ParticleSystem>().Play();
+                if (unit.GameObject.GetComponent<ParticleSystem>() != null)
+                {
+                    unit.GameObject.GetComponent<ParticleSystem>().Play();
+                }
+                else
+                {
+                    unit.GameObject.GetComponent<VisualEffect>().Play();
+                }
             }
         }
 
@@ -87,9 +110,13 @@ namespace ETModel
         {
             if (this.AllEffects.TryGetValue(effectNameToBeChecked, out var unit))
             {
-                if (unit.GameObject.GetComponent<ParticleSystem>().isPlaying)
+                if (unit.GameObject.GetComponent<ParticleSystem>() != null)
                 {
-                    return true;
+                    return unit.GameObject.GetComponent<ParticleSystem>().isPlaying;
+                }
+                else if(unit.GameObject.GetComponent<VisualEffect>() != null)
+                {
+                    return !unit.GameObject.GetComponent<VisualEffect>().pause;
                 }
 
                 return false;
@@ -107,28 +134,28 @@ namespace ETModel
             //如果互斥列表中不包含此项，说明不与其他特效互斥
             if (!effectGroup.Contains(name)) return;
             //查看他是否与特效组里面的一些特效冲突，如果是就移除当前冲突的特效，而播放他
-            foreach (var VARIABLE in this.effectGroup)
+            foreach (var vfxName in this.effectGroup)
             {
                 //是同一个特效，就不需要做操作
-                if (VARIABLE == name)
+                if (vfxName == name)
                 {
                     continue;
                 }
 
                 //如果当前播放的特效中不含VARIABLE，就不需要做操作
-                if (!this.AllEffects.ContainsKey(VARIABLE))
+                if (!this.AllEffects.ContainsKey(vfxName))
                 {
                     continue;
                 }
 
                 //如果它并没有在播放，就不需要操作
-                if (!this.AllEffects[VARIABLE].GameObject.GetComponent<ParticleSystem>().isPlaying)
+                if (!CheckState(vfxName))
                 {
                     continue;
                 }
 
                 //将目标特效移除
-                Remove(VARIABLE);
+                Remove(vfxName);
                 //Log.Info($"停止了{VARIABLE1}");
             }
         }

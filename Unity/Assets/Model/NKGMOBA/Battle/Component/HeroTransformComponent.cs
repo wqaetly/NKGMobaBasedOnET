@@ -106,7 +106,7 @@ namespace ETModel
             this.leftHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_LeftHandPos");
             this.rightHeadPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_RightHandPos");
             
-            this.weaponStartPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponStatrPos");
+            this.weaponStartPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponStartPos");
             this.weaponCenterPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponCenterPos");
             this.weaponEndPos = this.MyHero.GameObject.GetRCInternalComponent<Transform>("Trans_WeaponEndPos");
         }
