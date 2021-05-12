@@ -66,6 +66,9 @@ namespace ETModel
         ReplaceAttackBuffSystem,
 
         [LabelText("临时替换动画资源")]
-        ReplaceAnimBuffSystem
+        ReplaceAnimBuffSystem,
+        
+        [LabelText("修改RenderAsset的内容")]
+        ChangeRenderAssetBuffSystem
     }
 }

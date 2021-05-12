@@ -82,7 +82,7 @@ namespace ETModel
         }
 
         /// <summary>
-        /// 移除Buff(下一帧才真正移除)
+        /// 移除Buff(下一帧才真正移除 TODO 考虑到有些Buff绕一圈下来可能会移除自己，需要做额外处理，暂时先放着)
         /// </summary>
         /// <param name="buffId">要移除的BuffId</param>
         public void RemoveBuff(long buffId)
