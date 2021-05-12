@@ -71,7 +71,6 @@ namespace ETModel
             {
                 for (int i = currentMats.Count - 1; i >= 0; i--)
                 {
-                    Log.Info($"移除时：{currentMats[i].name}");
                     if (currentMats[i].name == changeMaterialName)
                     {
                         currentMats.RemoveAt(i);

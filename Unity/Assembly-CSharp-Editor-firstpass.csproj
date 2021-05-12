@@ -61,6 +61,7 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\ReflectionUtility.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Default\Runtime Examples\RTCanvasCalculator.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Decorator\NP_RootNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ChangeRenderAssetBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\GUI\CreateNodesWindow\NodeItem.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Framework\Core\ConnectionPort.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_SetUnitIdTheColliderBelongToActionNode.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomCanvas\NPBehaveCanvases\NPBehaveCanvas.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\B2S_CollisionRelationNodes\Prefabs\B2S_Prefab_FriendSoldier.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_AddBuffActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ChangeMaterialBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\B2S_CollisionRelationNodes\Prefabs\B2S_Prefab_EnemyCrystal.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\SustainDamageBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Framework\Core\NodeGroup.cs" />
@@ -158,9 +160,9 @@
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_MoveToRandomPosActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CancelAttackActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Framework\Core\ValueConnectionKnob.cs" />
-     <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\GUI\CreateNodesWindow\CreateNodesAdvancedDropdown.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\TreatmentBuffNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Composite\NP_SequenceNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\GUI\CreateNodesWindow\CreateNodesAdvancedDropdown.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\B2S_CollisionRelationNodes\Prefabs\B2S_Prefab_FriendDefendBuilding.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_CheckSkillCanBeCastActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodeBase.cs" />
@@ -168,8 +170,6 @@
      <Compile Include="Assets\Plugins\MonKey Commander\Editor\Init\GettingStartedPanel.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_MacroActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_SyncNPBBValue_BoolActionNode.cs" />
-     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ChangeRenderAssetBuffNode.cs" />
-     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ChangeMaterialBuffNode.cs" />
      <None Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\link.xml" />
      <None Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Shader\LineShader.shader" />
  <Reference Include="UnityEngine">
@@ -817,11 +817,11 @@
  <Reference Include="System.Xml.XPath.XDocument">
  <HintPath>D:/Study/Unity/2020.3.0f1c1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.TestRunner">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="Unity.AssetBundleBrowser.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
@@ -829,20 +829,11 @@
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Shaders">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.quicksearch">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
@@ -850,20 +841,71 @@
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Searcher.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="Analytics">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.DataPrivacy">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Monetization">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Tilemap.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.multiplayer-hlapi.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Runtime">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Searcher.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
@@ -874,38 +916,11 @@
  <Reference Include="Unity.Postprocessing.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="com.unity.multiplayer-weaver.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Analytics">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Mathematics">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Postprocessing.Runtime">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
@@ -916,9 +931,6 @@
  <Reference Include="UnityEngine.XR.LegacyInputHelpers">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
- </Reference>
  <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
  </Reference>
@@ -927,12 +939,6 @@
  </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Monetization">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
@@ -946,12 +952,6 @@
  <Reference Include="Unity.RenderPipelines.Core.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.VisualEffectGraph.Editor">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VisualEffectGraph.Runtime">
- <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
@@ -962,14 +962,6 @@
       <Project>{116e559a-e69d-884e-af00-61d57cb9a039}</Project>
       <Name>XAsset.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Model.csproj">
-      <Project>{9498bfb4-d9f5-c441-13e3-3f26f7700e29}</Project>
-      <Name>Unity.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Editor.csproj">
-      <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
-      <Name>Unity.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Editor.csproj">
       <Project>{1a015f2f-ef4c-fc52-3777-906da4065b5e}</Project>
       <Name>IngameDebugConsole.Editor</Name>
@@ -978,14 +970,6 @@
       <Project>{f33a4f4e-838d-b35c-ceb7-3f8a7ab9a9af}</Project>
       <Name>IngameDebugConsole.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{9f5687e3-5f72-c8f5-517b-584709b7d5d8}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{e0456168-1ba5-5e68-ef99-a1034c8b63ab}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Hotfix.csproj">
       <Project>{52f66610-896a-c4d1-9881-1a19df7ab80e}</Project>
       <Name>Unity.Hotfix</Name>
@@ -993,6 +977,22 @@
     <ProjectReference Include="Animancer.csproj">
       <Project>{159e65f6-d363-1a6d-ec57-6db30da1b98f}</Project>
       <Name>Animancer</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Model.csproj">
+      <Project>{9498bfb4-d9f5-c441-13e3-3f26f7700e29}</Project>
+      <Name>Unity.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Editor.csproj">
+      <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
+      <Name>Unity.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
+      <Project>{9f5687e3-5f72-c8f5-517b-584709b7d5d8}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
+      <Project>{e0456168-1ba5-5e68-ef99-a1034c8b63ab}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.ThirdParty.csproj">
       <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>

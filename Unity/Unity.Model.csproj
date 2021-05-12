@@ -63,6 +63,7 @@
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Composite\RandomSelector.cs" />
      <Compile Include="Assets\Model\Module\Message\MessageProxy.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\BlackboardMultipleConditions.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ChangeRenderAssetBuffSystem.cs" />
      <Compile Include="Assets\Model\Module\AssetsBundle\BundleDownloaderComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_PolygonColliderDataStructure.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Component\UserInputComponent.cs" />
@@ -97,6 +98,7 @@
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\UnityMath\Mathf.cs" />
      <Compile Include="Assets\Model\Base\Object\IUpdateSystem.cs" />
      <Compile Include="Assets\Model\Base\Object\EventSystem.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Mono\MonoSingleton.cs" />
      <Compile Include="Assets\Model\Module\Message\IMessage.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\System\NP_RuntimeTreeFactory.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Composite\NP_SelectorNodeData.cs" />
@@ -125,8 +127,8 @@
      <Compile Include="Assets\Model\Base\IL\ILBindingAttribute.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\ListenBuffCallBackBuffData.cs" />
      <Compile Include="Assets\Model\Component\Config\RunServerConfig.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Container.cs" />
      <Compile Include="Assets\Model\Base\Object\IStartSystem.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Container.cs" />
      <Compile Include="Assets\Model\Base\IL\IDisposableAdaptor.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\BuffEnums\SkillCostTypes.cs" />
      <Compile Include="Assets\Model\Other\IInstanceMethod.cs" />
@@ -144,6 +146,7 @@
      <Compile Include="Assets\Model\Module\Message\Network\NetworkHelper.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\BlackboardCondition.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_SyncComponent.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ChangeMaterialBuffSystem.cs" />
      <Compile Include="Assets\Model\Base\Object\ILoadSystem.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\TheDataContainsAction\NP_CheckUnitKilledBySpecialMethodAction.cs" />
      <Compile Include="Assets\Model\Entity\Scene.cs" />
@@ -186,11 +189,11 @@
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Numeric\NumericWatcherComponent.cs" />
      <Compile Include="Assets\Model\Module\Message\NetOuterComponentSystem.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\FlashDamageBuffData.cs" />
-     <Compile Include="Assets\Model\Base\Helper\MD5Helper.cs" />
      <Compile Include="Assets\Model\Component\Config\GlobalProto.cs" />
      <Compile Include="Assets\Model\Base\Helper\ObjectHelper.cs" />
      <Compile Include="Assets\Model\Module\Message\IMHandler.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Box2DSharp\DataStructure\B2S_ColliderDataStructureBase.cs" />
+     <Compile Include="Assets\Model\Base\Helper\MD5Helper.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\Component\CDComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Numeric\NumericComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Decorator\TimeMax.cs" />
@@ -339,6 +342,7 @@
      <Compile Include="Assets\Model\Base\Event\IEvent.cs" />
      <Compile Include="Assets\Model\Module\Message\SessionCallbackComponent.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\BBValues\NP_BBValue_String.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Mono\ForwardRenderBridge.cs" />
      <Compile Include="Assets\Model\NKGMOBA\ReferencePool\ReferencePool.ReferenceCollection.cs" />
      <Compile Include="Assets\Model\Module\AssetsBundle\ABPathUtilities.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\Core\BuffDataCalculateHelper.cs" />
@@ -379,6 +383,7 @@
      <Compile Include="Assets\Model\Base\CoroutineLockComponent.cs" />
      <Compile Include="Assets\Model\Base\OneThreadSynchronizationContext.cs" />
      <Compile Include="Assets\Model\Base\Object\EventProxy.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\ChangeRenderAssetBuffData.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Component\Sound\SoundComponent.cs" />
      <Compile Include="Assets\Model\Base\Object\Object.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Component\NP_RuntimeTreeManager.cs" />
@@ -460,6 +465,7 @@
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ReplaceAttackBuffSystem.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\Core\NPBehave\Operator.cs" />
      <Compile Include="Assets\Model\Base\Async\ETTaskCompletionSource.cs" />
+     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\ChangeMaterialBuffData.cs" />
      <Compile Include="Assets\Model\Base\Helper\StringHelper.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\BuffEnums\BuffTargetTypes.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\Others\SkillNodeDataBase.cs" />
@@ -470,12 +476,6 @@
      <Compile Include="Assets\Model\NKGMOBA\FairyGUI\Core\GWindow.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\ReplaceAttackBuffData.cs" />
      <Compile Include="Assets\Model\NKGMOBA\Battle\NPBehave\NodeDatas\Decorator\NP_BlackboardQueryNodeData.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ChangeRenderAssetBuffSystem.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\ChangeRenderAssetBuffData.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Mono\ForwardRenderBridge.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Mono\MonoSingleton.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffData\ChangeMaterialBuffData.cs" />
-     <Compile Include="Assets\Model\NKGMOBA\Battle\SkillSystem\BuffSystem\ChangeMaterialBuffSystem.cs" />
      <None Include="Assets\Model\Unity.Model.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Study/Unity/2020.3.0f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
