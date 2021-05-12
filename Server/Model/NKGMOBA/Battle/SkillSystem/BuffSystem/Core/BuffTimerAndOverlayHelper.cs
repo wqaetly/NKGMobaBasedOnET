@@ -22,7 +22,7 @@ namespace ETModel
         {
             BuffManagerComponent buffManagerComponent = buffSystemBase.GetBuffTarget().GetComponent<BuffManagerComponent>();
 
-            //先尝试从真正的Buff链表取得Buff
+            //先尝试从Buff链表取得Buff
             ABuffSystemBase targetBuffSystemBase = buffManagerComponent.GetBuffById(buffDataBase.BuffId);
 
             if (targetBuffSystemBase != null)
@@ -32,32 +32,14 @@ namespace ETModel
                 buffSystemBase.CurrentOverlay = targetBuffSystemBase.CurrentOverlay;
                 //刷新当前已有的Buff
                 targetBuffSystemBase.OnRefresh();
-                //TODO 把这个临时的回收，因为已经用不到他了
             }
             else
             {
-                //尝试从临时Buff字典取
-                targetBuffSystemBase = buffManagerComponent.GetBuffById_FromTempDic(buffDataBase.BuffId);
+                CalculateTimerAndOverlayHelper(buffSystemBase, buffDataBase);
 
-                //如果有，那就计算层数与时间，并且替换临时字典中
-                if (targetBuffSystemBase != null)
-                {
-                    CalculateTimerAndOverlayHelper(targetBuffSystemBase, buffDataBase);
-                    //Log.Info($"本次续命BuffID为{buffDataBase.FlagId}，当前层数{temp.CurrentOverlay}，最高层为{temp.MSkillBuffDataBase.MaxOverlay}");
-                    buffSystemBase.CurrentOverlay = targetBuffSystemBase.CurrentOverlay;
-                    //刷新当前已有的Buff
-                    targetBuffSystemBase.OnRefresh();
-
-                    //TODO 把这个临时的回收，因为已经用不到他了
-                }
-                else//如果没有，那就说明确实没有这个Buff，需要重新加入
-                {
-                    CalculateTimerAndOverlayHelper(buffSystemBase, buffDataBase);
-
-                    //Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
-                    buffSystemBase.BuffState = BuffState.Waiting;
-                    buffManagerComponent.TempBuffsToBeAdded.Add(buffDataBase.BuffId, buffSystemBase);
-                }
+                //Log.Info($"本次新加BuffID为{buffDataBase.FlagId}");
+                buffSystemBase.BuffState = BuffState.Waiting;
+                buffManagerComponent.AddBuff(buffSystemBase);
             }
         }
 
