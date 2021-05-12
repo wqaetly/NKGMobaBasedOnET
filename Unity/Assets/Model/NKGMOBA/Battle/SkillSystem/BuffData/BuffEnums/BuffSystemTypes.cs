@@ -69,6 +69,9 @@ namespace ETModel
         ReplaceAnimBuffSystem,
         
         [LabelText("修改RenderAsset的内容")]
-        ChangeRenderAssetBuffSystem
+        ChangeRenderAssetBuffSystem,
+        
+        [LabelText("修改材质Buff")]
+        ChangeMaterialBuffSystem
     }
 }

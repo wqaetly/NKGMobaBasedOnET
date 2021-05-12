@@ -131,6 +131,14 @@ MonoBehaviour:
     gameObject: {fileID: 9029996764500167739}
   - key: Trans_WeaponEndPos
     gameObject: {fileID: 9029996764500168099}
+  - key: Trans_WeaponStartPos
+    gameObject: {fileID: 9029996764500168113}
+  - key: Trans_WeaponCenterPos
+    gameObject: {fileID: 9029996764500168097}
+  - key: Mat_Darius_RimLight
+    gameObject: {fileID: 2100000, guid: e1998e961c12a5c4495948be0282d910, type: 2}
+  - key: Mat_Darius_RimLight_Offset
+    gameObject: {fileID: 2100000, guid: 22daaa346d649334bbda82d0ea4c2d21, type: 2}
 --- !u!114 &3653864368093967313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100116, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 100118, guid: dd7a668fd33673c439d0c23c617d448c, type: 3}
       propertyPath: m_Layer
@@ -683,9 +691,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9029996764500069139}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9029996764500168113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: dd7a668fd33673c439d0c23c617d448c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9029996764500069139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9029996764500168099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: dd7a668fd33673c439d0c23c617d448c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9029996764500069139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9029996764500168097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100018, guid: dd7a668fd33673c439d0c23c617d448c,
     type: 3}
   m_PrefabInstance: {fileID: 9029996764500069139}
   m_PrefabAsset: {fileID: 0}

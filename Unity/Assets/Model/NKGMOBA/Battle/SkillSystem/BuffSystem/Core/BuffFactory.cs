@@ -31,7 +31,8 @@ namespace ETModel
             { BuffSystemType.RefreshTargetBuffTimeBuffSystem, typeof (RefreshTargetBuffTimeBuffSystem) },
             { BuffSystemType.SendBuffInfoToClientBuffSystem, typeof (SendBuffInfoToClientBuffSystem) },
             { BuffSystemType.ReplaceAttackBuffSystem, typeof (ReplaceAttackBuffSystem) },
-            { BuffSystemType.ChangeRenderAssetBuffSystem, typeof (ChangeRenderAssetBuffSystem) }
+            { BuffSystemType.ChangeRenderAssetBuffSystem, typeof (ChangeRenderAssetBuffSystem) },
+            { BuffSystemType.ChangeMaterialBuffSystem, typeof (ChangeMaterialBuffSystem) },
         };
 
         /// <summary>

@@ -168,6 +168,8 @@
      <Compile Include="Assets\Plugins\MonKey Commander\Editor\Init\GettingStartedPanel.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_MacroActionNode.cs" />
      <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\NPBehaveNodes\Task\NP_SyncNPBBValue_BoolActionNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ChangeRenderAssetBuffNode.cs" />
+     <Compile Include="Assets\Plugins\NodeEditor\Editor\CustomNodes\SkillSystemNodes\SkillData\BuffNodes\ChangeMaterialBuffNode.cs" />
      <None Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Utilities\link.xml" />
      <None Include="Assets\Plugins\NodeEditor\Editor\Node_Editor_Framework\Resources\Shader\LineShader.shader" />
  <Reference Include="UnityEngine">
@@ -943,6 +945,12 @@
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Editor">
  <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Editor">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Runtime">
+ <HintPath>D:/Study/GameProject/NKGMobaBasedOnET/Unity/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
