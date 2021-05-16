@@ -87,6 +87,10 @@
 ### 战斗界面
 
 ![image-20200722084012352](https://images.gitee.com/uploads/images/2020/0722/084147_079e755b_2253805.png)
+
+### 基于VEG特效制作
+
+![诺手血怒特效制作](https://images.gitee.com/uploads/images/2021/0516/211303_0fec4407_2253805.png "屏幕截图.png")
 ### 基于Monkey Commander改造的编辑器拓展，按F呼出界面，输入关键字，选中之后点击/回车即可运行
 
 ![基于Monkey Commander改造的编辑器拓展，按F呼出界面，输入关键字，选中之后点击/回车即可运行](https://images.gitee.com/uploads/images/2020/1029/194658_b5dee162_2253805.png "QQ截图20201029192331.png")
