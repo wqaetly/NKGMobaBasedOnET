@@ -16,8 +16,9 @@
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
-最后，大家一起加油！
+演示视频：
 
+<iframe src="//player.bilibili.com/player.html?aid=929735486&bvid=BV1cK4y1S7ko&cid=313638662&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 500px; max-width: 100%；align:center; padding:20px 0;"></iframe>
 
 
 ## 特别鸣谢
