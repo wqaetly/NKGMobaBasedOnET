@@ -11,6 +11,7 @@ using NodeEditorFramework.Utilities;
 using Plugins;
 using Plugins.NodeEditor.Editor.Canvas;
 using UnityEditor;
+using UnityEngine;
 
 namespace SkillDemo
 {
@@ -30,6 +31,14 @@ namespace SkillDemo
                         BBKey = new NP_BlackBoardRelationData(), BelongBuffSystemType = BuffSystemType.SendBuffInfoToClientBuffSystem
                     }
                 };
+
+        public override Vector2 DefaultSize
+        {
+            get
+            {
+                return new Vector2(180, 60);
+            }
+        }
 
         public override BuffNodeDataBase Skill_GetNodeData()
         {
