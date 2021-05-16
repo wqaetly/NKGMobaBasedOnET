@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using NodeEditorFramework.Utilities;
+using UnityEditor;
 
 namespace NodeEditorFramework
 {
@@ -13,37 +14,22 @@ namespace NodeEditorFramework
     {
         internal static bool isEditorWindow;
 
+        private const string c_GUISkinPath = "Assets/Plugins/NodeEditor/Editor/Node_Editor_Framework/Resources/GUISkin/NodeEditorSkin.guiskin";
+
         // static GUI settings, textures and styles
         public static int knobSize = 16;
 
         private static ConnectionDrawMethod s_ConnectionDrawMethod = ConnectionDrawMethod.StraightLine;
 
-        public static Color NE_LightColor = new Color(0.4f, 0.4f, 0.4f);
-        public static Color NE_TextColor = new Color(0.8f, 0.8f, 0.8f);
-
-        public static Texture2D Background;
-        public static Texture2D AALineTex;
-        public static Texture2D GUIBox_Normal;
-        public static Texture2D GUIBox_HighLight;
-        public static Texture2D GUIButton;
-        public static Texture2D GUIBoxSelection;
-        public static Texture2D GUIToolbar;
-        public static Texture2D GUIToolbarButton;
-
         public static GUISkin nodeSkin;
-        public static GUISkin defaultSkin;
 
-        public static GUIStyle nodeLabel;
-        public static GUIStyle nodeLabelBold;
-        public static GUIStyle nodeLabelSelected;
-        public static GUIStyle nodeLabelCentered;
-        public static GUIStyle nodeLabelBoldCentered;
-        public static GUIStyle nodeLabelLeft;
-        public static GUIStyle nodeLabelRight;
+        public static GUIStyle nodeTittleCentered;
+
+        public static GUIStyle nodeLeftPort;
+        public static GUIStyle nodeRightLabel;
 
         public static GUIStyle nodeBox;
-        public static GUIStyle nodeBox_HighLight;
-        public static GUIStyle nodeBoxBold;
+        public static GUIStyle nodeBox_HighLightOutLine;
 
         public static GUIStyle toolbar;
         public static GUIStyle toolbarLabel;
@@ -52,83 +38,29 @@ namespace NodeEditorFramework
 
         public static bool Init()
         {
-            // Textures
-            Background = ResourceManager.LoadTexture("Textures/background.png");
-            AALineTex = ResourceManager.LoadTexture("Textures/AALine.png");
-            GUIBox_Normal = ResourceManager.LoadTexture("Textures/NE_Box_Common.png");
-            GUIBox_HighLight = ResourceManager.LoadTexture("Textures/NE_Box_HighLight.png");
-            GUIButton = ResourceManager.LoadTexture("Textures/NE_Button.png");
-            GUIToolbar = ResourceManager.LoadTexture("Textures/NE_Toolbar.png");
-            GUIToolbarButton = ResourceManager.LoadTexture("Textures/NE_ToolbarButton.png");
-
-            if (!Background || !AALineTex || !GUIBox_Normal || !GUIBox_HighLight || !GUIButton || !GUIToolbar || !GUIToolbarButton)
-                return false;
-
             // Skin & Styles
-            nodeSkin = Object.Instantiate(GUI.skin);
-
-            //TODO 吐了，哪带你这样写代码的，太反直觉了吧好兄弟
-            GUI.skin = nodeSkin;
-
+            nodeSkin = AssetDatabase.LoadAssetAtPath<GUISkin>(c_GUISkinPath);
+            
             //设置字体大小
             foreach (GUIStyle style in GUI.skin)
             {
                 style.fontSize = 12;
                 //style.normal.textColor = style.active.textColor = style.focused.textColor = style.hover.textColor = NE_TextColor;
             }
+            
+            nodeTittleCentered = nodeSkin.GetStyle("Node_TittleCentered");
+            nodeLeftPort = nodeSkin.GetStyle("Node_LeftPort");;
+            nodeRightLabel = nodeSkin.GetStyle("Node_RightPort");
 
-            // Label
-            nodeSkin.label.normal.textColor = NE_TextColor;
-            nodeLabel = nodeSkin.label;
-            nodeLabelBold = new GUIStyle(nodeLabel) { fontStyle = FontStyle.Bold };
-            nodeLabelSelected = new GUIStyle(nodeLabel);
-            nodeLabelSelected.normal.background = RTEditorGUI.ColorToTex(1, NE_LightColor);
-            nodeLabelCentered = new GUIStyle(nodeLabel) { alignment = TextAnchor.MiddleCenter };
-            nodeLabelBoldCentered = new GUIStyle(nodeLabelBold) { alignment = TextAnchor.MiddleCenter };
-            nodeLabelLeft = new GUIStyle(nodeLabel) { alignment = TextAnchor.MiddleLeft };
-            nodeLabelRight = new GUIStyle(nodeLabel) { alignment = TextAnchor.MiddleRight };
-
-            // Box
-            nodeSkin.box.normal.background = GUIBox_Normal;
-            nodeSkin.box.normal.textColor = NE_TextColor;
-            nodeSkin.box.active.textColor = NE_TextColor;
             nodeBox = nodeSkin.box;
-            nodeBoxBold = new GUIStyle(nodeBox) { fontStyle = FontStyle.Bold };
-            nodeBox_HighLight = new GUIStyle(nodeBox) { normal = new GUIStyleState() { background = GUIBox_HighLight } };
-
-            // Button
-            nodeSkin.button.normal.textColor = NE_TextColor;
-            nodeSkin.button.normal.background = GUIButton;
+            nodeBox_HighLightOutLine = nodeSkin.GetStyle("Node_HighLightOutLine");
 
             // Toolbar
             toolbar = GUI.skin.FindStyle("toolbar");
             toolbarButton = GUI.skin.FindStyle("toolbarButton");
             toolbarLabel = GUI.skin.FindStyle("toolbarButton");
             toolbarDropdown = GUI.skin.FindStyle("toolbarDropdown");
-            if (toolbar == null || toolbarButton == null || toolbarLabel == null || toolbarDropdown == null)
-            {
-                // No editor styles available - use custom skin
-                toolbar = new GUIStyle(nodeSkin.box);
-                toolbar.normal.background = GUIToolbar;
-                toolbar.active.background = GUIToolbar;
-                toolbar.border = new RectOffset(0, 0, 1, 1);
-                toolbar.margin = new RectOffset(0, 0, 0, 0);
-                toolbar.padding = new RectOffset(10, 10, 1, 1);
-
-                toolbarLabel = new GUIStyle(nodeSkin.box);
-                toolbarLabel.normal.background = GUIToolbarButton;
-                toolbarLabel.border = new RectOffset(2, 2, 0, 0);
-                toolbarLabel.margin = new RectOffset(-2, -2, 0, 0);
-                toolbarLabel.padding = new RectOffset(6, 6, 4, 4);
-
-                toolbarButton = new GUIStyle(toolbarLabel);
-                toolbarButton.active.background = RTEditorGUI.ColorToTex(1, NE_LightColor);
-
-                toolbarDropdown = new GUIStyle(toolbarButton);
-            }
-
-            GUI.skin = null;
-
+            
             return true;
         }
 
@@ -137,15 +69,11 @@ namespace NodeEditorFramework
             NodeEditor.checkInit(true);
 
             isEditorWindow = IsEditorWindow;
-
-            defaultSkin = GUI.skin;
-            if (nodeSkin != null)
-                GUI.skin = nodeSkin;
         }
 
         public static void EndNodeGUI()
         {
-            GUI.skin = defaultSkin;
+
         }
 
         #region Connection Drawing

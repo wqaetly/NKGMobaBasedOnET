@@ -14,8 +14,6 @@ namespace ETHotfix
         {
             HotfixUnit hotfixUnit = ComponentFactory.CreateWithId<HotfixUnit, Unit>(unit.Id, unit);
             //Log.Info($"此英雄的热更层ID为{hotfixUnit.Id}");
-            if (IsPlayer)
-                hotfixUnit.AddComponent<PlayerHeroControllerComponent>();
             Game.Scene.GetComponent<M5V5GameComponent>().AddHotfixUnit(hotfixUnit.Id, hotfixUnit);
             return hotfixUnit;
         }

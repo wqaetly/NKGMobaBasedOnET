@@ -84,7 +84,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                     BuffNodeDataBase buffNodeDataBase = mNode.Skill_GetNodeData();
                     if (buffNodeDataBase is NormalBuffNodeData normalBuffNodeData)
                     {
-                        normalBuffNodeData.BuffData.BelongToBuffDataSupportorId = MNpDataSupportor.NpDataSupportorBase.RootId;
+                        normalBuffNodeData.BuffData.BelongToBuffDataSupportorId = MNpDataSupportor.NpDataSupportorBase.NPBehaveTreeDataId;
                     }
 
                     this.MNpDataSupportor.BuffNodeDataDic.Add(buffNodeDataBase.NodeId.Value, buffNodeDataBase);

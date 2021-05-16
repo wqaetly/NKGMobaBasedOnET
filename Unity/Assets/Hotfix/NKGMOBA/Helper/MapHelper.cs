@@ -13,6 +13,7 @@ namespace ETHotfix
         {
             try
             {
+                ETModel.Game.Scene.GetComponent<FUIPackageComponent>().RemovePackage(FUIPackage.FUILogin);
                 // 切换到map场景
                 // 加载场景资源
                 await ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadSceneAsync(ABPathUtilities.GetScenePath(SceneType.Map));

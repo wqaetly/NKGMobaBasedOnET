@@ -37,7 +37,7 @@ namespace ETModel
             GameObject targetGo = gameObject.GetComponent<ReferenceCollector>().Get<GameObject>(key);
             if (targetGo == null)
             {
-                Log.Error("RC Error：获取目标GameObject失败");
+                Log.Error($"RC Error：获取目标GameObject失败，Key为：{key}");
                 return null;
             }
 

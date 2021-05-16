@@ -62,11 +62,11 @@ namespace ETModel
         /// <summary>
         /// 尝试获取一行配置
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public T TryGet(int type)
+        public T TryGet(int id)
         {
-            if (this.dict.TryGetValue(type, out var config))
+            if (this.dict.TryGetValue(id, out var config))
             {
                 return  config;
             }

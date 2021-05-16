@@ -5,6 +5,8 @@ using libx;
 using MonKey;
 using NETCoreTest.Framework;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.VFX;
 
 namespace ETModel
 {
@@ -29,6 +31,7 @@ namespace ETModel
             try
             {
                 BsonHelper.Init();
+                ForwardRenderBridge.Instance.Init();
 
                 SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
                 DontDestroyOnLoad(gameObject);
@@ -45,6 +48,8 @@ namespace ETModel
                 Game.Scene.AddComponent<NetOuterComponent>();
                 Game.Scene.AddComponent<ResourcesComponent>();
                 Game.Scene.AddComponent<PlayerComponent>();
+
+                Game.Scene.AddComponent<CoroutineLockComponent>();
                 Game.Scene.AddComponent<UnitComponent>();
 
                 Game.Scene.AddComponent<FUIPackageComponent>();

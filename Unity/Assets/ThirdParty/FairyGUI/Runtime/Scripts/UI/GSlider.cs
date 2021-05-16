@@ -4,357 +4,402 @@ using FairyGUI.Utils;
 
 namespace FairyGUI
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class GSlider : GComponent
-	{
-		double _max;
-		double _value;
-		ProgressTitleType _titleType;
-		bool _reverse;
+    /// <summary>
+    /// 
+    /// </summary>
+    public class GSlider : GComponent
+    {
+        double _min;
+        double _max;
+        double _value;
+        ProgressTitleType _titleType;
+        bool _reverse;
+        bool _wholeNumbers;
 
-		GTextField _titleObject;
-		GObject _barObjectH;
-		GObject _barObjectV;
-		float _barMaxWidth;
-		float _barMaxHeight;
-		float _barMaxWidthDelta;
-		float _barMaxHeightDelta;
-		GObject _gripObject;
-		Vector2 _clickPos;
-		float _clickPercent;
-		float _barStartX;
-		float _barStartY;
+        GObject _titleObject;
+        GObject _barObjectH;
+        GObject _barObjectV;
+        float _barMaxWidth;
+        float _barMaxHeight;
+        float _barMaxWidthDelta;
+        float _barMaxHeightDelta;
+        GObject _gripObject;
+        Vector2 _clickPos;
+        float _clickPercent;
+        float _barStartX;
+        float _barStartY;
 
-		EventListener _onChanged;
-		EventListener _onGripTouchEnd;
+        EventListener _onChanged;
+        EventListener _onGripTouchEnd;
 
-		public bool changeOnClick;
-		public bool canDrag;
+        public bool changeOnClick;
+        public bool canDrag;
 
-		public GSlider()
-		{
-			_value = 50;
-			_max = 100;
-			changeOnClick = true;
-			canDrag = true;
-		}
+        public GSlider()
+        {
+            _value = 50;
+            _max = 100;
+            changeOnClick = true;
+            canDrag = true;
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public EventListener onChanged
-		{
-			get { return _onChanged ?? (_onChanged = new EventListener(this, "onChanged")); }
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public EventListener onChanged
+        {
+            get { return _onChanged ?? (_onChanged = new EventListener(this, "onChanged")); }
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public EventListener onGripTouchEnd
-		{
-			get { return _onGripTouchEnd ?? (_onGripTouchEnd = new EventListener(this, "onGripTouchEnd")); }
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public EventListener onGripTouchEnd
+        {
+            get { return _onGripTouchEnd ?? (_onGripTouchEnd = new EventListener(this, "onGripTouchEnd")); }
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public ProgressTitleType titleType
-		{
-			get
-			{
-				return _titleType;
-			}
-			set
-			{
-				if (_titleType != value)
-				{
-					_titleType = value;
-					Update();
-				}
-			}
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public ProgressTitleType titleType
+        {
+            get
+            {
+                return _titleType;
+            }
+            set
+            {
+                if (_titleType != value)
+                {
+                    _titleType = value;
+                    Update();
+                }
+            }
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public double max
-		{
-			get
-			{
-				return _max;
-			}
-			set
-			{
-				if (_max != value)
-				{
-					_max = value;
-					Update();
-				}
-			}
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public double min
+        {
+            get
+            {
+                return _min;
+            }
+            set
+            {
+                if (_min != value)
+                {
+                    _min = value;
+                    Update();
+                }
+            }
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public double value
-		{
-			get
-			{
-				return _value;
-			}
-			set
-			{
-				if (_value != value)
-				{
-					_value = value;
-					Update();
-				}
-			}
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public double max
+        {
+            get
+            {
+                return _max;
+            }
+            set
+            {
+                if (_max != value)
+                {
+                    _max = value;
+                    Update();
+                }
+            }
+        }
 
-		private void Update()
-		{
-			float percent = (float)Math.Min(_value / _max, 1);
-			UpdateWidthPercent(percent);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public double value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                if (_value != value)
+                {
+                    _value = value;
+                    Update();
+                }
+            }
+        }
 
-		private void UpdateWidthPercent(float percent)
-		{
-			if (_titleObject != null)
-			{
-				switch (_titleType)
-				{
-					case ProgressTitleType.Percent:
-						_titleObject.text = Mathf.RoundToInt(percent * 100) + "%";
-						break;
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool wholeNumbers
+        {
+            get
+            {
+                return _wholeNumbers;
+            }
+            set
+            {
+                if (_wholeNumbers != value)
+                {
+                    _wholeNumbers = value;
+                    Update();
+                }
+            }
+        }
 
-					case ProgressTitleType.ValueAndMax:
-						_titleObject.text = Math.Round(_value) + "/" + Math.Round(max);
-						break;
+        private void Update()
+        {
+            UpdateWithPercent((float)((_value - _min) / (_max - _min)), false);
+        }
 
-					case ProgressTitleType.Value:
-						_titleObject.text = "" + Math.Round(_value);
-						break;
+        private void UpdateWithPercent(float percent, bool manual)
+        {
+            percent = Mathf.Clamp01(percent);
+            if (manual)
+            {
+                double newValue = _min + (_max - _min) * percent;
+                if (newValue < _min)
+                    newValue = _min;
+                if (newValue > _max)
+                    newValue = _max;
+                if (_wholeNumbers)
+                {
+                    newValue = Math.Round(newValue);
+                    percent = Mathf.Clamp01((float)((newValue - _min) / (_max - _min)));
+                }
 
-					case ProgressTitleType.Max:
-						_titleObject.text = "" + Math.Round(_max);
-						break;
-				}
-			}
+                if (newValue != _value)
+                {
+                    _value = newValue;
+                    if (DispatchEvent("onChanged", null))
+                        return;
+                }
+            }
 
-			float fullWidth = this.width - _barMaxWidthDelta;
-			float fullHeight = this.height - _barMaxHeightDelta;
-			if (!_reverse)
-			{
-				if (_barObjectH != null)
-				{
-					if ((_barObjectH is GImage) && ((GImage)_barObjectH).fillMethod != FillMethod.None)
-						((GImage)_barObjectH).fillAmount = percent;
-					else if ((_barObjectH is GLoader) && ((GLoader)_barObjectH).fillMethod != FillMethod.None)
-						((GLoader)_barObjectH).fillAmount = percent;
-					else
-						_barObjectH.width = Mathf.RoundToInt(fullWidth * percent);
-				}
-				if (_barObjectV != null)
-				{
-					if ((_barObjectV is GImage) && ((GImage)_barObjectV).fillMethod != FillMethod.None)
-						((GImage)_barObjectV).fillAmount = percent;
-					else if ((_barObjectV is GLoader) && ((GLoader)_barObjectV).fillMethod != FillMethod.None)
-						((GLoader)_barObjectV).fillAmount = percent;
-					else
-						_barObjectV.height = Mathf.RoundToInt(fullHeight * percent);
-				}
-			}
-			else
-			{
-				if (_barObjectH != null)
-				{
-					if ((_barObjectH is GImage) && ((GImage)_barObjectH).fillMethod != FillMethod.None)
-						((GImage)_barObjectH).fillAmount = 1 - percent;
-					else if ((_barObjectH is GLoader) && ((GLoader)_barObjectH).fillMethod != FillMethod.None)
-						((GLoader)_barObjectH).fillAmount = 1 - percent;
-					else
-					{
-						_barObjectH.width = Mathf.RoundToInt(fullWidth * percent);
-						_barObjectH.x = _barStartX + (fullWidth - _barObjectH.width);
-					}
-				}
-				if (_barObjectV != null)
-				{
-					if ((_barObjectV is GImage) && ((GImage)_barObjectV).fillMethod != FillMethod.None)
-						((GImage)_barObjectV).fillAmount = 1 - percent;
-					else if ((_barObjectV is GLoader) && ((GLoader)_barObjectV).fillMethod != FillMethod.None)
-						((GLoader)_barObjectV).fillAmount = 1 - percent;
-					else
-					{
-						_barObjectV.height = Mathf.RoundToInt(fullHeight * percent);
-						_barObjectV.y = _barStartY + (fullHeight - _barObjectV.height);
-					}
-				}
-			}
+            if (_titleObject != null)
+            {
+                switch (_titleType)
+                {
+                    case ProgressTitleType.Percent:
+                        _titleObject.text = Mathf.FloorToInt(percent * 100) + "%";
+                        break;
 
-			InvalidateBatchingState(true);
-		}
+                    case ProgressTitleType.ValueAndMax:
+                        _titleObject.text = Math.Round(_value) + "/" + Math.Round(max);
+                        break;
 
-		override protected void ConstructExtension(ByteBuffer buffer)
-		{
-			buffer.Seek(0, 6);
+                    case ProgressTitleType.Value:
+                        _titleObject.text = "" + Math.Round(_value);
+                        break;
 
-			_titleType = (ProgressTitleType)buffer.ReadByte();
-			_reverse = buffer.ReadBool();
+                    case ProgressTitleType.Max:
+                        _titleObject.text = "" + Math.Round(_max);
+                        break;
+                }
+            }
 
-			_titleObject = GetChild("title") as GTextField;
-			_barObjectH = GetChild("bar");
-			_barObjectV = GetChild("bar_v");
-			_gripObject = GetChild("grip");
+            float fullWidth = this.width - _barMaxWidthDelta;
+            float fullHeight = this.height - _barMaxHeightDelta;
+            if (!_reverse)
+            {
+                if (_barObjectH != null)
+                {
+                    if (!SetFillAmount(_barObjectH, percent))
+                        _barObjectH.width = Mathf.RoundToInt(fullWidth * percent);
+                }
+                if (_barObjectV != null)
+                {
+                    if (!SetFillAmount(_barObjectV, percent))
+                        _barObjectV.height = Mathf.RoundToInt(fullHeight * percent);
+                }
+            }
+            else
+            {
+                if (_barObjectH != null)
+                {
+                    if (!SetFillAmount(_barObjectH, 1 - percent))
+                    {
+                        _barObjectH.width = Mathf.RoundToInt(fullWidth * percent);
+                        _barObjectH.x = _barStartX + (fullWidth - _barObjectH.width);
+                    }
+                }
+                if (_barObjectV != null)
+                {
+                    if (!SetFillAmount(_barObjectV, 1 - percent))
+                    {
+                        _barObjectV.height = Mathf.RoundToInt(fullHeight * percent);
+                        _barObjectV.y = _barStartY + (fullHeight - _barObjectV.height);
+                    }
+                }
+            }
 
-			if (_barObjectH != null)
-			{
-				_barMaxWidth = _barObjectH.width;
-				_barMaxWidthDelta = this.width - _barMaxWidth;
-				_barStartX = _barObjectH.x;
-			}
-			if (_barObjectV != null)
-			{
-				_barMaxHeight = _barObjectV.height;
-				_barMaxHeightDelta = this.height - _barMaxHeight;
-				_barStartY = _barObjectV.y;
-			}
+            InvalidateBatchingState(true);
+        }
 
-			if (_gripObject != null)
-			{
-				_gripObject.onTouchBegin.Add(__gripTouchBegin);
-				_gripObject.onTouchMove.Add(__gripTouchMove);
-				_gripObject.onTouchEnd.Add(__gripTouchEnd);
-			}
+        bool SetFillAmount(GObject bar, float amount)
+        {
+            if ((bar is GImage) && ((GImage)bar).fillMethod != FillMethod.None)
+                ((GImage)bar).fillAmount = amount;
+            else if ((bar is GLoader) && ((GLoader)bar).fillMethod != FillMethod.None)
+                ((GLoader)bar).fillAmount = amount;
+            else
+                return false;
 
-			onTouchBegin.Add(__barTouchBegin);
-		}
+            return true;
+        }
 
-		override public void Setup_AfterAdd(ByteBuffer buffer, int beginPos)
-		{
-			base.Setup_AfterAdd(buffer, beginPos);
+        override protected void ConstructExtension(ByteBuffer buffer)
+        {
+            buffer.Seek(0, 6);
 
-			if (!buffer.Seek(beginPos, 6))
-			{
-				Update();
-				return;
-			}
+            _titleType = (ProgressTitleType)buffer.ReadByte();
+            _reverse = buffer.ReadBool();
+            if (buffer.version >= 2)
+            {
+                _wholeNumbers = buffer.ReadBool();
+                this.changeOnClick = buffer.ReadBool();
+            }
 
-			if ((ObjectType)buffer.ReadByte() != packageItem.objectType)
-			{
-				Update();
-				return;
-			}
+            _titleObject = GetChild("title");
+            _barObjectH = GetChild("bar");
+            _barObjectV = GetChild("bar_v");
+            _gripObject = GetChild("grip");
 
-			_value = buffer.ReadInt();
-			_max = buffer.ReadInt();
+            if (_barObjectH != null)
+            {
+                _barMaxWidth = _barObjectH.width;
+                _barMaxWidthDelta = this.width - _barMaxWidth;
+                _barStartX = _barObjectH.x;
+            }
+            if (_barObjectV != null)
+            {
+                _barMaxHeight = _barObjectV.height;
+                _barMaxHeightDelta = this.height - _barMaxHeight;
+                _barStartY = _barObjectV.y;
+            }
 
-			Update();
-		}
+            if (_gripObject != null)
+            {
+                _gripObject.onTouchBegin.Add(__gripTouchBegin);
+                _gripObject.onTouchMove.Add(__gripTouchMove);
+                _gripObject.onTouchEnd.Add(__gripTouchEnd);
+            }
 
-		override protected void HandleSizeChanged()
-		{
-			base.HandleSizeChanged();
+            onTouchBegin.Add(__barTouchBegin);
+        }
 
-			if (_barObjectH != null)
-				_barMaxWidth = this.width - _barMaxWidthDelta;
-			if (_barObjectV != null)
-				_barMaxHeight = this.height - _barMaxHeightDelta;
+        override public void Setup_AfterAdd(ByteBuffer buffer, int beginPos)
+        {
+            base.Setup_AfterAdd(buffer, beginPos);
 
-			if (!this.underConstruct)
-				Update();
-		}
+            if (!buffer.Seek(beginPos, 6))
+            {
+                Update();
+                return;
+            }
 
-		private void __gripTouchBegin(EventContext context)
-		{
-			this.canDrag = true;
+            if ((ObjectType)buffer.ReadByte() != packageItem.objectType)
+            {
+                Update();
+                return;
+            }
 
-			context.StopPropagation();
+            _value = buffer.ReadInt();
+            _max = buffer.ReadInt();
+            if (buffer.version >= 2)
+                _min = buffer.ReadInt();
 
-			InputEvent evt = context.inputEvent;
-			if (evt.button != 0)
-				return;
 
-			context.CaptureTouch();
+            Update();
+        }
 
-			_clickPos = this.GlobalToLocal(new Vector2(evt.x, evt.y));
-			_clickPercent = (float)(_value / _max);
-		}
+        override protected void HandleSizeChanged()
+        {
+            base.HandleSizeChanged();
 
-		private void __gripTouchMove(EventContext context)
-		{
-			if (!this.canDrag)
-				return;
+            if (_barObjectH != null)
+                _barMaxWidth = this.width - _barMaxWidthDelta;
+            if (_barObjectV != null)
+                _barMaxHeight = this.height - _barMaxHeightDelta;
 
-			InputEvent evt = context.inputEvent;
-			Vector2 pt = this.GlobalToLocal(new Vector2(evt.x, evt.y));
-			if (float.IsNaN(pt.x))
-				return;
+            if (!this.underConstruct)
+                Update();
+        }
 
-			float deltaX = pt.x - _clickPos.x;
-			float deltaY = pt.y - _clickPos.y;
-			if (_reverse)
-			{
-				deltaX = -deltaX;
-				deltaY = -deltaY;
-			}
+        private void __gripTouchBegin(EventContext context)
+        {
+            this.canDrag = true;
 
-			float percent;
-			if (_barObjectH != null)
-				percent = _clickPercent + deltaX / _barMaxWidth;
-			else
-				percent = _clickPercent + deltaY / _barMaxHeight;
-			if (percent > 1)
-				percent = 1;
-			else if (percent < 0)
-				percent = 0;
+            context.StopPropagation();
 
-			double newValue = percent * _max;
-			if (newValue != _value)
-			{
-				_value = newValue;
-				if (DispatchEvent("onChanged", null))
-					return;
-			}
-			UpdateWidthPercent(percent);
-		}
+            InputEvent evt = context.inputEvent;
+            if (evt.button != 0)
+                return;
 
-		private void __gripTouchEnd(EventContext context)
-		{
-			DispatchEvent("onGripTouchEnd", null);
-		}
+            context.CaptureTouch();
 
-		private void __barTouchBegin(EventContext context)
-		{
-			if (!changeOnClick)
-				return;
+            _clickPos = this.GlobalToLocal(new Vector2(evt.x, evt.y));
+            _clickPercent = Mathf.Clamp01((float)((_value - _min) / (_max - _min)));
+        }
 
-			InputEvent evt = context.inputEvent;
-			Vector2 pt = _gripObject.GlobalToLocal(new Vector2(evt.x, evt.y));
-			float percent = (float)(_value / _max);
-			float delta = 0;
-			if (_barObjectH != null)
-				delta = (pt.x - _gripObject.width / 2) / _barMaxWidth;
-			if (_barObjectV != null)
-				delta = (pt.y - _gripObject.height / 2) / _barMaxHeight;
-			if (_reverse)
-				percent -= delta;
-			else
-				percent += delta;
-			if (percent > 1)
-				percent = 1;
-			else if (percent < 0)
-				percent = 0;
-			double newValue = percent * _max;
-			if (newValue != _value)
-			{
-				_value = newValue;
-				DispatchEvent("onChanged", null);
-			}
-			UpdateWidthPercent(percent);
-		}
-	}
+        private void __gripTouchMove(EventContext context)
+        {
+            if (!this.canDrag)
+                return;
+
+            InputEvent evt = context.inputEvent;
+            Vector2 pt = this.GlobalToLocal(new Vector2(evt.x, evt.y));
+            if (float.IsNaN(pt.x))
+                return;
+
+            float deltaX = pt.x - _clickPos.x;
+            float deltaY = pt.y - _clickPos.y;
+            if (_reverse)
+            {
+                deltaX = -deltaX;
+                deltaY = -deltaY;
+            }
+
+            float percent;
+            if (_barObjectH != null)
+                percent = _clickPercent + deltaX / _barMaxWidth;
+            else
+                percent = _clickPercent + deltaY / _barMaxHeight;
+
+            UpdateWithPercent(percent, true);
+        }
+
+        private void __gripTouchEnd(EventContext context)
+        {
+            DispatchEvent("onGripTouchEnd", null);
+        }
+
+        private void __barTouchBegin(EventContext context)
+        {
+            if (!changeOnClick)
+                return;
+
+            InputEvent evt = context.inputEvent;
+            Vector2 pt = _gripObject.GlobalToLocal(new Vector2(evt.x, evt.y));
+            float percent = Mathf.Clamp01((float)((_value - _min) / (_max - _min)));
+            float delta = 0;
+            if (_barObjectH != null)
+                delta = (pt.x - _gripObject.width / 2) / _barMaxWidth;
+            if (_barObjectV != null)
+                delta = (pt.y - _gripObject.height / 2) / _barMaxHeight;
+            if (_reverse)
+                percent -= delta;
+            else
+                percent += delta;
+
+            UpdateWithPercent(percent, true);
+        }
+    }
 }

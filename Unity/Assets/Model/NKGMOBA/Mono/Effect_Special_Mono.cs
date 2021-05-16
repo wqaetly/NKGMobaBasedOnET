@@ -7,7 +7,7 @@
 using System;
 using UnityEngine;
 
-namespace ETModel.NKGMOBA.Mono
+namespace ETModel
 {
     public class Effect_Special_Mono: MonoBehaviour
     {

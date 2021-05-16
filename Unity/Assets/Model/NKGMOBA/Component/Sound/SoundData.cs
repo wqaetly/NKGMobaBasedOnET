@@ -13,25 +13,25 @@ namespace ETModel
         /// <summary>
         /// 是否强制重新播放
         /// </summary>
-        //[HideInInspector]
+        [HideInInspector]
         public bool isForceReplay = false;
 
         /// <summary>
         /// 是否循环播放
         /// </summary>
-        //[HideInInspector]
+        [HideInInspector]
         public bool isLoop = false;
 
         /// <summary>
         /// 音量
         /// </summary>
-        //[HideInInspector]
+        [HideInInspector]
         public float volume = 1;
 
         /// <summary>
         /// 延迟
         /// </summary>
-        //[HideInInspector]
+        [HideInInspector]
         public ulong delay = 0;
 
         public AudioSource GetAudio()

@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using ETModel;
 using ETModel.BBValues;
 using MongoDB.Bson.IO;
@@ -30,15 +31,33 @@ namespace Plugins.NodeEditor.Editor.Canvas
     /// 需要注意的点
     /// 要在NPBehaveNodes文件夹下面的除了NP_NodeBase之外的所有Node的Node特性的type里加上自定义的Canvas的Type，不然创建不了行为树组件
     /// 推荐的按钮样式：[Button("XXX", 25), GUIColor(0.4f, 0.8f, 1)]
+    /// ----------------------------------------数据导出相关-----------------------------------------------------------------
+    /// 最后在进行数据导出的时候，会涉及到一个数据的Id问题，每次都需要手动将Id记录到Excel中，为了简化这个操作，
+    /// 先尝试从根据提供的ConfigType（A）和IdInConfig（B）从配置表读取一个Id为B的数据行
+    /// 然后以这个数据行的NPBehaveId作为导出Id，这样每次导出数据就不需要去修改Excel那边了，如果没有A类型的配置表，或者没有Id为B的数据行，就随机生成一个Id，然后需要手动填入Excel中
     /// </summary>
     public abstract class NPBehaveCanvasBase: NodeCanvas
     {
         public override string canvasName => Name;
 
-        [Title("本Canvas所有数据整理部分")]
+        [BoxGroup("本Canvas所有数据整理部分")]
         [LabelText("保存文件名"), GUIColor(0.9f, 0.7f, 1)]
         public string Name;
 
+        [BoxGroup("本Canvas所有数据整理部分")]
+        [LabelText("对应的配置表"), GUIColor(0.9f, 0.7f, 1)]
+        public TextAsset Config;
+
+        [BoxGroup("本Canvas所有数据整理部分")]
+        [LabelText("对应的配置表类型"), GUIColor(0.9f, 0.7f, 1)]
+        [ValueDropdown("GetConfigTypes")]
+        public Type ConfigType;
+
+        [BoxGroup("本Canvas所有数据整理部分")]
+        [LabelText("配置表中的Id"), GUIColor(0.9f, 0.7f, 1)]
+        public int IdInConfig;
+
+        [BoxGroup("本Canvas所有数据整理部分")]
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)]
         [FolderPath]
         public string SavePath;
@@ -87,6 +106,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
         /// <param name="npDataSupportorBase">自定义的继承于NP_DataSupportorBase的数据体</param>
         private void AutoSetNP_NodeData(NP_DataSupportorBase npDataSupportorBase)
         {
+            npDataSupportorBase.NPBehaveTreeDataId = 0;
             npDataSupportorBase.NP_DataSupportorDic.Clear();
 
             //当前Canvas所有NP_Node
@@ -109,8 +129,67 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 node.NP_GetNodeData().id = IdGenerater.GenerateId();
             }
 
-            //设置根结点Id
-            npDataSupportorBase.RootId = allNodes[allNodes.Count - 1].NP_GetNodeData().id;
+            //设置导出的Id
+            foreach (string str in this.Config.text.Split(new[] { "\n" }, StringSplitOptions.None))
+            {
+                try
+                {
+                    string str2 = str.Trim();
+                    if (str2 == "")
+                    {
+                        continue;
+                    }
+
+                    object config = JsonHelper.FromJson(this.ConfigType, str2);
+
+                    //目前行为树只有三种类型，直接在这里写出
+                    switch (config)
+                    {
+                        case Server_AICanvasConfig serverAICanvasConfig:
+                            if (serverAICanvasConfig.Id == this.IdInConfig)
+                            {
+                                npDataSupportorBase.NPBehaveTreeDataId = serverAICanvasConfig.NPBehaveId;
+                            }
+
+                            break;
+                        case Client_SkillCanvasConfig clientSkillCanvasConfig:
+                            if (clientSkillCanvasConfig.Id == this.IdInConfig)
+                            {
+                                npDataSupportorBase.NPBehaveTreeDataId = clientSkillCanvasConfig.NPBehaveId;
+                            }
+
+                            break;
+                        case Server_SkillCanvasConfig serverSkillCanvasConfig:
+                            if (serverSkillCanvasConfig.Id == this.IdInConfig)
+                            {
+                                npDataSupportorBase.NPBehaveTreeDataId = serverSkillCanvasConfig.NPBehaveId;
+                            }
+
+                            break;
+                    }
+
+                    if (npDataSupportorBase.NPBehaveTreeDataId != 0)
+                    {
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"parser json fail: {str}", e);
+                }
+            }
+
+            if (npDataSupportorBase.NPBehaveTreeDataId == 0)
+            {
+                //设置为根结点Id
+                npDataSupportorBase.NPBehaveTreeDataId = allNodes[allNodes.Count - 1].NP_GetNodeData().id;
+                Log.Error(
+                    $"注意，名为{this.canvasName}的Canavs首次导出，或者未在配置表中找到Id为{this.IdInConfig}的数据行，行为树Id被设置为{npDataSupportorBase.NPBehaveTreeDataId}，请前往Excel表中进行添加，然后导出Excel");
+            }
+            else
+            {
+                allNodes[allNodes.Count - 1].NP_GetNodeData().id = npDataSupportorBase.NPBehaveTreeDataId;
+            }
 
             foreach (var node in allNodes)
             {
@@ -120,6 +199,7 @@ namespace Plugins.NodeEditor.Editor.Canvas
                 {
                     mNodeData.LinkedIds = new List<long>();
                 }
+
                 mNodeData.LinkedIds.Clear();
 
                 //出结点连接的Nodes
@@ -161,6 +241,28 @@ namespace Plugins.NodeEditor.Editor.Canvas
             {
                 npDataSupportorBase.NP_BBValueManager.Add(bbvalues.Key, bbvalues.Value);
             }
+        }
+
+        public override void DrawToolbar()
+        {
+            GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
+
+            if (GUILayout.Button("DataBase", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
+            {
+                Selection.activeObject = this.GetCurrentCanvasDatas();
+            }
+
+            GUI.backgroundColor = Color.white;
+        }
+
+        public IEnumerable<Type> GetConfigTypes()
+        {
+            var q = typeof (Init).Assembly.GetTypes()
+                    .Where(x => !x.IsAbstract) 
+                    .Where(x => !x.IsGenericTypeDefinition) 
+                    .Where(x => typeof (IConfig).IsAssignableFrom(x));
+
+            return q;
         }
     }
 }

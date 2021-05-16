@@ -60,7 +60,7 @@ namespace NodeEditorFramework
         {
             get
             {
-                return side == NodeSide.Right? NodeEditorGUI.nodeLabelRight : NodeEditorGUI.nodeLabelLeft;
+                return side == NodeSide.Right? NodeEditorGUI.nodeRightLabel : NodeEditorGUI.nodeLeftPort;
             }
         }
 

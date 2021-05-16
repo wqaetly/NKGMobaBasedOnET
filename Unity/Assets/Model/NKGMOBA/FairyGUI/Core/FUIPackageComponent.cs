@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FairyGUI;
 using UnityEngine;
 
@@ -10,57 +9,39 @@ namespace ETModel
     /// </summary>
     public class FUIPackageComponent: Component
     {
-        public const string FUI_PACKAGE_DIR = "Assets/Bundles/FUI";
-
         private readonly Dictionary<string, UIPackage> packages = new Dictionary<string, UIPackage>();
 
-        public void AddPackage(string type)
+        public async ETTask AddPackageAsync(string type)
         {
-            if (this.packages.ContainsKey(type)) return;
-            UIPackage uiPackage;
-            if (Define.ResModeIsEditor)
+            if (this.packages.ContainsKey(type))
             {
-                uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
-                //加载依赖的包，否则跨包资源会显示失败，但是一般来说是会把这些公共依赖的资源单独设置一个包，参见官网：https://www.fairygui.com/docs/guide/editor/package.html#%E5%8C%85%E7%9A%84%E4%BE%9D%E8%B5%96
-                foreach (var deps in uiPackage.dependencies)
-                {
-                    AddPackage(deps["name"]);
-                }
+                return;
             }
-            else
-            {
-                uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}", LoadPackageInternal);
-                //加载依赖的包，否则跨包资源会显示失败，但是一般来说是会把这些公共依赖的资源单独设置一个包，参见官网：https://www.fairygui.com/docs/guide/editor/package.html#%E5%8C%85%E7%9A%84%E4%BE%9D%E8%B5%96
-                foreach (var deps in uiPackage.dependencies)
-                {
-                    AddPackage(deps["name"]);
-                }
-            }
+            
+            TextAsset desTextAsset =
+                    await ResourcesComponent.Instance.LoadAssetAsync<TextAsset>(ABPathUtilities.GetFGUIDesPath($"{type}_fui"));
 
-            packages.Add(type, uiPackage);
+            packages.Add(type, UIPackage.AddPackage(desTextAsset.bytes, type, LoadPackageInternalAsync));
         }
 
-        private static UnityEngine.Object LoadPackageInternal(string name, string extension, Type type, out DestroyMethod method)
+        /// <summary>
+        /// 加载资源的异步委托
+        /// </summary>
+        /// <param name="name">注意，这个name是FGUI内部组装的纹理全名，例如FUILogin_atlas0</param>
+        /// <param name="extension"></param>
+        /// <param name="type"></param>
+        /// <param name="item"></param>
+        private static async void LoadPackageInternalAsync(string name, string extension, System.Type type, PackageItem item)
         {
-            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            method = DestroyMethod.Unload;
-            switch (extension)
-            {
-                case ".bytes":
-                {
-                    var req = resourcesComponent.LoadAsset<TextAsset>($"{name}{extension}");
-                    return req;
-                }
-                case ".png": //如果FGUI导出时没有选择分离通明通道，会因为加载不到!a结尾的Asset而报错，但是不影响运行
-                {
-                    var req = resourcesComponent.LoadAsset<Texture>($"{name}{extension}");
-                    return req;
-                }
-            }
-
-            return null;
+            Texture texture =
+                    await ResourcesComponent.Instance.LoadAssetAsync<Texture>(ABPathUtilities.GetFGUIResPath(name, extension));
+            item.owner.SetItemAsset(item, texture, DestroyMethod.Unload);
         }
 
+        /// <summary>
+        /// 移除一个包，并清理其asset
+        /// </summary>
+        /// <param name="type"></param>
         public void RemovePackage(string type)
         {
             UIPackage package;
@@ -68,19 +49,12 @@ namespace ETModel
             if (packages.TryGetValue(type, out package))
             {
                 var p = UIPackage.GetByName(package.name);
-
                 if (p != null)
                 {
                     UIPackage.RemovePackage(package.name);
                 }
 
                 packages.Remove(package.name);
-            }
-
-            if (!Define.ResModeIsEditor)
-            {
-                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAsset(ABPathUtilities.GetFGUIDesPath($"{type}_fui"));
-                Game.Scene.GetComponent<ResourcesComponent>().UnLoadAsset(ABPathUtilities.GetFGUIResPath($"{type}_atlas0"));
             }
         }
     }

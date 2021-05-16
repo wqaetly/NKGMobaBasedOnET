@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using Plugins.NodeEditor.Editor.Canvas;
 using Plugins.NodeEditor.Node_Editor.Default;
-using GenericMenu = NodeEditorFramework.Utilities.GenericMenu;
+using UnityEditor;
 
 namespace NodeEditorFramework.Standard
 {
@@ -14,12 +14,7 @@ namespace NodeEditorFramework.Standard
 
         // GUI
         public string sceneCanvasName = "";
-        public float toolbarHeight = 17;
-
-        // Modal Panel
-        public bool showModalPanel;
-        public Rect modalPanelRect = new Rect(20, 50, 250, 70);
-        public Action modalPanelContent;
+        public const float toolbarHeight = 20;
 
         public void ShowNotification(GUIContent message)
         {
@@ -34,73 +29,30 @@ namespace NodeEditorFramework.Standard
             rect.height = toolbarHeight;
             GUILayout.BeginArea(rect, NodeEditorGUI.toolbar);
             GUILayout.BeginHorizontal();
-            float curToolbarHeight = 0;
 
             if (GUILayout.Button("File", NodeEditorGUI.toolbarDropdown, GUILayout.Width(50)))
             {
                 GenericMenu menu = new GenericMenu();
-
-                // New Canvas filled with canvas types
                 NodeCanvasManager.FillCanvasTypeMenu(ref menu, NewNodeCanvas, "New Canvas/");
                 menu.AddSeparator("");
-
-                // Load / Save
-#if UNITY_EDITOR
                 menu.AddItem(new GUIContent("Load Canvas"), false, LoadCanvas);
                 menu.AddItem(new GUIContent("Reload Canvas"), false, ReloadCanvas);
                 menu.AddSeparator("");
-
                 menu.AddItem(new GUIContent("Save Canvas"), false, SaveCanvas);
                 menu.AddItem(new GUIContent("Save Canvas As"), false, SaveCanvasAs);
-
-                // menu.AddSeparator("");
-#endif
-                menu.Show(new Vector2(5, toolbarHeight));
+                menu.ShowAsContext();
             }
-
-            curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
 
             GUILayout.Space(10);
             GUILayout.FlexibleSpace();
-
-            GUILayout.Label(new GUIContent(this.canvasCache.openedCanvasPath), NodeEditorGUI.toolbarLabel);
+            //重定向到数据资产按钮
+            EditorGUILayoutExtension.LinkFileLabelField("Click To go to asset Path",this.canvasCache.openedCanvasPath);
             GUILayout.Label(this.canvasCache.typeData.DisplayString, NodeEditorGUI.toolbarLabel);
-            curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
 
-            GUI.backgroundColor = new Color(1, 0.3f, 0.3f, 1);
-            if (NodeEditor.curNodeCanvas is NPBehaveCanvas)
-            {
-                if (GUILayout.Button("DataBase", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
-                {
-                    NPBehaveCanvas npBehaveCanvas = this.canvasCache.nodeCanvas as NPBehaveCanvas;
-                    UnityEditor.Selection.activeObject = npBehaveCanvas.GetCurrentCanvasDatas();
-                }
-            }
-
-#if !UNITY_EDITOR
-			GUILayout.Space(5);
-			if (GUILayout.Button("Quit", NodeEditorGUI.toolbarButton, GUILayout.Width(100)))
-				Application.Quit ();
-#endif
-            curToolbarHeight = Mathf.Max(curToolbarHeight, GUILayoutUtility.GetLastRect().yMax);
-            GUI.backgroundColor = Color.white;
+            NodeEditor.curNodeCanvas.DrawToolbar();
 
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
-            if (Event.current.type == EventType.Repaint)
-                toolbarHeight = curToolbarHeight;
-        }
-
-        public void DrawModalPanel()
-        {
-            if (showModalPanel)
-            {
-                if (modalPanelContent == null)
-                    return;
-                GUILayout.BeginArea(modalPanelRect, NodeEditorGUI.nodeBox);
-                modalPanelContent.Invoke();
-                GUILayout.EndArea();
-            }
         }
 
         #endregion

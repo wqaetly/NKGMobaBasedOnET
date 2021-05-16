@@ -10,6 +10,7 @@ using NodeEditorFramework;
 using NodeEditorFramework.Utilities;
 using Plugins;
 using Plugins.NodeEditor.Editor.Canvas;
+using UnityEditor;
 
 namespace SkillDemo
 {
@@ -80,7 +81,7 @@ namespace SkillDemo
 
         public override void NodeGUI()
         {
-            RTEditorGUI.TextField(SkillBuffBases?.BuffDes);
+            EditorGUILayout.TextField(SkillBuffBases?.BuffDes);
         }
     }
 }

@@ -106,10 +106,10 @@ namespace NodeEditorFramework
 
         // GUI
 
-        public virtual void DrawCanvasPropertyEditor()
+        public virtual void DrawToolbar()
         {
+            
         }
-
         #endregion
 
         #region Methods

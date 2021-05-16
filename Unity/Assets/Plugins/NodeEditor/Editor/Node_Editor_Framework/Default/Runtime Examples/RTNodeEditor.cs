@@ -61,16 +61,13 @@ namespace NodeEditorFramework.Standard
 				return;
 			}
 			AssureSetup();
-
-			// ROOT: Start Overlay GUI for popups
-			OverlayGUI.StartOverlayGUI("RTNodeEditor");
 			
 			// Set various nested groups
 			GUI.BeginGroup(rootRect, GUI.skin.box);
 
 			// Begin Node Editor GUI and set canvas rect
 			NodeEditorGUI.StartNodeGUI(false);
-			canvasCache.editorState.canvasRect = new Rect (canvasRect.x, canvasRect.y + editorInterface.toolbarHeight, canvasRect.width, canvasRect.height - editorInterface.toolbarHeight);
+			canvasCache.editorState.canvasRect = new Rect (canvasRect.x, canvasRect.y + NodeEditorInterface.toolbarHeight, canvasRect.width, canvasRect.height - NodeEditorInterface.toolbarHeight);
 
 			try
 			{ // Perform drawing with error-handling
@@ -86,16 +83,12 @@ namespace NodeEditorFramework.Standard
 			
 			// Draw Interface
 			editorInterface.DrawToolbarGUI(canvasRect);
-			editorInterface.DrawModalPanel();
 
 			// End Node Editor GUI
 			NodeEditorGUI.EndNodeGUI();
 
 			// End various nested groups
 			GUI.EndGroup();
-
-			// END ROOT: End Overlay GUI and draw popups
-			OverlayGUI.EndOverlayGUI();
 		}
 	}
 }

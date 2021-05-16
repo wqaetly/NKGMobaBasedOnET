@@ -1,54 +1,67 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace FairyGUI
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class NAudioClip
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		public DestroyMethod destroyMethod;
+    /// <summary>
+    /// 
+    /// </summary>
+    public class NAudioClip
+    {
+        public static Action<AudioClip> CustomDestroyMethod;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public AudioClip nativeClip;
+        /// <summary>
+        /// 
+        /// </summary>
+        public DestroyMethod destroyMethod;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="audioClip"></param>
-		public NAudioClip(AudioClip audioClip)
-		{
-			nativeClip = audioClip;
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public AudioClip nativeClip;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public void Unload()
-		{
-			if (nativeClip == null)
-				return;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="audioClip"></param>
+        public NAudioClip(AudioClip audioClip)
+        {
+            nativeClip = audioClip;
+        }
 
-			if (destroyMethod == DestroyMethod.Unload)
-				Resources.UnloadAsset(nativeClip);
-			else if (destroyMethod == DestroyMethod.Destroy)
-				Object.DestroyImmediate(nativeClip, true);
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Unload()
+        {
+            if (nativeClip == null)
+                return;
 
-			nativeClip = null;
-		}
+            if (destroyMethod == DestroyMethod.Unload)
+                Resources.UnloadAsset(nativeClip);
+            else if (destroyMethod == DestroyMethod.Destroy)
+                UnityEngine.Object.DestroyImmediate(nativeClip, true);
+            else if (destroyMethod == DestroyMethod.Custom)
+            {
+                if (CustomDestroyMethod == null)
+                    Debug.LogWarning("NAudioClip.CustomDestroyMethod must be set to handle DestroyMethod.Custom");
+                else
+                    CustomDestroyMethod(nativeClip);
+            }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="audioClip"></param>
-		public void Reload(AudioClip audioClip)
-		{
-			nativeClip = audioClip;
-		}
-	}
+            nativeClip = null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="audioClip"></param>
+        public void Reload(AudioClip audioClip)
+        {
+            if (nativeClip != null && nativeClip != audioClip)
+                Unload();
+
+            nativeClip = audioClip;
+        }
+    }
 }

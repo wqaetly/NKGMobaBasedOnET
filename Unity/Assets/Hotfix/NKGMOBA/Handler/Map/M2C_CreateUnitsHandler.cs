@@ -66,6 +66,8 @@ namespace ETHotfix
 
                 UnitComponent.Instance.MyUnit.AddComponent<OutLineComponent>();
 
+                Game.Scene.GetComponent<M5V5GameComponent>().GetHotfixUnit(PlayerComponent.Instance.MyPlayer.UnitId).AddComponent<PlayerHeroControllerComponent>();
+
                 Game.EventSystem.Run(EventIdType.EnterMapFinish);
             }
 

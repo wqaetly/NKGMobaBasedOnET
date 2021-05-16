@@ -1,42 +1,60 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Hidden/LineShader" 
+Shader "Hidden/LineShader"
 {
-    SubShader 
+    SubShader
     {
-	    Blend SrcAlpha OneMinusSrcAlpha 
-	    ZWrite Off 
-	    Cull Off 
-	    Fog { Mode Off }
-	
-	    Pass 
-	    {  
-		    CGPROGRAM
-		    #pragma vertex vert
-		    #pragma fragment frag
+        Tags
+        {
+            "RenderPipeline" = "UniversalRenderPipeline"
+            "RenderType" = "Opaque"
+        }
+        
+        Pass
+        {
+            Blend SrcAlpha OneMinusSrcAlpha
+            Cull Back
+            ZWrite Off
 
-		    uniform half4 _LineColor;
-		    uniform sampler2D _LineTexture;
+            HLSLINCLUDE
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-		    struct v2f
-		    {
-			    float2 texcoord : TEXCOORD0;
-			    float4 vertex : POSITION;
-		    };
+            #pragma vertex vert
+            #pragma fragment frag
 
-		    v2f vert (float2 texcoord : TEXCOORD0, float4 vertex : POSITION)
-		    {
-			    v2f o;
-			    o.vertex = UnityObjectToClipPos(vertex);
-			    o.texcoord = texcoord;
-			    return o;
-		    }
+            uniform half4 _LineColor;
 
-		    float4 frag (v2f i) : COLOR
-		    {
-			    return _LineColor * tex2D (_LineTexture, i.texcoord);
-		    }
-		    ENDCG
-	    }
+            CBUFFER_START(UnityPerMaterial)
+
+            TEXTURE2D(_LineTexture);
+            SAMPLER(sampler_LineTexture);
+
+            CBUFFER_END
+
+            struct attribute
+            {
+                float3 vertex : POSITION;
+                float2 texcoord : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float2 texcoord : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+            };
+            ENDHLSL
+            HLSLPROGRAM
+            v2f vert(attribute attribute)
+            {
+                v2f o;
+                o.vertex = TransformObjectToHClip(attribute.vertex);
+                o.texcoord = attribute.texcoord;
+                return o;
+            }
+
+            float4 frag(v2f i) : COLOR
+            {
+                return _LineColor * SAMPLE_TEXTURE2D(_LineTexture, sampler_LineTexture, i.texcoord);
+            }
+            ENDHLSL
+        }
     }
 }

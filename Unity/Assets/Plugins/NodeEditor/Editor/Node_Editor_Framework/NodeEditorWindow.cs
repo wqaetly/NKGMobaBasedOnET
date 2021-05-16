@@ -38,7 +38,7 @@ namespace NodeEditorFramework.Standard
         {
             get
             {
-                return new Rect(0, editorInterface.toolbarHeight, position.width, position.height - editorInterface.toolbarHeight);
+                return new Rect(0, NodeEditorInterface.toolbarHeight, position.width, position.height - NodeEditorInterface.toolbarHeight);
             }
         }
 
@@ -55,7 +55,7 @@ namespace NodeEditorFramework.Standard
 
             NodeEditor.ReInit(false);
             Texture iconTexture = ResourceManager.LoadTexture("Textures/Icon_Dark.png");
-            _editor.titleContent = new GUIContent("Node Editor", iconTexture);
+            _editor.titleContent = new GUIContent("NKG Universal Node Editor", iconTexture);
 
             return _editor;
         }
@@ -157,9 +157,6 @@ namespace NodeEditorFramework.Standard
             AssureEditor();
             AssureSetup();
 
-            // ROOT: Start Overlay GUI for popups
-            OverlayGUI.StartOverlayGUI("NodeEditorWindow");
-
             // Begin Node Editor GUI and set canvas rect
             NodeEditorGUI.StartNodeGUI(true);
             canvasCache.editorState.canvasRect = canvasWindowRect;
@@ -180,13 +177,9 @@ namespace NodeEditorFramework.Standard
 
             // Draw Interface
             editorInterface.DrawToolbarGUI(new Rect(0, 0, Screen.width, 0));
-            editorInterface.DrawModalPanel();
 
             // End Node Editor GUI
             NodeEditorGUI.EndNodeGUI();
-
-            // END ROOT: End Overlay GUI and draw popups
-            OverlayGUI.EndOverlayGUI();
         }
 
         #endregion

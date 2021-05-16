@@ -16,8 +16,6 @@ namespace ETModel
         //线段渲染器  
         public LineRenderer lineRenderer;
 
-        public Shader m_shader;
-
         public List<Vector3> mVexs = new List<Vector3>();
 
         public bool canDraw;
@@ -32,8 +30,6 @@ namespace ETModel
             this.canDraw = false;
 
             this.lineRenderer.SetWidth(0.05f, 0.05f);
-
-            this.lineRenderer.material = new Material(this.m_shader);
 
             this.lineRenderer.SetColors(Color.red, Color.red);
         }

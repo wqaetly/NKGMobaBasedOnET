@@ -21,9 +21,9 @@ namespace ETModel
             return $"Assets/Bundles/FUI/{fileName}.bytes";
         }
         
-        public static string GetFGUIResPath(string fileName)
+        public static string GetFGUIResPath(string fileName,string extension)
         {
-            return $"Assets/Bundles/FUI/{fileName}.png";
+            return $"Assets/Bundles/FUI/{fileName}{extension}";
         }
         
         public static string GetNormalConfigPath(string fileName)

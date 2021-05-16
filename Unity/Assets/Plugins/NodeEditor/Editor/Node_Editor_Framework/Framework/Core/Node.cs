@@ -105,11 +105,6 @@ namespace NodeEditorFramework
         /// </summary>
         public virtual bool ContinueCalculation => true;
 
-        /// <summary>
-        /// Specifies whether GUI requires to be updated even when the node is off-screen 
-        /// </summary>
-        public virtual bool ForceGUIDawOffScreen => false;
-
         #endregion
 
         #region Node Implementation
@@ -324,41 +319,39 @@ namespace NodeEditorFramework
             Vector2 pos = NodeEditor.curEditorState.zoomPanAdjust + NodeEditor.curEditorState.panOffset;
             nodeRect.position = new Vector2((int) (nodeRect.x + pos.x), (int) (nodeRect.y + pos.y));
 
-            GUIStyle targetNodeBoxStyle =
-                    NodeEditor.CheckNodeIsSelected(this)
-                            ? NodeEditorGUI.nodeBox_HighLight
-                            : NodeEditorGUI.nodeBox;
+            //如果选中绘制白色描边，否则绘制黑色描边
+            Rect outlineRect = new Rect(nodeRect.position.x - 6f, nodeRect.position.y - 6f, rect.size.x + 12, this.rect.size.y + 12);
+
+            GUI.color = NodeEditor.CheckNodeIsSelected(this)? Color.white : Color.black;
+
+            GUI.Box(outlineRect, "", NodeEditorGUI.nodeBox_HighLightOutLine);
+
             GUI.color = backgroundColor;
-            GUI.Box(nodeRect, GUIContent.none, targetNodeBoxStyle);
+            
+            GUI.Box(nodeRect, GUIContent.none, NodeEditorGUI.nodeBox);
+
             contentOffset = new Vector2(0, 20);
 
             // Create a headerRect out of the previous rect and draw it, marking the selected node as such by making the header bold
             Rect headerRect = new Rect(nodeRect.x, nodeRect.y, nodeRect.width, contentOffset.y);
-            GUI.color = Color.white;
-            GUI.Label(headerRect, Title, NodeEditorGUI.nodeLabelCentered);
 
-            RTEditorGUI.Seperator(new Rect(nodeRect.x, nodeRect.y + contentOffset.y - 1, nodeRect.width, 0));
+            GUI.color = Color.white;
+            GUI.Label(headerRect, Title, NodeEditorGUI.nodeTittleCentered);
 
             // Begin the body frame around the NodeGUI
             Rect bodyRect = new Rect(nodeRect.x, nodeRect.y + contentOffset.y, nodeRect.width,
                 nodeRect.height - contentOffset.y);
-
-            GUI.BeginGroup(bodyRect);
-
-            GUI.color = Color.white;
-            bodyRect.position = Vector2.zero;
+            
             GUILayout.BeginArea(bodyRect);
 
             // Call NodeGUI
-            GUI.changed = false;
             NodeGUI();
 
-            if (Event.current.type == EventType.Repaint)
+            if (Event.current.type == EventType.Repaint && nodeGUIHeight != GUILayoutUtility.GetLastRect().max)
                 nodeGUIHeight = GUILayoutUtility.GetLastRect().max + contentOffset;
 
             // End NodeGUI frame
             GUILayout.EndArea();
-            GUI.EndGroup();
 
             // Automatically node if desired
             AutoLayoutNode();
@@ -372,18 +365,10 @@ namespace NodeEditorFramework
             if (!AutoLayout || Event.current.type != EventType.Repaint)
                 return;
 
-            Rect nodeRect = rect;
             Vector2 size = new Vector2();
-            size.y = Math.Max(nodeGUIHeight.y, MinSize.y) + 4;
-
-            // Account for potential knobs that might occupy horizontal space
-            float knobSize = 0;
-            List<ConnectionKnob> verticalKnobs =
-                    connectionKnobs.Where(x => x.side == NodeSide.Bottom || x.side == NodeSide.Top).ToList();
-            if (verticalKnobs.Count > 0)
-                knobSize = verticalKnobs.Max((ConnectionKnob knob) => knob.GetGUIKnob().xMax - nodeRect.xMin);
-            size.x = Math.Max(knobSize, MinSize.x);
-
+            size.y = Math.Max(nodeGUIHeight.y, MinSize.y);
+            size.x = Math.Max(nodeGUIHeight.x, this.DefaultSize.x);
+            
             autoSize = size;
             NodeEditor.RepaintClients();
         }

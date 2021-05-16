@@ -71,7 +71,7 @@ namespace ETModel
             //     $"在执行改变CD逻辑，此时剩余CD为{tempBlackboard.Get<float>(this.TheTimeToWait.BBKey)}");
             if (tempBlackboard.Get<float>(this.TheTimeToWait.BBKey) <= 0)
             {
-                // Log.Info("CD刷新完成");
+                //Log.Info("CD刷新完成");
                 lastElapsedTime = -1;
                 //下次再运行就会初始化了，即重新从技能数据块获取并填充CD
                 this.hasInit = false;

@@ -15,11 +15,14 @@ namespace ETHotfix
     [Event(EventIdType.ChangeUnitAttribute)]
     public class ChangeUnitAttribute_FallFront: AEvent<long, int, float>
     {
-        public override void Run(long a, int numType, float b)
+        public override async void Run(long a, int numType, float b)
         {
             if ((NumericType) numType == NumericType.Hp)
             {
-                Game.Scene.GetComponent<M5V5GameComponent>().GetHotfixUnit(a).GetComponent<FallingFontComponent>().Play((int) b);
+                using (await CoroutineLockComponent.Instance.Wait(a))
+                {
+                    await Game.Scene.GetComponent<M5V5GameComponent>().GetHotfixUnit(a).GetComponent<FallingFontComponent>().Play((int) b);
+                }
             }
         }
     }
@@ -73,11 +76,11 @@ namespace ETHotfix
         /// 播放飘字特效
         /// </summary>
         /// <param name="targetValue">目标值</param>
-        public void Play(float targetValue)
+        public async ETTask Play(float targetValue)
         {
             if (FuiFallBleedQue.Count == 0)
             {
-                ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIPackage.FUIFallBleed);
+                await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIPackage.FUIFallBleed);
                 var hotfixui = FUIFallBleed.CreateInstance();
                 hotfixui.Name = hotfixui.Id.ToString();
                 hotfixui.MakeFullScreen();
@@ -141,7 +144,7 @@ namespace ETHotfix
 
         public override void Dispose()
         {
-            if(this.IsDisposed) return;
+            if (this.IsDisposed) return;
             base.Dispose();
             this.completedIdQueue.Clear();
             this.FuiFallBleedQue.Clear();

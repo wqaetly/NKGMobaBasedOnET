@@ -7,7 +7,7 @@
     
 	版	本：		1.00
 	时	间：		2018/2/24 9:02:12
-	作	者：		AQ
+	作	者：		AQ		QQ:355010366
 	概	述：		新建
 
 *********************************************************************/
@@ -36,7 +36,11 @@ namespace FairyGUI
             NEUTRAL,
         }
 
+#if RTL_TEXT_SUPPORT
         public static DirectionType BaseDirection = DirectionType.RTL;    // 主体语言是否是RTL的语言
+#else
+        public static DirectionType BaseDirection = DirectionType.UNKNOW;
+#endif
         private static bool isCharsInitialized = false;
         private static Dictionary<int, char[]> mapping = new Dictionary<int, char[]>();
 
@@ -50,18 +54,54 @@ namespace FairyGUI
         public static bool IsArabicLetter(char ch)
         {
             if (ch >= 0x600 && ch <= 0x6ff)
+            {
+                if ((ch >= 0x660 && ch <= 0x66D) || (ch >= 0x6f0 && ch <= 0x6f9)) // 标准阿拉伯语数字和东阿拉伯语数字 [2019/3/1/ 17:45:18 by aq_1000]
+                {
+                    return false;
+                }
                 return true;
-
-            if (ch >= 0x750 && ch <= 0x77f)
+            }
+            else if (ch >= 0x750 && ch <= 0x77f)
                 return true;
-
-            if (ch >= 0xfb50 && ch <= 0xfc3f)
+            else if (ch >= 0xfb50 && ch <= 0xfc3f)
                 return true;
-
-            if (ch >= 0xfe70 && ch <= 0xfefc)
+            else if (ch >= 0xfe70 && ch <= 0xfefc)
                 return true;
-
             return false;
+        }
+
+        public static string ConvertNumber(string strNumber)
+        {
+            sbRep.Length = 0;
+            foreach (char ch in strNumber)
+            {
+                int un = ch;
+                if (un == 0x66c || ch == ',')   // 去掉逗号
+                    continue;
+                else if (un == 0x660 || un == 0x6f0)
+                    sbRep.Append('0');
+                else if (un == 0x661 || un == 0x6f1)
+                    sbRep.Append('1');
+                else if (un == 0x662 || un == 0x6f2)
+                    sbRep.Append('2');
+                else if (un == 0x663 || un == 0x6f3)
+                    sbRep.Append('3');
+                else if (un == 0x664 || un == 0x6f4)
+                    sbRep.Append('4');
+                else if (un == 0x665 || un == 0x6f5)
+                    sbRep.Append('5');
+                else if (un == 0x666 || un == 0x6f6)
+                    sbRep.Append('6');
+                else if (un == 0x667 || un == 0x6f7)
+                    sbRep.Append('7');
+                else if (un == 0x668 || un == 0x6f8)
+                    sbRep.Append('8');
+                else if (un == 0x669 || un == 0x6f9)
+                    sbRep.Append('9');
+                else
+                    sbRep.Append(ch);
+            }
+            return sbRep.ToString();
         }
 
         public static bool ContainsArabicLetters(string text)
@@ -114,27 +154,27 @@ namespace FairyGUI
         {
             if (!IsArabicLetter(input))
             {
-                return true;   
+                return true;
             }
             else
             {
                 return (input == '،') || (input == '?') || (input == '؟');
             }
 
-//             if ((input != ' ') && (input != '\t') && (input != '!') && (input != '.') && 
-//                 (input != '،') && (input != '?') && (input != '؟') && 
-//                 !_IsBracket(input) &&   // 括号也算 [2018/8/1/ 15:12:20 by aq_1000]
-//                 !_IsNeutrality(input))
-//             {
-//                 return false;
-//             }
-//             return true;
+            //             if ((input != ' ') && (input != '\t') && (input != '!') && (input != '.') && 
+            //                 (input != '،') && (input != '?') && (input != '؟') && 
+            //                 !_IsBracket(input) &&   // 括号也算 [2018/8/1/ 15:12:20 by aq_1000]
+            //                 !_IsNeutrality(input))
+            //             {
+            //                 return false;
+            //             }
+            //             return true;
         }
 
         private static bool CheckSpecific(char input)
         {
             int num = input;
-            if ((num != 0x622) && (num != 0x623) && (num != 0x627) && (num != 0x62f) && (num != 0x625) && 
+            if ((num != 0x622) && (num != 0x623) && (num != 0x627) && (num != 0x62f) && (num != 0x625) &&
                 (num != 0x630) && (num != 0x631) && (num != 0x632) && (num != 0x698) && (num != 0x648) &&
                 !_CheckSoundmark(input))
             {
@@ -275,7 +315,7 @@ namespace FairyGUI
             sbRep.Length = 0;
             sbN.Length = 0;
             int iReplace = 0;
-            DirectionType ePre = DirectionType.UNKNOW;
+            DirectionType ePre = DirectionType.LTR;
             char nextChar = '\0';
             for (int j = 0; j < source.Length; j++)
             {
@@ -284,7 +324,7 @@ namespace FairyGUI
                 else
                     nextChar = '\0';
                 char item = source[j];
-                DirectionType eCType = _GetDirection(item, ePre, nextChar);
+                DirectionType eCType = _GetDirection(item, nextChar, ePre, DirectionType.LTR);
                 if (eCType == DirectionType.RTL)
                 {
                     if (sbRep.Length == 0)
@@ -315,7 +355,7 @@ namespace FairyGUI
                     }
                     sbN.Length = 0;
 
-                    item = _ProcessBracket(item);
+                    //                    item = _ProcessBracket(item);       // 文本主方向为LTR的话，括号不需要翻转 [2018/12/20/ 17:03:23 by aq_1000]
                     listFinal.Add(item);
                 }
                 else
@@ -385,7 +425,7 @@ namespace FairyGUI
             sbRep.Length = 0;
             sbN.Length = 0;
             int iReplace = 0;
-            DirectionType ePre = DirectionType.UNKNOW;
+            DirectionType ePre = DirectionType.RTL;
             char nextChar = '\0';
             for (int j = 0; j < source.Length; j++)
             {
@@ -394,7 +434,7 @@ namespace FairyGUI
                 else
                     nextChar = '\0';
                 char item = source[j];
-                DirectionType eCType = _GetDirection(item, ePre, nextChar);
+                DirectionType eCType = _GetDirection(item, nextChar, ePre, DirectionType.RTL);
                 if (eCType == DirectionType.LTR)
                 {
                     if (sbRep.Length == 0)
@@ -487,32 +527,32 @@ namespace FairyGUI
 
 
         private static string _Reverse(string source)
-		{
-			sbReverse.Length = 0;
-			int len = source.Length;
-			int i = len - 1;
-			while (i >= 0)
-			{
-				char ch = source[i];
-				if (ch == '\r' && i != len - 1 && source[i + 1] == '\n')
-				{
-					i--;
-					continue;
-				}
+        {
+            sbReverse.Length = 0;
+            int len = source.Length;
+            int i = len - 1;
+            while (i >= 0)
+            {
+                char ch = source[i];
+                if (ch == '\r' && i != len - 1 && source[i + 1] == '\n')
+                {
+                    i--;
+                    continue;
+                }
 
-				if (char.IsLowSurrogate(ch)) //不要反向高低代理对
-				{
-					sbReverse.Append(source[i - 1]);
-					sbReverse.Append(ch);
-					i--;
-				}
-				else
-					sbReverse.Append(ch);
-				i--;
-			}
+                if (char.IsLowSurrogate(ch)) //不要反向高低代理对
+                {
+                    sbReverse.Append(source[i - 1]);
+                    sbReverse.Append(ch);
+                    i--;
+                }
+                else
+                    sbReverse.Append(ch);
+                i--;
+            }
 
-			return sbReverse.ToString();
-		}
+            return sbReverse.ToString();
+        }
 
         private static void InitChars()
         {
@@ -561,12 +601,12 @@ namespace FairyGUI
 
             mapping.Add(0x6BE, new char[4] { (char)0xFEE9, (char)0xFEEA, (char)0xFEEB, (char)0xFEEC });
             mapping.Add(0x6CC, new char[4] { (char)0xFBFC, (char)0xFBFD, (char)0xFBFE, (char)0xFBFF });
-        }               
+        }
 
         // 是否中立方向字符
         private static bool _IsNeutrality(char uc)
         {
-            return (uc == ':' || uc == '：' || uc == ' ' || /*uc == '%' ||*/ uc == '+' || /*uc == '-' ||*/ uc == '\n' || uc == '\r' || uc == '\t' || uc == '@' ||
+            return (uc == ':' || uc == '：' || uc == ' ' || /*uc == '%' ||*/ /*uc == '+' ||*/ /*uc == '-' ||*/ uc == '\n' || uc == '\r' || uc == '\t' || uc == '@' ||
                 (uc >= 0x2600 && uc <= 0x27BF)); // 表情符号
         }
 
@@ -579,28 +619,40 @@ namespace FairyGUI
         }
 
         // 判断字符方向
-        private static DirectionType _GetDirection(char uc, DirectionType ePre, char nextChar)
+        private static DirectionType _GetDirection(char uc, char nextChar, DirectionType ePre, DirectionType eBase)
         {
-            DirectionType eCType = DirectionType.RTL;
+            DirectionType eCType = ePre;
             int uni = uc;
 
             if (_IsBracket(uc) || _IsEndPunctuation(uc, nextChar))
             {
-                eCType = DirectionType.RTL;
+                eCType = eBase;    // 括号和句末标点符号，方向根据上个字符为准 [2018/12/26/ 15:56:24 by aq_1000]
             }
-            else if ((uni >= 0x660) && (uni <= 0x669))
+            else if ((uni >= 0x660) && (uni <= 0x66D))
             {
                 eCType = DirectionType.LTR;
             }
-            else if (IsArabicLetter(uc) || uc == '-' || uc == '%')
+            else if (IsArabicLetter(uc) || uc == '+' /*|| uc == '-'*/ || uc == '%')
             {
                 eCType = DirectionType.RTL;
             }
+            else if (uc == '-')
+            {
+                if (char.IsNumber(nextChar))
+                    eCType = DirectionType.LTR;
+                else
+                    eCType = DirectionType.RTL;
+            }
             else if (_IsNeutrality(uc))    // 中立方向字符，方向就和上一个字符一样 [2018/3/24 16:03:27 --By aq_1000]
             {
-                if (ePre == DirectionType.UNKNOW)
+                if (ePre == DirectionType.UNKNOW || ePre == DirectionType.NEUTRAL)
                 {
-                    eCType = DirectionType.NEUTRAL;
+                    if (char.IsNumber(nextChar))    // 数字都是弱LTR方向符，开头中立字符后面紧跟着数字的话，中立字符方向算文本主方向 [IsDigit()只是0-9] [2018/12/20/ 16:32:32 by aq_1000]
+                    {
+                        eCType = BaseDirection;
+                    }
+                    else
+                        eCType = DirectionType.NEUTRAL;
                 }
                 else
                     eCType = ePre;
@@ -611,13 +663,13 @@ namespace FairyGUI
             return eCType;
         }
 
-	    // 是否括号
+        // 是否括号
         private static bool _IsBracket(char uc)
         {
             return (uc == ')' || uc == '(' || uc == '）' || uc == '（' ||
                     uc == ']' || uc == '[' || uc == '】' || uc == '【' ||
-                    uc == '}' || uc == '{' || 
- //                   uc == '≥' || uc == '≤' || uc == '>' || uc == '<' || 
+                    uc == '}' || uc == '{' ||
+                    //                   uc == '≥' || uc == '≤' || uc == '>' || uc == '<' || 
                     uc == '》' || uc == '《' || uc == '“' || uc == '”' || uc == '"');
         }
 

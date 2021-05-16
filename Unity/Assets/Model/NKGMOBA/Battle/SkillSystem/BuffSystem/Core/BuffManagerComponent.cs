@@ -20,11 +20,6 @@ namespace ETModel
     public class BuffManagerComponent: Component
     {
         /// <summary>
-        /// 所有将要被添加的Buff都要先进这个字典，然后经过筛选的Buff才能加入m_Buffs链表
-        /// </summary>
-        public Dictionary<long, ABuffSystemBase> TempBuffsToBeAdded = new Dictionary<long, ABuffSystemBase>();
-
-        /// <summary>
         /// Buff链表
         /// </summary>
         private LinkedList<ABuffSystemBase> m_Buffs = new LinkedList<ABuffSystemBase>();
@@ -43,14 +38,6 @@ namespace ETModel
 
         public void Update()
         {
-            //把Buff从临时列表加入到正式列表
-            foreach (var tempBuff in this.TempBuffsToBeAdded)
-            {
-                this.AddBuff2Real(tempBuff.Value);
-            }
-
-            this.TempBuffsToBeAdded.Clear();
-
             this.m_Current = m_Buffs.First;
             //轮询链表
             while (this.m_Current != null)
@@ -85,33 +72,17 @@ namespace ETModel
         /// 添加Buff到真实链表，禁止外部调用
         /// </summary>
         /// <param name="aBuff"></param>
-        private void AddBuff2Real(ABuffSystemBase aBuff)
+        public void AddBuff(ABuffSystemBase aBuff)
         {
             m_Buffs.AddLast(aBuff);
 
-            if (this.m_BuffsForFind_BuffWorkType.ContainsKey(aBuff.BuffData.BuffWorkType))
-            {
-                m_BuffsForFind_BuffWorkType[aBuff.BuffData.BuffWorkType] = aBuff;
-            }
-            else
-            {
-                m_BuffsForFind_BuffWorkType.Add(aBuff.BuffData.BuffWorkType, aBuff);
-            }
-
-            if (this.m_BuffsForFind_BuffId.ContainsKey(aBuff.BuffData.BuffId))
-            {
-                this.m_BuffsForFind_BuffId[aBuff.BuffData.BuffId] = aBuff;
-            }
-            else
-            {
-                this.m_BuffsForFind_BuffId.Add(aBuff.BuffData.BuffId, aBuff);
-            }
-
+            this.m_BuffsForFind_BuffWorkType[aBuff.BuffData.BuffWorkType] = aBuff;
+            this.m_BuffsForFind_BuffId[aBuff.BuffData.BuffId] = aBuff;
             // Log.Info($"把ID为{aBuff.BuffData.BuffId}的buff加入检索表");
         }
 
         /// <summary>
-        /// 移除Buff(下一帧才真正移除)
+        /// 移除Buff(下一帧才真正移除 TODO 考虑到有些Buff绕一圈下来可能会移除自己，需要做额外处理，暂时先放着)
         /// </summary>
         /// <param name="buffId">要移除的BuffId</param>
         public void RemoveBuff(long buffId)
@@ -185,21 +156,6 @@ namespace ETModel
             if (this.m_BuffsForFind_BuffId.TryGetValue(buffId, out ABuffSystemBase _temp))
             {
                 return _temp;
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// 移除并返回临时列表中的一个Buff
-        /// </summary>
-        /// <param name="buffId">BuffData的标识ID</param>
-        /// <returns></returns>
-        public ABuffSystemBase GetBuffById_FromTempDic(long buffId)
-        {
-            if (this.TempBuffsToBeAdded.TryGetValue(buffId, out var temp))
-            {
-                return temp;
             }
 
             return null;
