@@ -5,6 +5,8 @@
 ## 介绍
 基于ET框架致敬LOL的Moba游戏，包含完整的客户端与服务端交互，热更新，基于双端行为树的技能系统，更多精彩等你发现！
 
+本项目同步自 [码云NKGMobaBasedOnET](https://gitee.com/NKG_admin/NKGMobaBasedOnET) ，不定期同步更新。
+
 如果你对这个开源项目有好的想法或者想和大家一起交流，可以提Issues或者加QQ群：959572557
 
 对于想系统学习本项目而无从下手的，推荐去看看本项目的Wiki，里面有运行指南和基础教程以及常见问题，相关技术点讲解（如果运行出现问题请先看Wiki，解决99%问题）。
@@ -76,13 +78,13 @@
 ## 开发进度展示
 ### 资源热更新界面
 
-![image-20200722083928209](https://images.gitee.com/uploads/images/2020/0722/084147_fc1f9a7c_2253805.png)
+![资源热更新界面](https://images.gitee.com/uploads/images/2020/0722/084147_fc1f9a7c_2253805.png)
 ### 登录界面
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0318/170241_c54f448d_2253805.png "屏幕截图.png")
 ### 大厅界面
 
-![image-20200722083952197](https://images.gitee.com/uploads/images/2020/0722/084147_e41d6ac7_2253805.png)
+![大厅界面](https://images.gitee.com/uploads/images/2020/0722/084147_e41d6ac7_2253805.png)
 ### 战斗界面
 
 ![image-20200722084012352](https://images.gitee.com/uploads/images/2020/0722/084147_079e755b_2253805.png)
