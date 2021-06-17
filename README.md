@@ -5,7 +5,7 @@
 ## 介绍
 基于ET框架致敬LOL的Moba游戏，包含完整的客户端与服务端交互，热更新，基于双端行为树的技能系统，更多精彩等你发现！
 
-如果你对这个开源项目有好的想法或者想和大家一起交流，可以提Issues或者加QQ群：959572557
+如果你对这个开源项目有好的想法或者想和大家一起交流，可以提Issues
 
 对于想系统学习本项目而无从下手的，推荐去看看本项目的Wiki，里面有运行指南和基础教程以及常见问题，相关技术点讲解（如果运行出现问题请先看Wiki，解决99%问题）。
 [这是Wiki地址](https://gitee.com/NKG_admin/NKGMobaBasedOnET/wikis)
@@ -22,7 +22,7 @@
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
-
+本项目为码云 [https://gitee.com/NKG_admin/NKGMobaBasedOnET](https://gitee.com/NKG_admin/NKGMobaBasedOnET) 镜像，不定期同步更新。
 ## 特别鸣谢
 
 感谢JetBrains公司提供的使用许可证！
@@ -100,9 +100,9 @@
 ### Box2D编辑器
 
 ![Box2D编辑器](https://images.gitee.com/uploads/images/2021/0324/121226_528a85b5_2253805.png "QQ截图20210324121119.png")
-### 技能编辑器v0.0.3
+### 技能编辑器v1.0
 
-![技能编辑器v0.0.3](https://images.gitee.com/uploads/images/2021/0418/213018_1aca0879_2253805.png "技能编辑器v0.0.3")
+![技能编辑器v1.0](https://images.gitee.com/uploads/images/2021/0617/221210_d98d04bb_2253805.png "技能编辑器v1.0")
 ### 技能配置浏览器
 
 ![技能配置浏览器](https://images.gitee.com/uploads/images/2021/0525/215950_9f2f89c1_2253805.png "QQ截图20210525215846.png")
