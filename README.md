@@ -22,6 +22,7 @@
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
+本项目为码云 [https://gitee.com/NKG_admin/NKGMobaBasedOnET/](https://gitee.com/NKG_admin/NKGMobaBasedOnET/) 镜像，不定期同步更新
 
 ## 特别鸣谢
 
