@@ -22,7 +22,7 @@
 
 本项目中所有的插件仅供学习交流使用，请务必支持正版！
 
-本项目为码云 [https://gitee.com/NKG_admin/NKGMobaBasedOnET](https://gitee.com/NKG_admin/NKGMobaBasedOnET) 镜像，不定期同步更新。
+
 ## 特别鸣谢
 
 感谢JetBrains公司提供的使用许可证！
@@ -33,7 +33,7 @@
 
 ## 运行环境
 
- **编辑器：Unity 2020.3.0 LTS** 
+ **编辑器：Unity 2020.3.12 LTS** 
 
  **客户端：.Net Framework 4.7.2** 
 
@@ -43,39 +43,27 @@
 
 ## 已实现功能列表
 
-| 功能内容                                                 | 时间节点       |
-| -------------------------------------------------------- | -------------- |
-| 整合FairyGUI作为UI方案                                   | 2019.4.22      |
-| 丰富资源模块功能，完成打包工具制作                       | 2019.4.27      |
-| 登录注册，接入MongoDB数据库，账号之间冲突处理，心跳开发  | 2019.5.1       |
-| 人物同步，寻路（包含点击小地图寻路）                     | 2019.5.11      |
-| 整合可视化节点编辑器（配置树状数据）                     | 2019.5.19      |
-| 整合Box2D作为服务端碰撞方案                              | 2019.6.10      |
-| 提取LOL资源作为项目主要资源                              | 2019.6.20      |
-| 整合行为树到客户端和服务端，将配合技能编辑器制作技能系统 | 2019.6.25      |
-| 选定状态同步为游戏同步策略，初步实现多玩家动画同步工作   | 2019.7.3       |
-| 完成Box2D可视化编辑器的制作                              | 2019.7.19      |
-| 完成碰撞关系可视化编辑器的制作，附带自动生成代码功能     | 2019.8.1       |
-| 完成服务端Box2D相关架构的搭建                            | 2019.8.14      |
-| 完成NPBehave行为树可视化编辑器制作v0.0.1                 | 2019.8.26      |
-| 实现基于NPBehave的可视化技能系统编辑器v0.0.2             | 2019.9.28      |
-| 诺克萨斯之手Q技能完整流程Demo                            | 2019.10.3      |
-| 基本完成客户端与服务端技能系统的通信与同步               | 2020.1.25      |
-| 准备发行版的技能编辑器和技能系统v0.0.2-v0.10.0           | 2020.3~2020.8  |
-| 更新FGUI至2020最新版，并升级插件                         | 2020.8.9       |
-| 重构优化技能编辑器GUI和技能系统运行时逻辑v0.10.1         | 2020.8.17~当前 |
-| 接入Universal Render Pipeline                            | 2020.10.5      |
-| 接入C++版本recastnavigation寻路                          | 2020.10.31     |
-| 实现人物描边效，阴影效果                                 | 2020.11.22     |
+- 基于[FGUI](https://www.fairygui.com/)的UI解决方案
+- 基于[ILRuntime](http://ourpalm.github.io/ILRuntime/public/v1/guide/index.html)的代码热更新方案
+- 基于[xasset](https://github.com/xasset/xasset)的资源热更新方案
+- 基于状态帧同步的网络同步方案（目前仅为状态同步，状态帧参照：[守望先锋GDC2017分享](https://www.lfzxb.top/ow-gdc-share-table-of-contents/)）
+- 基于[kcp](https://github.com/skywind3000/kcp)的网络通信算法
+- 基于[Unity GraphView](https://github.com/wqaetly/NodeGraphProcessor)的可视化节点解决方案，可用于制作各种可视化编辑器（技能编辑器，剧情编辑器，任务编辑器，新手引导编辑器等）
+- 基于[NPBehave行为树](https://github.com/meniku/NPBehave)的可视化节点技能编辑器
+- 基于[Animacer（PlayableAPI）](https://kybernetik.com.au/animancer/)的动画系统
+- 基于Visual Effect Graph的特效系统
+- 基于ECS架构的战斗系统，包括Buff系统，技能系统，状态系统，数值系统等，相关博客参见：[基于行为树的MOBA技能系统：总目录](https://www.lfzxb.top/nkgmoba-totaltabs/)
+- 基于[recastnavigation](https://github.com/recastnavigation/recastnavigation)的寻路系统
 
 ## 开发计划
 
-1. 重构优化完善技能编辑器GUI，技能系统Runtime
-2. 实现人物在河道行走时的水波纹效果，战争迷雾效果
-3. 使用Visusl Effect Graph重新制作特效
-4. 加入寒冰，盖伦，赵信
-5. 开发匹配系统
-6. 使用imgui为服务端开发一套行为树数据可视化UI
+1. 接入[Slate编辑器](https://slate.paradoxnotion.com/)，作为Timeline方案，可用于制作ACT技能编辑器
+2. 实现状态帧同步
+3. 为服务端定制一套行为树数据可视化DEBUG方案
+4. 实现人物在河道行走时的水波纹效果，战争迷雾效果
+5. 加入寒冰，盖伦，赵信
+6. 开发匹配系统
+
 
 ## 开发进度展示
 ### 资源热更新界面
@@ -103,9 +91,6 @@
 ### 技能编辑器v1.0
 
 ![技能编辑器v1.0](https://images.gitee.com/uploads/images/2021/0617/221210_d98d04bb_2253805.png "技能编辑器v1.0")
-### 技能配置浏览器
-
-![技能配置浏览器](https://images.gitee.com/uploads/images/2021/0525/215950_9f2f89c1_2253805.png "QQ截图20210525215846.png")
 ### 技能系统架构图
 
 ![163758_138e22e9_2253805](https://images.gitee.com/uploads/images/2020/0722/084148_1f2eb6b1_2253805.png)
