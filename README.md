@@ -20,16 +20,22 @@
 
 **基于行为树的技能系统架构直播录屏：[视频链接](https://www.bilibili.com/video/BV13K4y137vR)** 
 
-本项目中所有的插件仅供学习交流使用，请务必支持正版！
-
-本项目为码云 [https://gitee.com/NKG_admin/NKGMobaBasedOnET/](https://gitee.com/NKG_admin/NKGMobaBasedOnET/) 镜像，不定期同步更新
-
+本项目为码云：[https://gitee.com/NKG_admin/NKGMobaBasedOnET](https://gitee.com/NKG_admin/NKGMobaBasedOnET) 镜像，不定期同步
 ## 特别鸣谢
 
 感谢JetBrains公司提供的使用许可证！
 
 <p><a href="https://www.jetbrains.com/?from=NKGMobaBasedOnET ">
 <img src="https://images.gitee.com/uploads/images/2020/0722/084147_cc1c0a4a_2253805.png" alt="JetBrains的Logo" width="20%" height="20%"></a></p>
+
+ **本项目中使用了如下插件（仅供学习交流使用，请务必支持正版！）** 
+
+
+-  **[ParadoxNotion-Slate](https://slate.paradoxnotion.com/)** 
+-  **[Odin](https://odininspector.com/)** 
+-  **[Animancer](https://kybernetik.com.au/animancer/)** 
+-  **[MonKey Commander](https://assetstore.unity.com/packages/tools/utilities/monkey-productivity-commands-119938?locale=zh-CN)** 
+-  **[Status Indicators](https://assetstore.unity.com/packages/tools/particles-effects/status-indicators-88156)** 
 
 
 ## 运行环境
@@ -44,21 +50,21 @@
 
 ## 已实现功能列表
 
-- 基于[FGUI](https://www.fairygui.com/)的UI解决方案
-- 基于[ILRuntime](http://ourpalm.github.io/ILRuntime/public/v1/guide/index.html)的代码热更新方案
-- 基于[xasset](https://github.com/xasset/xasset)的资源热更新方案
-- 基于状态帧同步的网络同步方案（目前仅为状态同步，状态帧参照：[守望先锋GDC2017分享](https://www.lfzxb.top/ow-gdc-share-table-of-contents/)）
-- 基于[kcp](https://github.com/skywind3000/kcp)的网络通信算法
-- 基于[Unity GraphView](https://github.com/wqaetly/NodeGraphProcessor)的可视化节点解决方案，可用于制作各种可视化编辑器（技能编辑器，剧情编辑器，任务编辑器，新手引导编辑器等）
-- 基于[NPBehave行为树](https://github.com/meniku/NPBehave)的可视化节点技能编辑器
-- 基于[Animacer（PlayableAPI）](https://kybernetik.com.au/animancer/)的动画系统
+- 基于 **[FGUI](https://www.fairygui.com/)** 的UI解决方案
+- 基于 **[ILRuntime](http://ourpalm.github.io/ILRuntime/public/v1/guide/index.html)** 的代码热更新方案
+- 基于 **[xasset](https://github.com/xasset/xasset)** 的资源热更新方案
+- 基于状态帧同步的网络同步方案（目前仅为状态同步，状态帧参照： **[守望先锋GDC2017分享](https://www.lfzxb.top/ow-gdc-share-table-of-contents/)** ）
+- 基于 **[kcp](https://github.com/skywind3000/kcp)** 的网络通信算法
+- 基于 **[Unity GraphView](https://github.com/wqaetly/NodeGraphProcessor)** 的可视化节点解决方案，可用于制作各种可视化编辑器（技能编辑器，剧情编辑器，任务编辑器，新手引导编辑器等）
+- 基于 **[NPBehave行为树](https://github.com/meniku/NPBehave)** 的可视化节点技能编辑器
+- 基于 **[Animancer（PlayableAPI）](https://kybernetik.com.au/animancer/)** 的动画系统
 - 基于Visual Effect Graph的特效系统
-- 基于ECS架构的战斗系统，包括Buff系统，技能系统，状态系统，数值系统等，相关博客参见：[基于行为树的MOBA技能系统：总目录](https://www.lfzxb.top/nkgmoba-totaltabs/)
-- 基于[recastnavigation](https://github.com/recastnavigation/recastnavigation)的寻路系统
+- 基于ECS架构的战斗系统，包括Buff系统，技能系统，状态系统，数值系统等，相关博客参见： **[基于行为树的MOBA技能系统：总目录](https://www.lfzxb.top/nkgmoba-totaltabs/)** 
+- 基于 **[recastnavigation](https://github.com/recastnavigation/recastnavigation)** 的寻路系统
 
 ## 开发计划
 
-1. 接入[Slate编辑器](https://slate.paradoxnotion.com/)，作为Timeline方案，可用于制作ACT技能编辑器
+1. 接入 **[Slate编辑器](https://slate.paradoxnotion.com/)** ，作为Timeline方案，可用于制作ACT技能编辑器
 2. 实现状态帧同步
 3. 为服务端定制一套行为树数据可视化DEBUG方案
 4. 实现人物在河道行走时的水波纹效果，战争迷雾效果
