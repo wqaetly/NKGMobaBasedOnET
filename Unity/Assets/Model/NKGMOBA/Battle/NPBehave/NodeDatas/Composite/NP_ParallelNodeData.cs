@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class NP_ParallelNodeData: NP_NodeDataBase
     {

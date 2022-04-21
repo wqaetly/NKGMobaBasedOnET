@@ -10,12 +10,12 @@
 
 using System;
 
-using Mono.Cecil.PE;
-using Mono.Collections.Generic;
+using ILRuntime.Mono.Cecil.PE;
+using ILRuntime.Mono.Collections.Generic;
 
 using RVA = System.UInt32;
 
-namespace Mono.Cecil.Cil {
+namespace ILRuntime.Mono.Cecil.Cil {
 
 	sealed class CodeReader : BinaryStreamReader {
 
@@ -132,7 +132,7 @@ namespace Mono.Cecil.Cil {
 		public VariableDefinitionCollection ReadVariables (MetadataToken local_var_token)
 		{
 			var position = reader.position;
-			var variables = reader.ReadVariables (local_var_token);
+			var variables = reader.ReadVariables (local_var_token, method);
 			reader.position = position;
 
 			return variables;
@@ -471,8 +471,6 @@ namespace Mono.Cecil.Cil {
 				ReadScopes (scope.scopes);
 		}
 
-#if !READ_ONLY
-
 		public ByteBuffer PatchRawMethodBody (MethodDefinition method, CodeWriter writer, out int code_size, out MetadataToken local_var_token)
 		{
 			var position = MoveTo (method);
@@ -664,8 +662,5 @@ namespace Mono.Cecil.Cil {
 				}
 			}
 		}
-
-#endif
-
 	}
 }

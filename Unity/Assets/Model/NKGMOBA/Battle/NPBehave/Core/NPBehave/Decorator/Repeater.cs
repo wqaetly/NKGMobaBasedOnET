@@ -4,6 +4,7 @@
     {
         private int loopCount = -1;
         private int currentLoop;
+        private long TimerId;
 
         /// <param name="loopCount">number of times to execute the decoratee. Set to -1 to repeat forever, be careful with endless loops!</param>
         /// <param name="decoratee">Decorated Node</param>
@@ -32,7 +33,7 @@
 
         override protected void DoCancel()
         {
-            this.Clock.RemoveTimer(restartDecoratee);
+            this.Clock.RemoveTimer(TimerId);
             
             if (Decoratee.IsActive)
             {
@@ -54,7 +55,7 @@
                 }
                 else
                 {
-                    this.Clock.AddTimer(0, 0, restartDecoratee);
+                    TimerId = this.Clock.AddTimer(1, restartDecoratee);
                 }
             }
             else

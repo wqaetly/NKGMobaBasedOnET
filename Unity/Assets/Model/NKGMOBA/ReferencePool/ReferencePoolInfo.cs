@@ -7,7 +7,7 @@
 
 using System;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 引用池信息。

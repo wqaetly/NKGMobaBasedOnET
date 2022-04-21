@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace ILRuntime.Reflection
     {
         ILType type;
         Runtime.Enviorment.AppDomain appdomain;
-        object[] customAttributes;
+        Attribute[] customAttributes;
         Type[] attributeTypes;
         ILRuntimeFieldInfo[] fields;
         ILRuntimePropertyInfo[] properties;
@@ -32,11 +32,11 @@ namespace ILRuntime.Reflection
         {
             if(type.TypeDefinition == null)
             {
-                customAttributes = new object[0];
+                customAttributes = new Attribute[0];
                 attributeTypes = new Type[0];
                 return;
             }
-            customAttributes = new object[type.TypeDefinition.CustomAttributes.Count];
+            customAttributes = new Attribute[type.TypeDefinition.CustomAttributes.Count];
             attributeTypes = new Type[customAttributes.Length];
             for (int i = 0; i < type.TypeDefinition.CustomAttributes.Count; i++)
             {
@@ -44,7 +44,7 @@ namespace ILRuntime.Reflection
                 var at = appdomain.GetType(attribute.AttributeType, type, null);
                 try
                 {
-                    object ins = attribute.CreateInstance(at, appdomain);
+                    Attribute ins = attribute.CreateInstance(at, appdomain) as Attribute;
 
                     attributeTypes[i] = at.ReflectionType is ILRuntimeWrapperType ? at.TypeForCLR : at.ReflectionType;
                     customAttributes[i] = ins;
@@ -95,7 +95,7 @@ namespace ILRuntime.Reflection
                 KeyValuePair<string, IType>[] ga = new KeyValuePair<string, IType>[typeArguments.Length];
                 for (int i = 0; i < ga.Length; i++)
                 {
-                    string key = ILType.TypeReference.GenericParameters[0].Name;
+                    string key = ILType.TypeReference.GenericParameters[i].Name;
                     if (typeArguments[i] is ILRuntimeType)
                         ga[i] = new KeyValuePair<string, IType>(key, ((ILRuntimeType)typeArguments[i]).ILType);
                     else
@@ -217,7 +217,13 @@ namespace ILRuntime.Reflection
         {
             if (customAttributes == null)
                 InitializeCustomAttribute();
-
+            if (inherit && BaseType != null)
+            {
+                List<object> result = new List<object>();
+                result.AddRange(customAttributes);
+                result.AddRange(BaseType.GetCustomAttributes(inherit));
+                return result.ToArray();
+            }
             return customAttributes;
         }
 
@@ -226,10 +232,14 @@ namespace ILRuntime.Reflection
             if (customAttributes == null)
                 InitializeCustomAttribute();
             List<object> res = new List<object>();
-            for(int i = 0; i < customAttributes.Length; i++)
+            for (int i = 0; i < customAttributes.Length; i++)
             {
                 if (attributeTypes[i].Equals((object)attributeType))
                     res.Add(customAttributes[i]);
+            }
+            if (inherit && BaseType != null)
+            {
+                res.AddRange(BaseType.GetCustomAttributes(attributeType, inherit));
             }
             return res.ToArray();
         }
@@ -316,7 +326,7 @@ namespace ILRuntime.Reflection
             }
             if ((bindingAttr & BindingFlags.DeclaredOnly) != BindingFlags.DeclaredOnly)
             {
-                if (BaseType != null && BaseType is ILRuntimeWrapperType)
+                if (BaseType != null && (BaseType is ILRuntimeWrapperType))
                 {
                     res.AddRange(BaseType.GetFields(bindingAttr));
                 }
@@ -339,10 +349,16 @@ namespace ILRuntime.Reflection
 
         public override Type[] GetInterfaces()
         {
-            if (type.FirstCLRInterface != null)
-                return new Type[] { type.FirstCLRInterface.TypeForCLR };
-            else
+            if (type.Implements == null)
                 return new Type[0];
+            var interfaces = new Type[type.Implements.Length];
+            for (int i = 0, length = type.Implements.Length; i < length; i++)
+            {
+                var t = type.Implements[i];
+                if (t != null)
+                    interfaces[i] = t.ReflectionType;
+            }
+            return interfaces;
         }
 
         public override MemberInfo[] GetMembers(BindingFlags bindingAttr)
@@ -374,7 +390,27 @@ namespace ILRuntime.Reflection
         {
             if (methods == null)
                 InitializeMethods();
-            return methods;
+            bool isPublic = (bindingAttr & BindingFlags.Public) == BindingFlags.Public;
+            bool isPrivate = (bindingAttr & BindingFlags.NonPublic) == BindingFlags.NonPublic;
+            bool isStatic = (bindingAttr & BindingFlags.Static) == BindingFlags.Static;
+            bool isInstance = (bindingAttr & BindingFlags.Instance) == BindingFlags.Instance;
+            List<MethodInfo> res = new List<MethodInfo>();
+            foreach (var i in methods)
+            {
+                if (isPublic != i.IsPublic && isPrivate != !i.IsPublic)
+                    continue;
+                if ((isStatic != i.IsStatic) && (isInstance != !i.IsStatic))
+                    continue;
+                res.Add(i);
+            }
+            if ((bindingAttr & BindingFlags.DeclaredOnly) != BindingFlags.DeclaredOnly)
+            {
+                if (BaseType != null && (BaseType is ILRuntimeWrapperType || BaseType is ILRuntimeType))
+                {
+                    res.AddRange(BaseType.GetMethods(bindingAttr));
+                }
+            }
+            return res.ToArray();
         }
 
         public override Type GetNestedType(string name, BindingFlags bindingAttr)
@@ -406,7 +442,7 @@ namespace ILRuntime.Reflection
             }
             if ((bindingAttr & BindingFlags.DeclaredOnly) != BindingFlags.DeclaredOnly)
             {
-                if (BaseType != null && BaseType is ILRuntimeWrapperType)
+                if (BaseType != null && (BaseType is ILRuntimeWrapperType || BaseType is ILRuntimeType ))
                 {
                     res.AddRange(BaseType.GetProperties(bindingAttr));
                 }
@@ -473,11 +509,28 @@ namespace ILRuntime.Reflection
                 return null;
         }
 
+        public override Type[] GetGenericArguments()
+        {
+            var args = type.GenericArguments;
+            Type[] res = new Type[args.Length];
+            for(int i = 0; i < res.Length; i++)
+            {
+                res[i] = args[i].Value.ReflectionType;
+            }
+            return res;
+        }
+
         protected override MethodInfo GetMethodImpl(string name, BindingFlags bindingAttr, Binder binder, CallingConventions callConvention, Type[] types, ParameterModifier[] modifiers)
         {
             IMethod res;
+            bool declearedOnly = (bindingAttr & BindingFlags.DeclaredOnly) == BindingFlags.DeclaredOnly;
+
             if (types == null)
+            {
                 res = type.GetMethod(name);
+                if (res == null && !declearedOnly && type.BaseType is ILType)
+                    return BaseType.GetMethod(name, bindingAttr);
+            }
             else
             {
                 List<IType> param = new List<IType>();
@@ -495,7 +548,6 @@ namespace ILRuntime.Reflection
                         param.Add(t);
                     }
                 }
-                bool declearedOnly = (bindingAttr & BindingFlags.DeclaredOnly) == BindingFlags.DeclaredOnly;
                 res = type.GetMethod(name, param, null, null, declearedOnly);
             }
             if (res != null)
@@ -551,6 +603,11 @@ namespace ILRuntime.Reflection
         protected override bool IsPrimitiveImpl()
         {
             return false;
+        }
+
+        public override string ToString()
+        {
+            return type.FullName;
         }
         public override int GetHashCode()
         {

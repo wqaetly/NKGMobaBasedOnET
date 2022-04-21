@@ -28,6 +28,7 @@ namespace IngameDebugConsole
 			}
 		}
 	}
+	
 
 	public class DynamicCircularBuffer<T>
 	{

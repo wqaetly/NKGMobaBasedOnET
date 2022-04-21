@@ -1,13 +1,11 @@
-﻿namespace ETModel
+﻿namespace ET
 {
-    public class SessionPlayerComponent: Component
-    {
-        public Player Player;
-
-        public override void Dispose()
-        {
-            base.Dispose();
-            Game.Scene.GetComponent<OnlineComponent>().Remove(this.Player);
-        }
-    }
+	/// <summary>
+	/// 添加到GateSession上，代表这个GateSession是某个玩家的链接，可以通过Player获取具体玩家
+	/// 可以为ActorLocation机制提供玩家数据
+	/// </summary>
+	public class SessionPlayerComponent : Entity
+	{
+		public Player Player;
+	}
 }

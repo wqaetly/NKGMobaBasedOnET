@@ -1,0 +1,58 @@
+syntax = "proto3";
+package ET;
+
+
+//ResponseType G2G_LockResponse
+message G2G_LockRequest // IActorRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int64 Id = 1;
+  string Address = 2;
+}
+
+message G2G_LockResponse // IActorResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+//ResponseType G2G_LockReleaseResponse
+message G2G_LockReleaseRequest // IActorRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int64 Id = 1;
+  string Address = 2;
+}
+
+message G2G_LockReleaseResponse // IActorResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message G2R_GetLoginKey // IActorResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  int64 Key = 1;
+  int64 GateId = 2;
+}
+
+//ResponseType L2G_GetRoomId
+message G2L_GetRoomId // IActorRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+}
+
+message G2M_SessionDisconnect // IActorLocationMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 94;
+}

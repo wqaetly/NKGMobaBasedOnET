@@ -70,7 +70,7 @@ namespace libx
         }
 
         private bool _started;
-        [SerializeField]private float sampleTime = 0.5f;
+        [SerializeField]private float sampleTime = 0.01f;
 
         public void StartDownload()
         {

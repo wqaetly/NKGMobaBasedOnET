@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace ETModel
+namespace ET
 {
-    public abstract class AMActorRpcHandler<E, Request, Response>: IMActorHandler where E : Entity where Request : class, IActorRequest
-            where Response : class, IActorResponse
+    [ActorMessageHandler]
+    public abstract class AMActorRpcHandler<E, Request, Response>: IMActorHandler where E : Entity where Request : class, IActorRequest where Response : class, IActorResponse
     {
         protected abstract ETTask Run(E unit, Request request, Response response, Action reply);
 
-        public async ETTask Handle(Session session, Entity entity, object actorMessage)
+        public async ETTask Handle(Entity entity, object actorMessage, Action<IActorResponse> reply)
         {
             try
             {
@@ -18,51 +18,53 @@ namespace ETModel
                     return;
                 }
 
-                E e = entity as E;
-                if (e == null)
+                E ee = entity as E;
+                if (ee == null)
                 {
-                    Log.Error($"Actor类型转换错误: {entity.GetType().Name} to {typeof (E).Name}");
+                    Log.Error($"Actor类型转换错误: {entity.GetType().Name} to {typeof (E).Name} --{typeof (Request).Name}");
                     return;
                 }
 
                 int rpcId = request.RpcId;
-
-                long instanceId = session.InstanceId;
                 Response response = Activator.CreateInstance<Response>();
 
                 void Reply()
                 {
-                    // 等回调回来,session可以已经断开了,所以需要判断session InstanceId是否一样
-                    if (session.InstanceId != instanceId)
-                    {
-                        return;
-                    }
-
                     response.RpcId = rpcId;
-
-                    session.Reply(response);
+                    reply.Invoke(response);
                 }
+
                 try
                 {
-                    await this.Run(e, request, response, Reply);
+                    await this.Run(ee, request, response, Reply);
                 }
                 catch (Exception exception)
                 {
                     Log.Error(exception);
                     response.Error = ErrorCode.ERR_RpcFail;
-                    response.Message = e.ToString();
+                    response.Message = exception.ToString();
                     Reply();
                 }
             }
             catch (Exception e)
             {
-                Log.Error($"解释消息失败: {actorMessage.GetType().FullName}\n{e}");
+                throw new Exception($"解释消息失败: {actorMessage.GetType().FullName}", e);
             }
         }
 
-        public Type GetMessageType()
+        public Type GetRequestType()
         {
+            if (typeof (IActorLocationRequest).IsAssignableFrom(typeof (Request)))
+            {
+                Log.Error($"message is IActorLocationMessage but handler is AMActorRpcHandler: {typeof (Request)}");
+            }
+
             return typeof (Request);
+        }
+
+        public Type GetResponseType()
+        {
+            return typeof (Response);
         }
     }
 }

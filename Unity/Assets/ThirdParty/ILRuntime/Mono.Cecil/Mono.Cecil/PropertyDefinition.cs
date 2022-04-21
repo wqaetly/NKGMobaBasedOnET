@@ -9,10 +9,10 @@
 //
 
 using System.Text;
+using System.Threading;
+using ILRuntime.Mono.Collections.Generic;
 
-using Mono.Collections.Generic;
-
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public sealed class PropertyDefinition : PropertyReference, IMemberDefinition, IConstantProvider {
 
@@ -103,7 +103,8 @@ namespace Mono.Cecil {
 				if (other_methods != null)
 					return other_methods;
 
-				return other_methods = new Collection<MethodDefinition> ();
+				Interlocked.CompareExchange (ref other_methods, new Collection<MethodDefinition> (), null);
+				return other_methods;
 			}
 		}
 

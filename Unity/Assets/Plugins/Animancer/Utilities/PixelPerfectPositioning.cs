@@ -1,4 +1,4 @@
-// Animancer // Copyright 2019 Kybernetik //
+// Animancer // https://kybernetik.com.au/animancer // Copyright 2020 Kybernetik //
 
 using UnityEngine;
 
@@ -8,8 +8,11 @@ namespace Animancer
     /// Adjusts the <see cref="Transform.localPosition"/> every frame to keep this object aligned to a grid with a size
     /// determined by the <see cref="Renderer"/> while wrapping the value to keep it as close to 0 as possible.
     /// </summary>
-    [AddComponentMenu("Animancer/Pixel Perfect Positioning")]
-    [HelpURL(AnimancerPlayable.APIDocumentationURL + "/Pixel Perfect Positioning")]
+    /// <example><see href="https://kybernetik.com.au/animancer/docs/examples/directional-sprites/character-controller">Character Controller</see></example>
+    /// https://kybernetik.com.au/animancer/api/Animancer/PixelPerfectPositioning
+    /// 
+    [AddComponentMenu(Strings.MenuPrefix + "Pixel Perfect Positioning")]
+    [HelpURL(Strings.DocsURLs.APIDocumentation + "/" + nameof(PixelPerfectPositioning))]
     public sealed class PixelPerfectPositioning : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -17,14 +20,10 @@ namespace Animancer
         [SerializeField]
         private SpriteRenderer _Renderer;
 
-        /// <summary>
+        /// <summary>[<see cref="SerializeField"/>]
         /// The <see cref="SpriteRenderer"/> that will have its position adjusted.
         /// </summary>
-        public SpriteRenderer Renderer
-        {
-            get { return _Renderer; }
-            set { _Renderer = value; }
-        }
+        public ref SpriteRenderer Renderer => ref _Renderer;
 
         /************************************************************************************************************************/
 

@@ -6,11 +6,10 @@
 
 using System;
 
-namespace ETModel.BBValues
+namespace ET
 {
     public interface INP_BBValue<T>
     {
         T GetValue();
-        void SetValue(INP_BBValue<T> bbValue);
     }
 }

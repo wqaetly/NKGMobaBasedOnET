@@ -9,11 +9,11 @@
 //
 
 using System;
+using System.Threading;
+using ILRuntime.Mono.Cecil.Metadata;
+using ILRuntime.Mono.Collections.Generic;
 
-using Mono.Cecil.Metadata;
-using Mono.Collections.Generic;
-
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public enum MetadataType : byte {
 		Void = ElementType.Void,
@@ -109,7 +109,7 @@ namespace Mono.Cecil {
             return hashCode;
         }
 
-        internal new TypeReferenceProjection WindowsRuntimeProjection {
+        internal TypeReferenceProjection WindowsRuntimeProjection {
 			get { return (TypeReferenceProjection) projection; }
 			set { projection = value; }
 		}
@@ -132,10 +132,10 @@ namespace Mono.Cecil {
 
 		public virtual Collection<GenericParameter> GenericParameters {
 			get {
-				if (generic_parameters != null)
-					return generic_parameters;
-
-				return generic_parameters = new GenericParameterCollection (this);
+				if (generic_parameters == null)
+					Interlocked.CompareExchange (ref generic_parameters, new GenericParameterCollection (this), null);
+					
+				return generic_parameters;
 			}
 		}
 
@@ -181,11 +181,11 @@ namespace Mono.Cecil {
 				if (fullname != null)
 					return fullname;
 
-				fullname = this.TypeFullName ();
+				var new_fullname = this.TypeFullName ();
 
 				if (IsNested)
-					fullname = DeclaringType.FullName + "/" + fullname;
-
+					new_fullname = DeclaringType.FullName + "/" + new_fullname;
+				Interlocked.CompareExchange (ref fullname, new_fullname, null);
 				return fullname;
 			}
 		}

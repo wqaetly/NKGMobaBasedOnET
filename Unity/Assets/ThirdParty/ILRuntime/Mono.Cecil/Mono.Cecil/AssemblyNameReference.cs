@@ -12,8 +12,9 @@ using System;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public class AssemblyNameReference : IMetadataScope {
 
@@ -84,20 +85,20 @@ namespace Mono.Cecil {
 			set {
 				public_key = value;
 				HasPublicKey = !public_key.IsNullOrEmpty ();
-				public_key_token = Empty<byte>.Array;
+				public_key_token = null;
 				full_name = null;
 			}
 		}
 
 		public byte [] PublicKeyToken {
 			get {
-				if (public_key_token.IsNullOrEmpty () && !public_key.IsNullOrEmpty ()) {
+				if (public_key_token == null && !public_key.IsNullOrEmpty ()) {
 					var hash = HashPublicKey ();
 					// we need the last 8 bytes in reverse order
 					var local_public_key_token = new byte [8];
 					Array.Copy (hash, (hash.Length - 8), local_public_key_token, 0, 8);
 					Array.Reverse (local_public_key_token, 0, 8);
-					public_key_token = local_public_key_token; // publish only once finished (required for thread-safety)
+					Interlocked.CompareExchange (ref public_key_token, local_public_key_token, null); // publish only once finished (required for thread-safety)
 				}
 				return public_key_token ?? Empty<byte>.Array;
 			}
@@ -160,7 +161,9 @@ namespace Mono.Cecil {
 					builder.Append ("Retargetable=Yes");
 				}
 
-				return full_name = builder.ToString ();
+				Interlocked.CompareExchange (ref full_name, builder.ToString (), null);
+
+				return full_name;
 			}
 		}
 

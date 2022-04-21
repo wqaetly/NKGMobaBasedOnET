@@ -1,12 +1,15 @@
 {
     "name": "Unity.Model",
+    "rootNamespace": "ET",
     "references": [
         "Unity.ThirdParty",
+        "Unity.Mono",
         "Animancer",
-        "Unity.RenderPipelines.Universal.Runtime",
-        "XAsset.Runtime"
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
     "overrideReferences": false,

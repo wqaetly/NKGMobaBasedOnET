@@ -1,25 +1,19 @@
-﻿using System;
-using System.Net;
+﻿using System.Collections.Generic;
 
-namespace ETModel
+namespace ET
 {
-	public class ActorMessageSenderComponent: Component
-	{
-		/// <summary>
-		/// 根据actorId获取一个Actor信息发送者，包含gatesession的Id以及目标内网地址
-		/// </summary>
-		/// <param name="actorId"></param>
-		/// <returns></returns>
-		/// <exception cref="Exception"></exception>
-		public ActorMessageSender Get(long actorId)
-		{
-			if (actorId == 0)
-			{
-				throw new Exception($"actor id is 0");
-			}
-			IPEndPoint ipEndPoint = StartConfigComponent.Instance.GetInnerAddress(IdGenerater.GetAppId(actorId));
-			ActorMessageSender actorMessageSender = new ActorMessageSender(actorId, ipEndPoint);
-			return actorMessageSender;
-		}
-	}
+    public class ActorMessageSenderComponent: Entity
+    {
+        public static long TIMEOUT_TIME = 40 * 1000;
+
+        public static ActorMessageSenderComponent Instance { get; set; }
+
+        public int RpcId;
+
+        public readonly SortedDictionary<int, ActorMessageSender> requestCallback = new SortedDictionary<int, ActorMessageSender>();
+
+        public long TimeoutCheckTimer;
+
+        public List<int> TimeoutActorMessageSenders = new List<int>();
+    }
 }

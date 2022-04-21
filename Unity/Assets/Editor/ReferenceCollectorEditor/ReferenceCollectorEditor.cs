@@ -35,19 +35,6 @@ public class ReferenceCollectorEditor: Editor
 
     private string _searchKey = "";
 
-    private void DelNullReference()
-    {
-        var dataProperty = serializedObject.FindProperty("data");
-        for (int i = dataProperty.arraySize - 1; i >= 0; i--)
-        {
-            var gameObjectProperty = dataProperty.GetArrayElementAtIndex(i).FindPropertyRelative("gameObject");
-            if (gameObjectProperty.objectReferenceValue == null)
-            {
-                dataProperty.DeleteArrayElementAtIndex(i);
-            }
-        }
-    }
-
     private void OnEnable()
     {
         //将被选中的gameobject所挂载的ReferenceCollector赋值给编辑器类中的ReferenceCollector，方便操作
@@ -58,7 +45,6 @@ public class ReferenceCollectorEditor: Editor
     {
         //使ReferenceCollector支持撤销操作，还有Redo，不过没有在这里使用
         Undo.RecordObject(referenceCollector, "Changed Settings");
-        var dataProperty = serializedObject.FindProperty("data");
         //开始水平布局，如果是比较新版本学习U3D的，可能不知道这东西，这个是老GUI系统的知识，除了用在编辑器里，还可以用在生成的游戏中
         GUILayout.BeginHorizontal();
         //下面几个if都是点击按钮就会返回true调用里面的东西
@@ -66,17 +52,17 @@ public class ReferenceCollectorEditor: Editor
         {
             //添加新的元素，具体的函数注释
             // Guid.NewGuid().GetHashCode().ToString() 就是新建后默认的key
-            AddReference(dataProperty, Guid.NewGuid().GetHashCode().ToString(), null);
+            referenceCollector.Add(Guid.NewGuid().GetHashCode().ToString(), null);
         }
 
         if (GUILayout.Button("全部删除"))
         {
-            dataProperty.ClearArray();
+            referenceCollector.Clear();
         }
 
         if (GUILayout.Button("删除空引用"))
         {
-            DelNullReference();
+            referenceCollector.DelNullReference();
         }
 
         if (GUILayout.Button("排序"))
@@ -85,7 +71,9 @@ public class ReferenceCollectorEditor: Editor
         }
 
         EditorGUILayout.EndHorizontal();
+        
         EditorGUILayout.BeginHorizontal();
+        
         //可以在编辑器中对searchKey进行赋值，只要输入对应的Key值，就可以点后面的删除按钮删除相对应的元素
         searchKey = EditorGUILayout.TextField(searchKey);
         //添加的可以用于选中Object的框，这里的object也是(UnityEngine.Object
@@ -98,24 +86,22 @@ public class ReferenceCollectorEditor: Editor
         }
 
         GUILayout.EndHorizontal();
+        
         EditorGUILayout.Space();
 
-        var delList = new List<int>();
-        SerializedProperty property;
+        var delList = new List<string>();
         //遍历ReferenceCollector中data list的所有元素，显示在编辑器中
         for (int i = referenceCollector.data.Count - 1; i >= 0; i--)
         {
             GUILayout.BeginHorizontal();
             //这里的知识点在ReferenceCollector中有说
-            property = dataProperty.GetArrayElementAtIndex(i).FindPropertyRelative("key");
-            property.stringValue = EditorGUILayout.TextField(property.stringValue, GUILayout.ExpandWidth(true));
-            property = dataProperty.GetArrayElementAtIndex(i).FindPropertyRelative("gameObject");
-            EditorGUILayout.ObjectField(property.objectReferenceValue, typeof (Object), true);
+            referenceCollector.data[i].key = EditorGUILayout.TextField(referenceCollector.data[i].key, GUILayout.ExpandWidth(true));
+            referenceCollector.data[i].gameObject = EditorGUILayout.ObjectField(referenceCollector.data[i].gameObject, typeof (Object), true);
 
             if (GUILayout.Button("X"))
             {
                 //将元素添加进删除list
-                delList.Add(i);
+                delList.Add(referenceCollector.data[i].key);
             }
 
             GUILayout.EndHorizontal();
@@ -133,7 +119,7 @@ public class ReferenceCollectorEditor: Editor
                 DragAndDrop.AcceptDrag();
                 foreach (var o in DragAndDrop.objectReferences)
                 {
-                    AddReference(dataProperty, o.name, o);
+                    referenceCollector.Add(o.name, o);
                 }
             }
 
@@ -143,20 +129,10 @@ public class ReferenceCollectorEditor: Editor
         //遍历删除list，将其删除掉
         foreach (var i in delList)
         {
-            dataProperty.DeleteArrayElementAtIndex(i);
+            referenceCollector.Remove(i);
         }
 
         serializedObject.ApplyModifiedProperties();
         serializedObject.UpdateIfRequiredOrScript();
-    }
-
-    //添加元素，具体知识点在ReferenceCollector中说了
-    private void AddReference(SerializedProperty dataProperty, string key, Object obj)
-    {
-        int index = dataProperty.arraySize;
-        dataProperty.InsertArrayElementAtIndex(index);
-        var element = dataProperty.GetArrayElementAtIndex(index);
-        element.FindPropertyRelative("key").stringValue = key;
-        element.FindPropertyRelative("gameObject").objectReferenceValue = obj;
     }
 }

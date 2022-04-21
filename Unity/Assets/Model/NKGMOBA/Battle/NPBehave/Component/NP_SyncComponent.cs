@@ -4,25 +4,13 @@
 // Data: 2019年8月19日 18:04:17
 //------------------------------------------------------------
 
-using ETModel;
+using ET;
 using NPBehave;
 
-namespace ETModel
+namespace ET
 {
-    [ObjectSystem]
-    public class SyncComponentFixedUpdate: FixedUpdateSystem<NP_SyncComponent>
+    public class NP_SyncComponent: Entity
     {
-        public override void FixedUpdate(NP_SyncComponent self)
-        {
-            self.FixedUpdate();
-        }
-    }
-    
-    public class NP_SyncComponent: Component
-    {
-        public void FixedUpdate()
-        {
-            SyncContext.Instance.Update();
-        }
+        public SyncContext SyncContext;
     }
 }

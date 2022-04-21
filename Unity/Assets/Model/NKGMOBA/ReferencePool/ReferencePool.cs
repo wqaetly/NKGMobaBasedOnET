@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 引用池。

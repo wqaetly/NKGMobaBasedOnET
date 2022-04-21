@@ -14,7 +14,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using MongoDB.Bson.Serialization.Serializers;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 名称与id映射字典

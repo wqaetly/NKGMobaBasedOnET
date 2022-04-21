@@ -1,4 +1,4 @@
-﻿using ETModel;
+﻿using ET;
 
 namespace NPBehave
 {
@@ -7,13 +7,14 @@ namespace NPBehave
         private System.Action serviceMethod;
 
         private float interval = -1.0f;
-        private float randomVariation;
 
-        public Service(float interval, float randomVariation, System.Action service, Node decoratee) : base("Service", decoratee)
+        private long TimerId;
+        
+        public Service(float interval, float randomVariation, System.Action service, Node decoratee) : base("Service",
+            decoratee)
         {
             this.serviceMethod = service;
             this.interval = interval;
-            this.randomVariation = randomVariation;
 
             this.Label = "" + (interval - randomVariation) + "..." + (interval + randomVariation) + "s";
         }
@@ -22,8 +23,6 @@ namespace NPBehave
         {
             this.serviceMethod = service;
             this.interval = interval;
-            this.randomVariation = -1;
-            this.Label = "" + (interval - randomVariation) + "..." + (interval + randomVariation) + "s";
         }
 
         public Service(System.Action service, Node decoratee) : base("Service", decoratee)
@@ -36,19 +35,15 @@ namespace NPBehave
         {
             if (this.interval <= 0f)
             {
-                this.Clock.AddUpdateObserver(serviceMethod);
+                TimerId = this.Clock.AddTimer(1, serviceMethod, -1);
                 serviceMethod();
-            }
-            else if (randomVariation <= 0f)
-            {
-                this.Clock.AddTimer(this.interval, -1, serviceMethod);
-                serviceMethod();
-                //Log.Info("注册Timer--------------");
             }
             else
             {
-                InvokeServiceMethodWithRandomVariation();
+                TimerId = this.Clock.AddTimer((uint) TimeAndFrameConverter.Frame_Float2Frame(this.interval), serviceMethod, -1);
+                serviceMethod();
             }
+
             Decoratee.Start();
         }
 
@@ -61,24 +56,14 @@ namespace NPBehave
         {
             if (this.interval <= 0f)
             {
-                this.Clock.RemoveUpdateObserver(serviceMethod);
-            }
-            else if (randomVariation <= 0f)
-            {
-                this.Clock.RemoveTimer(serviceMethod);
-                Log.Info("移除Timer----------------");
+                this.Clock.RemoveTimer(TimerId);
             }
             else
             {
-                this.Clock.RemoveTimer(InvokeServiceMethodWithRandomVariation);
+                this.Clock.RemoveTimer(TimerId);
             }
+            
             Stopped(result);
-        }
-
-        private void InvokeServiceMethodWithRandomVariation()
-        {
-            serviceMethod();
-            this.Clock.AddTimer(interval, randomVariation, 0, InvokeServiceMethodWithRandomVariation);
         }
     }
 }

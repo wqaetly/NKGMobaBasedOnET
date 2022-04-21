@@ -1,15 +1,18 @@
-// Animancer // Copyright 2019 Kybernetik //
+// Animancer // https://kybernetik.com.au/animancer // Copyright 2020 Kybernetik //
 
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Animancer
 {
-    /// <summary>
-    /// A set of up/down/left/right animations with diagonals as well.
-    /// </summary>
-    [CreateAssetMenu(menuName = "Animancer/Directional Animation Set 8", order = AnimancerComponent.AssetMenuOrder + 3)]
+    /// <summary>A set of up/right/down/left animations with diagonals as well.</summary>
+    /// <remarks>
+    /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/playing/directional-sets">Directional Animation Sets</see>
+    /// </remarks>
+    /// https://kybernetik.com.au/animancer/api/Animancer/DirectionalAnimationSet8
+    /// 
+    [CreateAssetMenu(menuName = Strings.MenuPrefix + "Directional Animation Set/8 Directions", order = Strings.AssetMenuOrder + 11)]
+    [HelpURL(Strings.DocsURLs.APIDocumentation + "/" + nameof(DirectionalAnimationSet8))]
     public class DirectionalAnimationSet8 : DirectionalAnimationSet
     {
         /************************************************************************************************************************/
@@ -17,8 +20,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _UpRight;
 
-        /// <summary>The animation facing diagonally up-right.</summary>
-        public AnimationClip UpRight { get { return _UpRight; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing diagonally up-right.</summary>
+        public AnimationClip UpRight => _UpRight;
 
         /// <summary>Sets the <see cref="UpRight"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -33,8 +36,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _DownRight;
 
-        /// <summary>The animation facing diagonally down-right.</summary>
-        public AnimationClip DownRight { get { return _DownRight; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing diagonally down-right.</summary>
+        public AnimationClip DownRight => _DownRight;
 
         /// <summary>Sets the <see cref="DownRight"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -49,8 +52,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _DownLeft;
 
-        /// <summary>The animation facing diagonally down-left.</summary>
-        public AnimationClip DownLeft { get { return _DownLeft; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing diagonally down-left.</summary>
+        public AnimationClip DownLeft => _DownLeft;
 
         /// <summary>Sets the <see cref="DownLeft"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -65,8 +68,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _UpLeft;
 
-        /// <summary>The animation facing diagonally up-left.</summary>
-        public AnimationClip UpLeft { get { return _UpLeft; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing diagonally up-left.</summary>
+        public AnimationClip UpLeft => _UpLeft;
 
         /// <summary>Sets the <see cref="UpLeft"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -78,7 +81,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the animation closest to the specified 'direction'.</summary>
+        /// <summary>Returns the animation closest to the specified `direction`.</summary>
         public override AnimationClip GetClip(Vector2 direction)
         {
             var angle = Mathf.Atan2(direction.y, direction.x);
@@ -101,34 +104,96 @@ namespace Animancer
         #region Directions
         /************************************************************************************************************************/
 
-        /// <summary>The number of animations in this set.</summary>
-        public override int ClipCount { get { return 8; } }
-
-        /************************************************************************************************************************/
-
-        /// <summary>Up, Down, Left Right, or their diagonals.</summary>
-        public new enum Direction
+        /// <summary>Constants for each of the diagonal directions.</summary>
+        /// <remarks>
+        /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/playing/directional-sets">Directional Animation Sets</see>
+        /// </remarks>
+        /// https://kybernetik.com.au/animancer/api/Animancer/Diagonals
+        /// 
+        public static class Diagonals
         {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member.
-            Up,
-            Right,
-            Down,
-            Left,
-            UpRight,
-            DownRight,
-            DownLeft,
-            UpLeft,
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member.
+            /************************************************************************************************************************/
+
+            /// <summary>1 / (Square Root of 2).</summary>
+            public const float OneOverSqrt2 = 0.70710678118f;
+
+            /// <summary>
+            /// A vector with a magnitude of 1 pointing up to the right.
+            /// <para></para>
+            /// The value is approximately (0.707, 0.707).
+            /// </summary>
+            public static Vector2 UpRight => new Vector2(OneOverSqrt2, OneOverSqrt2);
+
+            /// <summary>
+            /// A vector with a magnitude of 1 pointing down to the right.
+            /// <para></para>
+            /// The value is approximately (0.707, -0.707).
+            /// </summary>
+            public static Vector2 DownRight => new Vector2(OneOverSqrt2, -OneOverSqrt2);
+
+            /// <summary>
+            /// A vector with a magnitude of 1 pointing down to the left.
+            /// <para></para>
+            /// The value is approximately (-0.707, -0.707).
+            /// </summary>
+            public static Vector2 DownLeft => new Vector2(-OneOverSqrt2, -OneOverSqrt2);
+
+            /// <summary>
+            /// A vector with a magnitude of 1 pointing up to the left.
+            /// <para></para>
+            /// The value is approximately (-0.707, 0.707).
+            /// </summary>
+            public static Vector2 UpLeft => new Vector2(-OneOverSqrt2, OneOverSqrt2);
+
+            /************************************************************************************************************************/
         }
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the name of the specified 'direction'.</summary>
-        protected override string GetDirectionName(int direction) { return ((Direction)direction).ToString(); }
+        public override int ClipCount => 8;
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the animation associated with the specified 'direction'.</summary>
+        /// <summary>Up, Right, Down, Left, or their diagonals.</summary>
+        /// <remarks>
+        /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/playing/directional-sets">Directional Animation Sets</see>
+        /// </remarks>
+        /// https://kybernetik.com.au/animancer/api/Animancer/Direction
+        /// 
+        public new enum Direction
+        {
+            /// <summary><see cref="Vector2.up"/>.</summary>
+            Up,
+
+            /// <summary><see cref="Vector2.right"/>.</summary>
+            Right,
+
+            /// <summary><see cref="Vector2.down"/>.</summary>
+            Down,
+
+            /// <summary><see cref="Vector2.left"/>.</summary>
+            Left,
+
+            /// <summary><see cref="Vector2"/>(0.707..., 0.707...).</summary>
+            UpRight,
+
+            /// <summary><see cref="Vector2"/>(0.707..., -0.707...).</summary>
+            DownRight,
+
+            /// <summary><see cref="Vector2"/>(-0.707..., -0.707...).</summary>
+            DownLeft,
+
+            /// <summary><see cref="Vector2"/>(-0.707..., 0.707...).</summary>
+            UpLeft,
+        }
+
+        /************************************************************************************************************************/
+
+        protected override string GetDirectionName(int direction) => ((Direction)direction).ToString();
+
+        /************************************************************************************************************************/
+
+        /// <summary>Returns the animation associated with the specified `direction`.</summary>
         public AnimationClip GetClip(Direction direction)
         {
             switch (direction)
@@ -141,19 +206,15 @@ namespace Animancer
                 case Direction.DownRight: return _DownRight;
                 case Direction.DownLeft: return _DownLeft;
                 case Direction.UpLeft: return _UpLeft;
-                default: throw new ArgumentException("Unhandled direction: " + direction);
+                default: throw new ArgumentException($"Unsupported {nameof(Direction)}: {direction}");
             }
         }
 
-        /// <summary>Returns the animation associated with the specified 'direction'.</summary>
-        public override AnimationClip GetClip(int direction)
-        {
-            return GetClip((Direction)direction);
-        }
+        public override AnimationClip GetClip(int direction) => GetClip((Direction)direction);
 
         /************************************************************************************************************************/
 
-        /// <summary>Sets the animation associated with the specified 'direction'.</summary>
+        /// <summary>Sets the animation associated with the specified `direction`.</summary>
         public void SetClip(Direction direction, AnimationClip clip)
         {
             switch (direction)
@@ -166,21 +227,17 @@ namespace Animancer
                 case Direction.DownRight: _DownRight = clip; break;
                 case Direction.DownLeft: _DownLeft = clip; break;
                 case Direction.UpLeft: _UpLeft = clip; break;
-                default: throw new ArgumentException("Unhandled direction: " + direction);
+                default: throw new ArgumentException($"Unsupported {nameof(Direction)}: {direction}");
             }
 
             AnimancerUtilities.SetDirty(this);
         }
 
-        /// <summary>Sets the animation associated with the specified 'direction'.</summary>
-        public override void SetClip(int direction, AnimationClip clip)
-        {
-            SetClip((Direction)direction, clip);
-        }
+        public override void SetClip(int direction, AnimationClip clip) => SetClip((Direction)direction, clip);
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns a vector representing the specified 'direction'.</summary>
+        /// <summary>Returns a vector representing the specified `direction`.</summary>
         public static Vector2 DirectionToVector(Direction direction)
         {
             switch (direction)
@@ -189,23 +246,19 @@ namespace Animancer
                 case Direction.Right: return Vector2.right;
                 case Direction.Down: return Vector2.down;
                 case Direction.Left: return Vector2.left;
-                case Direction.UpRight: return AnimancerUtilities.UpRight;
-                case Direction.DownRight: return AnimancerUtilities.DownRight;
-                case Direction.DownLeft: return AnimancerUtilities.DownLeft;
-                case Direction.UpLeft: return AnimancerUtilities.UpLeft;
-                default: throw new ArgumentException("Unhandled direction: " + direction);
+                case Direction.UpRight: return Diagonals.UpRight;
+                case Direction.DownRight: return Diagonals.DownRight;
+                case Direction.DownLeft: return Diagonals.DownLeft;
+                case Direction.UpLeft: return Diagonals.UpLeft;
+                default: throw new ArgumentException($"Unsupported {nameof(Direction)}: {direction}");
             }
         }
 
-        /// <summary>Returns a vector representing the specified 'direction'.</summary>
-        public override Vector2 GetDirection(int direction)
-        {
-            return DirectionToVector((Direction)direction);
-        }
+        public override Vector2 GetDirection(int direction) => DirectionToVector((Direction)direction);
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the direction closest to the specified 'vector'.</summary>
+        /// <summary>Returns the direction closest to the specified `vector`.</summary>
         public new static Direction VectorToDirection(Vector2 vector)
         {
             var angle = Mathf.Atan2(vector.y, vector.x);
@@ -226,7 +279,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns a copy of the 'vector' pointing in the closest direction this set type has an animation for.</summary>
+        /// <summary>Returns a copy of the `vector` pointing in the closest direction this set type has an animation for.</summary>
         public new static Vector2 SnapVectorToDirection(Vector2 vector)
         {
             var magnitude = vector.magnitude;
@@ -235,11 +288,7 @@ namespace Animancer
             return vector;
         }
 
-        /// <summary>Returns a copy of the 'vector' pointing in the closest direction this set has an animation for.</summary>
-        public override Vector2 Snap(Vector2 vector)
-        {
-            return SnapVectorToDirection(vector);
-        }
+        public override Vector2 Snap(Vector2 vector) => SnapVectorToDirection(vector);
 
         /************************************************************************************************************************/
         #endregion
@@ -249,10 +298,6 @@ namespace Animancer
 #if UNITY_EDITOR
         /************************************************************************************************************************/
 
-        /// <summary>
-        /// Attempts to assign the 'clip' to one of this set's fields based on its name and returns the direction index
-        /// of that field (or -1 if it was unable to determine the direction).
-        /// </summary>
         public override int SetClipByName(AnimationClip clip)
         {
             var name = clip.name;
@@ -274,46 +319,6 @@ namespace Animancer
 #endif
         /************************************************************************************************************************/
         #endregion
-        /************************************************************************************************************************/
-    }
-
-    /************************************************************************************************************************/
-
-    public partial class AnimancerUtilities
-    {
-        /************************************************************************************************************************/
-
-        /// <summary>1 / (Square Root of 2).</summary>
-        public const float OneOverSqrt2 = 0.70710678118f;
-
-        /// <summary>
-        /// A vector with a magnitude of 1 pointing up to the right.
-        /// <para></para>
-        /// The value is approximately (0.707, 0.707).
-        /// </summary>
-        public static Vector2 UpRight { get { return new Vector2(OneOverSqrt2, OneOverSqrt2); } }
-
-        /// <summary>
-        /// A vector with a magnitude of 1 pointing down to the right.
-        /// <para></para>
-        /// The value is approximately (0.707, -0.707).
-        /// </summary>
-        public static Vector2 DownRight { get { return new Vector2(OneOverSqrt2, -OneOverSqrt2); } }
-
-        /// <summary>
-        /// A vector with a magnitude of 1 pointing down to the left.
-        /// <para></para>
-        /// The value is approximately (-0.707, -0.707).
-        /// </summary>
-        public static Vector2 DownLeft { get { return new Vector2(-OneOverSqrt2, -OneOverSqrt2); } }
-
-        /// <summary>
-        /// A vector with a magnitude of 1 pointing up to the left.
-        /// <para></para>
-        /// The value is approximately (-0.707, 0.707).
-        /// </summary>
-        public static Vector2 UpLeft { get { return new Vector2(-OneOverSqrt2, OneOverSqrt2); } }
-
         /************************************************************************************************************************/
     }
 }

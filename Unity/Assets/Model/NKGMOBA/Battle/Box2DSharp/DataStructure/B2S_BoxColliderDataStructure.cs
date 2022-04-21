@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Numerics;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 矩形碰撞体的数据结构
@@ -22,6 +22,8 @@ namespace ETModel
         [LabelText("y轴方向上的一半长度")]
         [DisableInEditorMode]
         public float hy;
-        
+
+        [LabelText("旋转角度")]
+        public float Angle;
     }
 }

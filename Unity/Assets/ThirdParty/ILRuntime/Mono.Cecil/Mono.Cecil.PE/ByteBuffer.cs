@@ -10,7 +10,7 @@
 
 using System;
 
-namespace Mono.Cecil.PE {
+namespace ILRuntime.Mono.Cecil.PE {
 
 	class ByteBuffer {
 
@@ -159,8 +159,6 @@ namespace Mono.Cecil.PE {
 			position += 8;
 			return value;
 		}
-
-#if !READ_ONLY
 
 		public void WriteByte (byte value)
 		{
@@ -334,8 +332,5 @@ namespace Mono.Cecil.PE {
 			Buffer.BlockCopy (current, 0, buffer, 0, current_length);
 			this.buffer = buffer;
 		}
-
-#endif
-
 	}
 }

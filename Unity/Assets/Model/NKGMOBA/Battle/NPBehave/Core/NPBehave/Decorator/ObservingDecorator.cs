@@ -87,12 +87,12 @@ namespace NPBehave
                         parentNode = parentNode.ParentNode;
                     }
 
-                    Debug.Assert(parentNode != null, "NTBtrStops is only valid when attached to a parent composite");
+                    Debug.Assert(parentNode != null, $"NTBtrStops is only valid when attached to a parent composite  PATH: {GetPath()}");
                     Debug.Assert(childNode != null);
                     if (parentNode is Parallel)
                     {
                         Debug.Assert(stopsOnChange == Stops.IMMEDIATE_RESTART,
-                            "On Parallel Nodes all children have the same priority, thus Stops.LOWER_PRIORITY or Stops.BOTH are unsupported in this context!");
+                            $"On Parallel Nodes all children have the same priority, thus Stops.LOWER_PRIORITY or Stops.BOTH are unsupported in this context!  PATH: {GetPath()}");
                     }
 
                     if (stopsOnChange == Stops.IMMEDIATE_RESTART || stopsOnChange == Stops.LOWER_PRIORITY_IMMEDIATE_RESTART)

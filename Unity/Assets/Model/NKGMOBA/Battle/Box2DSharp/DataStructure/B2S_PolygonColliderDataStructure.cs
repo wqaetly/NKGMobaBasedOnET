@@ -6,11 +6,10 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
-using ETModel;
 using Sirenix.OdinInspector;
 using Vector2 = System.Numerics.Vector2;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 多边形碰撞体的数据结构

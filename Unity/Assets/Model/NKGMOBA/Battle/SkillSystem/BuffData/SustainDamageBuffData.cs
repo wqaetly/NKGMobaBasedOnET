@@ -7,7 +7,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
     public class SustainDamageBuffData: BuffDataBase
     {

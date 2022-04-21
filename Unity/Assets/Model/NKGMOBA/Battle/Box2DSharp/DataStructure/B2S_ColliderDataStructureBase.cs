@@ -7,7 +7,7 @@
 using System.Numerics;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public enum B2S_ColliderType
     {
@@ -20,7 +20,8 @@ namespace ETModel
         [LabelText("多边形碰撞体")]
         PolygonCollider,
     }
-
+    
+    [BsonDeserializerRegister]
     public class B2S_ColliderDataStructureBase
     {
         [LabelText("碰撞体ID")]
@@ -33,6 +34,6 @@ namespace ETModel
         public B2S_ColliderType b2SColliderType;
 
         [LabelText("碰撞体偏移信息")]
-        public Vector2 finalOffset = new Vector2(0, 0);
+        public System.Numerics.Vector2 finalOffset = new System.Numerics.Vector2(0, 0);
     }
 }

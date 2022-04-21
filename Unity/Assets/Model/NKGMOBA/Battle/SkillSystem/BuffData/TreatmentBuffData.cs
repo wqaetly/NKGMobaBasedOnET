@@ -6,7 +6,7 @@
 
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class TreatmentBuffData: BuffDataBase
     {

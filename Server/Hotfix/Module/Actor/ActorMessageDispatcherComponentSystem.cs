@@ -1,85 +1,83 @@
 ﻿using System;
-using System.Collections.Generic;
-using ETModel;
 
-namespace ETHotfix
+namespace ET
 {
-	[ObjectSystem]
-	public class ActorMessageDispatcherComponentStartSystem: AwakeSystem<ActorMessageDispatcherComponent>
-	{
-		public override void Awake(ActorMessageDispatcherComponent self)
-		{
-			self.Awake();
-		}
-	}
+    [ObjectSystem]
+    public class ActorMessageDispatcherComponentAwakeSystem: AwakeSystem<ActorMessageDispatcherComponent>
+    {
+        public override void Awake(ActorMessageDispatcherComponent self)
+        {
+            ActorMessageDispatcherComponent.Instance = self;
+            self.Awake();
+        }
+    }
 
-	[ObjectSystem]
-	public class ActorMessageDispatcherComponentLoadSystem: LoadSystem<ActorMessageDispatcherComponent>
-	{
-		public override void Load(ActorMessageDispatcherComponent self)
-		{
-			self.Load();
-		}
-	}
+    [ObjectSystem]
+    public class ActorMessageDispatcherComponentLoadSystem: LoadSystem<ActorMessageDispatcherComponent>
+    {
+        public override void Load(ActorMessageDispatcherComponent self)
+        {
+            self.Load();
+        }
+    }
 
-	/// <summary>
-	/// Actor消息分发组件
-	/// </summary>
-	public static class ActorMessageDispatcherComponentHelper
-	{
-		public static void Awake(this ActorMessageDispatcherComponent self)
-		{
-			self.Load();
-		}
+    [ObjectSystem]
+    public class ActorMessageDispatcherComponentDestroySystem: DestroySystem<ActorMessageDispatcherComponent>
+    {
+        public override void Destroy(ActorMessageDispatcherComponent self)
+        {
+            self.ActorMessageHandlers.Clear();
+            ActorMessageDispatcherComponent.Instance = null;
+        }
+    }
 
-		public static void Load(this ActorMessageDispatcherComponent self)
-		{
-			AppType appType = StartConfigComponent.Instance.StartConfig.AppType;
+    /// <summary>
+    /// Actor消息分发组件
+    /// </summary>
+    public static class ActorMessageDispatcherComponentHelper
+    {
+        public static void Awake(this ActorMessageDispatcherComponent self)
+        {
+            self.Load();
+        }
 
-			self.ActorMessageHandlers.Clear();
+        public static void Load(this ActorMessageDispatcherComponent self)
+        {
+            self.ActorMessageHandlers.Clear();
 
-			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(ActorMessageHandlerAttribute));
+            var types = Game.EventSystem.GetTypes(typeof (ActorMessageHandlerAttribute));
+            foreach (Type type in types)
+            {
+                object obj = Activator.CreateInstance(type);
 
-			types = Game.EventSystem.GetTypes(typeof (ActorMessageHandlerAttribute));
-			foreach (Type type in types)
-			{
-				object[] attrs = type.GetCustomAttributes(typeof(ActorMessageHandlerAttribute), false);
-				if (attrs.Length == 0)
-				{
-					continue;
-				}
-				
-				ActorMessageHandlerAttribute messageHandlerAttribute = (ActorMessageHandlerAttribute) attrs[0];
-				if (!messageHandlerAttribute.Type.Is(appType))
-				{
-					continue;
-				}
+                IMActorHandler imHandler = obj as IMActorHandler;
+                if (imHandler == null)
+                {
+                    throw new Exception($"message handler not inherit IMActorHandler abstract class: {obj.GetType().FullName}");
+                }
 
-				object obj = Activator.CreateInstance(type);
+                Type messageType = imHandler.GetRequestType();
+                self.ActorMessageHandlers.Add(messageType, imHandler);
+            }
+        }
 
-				IMActorHandler imHandler = obj as IMActorHandler;
-				if (imHandler == null)
-				{
-					throw new Exception($"message handler not inherit IMActorHandler abstract class: {obj.GetType().FullName}");
-				}
+        /// <summary>
+        /// 分发actor消息
+        /// </summary>
+        public static async ETTask Handle(
+            this ActorMessageDispatcherComponent self, Entity entity, object message, Action<IActorResponse> reply)
+        {
+            if (!self.ActorMessageHandlers.TryGetValue(message.GetType(), out IMActorHandler handler))
+            {
+                throw new Exception($"not found message handler: {message}");
+            }
 
-				Type messageType = imHandler.GetMessageType();
-				self.ActorMessageHandlers.Add(messageType, imHandler);
-			}
-		}
+            await handler.Handle(entity, message, reply);
+        }
 
-		/// <summary>
-		/// 分发actor消息
-		/// </summary>
-		public static async ETTask Handle(
-				this ActorMessageDispatcherComponent self, Entity entity, ActorMessageInfo actorMessageInfo)
-		{
-			if (!self.ActorMessageHandlers.TryGetValue(actorMessageInfo.Message.GetType(), out IMActorHandler handler))
-			{
-				throw new Exception($"not found message handler: {MongoHelper.ToJson(actorMessageInfo.Message)}");
-			}
-
-			await handler.Handle(actorMessageInfo.Session, entity, actorMessageInfo.Message);
-		}
-	}
+        public static bool TryGetHandler(this ActorMessageDispatcherComponent self,Type type, out IMActorHandler actorHandler)
+        {
+            return self.ActorMessageHandlers.TryGetValue(type, out actorHandler);
+        }
+    }
 }

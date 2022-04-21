@@ -1,22 +1,21 @@
 //此文件格式由工具自动生成
 
-using ETModel.NKGMOBA.Battle.State;
 
-namespace ETModel
+namespace ET
 {
     #region System
 
     [ObjectSystem]
-    public class ReceiveDamageComponentAwakeSystem: AwakeSystem<ReceiveDamageComponent>
+    public class ReceiveDamageComponentAwakeSystem : AwakeSystem<ReceiveDamageComponent>
     {
         public override void Awake(ReceiveDamageComponent self)
         {
-            self.Awake();
+            self.DamagePrefix = 1.0f;
         }
     }
 
     [ObjectSystem]
-    public class ReceiveDamageComponentUpdateSystem: UpdateSystem<ReceiveDamageComponent>
+    public class ReceiveDamageComponentUpdateSystem : UpdateSystem<ReceiveDamageComponent>
     {
         public override void Update(ReceiveDamageComponent self)
         {
@@ -25,7 +24,7 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class ReceiveDamageComponentFixedUpdateSystem: FixedUpdateSystem<ReceiveDamageComponent>
+    public class ReceiveDamageComponentFixedUpdateSystem : FixedUpdateSystem<ReceiveDamageComponent>
     {
         public override void FixedUpdate(ReceiveDamageComponent self)
         {
@@ -34,17 +33,17 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class ReceiveDamageComponentDestroySystem: DestroySystem<ReceiveDamageComponent>
+    public class ReceiveDamageComponentDestroySystem : DestroySystem<ReceiveDamageComponent>
     {
         public override void Destroy(ReceiveDamageComponent self)
         {
-            self.Destroy();
+            self.DamagePrefix = 1.0f;
         }
     }
 
     #endregion
 
-    public class ReceiveDamageComponent: Component
+    public class ReceiveDamageComponent : Entity
     {
         #region 私有成员
 
@@ -53,52 +52,13 @@ namespace ETModel
         static string ReceiveSingleType = $"{BuffDamageTypes.Single}_Receive";
         static string ReceiveRangeType = $"{BuffDamageTypes.Range}_Receive";
         static string ReceiveAllType = $"All_Receive";
-        
-        #endregion
 
-        #region 公有成员
+        #endregion
 
         /// <summary>
-        /// 洗礼这个伤害值
+        /// 伤害修正
         /// </summary>
-        /// <param name="damageData">伤害数据</param>
-        /// <returns></returns>
-        public float BaptismDamageData(DamageData damageData)
-        {
-            //如果当前无敌则不计算伤害
-            if (this.Entity.GetComponent<StackFsmComponent>().ContainsState(StateTypes.Invincible))
-            {
-                return -1.0f;
-            }
-
-            DataModifierComponent dataModifierComponent = this.Entity.GetComponent<DataModifierComponent>();
-
-            if ((damageData.BuffDamageTypes & BuffDamageTypes.Physical) == BuffDamageTypes.Physical)
-            {
-                damageData.DamageValue = dataModifierComponent.BaptismData(ReceivePhysicalType, damageData.DamageValue);
-            }
-
-            if ((damageData.BuffDamageTypes & BuffDamageTypes.Magic) == BuffDamageTypes.Magic)
-            {
-                damageData.DamageValue = dataModifierComponent.BaptismData(ReceiveMagicType, damageData.DamageValue);
-            }
-
-            if ((damageData.BuffDamageTypes & BuffDamageTypes.Single) == BuffDamageTypes.Single)
-            {
-                damageData.DamageValue = dataModifierComponent.BaptismData(ReceiveSingleType, damageData.DamageValue);
-            }
-
-            if ((damageData.BuffDamageTypes & BuffDamageTypes.Range) == BuffDamageTypes.Range)
-            {
-                damageData.DamageValue = dataModifierComponent.BaptismData(ReceiveRangeType, damageData.DamageValue);
-            }
-
-            damageData.DamageValue = dataModifierComponent.BaptismData(ReceiveAllType, damageData.DamageValue);
-
-            return damageData.DamageValue < 0? 0 : damageData.DamageValue;
-        }
-
-        #endregion
+        public float DamagePrefix = 1.0f;
 
         #region 生命周期函数
 

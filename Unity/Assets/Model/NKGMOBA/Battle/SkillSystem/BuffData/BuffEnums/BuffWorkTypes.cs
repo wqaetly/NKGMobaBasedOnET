@@ -6,7 +6,7 @@
 
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// Buff的奏效的表现

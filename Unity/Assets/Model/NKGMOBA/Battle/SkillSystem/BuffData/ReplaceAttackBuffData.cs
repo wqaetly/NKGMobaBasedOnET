@@ -6,7 +6,7 @@
 
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 替换攻击流程

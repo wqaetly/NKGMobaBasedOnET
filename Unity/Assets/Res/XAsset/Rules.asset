@@ -19,160 +19,805 @@ MonoBehaviour:
   searchPatternPng: '*.png'
   searchPatternPrefab: '*.prefab'
   searchPatternScene: '*.unity'
-  searchPatternText: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
-  version: 19
+  searchPatternText: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt,*.bin'
+  version: 101
   scenesInBuild:
   - {fileID: 102900000, guid: e0d691ac8c1d0454ba07089ea820e18a, type: 3}
+  - {fileID: 102900000, guid: d1f6e76af288a614586be7868b6ddd96, type: 3}
   rules:
-  - searchPath: Assets/Bundles/Altas
+  - searchPath: Assets/Res/Code
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Unit
     searchPattern: '*.prefab'
     nameBy: 1
     assetBundleName: 
-  - searchPath: Assets/Bundles/FUI
-    searchPattern: '*.png'
-    nameBy: 1
-    assetBundleName: 
-  - searchPath: Assets/Bundles/FUI
-    searchPattern: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
-    nameBy: 1
-    assetBundleName: 
-  - searchPath: Assets/Bundles/Independent
-    searchPattern: '*.prefab'
-    nameBy: 1
-    assetBundleName: 
-  - searchPath: Assets/Bundles/SkillConfigs
-    searchPattern: '*.prefab'
-    nameBy: 1
-    assetBundleName: 
-  - searchPath: Assets/Bundles/Unit
-    searchPattern: '*.prefab'
-    nameBy: 1
-    assetBundleName: 
-  - searchPath: Assets/Scenes
+  - searchPath: Assets/Res/Scene
     searchPattern: '*.unity'
     nameBy: 1
     assetBundleName: 
-  - searchPath: Assets/Bundles/Independent
-    searchPattern: '*.prefab'
+  - searchPath: Assets/Res/FGUI
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Config
+    searchPattern: '*.txt,*.bytes,*.json,*.csv,*.xml,*htm,*.html,*.yaml,*.fnt'
     nameBy: 1
     assetBundleName: 
-  - searchPath: Assets/Bundles/Sounds
+  - searchPath: Assets/Res/Sound
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Particle/ParticlePrefabs
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Shader
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Particle/Mat
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Shader
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Material
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Effect
+    searchPattern: '*'
+    nameBy: 2
+    assetBundleName: 
+  - searchPath: Assets/Res/Sprite
     searchPattern: '*'
     nameBy: 2
     assetBundleName: 
   ruleAssets:
-  - bundle: 73118045ec340244b9c3a8780e6f7af9.unity3d
-    path: Assets/Bundles/Altas/HeroAvatars.prefab
-  - bundle: 30f3b55f87d3cccda2adda15633e4f8d.unity3d
-    path: Assets/Bundles/Altas/HeroSkillIcons.prefab
-  - bundle: 1eecddda466df8457971b8fbb4833516.unity3d
-    path: Assets/Bundles/FUI/FUI5v5Map_atlas0.png
-  - bundle: e216a8b81ad4b954b7713a6b1b09fc0c.unity3d
-    path: Assets/Bundles/FUI/FUI5v5Map_fui.bytes
-  - bundle: 709ccd6951a127a04180a2e93578e134.unity3d
-    path: Assets/Bundles/FUI/FUIDialog_atlas0.png
-  - bundle: 5c4421f6dea60df93b6644a4ec3c6a31.unity3d
-    path: Assets/Bundles/FUI/FUIDialog_fui.bytes
-  - bundle: 0f6cf85bbba89a77ccb62f33dd8ec980.unity3d
-    path: Assets/Bundles/FUI/FUIFallBleed_atlas0.png
-  - bundle: 6704b7f20e671ff8acf624334631d4c7.unity3d
-    path: Assets/Bundles/FUI/FUIFallBleed_fui.bytes
-  - bundle: af6f89743b34c79d8e49316598e71e3e.unity3d
-    path: Assets/Bundles/FUI/FUIHeadBar_atlas0.png
-  - bundle: 5154227005c91c567f37838ffbfd1734.unity3d
-    path: Assets/Bundles/FUI/FUIHeadBar_fui.bytes
-  - bundle: 5fdd4151f1cb5e7432962bd422558a25.unity3d
-    path: Assets/Bundles/FUI/FUILobby_atlas0.png
-  - bundle: 7c7161a93744945b4d2c41a648ca8a49.unity3d
-    path: Assets/Bundles/FUI/FUILobby_fui.bytes
-  - bundle: b4257688263d7fd02cbf56a10c0c1763.unity3d
-    path: Assets/Bundles/FUI/FUILogin_atlas0.png
-  - bundle: c05a465e4b3066ff5a26fae21ab82ced.unity3d
-    path: Assets/Bundles/FUI/FUILogin_fui.bytes
-  - bundle: 55ef7382f5a509040b488a114573722e.unity3d
-    path: Assets/Bundles/Independent/Code.prefab
-  - bundle: 452268ef4d438d76cf96cb0b78df9000.unity3d
-    path: Assets/Bundles/Independent/Config.prefab
-  - bundle: 973d1d4b191229d8002c8508d546f31b.unity3d
-    path: Assets/Bundles/Independent/HeroDataConfigs.prefab
-  - bundle: eb2ac7c19dc81ae65f583fb182991f30.unity3d
-    path: Assets/Bundles/SkillConfigs/SkillConfigs.prefab
-  - bundle: ac85522a77e2cb773a5ed7a0f5546abf.unity3d
-    path: Assets/Bundles/Sounds/Sound.prefab
-  - bundle: 2efc619c3f96e68cc7eaeffd09addad3.unity3d
-    path: Assets/Bundles/Unit/Unit.prefab
-  - bundle: 79169a669404a1225d75d2917f9af90a.unity3d
-    path: Assets/Scenes/Map.unity
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/Hotfix.dll.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/Hotfix.pdb.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/HotfixView.dll.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/HotfixView.pdb.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/Model.dll.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/Model.pdb.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/ModelView.dll.bytes
+  - bundle: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
+    path: Assets/Res/Code/ModelView.pdb.bytes
+  - bundle: 16049b64908a94a165974d4b7e52255f.unity3d
+    path: Assets/Res/Config/B2SColliderConfig/CircleColliderData.bytes
+  - bundle: 4621e39a89752723875c3e0029964790.unity3d
+    path: Assets/Res/Config/B2SColliderConfig/PolygonColliderData.bytes
+  - bundle: 6820dd984ce85cda122211d6e8a7d5f3.unity3d
+    path: Assets/Res/Config/Client_UnitConfigCategory.bytes
+  - bundle: 3b81683943bb09097a6e94315ebf14fc.unity3d
+    path: Assets/Res/Config/RecastNavConfig/solo_navmesh.bin.bytes
+  - bundle: e6089b29f262a898abb5fa12c217e3af.unity3d
+    path: Assets/Res/Config/RecastNavDataConfigCategory.bytes
+  - bundle: c43788c5a24010b608900a470f43c6da.unity3d
+    path: Assets/Res/Config/Server_AICanvasConfigCategory.bytes
+  - bundle: 205fcb2f4db22b8927bc8344a8c9a01e.unity3d
+    path: Assets/Res/Config/Server_B2SColliderConfigCategory.bytes
+  - bundle: 6be265ed46d5b399c4cf6ba342f68bcc.unity3d
+    path: Assets/Res/Config/Server_B2SCollisionRelationConfigCategory.bytes
+  - bundle: b889e87498fe4f11d9677ec8e7f8fa52.unity3d
+    path: Assets/Res/Config/Server_UnitConfigCategory.bytes
+  - bundle: e54cd26e67d6aede20d8d3279b370be4.unity3d
+    path: Assets/Res/Config/SkillCanvasConfigCategory.bytes
+  - bundle: 3b9af3835c3b671d76b8240f540fa522.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_E.bytes
+  - bundle: eee370e7bbea191e2103ef58ab7ac94c.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_E_Collider.bytes
+  - bundle: 239dd5e7a896a5225aaf57e1f030b54b.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_Hemorrhage.bytes
+  - bundle: 508f4484799ad48351619f0359171946.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_Q.bytes
+  - bundle: cb41b275575be5008af57d51b7c0a028.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_Q_Collider.bytes
+  - bundle: cc4e68c40d34ebaaaee4c22e85c60f50.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_TestLSF.bytes
+  - bundle: 03be2e33b2b0e9ecab7b8060cc0d5a1e.unity3d
+    path: Assets/Res/Config/SkillConfig/Darius_W.bytes
+  - bundle: 465f5db2ef1b1b9e87f4f6c137fcd85d.unity3d
+    path: Assets/Res/Config/SkillConfig/Server_Darius_AI.bytes
+  - bundle: de6911dfae3e6306a192b1a2b85251bb.unity3d
+    path: Assets/Res/Config/SkinsConfigCategory.bytes
+  - bundle: 8a225304448253da03f457a201ab63c0.unity3d
+    path: Assets/Res/Config/StartMachineConfigCategory.bytes
+  - bundle: a44dc2362a7f0eac78cd62af7447585d.unity3d
+    path: Assets/Res/Config/StartProcessConfigCategory.bytes
+  - bundle: 785e85f738b29045716d824054439cd0.unity3d
+    path: Assets/Res/Config/StartSceneConfigCategory.bytes
+  - bundle: 81e762003762bdf49b3fec11f8181aa8.unity3d
+    path: Assets/Res/Config/StartZoneConfigCategory.bytes
+  - bundle: f878e5207e2d690d9855a54f8c302fee.unity3d
+    path: Assets/Res/Config/UnitAttributeConfig/AllHeroAttributesData.bytes
+  - bundle: c4c7062854b3cb3470574447c3cbf7e7.unity3d
+    path: Assets/Res/Config/UnitAttributesDataConfigCategory.bytes
+  - bundle: 753fb261766d8dffa79c45a2851f3e39.unity3d
+    path: Assets/Res/Config/UnitConfigCategory.bytes
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_FullAngry_Effect.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_OtherDeadLine_Effect.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_1.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_2.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_3.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_4.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_5.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_Q_Effect.prefab
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_R_Effect.vfx
+  - bundle: 25ff4447d30e63109423d044aea84212.unity3d
+    path: Assets/Res/Effect/Darius/Darius_W_Effect.prefab
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/BattleMain_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/BattleMain_fui.bytes
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Dialog_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Dialog_fui.bytes
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/FlyFont_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/FlyFont_fui.bytes
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/HeadBar_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/HeadBar_fui.bytes
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Lobby_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Lobby_fui.bytes
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Login_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Login_fui.bytes
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Room_atlas0.png
+  - bundle: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
+    path: Assets/Res/FGUI/Room_fui.bytes
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_Darius_RimLight.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_Darius_RimLight_Offset.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_LifeBarGap.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_LineRender.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_Map.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_Shadow.mat
+  - bundle: 222944fdfcf027de6abc2acf28f6374c.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/AngleMissile/AngleMissileBasic/MissileBody.mat
+  - bundle: 3cf9411347a0525cfed2e668703c4bd0.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/AngleMissile/FireMissile/MissileBody.mat
+  - bundle: 5d0ee61b36ed3cb53a835dc88125b90a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/AngleMissile/MagicCrossbow/Crossbow.mat
+  - bundle: 5d0ee61b36ed3cb53a835dc88125b90a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/AngleMissile/MagicCrossbow/Crossbow2.mat
+  - bundle: 52a5062e489979b8bed22f4bf0f29ceb.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeBase.mat
+  - bundle: 52a5062e489979b8bed22f4bf0f29ceb.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeCenter.mat
+  - bundle: 52a5062e489979b8bed22f4bf0f29ceb.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeDeco.mat
+  - bundle: 52a5062e489979b8bed22f4bf0f29ceb.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeLBorder.mat
+  - bundle: 52a5062e489979b8bed22f4bf0f29ceb.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeRBorder.mat
+  - bundle: 4248ded4cdd91dd127a9ae96cfd04c4a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeBase.mat
+  - bundle: 4248ded4cdd91dd127a9ae96cfd04c4a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeCenter.mat
+  - bundle: 4248ded4cdd91dd127a9ae96cfd04c4a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeDeco.mat
+  - bundle: 4248ded4cdd91dd127a9ae96cfd04c4a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeLBorder.mat
+  - bundle: 4248ded4cdd91dd127a9ae96cfd04c4a.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeRBorder.mat
+  - bundle: 9d15a9cbd255848ce7bd0af900611ca3.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeBase.mat
+  - bundle: 9d15a9cbd255848ce7bd0af900611ca3.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeCenter.mat
+  - bundle: 9d15a9cbd255848ce7bd0af900611ca3.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeDeco.mat
+  - bundle: 9d15a9cbd255848ce7bd0af900611ca3.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeLBorder.mat
+  - bundle: 9d15a9cbd255848ce7bd0af900611ca3.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeRBorder.mat
+  - bundle: 99d9eac798c5484c64315aee39cab6ad.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeBase.mat
+  - bundle: 99d9eac798c5484c64315aee39cab6ad.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeCenter.mat
+  - bundle: 99d9eac798c5484c64315aee39cab6ad.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeDeco1.mat
+  - bundle: 99d9eac798c5484c64315aee39cab6ad.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeLBorder1.mat
+  - bundle: 99d9eac798c5484c64315aee39cab6ad.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeRBorder1.mat
+  - bundle: abce6e7b93229969a88273bf06ba827f.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic1/MissileBody.mat
+  - bundle: abce6e7b93229969a88273bf06ba827f.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic1/MissileHead.mat
+  - bundle: ff2c7fc6576a7657793b32f750308ed8.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic2/MissileBody.mat
+  - bundle: ff2c7fc6576a7657793b32f750308ed8.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic2/MissileHead.mat
+  - bundle: 2c8680049daa11dff0db79992da69961.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic3/MissileBody.mat
+  - bundle: 2c8680049daa11dff0db79992da69961.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic3/MissileHead.mat
+  - bundle: 852ae21fbb8ea3d857d5fc55568d65a5.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic4/MissileBody.mat
+  - bundle: 852ae21fbb8ea3d857d5fc55568d65a5.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic4/MissileHead.mat
+  - bundle: 711f5a61f34e6df2416a8829045eb3ec.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Chaos Aura/PointBase.mat
+  - bundle: 711f5a61f34e6df2416a8829045eb3ec.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Chaos Aura/PointCrosshair.mat
+  - bundle: 711f5a61f34e6df2416a8829045eb3ec.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Chaos Aura/PointDeco.mat
+  - bundle: a3fe6dd4d4caedb7d47264bbeca874cc.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointBase.mat
+  - bundle: a3fe6dd4d4caedb7d47264bbeca874cc.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointCharge1.mat
+  - bundle: a3fe6dd4d4caedb7d47264bbeca874cc.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointCrosshair.mat
+  - bundle: a3fe6dd4d4caedb7d47264bbeca874cc.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointDeco1.mat
+  - bundle: 5779e5afb60015fbe862d7dc16e7e813.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointBase.mat
+  - bundle: 5779e5afb60015fbe862d7dc16e7e813.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointCharge.mat
+  - bundle: 5779e5afb60015fbe862d7dc16e7e813.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointCrosshair.mat
+  - bundle: 5779e5afb60015fbe862d7dc16e7e813.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointDeco.mat
+  - bundle: d66c5041d8fabf525381235e76865c8e.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointBase2.mat
+  - bundle: d66c5041d8fabf525381235e76865c8e.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointCharge2.mat
+  - bundle: d66c5041d8fabf525381235e76865c8e.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointCrosshair2.mat
+  - bundle: d66c5041d8fabf525381235e76865c8e.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointDeco2.mat
+  - bundle: 86caa3bc483f89055fdb2272d422c008.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/Range1.mat
+  - bundle: 86caa3bc483f89055fdb2272d422c008.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/Range2.mat
+  - bundle: 86caa3bc483f89055fdb2272d422c008.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/Range3.mat
+  - bundle: 86caa3bc483f89055fdb2272d422c008.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/RangeBasic.mat
+  - bundle: 86caa3bc483f89055fdb2272d422c008.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Range/RangeSmall.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/Status6Bar.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusBasic.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusBasic2.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusChargeExample.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusDots.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusGradient.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusGradientDotted.mat
+  - bundle: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    path: Assets/Res/Material/Mat_SkillIndicator/Status/StatusManaExample.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_Storke.mat
+  - bundle: dec0ed705bb623f9164f4427cbddc678.unity3d
+    path: Assets/Res/Material/Mat_Unit.mat
+  - bundle: 3ea35a4d6b3e7793a7c008ee6fd9eb13.unity3d
+    path: Assets/Res/Scene/Map.unity
+  - bundle: 338c0702a4800c4dcd77757cfa5319f4.unity3d
+    path: Assets/Res/Scene/TempScene.unity
+  - bundle: a1585dfb885c0eaffc99fe67613cafb6.unity3d
+    path: Assets/Res/Shader/Darius_R_RimLight.shader
+  - bundle: a1585dfb885c0eaffc99fe67613cafb6.unity3d
+    path: Assets/Res/Shader/Darius_R_RimLight_Offset.shader
+  - bundle: a1585dfb885c0eaffc99fe67613cafb6.unity3d
+    path: Assets/Res/Shader/LifeBarGap.shader
+  - bundle: e617f4aa0ddf612f59a56ddd120b9841.unity3d
+    path: Assets/Res/Shader/SG/SG_Map.shadergraph
+  - bundle: e617f4aa0ddf612f59a56ddd120b9841.unity3d
+    path: Assets/Res/Shader/SG/SG_Storke.shadergraph
+  - bundle: e617f4aa0ddf612f59a56ddd120b9841.unity3d
+    path: Assets/Res/Shader/SG/SG_Unit.shadergraph
+  - bundle: e617f4aa0ddf612f59a56ddd120b9841.unity3d
+    path: Assets/Res/Shader/SG/SG_VFX_Darius_R_Effect.shadergraph
+  - bundle: a1585dfb885c0eaffc99fe67613cafb6.unity3d
+    path: Assets/Res/Shader/Shadow.shader
+  - bundle: e0f0db5c5e449942417a1b10b3e323b5.unity3d
+    path: Assets/Res/Sound/BGM.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_FullAngry.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_Sound_E.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_Sound_NormalAttack.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_Sound_Q.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_Sound_QPre.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_W_Cast.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Darius_W_Hold.wav
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_E.prefab
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_FullAngry.prefab
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_NormalAttack.prefab
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_Q.prefab
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_QPre.prefab
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_W_Cast.prefab
+  - bundle: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    path: Assets/Res/Sound/Darius/Sound_Darius_W_Hold.prefab
+  - bundle: e0f0db5c5e449942417a1b10b3e323b5.unity3d
+    path: Assets/Res/Sound/Sound_BGM.prefab
+  - bundle: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    path: Assets/Res/Sprite/A12CD48EF62F4847.png
+  - bundle: 2f64672cb28eaf607e47722cd7367feb.unity3d
+    path: Assets/Res/Sprite/Avatars/Darius/Darius_Circle_8.png
+  - bundle: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    path: Assets/Res/Sprite/Clarity_HUDAtlas.png
+  - bundle: 1216e355427a8db672c33cafe4f86c3e.unity3d
+    path: Assets/Res/Sprite/Loadings/Darius/DariusLoadScreen_8.png
+  - bundle: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    path: Assets/Res/Sprite/PerksAtlas.png
+  - bundle: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    path: "Assets/Res/Sprite/QQ\u622A\u56FE20210703203736.png"
+  - bundle: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    path: Assets/Res/Sprite/ScoreboardAtlas.png
+  - bundle: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    path: Assets/Res/Sprite/Skills/Darius/Darius_Icon_Axe_Grab.png
+  - bundle: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    path: Assets/Res/Sprite/Skills/Darius/Darius_Icon_Decimate.png
+  - bundle: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    path: Assets/Res/Sprite/Skills/Darius/Darius_Icon_Hamstring.png
+  - bundle: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    path: Assets/Res/Sprite/Skills/Darius/Darius_Icon_Hemorrhage.png
+  - bundle: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    path: Assets/Res/Sprite/Skills/Darius/Darius_Icon_Sudden_Death.png
+  - bundle: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    path: Assets/Res/Sprite/Skills/Darius/Darius_PassiveBuff.png
+  - bundle: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    path: Assets/Res/Sprite/icon.png
+  - bundle: d242e8ae76da84a3bed797a6965e8670.unity3d
+    path: Assets/Res/Unit/Darius.prefab
   ruleBundles:
-  - name: 73118045ec340244b9c3a8780e6f7af9.unity3d
+  - name: 647fd131331f17390d20e9e0c3fb0c2f.unity3d
     assets:
-    - Assets/Bundles/Altas/HeroAvatars.prefab
-  - name: 30f3b55f87d3cccda2adda15633e4f8d.unity3d
+    - Assets/Res/Code/Hotfix.dll.bytes
+    - Assets/Res/Code/Hotfix.pdb.bytes
+    - Assets/Res/Code/HotfixView.dll.bytes
+    - Assets/Res/Code/HotfixView.pdb.bytes
+    - Assets/Res/Code/Model.dll.bytes
+    - Assets/Res/Code/Model.pdb.bytes
+    - Assets/Res/Code/ModelView.dll.bytes
+    - Assets/Res/Code/ModelView.pdb.bytes
+  - name: d242e8ae76da84a3bed797a6965e8670.unity3d
     assets:
-    - Assets/Bundles/Altas/HeroSkillIcons.prefab
-  - name: 1eecddda466df8457971b8fbb4833516.unity3d
+    - Assets/Res/Unit/Darius.prefab
+  - name: 3ea35a4d6b3e7793a7c008ee6fd9eb13.unity3d
     assets:
-    - Assets/Bundles/FUI/FUI5v5Map_atlas0.png
-  - name: 709ccd6951a127a04180a2e93578e134.unity3d
+    - Assets/Res/Scene/Map.unity
+  - name: 338c0702a4800c4dcd77757cfa5319f4.unity3d
     assets:
-    - Assets/Bundles/FUI/FUIDialog_atlas0.png
-  - name: 0f6cf85bbba89a77ccb62f33dd8ec980.unity3d
+    - Assets/Res/Scene/TempScene.unity
+  - name: 78b54258474c5edcba05a9cc1c34a5fb.unity3d
     assets:
-    - Assets/Bundles/FUI/FUIFallBleed_atlas0.png
-  - name: af6f89743b34c79d8e49316598e71e3e.unity3d
+    - Assets/Res/FGUI/BattleMain_atlas0.png
+    - Assets/Res/FGUI/BattleMain_fui.bytes
+    - Assets/Res/FGUI/Dialog_atlas0.png
+    - Assets/Res/FGUI/Dialog_fui.bytes
+    - Assets/Res/FGUI/FlyFont_atlas0.png
+    - Assets/Res/FGUI/FlyFont_fui.bytes
+    - Assets/Res/FGUI/HeadBar_atlas0.png
+    - Assets/Res/FGUI/HeadBar_fui.bytes
+    - Assets/Res/FGUI/Lobby_atlas0.png
+    - Assets/Res/FGUI/Lobby_fui.bytes
+    - Assets/Res/FGUI/Login_atlas0.png
+    - Assets/Res/FGUI/Login_fui.bytes
+    - Assets/Res/FGUI/Room_atlas0.png
+    - Assets/Res/FGUI/Room_fui.bytes
+  - name: 6820dd984ce85cda122211d6e8a7d5f3.unity3d
     assets:
-    - Assets/Bundles/FUI/FUIHeadBar_atlas0.png
-  - name: 5fdd4151f1cb5e7432962bd422558a25.unity3d
+    - Assets/Res/Config/Client_UnitConfigCategory.bytes
+  - name: e6089b29f262a898abb5fa12c217e3af.unity3d
     assets:
-    - Assets/Bundles/FUI/FUILobby_atlas0.png
-  - name: b4257688263d7fd02cbf56a10c0c1763.unity3d
+    - Assets/Res/Config/RecastNavDataConfigCategory.bytes
+  - name: c43788c5a24010b608900a470f43c6da.unity3d
     assets:
-    - Assets/Bundles/FUI/FUILogin_atlas0.png
-  - name: e216a8b81ad4b954b7713a6b1b09fc0c.unity3d
+    - Assets/Res/Config/Server_AICanvasConfigCategory.bytes
+  - name: 205fcb2f4db22b8927bc8344a8c9a01e.unity3d
     assets:
-    - Assets/Bundles/FUI/FUI5v5Map_fui.bytes
-  - name: 5c4421f6dea60df93b6644a4ec3c6a31.unity3d
+    - Assets/Res/Config/Server_B2SColliderConfigCategory.bytes
+  - name: 6be265ed46d5b399c4cf6ba342f68bcc.unity3d
     assets:
-    - Assets/Bundles/FUI/FUIDialog_fui.bytes
-  - name: 6704b7f20e671ff8acf624334631d4c7.unity3d
+    - Assets/Res/Config/Server_B2SCollisionRelationConfigCategory.bytes
+  - name: b889e87498fe4f11d9677ec8e7f8fa52.unity3d
     assets:
-    - Assets/Bundles/FUI/FUIFallBleed_fui.bytes
-  - name: 5154227005c91c567f37838ffbfd1734.unity3d
+    - Assets/Res/Config/Server_UnitConfigCategory.bytes
+  - name: e54cd26e67d6aede20d8d3279b370be4.unity3d
     assets:
-    - Assets/Bundles/FUI/FUIHeadBar_fui.bytes
-  - name: 7c7161a93744945b4d2c41a648ca8a49.unity3d
+    - Assets/Res/Config/SkillCanvasConfigCategory.bytes
+  - name: de6911dfae3e6306a192b1a2b85251bb.unity3d
     assets:
-    - Assets/Bundles/FUI/FUILobby_fui.bytes
-  - name: c05a465e4b3066ff5a26fae21ab82ced.unity3d
+    - Assets/Res/Config/SkinsConfigCategory.bytes
+  - name: 8a225304448253da03f457a201ab63c0.unity3d
     assets:
-    - Assets/Bundles/FUI/FUILogin_fui.bytes
-  - name: 55ef7382f5a509040b488a114573722e.unity3d
+    - Assets/Res/Config/StartMachineConfigCategory.bytes
+  - name: a44dc2362a7f0eac78cd62af7447585d.unity3d
     assets:
-    - Assets/Bundles/Independent/Code.prefab
-  - name: 452268ef4d438d76cf96cb0b78df9000.unity3d
+    - Assets/Res/Config/StartProcessConfigCategory.bytes
+  - name: 785e85f738b29045716d824054439cd0.unity3d
     assets:
-    - Assets/Bundles/Independent/Config.prefab
-  - name: 973d1d4b191229d8002c8508d546f31b.unity3d
+    - Assets/Res/Config/StartSceneConfigCategory.bytes
+  - name: 81e762003762bdf49b3fec11f8181aa8.unity3d
     assets:
-    - Assets/Bundles/Independent/HeroDataConfigs.prefab
-  - name: eb2ac7c19dc81ae65f583fb182991f30.unity3d
+    - Assets/Res/Config/StartZoneConfigCategory.bytes
+  - name: c4c7062854b3cb3470574447c3cbf7e7.unity3d
     assets:
-    - Assets/Bundles/SkillConfigs/SkillConfigs.prefab
-  - name: 2efc619c3f96e68cc7eaeffd09addad3.unity3d
+    - Assets/Res/Config/UnitAttributesDataConfigCategory.bytes
+  - name: 753fb261766d8dffa79c45a2851f3e39.unity3d
     assets:
-    - Assets/Bundles/Unit/Unit.prefab
-  - name: 79169a669404a1225d75d2917f9af90a.unity3d
+    - Assets/Res/Config/UnitConfigCategory.bytes
+  - name: 16049b64908a94a165974d4b7e52255f.unity3d
     assets:
-    - Assets/Scenes/Map.unity
-  - name: ac85522a77e2cb773a5ed7a0f5546abf.unity3d
+    - Assets/Res/Config/B2SColliderConfig/CircleColliderData.bytes
+  - name: 4621e39a89752723875c3e0029964790.unity3d
     assets:
-    - Assets/Bundles/Sounds/Sound.prefab
-  - name: 2540bb97cd2be86a69d36d7d0c15edcb.unity3d
+    - Assets/Res/Config/B2SColliderConfig/PolygonColliderData.bytes
+  - name: 3b81683943bb09097a6e94315ebf14fc.unity3d
     assets:
-    - Assets/Res/Skins/Darius/Darius_Skin08_TX_CM.dds
+    - Assets/Res/Config/RecastNavConfig/solo_navmesh.bin.bytes
+  - name: 3b9af3835c3b671d76b8240f540fa522.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_E.bytes
+  - name: eee370e7bbea191e2103ef58ab7ac94c.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_E_Collider.bytes
+  - name: 239dd5e7a896a5225aaf57e1f030b54b.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_Hemorrhage.bytes
+  - name: 508f4484799ad48351619f0359171946.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_Q.bytes
+  - name: cb41b275575be5008af57d51b7c0a028.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_Q_Collider.bytes
+  - name: cc4e68c40d34ebaaaee4c22e85c60f50.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_TestLSF.bytes
+  - name: 03be2e33b2b0e9ecab7b8060cc0d5a1e.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Darius_W.bytes
+  - name: 465f5db2ef1b1b9e87f4f6c137fcd85d.unity3d
+    assets:
+    - Assets/Res/Config/SkillConfig/Server_Darius_AI.bytes
+  - name: f878e5207e2d690d9855a54f8c302fee.unity3d
+    assets:
+    - Assets/Res/Config/UnitAttributeConfig/AllHeroAttributesData.bytes
+  - name: e0f0db5c5e449942417a1b10b3e323b5.unity3d
+    assets:
+    - Assets/Res/Sound/BGM.wav
+    - Assets/Res/Sound/Sound_BGM.prefab
+  - name: 286ed496ff88c125e66ae0882f1e22db.unity3d
+    assets:
+    - Assets/Res/Sound/Darius/Darius_FullAngry.wav
+    - Assets/Res/Sound/Darius/Darius_Sound_E.wav
+    - Assets/Res/Sound/Darius/Darius_Sound_NormalAttack.wav
+    - Assets/Res/Sound/Darius/Darius_Sound_Q.wav
+    - Assets/Res/Sound/Darius/Darius_Sound_QPre.wav
+    - Assets/Res/Sound/Darius/Darius_W_Cast.wav
+    - Assets/Res/Sound/Darius/Darius_W_Hold.wav
+    - Assets/Res/Sound/Darius/Sound_Darius_E.prefab
+    - Assets/Res/Sound/Darius/Sound_Darius_FullAngry.prefab
+    - Assets/Res/Sound/Darius/Sound_Darius_NormalAttack.prefab
+    - Assets/Res/Sound/Darius/Sound_Darius_Q.prefab
+    - Assets/Res/Sound/Darius/Sound_Darius_QPre.prefab
+    - Assets/Res/Sound/Darius/Sound_Darius_W_Cast.prefab
+    - Assets/Res/Sound/Darius/Sound_Darius_W_Hold.prefab
+  - name: a1585dfb885c0eaffc99fe67613cafb6.unity3d
+    assets:
+    - Assets/Res/Shader/Darius_R_RimLight.shader
+    - Assets/Res/Shader/Darius_R_RimLight_Offset.shader
+    - Assets/Res/Shader/LifeBarGap.shader
+    - Assets/Res/Shader/Shadow.shader
+  - name: e617f4aa0ddf612f59a56ddd120b9841.unity3d
+    assets:
+    - Assets/Res/Shader/SG/SG_Map.shadergraph
+    - Assets/Res/Shader/SG/SG_Storke.shadergraph
+    - Assets/Res/Shader/SG/SG_Unit.shadergraph
+    - Assets/Res/Shader/SG/SG_VFX_Darius_R_Effect.shadergraph
+  - name: dec0ed705bb623f9164f4427cbddc678.unity3d
+    assets:
+    - Assets/Res/Material/Mat_Darius_RimLight.mat
+    - Assets/Res/Material/Mat_Darius_RimLight_Offset.mat
+    - Assets/Res/Material/Mat_LifeBarGap.mat
+    - Assets/Res/Material/Mat_LineRender.mat
+    - Assets/Res/Material/Mat_Map.mat
+    - Assets/Res/Material/Mat_Shadow.mat
+    - Assets/Res/Material/Mat_Storke.mat
+    - Assets/Res/Material/Mat_Unit.mat
+  - name: 222944fdfcf027de6abc2acf28f6374c.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/AngleMissile/AngleMissileBasic/MissileBody.mat
+  - name: 3cf9411347a0525cfed2e668703c4bd0.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/AngleMissile/FireMissile/MissileBody.mat
+  - name: 5d0ee61b36ed3cb53a835dc88125b90a.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/AngleMissile/MagicCrossbow/Crossbow.mat
+    - Assets/Res/Material/Mat_SkillIndicator/AngleMissile/MagicCrossbow/Crossbow2.mat
+  - name: 52a5062e489979b8bed22f4bf0f29ceb.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeCenter.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeDeco.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeLBorder.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ChaosBlast/ConeRBorder.mat
+  - name: 4248ded4cdd91dd127a9ae96cfd04c4a.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeCenter.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeDeco.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeLBorder.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/ConeBasic/ConeRBorder.mat
+  - name: 9d15a9cbd255848ce7bd0af900611ca3.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeCenter.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeDeco.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeLBorder.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FireBlast/ConeRBorder.mat
+  - name: 99d9eac798c5484c64315aee39cab6ad.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeCenter.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeDeco1.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeLBorder1.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Cone/FrostBlast/ConeRBorder1.mat
+  - name: abce6e7b93229969a88273bf06ba827f.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic1/MissileBody.mat
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic1/MissileHead.mat
+  - name: ff2c7fc6576a7657793b32f750308ed8.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic2/MissileBody.mat
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic2/MissileHead.mat
+  - name: 2c8680049daa11dff0db79992da69961.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic3/MissileBody.mat
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic3/MissileHead.mat
+  - name: 852ae21fbb8ea3d857d5fc55568d65a5.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic4/MissileBody.mat
+    - Assets/Res/Material/Mat_SkillIndicator/LineMissile/LineMissileBasic4/MissileHead.mat
+  - name: 711f5a61f34e6df2416a8829045eb3ec.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Chaos Aura/PointBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Chaos Aura/PointCrosshair.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Chaos Aura/PointDeco.mat
+  - name: a3fe6dd4d4caedb7d47264bbeca874cc.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointCharge1.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointCrosshair.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/Fireball/PointDeco1.mat
+  - name: 5779e5afb60015fbe862d7dc16e7e813.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointBase.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointCharge.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointCrosshair.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Point/TargetBasic/PointDeco.mat
+  - name: 86caa3bc483f89055fdb2272d422c008.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Range/Range1.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/Range2.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/Range3.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/RangeBasic.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/RangeSmall.mat
+  - name: d66c5041d8fabf525381235e76865c8e.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointBase2.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointCharge2.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointCrosshair2.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Range/FrostNova/PointDeco2.mat
+  - name: cf7c1d599c1dca5b3e24f81e1c51a22b.unity3d
+    assets:
+    - Assets/Res/Material/Mat_SkillIndicator/Status/Status6Bar.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusBasic.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusBasic2.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusChargeExample.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusDots.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusGradient.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusGradientDotted.mat
+    - Assets/Res/Material/Mat_SkillIndicator/Status/StatusManaExample.mat
+  - name: 25ff4447d30e63109423d044aea84212.unity3d
+    assets:
+    - Assets/Res/Effect/Darius/Darius_FullAngry_Effect.prefab
+    - Assets/Res/Effect/Darius/Darius_OtherDeadLine_Effect.prefab
+    - Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_1.prefab
+    - Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_2.prefab
+    - Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_3.prefab
+    - Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_4.prefab
+    - Assets/Res/Effect/Darius/Darius_Passive_Bleed_Effect_5.prefab
+    - Assets/Res/Effect/Darius/Darius_Q_Effect.prefab
+    - Assets/Res/Effect/Darius/Darius_R_Effect.vfx
+    - Assets/Res/Effect/Darius/Darius_W_Effect.prefab
+  - name: 6150cd4731f1dd645a9e36f2628ff316.unity3d
+    assets:
+    - Assets/Res/Sprite/A12CD48EF62F4847.png
+    - Assets/Res/Sprite/Clarity_HUDAtlas.png
+    - Assets/Res/Sprite/icon.png
+    - Assets/Res/Sprite/PerksAtlas.png
+    - "Assets/Res/Sprite/QQ\u622A\u56FE20210703203736.png"
+    - Assets/Res/Sprite/ScoreboardAtlas.png
+  - name: 2f64672cb28eaf607e47722cd7367feb.unity3d
+    assets:
+    - Assets/Res/Sprite/Avatars/Darius/Darius_Circle_8.png
+  - name: 1216e355427a8db672c33cafe4f86c3e.unity3d
+    assets:
+    - Assets/Res/Sprite/Loadings/Darius/DariusLoadScreen_8.png
+  - name: b30c152415b47f85ca3a8f0a0ec33ea7.unity3d
+    assets:
+    - Assets/Res/Sprite/Skills/Darius/Darius_Icon_Axe_Grab.png
+    - Assets/Res/Sprite/Skills/Darius/Darius_Icon_Decimate.png
+    - Assets/Res/Sprite/Skills/Darius/Darius_Icon_Hamstring.png
+    - Assets/Res/Sprite/Skills/Darius/Darius_Icon_Hemorrhage.png
+    - Assets/Res/Sprite/Skills/Darius/Darius_Icon_Sudden_Death.png
+    - Assets/Res/Sprite/Skills/Darius/Darius_PassiveBuff.png
+  - name: 620ff82607494a3fc6b31a3ea6b504cc.unity3d
+    assets:
+    - Assets/Res/Skin/Darius/Darius_Skin08_TX_CM.dds
   - name: d91ee336bc86d1ab40adcd28131940ff.unity3d
     assets:
     - Assets/Res/WarSong/Texture2D/arena01_bush02_dif.png
-  - name: 6ab7927d6491854f67b427f5e3c53c14.unity3d
+  - name: e6163112a8fc99941e68f46f40e38aa3.unity3d
     assets:
-    - Assets/Res/Shaders/SG/SG_Map.shadergraph
+    - Assets/Res/Texture/DDS/Darius/Passive_1/darius_color-bloodfluid32.dds
+  - name: ae8d7f5a871168a4d832707ace51aa4b.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Range/Range.png
+  - name: d81a31b007a512f800a939b02ecae5e8.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/LineMissile/MissileTail1.png
+  - name: 1aa355706e1767666124331a716c7890.unity3d
+    assets:
+    - Assets/Plugins/Werewolf/StatusIndicators/Scripts/Shaders/ProjectorHoloLinear.shader
+    - Assets/Plugins/Werewolf/StatusIndicators/Scripts/Shaders/ProjectorLinearDistortColor.shader
+    - Assets/Plugins/Werewolf/StatusIndicators/Scripts/Shaders/ProjectorHoloCone.shader
+    - Assets/Plugins/Werewolf/StatusIndicators/Scripts/Shaders/ProjectorBasic.shader
+    - Assets/Plugins/Werewolf/StatusIndicators/Scripts/Shaders/ProjectorFillRadial.shader
+    - Assets/Plugins/Werewolf/StatusIndicators/Scripts/Shaders/ProjectorRadialDistortColor.shader
+  - name: 4f1bc69e6aca73663fbe7e597826bec0.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/DistortTextures/Noise4.png
+  - name: c7746170403d87dcd67c2dca3e757a20.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Cone/ConeBase.png
+  - name: 773d03139a78e4419aa34e5fa35b843a.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Circle/CircleDeco2.png
+  - name: f7772e1ce208ac95b580794a77596846.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Cone/ConeBorderL.png
+  - name: 8513532b770236d29fb09ff6eaeebf73.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Cone/ConeCenter.png
+  - name: 1e8bcd2f3378f6096cd5bbde788e3111.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Cone/ConeBorderR.png
+  - name: ac90db84fcca978913a87eae7a793f2a.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/LineMissile/MissileHead1.png
+  - name: fc55258d7fc63bb0514db93db5dddde0.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Circle/CircleDeco3.png
+  - name: 067f7cca6f69c37c6bb8d6b83b7304bc.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Circle/CircleCrosshair.png
+  - name: 06cc66a2558a12ac170f71a382ddebb3.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Circle/CircleBase.png
+  - name: 33753b7b4f190771119eefcc4cf8b703.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/DistortTextures/Noise1.png
+  - name: a17b9982764b36afead6608debe0b51c.unity3d
+    assets:
+    - Assets/Res/Texture/SkillIndicator/SplatTextures/Circle/CircleCharge2.png
+  - name: a39e462e0bd2ee22c929667006a9da77.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive_1/bleed_blood_drop.png
+  - name: 29aaf72e9bdc3e322063ee113c92ed98.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_axe_tip_fill.mat
+  - name: 17d98d95d85c1763a2d0280a53ca3459.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Q_Run.mat
+  - name: 3e030a7f30347ec2f3cc379503c5c2a4.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_axe_tip_flare.mat
+  - name: f6e54ff6ab4d5a9d1a44f8a9628e7848.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_eraged_sparks/Darius_Base_P_eraged_sparks_2.png
+  - name: 1a8268ac254bef67db61d3f6f11bc9c1.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Q_Pre.mat
+  - name: 19555e435642e16db0c0e08ef287e8c8.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/W/darius_w_buff_weapon_03.png
+  - name: cc25b13f60b5a865ed5d4b75a1cf2cde.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_axe_tip_fill.dds
+  - name: 769b54925c4a2d648dfcaa186744dd23.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/W/darius_w_buff_weapon_03.mat
+  - name: 3cbf153b83ff7fd77ed373a4cec3cf44.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/W/red_flash_01.sri_slots.mat
+  - name: 3ab476269f7ddb840b7956e2d732f9cf.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Q_Finish.mat
+  - name: fdb8d82b3f1dfbda1ca2a6dee8f0dd4e.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_axe_tip_flare.png
+  - name: cab9aafd95f03014390f9a909fdd0694.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Base_Q_darius_axe_spin_trail.dds
+  - name: 8da654addc8eb5bb16498642cffdb36f.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Q_Last.mat
+  - name: 951c2333fd00c67cb688c845b09ac3fd.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Base_Q_OutterRing_Blur.dds
+  - name: ea894b026288988b36af5ea980a4fc49.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_icon.mat
+  - name: e1fb0fbd12680456537d573f2a80f7e1.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Base_Q_InnerRing_Blur.dds
+  - name: 738860de2ed5df4b64cbd1e9236dfd31.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/W/red_flash_01.sri_slots.png
+  - name: aa62aa9e90b3ddcad53e7a22bec9c19b.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_eraged_rage_bits_4x4.png
+  - name: 6b495a05916070cc7f334e8f1cb2e591.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Q/Darius_Base_Q_darius_q_axe_blur_05.dds
+  - name: b2a1488341eb7ce9884830a03081f911.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive_1/bleed_blood_drop.mat
+  - name: 64ce1df26f33da7626747090a70bf7e1.unity3d
+    assets:
+    - Assets/Res/Texture/DDS/Darius/Passive/Darius_Base_P_icon.png

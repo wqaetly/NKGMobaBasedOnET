@@ -77,6 +77,17 @@ namespace ILRuntime.Runtime.Enviorment
             RegisterDelegateConvertor<Action<T1, T2, T3, T4>>(defaultConverter);
         }
 
+#if NET_4_6 || NET_STANDARD_2_0
+        public void RegisterMethodDelegate<T1, T2, T3, T4, T5>()
+        {
+            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            node.Adapter = new MethodDelegateAdapter<T1, T2, T3, T4, T5>();
+            node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) };
+            methods.Add(node);
+            RegisterDelegateConvertor<Action<T1, T2, T3, T4, T5>>(defaultConverter);
+        }
+#endif
+
         public void RegisterFunctionDelegate<TResult>()
         {
             DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
@@ -218,26 +229,37 @@ namespace ILRuntime.Runtime.Enviorment
             }
         }
 
-        internal IDelegateAdapter FindDelegateAdapter(ILTypeInstance instance, ILMethod method)
+        /// <summary>
+        /// ilMethod代表的delegate会赋值给method对应的delegate，一般两者参数类型都一致，
+        /// 但新版本的支持泛型协变之后，有些时候会不一致，所以此处判断是用method判断，而不是用ilMethod判断
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="ilMethod"></param>
+        /// <param name="method"></param>
+        /// <returns></returns>
+        internal IDelegateAdapter FindDelegateAdapter(ILTypeInstance instance, ILMethod ilMethod, IMethod method)
         {
             IDelegateAdapter res;
+            var parameterCount = method.ParameterCount;
+            var returnTypeForCLR = method.ReturnType.TypeForCLR;
             if (method.ReturnType == appdomain.VoidType)
             {
-                if (method.ParameterCount == 0)
+                if (parameterCount == 0)
                 {
-                    res = zeroParamMethodAdapter.Instantiate(appdomain, instance, method);
+                    res = zeroParamMethodAdapter.Instantiate(appdomain, instance, ilMethod);
                     if (instance != null)
-                        instance.SetDelegateAdapter(method, res);
+                        instance.SetDelegateAdapter(ilMethod, res);
                     return res;
                 }
                 foreach (var i in methods)
                 {
-                    if (i.ParameterTypes.Length == method.ParameterCount)
+                    var parameterTypes = i.ParameterTypes;
+                    if (parameterTypes.Length == parameterCount)
                     {
                         bool match = true;
-                        for (int j = 0; j < method.ParameterCount; j++)
+                        for (int j = 0; j < parameterCount; j++)
                         {
-                            if (i.ParameterTypes[j] != method.Parameters[j].TypeForCLR)
+                            if (parameterTypes[j] != method.Parameters[j].TypeForCLR)
                             {
                                 match = false;
                                 break;
@@ -245,9 +267,9 @@ namespace ILRuntime.Runtime.Enviorment
                         }
                         if (match)
                         {
-                            res = i.Adapter.Instantiate(appdomain, instance, method);
+                            res = i.Adapter.Instantiate(appdomain, instance, ilMethod);
                             if (instance != null)
-                                instance.SetDelegateAdapter(method, res);
+                                instance.SetDelegateAdapter(ilMethod, res);
                             return res;
                         }
                     }
@@ -255,14 +277,16 @@ namespace ILRuntime.Runtime.Enviorment
             }
             else
             {
+
                 foreach (var i in functions)
                 {
-                    if (i.ParameterTypes.Length == method.ParameterCount + 1)
+                    var parameterTypes = i.ParameterTypes;
+                    if (parameterTypes.Length == parameterCount + 1)
                     {
                         bool match = true;
-                        for (int j = 0; j < method.ParameterCount; j++)
+                        for (int j = 0; j < parameterCount; j++)
                         {
-                            if (i.ParameterTypes[j] != method.Parameters[j].TypeForCLR)
+                            if (parameterTypes[j] != method.Parameters[j].TypeForCLR)
                             {
                                 match = false;
                                 break;
@@ -270,11 +294,11 @@ namespace ILRuntime.Runtime.Enviorment
                         }
                         if (match)
                         {
-                            if (method.ReturnType.TypeForCLR == i.ParameterTypes[method.ParameterCount])
+                            if (returnTypeForCLR == parameterTypes[parameterCount])
                             {
-                                res = i.Adapter.Instantiate(appdomain, instance, method);
+                                res = i.Adapter.Instantiate(appdomain, instance, ilMethod);
                                 if (instance != null)
-                                    instance.SetDelegateAdapter(method, res);
+                                    instance.SetDelegateAdapter(ilMethod, res);
                                 return res;
                             }
                         }
@@ -282,9 +306,9 @@ namespace ILRuntime.Runtime.Enviorment
                 }
             }
 
-            res = dummyAdapter.Instantiate(appdomain, instance, method);
+            res = dummyAdapter.Instantiate(appdomain, instance, ilMethod);
             if (instance != null)
-                instance.SetDelegateAdapter(method, res);
+                instance.SetDelegateAdapter(ilMethod, res);
             return res;
         }
 

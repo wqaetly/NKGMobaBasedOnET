@@ -11,8 +11,9 @@ using NPBehave;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
+    [BsonDeserializerRegister]
     public abstract class NP_NodeDataBase
     {
         /// <summary>
@@ -21,10 +22,6 @@ namespace ETModel
         [LabelText("此结点ID")]
         [HideInEditorMode]
         public long id;
-
-        [LabelText("此结点类型")]
-        [HideInEditorMode]
-        public NodeType NodeType;
 
         /// <summary>
         /// 与此结点相连的ID
@@ -56,11 +53,11 @@ namespace ETModel
         /// <summary>
         /// 创建装饰结点
         /// </summary>
-        /// <param name="unitId">行为树归属的UnitID</param>
+        /// <param name="unitId">行为树归属的Unit</param>
         /// <param name="runtimeTree">运行时归属的行为树</param>
         /// <param name="node">所装饰的结点</param>
         /// <returns></returns>
-        public virtual Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
+        public virtual Decorator CreateDecoratorNode(Unit unit, NP_RuntimeTree runtimeTree, Node node)
         {
             return null;
         }
@@ -68,10 +65,10 @@ namespace ETModel
         /// <summary>
         /// 创建任务节点
         /// </summary>
-        /// <param name="unitId">行为树归属的UnitID</param>
+        /// <param name="unitId">行为树归属的Unit</param>
         /// <param name="runtimeTree">运行时归属的行为树</param>
         /// <returns></returns>
-        public virtual Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
+        public virtual Task CreateTask(Unit unit, NP_RuntimeTree runtimeTree)
         {
             return null;
         }

@@ -6,10 +6,15 @@
 
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public enum SkillReleaseMode
     {
+        /// <summary>
+        /// 无
+        /// </summary>
+        [LabelText("无")] None = 0,
+
         /// <summary>
         /// 圆环指示器
         /// </summary>
@@ -23,11 +28,11 @@ namespace ETModel
         /// <summary>
         /// 使用鼠标选择
         /// </summary>
-        [LabelText("使用鼠标选择")]  ATarget = 3,
-        
+        [LabelText("使用鼠标选择")] ATarget = 3,
+
         /// <summary>
-        /// 无，以自身为中心的技能 ，如皇子W
+        /// 使用鼠标选择
         /// </summary>
-        [LabelText("无，以自身为中心的技能 ，如皇子W")] None = 4,
+        [LabelText("扇形指示器")] Sector = 4,
     }
 }

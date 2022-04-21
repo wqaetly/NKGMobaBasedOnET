@@ -1,16 +1,6 @@
-﻿namespace ETModel
+﻿namespace ET
 {
-	public class MessageHandlerAttribute : BaseAttribute
-	{
-		public AppType Type { get; }
-
-		public MessageHandlerAttribute()
-		{
-		}
-
-		public MessageHandlerAttribute(AppType appType)
-		{
-			this.Type = appType;
-		}
-	}
+    public class MessageHandlerAttribute: BaseAttribute
+    {
+    }
 }

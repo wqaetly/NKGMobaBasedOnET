@@ -27,7 +27,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using MonKey;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -117,7 +116,7 @@ namespace libx
             AssetDatabase.SaveAssets();
         }
 
-        [Command("ETEditor_XAsset_BuildRules","构建打包规则", Category = "ETEditor")]
+        [MenuItem("Tools/BuildTools/ETEditor_XAsset_BuildRules")]
         private static void ApplyBuildRules()
         {
             var watch = new Stopwatch();
@@ -127,7 +126,7 @@ namespace libx
             Debug.Log("ApplyBuildRules " + watch.ElapsedMilliseconds + " ms.");
         }
 
-        [Command("ETEditor_XAsset_BuildAssetBundles","打包AssetBundle",Category = "ETEditor")]
+        [MenuItem("Tools/BuildTools/ETEditor_XAsset_BuildAssetBundles")]
         private static void BuildAssetBundles()
         {
             var watch = new Stopwatch();
@@ -138,7 +137,7 @@ namespace libx
             Debug.Log("BuildAssetBundles " + watch.ElapsedMilliseconds + " ms.");
         } 
 
-        [Command("ETEditor_XAsset_BuildStandalonePlayer","打包为当前平台可执行文件",Category = "ETEditor")]
+        [MenuItem("Tools/BuildTools/ETEditor_XAsset_BuildStandalonePlayer")]
         private static void BuildStandalonePlayer()
         {
             BuildScript.BuildStandalonePlayer();
@@ -178,7 +177,7 @@ namespace libx
         }
 
         #region Tools 
-        [MenuItem("Tools/View CRC")]
+        [MenuItem("Tools/BuildTools/View CRC")]
         private static void GetCRC()
         {
             var path = EditorUtility.OpenFilePanel("OpenFile", Environment.CurrentDirectory, "");
@@ -194,7 +193,7 @@ namespace libx
             }
         }
 
-        [MenuItem("Tools/View MD5")]
+        [MenuItem("Tools/BuildTools/View MD5")]
         private static void GetMD5()
         {
             var path = EditorUtility.OpenFilePanel("OpenFile", Environment.CurrentDirectory, "");
@@ -210,7 +209,7 @@ namespace libx
             }
         }
 
-        [MenuItem("Tools/Take a Screenshot")]
+        [MenuItem("Tools/BuildTools/Take a Screenshot")]
         private static void Screenshot()
         {
             var path = EditorUtility.SaveFilePanel("截屏", null, "screenshot_", "png");

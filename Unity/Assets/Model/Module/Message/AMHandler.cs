@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 
-namespace ETModel
+namespace ET
 {
+    [MessageHandler]
     public abstract class AMHandler<Message>: IMHandler where Message : class
     {
-        protected abstract ETTask Run(Session session, Message message);
+        protected abstract ETVoid Run(Session session, Message message);
 
-        public async ETVoid Handle(Session session, object msg)
+        public void Handle(Session session, object msg)
         {
             Message message = msg as Message;
             if (message == null)
@@ -21,19 +22,17 @@ namespace ETModel
                 return;
             }
 
-            try
-            {
-                await this.Run(session, message);
-            }
-            catch (Exception e)
-            {
-                Log.Error(e);
-            }
+            this.Run(session, message).Coroutine();
         }
 
         public Type GetMessageType()
         {
             return typeof (Message);
+        }
+
+        public Type GetResponseType()
+        {
+            return null;
         }
     }
 }

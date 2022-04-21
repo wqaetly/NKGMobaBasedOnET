@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ETModel;
 using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
@@ -17,7 +16,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace ETEditor
+namespace ET
 {
     public class GenerateComponentEditor: OdinEditorWindow
     {

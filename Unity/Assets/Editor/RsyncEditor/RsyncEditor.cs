@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using ETModel;
-using MonKey;
+
 using UnityEditor;
 using UnityEngine;
 
-namespace ETEditor
+namespace ET
 {
 	public class RsyncEditor: EditorWindow
 	{
@@ -13,7 +12,7 @@ namespace ETEditor
 		private RsyncConfig rsyncConfig;
 		private bool isFold = true;
 
-		[Command("ETEditor_RsyncEditor","Rsync同步",Category = "ETEditor")]
+		[MenuItem("Tools/Rsync同步")]
 		private static void ShowWindow()
 		{
 			GetWindow(typeof (RsyncEditor));
@@ -83,8 +82,8 @@ namespace ETEditor
 			{
 				string arguments =
 						$"-vzrtopg --password-file=./Tools/cwRsync/Config/rsync.secrets --exclude-from=./Tools/cwRsync/Config/exclude.txt --delete ./ {this.rsyncConfig.Account}@{this.rsyncConfig.Host}::Upload/{this.rsyncConfig.RelativePath} --chmod=ugo=rwX";
-				ProcessHelper.Run(@"./Tools/cwRsync/rsync.exe", arguments, @"..\", waitExit: true);
-				Log.Info("同步完成!");
+				ProcessHelper.Run(@"./Tools/cwRsync/rsync.exe", arguments, @"..\");
+				Log.Debug("同步完成!");
 			}
 		}
 	}

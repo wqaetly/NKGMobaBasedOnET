@@ -8,9 +8,10 @@
 // Licensed under the MIT/X11 license.
 //
 
-using Mono.Collections.Generic;
+using System.Threading;
+using ILRuntime.Mono.Collections.Generic;
 
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public sealed class EventDefinition : EventReference, IMemberDefinition {
 
@@ -78,10 +79,10 @@ namespace Mono.Cecil {
 
 				InitializeMethods ();
 
-				if (other_methods != null)
-					return other_methods;
+				if (other_methods == null)
+					Interlocked.CompareExchange (ref other_methods, new Collection<MethodDefinition> (), null);
 
-				return other_methods = new Collection<MethodDefinition> ();
+				return other_methods;
 			}
 		}
 

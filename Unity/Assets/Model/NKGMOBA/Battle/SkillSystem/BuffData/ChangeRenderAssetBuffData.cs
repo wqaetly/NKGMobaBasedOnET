@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class ChangeRenderAssetBuffData: BuffDataBase
     {

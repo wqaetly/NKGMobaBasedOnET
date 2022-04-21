@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [LabelText("动画信息映射")]
     public class AnimMapInfo

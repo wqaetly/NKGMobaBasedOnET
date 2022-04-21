@@ -2,12 +2,12 @@
 
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
     #region System
 
     [ObjectSystem]
-    public class MouseTargetSelectorComponentComponentAwakeSystem: AwakeSystem<MouseTargetSelectorComponent>
+    public class MouseTargetSelectorComponentComponentAwakeSystem : AwakeSystem<MouseTargetSelectorComponent>
     {
         public override void Awake(MouseTargetSelectorComponent self)
         {
@@ -16,7 +16,7 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class MouseTargetSelectorComponentComponentUpdateSystem: UpdateSystem<MouseTargetSelectorComponent>
+    public class MouseTargetSelectorComponentComponentUpdateSystem : UpdateSystem<MouseTargetSelectorComponent>
     {
         public override void Update(MouseTargetSelectorComponent self)
         {
@@ -25,7 +25,8 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class MouseTargetSelectorComponentComponentFixedUpdateSystem: FixedUpdateSystem<MouseTargetSelectorComponent>
+    public class
+        MouseTargetSelectorComponentComponentFixedUpdateSystem : FixedUpdateSystem<MouseTargetSelectorComponent>
     {
         public override void FixedUpdate(MouseTargetSelectorComponent self)
         {
@@ -34,7 +35,7 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class MouseTargetSelectorComponentComponentDestroySystem: DestroySystem<MouseTargetSelectorComponent>
+    public class MouseTargetSelectorComponentComponentDestroySystem : DestroySystem<MouseTargetSelectorComponent>
     {
         public override void Destroy(MouseTargetSelectorComponent self)
         {
@@ -47,7 +48,7 @@ namespace ETModel
     /// <summary>
     /// 用于鼠标选择目标的组件，功能类似于UserInputComponent，需要指定目标的其余组件可以从这个组件来获取目标对象
     /// </summary>
-    public class MouseTargetSelectorComponent: Component
+    public class MouseTargetSelectorComponent : Entity
     {
         #region 私有成员
 
@@ -71,7 +72,7 @@ namespace ETModel
         public Vector3 TargetHitPoint;
 
         #endregion
-        
+
         #region 公有成员
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace ETModel
             this.TargetUnit = null;
             this.TargetHitPoint = Vector3.zero;
         }
-        
+
         #endregion
 
         #region 生命周期函数
@@ -98,12 +99,23 @@ namespace ETModel
         public void Update()
         {
             this.ResetTargetInfo();
+
             //此处填写Update逻辑
-            if (Physics.Raycast(m_MainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, 1000, m_TargetLayerInfo))
+            if (Physics.Raycast(
+                m_MainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, 1000,
+                m_TargetLayerInfo))
             {
+                UnitComponent unitComponent = this.DomainScene().GetComponent<RoomManagerComponent>().GetBattleRoom().GetComponent<UnitComponent>();
                 this.TargetHitPoint = hitInfo.point;
                 this.TargetGameObject = hitInfo.transform.gameObject;
-                Unit unit = hitInfo.transform.GetComponent<MonoBridge>().BelongToUnit;
+
+                MonoBridge monoBridge = hitInfo.transform.GetComponent<MonoBridge>();
+                if (monoBridge == null)
+                {
+                    return;
+                }
+                
+                Unit unit = unitComponent.Get(monoBridge.BelongToUnitId);
                 if (unit != null)
                 {
                     this.TargetUnit = unit;

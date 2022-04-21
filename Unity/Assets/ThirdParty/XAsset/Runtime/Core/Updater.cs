@@ -28,6 +28,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -44,38 +45,50 @@ namespace libx
         Completed,
     }
 
-    [RequireComponent(typeof (Downloader))]
-    public class Updater: MonoBehaviour
+    [RequireComponent(typeof(Downloader))]
+    public class Updater : MonoBehaviour
     {
         public Step Step;
 
         public Action ResPreparedCompleted;
 
         public float UpdateProgress;
-
+        
+        [LabelText("本地资源模式")]
         public bool DevelopmentMode;
 
         public bool EnableVFS = true;
 
-        [SerializeField]
-        private string baseURL = "http://127.0.0.1:7888/DLC/";
+        [SerializeField] private string baseURL = "http://127.0.0.1:7888/DLC/";
 
         private Downloader _downloader;
         private string _platform;
         private string _savePath;
         private List<VFile> _versions = new List<VFile>();
 
+        /// <summary>
+        /// 当更新状态发生改变
+        /// </summary>
+        public Action<string> OnStateUpdate;
+
+        /// <summary>
+        /// 当更新进度发生改变
+        /// </summary>
+        public Action<float> OnProgressUpdate;
+
         public void OnMessage(string msg)
         {
+            OnStateUpdate?.Invoke(msg);
             Debug.Log(msg);
         }
 
         public void OnProgress(float progress)
         {
+            OnProgressUpdate?.Invoke(progress);
             UpdateProgress = progress * 100;
         }
 
-        private void Awake()
+        public void Init()
         {
             _downloader = gameObject.GetComponent<Downloader>();
             _downloader.onUpdate = OnUpdate;
@@ -354,7 +367,7 @@ namespace libx
                     var files = new List<VFile>(downloads.Count);
                     foreach (var download in downloads)
                     {
-                        files.Add(new VFile { name = download.name, hash = download.hash, len = download.len, });
+                        files.Add(new VFile {name = download.name, hash = download.hash, len = download.len,});
                     }
 
                     var file = files[0];
@@ -383,7 +396,7 @@ namespace libx
             {
                 init.Release();
                 OnProgress(0);
-                OnMessage("加载游戏场景");
+                OnMessage("XAsset初始化完成");
                 ResPreparedCompleted?.Invoke();
             }
             else

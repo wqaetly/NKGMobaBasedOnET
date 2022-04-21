@@ -80,7 +80,7 @@ namespace NPBehave
         public void Start()
         {
             // Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes, tried to start: " + this.Name + "! PATH: " + GetPath());
-            Debug.Assert(this.currentState == State.INACTIVE, "can only start inactive nodes");
+            Debug.Assert(this.currentState == State.INACTIVE, $"can only start inactive nodes  PATH: {GetPath()}");
             this.currentState = State.ACTIVE;
             DoStart();
         }
@@ -90,8 +90,8 @@ namespace NPBehave
         /// </summary>
         public void CancelWithoutReturnResult()
         {
-            // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
-            Debug.Assert(this.currentState == State.ACTIVE, "can only stop active nodes, tried to stop");
+            //Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
+            Debug.Assert(this.currentState == State.ACTIVE, $"can only stop active nodes, tried to stop  PATH: {GetPath()}");
             this.currentState = State.STOP_REQUESTED;
             DoCancel();
         }
@@ -112,7 +112,7 @@ namespace NPBehave
         {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
             Debug.Assert(this.currentState != State.INACTIVE,
-                "Called 'Stopped' while in state INACTIVE, something is wrong!");
+                $"Called 'Stopped' while in state INACTIVE, something is wrong!  PATH: {GetPath()}");
             this.currentState = State.INACTIVE;
             if (this.ParentNode != null)
             {

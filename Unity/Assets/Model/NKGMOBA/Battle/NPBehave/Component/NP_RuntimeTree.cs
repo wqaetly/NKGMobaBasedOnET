@@ -6,18 +6,9 @@
 
 using NPBehave;
 
-namespace ETModel
+namespace ET
 {
-    [ObjectSystem]
-    public class NP_RuntimeTreeAwakeSystem: AwakeSystem<NP_RuntimeTree, NP_DataSupportor, long>
-    {
-        public override void Awake(NP_RuntimeTree self, NP_DataSupportor m_BelongNP_DataSupportor, long belongToUnitId)
-        {
-            self.Awake(m_BelongNP_DataSupportor, belongToUnitId);
-        }
-    }
-
-    public class NP_RuntimeTree: Entity
+    public class NP_RuntimeTree : Entity
     {
         /// <summary>
         /// NP行为树根结点
@@ -30,16 +21,17 @@ namespace ETModel
         public NP_DataSupportor BelongNP_DataSupportor;
 
         /// <summary>
-        /// 所归属的Unit的Id
+        /// 所归属的Unit
         /// </summary>
-        public long BelongToUnitId;
+        public Unit BelongToUnit;
 
-        public void Awake(NP_DataSupportor m_BelongNP_DataSupportor, long belongToUnitId)
+        public NP_SyncComponent NpSyncComponent;
+
+        public Clock GetClock()
         {
-            BelongToUnitId = belongToUnitId;
-            this.BelongNP_DataSupportor = m_BelongNP_DataSupportor;
+            return NpSyncComponent.SyncContext.GetClock();
         }
-
+        
         /// <summary>
         /// 设置根结点
         /// </summary>
@@ -55,6 +47,14 @@ namespace ETModel
         /// <returns></returns>
         public Blackboard GetBlackboard()
         {
+            if (m_RootNode == null)
+            {
+                Log.Error($"行为树{this.Id}的根节点为空");
+            }
+            if (m_RootNode.blackboard == null)
+            {
+                Log.Error($"行为树{this.Id}的黑板实例为空");
+            }
             return this.m_RootNode.Blackboard;
         }
 
@@ -69,19 +69,12 @@ namespace ETModel
         /// <summary>
         /// 终止行为树
         /// </summary>
-        public void Finish()
+        public async ETVoid Finish()
         {
+            await BelongToUnit.BelongToRoom.GetComponent<LSF_TimerComponent>().WaitFrameAsync();
+
             this.m_RootNode.CancelWithoutReturnResult();
-        }
-
-        public override void Dispose()
-        {
-            if (IsDisposed)
-                return;
-            base.Dispose();
-
-            this.Finish();
-            BelongToUnitId = 0;
+            BelongToUnit = null;
             this.m_RootNode = null;
             this.BelongNP_DataSupportor = null;
         }

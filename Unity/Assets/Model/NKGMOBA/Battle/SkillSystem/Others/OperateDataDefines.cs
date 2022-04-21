@@ -4,7 +4,7 @@
 // Data: 2020年12月13日 12:57:29
 //------------------------------------------------------------
 
-namespace ETModel
+namespace ET
 {
     public abstract class OperateData: IReference
     {

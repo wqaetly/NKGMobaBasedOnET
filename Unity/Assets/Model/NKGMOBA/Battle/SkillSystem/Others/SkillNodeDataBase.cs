@@ -6,8 +6,9 @@
 
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
+    [BsonDeserializerRegister]
     public class BuffNodeDataBase
     {
         [LabelText("节点Id")]

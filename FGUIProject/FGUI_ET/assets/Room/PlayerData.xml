@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="550,50">
+  <controller name="IsMaster" pages="0,false,1,true" selected="1"/>
+  <controller name="HasAdminFunc" pages="0,false,1,true" selected="1"/>
+  <displayList>
+    <text id="n0_bp61" name="RoomPlayerLevel" xy="3,3" size="40,42" fontSize="30" text="30"/>
+    <text id="n1_bp61" name="RoomPlayerName" xy="53,3" size="330,42" fontSize="30" autoSize="none" text="名字">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <loader id="n3_bp61" name="n3" xy="395,3" size="42,42" url="ui://hya28zzrbp617" fill="scale">
+      <gearDisplay2 controller="IsMaster" pages="1" condition="0"/>
+    </loader>
+    <component id="n7_bp61" name="KickButton" src="bp61a" fileName="KickPlayer.xml" xy="505,4" size="40,40">
+      <gearDisplay2 controller="HasAdminFunc" pages="1" condition="0"/>
+    </component>
+    <text id="n8_bp61" name="PlayerId" xy="446,3" size="40,42" visible="false" fontSize="30" text=""/>
+  </displayList>
+</component>

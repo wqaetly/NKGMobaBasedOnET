@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [BoxGroup("黑板条件节点配置"), GUIColor(0.961f, 0.902f, 0.788f, 1f)]
     [HideLabel]
@@ -25,7 +25,7 @@ namespace ETModel
 
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData() { WriteOrCompareToBB = true };
 
-        public override Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
+        public override Decorator CreateDecoratorNode(Unit unit, NP_RuntimeTree runtimeTree, Node node)
         {
             this.m_BlackboardConditionNode = new BlackboardCondition(this.NPBalckBoardRelationData.BBKey,
                 this.Ope,

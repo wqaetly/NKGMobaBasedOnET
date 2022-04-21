@@ -1,7 +1,4 @@
-// Animancer // Copyright 2019 Kybernetik //
-
-#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value.
-#pragma warning disable IDE0018 // Inline variable declaration.
+// Animancer // https://kybernetik.com.au/animancer // Copyright 2020 Kybernetik //
 
 using System;
 using System.Collections.Generic;
@@ -17,14 +14,18 @@ using UnityEditor.Animations;
 
 namespace Animancer
 {
-    /// <summary>[Pro-Only]
-    /// An <see cref="AnimancerState"/> which plays a <see cref="RuntimeAnimatorController"/>.
-    /// You can control this state very similarly to an <see cref="Animator"/> via its <see cref="Playable"/> field.
-    /// </summary>
+    /// <summary>[Pro-Only] An <see cref="AnimancerState"/> which plays a <see cref="RuntimeAnimatorController"/>.</summary>
+    /// <remarks>
+    /// You can control this state very similarly to an <see cref="Animator"/> via its <see cref="Playable"/> property.
+    /// <para></para>
+    /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/animator-controllers">Animator Controllers</see>
+    /// </remarks>
+    /// https://kybernetik.com.au/animancer/api/Animancer/ControllerState
+    /// 
     public class ControllerState : AnimancerState
     {
         /************************************************************************************************************************/
-        #region Fields and Auto-Properties
+        #region Fields and Properties
         /************************************************************************************************************************/
 
         private RuntimeAnimatorController _Controller;
@@ -32,42 +33,103 @@ namespace Animancer
         /// <summary>The <see cref="RuntimeAnimatorController"/> which this state plays.</summary>
         public RuntimeAnimatorController Controller
         {
-            get { return _Controller; }
-            set
-            {
-                if (ReferenceEquals(_Controller, value))
-                    return;
-
-                if (ReferenceEquals(_Key, value))
-                    Key = value;
-
-                if (_Playable.IsValid())
-                    Root._Graph.DestroyPlayable(_Playable);
-
-                CreatePlayable(value);
-            }
+            get => _Controller;
+            set => ChangeMainObject(ref _Controller, value);
         }
 
         /// <summary>The <see cref="RuntimeAnimatorController"/> which this state plays.</summary>
         public override Object MainObject
         {
-            get { return Controller; }
-            set { Controller = (RuntimeAnimatorController)value; }
+            get => Controller;
+            set => Controller = (RuntimeAnimatorController)value;
         }
 
         /// <summary>The internal system which plays the <see cref="RuntimeAnimatorController"/>.</summary>
-        public AnimatorControllerPlayable Playable { get; private set; }
+        public AnimatorControllerPlayable Playable
+        {
+            get
+            {
+                Validate.AssertPlayable(this);
+                return _Playable;
+            }
+        }
+
+        private new AnimatorControllerPlayable _Playable;
 
         /************************************************************************************************************************/
 
-#pragma warning disable CS0809 // Obsolete member overrides non-obsolete member.
+        private bool _KeepStateOnStop;
+
         /// <summary>
-        /// <see cref="ControllerState"/>s don't track the progress of a single animation so this event isn't
-        /// used and will be ignored.
+        /// If false, <see cref="Stop"/> will reset all layers to their default state. Default False.
+        /// <para></para>
+        /// The <see cref="DefaultStateHashes"/> will only be gathered the first time this property is set to false or
+        /// <see cref="GatherDefaultStates"/> is called manually.
         /// </summary>
-        [Obsolete("ControllerStates don't track the progress of a single animation so this event isn't used and will be ignored.")]
-        public override Action OnEnd { get { return null; } set { } }
-#pragma warning restore CS0809 // Obsolete member overrides non-obsolete member.
+        public bool KeepStateOnStop
+        {
+            get => _KeepStateOnStop;
+            set
+            {
+                _KeepStateOnStop = value;
+                if (!value && DefaultStateHashes == null && _Playable.IsValid())
+                    GatherDefaultStates();
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="AnimatorStateInfo.shortNameHash"/> of the default state on each layer, used to reset to
+        /// those states when <see cref="Stop"/> is called if <see cref="KeepStateOnStop"/> is true.
+        /// </summary>
+        public int[] DefaultStateHashes { get; set; }
+
+        /************************************************************************************************************************/
+
+#if UNITY_ASSERTIONS
+        /// <summary>[Assert-Only] Animancer Events do not work properly on <see cref="ControllerState"/>s.</summary>
+        protected override string UnsupportedEventsMessage =>
+            "Animancer Events on " + nameof(ControllerState) + "s will probably not work as expected." +
+            " The events will be associated with the entire Animator Controller and be triggered by any of the" +
+            " states inside it. If you want to use events in an Animator Controller you will likely need to use" +
+            " Unity's regular Animation Event system.";
+#endif
+
+        /************************************************************************************************************************/
+
+        /// <summary>IK cannot be dynamically enabled on a <see cref="ControllerState"/>.</summary>
+        public override void CopyIKFlags(AnimancerNode node) { }
+
+        /************************************************************************************************************************/
+
+        /// <summary>IK cannot be dynamically enabled on a <see cref="ControllerState"/>.</summary>
+        public override bool ApplyAnimatorIK
+        {
+            get => false;
+            set
+            {
+#if UNITY_ASSERTIONS
+                if (value)
+                    OptionalWarning.UnsupportedIK.Log($"IK cannot be dynamically enabled on a {nameof(ControllerState)}." +
+                        " You must instead enable it on the desired layer inside the Animator Controller.", _Controller);
+#endif
+            }
+        }
+
+        /************************************************************************************************************************/
+
+        /// <summary>IK cannot be dynamically enabled on a <see cref="ControllerState"/>.</summary>
+        public override bool ApplyFootIK
+        {
+            get => false;
+            set
+            {
+#if UNITY_ASSERTIONS
+                if (value)
+                    OptionalWarning.UnsupportedIK.Log($"IK cannot be dynamically enabled on a {nameof(ControllerState)}." +
+                        " You must instead enable it on the desired state inside the Animator Controller.", _Controller);
+#endif
+            }
+        }
 
         /************************************************************************************************************************/
         #endregion
@@ -75,247 +137,240 @@ namespace Animancer
         #region Public API
         /************************************************************************************************************************/
 
-        /// <summary>
-        /// Constructs a new <see cref="ControllerState"/> to play the 'animatorController' without connecting
-        /// it to the <see cref="PlayableGraph"/>. You must call <see cref="AnimancerState.SetParent"/> or it won't
-        /// actually do anything.
-        /// </summary>
-        protected ControllerState(AnimancerPlayable root, RuntimeAnimatorController animatorController)
-            : base(root)
+        /// <summary>Creates a new <see cref="ControllerState"/> to play the `controller`.</summary>
+        public ControllerState(RuntimeAnimatorController controller, bool keepStateOnStop = false)
         {
+            if (controller == null)
+                throw new ArgumentNullException(nameof(controller));
 
-            CreatePlayable(animatorController);
-        }
-
-        /// <summary>
-        /// Constructs a new <see cref="ControllerState"/> to play the 'animatorController' and connects it to
-        /// the 'layer's <see cref="IAnimationMixer.Playable"/> using a spare port if there are any from previously
-        /// destroyed states, or by adding a new port.
-        /// </summary>
-        public ControllerState(AnimancerLayer layer, RuntimeAnimatorController animatorController)
-            : this(layer.Root, animatorController)
-        {
-            layer.AddChild(this);
-        }
-
-        /// <summary>
-        /// Constructs a new <see cref="ControllerState"/> to play the 'animatorController' and connects it to
-        /// the 'parent's <see cref="IAnimationMixer.Playable"/> at the specified 'portIndex'.
-        /// </summary>
-        public ControllerState(AnimancerNode parent, int portIndex, RuntimeAnimatorController animatorController)
-            : this(parent.Root, animatorController)
-        {
-            SetParent(parent, portIndex);
+            _Controller = controller;
+            _KeepStateOnStop = keepStateOnStop;
         }
 
         /************************************************************************************************************************/
 
-        private void CreatePlayable(RuntimeAnimatorController animatorController)
+        /// <summary>Creates and assigns the <see cref="AnimatorControllerPlayable"/> managed by this state.</summary>
+        protected override void CreatePlayable(out Playable playable)
         {
-            if (animatorController == null)
-                throw new ArgumentNullException("animatorController");
+            playable = _Playable = AnimatorControllerPlayable.Create(Root._Graph, _Controller);
 
-            _Controller = animatorController;
-            Playable = AnimatorControllerPlayable.Create(Root._Graph, animatorController);
-            _Playable = Playable;
+            if (!_KeepStateOnStop)
+                GatherDefaultStates();
         }
 
         /************************************************************************************************************************/
 
-        /// <summary>Checks if any clip in the <see cref="Controller"/> has an animation event with the specified 'functionName'.</summary>
-        public override bool HasEvent(string functionName)
+        /// <summary>
+        /// Stores the values of all parameters, calls <see cref="AnimancerNode.DestroyPlayable"/>, then restores the
+        /// parameter values.
+        /// </summary>
+        public override void RecreatePlayable()
         {
-            var clips = _Controller.animationClips;
-            var count = clips.Length;
-            for (int i = 0; i < count; i++)
+            if (!_Playable.IsValid())
             {
-                if (ClipState.HasEvent(clips[i], functionName))
-                    return true;
+                CreatePlayable();
+                return;
             }
-            return false;
+
+            var parameterCount = _Playable.GetParameterCount();
+            var values = new object[parameterCount];
+            for (int i = 0; i < parameterCount; i++)
+            {
+                values[i] = AnimancerUtilities.GetParameterValue(_Playable, _Playable.GetParameter(i));
+            }
+
+            base.RecreatePlayable();
+
+            for (int i = 0; i < parameterCount; i++)
+            {
+                AnimancerUtilities.SetParameterValue(_Playable, _Playable.GetParameter(i), values[i]);
+            }
         }
 
         /************************************************************************************************************************/
 
         /// <summary>
-        /// The current <see cref="AnimatorStateInfo.length"/>.
+        /// The current state on layer 0, or the next state if it is currently in a transition.
         /// </summary>
-        public override float Length { get { return Playable.GetCurrentAnimatorStateInfo(0).length; } }
-
-        /// <summary>
-        /// Indicates whether this state will return a valid <see cref="Length"/> value.
-        /// </summary>
-        public override bool HasLength { get { return Playable.IsValid(); } }
-
-        /// <summary>
-        /// Indicates whether the current state will loop back to the start when it reaches the end.
-        /// </summary>
-        public override bool IsLooping { get { return Playable.GetCurrentAnimatorStateInfo(0).loop; } }
-
-        /************************************************************************************************************************/
-
-        /// <summary>[Unsupported]
-        /// Returns <see cref="Vector3.zero"/> since <see cref="AnimatorControllerPlayable"/> doesn't expose the
-        /// average velocity.
-        /// </summary>
-        public override Vector3 AverageVelocity
+        public AnimatorStateInfo StateInfo
         {
-            get { return Vector3.zero; }
+            get
+            {
+                Validate.AssertPlayable(this);
+                return _Playable.IsInTransition(0) ?
+                    _Playable.GetNextAnimatorStateInfo(0) :
+                    _Playable.GetCurrentAnimatorStateInfo(0);
+            }
         }
 
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Returns a string describing the type of this state and the name of the <see cref="Controller"/>.
+        /// The <see cref="AnimatorStateInfo.normalizedTime"/> * <see cref="AnimatorStateInfo.length"/> of the
+        /// <see cref="StateInfo"/>.
         /// </summary>
-        public override string ToString()
+        protected override float RawTime
+        {
+            get
+            {
+                var info = StateInfo;
+                return info.normalizedTime * info.length;
+            }
+            set
+            {
+                Validate.AssertPlayable(this);
+                _Playable.PlayInFixedTime(0, 0, value);
+            }
+        }
+
+        /************************************************************************************************************************/
+
+        /// <summary>The current <see cref="AnimatorStateInfo.length"/> (on layer 0).</summary>
+        public override float Length => StateInfo.length;
+
+        /************************************************************************************************************************/
+
+        /// <summary>Indicates whether the current state on layer 0 will loop back to the start when it reaches the end.</summary>
+        public override bool IsLooping => StateInfo.loop;
+
+        /************************************************************************************************************************/
+
+        /// <summary>Gathers the <see cref="DefaultStateHashes"/> from the current states.</summary>
+        public void GatherDefaultStates()
+        {
+            Validate.AssertPlayable(this);
+            var layerCount = _Playable.GetLayerCount();
+            if (DefaultStateHashes == null || DefaultStateHashes.Length != layerCount)
+                DefaultStateHashes = new int[layerCount];
+
+            while (--layerCount >= 0)
+                DefaultStateHashes[layerCount] = _Playable.GetCurrentAnimatorStateInfo(layerCount).shortNameHash;
+        }
+
+        /// <summary>
+        /// Calls the base <see cref="AnimancerState.Stop"/> and if <see cref="KeepStateOnStop"/> is false it also
+        /// calls <see cref="ResetToDefaultStates"/>.
+        /// </summary>
+        public override void Stop()
+        {
+            if (_KeepStateOnStop)
+            {
+                base.Stop();
+            }
+            else
+            {
+                ResetToDefaultStates();
+
+                // Don't call base.Stop(); because it sets Time = 0; which uses PlayInFixedTime and interferes with
+                // resetting to the default states.
+                Weight = 0;
+                IsPlaying = false;
+                Events = null;
+            }
+        }
+
+        /// <summary>
+        /// Resets all layers to their default state.
+        /// </summary>
+        /// <exception cref="NullReferenceException"><see cref="DefaultStateHashes"/> is null.</exception>
+        /// <exception cref="IndexOutOfRangeException">
+        /// The size of <see cref="DefaultStateHashes"/> is larger than the number of layers in the
+        /// <see cref="Controller"/>.
+        /// </exception>
+        public void ResetToDefaultStates()
+        {
+            Validate.AssertPlayable(this);
+            for (int i = DefaultStateHashes.Length - 1; i >= 0; i--)
+                _Playable.Play(DefaultStateHashes[i], i, 0);
+
+            // Allowing the RawTime to be applied prevents the default state from being played because Animator
+            // Controllers do not properly respond to multiple Play calls in the same frame.
+            CancelSetTime();
+        }
+
+        /************************************************************************************************************************/
+
+        /// <inheritdoc/>
+        public override void GatherAnimationClips(ICollection<AnimationClip> clips)
         {
             if (_Controller != null)
-                return string.Concat(base.ToString(), " (", _Controller.name, ")");
-            else
-                return base.ToString() + " (null)";
+                clips.Gather(_Controller.animationClips);
         }
 
         /************************************************************************************************************************/
 
-        /// <summary>[<see cref="IAnimationClipSource"/>]
-        /// Gathers all the animations associated with this state.
-        /// </summary>
-        public override void GetAnimationClips(List<AnimationClip> clips)
-        {
-            clips.AddRange(_Controller.animationClips);
-        }
-
-        /************************************************************************************************************************/
-
-        /// <summary>Destroys the <see cref="Playable"/>.</summary>
-        public override void Dispose()
+        /// <inheritdoc/>
+        public override void Destroy()
         {
             _Controller = null;
-            base.Dispose();
-        }
-
-        /************************************************************************************************************************/
-        #region Inverse Kinematics
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Does nothing and returns false since <see cref="AnimatorControllerPlayable"/> doesn't expose this function.
-        /// </summary>
-        public override bool ApplyFootIK
-        {
-            get { return false; }
-            set { }
-        }
-
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Does nothing and returns false since <see cref="AnimatorControllerPlayable"/> doesn't expose this function.
-        /// </summary>
-        public override bool ApplyAnimatorIK
-        {
-            get { return false; }
-            set { }
+            base.Destroy();
         }
 
         /************************************************************************************************************************/
         #endregion
         /************************************************************************************************************************/
-        #endregion
-        /************************************************************************************************************************/
-        #region Parameters
+        #region Parameter IDs
         /************************************************************************************************************************/
 
-        /// <summary>
-        /// A wrapper for the name and hash of an <see cref="AnimatorControllerParameter"/> to allow easy access.
-        /// </summary>
-        public struct Parameter
+        /// <summary>A wrapper for the name and hash of an <see cref="AnimatorControllerParameter"/>.</summary>
+        public readonly struct ParameterID
         {
             /************************************************************************************************************************/
 
-            private string _Name;
-            private int _Hash;
+            /// <summary>The name of this parameter.</summary>
+            public readonly string Name;
+
+            /// <summary>The name hash of this parameter.</summary>
+            public readonly int Hash;
 
             /************************************************************************************************************************/
 
             /// <summary>
-            /// The name of the wrapped parameter. This will be null if the <see cref="Hash"/> was assigned directly.
-            /// </summary>
-            public string Name
-            {
-                get { return _Name; }
-                set
-                {
-                    _Name = value;
-                    _Hash = Animator.StringToHash(value);
-                }
-            }
-
-            /************************************************************************************************************************/
-
-            /// <summary>
-            /// The name hash of the wrapped parameter.
-            /// </summary>
-            public int Hash
-            {
-                get { return _Hash; }
-                set
-                {
-                    _Name = null;
-                    _Hash = value;
-                }
-            }
-
-            /************************************************************************************************************************/
-
-            /// <summary>
-            /// Constructs a new <see cref="Parameter"/> with the specified <see cref="Name"/> and uses
+            /// Creates a new <see cref="ParameterID"/> with the specified <see cref="Name"/> and uses
             /// <see cref="Animator.StringToHash"/> to calculate the <see cref="Hash"/>.
             /// </summary>
-            public Parameter(string name)
+            public ParameterID(string name)
             {
-                _Name = name;
-                _Hash = Animator.StringToHash(name);
+                Name = name;
+                Hash = Animator.StringToHash(name);
             }
 
             /// <summary>
-            /// Constructs a new <see cref="Parameter"/> with the specified <see cref="Hash"/> and leaves the
+            /// Creates a new <see cref="ParameterID"/> with the specified <see cref="Hash"/> and leaves the
             /// <see cref="Name"/> null.
             /// </summary>
-            public Parameter(int hash)
+            public ParameterID(int hash)
             {
-                _Name = null;
-                _Hash = hash;
+                Name = null;
+                Hash = hash;
+            }
+
+            /// <summary>Creates a new <see cref="ParameterID"/> with the specified <see cref="Name"/> and <see cref="Hash"/>.</summary>
+            /// <remarks>This constructor does not verify that the `hash` actually corresponds to the `name`.</remarks>
+            public ParameterID(string name, int hash)
+            {
+                Name = name;
+                Hash = hash;
             }
 
             /************************************************************************************************************************/
 
             /// <summary>
-            /// Constructs a new <see cref="Parameter"/> with the specified <see cref="Name"/> and uses
+            /// Creates a new <see cref="ParameterID"/> with the specified <see cref="Name"/> and uses
             /// <see cref="Animator.StringToHash"/> to calculate the <see cref="Hash"/>.
             /// </summary>
-            public static implicit operator Parameter(string name)
-            {
-                return new Parameter(name);
-            }
+            public static implicit operator ParameterID(string name) => new ParameterID(name);
 
             /// <summary>
-            /// Constructs a new <see cref="Parameter"/> with the specified <see cref="Hash"/> and leaves the
+            /// Creates a new <see cref="ParameterID"/> with the specified <see cref="Hash"/> and leaves the
             /// <see cref="Name"/> null.
             /// </summary>
-            public static implicit operator Parameter(int hash)
-            {
-                return new Parameter(hash);
-            }
+            public static implicit operator ParameterID(int hash) => new ParameterID(hash);
 
             /************************************************************************************************************************/
 
             /// <summary>Returns the <see cref="Hash"/>.</summary>
-            public static implicit operator int(Parameter parameter)
-            {
-                return parameter._Hash;
-            }
+            public static implicit operator int(ParameterID parameter) => parameter.Hash;
 
             /************************************************************************************************************************/
 
@@ -325,25 +380,22 @@ namespace Animancer
 #endif
 
             /// <summary>[Editor-Conditional]
-            /// Throws an <see cref="ArgumentException"/> if the <see cref="Controller"/> doesn't have a parameter
-            /// with the specified 'nameHash' and 'type'.
+            /// Throws if the `controller` doesn't have a parameter with the specified <see cref="Hash"/>
+            /// and `type`.
             /// </summary>
             /// <exception cref="ArgumentException"/>
-            [System.Diagnostics.Conditional("UNITY_EDITOR")]
-            public void Validate(RuntimeAnimatorController controller, AnimatorControllerParameterType type)
+            [System.Diagnostics.Conditional(Strings.UnityEditor)]
+            public void ValidateHasParameter(RuntimeAnimatorController controller, AnimatorControllerParameterType type)
             {
 #if UNITY_EDITOR
-                if (_ControllerToParameterHashAndType == null)
-                    _ControllerToParameterHashAndType = new Dictionary<RuntimeAnimatorController, Dictionary<int, AnimatorControllerParameterType>>();
+                Editor.AnimancerEditorUtilities.InitialiseCleanDictionary(ref _ControllerToParameterHashAndType);
 
                 // Get the parameter details.
-                Dictionary<int, AnimatorControllerParameterType> parameterDetails;
-                if (!_ControllerToParameterHashAndType.TryGetValue(controller, out parameterDetails))
+                if (!_ControllerToParameterHashAndType.TryGetValue(controller, out var parameterDetails))
                 {
                     parameterDetails = new Dictionary<int, AnimatorControllerParameterType>();
 
-                    var animatorController = controller as AnimatorController;
-                    var parameters = animatorController.parameters;
+                    var parameters = ((AnimatorController)controller).parameters;
                     var count = parameters.Length;
                     for (int i = 0; i < count; i++)
                     {
@@ -356,15 +408,14 @@ namespace Animancer
 
                 // Check that there is a parameter with the correct hash and type.
 
-                AnimatorControllerParameterType parameterType;
-                if (!parameterDetails.TryGetValue(_Hash, out parameterType))
+                if (!parameterDetails.TryGetValue(Hash, out var parameterType))
                 {
-                    throw new ArgumentException(controller + " has no " + type + " parameter matching " + this);
+                    throw new ArgumentException($"{controller} has no {type} parameter matching {this}");
                 }
 
                 if (type != parameterType)
                 {
-                    throw new ArgumentException(controller + " has a parameter matching " + this + ", but it is not a " + type);
+                    throw new ArgumentException($"{controller} has a parameter matching {this}, but it is not a {type}");
                 }
 #endif
             }
@@ -374,12 +425,9 @@ namespace Animancer
             /// <summary>Returns a string containing the <see cref="Name"/> and <see cref="Hash"/>.</summary>
             public override string ToString()
             {
-                return string.Concat(
-                    "ControllerState.Parameter(Name:'",
-                    _Name,
-                    "', Hash:",
-                    _Hash.ToString(),
-                    ")");
+                return $"{nameof(ControllerState)}.{nameof(ParameterID)}" +
+                    $"({nameof(Name)}: '{Name}'" +
+                    $", {nameof(Hash)}: {Hash})";
             }
 
             /************************************************************************************************************************/
@@ -392,77 +440,74 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>The number of parameters being wrapped by this state.</summary>
-        public virtual int ParameterCount { get { return 0; } }
+        public virtual int ParameterCount => 0;
 
         /// <summary>Returns the hash of a parameter being wrapped by this state.</summary>
-        /// <exception cref="NotSupportedException">Thrown if this state doesn't wrap any parameters.</exception>
-        public virtual int GetParameterHash(int index) { throw new NotSupportedException(); }
+        /// <exception cref="NotSupportedException">This state doesn't wrap any parameters.</exception>
+        public virtual int GetParameterHash(int index) => throw new NotSupportedException();
 
         /************************************************************************************************************************/
 #if UNITY_EDITOR
         /************************************************************************************************************************/
 
-        /// <summary>[Editor-Only] Returns an <see cref="Drawer"/> for this state.</summary>
-        protected internal override Editor.IAnimancerStateDrawer GetDrawer()
-        {
-            return new Drawer(this);
-        }
+        /// <summary>[Editor-Only] Returns a <see cref="Drawer"/> for this state.</summary>
+        protected internal override Editor.IAnimancerNodeDrawer CreateDrawer() => new Drawer(this);
 
         /************************************************************************************************************************/
 
-        /// <summary>[Editor-Only] Draws the inspector GUI for an <see cref="ControllerState"/>.</summary>
+        /// <summary>[Editor-Only] Draws the Inspector GUI for an <see cref="ControllerState"/>.</summary>
+        /// <remarks>
+        /// Unfortunately the tool used to generate this documentation does not currently support nested types with
+        /// identical names, so only one <c>Drawer</c> class will actually have a documentation page.
+        /// <para></para>
+        /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/transitions">Transitions</see>
+        /// </remarks>
         public sealed class Drawer : Editor.ParametizedAnimancerStateDrawer<ControllerState>
         {
             /************************************************************************************************************************/
 
-            /// <summary>
-            /// Constructs a new <see cref="Drawer"/> to manage the inspector GUI for the 'state'.
-            /// </summary>
+            /// <summary>Creates a new <see cref="Drawer"/> to manage the Inspector GUI for the `state`.</summary>
             public Drawer(ControllerState state) : base(state) { }
 
             /************************************************************************************************************************/
 
-            /// <summary> Draws the details of the target state in the GUI.</summary>
-            protected override void DoDetailsGUI(IAnimancerComponent owner)
+            /// <inheritdoc/>
+            protected override void DoDetailsGUI()
             {
-                GatherParameters(owner.Animator);
-                base.DoDetailsGUI(owner);
+                GatherParameters();
+                base.DoDetailsGUI();
             }
 
             /************************************************************************************************************************/
 
-            private Animator _CurrentAnimator;
-
             private readonly List<AnimatorControllerParameter>
                 Parameters = new List<AnimatorControllerParameter>();
 
-            private void GatherParameters(Animator animator)
+            /// <summary>Fills the <see cref="Parameters"/> list with the current parameter details.</summary>
+            private void GatherParameters()
             {
-                _CurrentAnimator = animator;
                 Parameters.Clear();
 
-                if (animator == null)
-                    return;
-
-                var count = State.ParameterCount;
+                var count = Target.ParameterCount;
                 if (count == 0)
                     return;
 
                 for (int i = 0; i < count; i++)
                 {
-                    var hash = State.GetParameterHash(i);
-                    Parameters.Add(GetParameter(animator, hash));
+                    var hash = Target.GetParameterHash(i);
+                    Parameters.Add(GetParameter(hash));
                 }
             }
 
             /************************************************************************************************************************/
 
-            private AnimatorControllerParameter GetParameter(Animator animator, int hash)
+            private AnimatorControllerParameter GetParameter(int hash)
             {
-                var parameters = animator.parameters;
-                for (int i = 0; i < parameters.Length; i++)
+                Validate.AssertPlayable(Target);
+                var parameterCount = Target._Playable.GetParameterCount();
+                for (int i = 0; i < parameterCount; i++)
                 {
-                    var parameter = parameters[i];
+                    var parameter = Target._Playable.GetParameter(i);
                     if (parameter.nameHash == hash)
                         return parameter;
                 }
@@ -472,29 +517,27 @@ namespace Animancer
 
             /************************************************************************************************************************/
 
-            /// <summary>The number of parameters being managed by the target state.</summary>
-            public override int ParameterCount { get { return Parameters.Count; } }
+            /// <inheritdoc/>
+            public override int ParameterCount => Parameters.Count;
 
-            /// <summary>Returns the name of a parameter being managed by the target state.</summary>
-            /// <exception cref="NotSupportedException">Thrown if the target state doesn't manage any parameters.</exception>
-            public override string GetParameterName(int index) { return Parameters[index].name; }
+            /// <inheritdoc/>
+            public override string GetParameterName(int index) => Parameters[index].name;
 
-            /// <summary>Returns the type of a parameter being managed by the target state.</summary>
-            /// <exception cref="NotSupportedException">Thrown if the target state doesn't manage any parameters.</exception>
-            public override AnimatorControllerParameterType GetParameterType(int index) { return Parameters[index].type; }
+            /// <inheritdoc/>
+            public override AnimatorControllerParameterType GetParameterType(int index) => Parameters[index].type;
 
-            /// <summary>Returns the value of a parameter being managed by the target state.</summary>
-            /// <exception cref="NotSupportedException">Thrown if the target state doesn't manage any parameters.</exception>
+            /// <inheritdoc/>
             public override object GetParameterValue(int index)
             {
-                return Editor.AnimancerEditorUtilities.GetParameterValue(_CurrentAnimator, Parameters[index]);
+                Validate.AssertPlayable(Target);
+                return AnimancerUtilities.GetParameterValue(Target._Playable, Parameters[index]);
             }
 
-            /// <summary>Sets the value of a parameter being managed by the target state.</summary>
-            /// <exception cref="NotSupportedException">Thrown if the target state doesn't manage any parameters.</exception>
+            /// <inheritdoc/>
             public override void SetParameterValue(int index, object value)
             {
-                Editor.AnimancerEditorUtilities.SetParameterValue(_CurrentAnimator, Parameters[index], value);
+                Validate.AssertPlayable(Target);
+                AnimancerUtilities.SetParameterValue(Target._Playable, Parameters[index], value);
             }
 
             /************************************************************************************************************************/
@@ -505,19 +548,26 @@ namespace Animancer
         /************************************************************************************************************************/
         #endregion
         /************************************************************************************************************************/
-        #region Serializable
+        #region Transition
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Base class for serializable objects which can create a particular type of <see cref="ControllerState"/>
-        /// when passed into <see cref="AnimancerPlayable.Transition"/>.
+        /// Base class for serializable <see cref="ITransition"/>s which can create a particular type of
+        /// <see cref="ControllerState"/> when passed into <see cref="AnimancerPlayable.Play(ITransition)"/>.
         /// </summary>
         /// <remarks>
+        /// Unfortunately the tool used to generate this documentation does not currently support nested types with
+        /// identical names, so only one <c>Transition</c> class will actually have a documentation page.
+        /// <para></para>
         /// Even though it has the <see cref="SerializableAttribute"/>, this class won't actually get serialized
         /// by Unity because it's generic and abstract. Each child class still needs to include the attribute.
+        /// <para></para>
+        /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/transitions">Transitions</see>
         /// </remarks>
+        /// https://kybernetik.com.au/animancer/api/Animancer/Transition_1
+        /// 
         [Serializable]
-        public abstract new class Serializable<TState> : AnimancerState.Serializable<TState>
+        public abstract new class Transition<TState> : AnimancerState.Transition<TState>, IAnimationClipCollection
             where TState : ControllerState
         {
             /************************************************************************************************************************/
@@ -525,22 +575,118 @@ namespace Animancer
             [SerializeField]
             private RuntimeAnimatorController _Controller;
 
-            /// <summary>
+            /// <summary>[<see cref="SerializeField"/>]
             /// The <see cref="ControllerState.Controller"/> that will be used for the created state.
             /// </summary>
-            public RuntimeAnimatorController Controller
+            public ref RuntimeAnimatorController Controller => ref _Controller;
+
+            /// <inheritdoc/>
+            public override Object MainObject => _Controller;
+
+            /************************************************************************************************************************/
+
+            [SerializeField, Tooltip(Strings.ProOnlyTag + "If enabled, the animation's time will start at this value when played")]
+            private float _NormalizedStartTime = float.NaN;
+
+            /// <summary>[<see cref="SerializeField"/>]
+            /// Determines what <see cref="AnimancerState.NormalizedTime"/> to start the animation at.
+            /// <para></para>
+            /// The default value is <see cref="float.NaN"/> which indicates that this value is not used so the
+            /// animation will continue from its current time.
+            /// </summary>
+            public override float NormalizedStartTime
             {
-                get { return _Controller; }
-                set { _Controller = value; }
+                get => _NormalizedStartTime;
+                set => _NormalizedStartTime = value;
             }
 
             /************************************************************************************************************************/
 
-            /// <summary>
-            /// The <see cref="Controller"/> will be used as the <see cref="AnimancerState.Key"/> for the created state to be
-            /// registered with.
+            [SerializeField, Tooltip("If false, stopping this state will reset all its layers to their default state. Default False.")]
+            private bool _KeepStateOnStop;
+
+            /// <summary>[<see cref="SerializeField"/>]
+            /// If false, <see cref="Stop"/> will reset all layers to their default state.
+            /// <para></para>
+            /// If you set this value to false after the <see cref="Playable"/> is created, you must assign the
+            /// <see cref="DefaultStateHashes"/> or call <see cref="GatherDefaultStates"/> yourself.
             /// </summary>
-            public override object Key { get { return _Controller; } }
+            public ref bool KeepStateOnStop => ref _KeepStateOnStop;
+
+            /************************************************************************************************************************/
+
+            /// <inheritdoc/>
+            public override float MaximumDuration
+            {
+                get
+                {
+                    if (_Controller == null)
+                        return 0;
+
+                    var duration = 0f;
+
+                    var clips = _Controller.animationClips;
+                    for (int i = 0; i < clips.Length; i++)
+                    {
+                        var length = clips[i].length;
+                        if (duration < length)
+                            duration = length;
+                    }
+
+                    return duration;
+                }
+            }
+
+            /************************************************************************************************************************/
+
+            /// <inheritdoc/>
+            public override bool IsValid => _Controller != null;
+
+            /************************************************************************************************************************/
+
+            /// <summary>Returns the <see cref="Controller"/>.</summary>
+            public static implicit operator RuntimeAnimatorController(Transition<TState> transition)
+                => transition != null ? transition._Controller : null;
+
+            /************************************************************************************************************************/
+
+            /// <inheritdoc/>
+            public override void Apply(AnimancerState state)
+            {
+                base.Apply(state);
+
+                var controllerState = State;
+                if (controllerState != null)
+                {
+                    controllerState.KeepStateOnStop = _KeepStateOnStop;
+
+                    if (!float.IsNaN(_NormalizedStartTime))
+                    {
+                        if (!_KeepStateOnStop)
+                        {
+                            controllerState._Playable.Play(controllerState.DefaultStateHashes[0], 0, _NormalizedStartTime);
+                        }
+                        else
+                        {
+                            state.NormalizedTime = _NormalizedStartTime;
+                        }
+                    }
+                }
+                else
+                {
+                    if (!float.IsNaN(_NormalizedStartTime))
+                        state.NormalizedTime = _NormalizedStartTime;
+                }
+            }
+
+            /************************************************************************************************************************/
+
+            /// <summary>Adds all clips in the <see cref="Controller"/> to the collection.</summary>
+            void IAnimationClipCollection.GatherAnimationClips(ICollection<AnimationClip> clips)
+            {
+                if (_Controller != null)
+                    clips.Gather(_Controller.animationClips);
+            }
 
             /************************************************************************************************************************/
         }
@@ -548,23 +694,46 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>
-        /// A serializable object which can create a <see cref="ControllerState"/> when passed into
-        /// <see cref="AnimancerPlayable.Transition"/>.
+        /// A serializable <see cref="ITransition"/> which can create a <see cref="ControllerState"/> when
+        /// passed into <see cref="AnimancerPlayable.Play(ITransition)"/>.
         /// </summary>
+        /// <remarks>
+        /// This class can be implicitly cast to and from <see cref="RuntimeAnimatorController"/>.
+        /// <para></para>
+        /// Unfortunately the tool used to generate this documentation does not currently support nested types with
+        /// identical names, so only one <c>Transition</c> class will actually have a documentation page.
+        /// <para></para>
+        /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/transitions">Transitions</see>
+        /// </remarks>
+        /// https://kybernetik.com.au/animancer/api/Animancer/Transition
+        /// 
         [Serializable]
-        public class Serializable : Serializable<ControllerState>
+        public class Transition : Transition<ControllerState>
         {
             /************************************************************************************************************************/
 
-            /// <summary>
-            /// Creates and returns a new <see cref="ControllerState"/> connected to the 'layer'.
+            /// <summary>Creates and returns a new <see cref="ControllerState"/>.</summary>
+            /// <remarks>
+            /// Note that using methods like <see cref="AnimancerPlayable.Play(ITransition)"/> will also call
+            /// <see cref="ITransition.Apply"/>, so if you call this method manually you may want to call that method
+            /// as well. Or you can just use <see cref="AnimancerUtilities.CreateStateAndApply"/>.
             /// <para></para>
-            /// This method also assigns it as the <see cref="AnimancerState.Serializable{TState}.State"/>.
-            /// </summary>
-            public override ControllerState CreateState(AnimancerLayer layer)
-            {
-                return State = new ControllerState(layer, Controller);
-            }
+            /// This method also assigns it as the <see cref="AnimancerState.Transition{TState}.State"/>.
+            /// </remarks>
+            public override ControllerState CreateState() => State = new ControllerState(Controller, KeepStateOnStop);
+
+            /************************************************************************************************************************/
+
+            /// <summary>Creates a new <see cref="Transition"/>.</summary>
+            public Transition() { }
+
+            /// <summary>Creates a new <see cref="Transition"/> with the specified Animator Controller.</summary>
+            public Transition(RuntimeAnimatorController controller) => Controller = controller;
+
+            /************************************************************************************************************************/
+
+            /// <summary>Creates a new <see cref="Transition"/> with the specified Animator Controller.</summary>
+            public static implicit operator Transition(RuntimeAnimatorController controller) => new Transition(controller);
 
             /************************************************************************************************************************/
             #region Drawer
@@ -572,12 +741,19 @@ namespace Animancer
             /************************************************************************************************************************/
 
             /// <summary>
-            /// [Editor-Only] Draws the inspector GUI for a <see cref="Serializable{TState}"/> or
-            /// <see cref="Serializable"/>.
+            /// [Editor-Only] Draws the Inspector GUI for a <see cref="Transition{TState}"/> or
+            /// <see cref="Transition"/>.
             /// </summary>
-            [CustomPropertyDrawer(typeof(Serializable<>), true)]
-            [CustomPropertyDrawer(typeof(Serializable), true)]
-            public class Drawer : Editor.AnimancerStateSerializableDrawer
+            /// 
+            /// <remarks>
+            /// Unfortunately the tool used to generate this documentation does not currently support nested types with
+            /// identical names, so only one <c>Drawer</c> class will actually have a documentation page.
+            /// <para></para>
+            /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/transitions">Transitions</see>
+            /// </remarks>
+            [CustomPropertyDrawer(typeof(Transition<>), true)]
+            [CustomPropertyDrawer(typeof(Transition), true)]
+            public class Drawer : Editor.TransitionDrawer
             {
                 /************************************************************************************************************************/
 
@@ -586,11 +762,11 @@ namespace Animancer
 
                 /************************************************************************************************************************/
 
-                /// <summary>Constructs a new <see cref="Drawer"/> without any parameters.</summary>
+                /// <summary>Creates a new <see cref="Drawer"/> without any parameters.</summary>
                 public Drawer() : this(null) { }
 
-                /// <summary>Constructs a new <see cref="Drawer"/> and sets the <see cref="Parameters"/>.</summary>
-                public Drawer(params string[] parameters) : base("_Controller")
+                /// <summary>Creates a new <see cref="Drawer"/> and sets the <see cref="Parameters"/>.</summary>
+                public Drawer(params string[] parameters) : base(nameof(_Controller))
                 {
                     Parameters = parameters;
                     if (parameters == null)
@@ -606,11 +782,9 @@ namespace Animancer
 
                 /************************************************************************************************************************/
 
-                /// <summary>
-                /// Draws the 'property' GUI in relation to the 'rootProperty' which was passed into
-                /// <see cref="Editor.AnimancerStateSerializableDrawer.OnGUI"/>.
-                /// </summary>
-                protected override void DoPropertyGUI(ref Rect area, SerializedProperty rootProperty, SerializedProperty property, GUIContent label)
+                /// <inheritdoc/>
+                protected override void DoPropertyGUI(ref Rect area, SerializedProperty rootProperty,
+                    SerializedProperty property, GUIContent label)
                 {
                     if (ParameterPrefixes != null)
                     {
@@ -624,7 +798,7 @@ namespace Animancer
                             {
                                 if (path.EndsWith(ParameterPrefixes[i]))
                                 {
-                                    area.height = EditorGUIUtility.singleLineHeight;
+                                    area.height = Editor.AnimancerGUI.LineHeight;
                                     DoParameterGUI(area, controller, property);
                                     return;
                                 }
@@ -662,14 +836,14 @@ namespace Animancer
                 /************************************************************************************************************************/
 
                 /// <summary>
-                /// Draws a dropdown menu to select the name of a parameter in the 'controller'.
+                /// Draws a dropdown menu to select the name of a parameter in the `controller`.
                 /// </summary>
                 protected void DoParameterGUI(Rect area, AnimatorController controller, SerializedProperty property)
                 {
                     var parameterName = property.stringValue;
                     var parameters = controller.parameters;
 
-                    var label = Editor.AnimancerEditorUtilities.TempContent(property.displayName, property.tooltip);
+                    var label = Editor.AnimancerGUI.TempContent(property);
                     label = EditorGUI.BeginProperty(area, label, property);
 
                     var xMax = area.xMax;
@@ -681,9 +855,9 @@ namespace Animancer
 
                     var color = GUI.color;
                     if (!HasFloatParameter(controller, parameterName))
-                        GUI.color = Editor.AnimancerEditorUtilities.ErrorFieldColor;
+                        GUI.color = Editor.AnimancerGUI.ErrorFieldColor;
 
-                    var content = Editor.AnimancerEditorUtilities.TempContent(parameterName);
+                    var content = Editor.AnimancerGUI.TempContent(parameterName);
                     if (EditorGUI.DropdownButton(area, content, FocusType.Passive))
                     {
                         property = property.Copy();
@@ -693,13 +867,11 @@ namespace Animancer
                         for (int i = 0; i < parameters.Length; i++)
                         {
                             var parameter = parameters[i];
-                            Editor.AnimancerEditorUtilities.AddMenuItem(menu, parameter.name,
-                                parameter.type == AnimatorControllerParameterType.Float, () =>
+                            Editor.Serialization.AddPropertyModifierFunction(menu, property, parameter.name,
+                                parameter.type == AnimatorControllerParameterType.Float,
+                                (targetProperty) =>
                                 {
-                                    Editor.AnimancerEditorUtilities.ForEachTarget(property, (targetProperty) =>
-                                    {
-                                        targetProperty.stringValue = parameter.name;
-                                    });
+                                    targetProperty.stringValue = parameter.name;
                                 });
                         }
 
@@ -767,3 +939,4 @@ namespace Animancer
         /************************************************************************************************************************/
     }
 }
+

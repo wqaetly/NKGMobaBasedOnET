@@ -1,85 +1,108 @@
-﻿using ETModel;
+﻿using System;
+using System.IO;
+using System.Net;
 
-namespace ETHotfix
+namespace ET
 {
-	public class InnerMessageDispatcher: IMessageDispatcher
-	{
-		public void Dispatch(Session session, ushort opcode, object message)
-		{
-			// 收到actor消息,放入actor队列
-			switch (message)
-			{
-				case IActorRequest iActorRequest:
-				{
-					HandleIActorRequest(session, iActorRequest).Coroutine();
-					break;
-				}
-				case IActorMessage iactorMessage:
-				{
-					HandleIActorMessage(session, iactorMessage).Coroutine();
-					break;
-				}
-				default:
-				{
-					Game.Scene.GetComponent<MessageDispatcherComponent>().Handle(session, new MessageInfo(opcode, message));
-					break;
-				}
-			}
-		}
+    public class InnerMessageDispatcher: IMessageDispatcher
+    {
+        public void Dispatch(Session session, MemoryStream memoryStream)
+        {
+            ushort opcode = 0;
+            try
+            {
+                long actorId = BitConverter.ToInt64(memoryStream.GetBuffer(), Packet.ActorIdIndex);
+                opcode = BitConverter.ToUInt16(memoryStream.GetBuffer(), Packet.OpcodeIndex);
+                Type type = null;
+                object message = null;
+#if SERVER   
 
-		private async ETVoid HandleIActorRequest(Session session, IActorRequest message)
-		{
-			using (await CoroutineLockComponent.Instance.Wait(message.ActorId))
-			{
-				Entity entity = (Entity)Game.EventSystem.Get(message.ActorId);
-				if (entity == null)
-				{
-					Log.Warning($"not found actor: {message}");
-					ActorResponse response = new ActorResponse
-					{
-						Error = ErrorCode.ERR_NotFoundActor,
-						RpcId = message.RpcId
-					};
-					session.Reply(response);
-					return;
-				}
-	
-				MailBoxComponent mailBoxComponent = entity.GetComponent<MailBoxComponent>();
-				if (mailBoxComponent == null)
-				{
-					ActorResponse response = new ActorResponse
-					{
-						Error = ErrorCode.ERR_ActorNoMailBoxComponent,
-						RpcId = message.RpcId
-					};
-					session.Reply(response);
-					Log.Error($"actor not add MailBoxComponent: {entity.GetType().Name} {message}");
-					return;
-				}
-				
-				await mailBoxComponent.Add(session, message);
-			}
-		}
+                // 内网收到外网消息，有可能是gateUnit消息，还有可能是gate广播消息
+                if (OpcodeTypeComponent.Instance.IsOutrActorMessage(opcode))
+                {
+                    InstanceIdStruct instanceIdStruct = new InstanceIdStruct(actorId);
+                    instanceIdStruct.Process = GlobalDefine.Options.Process;
+                    long realActorId = instanceIdStruct.ToLong();
+                    
+                    
+                    Entity entity = Game.EventSystem.Get(realActorId);
+                    if (entity == null)
+                    {
+                        // type = OpcodeTypeComponent.Instance.GetType(opcode);
+                        // message = MessageSerializeHelper.DeserializeFrom(opcode, type, memoryStream);
+                        // Log.Error($"not found actor: {session.DomainScene().Name}  {opcode} {realActorId} {message}");
+                        return;  //玩家断线直接返回不报错了
+                    }
+                    
+                    if (entity is Session gateSession)
+                    {
+                        // 发送给客户端
+                        memoryStream.Seek(Packet.OpcodeIndex, SeekOrigin.Begin);
+                        gateSession.Send(0, memoryStream);
+                        return;
+                    }
+                }
+#endif
+                        
+                        
+                type = OpcodeTypeComponent.Instance.GetType(opcode);
+                message = MessageSerializeHelper.DeserializeFrom(opcode, type, memoryStream);
 
-		private async ETVoid HandleIActorMessage(Session session, IActorMessage message)
-		{
-			using (await CoroutineLockComponent.Instance.Wait(message.ActorId))
-			{
-				Entity entity = (Entity)Game.EventSystem.Get(message.ActorId);
-				if (entity == null)
-				{
-					Log.Error($"not found actor: {message}");
-					return;
-				}
-	
-				MailBoxComponent mailBoxComponent = entity.GetComponent<MailBoxComponent>();
-				if (mailBoxComponent == null)
-				{
-					Log.Error($"actor not add MailBoxComponent: {entity.GetType().Name} {message}");
-					return;
-				}
-				await mailBoxComponent.Add(session, message);
-			}
-		}
-	}
+                if (message is IResponse iResponse && !(message is IActorResponse))
+                {
+                    session.OnRead(opcode, iResponse);
+                    return;
+                }
+
+                OpcodeHelper.LogMsg(session.DomainZone(), opcode, message);
+
+                // 收到actor消息,放入actor队列
+                switch (message)
+                {
+                    case IActorRequest iActorRequest:
+                    {
+                        InstanceIdStruct instanceIdStruct = new InstanceIdStruct(actorId);
+                        int fromProcess = instanceIdStruct.Process;
+                        instanceIdStruct.Process = GlobalDefine.Options.Process;
+                        long realActorId = instanceIdStruct.ToLong();
+                        
+                        void Reply(IActorResponse response)
+                        {
+                            Session replySession = NetInnerComponent.Instance.Get(fromProcess);
+                            // 发回真实的actorId 做查问题使用
+                            replySession.Send(realActorId, response);
+                        }
+
+                        InnerMessageDispatcherHelper.HandleIActorRequest(opcode, realActorId, iActorRequest, Reply);
+                        return;
+                    }
+                    case IActorResponse iActorResponse:
+                    {
+                        InstanceIdStruct instanceIdStruct = new InstanceIdStruct(actorId);
+                        instanceIdStruct.Process = GlobalDefine.Options.Process;
+                        long realActorId = instanceIdStruct.ToLong();
+                        InnerMessageDispatcherHelper.HandleIActorResponse(opcode, realActorId, iActorResponse);
+                        return;
+                    }
+                    case IActorMessage iactorMessage:
+                    {
+                        InstanceIdStruct instanceIdStruct = new InstanceIdStruct(actorId);
+                        instanceIdStruct.Process = GlobalDefine.Options.Process;
+                        long realActorId = instanceIdStruct.ToLong();
+                        InnerMessageDispatcherHelper.HandleIActorMessage(opcode, realActorId, iactorMessage);
+                        return;
+                    }
+                    default:
+                    {
+                        MessageDispatcherComponent.Instance.Handle(session, opcode, message);
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error($"InnerMessageDispatcher error: {opcode}\n{e}");
+            }
+        }
+    }
 }

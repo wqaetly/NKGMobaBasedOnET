@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ILRuntime.Runtime.Stack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace ILRuntime.CLR.TypeSystem
     class ILGenericParameterType : IType
     {
         string name;
-        ILGenericParameterType arrayType;
+        bool isArray, isByRef;
+        ILGenericParameterType arrayType, byrefType, elementType;
         public ILGenericParameterType(string name)
         {
             this.name = name;
@@ -34,7 +36,7 @@ namespace ILRuntime.CLR.TypeSystem
         {
             get
             {
-                return true;
+                return !isByRef && !isArray;
             }
         }
 
@@ -103,12 +105,18 @@ namespace ILRuntime.CLR.TypeSystem
 
         public IType ByRefType
         {
-            get { throw new NotImplementedException(); }
+            get { return byrefType; }
         }
 
         public IType MakeByRefType()
         {
-            return this;
+            if (byrefType == null)
+            {
+                byrefType = new ILGenericParameterType(name + "&");
+                byrefType.isByRef = true;
+                byrefType.elementType = this;
+            }
+            return byrefType;
         }
 
 
@@ -120,7 +128,11 @@ namespace ILRuntime.CLR.TypeSystem
         public IType MakeArrayType(int rank)
         {
             if (arrayType == null)
+            {
                 arrayType = new ILGenericParameterType(name + "[]");
+                arrayType.isArray = true;
+                arrayType.elementType = this;
+            }
             return arrayType;
         }
 
@@ -180,16 +192,21 @@ namespace ILRuntime.CLR.TypeSystem
             return method;
         }
 
+        public void GetValueTypeSize(out int fieldCout, out int managedCount)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool IsArray
         {
-            get { return false; }
+            get { return isArray; }
         }
 
         public bool IsByRef
         {
             get
             {
-                return false;
+                return isByRef;
             }
         }
 
@@ -197,7 +214,7 @@ namespace ILRuntime.CLR.TypeSystem
         {
             get
             {
-                return null;
+                return elementType;
             }
         }
 
@@ -211,6 +228,24 @@ namespace ILRuntime.CLR.TypeSystem
             get
             {
                 return null;
+            }
+        }
+
+        public int TotalFieldCount
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        public StackObject DefaultObject { get { return default(StackObject); } }
+
+        public int TypeIndex
+        {
+            get
+            {
+                return -1;
             }
         }
     }

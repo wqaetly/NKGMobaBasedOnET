@@ -11,14 +11,25 @@
 Dbg/
 Opt/
 
-*/Temp/
+**/.svn/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/.DS_Store
+**/[Dd]ebug/
+**/[Oo]bj/
+**/[Tt]emp/
+# 可能会误伤Tools
+**/[Bb]in/
+
 */TestResults/
 
-*/.svn/
-.svn/
-bin/
-Bin/
-obj/
+# 项目文件通过 Edit - Preferences - External Tools - Regenerate project files在本地生成
+/Unity/*.csproj
+/Unity/Unity.sln
+
+/Tools/ExcelExporter/Bin/Client/
+/Tools/ExcelExporter/Bin/Server/
 _ReSharper.CSharp/
 *.opensdf
 *.sdf
@@ -28,25 +39,26 @@ _ReSharper.CSharp/
 /CSharp/CSharp.VC.opendb
 /Server/Server.VC.opendb
 /Log
-/Temp
 /Logs
 /Unity/CSharp60Support/compilation.log
-/.vs
-/Server/.vs/
-/Unity/.vs/
 /Tools/MongoDB
 /Excel/md5.txt
 /Release
-.idea/
 /Unity/Logs
-/Unity/Assets/StreamingAssets/
+/Unity/Assets/Mono/ILRuntimeGenerate/ILBindingAuto/
+/Unity/UserSettings/
 /netcoreapp2.0
 /Unity/Assets/StreamingAssets.meta
-.DS_Store
-Server/.DS_Store
-/Server/.vscode/
-.vs/
 .objs/
 /Unity/.gradle
 /*.user
+/ToolsApp/
 
+/Unity/Assets/Res/Code/Hotfix.dll.bytes
+/Unity/Assets/Res/Code/Hotfix.pdb.bytes
+/Unity/Assets/Res/Code/HotfixView.pdb.bytes
+/Unity/Assets/Res/Code/HotfixView.dll.bytes
+/Unity/Assets/Res/Code/Model.dll.bytes
+/Unity/Assets/Res/Code/Model.pdb.bytes
+/Unity/Assets/Res/Code/ModelView.dll.bytes
+/Unity/Assets/Res/Code/ModelView.pdb.bytes

@@ -6,9 +6,8 @@
 
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEditor;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 监听Buff事件数据基类，用以监听指定事件
@@ -20,10 +19,23 @@ namespace ETModel
         public VTD_EventId EventId;
 
         /// <summary>
-        /// Buff事件
+        /// 是否需要判断层数
         /// </summary>
         [BoxGroup("自定义项")]
-        [HideLabel]
-        public ListenBuffEvent_Normal ListenBuffEventNormal;
+        [LabelText("是否需要判断层数")]
+        public bool HasOverlayerJudge;
+
+        [BoxGroup("自定义项")]
+        [LabelText("目标层数")]
+        [ShowIf("HasOverlayerJudge")]
+        public int TargetOverLayer;
+        
+        /// <summary>
+        /// Buff回调条件达成时会添加的Buff的节点Id
+        /// </summary>
+        [BoxGroup("自定义项")]
+        [InfoBox("注意，是在节点编辑器中的Buff节点Id，而不是Buff自身的Id，别搞错了！")]
+        [LabelText("Buff回调条件达成时会添加的Buff的节点Id")]
+        public List<VTD_BuffInfo> BuffInfoWillBeAdded = new List<VTD_BuffInfo>();
     }
 }

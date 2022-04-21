@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
@@ -77,7 +77,7 @@ namespace ILRuntime.Runtime.Generated
                     ConstructorInfo[] ctors = i.GetConstructors(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly);
                     string ctorRegisterCode = i.GenerateConstructorRegisterCode(ctors, excludeMethods);
                     string methodWraperCode = i.GenerateMethodWraperCode(methods, realClsName, excludeMethods, valueTypeBinders, null);
-                    string fieldWraperCode = i.GenerateFieldWraperCode(fields, realClsName, excludeFields);
+                    string fieldWraperCode = i.GenerateFieldWraperCode(fields, realClsName, excludeFields, valueTypeBinders, null);
                     string cloneWraperCode = i.GenerateCloneWraperCode(fields, realClsName);
                     string ctorWraperCode = i.GenerateConstructorWraperCode(ctors, realClsName, excludeMethods, valueTypeBinders);
 
@@ -154,9 +154,34 @@ namespace ILRuntime.Runtime.Generated
                 }
             }
         }
+        
+        internal class FileNameEqualityComparer : IEqualityComparer<string>
+        {
+            public bool Equals(string x, string y)
+            {
+                // handle null cases first
+                if (x == null)
+                    return (y == null);
+                // x != null
+                else if (y == null)
+                    return false;
+                return x.Equals(y, StringComparison.OrdinalIgnoreCase);
+            }
+
+            public int GetHashCode(string obj)
+            {
+                int hashCode = 0;
+                if (obj != null)
+                {
+                    hashCode = obj.GetHashCode();
+                }
+                return hashCode;
+            }
+        }
 
         public static void GenerateBindingCode(ILRuntime.Runtime.Enviorment.AppDomain domain, string outputPath, 
-                                               List<Type> valueTypeBinders = null, List<Type> delegateTypes = null)
+                                               List<Type> valueTypeBinders = null, List<Type> delegateTypes = null,
+                                               params string[] excludeFiles)
         {
             if (domain == null)
                 return;
@@ -177,6 +202,7 @@ namespace ILRuntime.Runtime.Generated
             HashSet<FieldInfo> excludeFields = null;
             HashSet<string> files = new HashSet<string>();
             List<string> clsNames = new List<string>();
+            FileNameEqualityComparer fileNameEqualityComparer = new FileNameEqualityComparer();
 
             foreach (var info in infos)
             {
@@ -193,16 +219,32 @@ namespace ILRuntime.Runtime.Generated
                 if (i.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length > 0)
                     continue;
                 i.GetClassName(out clsName, out realClsName, out isByRef);
-                if (clsNames.Contains(clsName))
-                    clsName = clsName + "_t";
-                clsNames.Add(clsName);
+                if (excludeFiles.Contains(clsName))
+                    continue;
+                int extraClsNameIndex = 0;
+                string oClsName = clsName;
+                while (clsNames.Contains(oClsName))
+                {
+                    extraClsNameIndex++;
+                    oClsName = clsName + "_t" + extraClsNameIndex;
+                }
+                clsNames.Add(oClsName);
+                clsName = oClsName;
                 
-                string oFileName = outputPath + "/" + clsName;
-                int len = Math.Min(oFileName.Length, 100);
-                if (len < oFileName.Length)
-                    oFileName = oFileName.Substring(0, len) + "_t";
-                while (files.Contains(oFileName))
-                    oFileName = oFileName + "_t";
+                //File path length limit
+                string oriFileName = outputPath + "/" + clsName;
+                int len = Math.Min(oriFileName.Length, 100);
+                if (len < oriFileName.Length)
+                    oriFileName = oriFileName.Substring(0, len);
+
+                int extraNameIndex = 0;
+                string oFileName = oriFileName;
+                while (files.Contains(oFileName, fileNameEqualityComparer))
+                {
+                    extraNameIndex++;
+                    oFileName = oriFileName + "_t" + extraNameIndex;
+                }
+
                 files.Add(oFileName);
                 oFileName = oFileName + ".cs";
                 using (System.IO.StreamWriter sw = new System.IO.StreamWriter(oFileName, false, new UTF8Encoding(false)))
@@ -248,7 +290,7 @@ namespace ILRuntime.Runtime.Generated
                     ConstructorInfo[] ctors = info.Value.Constructors.ToArray();
                     string ctorRegisterCode = i.GenerateConstructorRegisterCode(ctors, excludeMethods);
                     string methodWraperCode = i.GenerateMethodWraperCode(methods, realClsName, excludeMethods, valueTypeBinders, domain);
-                    string fieldWraperCode = fields.Length > 0 ? i.GenerateFieldWraperCode(fields, realClsName, excludeFields) : null;
+                    string fieldWraperCode = fields.Length > 0 ? i.GenerateFieldWraperCode(fields, realClsName, excludeFields, valueTypeBinders, domain) : null;
                     string cloneWraperCode = null;
                     if (info.Value.ValueTypeNeeded)
                     {
@@ -313,11 +355,13 @@ using System.Reflection;
 namespace ILRuntime.Runtime.Generated
 {
     class CLRBindings
-    {
+    {");
+                sb.Append(SmartBindText);
+                sb.Append(@"
         /// <summary>
         /// Initialize the CLR binding, please invoke this AFTER CLR Redirection registration
         /// </summary>
-        public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
+                public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
         {");
                 foreach (var i in clsNames)
                 {
@@ -338,7 +382,7 @@ namespace ILRuntime.Runtime.Generated
             GenerateBindingInitializeScript(clsNames, valueTypeBinders, outputPath);
         }
 
-        internal static void CrawlAppdomain(ILRuntime.Runtime.Enviorment.AppDomain domain, Dictionary<Type, CLRBindingGenerateInfo> infos)
+        static void PrewarmDomain(ILRuntime.Runtime.Enviorment.AppDomain domain)
         {
             var arr = domain.LoadedTypes.Values.ToArray();
             //Prewarm
@@ -365,7 +409,15 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
             }
-            arr = domain.LoadedTypes.Values.ToArray();
+        }
+        internal static void CrawlAppdomain(ILRuntime.Runtime.Enviorment.AppDomain domain, Dictionary<Type, CLRBindingGenerateInfo> infos)
+        {
+            domain.SuppressStaticConstructor = true;
+            //Prewarm
+            PrewarmDomain(domain);
+            //Prewarm twice to ensure GenericMethods are prewarmed properly
+            PrewarmDomain(domain);
+            var arr = domain.LoadedTypes.Values.ToArray();
             foreach (var type in arr)
             {
                 if (type is CLR.TypeSystem.ILType)
@@ -429,7 +481,7 @@ namespace ILRuntime.Runtime.Generated
                                                         info = CreateNewBindingInfo(t.TypeForCLR);
                                                         infos[t.TypeForCLR] = info;
                                                     }
-                                                    if(ins.Code == Intepreter.OpCodes.OpCodeEnum.Stfld || ins.Code == Intepreter.OpCodes.OpCodeEnum.Stsfld)
+                                                    if (ins.Code == Intepreter.OpCodes.OpCodeEnum.Stfld || ins.Code == Intepreter.OpCodes.OpCodeEnum.Stsfld)
                                                     {
                                                         if (t.IsValueType)
                                                         {
@@ -437,8 +489,7 @@ namespace ILRuntime.Runtime.Generated
                                                             info.DefaultInstanceNeeded = true;
                                                         }
                                                     }
-                                                    if (t.TypeForCLR.CheckCanPinn() || !t.IsValueType)
-                                                        info.Fields.Add(fi);
+                                                    info.Fields.Add(fi);
                                                 }
                                             }
                                         }
@@ -707,6 +758,18 @@ namespace ILRuntime.Runtime.Generated
             return clsNames;
         }
 
+
+        static private string SmartBindText = @"
+//will auto register in unity
+#if UNITY_5_3_OR_NEWER
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
+#endif
+        static private void RegisterBindingAction()
+        {
+            ILRuntime.Runtime.CLRBinding.CLRBindingUtils.RegisterBindingAction(Initialize);
+        }
+";
+
         internal static void GenerateBindingInitializeScript(List<string> clsNames, List<Type> valueTypeBinders, string outputPath)
         {
             if (!System.IO.Directory.Exists(outputPath))
@@ -715,14 +778,16 @@ namespace ILRuntime.Runtime.Generated
             using (System.IO.StreamWriter sw = new System.IO.StreamWriter(outputPath + "/CLRBindings.cs", false, new UTF8Encoding(false)))
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine(@"using System;
+                sb.Append(@"using System;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace ILRuntime.Runtime.Generated
 {
     class CLRBindings
-    {");
+    {
+");
+                sb.Append(SmartBindText);
 
                 if (valueTypeBinders != null)
                 {
@@ -755,7 +820,7 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
 
-                if (valueTypeBinders != null)
+                if (valueTypeBinders != null && valueTypeBinders.Count > 0)
                 {
                     sb.AppendLine();
 

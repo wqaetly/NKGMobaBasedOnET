@@ -4,16 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Darius_Q_Effect
-  - NuoKe
-  - Darius_FullAngry_Effect
-  - Darius_OtherDeadLine_Effect
-  - Darius_Passive_Bleed_Effect_1
-  - Darius_Passive_Bleed_Effect_2
-  - Darius_Passive_Bleed_Effect_3
-  - Darius_Passive_Bleed_Effect_4
-  - Darius_Passive_Bleed_Effect_5
+  - LevelBounds
+  - FX
+  - Enemy
+  - World
+  - NoMask
   - NavMesh
+  - Dopa
+  - NuoKe
   layers:
   - Default
   - TransparentFX
@@ -21,25 +19,25 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - Ground
-  - Players
-  - Unit
+  - dopa
   - Map
-  - Hidden
-  - FriendOutLine
-  - EnemyOutLine
-  - Darius_Passive_RimLightEffect
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Obstacles
+  - Ground
+  - Player
+  - Unit
+  - NoPathfinding
+  - Enemies
+  - NoCollisions
+  - Hole
+  - MovingPlatform
+  - FallingPlatform
+  - Projectile
+  - Camera1
+  - Camera2
+  - Camera3
+  - Camera4
+  - UGUI
+  - InGamePlayer
   - 
   - 
   - 
@@ -50,4 +48,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1798043625
+    locked: 0
+  - name: Ground
+    uniqueID: 2296623839
+    locked: 0
+  - name: Foreground
+    uniqueID: 1603220759
+    locked: 0
+  - name: Characters
+    uniqueID: 47421343
+    locked: 0
+  - name: Above
+    uniqueID: 961700441
     locked: 0

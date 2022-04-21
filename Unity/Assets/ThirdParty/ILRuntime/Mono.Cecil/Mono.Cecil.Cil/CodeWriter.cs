@@ -11,16 +11,14 @@
 using System;
 using System.Collections.Generic;
 
-using Mono.Collections.Generic;
+using ILRuntime.Mono.Collections.Generic;
 
-using Mono.Cecil.Metadata;
-using Mono.Cecil.PE;
+using ILRuntime.Mono.Cecil.Metadata;
+using ILRuntime.Mono.Cecil.PE;
 
 using RVA = System.UInt32;
 
-#if !READ_ONLY
-
-namespace Mono.Cecil.Cil {
+namespace ILRuntime.Mono.Cecil.Cil {
 
 	sealed class CodeWriter : ByteBuffer {
 
@@ -655,5 +653,3 @@ namespace Mono.Cecil.Cil {
 		}
 	}
 }
-
-#endif

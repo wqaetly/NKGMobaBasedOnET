@@ -11,7 +11,7 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 
 #endif
-namespace ETModel
+namespace ET
 {
     [HideReferenceObjectPicker]
     public struct VTD_Id
@@ -30,18 +30,9 @@ namespace ETModel
 #if UNITY_EDITOR
         private IEnumerable<string> GetIdKey()
         {
-            string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
-
-            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
-            if (subAssets != null)
+            if (NP_BlackBoardDataManager.CurrentEditedNP_BlackBoardDataManager != null)
             {
-                foreach (var subAsset in subAssets)
-                {
-                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
-                    {
-                        return npBehaveCanvasDataManager.Ids.Keys;
-                    }
-                }
+                return NP_BlackBoardDataManager.CurrentEditedNP_BlackBoardDataManager.Ids.Keys;
             }
 
             return null;
@@ -49,24 +40,11 @@ namespace ETModel
 
         private void ApplayId()
         {
-            if (string.IsNullOrEmpty(IdKey))
+            if (NP_BlackBoardDataManager.CurrentEditedNP_BlackBoardDataManager != null)
             {
-                return;
-            }
-            string path = UnityEngine.PlayerPrefs.GetString("LastCanvasPath");
-
-            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(path);
-            if (subAssets != null)
-            {
-                foreach (var subAsset in subAssets)
+                if (NP_BlackBoardDataManager.CurrentEditedNP_BlackBoardDataManager.Ids.TryGetValue(IdKey, out var targetId))
                 {
-                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
-                    {
-                        if (npBehaveCanvasDataManager.Ids.TryGetValue(IdKey, out var targetId))
-                        {
-                            Value = targetId;
-                        }
-                    }
+                    Value = targetId;
                 }
             }
         }

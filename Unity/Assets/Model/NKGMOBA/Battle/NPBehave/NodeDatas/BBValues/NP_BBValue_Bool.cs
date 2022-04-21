@@ -5,13 +5,15 @@
 //------------------------------------------------------------
 
 using System;
+using ProtoBuf;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ETModel.BBValues
+namespace ET
 {
     [HideLabel]
     [HideReferenceObjectPicker]
+    [ProtoContract]
     public class NP_BBValue_Bool: NP_BBValueBase<bool>, IEquatable<NP_BBValue_Bool>
     {
         public override Type NP_BBValueType
@@ -117,6 +119,24 @@ namespace ETModel.BBValues
         public static bool operator <=(NP_BBValue_Bool lhs, NP_BBValue_Bool rhs)
         {
             return false;
+        }
+
+        #endregion
+        
+        #region proto序列化支持
+
+        [ProtoMember(1)] private bool ValueForProtoSerilize;
+
+        [ProtoBeforeSerialization]
+        private void HandleBeforSerilize()
+        {
+            ValueForProtoSerilize = Value;
+        }
+
+        [ProtoAfterDeserialization]
+        private void HandleAfterSerilize()
+        {
+            Value = (bool)ValueForProtoSerilize;
         }
 
         #endregion

@@ -10,10 +10,11 @@
 
 using System;
 using System.Text;
-using Mono.Collections.Generic;
-using MD = Mono.Cecil.Metadata;
+using System.Threading;
+using ILRuntime.Mono.Collections.Generic;
+using MD = ILRuntime.Mono.Cecil.Metadata;
 
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public struct ArrayDimension {
 
@@ -57,8 +58,11 @@ namespace Mono.Cecil {
 				if (dimensions != null)
 					return dimensions;
 
-				dimensions = new Collection<ArrayDimension> ();
-				dimensions.Add (new ArrayDimension ());
+				var empty_dimensions = new Collection<ArrayDimension> ();
+				empty_dimensions.Add (new ArrayDimension ());
+
+				Interlocked.CompareExchange (ref dimensions, empty_dimensions, null);
+
 				return dimensions;
 			}
 		}

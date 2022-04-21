@@ -4,7 +4,6 @@
 // Data: 2019年7月2日 16:49:05
 //------------------------------------------------------------
 using System.Collections.Generic;
-using ETModel;
 using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
@@ -13,7 +12,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace ETEditor
+namespace ET
 {
     /// <summary>
     /// 贴图工作流

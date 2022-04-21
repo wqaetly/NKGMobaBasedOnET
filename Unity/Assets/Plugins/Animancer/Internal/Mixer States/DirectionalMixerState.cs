@@ -1,41 +1,24 @@
-// Animancer // Copyright 2019 Kybernetik //
+// Animancer // https://kybernetik.com.au/animancer // Copyright 2020 Kybernetik //
 
 using System;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace Animancer
 {
     /// <summary>[Pro-Only]
     /// An <see cref="AnimancerState"/> which blends an array of other states together based on a two dimensional
     /// parameter and thresholds using Polar Gradient Band Interpolation.
-    /// <para></para>
-    /// This mixer type is similar to the 2D Freeform Directional Blend Type in Mecanim Blend Trees.
     /// </summary>
+    /// <remarks>
+    /// This mixer type is similar to the 2D Freeform Directional Blend Type in Mecanim Blend Trees.
+    /// <para></para>
+    /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/blending/mixers">Mixers</see>
+    /// </remarks>
+    /// https://kybernetik.com.au/animancer/api/Animancer/DirectionalMixerState
+    /// 
     public class DirectionalMixerState : MixerState<Vector2>
     {
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Constructs a new <see cref="DirectionalMixerState"/> without connecting it to the <see cref="PlayableGraph"/>.
-        /// You must call <see cref="AnimancerState.SetParent(AnimancerLayer)"/> or it won't actually do anything.
-        /// </summary>
-        protected DirectionalMixerState(AnimancerPlayable root) : base(root) { }
-
-        /// <summary>
-        /// Constructs a new <see cref="DirectionalMixerState"/> and connects it to the 'layer's
-        /// <see cref="IAnimationMixer.Playable"/> using a spare port if there are any from previously destroyed
-        /// states, or by adding a new port.
-        /// </summary>
-        public DirectionalMixerState(AnimancerLayer layer) : base(layer) { }
-
-        /// <summary>
-        /// Constructs a new <see cref="DirectionalMixerState"/> and connects it to the 'parent's
-        /// <see cref="IAnimationMixer.Playable"/> at the specified 'portIndex'.
-        /// </summary>
-        public DirectionalMixerState(AnimancerNode parent, int portIndex) : base(parent, portIndex) { }
-
         /************************************************************************************************************************/
 
         /// <summary>Precalculated magnitudes of all thresholds to speed up the recalculation of weights.</summary>
@@ -55,22 +38,22 @@ namespace Animancer
         /// <summary>Gets or sets Parameter.x.</summary>
         public float ParameterX
         {
-            get { return Parameter.x; }
-            set { Parameter = new Vector2(value, Parameter.y); }
+            get => Parameter.x;
+            set => Parameter = new Vector2(value, Parameter.y);
         }
 
         /// <summary>Gets or sets Parameter.y.</summary>
         public float ParameterY
         {
-            get { return Parameter.y; }
-            set { Parameter = new Vector2(Parameter.x, value); }
+            get => Parameter.y;
+            set => Parameter = new Vector2(Parameter.x, value);
         }
 
         /************************************************************************************************************************/
 
         /// <summary>
         /// Called whenever the thresholds are changed. Indicates that the internal blend factors need to be
-        /// recalculated and calls <see cref="RecalculateWeights"/>.
+        /// recalculated and calls <see cref="ForceRecalculateWeights"/>.
         /// </summary>
         public override void OnThresholdsChanged()
         {
@@ -81,55 +64,55 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Recalculates the weights of all <see cref="States"/> based on the current value of the
-        /// <see cref="Parameter"/> and the thresholds.
+        /// Recalculates the weights of all <see cref="ManualMixerState._States"/> based on the current value of the
+        /// <see cref="MixerState{TParameter}.Parameter"/> and the thresholds.
         /// </summary>
-        public override void RecalculateWeights()
+        protected override void ForceRecalculateWeights()
         {
-            AreWeightsDirty = false;
+            WeightsAreDirty = false;
 
             CalculateBlendFactors();
 
-            float parameterMagnitude = Parameter.magnitude;
+            var parameterMagnitude = Parameter.magnitude;
             float totalWeight = 0;
 
-            int portCount = PortCount;
-            for (int i = 0; i < portCount; i++)
+            var childCount = ChildCount;
+            for (int i = 0; i < childCount; i++)
             {
-                var state = States[i];
+                var state = GetChild(i);
                 if (state == null)
                     continue;
 
                 var blendFactors = _BlendFactors[i];
 
                 var thresholdI = GetThreshold(i);
-                float magnitudeI = _ThresholdMagnitudes[i];
+                var magnitudeI = _ThresholdMagnitudes[i];
 
                 // Convert the threshold to polar coordinates (distance, angle) and interpolate the weight based on those.
-                float differenceIToParameter = parameterMagnitude - magnitudeI;
-                float angleIToParameter = SignedAngle(thresholdI, Parameter) * AngleFactor;
+                var differenceIToParameter = parameterMagnitude - magnitudeI;
+                var angleIToParameter = SignedAngle(thresholdI, Parameter) * AngleFactor;
 
                 float weight = 1;
 
-                for (int j = 0; j < portCount; j++)
+                for (int j = 0; j < childCount; j++)
                 {
-                    if (j == i || States[j] == null)
+                    if (j == i || GetChild(j) == null)
                         continue;
 
-                    float magnitudeJ = _ThresholdMagnitudes[j];
-                    float averageMagnitude = (magnitudeJ + magnitudeI) * 0.5f;
+                    var magnitudeJ = _ThresholdMagnitudes[j];
+                    var averageMagnitude = (magnitudeJ + magnitudeI) * 0.5f;
 
                     var polarIToParameter = new Vector2(
                         differenceIToParameter / averageMagnitude,
                         angleIToParameter);
 
-                    float newWeight = 1 - Vector2.Dot(polarIToParameter, blendFactors[j]);
+                    var newWeight = 1 - Vector2.Dot(polarIToParameter, blendFactors[j]);
 
                     if (weight > newWeight)
                         weight = newWeight;
                 }
 
-                if (weight < 0)
+                if (weight < 0.01f)
                     weight = 0;
 
                 state.Weight = weight;
@@ -148,49 +131,49 @@ namespace Animancer
 
             _BlendFactorsDirty = false;
 
-            int portCount = PortCount;
-            if (PortCount <= 1)
+            var childCount = ChildCount;
+            if (childCount <= 1)
                 return;
 
             // Resize the precalculated values.
-            if (_BlendFactors == null || _BlendFactors.Length != portCount)
+            if (_BlendFactors == null || _BlendFactors.Length != childCount)
             {
-                _ThresholdMagnitudes = new float[portCount];
+                _ThresholdMagnitudes = new float[childCount];
 
-                _BlendFactors = new Vector2[portCount][];
-                for (int i = 0; i < portCount; i++)
-                    _BlendFactors[i] = new Vector2[portCount];
+                _BlendFactors = new Vector2[childCount][];
+                for (int i = 0; i < childCount; i++)
+                    _BlendFactors[i] = new Vector2[childCount];
             }
 
             // Calculate the magnitude of each threshold.
-            for (int i = 0; i < portCount; i++)
+            for (int i = 0; i < childCount; i++)
             {
                 _ThresholdMagnitudes[i] = GetThreshold(i).magnitude;
             }
 
             // Calculate the blend factors between each combination of thresholds.
-            for (int i = 0; i < portCount; i++)
+            for (int i = 0; i < childCount; i++)
             {
                 var blendFactors = _BlendFactors[i];
 
                 var thresholdI = GetThreshold(i);
-                float magnitudeI = _ThresholdMagnitudes[i];
+                var magnitudeI = _ThresholdMagnitudes[i];
 
-                int j = 0;// i + 1;
-                for (; j < portCount; j++)
+                var j = 0;// i + 1;
+                for (; j < childCount; j++)
                 {
                     if (i == j)
                         continue;
 
                     var thresholdJ = GetThreshold(j);
-                    float magnitudeJ = _ThresholdMagnitudes[j];
+                    var magnitudeJ = _ThresholdMagnitudes[j];
 
-                    float averageMagnitude = (magnitudeI + magnitudeJ) * 0.5f;
+                    var averageMagnitude = (magnitudeI + magnitudeJ) * 0.5f;
 
                     // Convert the thresholds to polar coordinates (distance, angle) and interpolate the weight based on those.
 
-                    float differenceIToJ = magnitudeJ - magnitudeI;
-                    float angleIToJ = SignedAngle(thresholdI, thresholdJ);
+                    var differenceIToJ = magnitudeJ - magnitudeI;
+                    var angleIToJ = SignedAngle(thresholdI, thresholdJ);
 
                     var polarIToJ = new Vector2(
                         differenceIToJ / averageMagnitude,
@@ -224,58 +207,56 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>Appends the current parameter values of this mixer.</summary>
-        public override void AppendParameter(StringBuilder description)
+        /// <inheritdoc/>
+        public override void AppendParameter(StringBuilder text, Vector2 parameter)
         {
-            description.Append(ParameterX);
-            description.Append(", ");
-            description.Append(ParameterY);
+            text.Append('(')
+                .Append(parameter.x)
+                .Append(", ")
+                .Append(parameter.y)
+                .Append(')');
         }
 
         /************************************************************************************************************************/
         #region Inspector
         /************************************************************************************************************************/
 
-        /// <summary>The number of parameters being managed by this state.</summary>
-        protected override int ParameterCount { get { return 2; } }
+        /// <inheritdoc/>
+        protected override int ParameterCount => 2;
 
-        /// <summary>Returns the name of a parameter being managed by this state.</summary>
-        /// <exception cref="NotSupportedException">Thrown if this state doesn't manage any parameters.</exception>
+        /// <inheritdoc/>
         protected override string GetParameterName(int index)
         {
             switch (index)
             {
                 case 0: return "Parameter X";
                 case 1: return "Parameter Y";
-                default: throw new ArgumentOutOfRangeException("index");
+                default: throw new ArgumentOutOfRangeException(nameof(index));
             }
         }
 
-        /// <summary>Returns the type of a parameter being managed by this state.</summary>
-        /// <exception cref="NotSupportedException">Thrown if this state doesn't manage any parameters.</exception>
-        protected override AnimatorControllerParameterType GetParameterType(int index) { return AnimatorControllerParameterType.Float; }
+        /// <inheritdoc/>
+        protected override AnimatorControllerParameterType GetParameterType(int index) => AnimatorControllerParameterType.Float;
 
-        /// <summary>Returns the value of a parameter being managed by this state.</summary>
-        /// <exception cref="NotSupportedException">Thrown if this state doesn't manage any parameters.</exception>
+        /// <inheritdoc/>
         protected override object GetParameterValue(int index)
         {
             switch (index)
             {
                 case 0: return ParameterX;
                 case 1: return ParameterY;
-                default: throw new ArgumentOutOfRangeException("index");
+                default: throw new ArgumentOutOfRangeException(nameof(index));
             }
         }
 
-        /// <summary>Sets the value of a parameter being managed by this state.</summary>
-        /// <exception cref="NotSupportedException">Thrown if this state doesn't manage any parameters.</exception>
+        /// <inheritdoc/>
         protected override void SetParameterValue(int index, object value)
         {
             switch (index)
             {
                 case 0: ParameterX = (float)value; break;
                 case 1: ParameterY = (float)value; break;
-                default: throw new ArgumentOutOfRangeException("index");
+                default: throw new ArgumentOutOfRangeException(nameof(index));
             }
         }
 
@@ -284,3 +265,4 @@ namespace Animancer
         /************************************************************************************************************************/
     }
 }
+

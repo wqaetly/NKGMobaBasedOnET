@@ -10,7 +10,7 @@
 
 using System;
 
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public abstract class MemberReference : IMetadataTokenProvider {
 
@@ -46,11 +46,6 @@ namespace Mono.Cecil {
 
 		public bool IsWindowsRuntimeProjection {
 			get { return projection != null; }
-		}
-
-		internal MemberReferenceProjection WindowsRuntimeProjection {
-			get { return (MemberReferenceProjection) projection; }
-			set { projection = value; }
 		}
 
 		internal bool HasImage {

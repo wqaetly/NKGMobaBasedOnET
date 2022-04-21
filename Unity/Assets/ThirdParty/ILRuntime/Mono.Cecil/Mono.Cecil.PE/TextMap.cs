@@ -10,11 +10,9 @@
 
 using System;
 
-#if !READ_ONLY
-
 using RVA = System.UInt32;
 
-namespace Mono.Cecil.PE {
+namespace ILRuntime.Mono.Cecil.PE {
 
 	enum TextSegment {
 		ImportAddressTable,
@@ -108,5 +106,3 @@ namespace Mono.Cecil.PE {
 		}
 	}
 }
-
-#endif

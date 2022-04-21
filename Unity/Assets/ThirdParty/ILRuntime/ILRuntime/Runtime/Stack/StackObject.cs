@@ -8,6 +8,8 @@ using ILRuntime.Runtime.Enviorment;
 using ILRuntime.Runtime.Intepreter;
 namespace ILRuntime.Runtime.Stack
 {
+#pragma warning disable CS0660
+#pragma warning disable CS0661
     [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public struct StackObject
     {
@@ -94,7 +96,7 @@ namespace ILRuntime.Runtime.Stack
                 case ObjectTypes.ValueTypeObjectReference:
                     {
                         StackObject* dst = ILIntepreter.ResolveReference(esp);
-                        IType type = appdomain.GetType(dst->Value);
+                        IType type = appdomain.GetTypeByIndex(dst->Value);
                         if (type is ILType)
                         {
                             ILType iltype = (ILType)type;
@@ -181,7 +183,10 @@ namespace ILRuntime.Runtime.Stack
                     }
                 }
                 else
+                {
                     esp = Null;
+                    mStack[idx] = null;
+                }
             }
         }
 
@@ -189,34 +194,22 @@ namespace ILRuntime.Runtime.Stack
         public unsafe static void Initialized(StackObject* esp, IType type)
         {
             var t = type.TypeForCLR;
-            if (type.IsPrimitive || type.IsEnum)
+            
+            if (type.IsPrimitive)
             {
-                if (t == typeof(int) || t == typeof(uint) || t == typeof(short) || t == typeof(ushort) || t == typeof(byte) || t == typeof(sbyte) || t == typeof(char) || t == typeof(bool))
+                *esp = type.DefaultObject;
+            }
+            else if (type.IsEnum)
+            {
+                ILType ilType = type as ILType;
+                if (ilType != null)
                 {
-                    esp->ObjectType = ObjectTypes.Integer;
-                    esp->Value = 0;
-                    esp->ValueLow = 0;
-                }
-                else if (t == typeof(long) || t == typeof(ulong))
-                {
-                    esp->ObjectType = ObjectTypes.Long;
-                    esp->Value = 0;
-                    esp->ValueLow = 0;
-                }
-                else if (t == typeof(float))
-                {
-                    esp->ObjectType = ObjectTypes.Float;
-                    esp->Value = 0;
-                    esp->ValueLow = 0;
-                }
-                else if (t == typeof(double))
-                {
-                    esp->ObjectType = ObjectTypes.Double;
-                    esp->Value = 0;
-                    esp->ValueLow = 0;
+                    Initialized(esp, ilType.FieldTypes[0]);
                 }
                 else
-                    throw new NotImplementedException();
+                {
+                    Initialized(esp, ((CLRType)type).OrderedFieldTypes[0]);
+                }
             }
             else
             {

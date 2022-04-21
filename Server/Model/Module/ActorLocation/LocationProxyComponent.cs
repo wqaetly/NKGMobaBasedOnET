@@ -1,9 +1,7 @@
-﻿using System.Net;
-
-namespace ETModel
+﻿namespace ET
 {
-	public class LocationProxyComponent : Component
-	{
-		public IPEndPoint LocationAddress;
-	}
+    public class LocationProxyComponent: Entity
+    {
+        public static LocationProxyComponent Instance;
+    }
 }

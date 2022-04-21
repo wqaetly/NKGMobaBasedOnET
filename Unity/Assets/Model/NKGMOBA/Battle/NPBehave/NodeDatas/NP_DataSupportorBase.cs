@@ -5,14 +5,12 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using ETModel.BBValues;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
-    [BoxGroup("NPBehave行为树通用基础数据")]
     [HideLabel]
     public class NP_DataSupportorBase
     {

@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ETModel
+namespace ET
 {
     public static partial class ReferencePool
     {

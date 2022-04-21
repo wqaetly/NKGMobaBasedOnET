@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [BoxGroup("等待结点数据")]
     [HideLabel]
@@ -18,7 +18,7 @@ namespace ETModel
         
         public NP_BlackBoardRelationData NPBalckBoardRelationData = new NP_BlackBoardRelationData();
         
-        public override Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
+        public override Task CreateTask(Unit unit, NP_RuntimeTree runtimeTree)
         {
             this.m_WaitNode = new Wait(this.NPBalckBoardRelationData.BBKey);
             return this.m_WaitNode;

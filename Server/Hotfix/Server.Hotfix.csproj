@@ -1,40 +1,83 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>Hotfix</AssemblyName>
-    <RootNamespace>ETHotfix</RootNamespace>
-    <LangVersion>7.3</LangVersion>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>ET</RootNamespace>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETCOREAPP2_0;SERVER</DefineConstants>
+    <DefineConstants>TRACE2_0;NOT_UNITY;SERVER;</DefineConstants>
     <OutputPath>..\..\Bin\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE;NETCOREAPP2_0;SERVER</DefineConstants>
+    <DefineConstants>TRACE2_0;SERVER;NOT_UNITY</DefineConstants>
     <OutputPath>..\..\Bin\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Other\**" />
-    <Compile Include="..\..\Unity\Assets\Model\Module\Message\NetOuterComponentSystem.cs">
-      <Link>Module\Message\NetOuterComponentSystem.cs</Link>
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Move\MoveComponentSystem.cs">
+      <Link>NKGMOBA\Move\MoveComponentSystem.cs</Link>
     </Compile>
-    <EmbeddedResource Remove="Other\**" />
-    <None Remove="Other\**" />
-    <Compile Remove="NKGMOBA\Base\**" />
-    <EmbeddedResource Remove="NKGMOBA\Base\**" />
-    <None Remove="NKGMOBA\Base\**" />
+
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Move\StopMoveFromFSM.cs">
+      <Link>NKGMOBA\Move\StopMoveFromFSM.cs</Link>
+    </Compile>
+    
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Config\ConfigComponentSystem.cs">
+      <Link>Module\Config\ConfigComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Message\MessageDispatcherComponentSystem.cs">
+      <Link>Module\Message\MessageDispatcherComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Message\NetKcpComponentSystem.cs">
+      <Link>Module\Message\NetKcpComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Message\NetThreadComponentSystem.cs">
+      <Link>Module\Message\NetThreadComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Message\SessionAcceptTimeoutComponentSystem.cs">
+      <Link>Module\Message\SessionAcceptTimeoutComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Message\SessionIdleCheckerComponentSystem.cs">
+      <Link>Module\Message\SessionIdleCheckerComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Hotfix\Module\Numeric\*.cs">
+      <Link>Module\Numeric\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+    
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Battle\SkillSystem\BuffSystem\**\*.cs">
+      <Link>NKGMOBA\Battle\SkillSystem\BuffSystem\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Battle\ComponentSystems\**\*.cs">
+      <Link>NKGMOBA\Battle\ComponentSystems\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Battle\Box2D\**\*.cs">
+      <Link>NKGMOBA\Battle\Box2D\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Battle\LockStepStateFrameSync\**\*.cs">
+      <Link>NKGMOBA\Battle\LockStepStateFrameSync\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Battle\NPbehave\**\*.cs">
+      <Link>NKGMOBA\Battle\NPbehave\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\HotfixView\NKGMOBA\Battle\NPBehave\**\*.cs">
+      <Link>NKGMOBA\Battle\NPbehave\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Hotfix\NKGMOBA\Battle\RecastNav\**\*.cs">
+      <Link>NKGMOBA\Battle\RecastNav\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Server.Model.csproj" />
-    <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Bson\MongoDB.Bson.csproj" />
-    <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj" />
-    <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Driver\MongoDB.Driver.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Module\Http\" />
-    <Folder Include="NKGMOBA\Box2D\EventDefines" />
   </ItemGroup>
 </Project>

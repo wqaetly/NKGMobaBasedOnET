@@ -7,7 +7,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 向客户端发送Buff信息，主要用于往客户端发送Buff信息让其播放指定特效/动画

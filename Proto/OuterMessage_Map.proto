@@ -1,0 +1,242 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType M2C_TestResponse
+message C2M_TestRequest // IActorLocationRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  string request = 1;
+}
+
+message M2C_TestResponse // IActorLocationResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  string response = 1;
+}
+
+//ResponseType Actor_TransferResponse
+message Actor_TransferRequest // IActorLocationRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int32 MapIndex = 1;
+}
+
+message Actor_TransferResponse // IActorLocationResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+//ResponseType M2C_Ping
+message C2M_Ping // IActorLocationRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+}
+
+message M2C_Ping // IActorLocationResponse
+{
+  int32 RpcId = 90;
+  string Message = 92;
+  int32 Error = 91;
+  int64 TimePoint = 1;
+  uint32 ServerFrame = 93;
+}
+
+//ResponseType M2C_Reload
+message C2M_Reload // IRequest
+{
+  int32 RpcId = 90;
+  string Account = 1;
+  string Password = 2;
+}
+
+message M2C_Reload // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+//ResponseType M2C_TestRobotCase
+message C2M_TestRobotCase // IActorLocationRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int32 N = 1;
+}
+
+message M2C_TestRobotCase // IActorLocationResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int32 N = 1;
+}
+
+message M2C_EndBattleSettle // IActorMessage
+{
+  repeated PlayerBattlePoint settleAccount = 1;
+}
+
+message M2C_KillEvent // IActorMessage
+{
+  PlayerBattlePoint  killer = 1;
+  PlayerBattlePoint  deadPlayer = 2;
+}
+
+message UnitInfo
+{
+  int64 UnitId = 1;
+  int32 ConfigId = 2;
+  // 所属的玩家id
+  int64 BelongToPlayerId = 99;
+  float X = 3;
+  float Y = 4;
+  float Z = 5;
+  int32 RoleCamp = 6;
+  int64 RoomId = 7;
+}
+
+message M2C_CreateUnits // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int64 PlayerId = 94;
+  int64 RoomId = 95;
+  repeated UnitInfo Units = 2;
+}
+
+message M2C_UnitDestoryed // IActorMessage
+{
+  int64 ActorId = 93;
+  //被破坏的UnitId
+  int64 DestoryedUnitId = 94;
+}
+
+message C2M_Stop // IActorLocationMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+}
+
+message M2C_Stop // IActorMessage
+{
+  int32 Error = 1;
+
+  int64 Id = 2;
+  float X = 3;
+  float Y = 4;
+  float Z = 5;
+
+  float A = 6;
+  float B = 7;
+  float C = 8;
+  float W = 9;
+}
+
+message M2C_ReceiveDamage // IActorMessage
+{
+  int32 Error = 1;
+  int64 UnitId = 2;
+
+  float FinalValue = 4;
+}
+
+message C2M_CastHeroSkill // IActorLocationMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+}
+
+message M2C_CastHeroSkill // IActorMessage
+{
+  int64 UnitId = 1;
+}
+
+message M2C_RecoverHP // IActorMessage
+{
+  int64 SpriteUnitId = 1;
+  float  RecoverHPValue = 2;
+}
+
+
+message M2C_BuffInfo // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+
+  int64 UnitId = 1; //要发送到的目标UnitId
+  int64 SkillId = 96; //目标技能Id
+
+  string BBKey = 2; //黑板键，此键对应值将会被设置为Buff层数
+
+  int64 TheUnitBelongToId = 95; //Buff归属的UnitId
+  int64 TheUnitFromId = 91; //Buff来自的UnitId
+  int32 BuffLayers = 3; //Buff层数
+  float BuffMaxLimitTime = 4; //Buff最大持续到的时间点
+}
+
+//同步CD信息
+message M2C_SyncCDData // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+
+  int64 UnitId = 94;
+  //CD名称
+  string CDName = 2;
+  //CD总时长
+  int64 CDLength = 3;
+  //剩余CD时长
+  int64 RemainCDLength = 5;
+}
+
+message C2M_FrameCmd // IActorLocationMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  
+  ALSF_Cmd CmdContent = 92;
+}
+
+
+message M2C_FrameCmd // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  
+  int64 ServerTimeSnap = 94;
+  
+  ALSF_Cmd CmdContent = 92;
+}
+
+message M2C_SyncUnitAttribute // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+
+  int64 UnitId = 94;
+
+  int32 NumericType = 95;
+  float FinalValue = 3;
+}
+
+message M2C_ChangeUnitAttribute // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+
+  int64 UnitId = 94;
+
+  int32 NumericType = 95;
+
+  float ChangeValue = 2;
+}
+
+////////////////////////////////////////////// 战斗相关 END ///////////////////////////////////////////////////////////////

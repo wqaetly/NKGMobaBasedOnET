@@ -7,7 +7,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using ETModel;
 using MongoDB.Bson;
 using MonKey;
 using Sirenix.OdinInspector;
@@ -17,7 +16,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace ETEditor
+namespace ET
 {
     public class CreateMatFromFileOrFolder: OdinEditorWindow
     {

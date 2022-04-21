@@ -1,0 +1,141 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType L2C_LoginLobby
+message C2L_LoginLobby // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;  // 帐号
+}
+
+message L2C_LoginLobby // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  repeated int64 RoomHolderPlayerList = 5;
+  repeated int64 RoomIdList = 1;
+  repeated string RoomNameList = 2;
+  repeated int32 RoomPlayerNum = 3;
+}
+
+///////////////////////////////// 房间相关  START ///////////////////////////////////
+
+//ResponseType L2C_CreateNewRoomLobby
+message C2L_CreateNewRoomLobby // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;  // 帐号
+}
+
+message L2C_CreateNewRoomLobby // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int32 RoomId = 1;
+  int32 mode = 2;
+  int32 camp = 3; //阵营，房间位置
+}
+
+//ResponseType L2C_JoinRoomLobby
+message C2L_JoinRoomLobby // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;  // 帐号
+  int64 RoomId = 2; //加入的房间Id
+}
+
+message L2C_JoinRoomLobby // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int64 RoomId = 1; //加入的房间Id
+  int32 camp = 2; //阵营，房间位置
+  int64 RoomHolderId = 3;
+  string RoomName = 4;
+  repeated PlayerInfoRoom playerInfoRoom = 5;
+}
+
+message PlayerInfoRoom
+{
+  string Account = 1;
+  int64 UnitId = 2;
+  int64 SessionId = 3;
+  int64 RoomId = 4;
+  int32 camp = 5;
+  int64 playerid = 6;
+}
+
+message L2C_PlayerTriggerRoom // IActorMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  PlayerInfoRoom playerInfoRoom = 1;
+  bool JoinOrLeave = 2;
+}
+
+//ResponseType L2C_LeaveRoomLobby
+message C2L_LeaveRoomLobby // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;  // 帐号
+}
+
+message L2C_LeaveRoomLobby // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int32 camp = 1; //阵营，房间位置
+  int64 newRoomHolder = 2; //更换房主的时候选的新房主
+  int64 RoomId = 4; // 离开的RoomId
+  int64 PlayerId = 5;
+  bool isDestory = 3;
+}
+
+message PlayerBattleInfo
+{
+  int64 PlayerId = 1;
+  int32 HeroConfig = 2;
+}
+
+//ResponseType L2C_StartGameLobby
+message C2L_StartGameLobby // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;  // 帐号
+  repeated PlayerBattleInfo PlayerBattleInfos = 2;
+}
+
+message L2C_StartGameLobby // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  repeated int64 list = 1;
+}
+
+message PlayerBattlePoint
+{
+  int64 PlayerId = 1;
+  int32 Point = 2;
+  int32 SingleMatchCount = 3;
+  string Account = 4;
+  int64 UnitId = 5;
+}
+
+message L2C_PrepareToEnterBattle  // IMessage
+{
+}
+
+message C2L_PreparedToEnterBattle // IMessage
+{
+  int64 PlayerId = 1;
+}
+
+message L2C_AllowToEnterMap // IMessage
+{
+
+}

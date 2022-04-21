@@ -10,10 +10,11 @@ using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
     [Title("Buff数据块", TitleAlignment = TitleAlignments.Centered)]
     [HideLabel]
+    [BsonDeserializerRegister]
     public class BuffDataBase
     {
         /// <summary>
@@ -31,15 +32,11 @@ namespace ETModel
         [HideInInspector]
         [LabelText("Buff的Id")]
         [BoxGroup("必填项")]
-        public long BuffId = IdGenerater.GenerateId();
+        public long BuffId = IdGenerater.Instance.GenerateId();
 
         [BoxGroup("必填项")]
         [LabelText("Buff归属技能的Id"), GUIColor(1, 140 / 255f, 0)]
         public VTD_Id BelongToSkillId = new VTD_Id();
-
-        [HideInInspector]
-        [BoxGroup("必填项")]
-        public BuffSystemType BelongBuffSystemType;
 
         [LabelText("Buff的添加目标")]
         [BoxGroup("必填项")]
@@ -48,6 +45,16 @@ namespace ETModel
         [LabelText("Buff的基本特征")]
         [BoxGroup("必填项")]
         public BuffBaseType BuffBaseType;
+        
+        /// <summary>
+        /// 如果为false则不会纳入网络同步范畴
+        /// 比如状态BuffA（true）和其所连接的BuffB（false），A会考虑进网络同步的范畴，但B不会
+        /// 所以服务端只会将BuffA同步过来，客户端在添加BuffA的时候再去添加B，这样就保证了这种连锁类型的Buff不会重复添加
+        /// </summary>
+        [InfoBox("如果为false则不会纳入网络同步范畴")]
+        [LabelText("Buff是否需要单独同步")]
+        [BoxGroup("必填项")]
+        public bool NetSyncSpecial;
 
         [ShowIf("Base_isVisualable")]
         [LabelText("Buff图标的名称")]

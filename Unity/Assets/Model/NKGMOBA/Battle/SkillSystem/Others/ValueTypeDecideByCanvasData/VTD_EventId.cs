@@ -11,7 +11,7 @@ using UnityEditor;
 
 #endif
 
-namespace ETModel
+namespace ET
 {
     [HideReferenceObjectPicker]
     public struct VTD_EventId
@@ -22,16 +22,9 @@ namespace ETModel
 #if UNITY_EDITOR
         private IEnumerable<string> GetEventId()
         {
-            UnityEngine.Object[] subAssets = AssetDatabase.LoadAllAssetsAtPath(UnityEngine.PlayerPrefs.GetString("LastCanvasPath"));
-            if (subAssets != null)
+            if (NP_BlackBoardDataManager.CurrentEditedNP_BlackBoardDataManager != null)
             {
-                foreach (var subAsset in subAssets)
-                {
-                    if (subAsset is NPBehaveCanvasDataManager npBehaveCanvasDataManager)
-                    {
-                        return npBehaveCanvasDataManager.EventValues;
-                    }
-                }
+                return NP_BlackBoardDataManager.CurrentEditedNP_BlackBoardDataManager.EventValues;
             }
 
             return null;

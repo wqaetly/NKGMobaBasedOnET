@@ -7,7 +7,7 @@
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [BoxGroup("等待到停止节点数据")]
     [HideLabel]
@@ -21,7 +21,7 @@ namespace ETModel
             return this.m_WaitUntilStopped;
         }
 
-        public override Task CreateTask(long unitId, NP_RuntimeTree runtimeTree)
+        public override Task CreateTask(Unit unit, NP_RuntimeTree runtimeTree)
         {
             this.m_WaitUntilStopped = new WaitUntilStopped();
             return this.m_WaitUntilStopped;

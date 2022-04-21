@@ -10,7 +10,7 @@ using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ETModel
+namespace ET
 {
     [BsonIgnoreExtraElements]
     [GUIColor(0.4f, 0.8f, 1)]
@@ -39,7 +39,7 @@ namespace ETModel
         [HideLabel]
         [Title("技能CD", Bold = false)]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<int, float> SkillCD;
+        public Dictionary<int, long> SkillCD;
         
         [TabGroup("基础信息")]
         [HideLabel]

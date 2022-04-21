@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 
-namespace ETModel
+namespace ET
 {
-	public class GateSessionKeyComponent : Component
+	public class GateSessionKeyComponent : Entity
 	{
-		private readonly Dictionary<long, long> sessionKey = new Dictionary<long, long>();
+		private readonly Dictionary<long, string> sessionKey = new Dictionary<long, string>();
 		
-		public void Add(long key, long account)
+		public void Add(long key, string account)
 		{
 			this.sessionKey.Add(key, account);
 			this.TimeoutRemoveKey(key).Coroutine();
 		}
 
-		public long Get(long key)
+		public string Get(long key)
 		{
-			long account = 0;
+			string account = null;
 			this.sessionKey.TryGetValue(key, out account);
 			return account;
 		}

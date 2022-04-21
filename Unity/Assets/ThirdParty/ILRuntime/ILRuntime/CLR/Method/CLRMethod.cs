@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-using Mono.Cecil;
+using ILRuntime.Mono.Cecil;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Enviorment;
 using ILRuntime.CLR.TypeSystem;
@@ -51,17 +51,23 @@ namespace ILRuntime.CLR.Method
                 return isConstructor ? !cDef.IsStatic : !def.IsStatic;
             }
         }
+
+        int _genericParameterCount = -1;
         public int GenericParameterCount
         {
             get
             {
-                if (def.ContainsGenericParameters && def.IsGenericMethodDefinition)
+                if (_genericParameterCount == -1)
                 {
-                    return def.GetGenericArguments().Length;
+                    if (def.ContainsGenericParameters && def.IsGenericMethodDefinition)
+                        _genericParameterCount = def.GetGenericArguments().Length;
+                    else
+                        _genericParameterCount = 0;
                 }
-                return 0;
+                return _genericParameterCount;
             }
         }
+
         public bool IsGenericInstance
         {
             get
@@ -278,6 +284,7 @@ namespace ILRuntime.CLR.Method
                         if (instance is CrossBindingAdaptorType && paramCount == 0)//It makes no sense to call the Adaptor's default constructor
                             return null;
                         cDef.Invoke(instance, param);
+                        Array.Clear(invocationParam, 0, invocationParam.Length);
                         return null;
                     }
                     else
@@ -288,8 +295,8 @@ namespace ILRuntime.CLR.Method
                 else
                 {
                     var res = cDef.Invoke(param);
-
                     FixReference(paramCount, esp, param, mStack, null, false);
+                    Array.Clear(invocationParam, 0, invocationParam.Length);
                     return res;
                 }
 
@@ -317,6 +324,7 @@ namespace ILRuntime.CLR.Method
                 }
 
                 FixReference(paramCount, esp, param, mStack, instance, !def.IsStatic);
+                Array.Clear(invocationParam, 0, invocationParam.Length);
                 return res;
             }
         }
@@ -391,7 +399,27 @@ namespace ILRuntime.CLR.Method
             {
                 p[i] = genericArguments[i].TypeForCLR;
             }
-            var t = def.MakeGenericMethod(p);
+
+            MethodInfo t = null;
+#if UNITY_EDITOR || (DEBUG && !DISABLE_ILRUNTIME_DEBUG)
+            try
+            {
+#endif
+                t = def.MakeGenericMethod(p);
+#if UNITY_EDITOR || (DEBUG && !DISABLE_ILRUNTIME_DEBUG)
+            }
+            catch (Exception e)
+            {
+                string argString = "";
+                for (int i = 0; i < genericArguments.Length; i++)
+                {
+                    argString += genericArguments[i].TypeForCLR.FullName + ", ";
+                }
+
+                argString = argString.Substring(0, argString.Length - 2);
+                throw new Exception($"MakeGenericMethod failed : {def.DeclaringType.FullName}.{def.Name}<{argString}>");
+            }
+#endif
             var res = new CLRMethod(t, declaringType, appdomain);
             res.genericArguments = genericArguments;
             return res;

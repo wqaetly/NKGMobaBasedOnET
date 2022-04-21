@@ -1,17 +1,15 @@
-﻿namespace ETModel
+﻿namespace ET
 {
-	// 不需要返回消息
-	public interface IActorMessage: IMessage
-	{
-		long ActorId { get; set; }
-	}
+    // 不需要返回消息
+    public interface IActorMessage: IMessage
+    {
+    }
 
-	public interface IActorRequest : IRequest
-	{
-		long ActorId { get; set; }
-	}
+    public interface IActorRequest: IRequest
+    {
+    }
 
-	public interface IActorResponse : IResponse
-	{
-	}
+    public interface IActorResponse: IResponse
+    {
+    }
 }

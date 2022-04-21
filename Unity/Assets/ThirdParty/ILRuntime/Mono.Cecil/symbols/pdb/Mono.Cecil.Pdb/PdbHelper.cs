@@ -11,9 +11,9 @@
 using System;
 using System.IO;
 
-using Mono.Cecil.Cil;
+using ILRuntime.Mono.Cecil.Cil;
 
-namespace Mono.Cecil.Pdb {
+namespace ILRuntime.Mono.Cecil.Pdb {
 
 	public sealed class NativePdbReaderProvider : ISymbolReaderProvider {
 
@@ -39,7 +39,6 @@ namespace Mono.Cecil.Pdb {
 		public ISymbolReader GetSymbolReader (ModuleDefinition module, string fileName)
 		{
 			Mixin.CheckModule (module);
-			Mixin.CheckFileName (fileName);
 
 			if (module.HasDebugHeader) {
 				var header = module.GetDebugHeader ();
@@ -47,6 +46,8 @@ namespace Mono.Cecil.Pdb {
 				if (entry != null)
 					return new EmbeddedPortablePdbReaderProvider ().GetSymbolReader (module, fileName);
 			}
+			
+			Mixin.CheckFileName (fileName);
 
 			return Mixin.IsPortablePdb (Mixin.GetPdbFileName (fileName))
 				? new PortablePdbReaderProvider ().GetSymbolReader (module, fileName)
@@ -64,8 +65,6 @@ namespace Mono.Cecil.Pdb {
 				: new NativePdbReaderProvider ().GetSymbolReader (module, symbolStream);
 		}
 	}
-
-#if !READ_ONLY
 
 	public sealed class NativePdbWriterProvider : ISymbolWriterProvider {
 
@@ -125,6 +124,4 @@ namespace Mono.Cecil.Pdb {
 			return new NativePdbWriterProvider ().GetSymbolWriter (module, symbolStream);
 		}
 	}
-
-#endif
 }

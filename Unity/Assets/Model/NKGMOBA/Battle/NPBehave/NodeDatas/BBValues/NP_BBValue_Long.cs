@@ -5,12 +5,14 @@
 //------------------------------------------------------------
 
 using System;
+using ProtoBuf;
 using Sirenix.OdinInspector;
 
-namespace ETModel.BBValues
+namespace ET
 {
     [HideLabel]
     [HideReferenceObjectPicker]
+    [ProtoContract]
     public class NP_BBValue_Long: NP_BBValueBase<long>, IEquatable<NP_BBValue_Long>
     {
         public override Type NP_BBValueType
@@ -20,19 +22,19 @@ namespace ETModel.BBValues
                 return typeof (long);
             }
         }
-
+        
         #region 对比函数
 
         public bool Equals(NP_BBValue_Long other)
         {
             // If parameter is null, return false.
-            if (Object.ReferenceEquals(other, null))
+            if (System.Object.ReferenceEquals(other, null))
             {
                 return false;
             }
 
             // Optimization for a common success case.
-            if (Object.ReferenceEquals(this, other))
+            if (System.Object.ReferenceEquals(this, other))
             {
                 return true;
             }
@@ -77,9 +79,9 @@ namespace ETModel.BBValues
         public static bool operator ==(NP_BBValue_Long lhs, NP_BBValue_Long rhs)
         {
             // Check for null on left side.
-            if (Object.ReferenceEquals(lhs, null))
+            if (System.Object.ReferenceEquals(lhs, null))
             {
-                if (Object.ReferenceEquals(rhs, null))
+                if (System.Object.ReferenceEquals(rhs, null))
                 {
                     // null == null = true.
                     return true;
@@ -119,5 +121,24 @@ namespace ETModel.BBValues
         }
 
         #endregion
+        
+        #region proto序列化支持
+
+        [ProtoMember(1)] private long ValueForProtoSerilize;
+
+        [ProtoBeforeSerialization]
+        private void HandleBeforSerilize()
+        {
+            ValueForProtoSerilize = Value;
+        }
+
+        [ProtoAfterDeserialization]
+        private void HandleAfterSerilize()
+        {
+            Value = ValueForProtoSerilize;
+        }
+
+        #endregion
+        
     }
 }

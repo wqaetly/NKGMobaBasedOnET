@@ -8,7 +8,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class NP_SequenceNodeData: NP_NodeDataBase
     {

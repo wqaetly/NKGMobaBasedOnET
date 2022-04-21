@@ -27,8 +27,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ET;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace libx
 {
@@ -146,7 +148,42 @@ namespace libx
 				Debug.Log ("Nothing to build.");
 				return;
 			}
+			
+			#region 根据XAsset BuildInScene配置复原Unity的BuildInScene 因为我们为了支持在编辑器模式下的测试而必须将所有Scene放到Unity的BuildInSetting里
 
+			var assets = new List<string>();
+			var rules = BuildScript.GetBuildRules();
+			foreach (var asset in rules.scenesInBuild)
+			{
+				var path = AssetDatabase.GetAssetPath(asset);
+				if (string.IsNullOrEmpty(path))
+				{
+					continue;
+				}
+				assets.Add(path); 
+			} 
+			foreach (var rule in rules.rules)
+			{
+				if (rule.searchPattern.Contains("*.unity"))
+				{
+					assets.AddRange(rule.GetAssets());
+				}
+			}  
+			var scenes = new EditorBuildSettingsScene[assets.Count];
+			for (var index = 0; index < assets.Count; index++)
+			{
+				var asset = assets[index]; 
+				scenes[index] = new EditorBuildSettingsScene(asset, true);
+			}
+			EditorBuildSettings.scenes = scenes;
+
+			#endregion
+
+			// 如果执行打包，就强行替换为非本地调试模式，进行AB加载
+			Updater updater = Object.FindObjectOfType<Updater>();
+			bool isDevelopMode = updater.DevelopmentMode;
+			updater.DevelopmentMode = false;
+			
 			var targetName = GetBuildTargetName (EditorUserBuildSettings.activeBuildTarget);
 			if (targetName == null)
 				return;
@@ -163,6 +200,7 @@ namespace libx
 			};
 			BuildPipeline.BuildPlayer (buildPlayerOptions);
 #endif
+			updater.DevelopmentMode = isDevelopMode;
 		}
 
 		public static string CreateAssetBundleDirectory ()
@@ -227,6 +265,7 @@ namespace libx
 					dirs.Add (dir);
 				}
 
+				Debug.Log(Path.GetFileName (path));
 				var asset = new AssetRef { bundle = bundle2Ids [item.bundle], dir = index, name = Path.GetFileName (path) };
 				assets.Add (asset);
 			}

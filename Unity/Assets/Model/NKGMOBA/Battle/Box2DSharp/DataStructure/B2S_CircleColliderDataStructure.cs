@@ -7,10 +7,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Numerics;
-using ETModel;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 圆形碰撞体的数据结构

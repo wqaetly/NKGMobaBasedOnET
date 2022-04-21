@@ -1,8 +1,8 @@
-//此文件格式由工具自动生成
+﻿//此文件格式由工具自动生成
 
-using ETModel.NKGMOBA.Battle.State;
+using ET;
 
-namespace ETModel
+namespace ET
 {
     #region System
 
@@ -44,7 +44,7 @@ namespace ETModel
 
     #endregion
 
-    public class CastDamageComponent: Component
+    public class CastDamageComponent: Entity
     {
         #region 私有成员
 
@@ -65,7 +65,7 @@ namespace ETModel
         /// <returns></returns>
         public float BaptismDamageData(DamageData damageData)
         {
-            DataModifierComponent dataModifierComponent = this.Entity.GetComponent<DataModifierComponent>();
+            DataModifierComponent dataModifierComponent = this.GetParent<Unit>().GetComponent<DataModifierComponent>();
 
             if ((damageData.BuffDamageTypes & BuffDamageTypes.Physical) == BuffDamageTypes.Physical)
             {
@@ -87,6 +87,7 @@ namespace ETModel
                 damageData.DamageValue = dataModifierComponent.BaptismData(CastRangeType, damageData.DamageValue);
             }
 
+            damageData.OperateCaster = this.GetParent<Unit>();
             damageData.DamageValue = dataModifierComponent.BaptismData(CastAllType, damageData.DamageValue);
             return damageData.DamageValue < 0? 0 : damageData.DamageValue;
         }

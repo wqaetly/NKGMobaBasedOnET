@@ -7,7 +7,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [Title("Buff节点数据块",TitleAlignment = TitleAlignments.Centered)]
     [HideLabel]

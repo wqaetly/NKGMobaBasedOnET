@@ -1,0 +1,261 @@
+PortView {
+    height: 24px;
+    align-items: center;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+PortView.input {
+    flex-direction: row;
+}
+
+PortView.output {
+    flex-direction: row-reverse;
+}
+
+PortView > #connector {
+    border-color: rgb(255, 255, 0);
+    background-color: #212121;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 4px;
+    margin-right: 4px;
+    border-left-width:1px;
+    border-top-width:1px;
+    border-right-width:1px;
+    border-bottom-width:1px;
+}
+
+PortView > #connector:hover {
+    border-color:  #f0f0f0
+}
+
+PortView > #connector > #cap
+{
+    background-color: #212121;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+}
+
+PortView > #connector > #cap:hover
+{
+    background-color: #f0f0f0;
+}
+
+.Port_Boolean {
+    --port-color: #ff6d29;
+}
+
+.Port_Single {
+    --port-color: #2080FF;
+}
+
+.Port_Int32 {
+    --port-color: #325dff;
+}
+
+.Port_Object {
+    --port-color: #80FF00;
+}
+
+.Port_String {
+    --port-color: #80FF80;
+}
+
+.Port_GameObject {
+    --port-color: #FF0000;
+}
+
+.Port_Color {
+    --port-color: #FF00FF;
+}
+
+.Port_NP_NodeBase {
+    --port-color: #ff6d29;
+}
+
+.Port_BuffNodeBase {
+    --port-color: #56cb2c;
+}
+
+.Vertical
+{
+    height: -5px;
+}
+
+/**************/
+/* Port icons */
+/**************/
+#PortViewIcon_Texture2D{
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/2DTexture@x3");
+}
+
+#PortViewIcon_Float2,
+#PortViewIcon_Vector2 {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Vector2@x3");
+    -unity-background-image-tint-color: aqua;
+}
+
+#PortViewIcon_Float3,
+#PortViewIcon_Vector3 {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Vector3@x3");
+    -unity-background-image-tint-color: aquamarine;
+}
+
+#PortViewIcon_Float4,
+#PortViewIcon_Vector4 {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Vector4@x3");
+}
+
+#PortViewIcon_Quaternion {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Quaternion@x3");
+}
+
+#PortViewIcon_Boolean{
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Boolean@x3");
+}
+
+#PortViewIcon_Double,
+#PortViewIcon_Single{
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Double@x3");
+}
+
+#PortViewIcon_Int32{
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Integer32@x3");
+}
+
+#PortViewIcon_Int64{
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Integer64@x3");
+}
+
+#PortViewIcon_Matrix,
+#PortViewIcon_Matrix4x4 {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Matrix@x3");
+}
+
+#PortViewIcon_Object {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Advanced@x3");
+}
+
+#PortViewIcon_Array {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Array@x3");
+}
+
+#PortViewIcon_String {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/String@x3");
+}
+
+#PortViewIcon_GameObject {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/GameObject@x3");
+}
+
+#PortViewIcon_Color {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Color@x3");
+}
+
+#PortViewIcon_Component {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Component@x3");
+}
+
+#PortViewIcon_Condition {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Condition@x3");
+}
+
+#PortViewIcon_ForEachLoop {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/ForEachLoop@x3");
+}
+
+#PortViewIcon_Action {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Function@x3");
+}
+
+#PortViewIcon_IfCondition {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/IfCondition@x3");
+}
+
+#PortViewIcon_KeyCode {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/KeyCode@x3");
+}
+
+#PortViewIcon_RaycastHit {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/RaycastHit@x3");
+}
+
+#PortViewIcon_Text {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Text@x3");
+}
+
+#PortViewIcon_Transform {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Transform@x3");
+}
+
+#PortViewIcon_WhileLoop {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/WhileLoop@x3");
+}
+
+#PortViewIcon_Material {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/Material@x3");
+}
+
+#PortViewIcon_Rigidbody {
+    width: 12px;
+    height: 12px;
+    background-image: resource("Icons/RigidBody@x3");
+}

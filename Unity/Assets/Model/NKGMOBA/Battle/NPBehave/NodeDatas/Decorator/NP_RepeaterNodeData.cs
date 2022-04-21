@@ -7,7 +7,7 @@
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class NP_RepeaterNodeData:NP_NodeDataBase
     {
@@ -19,7 +19,7 @@ namespace ETModel
             return this.m_Repeater;
         }
         
-        public override Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
+        public override Decorator CreateDecoratorNode(Unit unit, NP_RuntimeTree runtimeTree, Node node)
         {
             this.m_Repeater = new Repeater(node);
             return this.m_Repeater;

@@ -1,4 +1,5 @@
-﻿using MonKey.Editor.Internal;
+﻿using System.Reflection;
+using MonKey.Editor.Internal;
 using MonKey.Extensions;
 using MonKey.Internal;
 using MonKey.Settings.Internal;
@@ -183,9 +184,7 @@ public class MonKeySettings : Editor
             EditorGUILayout.EndVertical();
 
         }
-
-
-
+        
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField(MonKeyLocManager.CurrentLoc.PauseOnUsage);
         PauseGameOnConsoleOpen = EditorGUILayout.Toggle(PauseGameOnConsoleOpen);
@@ -204,11 +203,18 @@ public class MonKeySettings : Editor
 
     private void CheckAssemblyInclusion()
     {
+        EditorGUILayout.HelpBox("如果开启Only Included Mode，将只会扫描IncludedAssemblies提及的程序集（Monkey插件内置的Unity命令拓展需要手动添加Monkey Commander）\n否则将会扫描除ExcludedAssemblies之外所有程序集（数量非常多，十分耗时）", MessageType.Warning); 
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Only Included Mode?");
+        this.IncludeModeOnly = EditorGUILayout.Toggle(IncludeModeOnly);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.HelpBox("注意以;作为多个程序集的分隔符！", MessageType.Warning); 
+        GUILayout.Label("Included Assemblies");
+        this.IncludedAssemblies = GUILayout.TextArea(IncludedAssemblies);
         GUILayout.Label("Excluded Assemblies");
         ExcludedAssemblies = GUILayout.TextArea(ExcludedAssemblies);
     }
-
-
+    
     private void CheckNameSpaceInclusion()
     {
         GUILayout.Label("Excluded Namespaces");
@@ -246,14 +252,13 @@ public class MonKeySettings : Editor
 
     }
 
-
     private static void SavePrefs()
     {
         MonKeyInternalSettings internalSettings = MonKeyInternalSettings.Instance;
 
         if (!internalSettings)
             return;
-
+        
         internalSettings.UseSortedSelection = instance.UseSortedSelection;
         internalSettings.MaxSortedSelectionSize = instance.MaxSortedSelectionSize;
         internalSettings.ShowSortedSelectionWarning = instance.ShowSortedSelectionWarning;
@@ -263,6 +268,8 @@ public class MonKeySettings : Editor
         internalSettings.IncludeMenuItems = instance.IncludeMenuItems;
         internalSettings.IncludeOnlyMenuItemsWithHotKeys = instance.IncludeOnlyMenuItemsWithHotKeys;
         internalSettings.ExcludedAssemblies = instance.ExcludedAssemblies;
+        internalSettings.IncludeAssemblies = instance.IncludedAssemblies;
+        internalSettings.IncludeModeOnly = instance.IncludeModeOnly;
         internalSettings.ExcludedNameSpaces = instance.ExcludedNameSpaces;
         internalSettings.ForceFocusOnDocked = instance.ForceFocusOnDocked;
         internalSettings.ShowHelpOnlyOnActiveCommand = instance.ShowHelpOnSelectedOnly;
@@ -305,6 +312,12 @@ public class MonKeySettings : Editor
     [HideInInspector]
     public string ExcludedNameSpaces = "";
 
+    [HideInInspector]
+    public string IncludedAssemblies = "";
+
+    [HideInInspector]
+    public bool IncludeModeOnly = true;
+    
     [HideInInspector]
     public bool ForceFocusOnDocked = false;
 

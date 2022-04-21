@@ -7,7 +7,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [Flags]
     public enum BuffTargetTypes

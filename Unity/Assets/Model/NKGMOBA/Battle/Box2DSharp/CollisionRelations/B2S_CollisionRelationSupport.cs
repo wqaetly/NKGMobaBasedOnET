@@ -9,7 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class B2S_CollisionsRelationSupport
     {

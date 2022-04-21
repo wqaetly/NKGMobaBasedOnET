@@ -10,7 +10,7 @@ namespace NPBehave
         public Composite(string name, Node[] children): base(name)
         {
             this.Children = children;
-            Debug.Assert(children.Length > 0, "Composite nodes (Selector, Sequence, Parallel) need at least one child!");
+            Debug.Assert(children.Length > 0, $"Composite nodes (Selector, Sequence, Parallel) need at least one child!  PATH: {GetPath()}");
 
             foreach (Node node in Children)
             {

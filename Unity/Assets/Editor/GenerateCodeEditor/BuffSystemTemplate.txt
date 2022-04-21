@@ -1,0 +1,11 @@
+namespace ETModel
+{
+    public class _BUFFNAME_System: ABuffSystemBase
+    {
+        public override void OnExecute()
+        {
+
+            this.BuffState = BuffState.Finished;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     //TODO 如果要加新的Buff逻辑类型，需要在这里拓展，本人能力的确有限。。。只能设计成这样了
     /// <summary>

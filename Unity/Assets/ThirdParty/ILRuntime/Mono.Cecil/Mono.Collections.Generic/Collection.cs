@@ -12,9 +12,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Mono.Cecil;
+using ILRuntime.Mono.Cecil;
 
-namespace Mono.Collections.Generic {
+namespace ILRuntime.Mono.Collections.Generic {
 
 	public class Collection<T> : IList<T>, IList {
 
@@ -104,7 +104,9 @@ namespace Mono.Collections.Generic {
 			if (capacity < 0)
 				throw new ArgumentOutOfRangeException ();
 
-			items = new T [capacity];
+			items = capacity == 0 
+				? Empty<T>.Array
+				: new T [capacity];
 		}
 
 		public Collection (ICollection<T> items)

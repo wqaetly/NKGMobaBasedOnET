@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
+using ET;
 
 namespace NPBehave
 {
-    public class Action: Task
+    public class Action : Task
     {
         public enum Result
         {
@@ -24,27 +25,28 @@ namespace NPBehave
         public System.Func<Request, Result> multiFrameFunc2 = null;
         public System.Action action = null;
         public bool bWasBlocked = false;
+        private long TimerId;
 
-        public Action(): base("Action")
+        public Action() : base("Action")
         {
         }
 
-        public Action(System.Action action): base("Action")
+        public Action(System.Action action) : base("Action")
         {
             this.action = action;
         }
 
-        public Action(System.Func<bool, Result> multiframeFunc): base("Action")
+        public Action(System.Func<bool, Result> multiframeFunc) : base("Action")
         {
             this.multiFrameFunc = multiframeFunc;
         }
 
-        public Action(System.Func<Request, Result> multiframeFunc2): base("Action")
+        public Action(System.Func<Request, Result> multiframeFunc2) : base("Action")
         {
             this.multiFrameFunc2 = multiframeFunc2;
         }
 
-        public Action(System.Func<bool> singleFrameFunc): base("Action")
+        public Action(System.Func<bool> singleFrameFunc) : base("Action")
         {
             this.singleFrameFunc = singleFrameFunc;
         }
@@ -61,12 +63,12 @@ namespace NPBehave
                 Result result = this.multiFrameFunc.Invoke(false);
                 if (result == Result.PROGRESS)
                 {
-                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc);
+                    TimerId = this.RootNode.Clock.AddTimer(1, OnUpdateFunc, -1);
                 }
                 else if (result == Result.BLOCKED)
                 {
                     this.bWasBlocked = true;
-                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc);
+                    TimerId = this.RootNode.Clock.AddTimer(1, OnUpdateFunc, -1);
                 }
                 else
                 {
@@ -78,12 +80,12 @@ namespace NPBehave
                 Result result = this.multiFrameFunc2.Invoke(Request.START);
                 if (result == Result.PROGRESS)
                 {
-                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc2);
+                    TimerId = this.RootNode.Clock.AddTimer(1, OnUpdateFunc2, -1);
                 }
                 else if (result == Result.BLOCKED)
                 {
                     this.bWasBlocked = true;
-                    this.RootNode.Clock.AddUpdateObserver(OnUpdateFunc2);
+                    TimerId = this.RootNode.Clock.AddTimer(1, OnUpdateFunc2, -1);
                 }
                 else
                 {
@@ -101,14 +103,14 @@ namespace NPBehave
             Result result = this.multiFrameFunc.Invoke(false);
             if (result != Result.PROGRESS && result != Result.BLOCKED)
             {
-                this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc);
+                this.RootNode.Clock.RemoveTimer(TimerId);
                 this.Stopped(result == Result.SUCCESS);
             }
         }
 
         private void OnUpdateFunc2()
         {
-            Result result = this.multiFrameFunc2.Invoke(bWasBlocked? Request.START : Request.UPDATE);
+            Result result = this.multiFrameFunc2.Invoke(bWasBlocked ? Request.START : Request.UPDATE);
 
             if (result == Result.BLOCKED)
             {
@@ -120,7 +122,7 @@ namespace NPBehave
             }
             else
             {
-                this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc2);
+                this.RootNode.Clock.RemoveTimer(TimerId);
                 this.Stopped(result == Result.SUCCESS);
             }
         }
@@ -130,20 +132,22 @@ namespace NPBehave
             if (this.multiFrameFunc != null)
             {
                 Result result = this.multiFrameFunc.Invoke(true);
-                Debug.Assert(result != Result.PROGRESS, "The Task has to return Result.SUCCESS, Result.FAILED/BLOCKED after beeing cancelled!");
-                this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc);
+                Debug.Assert(result != Result.PROGRESS,
+                    $"The Task has to return Result.SUCCESS, Result.FAILED/BLOCKED after beeing cancelled!  PATH: {GetPath()}");
+                this.RootNode.Clock.RemoveTimer(TimerId);
                 this.Stopped(result == Result.SUCCESS);
             }
             else if (this.multiFrameFunc2 != null)
             {
                 Result result = this.multiFrameFunc2.Invoke(Request.CANCEL);
-                Debug.Assert(result != Result.PROGRESS, "The Task has to return Result.SUCCESS or Result.FAILED/BLOCKED after beeing cancelled!");
-                this.RootNode.Clock.RemoveUpdateObserver(OnUpdateFunc2);
+                Debug.Assert(result != Result.PROGRESS,
+                    $"The Task has to return Result.SUCCESS or Result.FAILED/BLOCKED after beeing cancelled!  PATH: {GetPath()}");
+                this.RootNode.Clock.RemoveTimer(TimerId);
                 this.Stopped(result == Result.SUCCESS);
             }
             else
             {
-                Debug.Assert(false, "DoStop called for a single frame action on " + this);
+                Debug.Assert(false, $"DoStop called for a single frame action on " + this + $"  PATH: {GetPath()}");
             }
         }
     }

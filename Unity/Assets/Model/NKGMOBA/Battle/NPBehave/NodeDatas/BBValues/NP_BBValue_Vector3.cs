@@ -6,12 +6,14 @@
 
 using System;
 using System.Numerics;
+using ProtoBuf;
 using Sirenix.OdinInspector;
 
-namespace ETModel.BBValues
+namespace ET
 {
     [HideLabel]
     [HideReferenceObjectPicker]
+    [ProtoContract]
     public class NP_BBValue_Vector3: NP_BBValueBase<Vector3>, IEquatable<NP_BBValue_Vector3>
     {
         public override Type NP_BBValueType
@@ -27,13 +29,13 @@ namespace ETModel.BBValues
         public bool Equals(NP_BBValue_Vector3 other)
         {
             // If parameter is null, return false.
-            if (Object.ReferenceEquals(other, null))
+            if (System.Object.ReferenceEquals(other, null))
             {
                 return false;
             }
 
             // Optimization for a common success case.
-            if (Object.ReferenceEquals(this, other))
+            if (System.Object.ReferenceEquals(this, other))
             {
                 return true;
             }
@@ -78,9 +80,9 @@ namespace ETModel.BBValues
         public static bool operator ==(NP_BBValue_Vector3 lhs, NP_BBValue_Vector3 rhs)
         {
             // Check for null on left side.
-            if (Object.ReferenceEquals(lhs, null))
+            if (System.Object.ReferenceEquals(lhs, null))
             {
-                if (Object.ReferenceEquals(rhs, null))
+                if (System.Object.ReferenceEquals(rhs, null))
                 {
                     // null == null = true.
                     return true;
@@ -117,6 +119,24 @@ namespace ETModel.BBValues
         public static bool operator <=(NP_BBValue_Vector3 lhs, NP_BBValue_Vector3 rhs)
         {
             return false;
+        }
+
+        #endregion
+        
+        #region proto序列化支持，因为Protobuf不支持T字段的序列化，所以只能手写
+
+        [ProtoMember(1)] private Vector3 ValueForProtoSerilize;
+
+        [ProtoBeforeSerialization]
+        private void HandleBeforSerilize()
+        {
+            ValueForProtoSerilize = Value;
+        }
+
+        [ProtoAfterDeserialization]
+        private void HandleAfterSerilize()
+        {
+            Value = ValueForProtoSerilize;
         }
 
         #endregion

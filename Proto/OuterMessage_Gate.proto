@@ -1,0 +1,61 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType G2C_EnterMap
+message C2G_EnterMap // IRequest
+{
+  int32 RpcId = 90;
+}
+
+message G2C_EnterMap // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  // 自己的unit id
+  int64 UnitId = 1;
+  // 所有的unit
+  repeated UnitInfo Units = 2;
+}
+
+//ResponseType G2C_Ping
+message C2G_Ping // IRequest
+{
+  int32 RpcId = 90;
+}
+
+message G2C_Ping // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  int64 Time = 1;
+}
+
+
+message G2C_Test // IMessage
+{
+}
+
+//ResponseType G2C_LoginGate
+message C2G_LoginGate // IRequest
+{
+  int32 RpcId = 90;
+  int64 Key = 1;  // 帐号
+  int64 GateId = 2;
+}
+
+message G2C_LoginGate // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int64 PlayerId = 1;
+  string LobbyAddress = 93;
+}
+
+message G2C_TestHotfixMessage // IMessage
+{
+  string Info = 1;
+}

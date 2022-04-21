@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [System.Flags]
     public enum SkillTypes

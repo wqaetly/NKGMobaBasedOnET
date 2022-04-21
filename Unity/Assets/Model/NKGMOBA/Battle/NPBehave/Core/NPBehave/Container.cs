@@ -25,7 +25,7 @@ namespace NPBehave
         public void ChildStopped(Node child, bool succeeded)
         {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Child " + child.Name + " of Container " + this.Name + " was stopped while the container was inactive. PATH: " + GetPath());
-            Debug.Assert(this.currentState != State.INACTIVE, "A Child of a Container was stopped while the container was inactive.");
+            Debug.Assert(this.currentState != State.INACTIVE, $"A Child of a Container was stopped while the container was inactive.  PATH: {GetPath()}");
             this.DoChildStopped(child, succeeded);
         }
 

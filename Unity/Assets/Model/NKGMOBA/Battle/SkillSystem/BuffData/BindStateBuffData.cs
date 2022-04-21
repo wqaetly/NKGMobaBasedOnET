@@ -5,12 +5,9 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using ETModel.NKGMOBA.Battle.State;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.Options;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 绑定一个状态

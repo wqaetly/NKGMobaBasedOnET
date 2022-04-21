@@ -11,15 +11,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 
-namespace Mono.Collections.Generic {
+namespace ILRuntime.Mono.Collections.Generic {
 
 	public sealed class ReadOnlyCollection<T> : Collection<T>, ICollection<T>, IList {
 
 		static ReadOnlyCollection<T> empty;
 
 		public static ReadOnlyCollection<T> Empty {
-			get { return empty ?? (empty = new ReadOnlyCollection<T> ()); }
+			get {
+				if (empty != null)
+					return empty;
+
+				Interlocked.CompareExchange (ref empty, new ReadOnlyCollection<T> (), null);
+				return empty;
+			}
 		}
 
 		bool ICollection<T>.IsReadOnly {

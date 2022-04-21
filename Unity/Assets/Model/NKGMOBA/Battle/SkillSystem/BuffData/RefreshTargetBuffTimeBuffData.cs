@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// 刷新某个或某几个Buff的持续时间

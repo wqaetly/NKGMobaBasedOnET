@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>protobuf_net</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <DefineConstants>TRACECOREAPP;SERVER</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <DefineConstants>TRACECOREAPP;SERVER</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\..\Unity\Assets\ThirdParty\protobuf-net\Compiler\*.cs">
+            <Link>Compiler\*.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Assets\ThirdParty\protobuf-net\Meta\*.cs">
+            <Link>Meta\*.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Assets\ThirdParty\protobuf-net\Serializers\*.cs">
+            <Link>Serializers\*.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Assets\ThirdParty\protobuf-net\ServiceModel\*.cs">
+            <Link>ServiceModel\*.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Unity\Assets\ThirdParty\protobuf-net\*.cs">
+            <Link>*.cs</Link>
+        </Compile>
+    </ItemGroup>
+
+</Project>

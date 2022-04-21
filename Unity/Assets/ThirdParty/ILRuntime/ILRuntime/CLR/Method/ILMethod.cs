@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-using Mono.Cecil;
+using ILRuntime.Mono.Cecil;
+using ILRuntime.Runtime;
 using ILRuntime.Runtime.Intepreter.OpCodes;
 using ILRuntime.Runtime.Intepreter;
+using ILRuntime.Runtime.Intepreter.RegisterVM;
 using ILRuntime.Runtime.Debugger;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Reflection;
@@ -15,31 +17,54 @@ namespace ILRuntime.CLR.Method
     public class ILMethod : IMethod
     {
         OpCode[] body;
+        OpCodeR[] bodyRegister;
+        Dictionary<int, RegisterVMSymbol> registerSymbols;
+        bool symbolFixed;
         MethodDefinition def;
         List<IType> parameters;
         ILRuntime.Runtime.Enviorment.AppDomain appdomain;
         ILType declaringType;
-        ExceptionHandler[] exceptionHandler;
+        ExceptionHandler[] exceptionHandler, exceptionHandlerR;
         KeyValuePair<string, IType>[] genericParameters;
         IType[] genericArguments;
-        Dictionary<int, int[]> jumptables;
+        Dictionary<int, int[]> jumptables, jumptablesR;
         bool isDelegateInvoke;
+        bool jitPending;
         ILRuntimeMethodInfo refletionMethodInfo;
         ILRuntimeConstructorInfo reflectionCtorInfo;
-        int paramCnt, localVarCnt;
+        int paramCnt, localVarCnt, stackRegisterCnt;
+        int jitFlags;
+        bool jitOnDemand;
+        bool jitImmediately;
+        int warmupCounter = 0;
         Mono.Collections.Generic.Collection<Mono.Cecil.Cil.VariableDefinition> variables;
         int hashCode = -1;
         static int instance_id = 0x10000000;
 
+        const int JITWarmUpThreshold = 10;
+
+        public bool Compiling { get; set; }
+
+        public bool IsRegisterBodyReady { get { return bodyRegister != null; } }
+
         public MethodDefinition Definition { get { return def; } }
 
         public Dictionary<int, int[]> JumpTables { get { return jumptables; } }
+        public Dictionary<int, int[]> JumpTablesRegister { get { return jumptablesR; } }
+
+        internal Dictionary<int, RegisterVMSymbol> RegisterVMSymbols { get { return registerSymbols; } }
+
+        internal int JITFlags { get { return jitFlags; } }
+
+        internal bool IsRegisterVMSymbolFixed { get { return symbolFixed; } }
 
         internal IDelegateAdapter DelegateAdapter { get; set; }
 
         internal int StartLine { get; set; }
 
         internal int EndLine { get; set; }
+
+        public ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get { return appdomain; } }
 
         public MethodInfo ReflectionMethodInfo
         {
@@ -69,9 +94,15 @@ namespace ILRuntime.CLR.Method
         {
             get
             {
-                if (body == null)
-                    InitCodeBody();
                 return exceptionHandler;
+            }
+        }
+
+        internal ExceptionHandler[] ExceptionHandlerRegister
+        {
+            get
+            {
+                return exceptionHandlerR;
             }
         }
 
@@ -125,10 +156,45 @@ namespace ILRuntime.CLR.Method
         public KeyValuePair<string, IType>[] GenericArguments { get { return genericParameters; } }
 
         public IType[] GenericArugmentsArray { get { return genericArguments; } }
-        public ILMethod(MethodDefinition def, ILType type, ILRuntime.Runtime.Enviorment.AppDomain domain)
+
+        public bool ShouldUseRegisterVM
+        {
+            get
+            {
+                if (bodyRegister != null)
+                {
+                    body = null;
+                    exceptionHandler = null;
+                    return true;
+                }
+                else
+                {
+                    if (jitImmediately)
+                    {
+                        InitCodeBody(true);
+                        return true;
+                    }
+                    else
+                    {
+                        if (jitOnDemand)
+                        {
+                            warmupCounter++;
+                            if (warmupCounter > JITWarmUpThreshold && !jitPending)
+                            {
+                                jitPending = true;
+                                AppDomain.EnqueueJITCompileJob(this);
+                            }
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+        public ILMethod(MethodDefinition def, ILType type, ILRuntime.Runtime.Enviorment.AppDomain domain, int flags)
         {
             this.def = def;
             declaringType = type;
+            this.jitFlags = flags;
             if (def.ReturnType.IsGenericParameter)
             {
                 ReturnType = FindGenericArgument(def.ReturnType.Name);
@@ -139,6 +205,20 @@ namespace ILRuntime.CLR.Method
                 isDelegateInvoke = true;
             this.appdomain = domain;
             paramCnt = def.HasParameters ? def.Parameters.Count : 0;
+            if(def.HasCustomAttributes)
+            {
+                for(int i = 0; i < def.CustomAttributes.Count; i++)
+                {
+                    int f;
+                    if(def.CustomAttributes[i].GetJITFlags(domain, out f))
+                    {
+                        this.jitFlags = f;
+                        break;
+                    }
+                }
+            }
+            jitImmediately = (jitFlags & ILRuntimeJITFlags.JITImmediately) == ILRuntimeJITFlags.JITImmediately;
+            jitOnDemand = (jitFlags & ILRuntimeJITFlags.JITOnDemand) == ILRuntimeJITFlags.JITOnDemand;
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG
             if (def.HasBody)
             {
@@ -154,6 +234,15 @@ namespace ILRuntime.CLR.Method
                 }
             }
 #endif
+        }
+
+        public void FixRegisterVMSymbol()
+        {
+            if (!symbolFixed && registerSymbols != null)
+            {
+                symbolFixed = true;
+                JITCompiler.FixSymbol(registerSymbols);
+            }
         }
 
         Mono.Cecil.Cil.SequencePoint GetValidSequence(int startIdx, int dir)
@@ -195,8 +284,18 @@ namespace ILRuntime.CLR.Method
             get
             {
                 if (body == null)
-                    InitCodeBody();
+                    InitCodeBody(false);
                 return body;
+            }
+        }
+
+        internal OpCodeR[] BodyRegister
+        {
+            get
+            {
+                if (bodyRegister == null)
+                    InitCodeBody(true);
+                return bodyRegister;
             }
         }
 
@@ -216,11 +315,27 @@ namespace ILRuntime.CLR.Method
             }
         }
 
+        public int StackRegisterCount
+        {
+            get
+            {
+                return stackRegisterCnt;
+            }
+        }
+
         public bool IsConstructor
         {
             get
             {
                 return def.IsConstructor;
+            }
+        }
+
+        public bool IsVirtual
+        {
+            get
+            {
+                return def.IsVirtual;
             }
         }
 
@@ -264,71 +379,242 @@ namespace ILRuntime.CLR.Method
             private set;
         }
 
-        public void Prewarm()
+        public void Prewarm(bool recursive)
         {
-            if (body == null)
-                InitCodeBody();
+            HashSet<ILMethod> alreadyPrewarmed = null;
+            if (recursive)
+            {
+                alreadyPrewarmed = new HashSet<ILMethod>();
+            }
+            Prewarm(alreadyPrewarmed);
         }
 
-        void InitCodeBody()
+        void PrewarmBody(HashSet<ILMethod> alreadyPrewarmed)
+        {
+            //当前方法用到的IType，提前InitializeMethods()。各个子调用，提前InitParameters()
+            var body = Body;
+
+            foreach (var ins in body)
+            {
+                switch (ins.Code)
+                {
+                    case OpCodeEnum.Call:
+                    case OpCodeEnum.Newobj:
+                    case OpCodeEnum.Ldftn:
+                    case OpCodeEnum.Ldvirtftn:
+                    case OpCodeEnum.Callvirt:
+                        {
+                            var m = appdomain.GetMethod(ins.TokenInteger);
+                            if (m is ILMethod ilm)
+                            {
+                                //如果参数alreadyPrewarmed不为空，则不仅prewarm当前方法，还会递归prewarm所有子调用
+                                //如果参数alreadyPrewarmed为空，则只prewarm当前方法
+                                if (alreadyPrewarmed != null)
+                                {
+                                    ilm.Prewarm(alreadyPrewarmed);
+                                }
+                            }
+                            else if (m is CLRMethod clrm)
+                            {
+                                ILRuntime.CLR.Utils.Extensions.GetTypeFlags(clrm.DeclearingType.TypeForCLR);
+                            }
+                        }
+                        break;
+                    case OpCodeEnum.Ldfld:
+                    case OpCodeEnum.Stfld:
+                    case OpCodeEnum.Ldflda:
+                    case OpCodeEnum.Ldsfld:
+                    case OpCodeEnum.Ldsflda:
+                    case OpCodeEnum.Stsfld:
+                    case OpCodeEnum.Ldtoken:
+                        {
+                            //提前InitializeBaseType()
+                            var t = appdomain.GetType((int)(ins.TokenLong >> 32));
+                            if (t != null)
+                            {
+                                var baseType = t.BaseType;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        void PrewarmBodyRegister(HashSet<ILMethod> alreadyPrewarmed)
+        {
+            //当前方法用到的IType，提前InitializeMethods()。各个子调用，提前InitParameters()
+            var body = BodyRegister;
+
+            foreach (var ins in body)
+            {
+                switch (ins.Code)
+                {
+                    case OpCodeREnum.Call:
+                    case OpCodeREnum.Newobj:
+                    case OpCodeREnum.Ldftn:
+                    case OpCodeREnum.Ldvirtftn:
+                    case OpCodeREnum.Callvirt:
+                        {
+                            var m = appdomain.GetMethod(ins.Operand);
+                            if (m is ILMethod ilm)
+                            {
+                                //如果参数alreadyPrewarmed不为空，则不仅prewarm当前方法，还会递归prewarm所有子调用
+                                //如果参数alreadyPrewarmed为空，则只prewarm当前方法
+                                if (alreadyPrewarmed != null)
+                                {
+                                    ilm.Prewarm(alreadyPrewarmed);
+                                }
+                            }
+                            else if (m is CLRMethod clrm)
+                            {
+                                ILRuntime.CLR.Utils.Extensions.GetTypeFlags(clrm.DeclearingType.TypeForCLR);
+                            }
+                        }
+                        break;
+                    case OpCodeREnum.Ldfld:
+                    case OpCodeREnum.Stfld:
+                    case OpCodeREnum.Ldflda:
+                    case OpCodeREnum.Ldsfld:
+                    case OpCodeREnum.Ldsflda:
+                    case OpCodeREnum.Stsfld:
+                    case OpCodeREnum.Ldtoken:
+                        {
+                            //提前InitializeBaseType()
+                            var t = appdomain.GetType((int)(ins.OperandLong >> 32));
+                            if (t != null)
+                            {
+                                var baseType = t.BaseType;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        private void Prewarm(HashSet<ILMethod> alreadyPrewarmed)
+        {
+            if (alreadyPrewarmed != null && alreadyPrewarmed.Add(this) == false)
+                return;
+            if (GenericParameterCount > 0 && !IsGenericInstance)
+                return;
+            //当前方法用到的CLR局部变量，提前InitializeFields()、GetTypeFlags()
+            for (int i = 0; i < LocalVariableCount; i++)
+            {
+                var v = Variables[i];
+                var vt = v.VariableType;
+                IType t;
+                if (vt.IsGenericParameter)
+                {
+                    t = FindGenericArgument(vt.Name);
+                }
+                else
+                {
+                    t = appdomain.GetType(v.VariableType, DeclearingType, this);
+                }
+                if (t is CLRType ct)
+                {
+                    var fields = ct.Fields;
+                    ILRuntime.CLR.Utils.Extensions.GetTypeFlags(ct.TypeForCLR);
+                }
+            }
+            if (jitImmediately || jitOnDemand)
+                PrewarmBodyRegister(alreadyPrewarmed);
+            else
+                PrewarmBody(alreadyPrewarmed);
+        }
+
+        internal void InitCodeBody(bool register)
         {
             if (def.HasBody)
             {
                 localVarCnt = def.Body.Variables.Count;
-                body = new OpCode[def.Body.Instructions.Count];
                 Dictionary<Mono.Cecil.Cil.Instruction, int> addr = new Dictionary<Mono.Cecil.Cil.Instruction, int>();
-                for (int i = 0; i < body.Length; i++)
-                {
-                    var c = def.Body.Instructions[i];
-                    OpCode code = new OpCode();
-                    code.Code = (OpCodeEnum)c.OpCode.Code;
-                    addr[c] = i;
-                    body[i] = code;
-                }
-                for (int i = 0; i < body.Length; i++)
-                {
-                    var c = def.Body.Instructions[i];
-                    InitToken(ref body[i], c.Operand, addr);
-                    if (i > 0 && c.OpCode.Code == Mono.Cecil.Cil.Code.Callvirt && def.Body.Instructions[i - 1].OpCode.Code == Mono.Cecil.Cil.Code.Constrained)
-                    {
-                        body[i - 1].TokenLong = body[i].TokenInteger;
-                    }
-                }
 
-                for (int i = 0; i < def.Body.ExceptionHandlers.Count; i++)
+                bool noRelease = false;
+                if (register)
                 {
-                    var eh = def.Body.ExceptionHandlers[i];
-                    if (exceptionHandler == null)
-                        exceptionHandler = new Method.ExceptionHandler[def.Body.ExceptionHandlers.Count];
-                    ExceptionHandler e = new ExceptionHandler();
-                    e.HandlerStart = addr[eh.HandlerStart];
-                    e.HandlerEnd = addr[eh.HandlerEnd] - 1;
-                    e.TryStart = addr[eh.TryStart];
-                    e.TryEnd = addr[eh.TryEnd] - 1;
-                    switch (eh.HandlerType)
+                    JITCompiler jit = new JITCompiler(appdomain, declaringType, this);
+                    bodyRegister = jit.Compile(out stackRegisterCnt, out jumptablesR, addr, out registerSymbols);
+                }
+                else
+                {
+                    InitStackCodeBody(addr);
+                    if (jitOnDemand)
+                        noRelease = bodyRegister == null;
+                }
+                if (def.Body.ExceptionHandlers.Count > 0)
+                {
+                    ExceptionHandler[] ehs;
+                    if (register)
                     {
-                        case Mono.Cecil.Cil.ExceptionHandlerType.Catch:
-                            e.CatchType = appdomain.GetType(eh.CatchType, declaringType, this);
-                            e.HandlerType = ExceptionHandlerType.Catch;
-                            break;
-                        case Mono.Cecil.Cil.ExceptionHandlerType.Finally:
-                            e.HandlerType = ExceptionHandlerType.Finally;
-                            break;
-                        case Mono.Cecil.Cil.ExceptionHandlerType.Fault:
-                            e.HandlerType = ExceptionHandlerType.Fault;
-                            break;
-                        default:
-                            throw new NotImplementedException();
+                        if (exceptionHandlerR == null)
+                            exceptionHandlerR = new Method.ExceptionHandler[def.Body.ExceptionHandlers.Count];
+                        ehs = exceptionHandlerR;
                     }
-                    exceptionHandler[i] = e;
+                    else
+                    {
+                        if (exceptionHandler == null)
+                            exceptionHandler = new Method.ExceptionHandler[def.Body.ExceptionHandlers.Count];
+                        ehs = exceptionHandler;
+                    }
+
+                    for (int i = 0; i < def.Body.ExceptionHandlers.Count; i++)
+                    {
+                        var eh = def.Body.ExceptionHandlers[i];
+                        ExceptionHandler e = new ExceptionHandler();
+                        e.HandlerStart = addr[eh.HandlerStart];
+                        e.HandlerEnd = addr[eh.HandlerEnd] - 1;
+                        e.TryStart = addr[eh.TryStart];
+                        e.TryEnd = addr[eh.TryEnd] - 1;
+                        switch (eh.HandlerType)
+                        {
+                            case Mono.Cecil.Cil.ExceptionHandlerType.Catch:
+                                e.CatchType = appdomain.GetType(eh.CatchType, declaringType, this);
+                                e.HandlerType = ExceptionHandlerType.Catch;
+                                break;
+                            case Mono.Cecil.Cil.ExceptionHandlerType.Finally:
+                                e.HandlerType = ExceptionHandlerType.Finally;
+                                break;
+                            case Mono.Cecil.Cil.ExceptionHandlerType.Fault:
+                                e.HandlerType = ExceptionHandlerType.Fault;
+                                break;
+                            default:
+                                throw new NotImplementedException();
+                        }
+                        ehs[i] = e;
+                    }
                     //Mono.Cecil.Cil.ExceptionHandlerType.
                 }
-                //Release Method body to save memory
                 variables = def.Body.Variables;
-                def.Body = null;
+#if !DEBUG || DISABLE_ILRUNTIME_DEBUG
+                //Release Method body to save memory
+                if(!noRelease)
+                    def.Body = null;
+#endif
             }
             else
                 body = new OpCode[0];
+        }
+
+        void InitStackCodeBody(Dictionary<Mono.Cecil.Cil.Instruction, int> addr)
+        {
+            body = new OpCode[def.Body.Instructions.Count];
+            for (int i = 0; i < body.Length; i++)
+            {
+                var c = def.Body.Instructions[i];
+                OpCode code = new OpCode();
+                code.Code = (OpCodeEnum)c.OpCode.Code;
+                addr[c] = i;
+                body[i] = code;
+            }
+            for (int i = 0; i < body.Length; i++)
+            {
+                var c = def.Body.Instructions[i];
+                InitToken(ref body[i], c.Operand, addr);
+                if (i > 0 && c.OpCode.Code == Mono.Cecil.Cil.Code.Callvirt && def.Body.Instructions[i - 1].OpCode.Code == Mono.Cecil.Cil.Code.Constrained)
+                {
+                    body[i - 1].TokenLong = body[i].TokenInteger;
+                }
+            }
         }
 
         unsafe void InitToken(ref OpCode code, object token, Dictionary<Mono.Cecil.Cil.Instruction, int> addr)
@@ -421,6 +707,12 @@ namespace ILRuntime.CLR.Method
                         var m = appdomain.GetMethod(token, declaringType, this, out invalidToken);
                         if (m != null)
                         {
+                            if(code.Code == OpCodeEnum.Callvirt && m is ILMethod)
+                            {
+                                ILMethod ilm = (ILMethod)m;
+                                if (!ilm.def.IsAbstract && !ilm.def.IsVirtual && !ilm.DeclearingType.IsInterface)
+                                    code.Code = OpCodeEnum.Call;
+                            }
                             if (invalidToken)
                                 code.TokenInteger = m.GetHashCode();
                             else
@@ -496,7 +788,7 @@ namespace ILRuntime.CLR.Method
             }
         }
 
-        int GetTypeTokenHashCode(object token)
+        internal int GetTypeTokenHashCode(object token)
         {
             var t = appdomain.GetType(token, declaringType, this);
             bool isGenericParameter = CheckHasGenericParamter(token);
@@ -506,14 +798,7 @@ namespace ILRuntime.CLR.Method
             }
             if (t != null)
             {
-                if (t is ILType)
-                {
-                    if (((ILType)t).TypeReference.HasGenericParameters)
-                        return t.GetHashCode();
-                    else
-                        return ((ILType)t).TypeReference.GetHashCode();
-                }
-                else if (isGenericParameter)
+                if (t is ILType || isGenericParameter)
                 {
                     return t.GetHashCode();
                 }
@@ -613,10 +898,10 @@ namespace ILRuntime.CLR.Method
                 else
                     type = appdomain.GetType(pt, declaringType, this);
 
-                if (isByRef)
-                    type = type.MakeByRefType();
                 if (isArray)
                     type = type.MakeArrayType(rank);
+                if (isByRef)
+                    type = type.MakeByRefType();
                 parameters.Add(type);
             }
         }
@@ -631,7 +916,7 @@ namespace ILRuntime.CLR.Method
                 genericParameters[i] = new KeyValuePair<string, IType>(name, val);
             }
 
-            ILMethod m = new ILMethod(def, declaringType, appdomain);
+            ILMethod m = new ILMethod(def, declaringType, appdomain, jitFlags);
             m.genericParameters = genericParameters;
             m.genericArguments = genericArguments;
             if (m.def.ReturnType.IsGenericParameter)

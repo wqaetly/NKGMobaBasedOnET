@@ -4,7 +4,7 @@
 // Data: 2019年9月21日 19:42:35
 //------------------------------------------------------------
 
-namespace ETModel
+namespace ET
 {
     /// <summary>
     /// Buff的基本特征，是Debuff还是Buff

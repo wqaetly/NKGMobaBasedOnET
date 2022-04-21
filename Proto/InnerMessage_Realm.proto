@@ -1,0 +1,10 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType G2R_GetLoginKey
+message R2G_GetLoginKey // IActorRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  string Account = 1;
+}

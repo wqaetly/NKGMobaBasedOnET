@@ -7,7 +7,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     public class FlashDamageBuffData: BuffDataBase
     {

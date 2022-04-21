@@ -1,0 +1,31 @@
+syntax = "proto3";
+package ET;
+
+message L2G_GetRoomId // IActorResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  int64 RoomId = 1;
+}
+
+//ResponseType M2L_CreateHeroUnit
+message L2M_CreateHeroUnit // IActorRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int64 PlayerId = 1;
+  int64 GateSessionId = 2;
+  int64 Roomid = 3;
+
+  PlayerBattleInfo PlayerBattleInfo = 4;
+}
+
+//ResponseType M2L_PreparedToEnterBattle
+message L2M_PreparedToEnterBattle // IActorRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+  int64 Roomid = 2;
+}

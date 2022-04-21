@@ -7,6 +7,8 @@ using System.Globalization;
 
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.Utils;
+using ILRuntime.Runtime.Intepreter;
+using ILRuntime.Runtime.Enviorment;
 
 namespace ILRuntime.Reflection
 {
@@ -17,7 +19,7 @@ namespace ILRuntime.Reflection
         Mono.Cecil.MethodDefinition definition;
         ILRuntime.Runtime.Enviorment.AppDomain appdomain;
 
-        object[] customAttributes;
+        Attribute[] customAttributes;
         Type[] attributeTypes;
         public ILRuntimeMethodInfo(ILMethod m)
         {
@@ -34,7 +36,7 @@ namespace ILRuntime.Reflection
 
         void InitializeCustomAttribute()
         {
-            customAttributes = new object[definition.CustomAttributes.Count];
+            customAttributes = new Attribute[definition.CustomAttributes.Count];
             attributeTypes = new Type[customAttributes.Length];
             for (int i = 0; i < definition.CustomAttributes.Count; i++)
             {
@@ -42,7 +44,7 @@ namespace ILRuntime.Reflection
                 var at = appdomain.GetType(attribute.AttributeType, null, null);
                 try
                 {
-                    object ins = attribute.CreateInstance(at, appdomain);
+                    Attribute ins = attribute.CreateInstance(at, appdomain) as Attribute;
 
                     attributeTypes[i] = at.ReflectionType;
                     customAttributes[i] = ins;
@@ -59,7 +61,10 @@ namespace ILRuntime.Reflection
         {
             get
             {
-                return MethodAttributes.Public;
+                MethodAttributes ma = MethodAttributes.Public;
+                if (method.IsStatic)
+                    ma |= MethodAttributes.Static;
+                return ma;
             }
         }
 
@@ -123,7 +128,7 @@ namespace ILRuntime.Reflection
             List<object> res = new List<object>();
             for (int i = 0; i < customAttributes.Length; i++)
             {
-                if (attributeTypes[i] == attributeType)
+                if (attributeTypes[i].Equals(attributeType))
                     res.Add(customAttributes[i]);
             }
             return res.ToArray();
@@ -166,8 +171,43 @@ namespace ILRuntime.Reflection
         {
             get
             {
-                return method.ReturnType.ReflectionType;
+                return method.ReturnType?.ReflectionType;
             }
+        }
+
+        public override Delegate CreateDelegate(Type delegateType)
+        {
+            throw new NotSupportedException("please use CreateDelegate(Type delegateType, object target)");
+        }
+
+        private IDelegateAdapter iDelegate;
+        public override Delegate CreateDelegate(Type delegateType, object target)
+        {
+            ILTypeInstance ilTypeInstance;
+            if (target is ILTypeInstance)
+            {
+                ilTypeInstance = target as ILTypeInstance;
+            }
+            else if (target is CrossBindingAdaptorType adaptor)
+            {
+                ilTypeInstance = adaptor.ILInstance;
+            }
+            else
+            {
+                return null;
+            }
+
+            IDelegateAdapter del;
+            if (iDelegate == null)
+            {
+                iDelegate = appdomain.DelegateManager.FindDelegateAdapter(ilTypeInstance, method, method);
+                del = iDelegate;
+            }
+            else
+            {
+                del = iDelegate.Instantiate(appdomain, ilTypeInstance, iDelegate.Method);
+            }
+            return del.GetConvertor(delegateType);
         }
     }
 }

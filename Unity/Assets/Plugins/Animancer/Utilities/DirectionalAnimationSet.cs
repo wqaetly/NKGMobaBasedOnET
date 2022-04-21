@@ -1,4 +1,4 @@
-// Animancer // Copyright 2019 Kybernetik //
+// Animancer // https://kybernetik.com.au/animancer // Copyright 2020 Kybernetik //
 
 using System;
 using System.Collections.Generic;
@@ -7,10 +7,14 @@ using UnityEngine;
 
 namespace Animancer
 {
-    /// <summary>
-    /// A set of up/down/left/right animations.
-    /// </summary>
-    [CreateAssetMenu(menuName = "Animancer/Directional Animation Set 4", order = AnimancerComponent.AssetMenuOrder + 2)]
+    /// <summary>A set of up/right/down/left animations.</summary>
+    /// <remarks>
+    /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/playing/directional-sets">Directional Animation Sets</see>
+    /// </remarks>
+    /// https://kybernetik.com.au/animancer/api/Animancer/DirectionalAnimationSet
+    /// 
+    [CreateAssetMenu(menuName = Strings.MenuPrefix + "Directional Animation Set/4 Directions", order = Strings.AssetMenuOrder + 10)]
+    [HelpURL(Strings.DocsURLs.APIDocumentation + "/" + nameof(DirectionalAnimationSet))]
     public class DirectionalAnimationSet : ScriptableObject, IAnimationClipSource
     {
         /************************************************************************************************************************/
@@ -18,8 +22,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _Up;
 
-        /// <summary>The animation facing up.</summary>
-        public AnimationClip Up { get { return _Up; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing up.</summary>
+        public AnimationClip Up => _Up;
 
         /// <summary>Sets the <see cref="Up"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -34,8 +38,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _Right;
 
-        /// <summary>The animation facing right.</summary>
-        public AnimationClip Right { get { return _Right; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing right.</summary>
+        public AnimationClip Right => _Right;
 
         /// <summary>Sets the <see cref="Right"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -50,8 +54,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _Down;
 
-        /// <summary>The animation facing down.</summary>
-        public AnimationClip Down { get { return _Down; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing down.</summary>
+        public AnimationClip Down => _Down;
 
         /// <summary>Sets the <see cref="Down"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -66,8 +70,8 @@ namespace Animancer
         [SerializeField]
         private AnimationClip _Left;
 
-        /// <summary>The animation facing left.</summary>
-        public AnimationClip Left { get { return _Left; } }
+        /// <summary>[<see cref="SerializeField"/>] The animation facing left.</summary>
+        public AnimationClip Left => _Left;
 
         /// <summary>Sets the <see cref="Left"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -79,7 +83,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the animation closest to the specified 'direction'.</summary>
+        /// <summary>Returns the animation closest to the specified `direction`.</summary>
         public virtual AnimationClip GetClip(Vector2 direction)
         {
             if (direction.x >= 0)
@@ -103,29 +107,39 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>The number of animations in this set.</summary>
-        public virtual int ClipCount { get { return 4; } }
+        public virtual int ClipCount => 4;
 
         /************************************************************************************************************************/
 
-        /// <summary>Up, Down, Left, or Right.</summary>
+        /// <summary>Up, Right, Down, or Left.</summary>
+        /// <remarks>
+        /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/playing/directional-sets">Directional Animation Sets</see>
+        /// </remarks>
+        /// https://kybernetik.com.au/animancer/api/Animancer/Direction
+        /// 
         public enum Direction
         {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member.
+            /// <summary><see cref="Vector2.up"/>.</summary>
             Up,
+
+            /// <summary><see cref="Vector2.right"/>.</summary>
             Right,
+
+            /// <summary><see cref="Vector2.down"/>.</summary>
             Down,
+
+            /// <summary><see cref="Vector2.left"/>.</summary>
             Left,
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member.
         }
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the name of the specified 'direction'.</summary>
-        protected virtual string GetDirectionName(int direction) { return ((Direction)direction).ToString(); }
+        /// <summary>Returns the name of the specified `direction`.</summary>
+        protected virtual string GetDirectionName(int direction) => ((Direction)direction).ToString();
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the animation associated with the specified 'direction'.</summary>
+        /// <summary>Returns the animation associated with the specified `direction`.</summary>
         public AnimationClip GetClip(Direction direction)
         {
             switch (direction)
@@ -134,19 +148,16 @@ namespace Animancer
                 case Direction.Right: return _Right;
                 case Direction.Down: return _Down;
                 case Direction.Left: return _Left;
-                default: throw new ArgumentException("Unhandled direction: " + direction);
+                default: throw new ArgumentException($"Unsupported {nameof(Direction)}: {direction}");
             }
         }
 
-        /// <summary>Returns the animation associated with the specified 'direction'.</summary>
-        public virtual AnimationClip GetClip(int direction)
-        {
-            return GetClip((Direction)direction);
-        }
+        /// <summary>Returns the animation associated with the specified `direction`.</summary>
+        public virtual AnimationClip GetClip(int direction) => GetClip((Direction)direction);
 
         /************************************************************************************************************************/
 
-        /// <summary>Sets the animation associated with the specified 'direction'.</summary>
+        /// <summary>Sets the animation associated with the specified `direction`.</summary>
         public void SetClip(Direction direction, AnimationClip clip)
         {
             switch (direction)
@@ -155,23 +166,20 @@ namespace Animancer
                 case Direction.Right: _Right = clip; break;
                 case Direction.Down: _Down = clip; break;
                 case Direction.Left: _Left = clip; break;
-                default: throw new ArgumentException("Unhandled direction: " + direction);
+                default: throw new ArgumentException($"Unsupported {nameof(Direction)}: {direction}");
             }
 
             AnimancerUtilities.SetDirty(this);
         }
 
-        /// <summary>Sets the animation associated with the specified 'direction'.</summary>
-        public virtual void SetClip(int direction, AnimationClip clip)
-        {
-            SetClip((Direction)direction, clip);
-        }
+        /// <summary>Sets the animation associated with the specified `direction`.</summary>
+        public virtual void SetClip(int direction, AnimationClip clip) => SetClip((Direction)direction, clip);
 
         /************************************************************************************************************************/
         #region Conversion
         /************************************************************************************************************************/
 
-        /// <summary>Returns a vector representing the specified 'direction'.</summary>
+        /// <summary>Returns a vector representing the specified `direction`.</summary>
         public static Vector2 DirectionToVector(Direction direction)
         {
             switch (direction)
@@ -180,19 +188,16 @@ namespace Animancer
                 case Direction.Right: return Vector2.right;
                 case Direction.Down: return Vector2.down;
                 case Direction.Left: return Vector2.left;
-                default: throw new ArgumentException("Unhandled direction: " + direction);
+                default: throw new ArgumentException($"Unsupported {nameof(Direction)}: {direction}");
             }
         }
 
-        /// <summary>Returns a vector representing the specified 'direction'.</summary>
-        public virtual Vector2 GetDirection(int direction)
-        {
-            return DirectionToVector((Direction)direction);
-        }
+        /// <summary>Returns a vector representing the specified `direction`.</summary>
+        public virtual Vector2 GetDirection(int direction) => DirectionToVector((Direction)direction);
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns the direction closest to the specified 'vector'.</summary>
+        /// <summary>Returns the direction closest to the specified `vector`.</summary>
         public static Direction VectorToDirection(Vector2 vector)
         {
             if (vector.x >= 0)
@@ -213,7 +218,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>Returns a copy of the 'vector' pointing in the closest direction this set type has an animation for.</summary>
+        /// <summary>Returns a copy of the `vector` pointing in the closest direction this set type has an animation for.</summary>
         public static Vector2 SnapVectorToDirection(Vector2 vector)
         {
             var magnitude = vector.magnitude;
@@ -222,11 +227,8 @@ namespace Animancer
             return vector;
         }
 
-        /// <summary>Returns a copy of the 'vector' pointing in the closest direction this set has an animation for.</summary>
-        public virtual Vector2 Snap(Vector2 vector)
-        {
-            return SnapVectorToDirection(vector);
-        }
+        /// <summary>Returns a copy of the `vector` pointing in the closest direction this set has an animation for.</summary>
+        public virtual Vector2 Snap(Vector2 vector) => SnapVectorToDirection(vector);
 
         /************************************************************************************************************************/
         #endregion
@@ -234,7 +236,7 @@ namespace Animancer
         #region Collections
         /************************************************************************************************************************/
 
-        /// <summary>Adds all animations from this set to the 'clips', starting from the specified 'index'.</summary>
+        /// <summary>Adds all animations from this set to the `clips`, starting from the specified `index`.</summary>
         public void AddClips(AnimationClip[] clips, int index)
         {
             var count = ClipCount;
@@ -242,7 +244,7 @@ namespace Animancer
                 clips[index + i] = GetClip(i);
         }
 
-        /// <summary>[<see cref="IAnimationClipSource"/>] Adds all animations from this set to the 'clips'.</summary>
+        /// <summary>[<see cref="IAnimationClipSource"/>] Adds all animations from this set to the `clips`.</summary>
         public void GetAnimationClips(List<AnimationClip> clips)
         {
             var count = ClipCount;
@@ -253,8 +255,8 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Adds unit vectors corresponding to each of the animations in this set to the 'directions', starting from
-        /// the specified 'index'.
+        /// Adds unit vectors corresponding to each of the animations in this set to the `directions`, starting from
+        /// the specified `index`.
         /// </summary>
         public void AddDirections(Vector2[] directions, int index)
         {
@@ -282,8 +284,13 @@ namespace Animancer
 #if UNITY_EDITOR
         /************************************************************************************************************************/
 
-        /// <summary>
-        /// Attempts to assign the 'clip' to one of this set's fields based on its name and returns the direction index
+        [UnityEditor.CustomEditor(typeof(DirectionalAnimationSet), true)]
+        private class Editor : Animancer.Editor.ScriptableObjectEditor { }
+
+        /************************************************************************************************************************/
+
+        /// <summary>[Editor-Only]
+        /// Attempts to assign the `clip` to one of this set's fields based on its name and returns the direction index
         /// of that field (or -1 if it was unable to determine the direction).
         /// </summary>
         public virtual int SetClipByName(AnimationClip clip)
@@ -312,15 +319,20 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        [UnityEditor.MenuItem("CONTEXT/DirectionalAnimationSet/Find Animations")]
+        [UnityEditor.MenuItem("CONTEXT/" + nameof(DirectionalAnimationSet) + "/Find Animations")]
         private static void FindSimilarAnimations(UnityEditor.MenuCommand command)
         {
             var set = (DirectionalAnimationSet)command.context;
 
+            UnityEditor.Undo.RecordObject(set, "Find Animations");
+
             var directory = UnityEditor.AssetDatabase.GetAssetPath(set);
             directory = Path.GetDirectoryName(directory);
 
-            var guids = UnityEditor.AssetDatabase.FindAssets(set.name + " t:AnimationClip", new string[] { directory });
+            var guids = UnityEditor.AssetDatabase.FindAssets(
+                $"{set.name} t:{nameof(AnimationClip)}",
+                new string[] { directory });
+
             for (int i = 0; i < guids.Length; i++)
             {
                 var path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
@@ -334,8 +346,8 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        [UnityEditor.MenuItem("Assets/Create/Animancer/Directional Animation Sets (From Selection)",
-            priority = AnimancerComponent.AssetMenuOrder + 5)]
+        [UnityEditor.MenuItem("Assets/Create/Animancer/Directional Animation Set/From Selection",
+            priority = Strings.AssetMenuOrder + 12)]
         private static void CreateDirectionalAnimationSet()
         {
             var nameToAnimations = new Dictionary<string, List<AnimationClip>>();
@@ -353,8 +365,7 @@ namespace Animancer
                     name = name.Replace(direction.ToString(), "");
                 }
 
-                List<AnimationClip> clips;
-                if (!nameToAnimations.TryGetValue(name, out clips))
+                if (!nameToAnimations.TryGetValue(name, out var clips))
                 {
                     clips = new List<AnimationClip>();
                     nameToAnimations.Add(name, clips);
@@ -385,7 +396,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        [UnityEditor.MenuItem("CONTEXT/DirectionalAnimationSet/Toggle Looping")]
+        [UnityEditor.MenuItem("CONTEXT/" + nameof(DirectionalAnimationSet) + "/Toggle Looping")]
         private static void ToggleLooping(UnityEditor.MenuCommand command)
         {
             var set = (DirectionalAnimationSet)command.context;
@@ -398,30 +409,17 @@ namespace Animancer
                     continue;
 
                 var isLooping = !clip.isLooping;
-                Debug.Log("Setting " + set.name + " clips to " + (isLooping ? "Looping" : "Not Looping") +
-                    ". Note that you need to restart Unity for this change to take effect.", set);
-
                 for (i = 0; i < count; i++)
                 {
                     clip = set.GetClip(i);
                     if (clip == null)
                         continue;
 
-                    var settings = UnityEditor.AnimationUtility.GetAnimationClipSettings(clip);
-                    settings.loopTime = isLooping;
-                    UnityEditor.AnimationUtility.SetAnimationClipSettings(clip, settings);
-
-                    // None of these let us avoid the need to restart Unity.
-                    //AnimancerUtilities.SetDirty(clip);
-                    //UnityEditor.AssetDatabase.SaveAssets();
-
-                    //var path = UnityEditor.AssetDatabase.GetAssetPath(clip);
-                    //UnityEditor.AssetDatabase.ImportAsset(path, UnityEditor.ImportAssetOptions.ForceUpdate);
+                    Animancer.Editor.AnimancerEditorUtilities.SetLooping(clip, isLooping);
                 }
 
                 break;
             }
-
         }
 
         /************************************************************************************************************************/

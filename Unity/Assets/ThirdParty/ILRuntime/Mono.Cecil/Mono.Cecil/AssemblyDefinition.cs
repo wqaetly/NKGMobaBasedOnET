@@ -10,10 +10,10 @@
 
 using System;
 using System.IO;
+using System.Threading;
+using ILRuntime.Mono.Collections.Generic;
 
-using Mono.Collections.Generic;
-
-namespace Mono.Cecil {
+namespace ILRuntime.Mono.Cecil {
 
 	public sealed class AssemblyDefinition : ICustomAttributeProvider, ISecurityDeclarationProvider, IDisposable {
 
@@ -46,7 +46,8 @@ namespace Mono.Cecil {
 				if (main_module.HasImage)
 					return main_module.Read (ref modules, this, (_, reader) => reader.ReadModules ());
 
-				return modules = new Collection<ModuleDefinition> (1) { main_module };
+				Interlocked.CompareExchange (ref modules, new Collection<ModuleDefinition> (1) { main_module }, null);
+				return modules;
 			}
 		}
 
@@ -100,8 +101,6 @@ namespace Mono.Cecil {
 			for (int i = 0; i < modules.Count; i++)
 				modules [i].Dispose ();
 		}
-
-#if !READ_ONLY
 		public static AssemblyDefinition CreateAssembly (AssemblyNameDefinition assemblyName, string moduleName, ModuleKind kind)
 		{
 			return CreateAssembly (assemblyName, moduleName, new ModuleParameters { Kind = kind });
@@ -122,7 +121,6 @@ namespace Mono.Cecil {
 
 			return assembly;
 		}
-#endif
 
 		public static AssemblyDefinition ReadAssembly (string fileName)
 		{
@@ -153,8 +151,6 @@ namespace Mono.Cecil {
 			return assembly;
 		}
 
-#if !READ_ONLY
-
 		public void Write (string fileName)
 		{
 			Write (fileName, new WriterParameters ());
@@ -184,7 +180,6 @@ namespace Mono.Cecil {
 		{
 			main_module.Write (stream, parameters);
 		}
-#endif
 
 		public override string ToString ()
 		{

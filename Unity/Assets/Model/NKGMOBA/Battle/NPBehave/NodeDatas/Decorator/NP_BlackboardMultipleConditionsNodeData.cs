@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using NPBehave;
 using Sirenix.OdinInspector;
 
-namespace ETModel
+namespace ET
 {
     [BoxGroup("黑板多条件节点配置"), GUIColor(0.961f, 0.902f, 0.788f, 1f)]
     [HideLabel]
@@ -26,7 +26,7 @@ namespace ETModel
         [LabelText("终止条件")]
         public Stops Stop = Stops.IMMEDIATE_RESTART;
 
-        public override Decorator CreateDecoratorNode(long unitId, NP_RuntimeTree runtimeTree, Node node)
+        public override Decorator CreateDecoratorNode(Unit unit, NP_RuntimeTree runtimeTree, Node node)
         {
             this.m_BlackboardMultipleConditions = new BlackboardMultipleConditions(this.MatchInfos, this.MatchType, this.Stop, node);
             //此处的value参数可以随便设，因为我们在游戏中这个value是需要动态改变的
