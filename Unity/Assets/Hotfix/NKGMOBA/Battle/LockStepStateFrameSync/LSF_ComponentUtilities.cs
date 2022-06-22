@@ -339,8 +339,9 @@ namespace ET
         public static void RefreshNetInfo(this LSF_Component self, long serverTimeSnap,
             uint messageFrame)
         {
-            self.ServerCurrentFrame = messageFrame + TimeAndFrameConverter.Frame_Long2Frame(
-                TimeHelper.ClientNow() - serverTimeSnap);
+            var serverPastTime = TimeHelper.ServerNow() - serverTimeSnap;
+            
+            self.ServerCurrentFrame = messageFrame + TimeAndFrameConverter.Frame_Long2Frame(serverPastTime);
             self.CurrentAheadOfFrame = (int) (self.CurrentFrame - self.ServerCurrentFrame);
 
             //Log.Info($"刷新服务端CurrentFrame成功：{self.ServerCurrentFrame} ---- {TimeHelper.ClientNow()}");

@@ -57,20 +57,23 @@ namespace ET
                     
                     M2C_Ping responseFromMap = await session.Call(self.C2M_Ping) as M2C_Ping;
                     
-                    self.C2MPingValue =
-                        (uint) Mathf.Clamp((responseFromMap.TimePoint - clientNow_C2MSend) * 2, 0.0f,
-                            999.0f);
+                    float oldPing = self.C2MPingValue;
+                    self.C2MPingValue = TimeHelper.ClientNow() - clientNow_C2MSend;
 
-                    //TODO 这里是只有C2M的ping发生变化才发送通知
-                    Game.EventSystem.Publish(new EventType.PingChange()
-                        {
-                            C2GPing = self.C2GPingValue,
-                            C2MPing = self.C2MPingValue,
-                            ServerTimeSnap = responseFromMap.TimePoint,
-                            MessageFrame = responseFromMap.ServerFrame,
-                            ZoneScene = self.DomainScene()
-                        })
-                        .Coroutine();
+                    if (oldPing != self.C2MPingValue)
+                    {
+                        Game.EventSystem.Publish(new EventType.PingChange()
+                            {
+                                C2GPing = self.C2GPingValue,
+                                C2MPing = self.C2MPingValue,
+                                ServerTimeSnap = responseFromMap.TimePoint,
+                                MessageFrame = responseFromMap.ServerFrame,
+                                ZoneScene = self.DomainScene()
+                            })
+                            .Coroutine();
+                    }
+                    
+                    Game.TimeInfo.ServerMinusClientTime = responseFromGate.Time + (clientNow_C2MSend - clientNow_C2GSend) / 2 - clientNow_C2MSend;
                 }
                 catch (RpcException e)
                 {
