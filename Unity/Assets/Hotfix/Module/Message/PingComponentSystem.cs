@@ -62,7 +62,6 @@ namespace ET
 
                     if (oldPing != self.C2MPingValue)
                     {
-                        //TODO 这里是只有C2M的ping发生变化才发送通知
                         Game.EventSystem.Publish(new EventType.PingChange()
                             {
                                 C2GPing = self.C2GPingValue,
